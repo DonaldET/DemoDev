@@ -1,0 +1,1 @@
+These small projects demonstrate useful techniques for building Java and J2EE applications.
