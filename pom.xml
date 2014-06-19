@@ -7,11 +7,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>demo</groupId>
-	<artifactId>DemoDev</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>demodev.topics</groupId>
+	<artifactId>demodev-topics-parent</artifactId>
+	<name>Demonstration of Development Topics</name>
+	<description>Parent Project for DemoDev</description>
 	<packaging>jar</packaging>
-	<name>DemoDev</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<url>http://www.linkedin.com/in/donaldtrummell/</url>
+
+	<modules>
+	</modules>
 
 	<properties>
 		<!-- Generic properties -->
@@ -27,7 +32,7 @@
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- Test Artifacts -->
 		<dependency>
