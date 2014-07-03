@@ -1,1 +1,1 @@
-These small projects demonstrate useful techniques for building Java and J2EE applications.
+These small DemoDev projects illustrate useful techniques for building Java and J2EE applications.  They use Maven to build and JUnit to test.  Shared components and dependencies are located in the parent project (), and individual plugins and dependencies are included in child projects.

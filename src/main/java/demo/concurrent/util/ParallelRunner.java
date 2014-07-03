@@ -30,9 +30,9 @@ import java.util.concurrent.TimeoutException;
  * thread then runs and counts down the thread-completed latch. Finally, all the
  * threads are either counted down or time out.
  * 
- * @author Don
+ * @author Donald Trummell
  */
-public class ParallelRunner
+public class ParallelRunner implements Launch
 {
   public static final int DEF_MAX_INIT_TIMEOUT_MS = 3;
 
@@ -54,22 +54,12 @@ public class ParallelRunner
   }
 
   /**
-   * Assign a thread to each <code>Runnable</code> instance and run them all
-   * starting at the <em>same time</em>. The pool of threads neither grows nor
-   * shrinks.
+   * Multi-threaded execution of <code>Runnable</code>instances.
    * 
-   * @param label
-   *          the identity of this run
-   * @param runnables
-   *          the items to run in each thread
-   * @param maxTimeoutSeconds
-   *          the maximum execution timeout
-   * @return a optionally empty list of exceptions encountered while running
-   * 
-   * @throws InterruptedException
-   * @throws TimeoutException
+   * @see demo.concurrent.util.Launch#launchRunnables(java.lang.String, java.util.List, int)
    */
-  public List<Throwable> runConcurrent(final String label,
+  @Override
+  public List<Throwable> launchRunnables(final String label,
       final List<? extends Runnable> runnables, final int maxTimeoutSeconds)
       throws InterruptedException, TimeoutException
   {
@@ -237,18 +227,19 @@ public class ParallelRunner
     };
   }
 
-  /**
-   * @return the trace
+  /* (non-Javadoc)
+   * @see demo.concurrent.util.Launch#isTrace()
    */
+  @Override
   public boolean isTrace()
   {
     return trace;
   }
 
-  /**
-   * @param trace
-   *          the trace to set
+  /* (non-Javadoc)
+   * @see demo.concurrent.util.Launch#setTrace(boolean)
    */
+  @Override
   public void setTrace(boolean trace)
   {
     this.trace = trace;
