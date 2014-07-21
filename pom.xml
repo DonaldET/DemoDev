@@ -18,7 +18,8 @@
 	<url>http://www.linkedin.com/in/donaldtrummell/</url>
 
 	<modules>
-	<module>dev-topics-serialhack</module>
+		<module>dev-topics-utils</module>
+		<module>dev-topics-hacks</module>
 	</modules>
 
 	<properties>
