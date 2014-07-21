@@ -227,7 +227,7 @@ public class ParallelRunner implements Launch
     };
   }
 
-  /* (non-Javadoc)
+  /**
    * @see demo.concurrent.util.Launch#isTrace()
    */
   @Override
@@ -236,7 +236,7 @@ public class ParallelRunner implements Launch
     return trace;
   }
 
-  /* (non-Javadoc)
+  /**
    * @see demo.concurrent.util.Launch#setTrace(boolean)
    */
   @Override
