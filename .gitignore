@@ -2,8 +2,11 @@
 ## Eclipse
 #################
 
+/classes
 /target
 *.class
+*.jar
+*.war
 *.pydevproject
 .project
 .metadata
