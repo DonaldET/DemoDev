@@ -2,8 +2,8 @@
 ## Eclipse
 #################
 
-/classes
-/target
+classes/
+target/
 *.class
 *.jar
 *.war
