@@ -21,43 +21,11 @@ import demo.concurrent.util.SerialRunner;
 
 public class SerialRunnerTest
 {
-  /**
-   * Test class increments the cumulation
-   * 
-   * @author Donald Trummell
-   */
-  private class Cumulo implements Runnable
-  {
-    private int id;
-
-    public Cumulo(final int id)
-    {
-      this.id = id;
-    }
-
-    @Override
-    public void run()
-    {
-      Thread.yield();
-
-      try
-      {
-        Thread.sleep(3);
-      }
-      catch (InterruptedException ignore)
-      {
-        // Ignore
-      }
-
-      SerialRunnerTest.this.cumulator[id]++;
-    }
-  }
-
   private static final boolean TRACE_STATE = false;
   private SerialRunner runner;
 
   private static final int NUM_TEST_IDS = 10;
-  private volatile int[] cumulator = new int[NUM_TEST_IDS];
+  private int[] cumulator = new int[NUM_TEST_IDS];
 
   @Before
   public void setUp() throws Exception
@@ -87,7 +55,7 @@ public class SerialRunnerTest
 
     final List<Runnable> runnables = new ArrayList<Runnable>();
     for (int id = 0; id < NUM_TEST_IDS; id++)
-      runnables.add(new Cumulo(id));
+      runnables.add(new CumuloTestData(id, cumulator, false));
 
     final String label = "Cumulate Test of " + NUM_TEST_IDS + " instances";
     setupCheckRun(label, runnables);
@@ -114,7 +82,7 @@ public class SerialRunnerTest
 
     final List<Runnable> runnables = new ArrayList<Runnable>();
     for (final Integer id : ids)
-      runnables.add(new Cumulo(id));
+      runnables.add(new CumuloTestData(id, cumulator, false));
 
     final String label = "Cumulate Test of " + totalTestInstances
         + " instances";

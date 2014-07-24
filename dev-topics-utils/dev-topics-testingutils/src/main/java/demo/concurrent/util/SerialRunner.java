@@ -62,7 +62,7 @@ public class SerialRunner implements Launch
         System.err.println("++++ Serial: " + "wrap-run");
       wrapAndRun(runnables, exceptions);
     }
-    catch (Throwable th)
+    catch (final Throwable th)
     {
       throw new IllegalStateException(label + " unexpected problem: "
           + th.getMessage(), th);

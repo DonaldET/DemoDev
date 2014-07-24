@@ -56,7 +56,8 @@ public class ParallelRunner implements Launch
   /**
    * Multi-threaded execution of <code>Runnable</code>instances.
    * 
-   * @see demo.concurrent.util.Launch#launchRunnables(java.lang.String, java.util.List, int)
+   * @see demo.concurrent.util.Launch#launchRunnables(java.lang.String,
+   *      java.util.List, int)
    */
   @Override
   public List<Throwable> launchRunnables(final String label,
@@ -117,7 +118,7 @@ public class ParallelRunner implements Launch
         step = "done";
       }
     }
-    catch (Throwable th)
+    catch (final Throwable th)
     {
       throw new IllegalStateException(label + " unexpected problem (at " + step
           + "): " + th.getMessage(), th);

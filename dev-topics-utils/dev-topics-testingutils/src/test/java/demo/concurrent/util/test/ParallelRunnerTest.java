@@ -22,43 +22,11 @@ import demo.concurrent.util.ParallelRunner;
 
 public class ParallelRunnerTest
 {
-  /**
-   * Test class increments the cumulation
-   * 
-   * @author Donald Trummell
-   */
-  private class Cumulo implements Runnable
-  {
-    private int id;
-
-    public Cumulo(final int id)
-    {
-      this.id = id;
-    }
-
-    @Override
-    public void run()
-    {
-      Thread.yield();
-
-      try
-      {
-        Thread.sleep(3);
-      }
-      catch (InterruptedException ignore)
-      {
-        // Ignore
-      }
-
-      ParallelRunnerTest.this.cumulator[id]++;
-    }
-  }
-
   private static final boolean TRACE_STATE = false;
   private ParallelRunner runner;
 
   private static final int NUM_THREAD_IDS = 10;
-  private volatile int[] cumulator = new int[NUM_THREAD_IDS];
+  private int[] cumulator = new int[NUM_THREAD_IDS];
 
   @Before
   public void setUp() throws Exception
@@ -90,7 +58,7 @@ public class ParallelRunnerTest
 
     final List<Runnable> runnables = new ArrayList<Runnable>();
     for (int id = 0; id < NUM_THREAD_IDS; id++)
-      runnables.add(new Cumulo(id));
+      runnables.add(new CumuloTestData(id, cumulator, false));
 
     final String label = "Cumulate Test of " + NUM_THREAD_IDS + " threads";
     launchCheckRun(label, runnables);
@@ -98,7 +66,7 @@ public class ParallelRunnerTest
     final int[] expectedCounts = new int[NUM_THREAD_IDS];
     for (int id = 0; id < NUM_THREAD_IDS; id++)
       expectedCounts[id] = 1;
-    
+
     checkCounts(label, expectedCounts);
   }
 
@@ -118,7 +86,7 @@ public class ParallelRunnerTest
 
     final List<Runnable> runnables = new ArrayList<Runnable>();
     for (final Integer id : ids)
-      runnables.add(new Cumulo(id));
+      runnables.add(new CumuloTestData(id, cumulator, false));
 
     final String label = "Cumulate Test of " + totalTestThreads + " threads";
     launchCheckRun(label, runnables);
@@ -139,7 +107,7 @@ public class ParallelRunnerTest
     {
       errors = runner.launchRunnables(label, runnables, maxTimeoutSeconds);
     }
-    catch (InterruptedException | TimeoutException ex)
+    catch (final InterruptedException | TimeoutException ex)
     {
       Assert.fail(label + " failed with " + ex.getMessage());
     }
@@ -164,8 +132,8 @@ public class ParallelRunnerTest
       final int actualCount = cumulator[id];
       if (actualCount != expectedCount)
       {
-        System.err.println(label + "::Thread " + id
-            + " count differs -- expected: " + expectedCount + ";  had: "
+        System.err.println(label + "::Thread ID[" + id
+            + "] count differs -- expected: " + expectedCount + ";  had: "
             + actualCount);
         diffCount++;
       }

@@ -52,7 +52,7 @@ public class HackUtil implements Serializable
         output.close();
       }
     }
-    catch (IOException ex)
+    catch (final IOException ex)
     {
       throw new IllegalStateException("I/O error serializing: "
           + ex.getMessage(), ex);
@@ -84,12 +84,12 @@ public class HackUtil implements Serializable
           input.close();
       }
     }
-    catch (ClassNotFoundException ex)
+    catch (final ClassNotFoundException ex)
     {
       throw new IllegalStateException("unexpected class: " + ex.getMessage(),
           ex);
     }
-    catch (IOException ex)
+    catch (final IOException ex)
     {
       throw new IllegalStateException("I/O error: " + ex.getMessage(), ex);
     }
@@ -100,10 +100,10 @@ public class HackUtil implements Serializable
         {
           bis.close();
         }
-        catch (IOException e)
+        catch (final IOException ioEx)
         {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+          throw new IllegalStateException("I/O error closing input stream, "
+              + ioEx.getMessage(), ioEx);
         }
     }
 
