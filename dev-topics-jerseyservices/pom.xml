@@ -15,22 +15,36 @@
 	</parent>
 
 	<groupId>demodev.topics</groupId>
-	<artifactId>demodev-topics-hacks-parent</artifactId>
-	<name>Demonstration of Development _HACKS_</name>
-	<description>Parent Project for HACKS</description>
+	<artifactId>demodev-topics-jerseyservices-parent</artifactId>
+	<name>Demonstration of Development _JERSEY_</name>
+	<description>Parent Project for Jersey based web service</description>
 
 	<packaging>pom</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<url>http://www.linkedin.com/in/donaldtrummell/</url>
 
 	<modules>
-		<module>dev-topics-serialhack</module>
+		<module>dev-topics-safecollection</module>
 	</modules>
 
 	<properties>
+        <jersey.version>2.10.1</jersey.version>
 	</properties>
 
 	<dependencies>
+	<!-- From Grizzly -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-grizzly2-http</artifactId>
+            <version>${jersey.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- uncomment this to get JSON support:
+         <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
+        </dependency>
+        -->
 	</dependencies>
 
 	<build>

@@ -10,7 +10,7 @@
 
 	<groupId>demodev.topics</groupId>
 	<artifactId>demodev-topics-parent</artifactId>
-	<name>Demonstration of Development Topics</name>
+	<name>Demonstration of Development __Topics__</name>
 	<description>Parent Project for DemoDev</description>
 
 	<packaging>pom</packaging>
@@ -20,6 +20,7 @@
 	<modules>
 		<module>dev-topics-utils</module>
 		<module>dev-topics-hacks</module>
+		<module>dev-topics-jerseyservices</module>
 	</modules>
 
 	<properties>

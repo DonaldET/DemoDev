@@ -10,22 +10,16 @@
 
 	<parent>
 		<groupId>demodev.topics</groupId>
-		<artifactId>demodev-topics-parent</artifactId>
+		<artifactId>demodev-topics-jserseyservices-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>demodev.topics</groupId>
-	<artifactId>demodev-topics-hacks-parent</artifactId>
-	<name>Demonstration of Development _HACKS_</name>
-	<description>Parent Project for HACKS</description>
-
-	<packaging>pom</packaging>
+	<artifactId>safecollection</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<url>http://www.linkedin.com/in/donaldtrummell/</url>
+	<packaging>jar</packaging>
+	<name>Safe Collection Service</name>
 
-	<modules>
-		<module>dev-topics-serialhack</module>
-	</modules>
+	<description>Manage a single memory-resident &quot;safe&quot; collection</description>
 
 	<properties>
 	</properties>

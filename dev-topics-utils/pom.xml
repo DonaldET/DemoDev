@@ -16,7 +16,7 @@
 
 	<groupId>demodev.topics</groupId>
 	<artifactId>demodev-topics-utils-parent</artifactId>
-	<name>Demonstration of Development UTILS</name>
+	<name>Demonstration of Development _UTILS_</name>
 	<description>Parent Project for UTILS</description>
 
 	<packaging>pom</packaging>

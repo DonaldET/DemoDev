@@ -93,12 +93,13 @@ public class ParallelRunnerTest
       runnables.add(new Cumulo(id));
 
     final String label = "Cumulate Test of " + NUM_THREAD_IDS + " threads";
-    setupCheckRun(label, runnables);
+    launchCheckRun(label, runnables);
 
     final int[] expectedCounts = new int[NUM_THREAD_IDS];
     for (int id = 0; id < NUM_THREAD_IDS; id++)
       expectedCounts[id] = 1;
-    checkCounts(expectedCounts);
+    
+    checkCounts(label, expectedCounts);
   }
 
   @Test
@@ -120,17 +121,17 @@ public class ParallelRunnerTest
       runnables.add(new Cumulo(id));
 
     final String label = "Cumulate Test of " + totalTestThreads + " threads";
-    setupCheckRun(label, runnables);
+    launchCheckRun(label, runnables);
 
     final int[] expectedCounts = new int[NUM_THREAD_IDS];
     for (int id = 0; id < NUM_THREAD_IDS; id++)
       expectedCounts[id] = (id + 1);
-    checkCounts(expectedCounts);
+    checkCounts(label, expectedCounts);
   }
 
   // ---------------------------------------------------------------------------
 
-  private void setupCheckRun(final String label, final List<Runnable> runnables)
+  private void launchCheckRun(final String label, final List<Runnable> runnables)
   {
     final int maxTimeoutSeconds = 1;
     List<Throwable> errors = null;
@@ -154,7 +155,7 @@ public class ParallelRunnerTest
     }
   }
 
-  private void checkCounts(final int[] expectedCounts)
+  private void checkCounts(final String label, final int[] expectedCounts)
   {
     int diffCount = 0;
     for (int id = 0; id < NUM_THREAD_IDS; id++)
@@ -163,11 +164,14 @@ public class ParallelRunnerTest
       final int actualCount = cumulator[id];
       if (actualCount != expectedCount)
       {
-        System.err.println("Thread " + id + " count differs -- expected: "
-            + expectedCount + ";  had: " + actualCount);
+        System.err.println(label + "::Thread " + id
+            + " count differs -- expected: " + expectedCount + ";  had: "
+            + actualCount);
         diffCount++;
       }
     }
-    Assert.assertEquals("Thread cumulation counts differ", 0, diffCount);
+
+    Assert.assertEquals(label + "::Thread cumulation counts differ", 0,
+        diffCount);
   }
 }
