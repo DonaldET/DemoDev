@@ -33,8 +33,11 @@ public class ParallelRunnerTest
   {
     runner = new ParallelRunner();
     runner.setTrace(TRACE_STATE);
-    for (int i = 0; i < cumulator.length; i++)
-      cumulator[i] = 0;
+    synchronized (cumulator)
+    {
+      for (int i = 0; i < cumulator.length; i++)
+        cumulator[i] = 0;
+    }
   }
 
   @After
@@ -58,7 +61,7 @@ public class ParallelRunnerTest
 
     final List<Runnable> runnables = new ArrayList<Runnable>();
     for (int id = 0; id < NUM_THREAD_IDS; id++)
-      runnables.add(new CumuloTestData(id, cumulator, false));
+      runnables.add(new CumuloTestData(id, cumulator, true));
 
     final String label = "Cumulate Test of " + NUM_THREAD_IDS + " threads";
     launchCheckRun(label, runnables);
@@ -86,7 +89,7 @@ public class ParallelRunnerTest
 
     final List<Runnable> runnables = new ArrayList<Runnable>();
     for (final Integer id : ids)
-      runnables.add(new CumuloTestData(id, cumulator, false));
+      runnables.add(new CumuloTestData(id, cumulator, true));
 
     final String label = "Cumulate Test of " + totalTestThreads + " threads";
     launchCheckRun(label, runnables);
@@ -126,16 +129,19 @@ public class ParallelRunnerTest
   private void checkCounts(final String label, final int[] expectedCounts)
   {
     int diffCount = 0;
-    for (int id = 0; id < NUM_THREAD_IDS; id++)
+    synchronized (cumulator)
     {
-      final int expectedCount = expectedCounts[id];
-      final int actualCount = cumulator[id];
-      if (actualCount != expectedCount)
+      for (int id = 0; id < NUM_THREAD_IDS; id++)
       {
-        System.err.println(label + "::Thread ID[" + id
-            + "] count differs -- expected: " + expectedCount + ";  had: "
-            + actualCount);
-        diffCount++;
+        final int expectedCount = expectedCounts[id];
+        final int actualCount = cumulator[id];
+        if (actualCount != expectedCount)
+        {
+          System.err.println(label + "::Thread ID[" + id
+              + "] count differs -- expected: " + expectedCount + ";  had: "
+              + actualCount);
+          diffCount++;
+        }
       }
     }
 

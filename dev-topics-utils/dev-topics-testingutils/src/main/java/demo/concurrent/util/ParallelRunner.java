@@ -18,17 +18,21 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * This multithreaded runner, intended for thread testing, is taken from the
- * <code>JUNIT.ORG</code> Wiki (see <a href=
+ * This multithreaded runner, intended for thread testing, is originally taken
+ * from the <code>JUNIT.ORG</code> Wiki page about threading (see <a href=
  * "https://github.com/junit-team/junit/wiki/Multithreaded-code-and-concurrency"
  * > multithreaded runner</a>. This class runs one thread per
- * <code>Runnable</code> and starts all threads at (almost) the same time, and
- * limits the total execution time.
+ * <code>Runnable</code> and starts all threads at (almost) the same time, then
+ * waits for all of them to complete, and limits the total execution time.
  * <p>
  * Threads are placed in the pool until all are submitted. Once all threads are
  * submitted, initialization is complete and all threads are unblocked. Each
  * thread then runs and counts down the thread-completed latch. Finally, all the
  * threads are either counted down or time out.
+ * <p>
+ * <strong>Note:</strong> Threads are coordinated but not synchronized, so the
+ * <code>Runnable</code> instances in the pool must perform their own
+ * synchronization.
  * 
  * @author Donald Trummell
  */
