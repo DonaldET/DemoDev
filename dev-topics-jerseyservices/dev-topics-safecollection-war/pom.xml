@@ -14,12 +14,12 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>safecollection</artifactId>
+	<artifactId>safecollection-webapp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>Safe Collection Service</name>
+	<packaging>war</packaging>
+	<name>Safe Collection Service War</name>
 
-	<description>Manage a single memory-resident &quot;safe&quot; collection</description>
+	<description>Use service to Manage a single memory-resident &quot;safe&quot; collection deployed as a web application</description>
 
 	<properties>
 	</properties>
@@ -39,12 +39,20 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-grizzly2-http</artifactId>
-			<scope>test</scope>
+			<!-- use the following artifactId if you NEED servlet 2.x compatibility -->
+			<!-- <artifactId>jersey-container-servlet-core</artifactId> -->
+			<!-- use the following artifactId if you don't need servlet 2.x compatibility -->
+			<artifactId>jersey-container-servlet</artifactId>
 		</dependency>
 		<!-- uncomment this to get JSON support: -->
 		<dependency> <groupId>org.glassfish.jersey.media</groupId> 
 			<artifactId>jersey-media-moxy</artifactId> </dependency>
+			<dependency>
+		                <groupId>demodev.topics</groupId>
+				<artifactId>safecollection</artifactId>
+				<version>${safecollection.version}</version>
+				<type>jar</type>
+			</dependency>
 	</dependencies>
 
 	<build>
