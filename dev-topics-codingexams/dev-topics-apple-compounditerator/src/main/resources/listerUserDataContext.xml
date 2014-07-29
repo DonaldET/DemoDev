@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<util:list id="Don_Data" scope="singleton" value-type="java.lang.ArrayList">
+		<ref local="raw_primes" />
+		<ref local="raw_fib" />
+	</util:list>
+
+	<util:list id="Jim_Data" scope="singleton" value-type="java.lang.ArrayList">
+		<ref local="raw_even" />
+		<ref local="raw_odd" />
+		<ref local="raw_primes" />
+	</util:list>
+
+	<util:list id="Sam_Data" scope="singleton" value-type="java.lang.ArrayList">
+		<ref local="raw_even" />
+		<ref local="raw_odd" />
+		<ref local="raw_even_neg" />
+		<ref local="raw_odd_neg" />
+	</util:list>
+
+	<util:list id="Tom_Data" scope="singleton" value-type="java.lang.ArrayList">
+		<ref local="raw_pOf2_neg" />
+		<ref local="raw_pOf2" />
+	</util:list>
+</beans>

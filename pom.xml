@@ -1,85 +1,100 @@
-<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
-	to use, copy, modify, and distribute this software and its documentation 
-	for educational, research, and not-for-profit purposes, without fee and without 
-	a signed licensing agreement, is hereby granted, provided that the above 
-	copyright notice, and this paragraph, appear in all copies, modifications, 
-	and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission
+        to use, copy, modify, and distribute this software and its documentation
+        for educational, research, and not-for-profit purposes, without fee and without
+        a signed licensing agreement, is hereby granted, provided that the above
+        copyright notice, and this paragraph, appear in all copies, modifications,
+        and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
 
-	<groupId>demodev.topics</groupId>
-	<artifactId>demodev-topics-parent</artifactId>
-	<name>Demonstration of Development __Topics__</name>
-	<description>Parent Project for DemoDev</description>
+        <groupId>demodev.topics</groupId>
+        <artifactId>demodev-topics-parent</artifactId>
+        <name>Demonstration of Development __Topics__</name>
+        <description>Parent Project for DemoDev</description>
 
-	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
-	<url>http://www.linkedin.com/in/donaldtrummell/</url>
+        <packaging>pom</packaging>
+        <version>1.0.0-SNAPSHOT</version>
+        <url>http://www.linkedin.com/in/donaldtrummell/</url>
 
-	<modules>
-		<module>dev-topics-utils</module>
-		<module>dev-topics-hacks</module>
-		<module>dev-topics-jerseyservices</module>
-	</modules>
+        <modules>
+                <module>dev-topics-utils</module>
+                <module>dev-topics-hacks</module>
+                <module>dev-topics-jerseyservices</module>
+                <module>dev-topics-codingexams</module>
+        </modules>
 
-	<properties>
-		<!-- Generic properties -->
-		<java.version>1.8</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <prerequisites>
+                <maven>3.2.2</maven>
+        </prerequisites>
 
-		<!-- Plugins -->
-		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
-		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+        <properties>
+                <!-- Predefined MAVEN settings -->
+                <maven.test.failure.ignore>false</maven.test.failure.ignore>
+                <maven.test.skip>false</maven.test.skip>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- Test -->
-		<junit.version>4.11</junit.version>
-	</properties>
+                <!-- Generic properties -->
+                <java.version>1.8</java.version>
 
-	<dependencies>
-		<!-- Test Artifacts -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+                <!-- Open Source Versions -->
+                <log4j.version>1.2.16</log4j.version>
+                <slf4j.log4j.version>1.7.2</slf4j.log4j.version>
+                <spring.framework.version>3.1.2.RELEASE</spring.framework.version>
+                <spring.integration.version>2.1.2.RELEASE</spring.integration.version>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
+                <!-- Plugins -->
+                <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+                <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+                <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+
+                <!-- Test -->
+                <junit.version>4.11</junit.version>
+        </properties>
+
+        <dependencies>
+                <!-- Test Artifacts -->
+                <dependency>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                        <version>${junit.version}</version>
+                        <scope>test</scope>
+                </dependency>
+        </dependencies>
+
+        <build>
+                <pluginManagement>
+                        <plugins>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-compiler-plugin</artifactId>
+                                        <version>${maven-compiler-plugin.version}</version>
                                         <inherited>true</inherited>
-					<configuration>
-						<source>${java.version}</source>
-						<target>${java.version}</target>
-					</configuration>
-				</plugin>
+                                        <configuration>
+                                                <source>${java.version}</source>
+                                                <target>${java.version}</target>
+                                        </configuration>
+                                </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven-jar-plugin.version}</version>
-					<configuration>
-						<useDefaultManifestFile>true</useDefaultManifestFile>
-					</configuration>
-					<!-- <configuration> <archive> <manifest> <mainClass>demo.DemoDev</mainClass> 
-						</manifest> </archive> </configuration> -->
-				</plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-jar-plugin</artifactId>
+                                        <version>${maven-jar-plugin.version}</version>
+                                        <configuration>
+                                                <useDefaultManifestFile>true</useDefaultManifestFile>
+                                        </configuration>
+                                        <!-- <configuration> <archive> <manifest> <mainClass>demo.DemoDev</mainClass>
+                                                </manifest> </archive> </configuration> -->
+                                </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven-surefire-plugin.version}</version>
-				</plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-surefire-plugin</artifactId>
+                                        <version>${maven-surefire-plugin.version}</version>
+                                </plugin>
 
-			</plugins>
-		</pluginManagement>
-	</build>
+                        </plugins>
+                </pluginManagement>
+        </build>
 </project>

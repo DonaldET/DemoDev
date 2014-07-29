@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<bean name="iterator" class="demo.apple.compounditerator.impl.CompoundIteratorImpl"
+		lazy-init="true" scope="prototype">
+		<property name="traceEnabled" value="false" />
+	</bean>
+
+	<import resource="listerDataContext.xml" />
+
+	<import resource="listerUserDataContext.xml" />
+
+	<bean name="user_don" class="demo.apple.compounditerator.impl.UserDataImpl"
+		init-method="initialize" lazy-init="true" scope="prototype">
+		<property name="name" value="Don" />
+		<property name="data" ref="Don_Data" />
+		<property name="iterator" ref="iterator" />
+	</bean>
+
+	<bean name="user_jim" class="demo.apple.compounditerator.impl.UserDataImpl"
+		init-method="initialize" lazy-init="true" scope="prototype">
+		<property name="name" value="Jim" />
+		<property name="data" ref="Jim_Data" />
+		<property name="iterator" ref="iterator" />
+	</bean>
+
+	<bean name="user_sam" class="demo.apple.compounditerator.impl.UserDataImpl"
+		init-method="initialize" lazy-init="true" scope="prototype">
+		<property name="name" value="Sam" />
+		<property name="data" ref="Sam_Data" />
+		<property name="iterator" ref="iterator" />
+	</bean>
+
+
+	<bean name="user_tom" class="demo.apple.compounditerator.impl.UserDataImpl"
+		init-method="initialize" lazy-init="true" scope="prototype">
+		<property name="name" value="Tom" />
+		<property name="data" ref="Tom_Data" />
+		<property name="iterator" ref="iterator" />
+	</bean>
+
+</beans>
