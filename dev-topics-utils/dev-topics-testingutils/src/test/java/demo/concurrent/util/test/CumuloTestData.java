@@ -13,8 +13,8 @@ package demo.concurrent.util.test;
  * used to simulate differing processing loads. Note that the parallel runner
  * coordinates starting and stopping threads, but does not synchronize the
  * incrementing.
- * 
- * @author Don
+ *
+ * @author Donald Trummell
  */
 public class CumuloTestData implements Runnable
 {
@@ -25,7 +25,7 @@ public class CumuloTestData implements Runnable
 
   /**
    * Set up an incremented slot in array, defined by thread id.
-   * 
+   *
    * @param id
    *          the slot to increment that is tied to a thread
    * @param cumulator

@@ -19,7 +19,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 /**
  * Grizzly Launcher for testing.
  *
- * @author Don Trummell
+ * @author Donald Trummell
  */
 public class Launcher implements Serializable
 {
@@ -35,7 +35,7 @@ public class Launcher implements Serializable
   /**
    * Starts Grizzly HTTP server exposing JAX-RS resources defined in this
    * application.
-   * 
+   *
    * @return Grizzly HTTP server.
    */
   public static HttpServer startServer()
@@ -52,7 +52,7 @@ public class Launcher implements Serializable
 
   /**
    * Main method.
-   * 
+   *
    * @param args
    * @throws IOException
    */
