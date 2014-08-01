@@ -20,7 +20,15 @@ local.properties
 .classpath
 .settings/
 .loadpath
+*.class
 
+# Mobile Tools for Java (J2ME)
+*.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
 # External tool builders
 .externalToolBuilders/
 
@@ -32,7 +40,6 @@ local.properties
 
 # PDT-specific
 .buildpath
-
 
 #################
 ## Visual Studio
