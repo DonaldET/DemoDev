@@ -1,9 +1,6 @@
 #Welcome
 
-These small _DemoDev_ projects illustrate useful techniques for building Java and J2EE related applications.  They use Maven to build the project artifacts and JUnit to test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the parent project, and individual plugins and _localized_ dependencies are included in child projects.  A child project may be a parent of lower level child projects forming a tree.
-
-_Source Repository_: [Code and **README.md**](http://www.github.com/DonaldET/DemoDev/)
-_Source Documentation_: [Built from the **README.md** file](http://donaldet.github.io/DemoDev/)
+These small _DemoDev_ projects illustrate useful techniques for building Java and J2EE related applications.  They use Maven to build the project artifacts and JUnit to test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects. 
 
 ##Sub-Project Categories
 
@@ -22,12 +19,12 @@ The sub-project solution collaborators have their _JavaDoc_ entries explaining t
 
 #Getting Started
 
-There are several useful tools in the _StaticResources_ directory.  This includes MAVEN archetypes for generating projects; various scripts for maintaining documentation, and instructions on setting up a build environment (**BuildResources.pdf**).
+There are several useful tools in the _StaticResources_ directory.  This includes MAVEN archetypes for generating projects; various scripts for maintaining documentation, and instructions on setting up a build environment in **BuildResources.pdf**.
 ##Sub-Project Coding Exams
 
-These projects are elaborations on topics discussed during interviews and “take home” exams.  These projects demonstrate a “professional engineering” approach to simple coding questions asked during the interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
+These coding exams are elaborations on topics discussed during interviews and “take home” exams.  The resulting solutions demonstrate a “professional engineering” approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
 
-These also demonstrate coding principles like:
+These solutions also demonstrate coding principles like:
 - Separation of interface and implementation
 - Use of multiple implementations (Strategy and Command Patterns)
 

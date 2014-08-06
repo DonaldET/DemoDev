@@ -1,8 +1,8 @@
 ##Sub-Project Coding Exams
 
-These projects are elaborations on topics discussed during interviews and “take home” exams.  These projects demonstrate a “professional engineering” approach to simple coding questions asked during the interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
+These coding exams are elaborations on topics discussed during interviews and “take home” exams.  The resulting solutions demonstrate a “professional engineering” approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
 
-These also demonstrate coding principles like:
+These solutions also demonstrate coding principles like:
 - Separation of interface and implementation
 - Use of multiple implementations (Strategy and Command Patterns)
 
