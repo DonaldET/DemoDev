@@ -10,7 +10,7 @@
 
         <groupId>demodev.topics</groupId>
         <artifactId>demodev-topics-parent</artifactId>
-        <name>Demonstration of Development __Topics__</name>
+        <name>Demonstration of Development _TOPICS_</name>
         <description>Parent Project for DemoDev</description>
 
         <packaging>pom</packaging>
@@ -22,6 +22,7 @@
                 <module>dev-topics-hacks</module>
                 <module>dev-topics-jerseyservices</module>
                 <module>dev-topics-codingexams</module>
+                <module>dev-topics-memoryindexing</module>
         </modules>
 
         <prerequisites>
@@ -54,6 +55,7 @@
                 <!-- Open Source Versions -->
                 <log4j.version>1.2.16</log4j.version>
                 <slf4j.log4j.version>1.7.2</slf4j.log4j.version>
+                <commons-lang.version>3.1</commons-lang.version>
 
                 <!-- Spring Framework Versions -->
                 <spring.framework.version>4.0.6.RELEASE</spring.framework.version>
@@ -63,6 +65,7 @@
                 <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
                 <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
                 <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+                <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
 
                 <!-- Test -->
                 <junit.version>4.11</junit.version>

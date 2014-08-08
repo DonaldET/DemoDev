@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<util:list id="raw_primes" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">2</value>
+		<value type="java.lang.Integer">3</value>
+		<value type="java.lang.Integer">5</value>
+		<value type="java.lang.Integer">7</value>
+		<value type="java.lang.Integer">11</value>
+		<value type="java.lang.Integer">13</value>
+		<value type="java.lang.Integer">17</value>
+		<value type="java.lang.Integer">19</value>
+		<value type="java.lang.Integer">23</value>
+		<value type="java.lang.Integer">29</value>
+		<value type="java.lang.Integer">31</value>
+	</util:list>
+
+	<util:list id="raw_fib" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">1</value>
+		<value type="java.lang.Integer">1</value>
+		<value type="java.lang.Integer">2</value>
+		<value type="java.lang.Integer">3</value>
+		<value type="java.lang.Integer">5</value>
+		<value type="java.lang.Integer">8</value>
+		<value type="java.lang.Integer">13</value>
+		<value type="java.lang.Integer">21</value>
+		<value type="java.lang.Integer">34</value>
+		<value type="java.lang.Integer">55</value>
+		<value type="java.lang.Integer">89</value>
+	</util:list>
+
+	<util:list id="raw_even" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">2</value>
+		<value type="java.lang.Integer">4</value>
+		<value type="java.lang.Integer">6</value>
+		<value type="java.lang.Integer">8</value>
+		<value type="java.lang.Integer">10</value>
+		<value type="java.lang.Integer">12</value>
+		<value type="java.lang.Integer">14</value>
+		<value type="java.lang.Integer">16</value>
+	</util:list>
+
+	<util:list id="raw_odd" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">1</value>
+		<value type="java.lang.Integer">3</value>
+		<value type="java.lang.Integer">5</value>
+		<value type="java.lang.Integer">7</value>
+		<value type="java.lang.Integer">9</value>
+		<value type="java.lang.Integer">11</value>
+		<value type="java.lang.Integer">13</value>
+		<value type="java.lang.Integer">15</value>
+	</util:list>
+
+	<util:list id="raw_pOf2" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">1</value>
+		<value type="java.lang.Integer">2</value>
+		<value type="java.lang.Integer">4</value>
+		<value type="java.lang.Integer">8</value>
+		<value type="java.lang.Integer">16</value>
+		<value type="java.lang.Integer">32</value>
+		<value type="java.lang.Integer">64</value>
+		<value type="java.lang.Integer">128</value>
+		<value type="java.lang.Integer">256</value>
+	</util:list>
+
+	<util:list id="raw_even_neg" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">-2</value>
+		<value type="java.lang.Integer">-4</value>
+		<value type="java.lang.Integer">-6</value>
+		<value type="java.lang.Integer">-8</value>
+		<value type="java.lang.Integer">-10</value>
+		<value type="java.lang.Integer">-12</value>
+		<value type="java.lang.Integer">-14</value>
+		<value type="java.lang.Integer">-16</value>
+	</util:list>
+
+	<util:list id="raw_odd_neg" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">-1</value>
+		<value type="java.lang.Integer">-3</value>
+		<value type="java.lang.Integer">-5</value>
+		<value type="java.lang.Integer">-7</value>
+		<value type="java.lang.Integer">-9</value>
+		<value type="java.lang.Integer">-11</value>
+		<value type="java.lang.Integer">-13</value>
+		<value type="java.lang.Integer">-15</value>
+	</util:list>
+
+	<util:list id="raw_pOf2_neg" scope="singleton" value-type="java.lang.Integer">
+		<value type="java.lang.Integer">-1</value>
+		<value type="java.lang.Integer">-2</value>
+		<value type="java.lang.Integer">-4</value>
+		<value type="java.lang.Integer">-8</value>
+		<value type="java.lang.Integer">-16</value>
+		<value type="java.lang.Integer">-32</value>
+		<value type="java.lang.Integer">-64</value>
+		<value type="java.lang.Integer">-128</value>
+		<value type="java.lang.Integer">-256</value>
+	</util:list>
+</beans>
