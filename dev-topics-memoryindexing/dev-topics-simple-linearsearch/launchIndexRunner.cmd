@@ -11,10 +11,8 @@ echo.
 setlocal
 set xx_cmd=
 set xx_cmd=%xx_cmd%%JAVA_HOME%\bin\java
-set xx_cmd=%xx_cmd% -cp .;
-set xx_cmd=%xx_cmd%.\commons-lang3-3.1.jar;
-set xx_cmd=%xx_cmd%.\target\simple-linearsearch-1.0.0-SNAPSHOT.jar
-set xx_cmd=%xx_cmd% demo.don.searcher.runner.IndexRunner
+set xx_cmd=%xx_cmd% -jar target\simple-linearsearch-1.0.0-SNAPSHOT.jar
+:set xx_cmd=%xx_cmd% demo.don.searcher.runner.IndexRunner
 echo. $ %xx_cmd%
 %xx_cmd%
 if ERRORLEVEL 1 goto error
