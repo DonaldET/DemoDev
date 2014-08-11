@@ -1,13 +1,16 @@
 #Welcome
 
-These small _DemoDev_ projects illustrate useful techniques for building Java and J2EE related applications.  They use Maven to build the project artifacts and JUnit to test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects. 
+These small _DemoDev_ projects illustrate useful techniques for building Java and J2EE related applications.  They use Maven to build the project artifacts and JUnit to test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
+
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin/in/donaldtrummell/).
 
 ##Sub-Project Categories
 
 *DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Sub-projects include:
-- *codingexams*: Questions asked over a whiteboard or in a collaboration environment.
+- *codingexams*: Codind and Algorithm questions asked over a whiteboard or in a collaboration environment.
 - *hacks*: Unusual solutions to interesting problems that don't necessarily reflect so-called _best practices_.
-- *jerseyservices*: RESTful service implementations
+- *jerseyservices*: RESTful service implementations using the **Jersey framework**
+- *memoryindexing*: In-memory search algorithms
 - *utils*: Utilities used by _DemoDev_
 
 
@@ -32,5 +35,27 @@ These solutions also demonstrate coding principles like:
 
 Client | Project | Description
 ------ | ------- | -----------
-Apple | _compounditerator_ | Concatenate data sources with a list of iterators |
+Apple | _compounditerator_ | Concatenate data sources with a list of iterators
 Apple | _factorial_ | Contrast two factorial algorithms
+Elance | _diagonal_ | Square matrix diagonal elements list generator
+Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
+##Sub-Project Hacks
+
+These short examples demonstrate _“less than the best”_ coding practices that are sometimes used to get around a constraint until a better solution can be found.
+
+
+#Selected Hacks Content
+
+Project | Description
+------- | -----------
+_serialhack_ | Use serialization to assign value to a private field lacking a setter
+
+##Sub-Project Memory Indexing
+
+These examples demonstrate in-memory searching algorithms that stress simple approaches where possible.
+
+#Selected MemoryIndexing Content
+
+Project | Description
+------- | -----------
+_simple linear search_ | Use specially formatted names and attributes and perform “_brute_” linear search . . . it is both simple and fast
