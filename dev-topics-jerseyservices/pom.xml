@@ -29,46 +29,39 @@
 	</modules>
 
 	<properties>
-        <war.builder.version>2.4</war.builder.version>
-        <jersey.version>2.10.1</jersey.version>
+		<war.builder.version>2.4</war.builder.version>
+		<jersey.version>2.10.1</jersey.version>
 
-        <safecollection.version>1.0.0-SNAPSHOT</safecollection.version>
+		<safecollection.version>1.0.0-SNAPSHOT</safecollection.version>
 	</properties>
 
 	<dependencies>
-	<!-- From Grizzly -->
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-grizzly2-http</artifactId>
-            <version>${jersey.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- uncomment this to get JSON support:
-         <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-moxy</artifactId>
-        </dependency>
-        -->
+		<!-- From Grizzly -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-grizzly2-http</artifactId>
+			<version>${jersey.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- uncomment this to get JSON support: <dependency> <groupId>org.glassfish.jersey.media</groupId> 
+			<artifactId>jersey-media-moxy</artifactId> </dependency> -->
 	</dependencies>
 
 	<build>
 		<pluginManagement>
 			<plugins>
-                            <plugin>
-                            <artifactId>maven-war-plugin</artifactId>
-                            <version>${war.builder.version}</version>
-                            <configuration>
-                                <packagingExcludes>
-                                    <!--
-                                         Exclude JCL and LOG4J since all logging should go through SLF4J.
-                                         Note that we're excluding log4j-<version>.jar but keeping
-                                         log4j-over-slf4j-<version>.jar
-                                    -->
-                                    WEB-INF/lib/commons-logging-*.jar,
-                                    %regex[WEB-INF/lib/log4j-(?!over-slf4j).*.jar]
-                                </packagingExcludes>
-                            </configuration>
-                            </plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${war.builder.version}</version>
+					<configuration>
+						<packagingExcludes>
+							<!-- Exclude JCL and LOG4J since all logging should go through SLF4J. 
+								Note that we're excluding log4j-<version>.jar but keeping log4j-over-slf4j-<version>.jar -->
+							WEB-INF/lib/commons-logging-*.jar,
+							%regex[WEB-INF/lib/log4j-(?!over-slf4j).*.jar]
+						</packagingExcludes>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
