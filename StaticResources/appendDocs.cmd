@@ -37,7 +37,7 @@ copy /a /y nul %XX_allDocs% > nul
 
 echo.   Append all files from %XX_srcDir%*.md into %XX_allDocs%
 for %%f in (%XX_srcDir%*.md) do (
-echo.     %XX_allDocs%
+echo.     %%f
 type %%f >> %XX_allDocs%
 )
 goto finis
