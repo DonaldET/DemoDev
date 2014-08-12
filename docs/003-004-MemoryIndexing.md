@@ -2,7 +2,7 @@
 
 These examples demonstrate in-memory searching algorithms that stress simple approaches where possible.
 
-#Selected MemoryIndexing Content
+#Selected _MemoryIndexing_ Content
 
 Project | Description
 ------- | -----------

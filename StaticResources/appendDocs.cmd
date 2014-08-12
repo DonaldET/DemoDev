@@ -1,5 +1,5 @@
 ::
-: appendDocs.cmd - 2014.8.4
+: appendDocs.cmd - 2014.8.11
 :
 : Assemble README.md from docs sub-directory
 ::
@@ -37,6 +37,7 @@ copy /a /y nul %XX_allDocs% > nul
 
 echo.   Append all files from %XX_srcDir%*.md into %XX_allDocs%
 for %%f in (%XX_srcDir%*.md) do (
+echo.     %XX_allDocs%
 type %%f >> %XX_allDocs%
 )
 goto finis
