@@ -1,4 +1,4 @@
-#Build Information
+##Build Information
 
 There are 24 project _pom.xml_ files, including several parent POMs.  These projects have 71 JAVA source files, totaling over 8,100 lines of code, and will produce 79 class files after the build completes.  Here is the reactor summary:
 
