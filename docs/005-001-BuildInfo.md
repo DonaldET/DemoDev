@@ -5,8 +5,6 @@ There are 24 project _pom.xml_ files, including several parent POMs.  These proj
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 
-[INFO]
-
 [INFO] Demonstration of Development _TOPICS_ .............. SUCCESS [  2.125 s]
 
 [INFO] Demonstration of Development _UTILS_ ............... SUCCESS [  0.024 s]
