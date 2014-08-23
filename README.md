@@ -23,7 +23,7 @@ The _StaticResources_ directory contains instructions on how to setup a MAVEN an
 Sub-projects usually include a “business” motivation for the coding example.  The examples also show good _OO design principals_, such as *KISS*, *DRY* (don’t repeat yourself), and *SOLID* (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.)
 
 The sub-project solution collaborators have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. All sub-projects include ‘JUnit’ tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  This is accomplished by using the regression aspect of these tests. Many of the projects appear _complicated_ by use of the *Spring* framework.  This is done to illustrate _Spring_ usage in addition to the basic technique shown in the example. Overall, a professional Software Engineer would provide background for the code, some guidelines on usage in the _JavaDoc_ entries, and tips to help maintain the code.  Example invocation with unit tests help in achieving these goals.
-##Sub-Project _Coding Exams_
+##Sub-Project Coding Exams
 
 These coding exams are elaborations on topics discussed during interviews and “take home” coding problems.  The resulting solutions demonstrate a “professional engineering” approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
 

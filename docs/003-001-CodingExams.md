@@ -1,4 +1,4 @@
-##Sub-Project _Coding Exams_
+##Sub-Project Coding Exams
 
 These coding exams are elaborations on topics discussed during interviews and “take home” coding problems.  The resulting solutions demonstrate a “professional engineering” approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
 
