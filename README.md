@@ -32,7 +32,7 @@ These solutions also demonstrate coding principles like:
 - Use of multiple implementations (Strategy and Command Patterns)
 - JUnit tests where feasible
 
-###Selected Exam Content
+###Selected _Exam_ Content
 
 Client | Project | Description
 ------ | ------- | -----------
