@@ -8,14 +8,14 @@ import java.util.Map;
  * here because it is shared by <code>Pricer</code> implementations.
  * <p>
  * <em>Note:</em> Design change required to allow pricers to modify cart.
- * 
- * @author Don
+ *
+ * @author Donald Trummell
  */
 public interface Pricer
 {
   /**
    * Defines the number of items offered at the recorded price to drive Pricer
-   * 
+   *
    * @author Don
    */
   public static final class Offer
@@ -54,10 +54,10 @@ public interface Pricer
 
   /**
    * Compute the pricing for a cart
-   * 
+   *
    * @param cart
    *          the cart to price
-   * 
+   *
    * @return cart total
    */
   public abstract int tallyCart(final Map<Character, Integer> cart);

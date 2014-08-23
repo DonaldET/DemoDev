@@ -62,7 +62,7 @@ Project | Description
 _simple linear search_ | Use specially formatted names and attributes and perform “_brute_” linear search . . . it is both simple and fast
 ##Build Information
 
-There are 24 project _pom.xml_ files, including several parent POMs.  These projects have 71 JAVA source files, totaling over 8,100 lines of code, and will produce 79 class files after the build completes.  Here is the reactor summary:
+There are 24 project _pom.xml_ files, including several parent POMs.  These projects have 71 JAVA source files, totaling over 8,100 lines of code, and will produce 79 class files after the build completes. {_Old_}  Here is the reactor summary:
 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
