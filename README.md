@@ -2,7 +2,7 @@
 
 These small _DemoDev_ projects illustrate useful techniques for building Java and J2EE related applications.  They use Maven to build the project artifacts and JUnit to test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin/in/donaldtrummell/).
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin.com/in/donaldtrummell/).
 
 #Getting Started
 
@@ -32,7 +32,7 @@ These solutions also demonstrate coding principles like:
 - Use of multiple implementations (Strategy and Command Patterns)
 - JUnit tests where feasible
 
-##Selected Exam Content
+###Selected Exam Content
 
 Client | Project | Description
 ------ | ------- | -----------
@@ -40,11 +40,13 @@ Apple | _compounditerator_ | Concatenate data sources with a list of iterators
 Apple | _factorial_ | Contrast two factorial algorithms
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
+GE | _ gesail twowriters_ | Two threads alternately incrementing a counter; includes unit tests and a runnable jar
+
 ##Sub-Project Hacks
 
 These short examples demonstrate _“less than the best”_ coding practices that are sometimes used to get around a solution constraint until a better solution can be found.
 
-##Selected _Hacks_ Content
+###Selected _Hacks_ Content
 
 Project | Description
 ------- | -----------
@@ -53,7 +55,7 @@ _serialhack_ | Use serialization to assign value to a private field lacking a se
 
 These examples demonstrate in-memory searching algorithms that stress simple approaches where possible.
 
-##Selected _MemoryIndexing_ Content
+###Selected _MemoryIndexing_ Content
 
 Project | Description
 ------- | -----------
@@ -64,8 +66,6 @@ There are 24 project _pom.xml_ files, including several parent POMs.  These proj
 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
-
-[INFO]
 
 [INFO] Demonstration of Development _TOPICS_ .............. SUCCESS [  2.125 s]
 
