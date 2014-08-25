@@ -40,7 +40,7 @@ Apple | _compounditerator_ | Concatenate data sources with a list of iterators
 Apple | _factorial_ | Contrast two factorial algorithms
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
-GE | _ gesail twowriters_ | Two threads alternately incrementing a counter; includes unit tests and a runnable jar
+GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 
 ##Sub-Project Hacks
 

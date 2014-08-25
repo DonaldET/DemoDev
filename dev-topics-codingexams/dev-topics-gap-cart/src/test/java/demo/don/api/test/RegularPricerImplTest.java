@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
 package demo.don.api.test;
 
 import java.util.HashMap;
@@ -16,7 +25,7 @@ import demo.don.impl.RegularPricerImpl;
  * Unit tests for building the pricing algorithm and the tests are numbered to
  * show build order
  * 
- * @author Don
+ * @author Donald Trummell
  */
 public class RegularPricerImplTest
 {
@@ -70,8 +79,8 @@ public class RegularPricerImplTest
     cart.put("C".toCharArray()[0], 1);
 
     final int expected = (133) + (1300) + (67);
-    Assert
-        .assertEquals("price differs for A,B,C", expected, pricer.tallyCart(cart));
+    Assert.assertEquals("price differs for A,B,C", expected,
+        pricer.tallyCart(cart));
   }
 
   /**

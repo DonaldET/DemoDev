@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
 package demo.don.impl;
 
 import java.util.Map;
@@ -13,7 +22,7 @@ import demo.don.api.Pricer;
  * <li>Pricer design modified to allow cart modification</li>
  * </ul>
  * 
- * @author Don
+ * @author Donald Trummell
  */
 public class SpecialPricingRuleImpl extends AbstractPricingRule
 {

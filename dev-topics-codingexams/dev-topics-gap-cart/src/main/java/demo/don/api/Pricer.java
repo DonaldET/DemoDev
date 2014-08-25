@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
 package demo.don.api;
 
 import java.util.Map;
@@ -9,14 +18,14 @@ import java.util.Map;
  * <p>
  * <em>Note:</em> Design change required to allow pricers to modify cart.
  *
- * @author Donald Trummell
+ * @author Donald Trummellald Trummell
  */
 public interface Pricer
 {
   /**
    * Defines the number of items offered at the recorded price to drive Pricer
    *
-   * @author Don
+   * @author Donald Trummell
    */
   public static final class Offer
   {
