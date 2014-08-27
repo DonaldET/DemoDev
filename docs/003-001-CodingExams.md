@@ -16,4 +16,5 @@ Apple | _factorial_ | Contrast two factorial algorithms
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
+GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm
 

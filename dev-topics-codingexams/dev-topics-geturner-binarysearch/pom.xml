@@ -10,27 +10,16 @@
 
         <parent>
                 <groupId>demodev.topics</groupId>
-                <artifactId>demodev-topics-parent</artifactId>
+                <artifactId>demodev-topics-codingexam-parent</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
         </parent>
 
-        <groupId>demodev.topics</groupId>
-        <artifactId>demodev-topics-codingexam-parent</artifactId>
-        <name>Demonstration of Development _CODINGEXAMS_</name>
-        <description>Parent Project for CODINGEXAMS</description>
-
-        <packaging>pom</packaging>
+        <artifactId>ge-turner-binarysearch</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <url>http://www.linkedin.com/in/donaldtrummell/</url>
+        <packaging>jar</packaging>
+        <name>GE-Turner - Binary Search</name>
 
-        <modules>
-                <module>dev-topics-apple-compounditerator</module>
-                <module>dev-topics-apple-factorial</module>
-                <module>dev-topics-elance-diagonal</module>
-                <module>dev-topics-gap-cart</module>
-                <module>dev-topics-gesail-twowriters</module>
-                <module>dev-topics-geturner-binarysearch</module>
-        </modules>
+        <description>Provide examples of Binary Search over an array of integers</description>
 
         <properties>
         </properties>
