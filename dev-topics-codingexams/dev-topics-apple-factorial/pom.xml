@@ -14,7 +14,7 @@
                 <version>1.0.0-SNAPSHOT</version>
         </parent>
 
-        <artifactId>apple-factorial</artifactId>
+        <artifactId>demodev-topics-apple-factorial</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <packaging>jar</packaging>
         <name>Apple - Factorial Calculator</name>

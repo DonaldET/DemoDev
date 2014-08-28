@@ -14,7 +14,7 @@
                 <version>1.0.0-SNAPSHOT</version>
         </parent>
 
-        <artifactId>apple-compounditerator</artifactId>
+        <artifactId>demodev-topics-apple-compounditerator</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <packaging>jar</packaging>
         <name>Apple - Compound Iterator</name>

@@ -1,4 +1,13 @@
-package demo.don.geturner.binarysearch.test;
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
+package demo.geturner.binarysearch.test;
 
 import java.util.Arrays;
 
@@ -9,6 +18,11 @@ import org.junit.Test;
 
 import demo.geturner.binarysearch.BinarySearch;
 
+/**
+ * Shared tests
+ * 
+ * @author Donald Trummell
+ */
 public abstract class BinarySearchChecker
 {
   public static final int POWER_OF_2 = 2 * 2 * 2 * 2;
@@ -131,5 +145,4 @@ public abstract class BinarySearchChecker
     Assert.assertEquals("lth" + lth + " not found for " + key,
         BinarySearch.KEY_NOT_FOUND, search.find(array, key));
   }
-
 }

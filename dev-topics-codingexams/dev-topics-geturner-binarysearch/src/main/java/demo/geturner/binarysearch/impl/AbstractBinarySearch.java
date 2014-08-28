@@ -1,7 +1,28 @@
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
 package demo.geturner.binarysearch.impl;
 
 import demo.geturner.binarysearch.BinarySearch;
 
+/**
+ * Shared parameter checking code, all <code>BinarySearch</code> implementations
+ * extend this class.
+ * <p>
+ * As an interesting performance note, the <code>iterative</code> implementation
+ * is about 40% <em>slower</em> than the <code>recursive</code> implementation.
+ * 
+ * @author Donald Trummell
+ *
+ * @param <T>
+ *          type of sorted and searchable array
+ */
 public abstract class AbstractBinarySearch<T extends Comparable<T>> implements
     BinarySearch<T>
 {

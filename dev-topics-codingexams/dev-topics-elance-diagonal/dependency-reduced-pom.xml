@@ -6,7 +6,7 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>elance-diagonal-lister</artifactId>
+  <artifactId>demodev-topics-elance-diagonal-lister</artifactId>
   <name>Elance - Matrix Diagonal Lister</name>
   <version>1.0.0-SNAPSHOT</version>
   <description>List Diagonal Elements of a Matrix with many Strategies</description>
