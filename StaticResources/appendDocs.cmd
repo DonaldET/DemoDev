@@ -66,15 +66,9 @@ set XX_pr1=
 for %%I in (%1) do set XX_pr1=%%~dpI
 goto :EOF
 
-
-
-
-
 :
 :Done
 pause
-
-
 
 ::
 : end of appendDocs.cmd

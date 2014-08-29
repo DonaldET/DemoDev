@@ -30,6 +30,7 @@
                 <module>dev-topics-gap-cart</module>
                 <module>dev-topics-gesail-twowriters</module>
                 <module>dev-topics-geturner-binarysearch</module>
+                <module>dev-topics-lumindata-duplicatechecker</module>
         </modules>
 
         <properties>
