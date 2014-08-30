@@ -38,10 +38,16 @@ echo. MAVEN Eclipse failed!
 goto finish
 
 :XX_mavenECdone
-set XX_masterFile=.settings
-echo.   Remove all instances of %XX_masterFile%
-for /R %%f in (%XX_masterFile%\) do (
+set XX_File2Remove=.settings
+echo.   Remove all instances of %XX_File2Remove%
+for /R %%f in (%XX_File2Remove%\) do (
 if EXIST %%f rmdir /S /Q %%f
+)
+
+set XX_File2Remove=dependency-reduced-pom.xml
+echo.   Remove all instances of %XX_File2Remove%
+for /R %%f in (%XX_File2Remove%) do (
+if EXIST %%f del /S /Q /F %%f
 )
 goto finis
 
@@ -57,7 +63,7 @@ echo. **** Cleaning Build Files completed
 if defined XX_CurDir popd %XX_CurDir%
 set XX_CurDir=
 set XX_pr1=
-set XX_masterFile=
+set XX_File2Remove=
 endlocal
 goto Done
 

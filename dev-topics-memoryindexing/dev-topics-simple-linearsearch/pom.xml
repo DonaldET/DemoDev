@@ -14,7 +14,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>simple-linearsearch</artifactId>
+	<artifactId>demodev-topics-simple-linearsearch</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Memory Index - Simple Linear Search</name>

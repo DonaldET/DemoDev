@@ -45,6 +45,11 @@
 			<name>Spring Framework Maven Milestone Repository</name>
 			<url>https://repo.springsource.org/milestone</url>
 		</repository>
+		<repository>
+			<id>MVN Repo</id>
+			<name>MVN Repository</name>
+			<url>http://central.maven.org/maven2/</url>
+		</repository>
 	</repositories>
 
 	<properties>
