@@ -42,7 +42,8 @@ These solutions also demonstrate coding principles like:
 
 Client | Project | Description
 ------ | ------- | -----------
-Apple | _compounditerator_ | Concatenate data sources with a list of iterators
+Appdynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
+Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
 Apple | _factorial_ | Contrast two factorial algorithms
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
@@ -67,6 +68,9 @@ These examples demonstrate in-memory searching algorithms that stress simple app
 Project | Description
 ------- | -----------
 _simple linear search_ | Use specially formatted names and attributes and perform “_brute_” linear search . . . it is both simple and fast
+_top X query_| Compares the performance of priority queue and sorted array based scanners on "top X" queries across a random collection of Game instances. Game instances have an ascending comparator that allows the instances to be ordered on several attributes. The "Top X” query returns a sorted collection of the desired subset of Game instances.
+
+This example uses the motivation of finding the (say) top 10 scores of a complex game where several game attributes allow for unique ordering. We vary the number of inputs to scan and the size of the top set. Since 100 elements is a large list, that is our upper limit for this performance test.
 ##Build Information
 
 There are 24 project _pom.xml_ files, including several parent POMs.  These projects have 71 JAVA source files, totaling over 8,100 lines of code, and will produce 79 class files after the build completes. {_Old_}  Here is the reactor summary:

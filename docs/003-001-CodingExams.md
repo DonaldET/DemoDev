@@ -11,7 +11,8 @@ These solutions also demonstrate coding principles like:
 
 Client | Project | Description
 ------ | ------- | -----------
-Apple | _compounditerator_ | Concatenate data sources with a list of iterators
+Appdynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
+Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
 Apple | _factorial_ | Contrast two factorial algorithms
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies

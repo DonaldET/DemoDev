@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
+		to use, copy, modify, and distribute this software and its documentation 
+		for educational, research, and not-for-profit purposes, without fee and without 
+		a signed licensing agreement, is hereby granted, provided that the above 
+		copyright notice, and this paragraph, appear in all copies, modifications, 
+		and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+
+	<!-- Test beans for timing test of SortedArrayScanner and QueueScanner -->
+
+	<bean id="test.base.time" class="java.lang.Long" lazy-init="false"
+		scope="singleton">
+		<constructor-arg index="0" value="1397266980832" />
+	</bean>
+
+	<bean id="test.game.data.builder" class="demo.scanner.impl.SimpleGameDataBuilder"
+		lazy-init="true" scope="prototype" />
+
+  <bean id="test.array.scanner" class="demo.scanner.impl.SortedArrayScanner"
+    lazy-init="true" scope="prototype" />
+    
+	<bean id="test.queue.scanner" class="demo.scanner.impl.QueueScanner"
+		lazy-init="true" scope="prototype" />
+
+</beans>
