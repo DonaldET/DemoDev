@@ -10,7 +10,8 @@ All the information needed to build these projects is detailed in the _BuildReso
 1. Download required dependencies (e.g., Java and MAVEN)
 2. Install and test the dependencies
 3. Download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/)
-4. From the downloaded directory, execute: _mvn clean install_
+4. ON the command line, from the downloaded directory, execute:
+    _mvn clean install_
 
 The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET\DemoDev_.
 
@@ -73,40 +74,53 @@ _top X query_| Compares the performance of priority queue and sorted array based
 This example uses the motivation of finding the (say) top 10 scores of a complex game where several game attributes allow for unique ordering. We vary the number of inputs to scan and the size of the top set. Since 100 elements is a large list, that is our upper limit for this performance test.
 ##Build Information
 
-There are 24 project _pom.xml_ files, including several parent POMs.  These projects have 71 JAVA source files, totaling over 8,100 lines of code, and will produce 79 class files after the build completes. {_Old_}  Here is the reactor summary:
+There were 19 MAVEN POM files which resulted in 125 class files and 45 Jar files.  There were 115 Java source files.  Including the POM files, there were 99 XML files. 
+
+##MAVEN Summary
 
 [INFO] ------------------------------------------------------------------------
+
 [INFO] Reactor Summary:
 
-[INFO] Demonstration of Development _TOPICS_ .............. SUCCESS [  2.125 s]
+[INFO]
 
-[INFO] Demonstration of Development _UTILS_ ............... SUCCESS [  0.024 s]
+[INFO] Demonstration of Development _TOPICS_ .............. SUCCESS [  0.218 s]
 
-[INFO] Testing Utilities .................................. SUCCESS [ 15.420 s]
+[INFO] Demonstration of Development _UTILS_ ............... SUCCESS [  0.012 s]
 
-[INFO] Demonstration of Development _HACKS_ ............... SUCCESS [  0.023 s]
+[INFO] Testing Utilities .................................. SUCCESS [  2.481 s]
 
-[INFO] Serial Hack and stand-alone Runner ................. SUCCESS [  1.360 s]
+[INFO] Demonstration of Development _HACKS_ ............... SUCCESS [  0.019 s]
 
-[INFO] Demonstration of Development _JERSEY_ .............. SUCCESS [  0.143 s]
+[INFO] Serial Hack and stand-alone Runner ................. SUCCESS [  0.851 s]
 
-[INFO] Safe Collection Service ............................ SUCCESS [  7.882 s]
+[INFO] Demonstration of Development _JERSEY_ .............. SUCCESS [  0.015 s]
 
-[INFO] Safe Collection Service War ........................ SUCCESS [  3.853 s]
+[INFO] Safe Collection Service ............................ SUCCESS [  2.096 s]
 
-[INFO] Demonstration of Development _CODINGEXAMS_ ......... SUCCESS [  0.021 s]
+[INFO] Safe Collection Service War ........................ SUCCESS [  1.100 s]
 
-[INFO] Apple - Compound Iterator .......................... SUCCESS [  5.553 s]
+[INFO] Demonstration of Development _CODINGEXAMS_ ......... SUCCESS [  0.017 s]
 
-[INFO] Apple - Factorial Calculator ....................... SUCCESS [  1.441 s]
+[INFO] Apple - Compound Iterator .......................... SUCCESS [  3.625 s]
 
-[INFO] Elance - Matrix Diagonal Lister .................... SUCCESS [  6.470 s]
+[INFO] Apple - Factorial Calculator ....................... SUCCESS [  1.462 s]
 
-[INFO] Gap - Shopping Cart ................................ SUCCESS [  1.275 s]
+[INFO] Elance - Matrix Diagonal Lister .................... SUCCESS [  0.944 s]
 
-[INFO] Demonstration of Development _MEMORYINDEX_ ......... SUCCESS [  0.038 s]
+[INFO] Gap - Shopping Cart Example ........................ SUCCESS [  0.981 s]
 
-[INFO] Memory Index - Simple Linear Search ................ SUCCESS [  2.441 s]
+[INFO] GE-Sail - Two Writers .............................. SUCCESS [  1.344 s]
+
+[INFO] GE-Turner - Binary Search .......................... SUCCESS [  1.766 s]
+
+[INFO] LumenData - Duplicate Column Checker ............... SUCCESS [  1.104 s]
+
+[INFO] Demonstration of Development _MEMORYINDEX_ ......... SUCCESS [  0.015 s]
+
+[INFO] Memory Index - Simple Linear Search ................ SUCCESS [  1.890 s]
+
+[INFO] Memory Index - PriorityQueue to capture Top X values SUCCESS [  4.459 s]
 
 [INFO] ------------------------------------------------------------------------
 
@@ -114,10 +128,10 @@ There are 24 project _pom.xml_ files, including several parent POMs.  These proj
 
 [INFO] ------------------------------------------------------------------------
 
-[INFO] Total time: 48.575 s
+[INFO] Total time: 24.634 s
 
-[INFO] Finished at: 2014-08-18T11:51:57-07:00
+[INFO] Finished at: 2014-09-02T16:32:30-07:00
 
-[INFO] Final Memory: 25M/82M
+[INFO] Final Memory: 28M/113M
 
 [INFO] ------------------------------------------------------------------------
