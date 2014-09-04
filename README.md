@@ -74,7 +74,22 @@ _top X query_| Compares the performance of priority queue and sorted array based
 This example uses the motivation of finding the (say) top 10 scores of a complex game where several game attributes allow for unique ordering. We vary the number of inputs to scan and the size of the top set. Since 100 elements is a large list, that is our upper limit for this performance test.
 ##Build Information
 
-There were 19 MAVEN POM files which resulted in 125 class files and 45 Jar files.  There were 115 Java source files.  Including the POM files, there were 99 XML files. 
+ **** Count of Repository Development Files and Resources
+
+ MAVEN POM files: 19
+
+ Class Files    : 125
+
+ Archive Files  : 45
+
+ WAR Files      : 1
+
+ Java files     : 115
+
+ Java lines     : 12396
+
+ XML files      : 99
+
 
 ##MAVEN Summary
 

@@ -17,7 +17,7 @@ import demo.don.factorial.impl.SimpleMathHelper;
  * 
  * @author Donald Trummell
  */
-public class TestFactorialSimple extends TestFactorialBase
+public class TestFactorialSimple extends FactorialCheckerBase
 {
   private static final int MAX_TIME_ALLOWED = 6;
 

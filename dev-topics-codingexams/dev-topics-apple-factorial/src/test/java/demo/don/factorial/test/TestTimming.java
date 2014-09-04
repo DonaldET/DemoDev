@@ -1,10 +1,11 @@
 /*
- Copyright (c) 2014. Donald Trummell. All Rights Reserved.
- Permission to use, copy, modify, and distribute this software and its documentation
- for educational, research, and not-for-profit purposes, without fee and without
- a signed licensing agreement, is hereby granted, provided that the above
- copyright notice, and this paragraph, appear in all copies, modifications, and
- distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
  */
 package demo.don.factorial.test;
 
@@ -50,18 +51,18 @@ public class TestTimming
   {
     //
     // Warmup JIT
+
     computeRepresentativeSample(mhSimple, 1, MathHelper.MAX_FACTORIAL_ARGUMENT);
+    computeRepresentativeSample(mhPre, 1, MathHelper.MAX_FACTORIAL_ARGUMENT);
 
     final long elapsedSimple = computeRepresentativeSample(mhSimple,
         TIMMING_TRIALS, MathHelper.MAX_FACTORIAL_ARGUMENT);
-    //
-    // Warmup JIT
-    computeRepresentativeSample(mhPre, 1, MathHelper.MAX_FACTORIAL_ARGUMENT);
 
     final long elapsedPre = computeRepresentativeSample(mhPre, TIMMING_TRIALS,
         MathHelper.MAX_FACTORIAL_ARGUMENT);
 
-    Assert.assertTrue("Simple faster than pre-compute",
+    Assert.assertTrue("Simple (" + elapsedSimple
+        + ") faster than pre-compute (" + elapsedPre + ")",
         elapsedPre < elapsedSimple);
   }
 

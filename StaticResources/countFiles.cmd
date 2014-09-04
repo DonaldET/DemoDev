@@ -1,5 +1,5 @@
 ::
-: countFiles.cmd - 2014.9.2
+: countFiles.cmd - 2014.9.3
 :
 : Count Project Input Files
 :
@@ -29,7 +29,8 @@ setlocal
 set XX_CurDir=%CD%
 set XX_grep=dkgrep
 echo.
-echo. **** Count Project Input Files
+echo. **** Count of Repository Development Files and Resources
+echo.
 
 :
 :xx_setup_base
@@ -39,63 +40,39 @@ if not defined XX_pr1 goto XX_badPath
 pushd %XX_pr1%\..
 if ERRORLEVEL 1 goto XX_badPath
 
-::
-:: dkgrep -d -g -h -1 -l "^" pom.xml
-::
-echo.
-echo. ========
-echo. Counting MAVEN POM files
-set XX_cmd=%XX_grep% -d -g -h -1 -l "^" pom.xml
-%XX_cmd%
-echo. Counting MAVEN POM files done, status is %ERRORLEVEL%
+set XX_cmd=%XX_grep% -d -s -1 "^" pom.xml
+%XX_cmd% 1>nul 2>nul
+echo. MAVEN POM files: %ERRORLEVEL%
 
-::
-:: dkgrep -d -g -h -1 -l "." *.class
-::
-echo.
-echo. ========
-echo. Counting Class Files
-set XX_cmd=%XX_grep% -d -g -h -1 -l "." *.class
-%XX_cmd%
-echo. Counting Class Files done, status is %ERRORLEVEL%
+set XX_cmd=%XX_grep% -d -s -1 "." *.class
+%XX_cmd% 1>nul 2>nul
+echo. Class Files    : %ERRORLEVEL%
 
-::
-:: dkgrep -d -g -h -1 -l "." *.class
-::
-echo.
-echo. ========
-echo. Counting Archieve Files
-set XX_cmd=%XX_grep% -d -g -h -1 -l "." *.jar
-%XX_cmd%
-echo. Counting Archieve Files done, status is %ERRORLEVEL%
+set XX_cmd=%XX_grep% -d -s -1 "." *.jar
+%XX_cmd% 1>nul 2>nul
+echo. Archive Files  : %ERRORLEVEL%
 
-::
-:: dkgrep -d -g -h -1 -l "^" *.java
-::
-echo.
-echo. ========
-echo. Counting Java files
-set XX_cmd=%XX_grep% -d -g -h -1 -l "^" *.java
-%XX_cmd%
-echo. Counting Java files done, status is %ERRORLEVEL%
+set XX_cmd=%XX_grep% -d -s -1 "." *.war
+%XX_cmd% 1>nul 2>nul
+echo. WAR Files      : %ERRORLEVEL%
 
-::
-:: dkgrep -d -g -h -1 -l "^" pom.xml
-::
-echo.
-echo. ========
-echo. Counting All XML files
-set XX_cmd=%XX_grep% -d -g -h -1 -l "^" *.xml
+set XX_cmd=%XX_grep% -d -s -1 "^" *.java
 %XX_cmd%
-echo. Counting All XML files done, status is %ERRORLEVEL%
+echo. Java files     : %ERRORLEVEL%
+
+set XX_cmd=%XX_grep% -d -s "^" *.java
+%XX_cmd%
+echo. Java lines     : %ERRORLEVEL%
+
+set XX_cmd=%XX_grep% -d -s -1 "^" *.xml
+%XX_cmd%
+echo. XML files      : %ERRORLEVEL%
 
 goto finis
 
 :
 :finis
 echo.
-echo. ========
-echo. **** Counting Project Files completed
 if defined XX_CurDir popd %XX_CurDir%
 set XX_CurDir=
 set XX_grep=

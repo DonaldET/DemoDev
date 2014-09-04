@@ -108,11 +108,13 @@ public class SearchPerformanceTest
 
     final double expectedSlower = 0.40;
     final double allowedVariance = 0.20;
+    final double actualVariance = Math.abs(slower - expectedSlower);
     Assert.assertTrue(
         "iterative unexpectedly differs from recursive, is slower by " + slower
-            + " but expected: " + expectedSlower + ".  Values are:  ITR: "
-            + totItr + ";  REC: " + totRec,
-        slower < 0.0 || Math.abs(slower - expectedSlower) < allowedVariance);
+            + " but expected: " + expectedSlower + ", leading to a "
+            + actualVariance + " variance, which exceeds " + allowedVariance
+            + ".  Running values are:  ITR: " + totItr + ";  REC: " + totRec,
+        slower < 0.0 || actualVariance > allowedVariance);
   }
 
   // ---------------------------------------------------------------------------

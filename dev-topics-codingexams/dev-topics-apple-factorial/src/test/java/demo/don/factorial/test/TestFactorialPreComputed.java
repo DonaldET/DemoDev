@@ -20,7 +20,7 @@ import demo.don.factorial.impl.PreComputedMathHelper;
  * 
  * @author Donald Trummell
  */
-public class TestFactorialPreComputed extends TestFactorialBase
+public class TestFactorialPreComputed extends FactorialCheckerBase
 {
   private static final int MAX_TIME_ALLOWED = 6;
 

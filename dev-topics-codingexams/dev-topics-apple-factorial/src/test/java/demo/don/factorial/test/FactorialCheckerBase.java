@@ -23,7 +23,7 @@ import demo.don.factorial.MathHelper;
  * 
  * @author Donald Trummell
  */
-public abstract class TestFactorialBase
+public abstract class FactorialCheckerBase
 {
   public static final long SUM_FACTORIAL_LIMIT_VALUE = 2561327494111820314L;
 
@@ -31,7 +31,7 @@ public abstract class TestFactorialBase
 
   private MathHelper mh = null;
 
-  protected TestFactorialBase()
+  protected FactorialCheckerBase()
   {
   }
 
