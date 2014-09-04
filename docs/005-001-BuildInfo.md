@@ -1,20 +1,22 @@
 ##Build Information
 
- **** Count of Repository Development Files and Resources
+  **** Count of Repository Development Files and Resources
 
  MAVEN POM files: 19
 
- Class Files    : 125
+ Class Files    : 0
 
- Archive Files  : 45
+ Archive Files  : 0
 
- WAR Files      : 1
+ WAR Files      : 0
 
  Java files     : 115
 
  Java lines     : 12396
 
- XML files      : 99
+ Java Test lines: 3880
+
+ XML files      : 43
 
 
 ##MAVEN Summary

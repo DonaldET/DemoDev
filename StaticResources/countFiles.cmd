@@ -64,6 +64,16 @@ set XX_cmd=%XX_grep% -d -s "^" *.java
 %XX_cmd%
 echo. Java lines     : %ERRORLEVEL%
 
+set /A XX_Count = 0
+set XX_cmd=%XX_grep% -d -s "^" Test*.java
+%XX_cmd%
+set /A XX_Count=XX_Count + %ERRORLEVEL%
+
+set XX_cmd=%XX_grep% -d -s "^" *Test.java
+%XX_cmd%
+set /A XX_Count=XX_Count + %ERRORLEVEL%
+echo. Java Test lines: %XX_Count%
+
 set XX_cmd=%XX_grep% -d -s -1 "^" *.xml
 %XX_cmd%
 echo. XML files      : %ERRORLEVEL%
@@ -77,6 +87,7 @@ if defined XX_CurDir popd %XX_CurDir%
 set XX_CurDir=
 set XX_grep=
 set XX_cmd=
+set XX_Count=
 set XX_pr1=
 set XX_File2Remove=
 endlocal
