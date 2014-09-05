@@ -16,18 +16,18 @@ import org.junit.Test;
 
 import demo.geturner.binarysearch.BinarySearch;
 import demo.geturner.binarysearch.impl.IterativeSearchImpl;
-import demo.geturner.binarysearch.impl.RecursiveSearchImpl;
+import demo.geturner.binarysearch.impl.NativeSearchImpl;
 
 /**
- * Test performance of Iterative and Recursize methods
+ * Test performance of Iterative and Native search methods
  * 
  * @author Donald Trummell
  */
-public class SearchPerformanceTest extends AbstractPerformanceChecker
+public class SearchNativePerformanceTest extends AbstractPerformanceChecker
 {
-  private BinarySearch<Integer> searchRec = null;
+  private BinarySearch<Integer> searchNat = null;
 
-  public SearchPerformanceTest()
+  public SearchNativePerformanceTest()
   {
     super();
   }
@@ -36,27 +36,27 @@ public class SearchPerformanceTest extends AbstractPerformanceChecker
   public void setUp() throws Exception
   {
     searchItr = new IterativeSearchImpl<Integer>();
-    searchRec = new RecursiveSearchImpl<Integer>();
+    searchNat = new NativeSearchImpl<Integer>();
   }
 
   @After
   public void tearDown() throws Exception
   {
     searchItr = null;
-    searchRec = null;
+    searchNat = null;
   }
 
   @Test
   public void testInstantiation()
   {
     Assert.assertTrue("classes same",
-        searchItr.getClass() != searchRec.getClass());
+        searchItr.getClass() != searchNat.getClass());
 
     Assert.assertTrue("searchItr not a " + BinarySearch.class,
         searchItr instanceof BinarySearch);
 
-    Assert.assertTrue("searchRec not a " + BinarySearch.class,
-        searchRec instanceof BinarySearch);
+    Assert.assertTrue("searchNat not a " + BinarySearch.class,
+        searchNat instanceof BinarySearch);
 
     Assert.assertEquals("wrong data size", TEST_SIZE, array.length);
   }
@@ -64,18 +64,18 @@ public class SearchPerformanceTest extends AbstractPerformanceChecker
   @Test
   public void testPerformance()
   {
-    checkSearcherSetup(searchRec);
-    warmCode(searchRec);
+    checkSearcherSetup(searchNat);
+    warmCode(searchNat);
 
     final int testCount = 3;
-
-    long totRec = 0;
-    for (int i = 0; i < testCount; i++)
-      totRec += doSearch(searchRec, probs);
 
     long totItr = 0;
     for (int i = 0; i < testCount; i++)
       totItr += doSearch(searchItr, probs);
+
+    long totAlt = 0;
+    for (int i = 0; i < testCount; i++)
+      totAlt += doSearch(searchNat, probs);
 
     if (display)
     {
@@ -83,21 +83,21 @@ public class SearchPerformanceTest extends AbstractPerformanceChecker
           + PROB_SIZE + " values.");
       System.err.println("    Iterative total for " + testCount + " runs is: "
           + totItr);
-      System.err.println("    Recursive total for " + testCount + " runs is: "
-          + totRec);
+      System.err.println("    Native total for " + testCount + " runs is: "
+          + totAlt);
       System.err.println("    Variance: "
-          + round2Places(Math.abs(totItr - totRec) / (double) totItr));
+          + round2Places(Math.abs(totItr - totAlt) / (double) totItr));
     }
 
-    final double faster = round2Places((double) (totRec - totItr)
+    final double faster = round2Places((double) (totAlt - totItr)
         / (double) totItr);
 
     Assert.assertTrue("Iterative unexpectedly slower by " + faster
-        + ".  Running values are:  ITR: " + totItr + ";  REC: " + totRec,
+        + ".  Running values are:  ITR: " + totItr + ";  REC: " + totAlt,
         faster >= 0.0);
 
-    final double expectedfaster = 1.00;
-    final double allowedVariance = 0.75;
+    final double expectedfaster = 0.30;
+    final double allowedVariance = 0.20;
     final double actualVariance = round2Places(Math
         .abs(faster - expectedfaster));
 
@@ -105,6 +105,6 @@ public class SearchPerformanceTest extends AbstractPerformanceChecker
         + round2Places(faster) + ";  expected: " + expectedfaster
         + ";  actual: " + actualVariance + ";  which exceeds "
         + allowedVariance + " variance.  Running values are:  ITR: " + totItr
-        + ";  REC: " + totRec, actualVariance <= allowedVariance);
+        + ";  ALT: " + totAlt, actualVariance <= allowedVariance);
   }
 }

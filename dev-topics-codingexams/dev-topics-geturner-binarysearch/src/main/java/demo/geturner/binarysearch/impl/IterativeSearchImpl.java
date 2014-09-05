@@ -31,16 +31,13 @@ public class IterativeSearchImpl<T extends Comparable<T>> extends
   protected final int findImpl(final T[] array, final T key, final int start,
       final int lth)
   {
-    if (lth < 1)
-      return BinarySearch.KEY_NOT_FOUND;
-
     int top = 0;
     int end = lth - 1;
 
     while (top <= end)
     {
       int size = end - top + 1;
-      int mid = top + size / 2;
+      int mid = top + (size >> 2);
 
       final int comp = key.compareTo(array[start + mid]);
       if (comp == 0)

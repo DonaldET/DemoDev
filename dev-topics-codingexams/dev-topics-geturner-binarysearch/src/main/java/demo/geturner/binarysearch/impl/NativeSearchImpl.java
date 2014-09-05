@@ -9,21 +9,22 @@
  */
 package demo.geturner.binarysearch.impl;
 
+import java.util.Arrays;
+
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Sort by recursively invoking this method on the greater or lesser half of the
- * remaining values.
+ * Sort using Java <code>Arrays</code> sort method.
  * 
  * @author Donald Trummell
  *
  * @param <T>
  *          type of sorted array to search
  */
-public class RecursiveSearchImpl<T extends Comparable<T>> extends
+public class NativeSearchImpl<T extends Comparable<T>> extends
     AbstractBinarySearch<T> implements BinarySearch<T>
 {
-  public RecursiveSearchImpl()
+  public NativeSearchImpl()
   {
     super();
   }
@@ -33,38 +34,16 @@ public class RecursiveSearchImpl<T extends Comparable<T>> extends
    * dividing the region in half. The array segment to consider is in positions
    * <code>[start + 0, start + lth - 1]</code>. A zero length array always
    * returns KEY_NOT_FOUND.
-   * <p>
-   * If <code>lth</code> is <strong><em>odd</em></strong> and <code>lth</code> >
-   * 2, OR <code>lth</code> is <strong><em>even</em></strong>, then:
-   * <ul>
-   * <li><em>top half</em> is in <code>[0, lth / 2 - 1]</code>.</li>
-   * <li><em>mid</em> is in <code>[lth /2, lth /2]</code>.</li>
-   * <li><em>bottom half</em> is in <code>[lth / 2 + 1, lth - 1]</code>.</li>
-   * </ul>
    */
   @Override
   protected final int findImpl(final T[] array, final T key, final int start,
       final int lth)
   {
-    final int half = lth >> 1;
-    final int mid = start + half;
+    if (lth < 1)
+      return BinarySearch.KEY_NOT_FOUND;
 
-    while (lth > 0)
-    {
-      final int key2this = key.compareTo(array[mid]);
+    final int nkey = Arrays.binarySearch(array, key);
 
-      if (key2this < 0)
-        return findImpl(array, key, start, half);
-      else if (key2this > 0)
-      {
-        // Account for even half donating the mid point
-        return findImpl(array, key, mid + 1, (2 * half == lth) ? half - 1
-            : half);
-      }
-      else
-        return mid;
-    }
-
-    return BinarySearch.KEY_NOT_FOUND;
+    return nkey < 0 ? BinarySearch.KEY_NOT_FOUND : nkey;
   }
 }
