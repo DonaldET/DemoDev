@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+  <!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
+    to use, copy, modify, and distribute this software and its documentation 
+    for educational, research, and not-for-profit purposes, without fee and without 
+    a signed licensing agreement, is hereby granted, provided that the above 
+    copyright notice, and this paragraph, appear in all copies, modifications, 
+    and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+
+	<!-- Test beans for QueueScanner -->
+
+	<bean id="test.queue.scanner" class="demo.scanner.impl.QueueScanner"
+		lazy-init="true" scope="prototype" />
+
+	<bean id="test.base.time" class="java.lang.Long" lazy-init="false"
+		scope="singleton">
+		<constructor-arg index="0" value="1397266980832" />
+	</bean>
+
+	<bean id="test.game.001" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID001" />
+		<constructor-arg index="1" value="Don T." />
+		<constructor-arg index="2" value="513" />
+		<constructor-arg index="3" ref="test.base.time" />
+	</bean>
+
+	<bean id="test.game.002" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID002" />
+		<constructor-arg index="1" value="Robert M." />
+		<constructor-arg index="2" value="357" />
+		<constructor-arg index="3" value="1397266980832" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.003" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID003" />
+		<constructor-arg index="1" value="Don T." />
+		<constructor-arg index="2" value="431" />
+		<constructor-arg index="3" value="1397267000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.004" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID004" />
+		<constructor-arg index="1" value="Jason B." />
+		<constructor-arg index="2" value="277" />
+		<constructor-arg index="3" value="1397267500000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.005" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID005" />
+		<constructor-arg index="1" value="Carl J." />
+		<constructor-arg index="2" value="183" />
+		<constructor-arg index="3" value="1397268000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.006" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID006" />
+		<constructor-arg index="1" value="Sally S." />
+		<constructor-arg index="2" value="497" />
+		<constructor-arg index="3" value="1397268500000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.007" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID007" />
+		<constructor-arg index="1" value="Roberta Q." />
+		<constructor-arg index="2" value="357" />
+		<constructor-arg index="3" value="1397269000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.008" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID008" />
+		<constructor-arg index="1" value="Keith V." />
+		<constructor-arg index="2" value="183" />
+		<constructor-arg index="3" value="1397269500000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.009" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID009" />
+		<constructor-arg index="1" value="Andrey I." />
+		<constructor-arg index="2" value="501" />
+		<constructor-arg index="3" value="1397270000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.010" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID010" />
+		<constructor-arg index="1" value="Harold P." />
+		<constructor-arg index="2" value="413" />
+		<constructor-arg index="3" value="1397275000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.011" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID011" />
+		<constructor-arg index="1" value="Holly N." />
+		<constructor-arg index="2" value="287" />
+		<constructor-arg index="3" value="1397280000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.012" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID012" />
+		<constructor-arg index="1" value="Wally U." />
+		<constructor-arg index="2" value="313" />
+		<constructor-arg index="3" value="1397280990000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.013" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID013" />
+		<constructor-arg index="1" value="Larry F." />
+		<constructor-arg index="2" value="250" />
+		<constructor-arg index="3" value="1397285000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.014" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID014" />
+		<constructor-arg index="1" value="Robert M." />
+		<constructor-arg index="2" value="357" />
+		<constructor-arg index="3" value="1397290000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.015" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID015" />
+		<constructor-arg index="1" value="Don T." />
+		<constructor-arg index="2" value="273" />
+		<constructor-arg index="3" value="1397295000000" type="java.lang.Long" />
+	</bean>
+
+	<bean id="test.game.016" class="demo.scanner.impl.GameBean" lazy-init="true"
+		scope="singleton">
+		<constructor-arg index="0" value="ID016" />
+		<constructor-arg index="1" value="Ted K." />
+		<constructor-arg index="2" value="514" />
+		<constructor-arg index="3" value="1397300000000" />
+	</bean>
+
+	<util:list id="test.game.list" value-type="demo.scanner.impl.GameBean"
+		scope="prototype">
+		<ref local="test.game.001" />
+		<ref local="test.game.002" />
+		<ref local="test.game.003" />
+		<ref local="test.game.004" />
+		<ref local="test.game.005" />
+		<ref local="test.game.006" />
+		<ref local="test.game.007" />
+		<ref local="test.game.008" />
+		<ref local="test.game.009" />
+		<ref local="test.game.010" />
+		<ref local="test.game.011" />
+		<ref local="test.game.012" />
+		<ref local="test.game.013" />
+		<ref local="test.game.014" />
+		<ref local="test.game.015" />
+    <ref local="test.game.016" />
+	</util:list>
+</beans>

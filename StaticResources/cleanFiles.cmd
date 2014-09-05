@@ -25,7 +25,7 @@ echo. MAVEN clean done
 goto XX_mavendone
 :XX_mavenbad
 echo. MAVEN failed!
-goto finish
+goto finis
 
 :XX_mavendone
 echo. Cleaning MAVEN eclipse artifacts
@@ -35,7 +35,7 @@ echo. MAVEN clean done
 goto XX_mavenECdone
 :XX_mavenECbad
 echo. MAVEN Eclipse failed!
-goto finish
+goto finis
 
 :XX_mavenECdone
 set XX_File2Remove=.settings

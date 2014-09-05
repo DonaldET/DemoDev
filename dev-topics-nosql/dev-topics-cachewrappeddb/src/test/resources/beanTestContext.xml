@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
+		to use, copy, modify, and distribute this software and its documentation 
+		for educational, research, and not-for-profit purposes, without fee and without 
+		a signed licensing agreement, is hereby granted, provided that the above 
+		copyright notice, and this paragraph, appear in all copies, modifications, 
+		and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+	
+	<!-- Test beans for GameBean -->
+
+	<bean id="test.base.time" class="java.lang.Long" lazy-init="false"
+		scope="singleton">
+		<constructor-arg index="0" value="1397266980832" />
+	</bean>
+
+	<bean id="test.base.time1" class="java.lang.Long" lazy-init="false"
+		scope="singleton">
+		<constructor-arg index="0" value="139726699999" />
+	</bean>
+
+	<bean id="test.base.date" class="java.util.Date" lazy-init="false"
+		scope="singleton">
+		<constructor-arg index="0" ref="test.base.time" />
+	</bean>
+
+	<bean id="test.base.date1" class="java.util.Date" lazy-init="false"
+		scope="singleton">
+		<constructor-arg index="0" ref="test.base.time1" />
+	</bean>
+
+	<bean id="test.early.game" class="demo.scanner.impl.GameBean"
+		lazy-init="false" scope="singleton">
+		<constructor-arg index="0" value="ID001" />
+		<constructor-arg index="1" value="Don T." />
+		<constructor-arg index="2" value="257000" />
+		<constructor-arg index="3" ref="test.base.date" />
+	</bean>
+
+	<bean id="test.later.game" class="demo.scanner.impl.GameBean"
+		lazy-init="false" scope="singleton">
+		<constructor-arg index="0" value="ID001" />
+		<constructor-arg index="1" value="Don T." />
+		<constructor-arg index="2" value="257000" />
+		<constructor-arg index="3" ref="test.base.date1" />
+	</bean>
+
+</beans>
