@@ -65,6 +65,7 @@ set XX_cmd=%XX_grep% -d -s "^" *.java
 echo. Java lines     : %ERRORLEVEL%
 
 set /A XX_Count = 0
+
 set XX_cmd=%XX_grep% -d -s "^" Test*.java
 %XX_cmd%
 set /A XX_Count=XX_Count + %ERRORLEVEL%
@@ -72,6 +73,11 @@ set /A XX_Count=XX_Count + %ERRORLEVEL%
 set XX_cmd=%XX_grep% -d -s "^" *Test.java
 %XX_cmd%
 set /A XX_Count=XX_Count + %ERRORLEVEL%
+
+set XX_cmd=%XX_grep% -d -s "^" *Tests.java
+%XX_cmd%
+set /A XX_Count=XX_Count + %ERRORLEVEL%
+
 echo. Java Test lines: %XX_Count%
 
 set XX_cmd=%XX_grep% -d -s -1 "^" *.xml
