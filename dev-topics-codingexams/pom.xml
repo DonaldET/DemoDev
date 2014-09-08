@@ -24,6 +24,7 @@
         <url>http://www.linkedin.com/in/donaldtrummell/</url>
 
         <modules>
+                <module>dev-topics-amazon-codingchallange</module>
                 <module>dev-topics-apple-compounditerator</module>
                 <module>dev-topics-apple-factorial</module>
                 <module>dev-topics-elance-diagonal</module>
