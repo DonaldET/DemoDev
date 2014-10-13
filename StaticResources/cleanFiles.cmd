@@ -1,5 +1,5 @@
 ::
-: cleanFiles.cmd - 2014.8.29
+: cleanFiles.cmd - 2014.10.12
 :
 : Cleanup Build files
 ::
@@ -29,7 +29,7 @@ goto finis
 
 :XX_mavendone
 echo. Cleaning MAVEN eclipse artifacts
-call mvn clean
+call mvn eclipse:clean
 if ERRORLEVEL 1 goto XX_mavenECbad
 echo. MAVEN clean done
 goto XX_mavenECdone
