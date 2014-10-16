@@ -1,0 +1,5 @@
+Here is the first line!
+Second line has training blanks
+fourth line is empty
+
+Last line ends in a tab
