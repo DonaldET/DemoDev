@@ -15,30 +15,38 @@ import java.util.Map;
 import demo.don.amazon.invoice.parser.ExtractStrategy;
 
 /**
- * Development data files in resources for 2012:
- * 
- * <pre>
- * <code>
- * Amazon.com  Digital Order Summary.htm
- * Amazon.com  Digital Order Summary10.htm
- * Amazon.com  Digital Order Summary13.htm
- * Amazon.com - Order 103-4039722-7521802.htm
- * </code>
- * </pre>
+ * Parse input files, defined my path strings, extract required data, and write
+ * to output files, also defined by path strings. The <em>2012</em> algorithm
+ * test data files are located at:
+ * <ol>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com  Digital Order Summary.htm</code></li>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com  Digital Order Summary10.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com  Digital Order Summary13.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com - Order 103-4039722-7521802</code></li>
+ * </ol>
  * 
  * @author Donald Trummell
  */
 public class InvoiceLister
 {
-  private static final String DEFAULT_STRATEGY = "2012";
+  public static final String SYSIN = "Sysin";
+  public static final String SYSOUT = "Sysout";
+  public static final String DEFAULT_STRATEGY = "2012";
+
   private static final String ERR_FLAG = "ERR: ";
 
-  private String inputFileName = "Sysin";
-  private String outputFileName = "Sysout";
+  private String inputFileName = SYSIN;
+  private String outputFileName = SYSOUT;
 
   private boolean echoArgs = false;
-  private InputStream inputFile = System.in;
-  private PrintStream outputFile = System.out;
+  private InputStream inputFile = null;
+  private PrintStream outputFile = null;
   private String runStrategy = DEFAULT_STRATEGY;
 
   private final Map<String, ExtractStrategy> strategies = new HashMap<String, ExtractStrategy>();
@@ -46,16 +54,29 @@ public class InvoiceLister
 
   public InvoiceLister()
   {
-    strategies.put(DEFAULT_STRATEGY, new ExtractStrategy2012());
+    ExtractStrategy es = new ExtractStrategy2012();
+    strategies.put(((AbstractExtractStrategy) es).getName(), es);
   }
 
-  public int execute(final String[] args)
+  /**
+   * Read the input file and extract the desired information using the named run
+   * strategy.
+   * 
+   * @param inputFileName
+   *          input file path
+   * @param outputFileName
+   *          output file path
+   * @param runStrategy
+   *          the named strategy
+   * 
+   * @return {@code true} if successfully processed.
+   */
+  public int execute(final String inputFileName, final String outputFileName,
+      final String runStrategy)
   {
-    if (!parseArgs(args))
-    {
-      System.err.println(" **** FAILED: arguments incorrect!");
-      return 1;
-    }
+    this.inputFileName = inputFileName;
+    this.outputFileName = outputFileName;
+    this.runStrategy = runStrategy;
 
     boolean status = false;
     try
@@ -79,40 +100,41 @@ public class InvoiceLister
     return 0;
   }
 
-  private String processInvoice()
+  /**
+   * Reads data from the input stream, cumulating it in the string builder, and
+   * returning status.
+   * 
+   * @param data
+   *          the cumulated output data.
+   * @param srcStream
+   *          the input source data.
+   * @param inputLabel
+   *          the label associated with the input stream
+   * 
+   * @return {@code true} if stream input successfully captured.
+   */
+  public static boolean cumulateFile(final StringBuilder data,
+      final InputStream srcStream, final String inputLabel)
   {
-    final StringBuilder extracted = new StringBuilder();
+    if (data == null)
+      throw new IllegalArgumentException("data null");
 
-    StringBuilder fileData = new StringBuilder();
-    boolean status = cumulateFile(fileData);
-    if (status)
-    {
-      if (fileData.length() < 1)
-      {
-        final String msg = " **** Input file " + inputFileName + " empty";
-        System.err.flush();
-        System.err.println(ERR_FLAG + msg);
-        System.err.flush();
-        fileData.append(msg);
-      }
-      else
-        extractInvoiceDetails(inputFileName, fileData.toString(), extracted);
-    }
+    if (srcStream == null)
+      throw new IllegalArgumentException("srcStream null");
 
-    fileData = null;
+    if (inputLabel == null)
+      throw new IllegalArgumentException("inputLabel null");
 
-    return extracted.toString();
-  }
+    if (inputLabel.isEmpty())
+      throw new IllegalArgumentException("inputLabel empty");
 
-  private boolean cumulateFile(final StringBuilder data)
-  {
     boolean status = true;
 
     InputStreamReader isr = null;
     BufferedReader br = null;
     try
     {
-      isr = new InputStreamReader(inputFile);
+      isr = new InputStreamReader(srcStream);
       br = new BufferedReader(isr, 1024);
       int count = 0;
       String line = null;
@@ -126,7 +148,7 @@ public class InvoiceLister
         catch (IOException ex)
         {
           status = false;
-          final String msg = " **** Input file " + inputFileName
+          final String msg = " **** Input file " + inputLabel
               + " failed during read of line " + count + ",\n      {"
               + ex.getClass().getSimpleName() + "};  Msg: " + ex.getMessage();
           System.err.println(ERR_FLAG + msg);
@@ -160,6 +182,33 @@ public class InvoiceLister
     }
 
     return status;
+  }
+
+  // ---------------------------------------------------------------------------
+
+  private String processInvoice()
+  {
+    final StringBuilder extracted = new StringBuilder();
+
+    StringBuilder fileData = new StringBuilder();
+    boolean status = cumulateFile(fileData, inputFile, inputFileName);
+    if (status)
+    {
+      if (fileData.length() < 1)
+      {
+        final String msg = " **** Input file " + inputFileName + " empty";
+        System.err.flush();
+        System.err.println(ERR_FLAG + msg);
+        System.err.flush();
+        fileData.append(msg);
+      }
+      else
+        extractInvoiceDetails(inputFileName, fileData.toString(), extracted);
+    }
+
+    fileData = null;
+
+    return extracted.toString();
   }
 
   private void extractInvoiceDetails(final String srcFileName,
@@ -200,7 +249,7 @@ public class InvoiceLister
 
     boolean status = true;
 
-    if (inputFile == null)
+    if (!SYSIN.equalsIgnoreCase(inputFileName.trim()))
     {
       File f = new File(inputFileName);
       try
@@ -213,11 +262,13 @@ public class InvoiceLister
             + " not found,\n      " + ex.getMessage());
         return false;
       }
-
-      status &= (inputFile != null);
     }
+    else
+      inputFile = System.in;
 
-    if (outputFileName == null)
+    status &= (inputFile != null);
+
+    if (!SYSOUT.equalsIgnoreCase(outputFileName.trim()))
     {
       try
       {
@@ -228,9 +279,11 @@ public class InvoiceLister
         System.err.println("\n **** Output file " + outputFileName
             + " not created,\n" + ex.getMessage());
       }
-
-      status &= (outputFile != null);
     }
+    else
+      outputFile = System.out;
+
+    status &= (outputFile != null);
 
     if (runStrategy == null || runStrategy.isEmpty())
     {
@@ -263,96 +316,5 @@ public class InvoiceLister
 
     if (outputFile != null)
       outputFile.close();
-  }
-
-  private boolean parseArgs(final String[] args)
-  {
-    boolean parsed = parseArgList(args);
-
-    if (echoArgs)
-      echoParsedArgs();
-
-    return parsed;
-  }
-
-  private boolean parseArgList(final String[] args)
-  {
-    int nargs = args.length;
-    if (nargs > 0)
-    {
-      if (2 * (nargs / 2) != nargs)
-        usage_err_exit("  odd arg count: " + nargs);
-
-      for (int i = 0; i < nargs; i += 2)
-      {
-        String argId = args[i];
-        if (argId == null || argId.isEmpty())
-          usage_err_exit("  arg[" + i + "] null or empty");
-        if (!argId.startsWith("-"))
-          usage_err_exit("  arg[" + i + "] has no dash, " + argId);
-        argId = argId.substring(1).trim();
-        if (argId.isEmpty())
-          usage_err_exit("  arg[" + i + "] has no key, " + argId);
-
-        String argv = args[i + 1];
-        if (argv == null || argv.isEmpty())
-          usage_err_exit("  value[" + i + "] null or empty");
-        argv = argv.trim();
-
-        switch (argId)
-        {
-          case "e":
-            echoArgs = Boolean.parseBoolean(argv);
-            break;
-
-          case "i":
-            inputFileName = argv;
-            inputFile = null;
-            break;
-
-          case "o":
-            outputFileName = argv;
-            outputFile = null;
-            break;
-
-          case "s":
-            runStrategy = argv;
-            break;
-
-          default:
-            usage_err_exit("  arg[" + i + "] is not a recognized identifier, "
-                + argId);
-            break;
-        }
-      }
-    }
-
-    return true;
-  }
-
-  private void echoParsedArgs()
-  {
-    System.err.flush();
-    System.err.println("\nInvoice Lister");
-    System.err.println("  - echo arguments     : " + echoArgs);
-    System.err.println("  - input file name    : " + inputFileName);
-    System.err.println("  - output file name   : " + outputFileName);
-    System.err.println("  - extraction strategy: " + runStrategy);
-    System.err.flush();
-  }
-
-  private void usage_err_exit(final String msg)
-  {
-    System.err.flush();
-    System.err.println("\n **** USAGE ERROR: " + msg);
-    System.err.println("\nCorrest usage is:\n");
-    System.err.println("  InvoiceLister");
-    System.err.println("\t-e<echo>    : if true, echo arguments");
-    System.err.println("\t-i<input>   : input file name");
-    System.err.println("\t-o<output>  : output file name");
-    System.err.println("\t-s<strategy>: detail extraction strategy");
-    System.err.flush();
-
-    System.exit(1);
   }
 }

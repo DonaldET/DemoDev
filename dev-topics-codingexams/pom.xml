@@ -36,9 +36,17 @@
 	</modules>
 
 	<properties>
+		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>
 	</properties>
 
 	<dependencies>
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>demodev.topics</groupId>
+			<artifactId>demodev-topics-vtestingutils</artifactId>
+			<version>${vtestingutils.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

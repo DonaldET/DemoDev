@@ -8,6 +8,8 @@ import demo.don.amazon.invoice.parser.ExtractStrategy;
 
 public abstract class AbstractExtractStrategy implements ExtractStrategy
 {
+  private String name = null;
+
   protected static final String EMPTY_DATE = "01/01/1901";
   protected static final String BAD_DATE = "12/31/1900";
   protected static final SimpleDateFormat parseFmt = new SimpleDateFormat(
@@ -135,5 +137,15 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
     }
 
     return cpy;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  protected void setName(final String name)
+  {
+    this.name = name;
   }
 }

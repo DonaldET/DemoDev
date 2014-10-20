@@ -12,6 +12,7 @@ public class ExtractStrategy2012 extends AbstractExtractStrategy implements
 
   public ExtractStrategy2012()
   {
+    setName("2012");
   }
 
   @Override
@@ -40,7 +41,7 @@ public class ExtractStrategy2012 extends AbstractExtractStrategy implements
     int a = p + fileType.length();
     int b = fileInfo.indexOf(SPACE, a);
     final String invoice = AbstractExtractStrategy.removeProblems(fileInfo
-        .substring(a,b));
+        .substring(a, b));
     addWithLimitBig(data, invoice);
 
     // addWithLimit(data, QUOTE);
