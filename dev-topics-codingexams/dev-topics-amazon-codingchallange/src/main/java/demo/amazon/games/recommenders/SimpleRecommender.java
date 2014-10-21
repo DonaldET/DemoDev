@@ -23,11 +23,13 @@ import demo.amazon.games.ProductID;
 import demo.amazon.games.Recommend;
 
 /**
- * Create a recommendation feature called “Games Your Friends Play”. The
- * recommendation logic is based on the following rules: <br>
+ * <strong>Recommendation Engine</strong>
+ * <p>
+ * Create a recommendation feature called &quot;Games Your Friends Play&quot;.
+ * The recommendation logic is based on the following rules: <br>
  * <ul>
  * <li>A customer should only be recommended games that their friends own but
- * they don’t.</li>
+ * they don&apos;t.</li>
  * <li>The recommendations priority is driven by how many friends own a game -
  * if multiple friends own a particular game, it should be higher in the
  * recommendations than a game that only one friend owns.</li>
