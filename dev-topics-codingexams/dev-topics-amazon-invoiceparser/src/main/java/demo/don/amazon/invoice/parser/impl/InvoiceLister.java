@@ -39,6 +39,19 @@ import demo.don.amazon.invoice.parser.ExtractStrategy;
  * <li>
  * <code>src/test/resources/D2012/Amazon.com - Order 103-4039722-7521802</code></li>
  * </ol>
+ * The <em>2011</em> algorithm test data files are located at:
+ * <ol>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com  Digital Order Summary.htm</code></li>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com  Digital Order Summary10.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com  Digital Order Summary13.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com - Order 103-4039722-7521802</code></li>
+ * </ol>
  * 
  * @author Donald Trummell
  */
@@ -63,7 +76,9 @@ public class InvoiceLister
 
   public InvoiceLister()
   {
-    ExtractStrategy es = new ExtractStrategy2012();
+    ExtractStrategy es = new ExtractStrategy2011();
+    strategies.put(((AbstractExtractStrategy) es).getName(), es);
+    es = new ExtractStrategy2012();
     strategies.put(((AbstractExtractStrategy) es).getName(), es);
   }
 

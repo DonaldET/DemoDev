@@ -25,7 +25,16 @@ public interface ExtractStrategy
   public static final String DIGITAL_ORDER = "Digital Order: ";
   public static final String GRAND_TOTAL = "<b>Grand Total: $";
   public static final String ORDER_SUMMARY = "Order Summary";
+  public static final String BAD_TITLE = "<img src=\"";
   public static final String NOT_ORDER_SUMMARY = "<tr><td valign=\"top\" align=\"left\"><b>";
+  public static final String NEXT_STEP = "<td valign=\"top\" align=\"left\" style=\"padding:10px\">";
+  public static final String NOT_ORDER_SUMMARY2 = " <b>";
+  public static final String SUMMARY_ORDER = "Order Summary #";
+
+  public enum InvoiceType
+  {
+    DET, FINAL_DET, SUMMARY
+  };
 
   public abstract void extractDetails(final String fileName,
       final String fileInfo, final StringBuilder data, final int start);

@@ -20,27 +20,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 import demo.don.amazon.invoice.parser.ExtractStrategy;
-import demo.don.amazon.invoice.parser.impl.ExtractStrategy2012;
+import demo.don.amazon.invoice.parser.impl.ExtractStrategy2011;
 import demo.don.amazon.invoice.parser.impl.InvoiceLister;
 import demo.file.util.FileUtils;
 
-public class Strategy2012Test
+public class Strategy2011Test
 {
-  private static final String TEST_SRC_DIR = "src/test/resources/D2012/";
-  private static final String TEST_STD_DIR = "src/test/resources/D2012Std/";
+  private static final String TEST_SRC_DIR = "src/test/resources/D2011/";
+  private static final String TEST_STD_DIR = "src/test/resources/D2011Std/";
 
   private static final String[] testFiles = {
-      "Amazon.com  Digital Order Summary",
-      "Amazon.com  Digital Order Summary10",
-      "Amazon.com  Digital Order Summary13",
-      "Amazon.com - Order 103-4039722-7521802" };
+      "Amazon.com  Digital Order Summary00",
+      "Amazon.com  Digital Order Summary03",
+      "Amazon.com - Order 105-8473708-6521838" };
 
   private ExtractStrategy es = null;
 
   @Before
   public void setUp() throws Exception
   {
-    es = new ExtractStrategy2012();
+    es = new ExtractStrategy2011();
   }
 
   @After
@@ -58,8 +57,8 @@ public class Strategy2012Test
   @Test
   public void testGetName()
   {
-    Assert.assertEquals("name differs", "2012",
-        ((ExtractStrategy2012) es).getName());
+    Assert.assertEquals("name differs", "2011",
+        ((ExtractStrategy2011) es).getName());
   }
 
   @Test
@@ -74,7 +73,7 @@ public class Strategy2012Test
   {
     for (final String fn : testFiles)
     {
-      String fileName = fn + ".htm";
+      String fileName = fn + ".html";
       Assert.assertNotNull(fileName + " not accessable",
           checkFileAccess(TEST_SRC_DIR, fileName));
       fileName = fn + ".txt";
@@ -127,7 +126,7 @@ public class Strategy2012Test
     Assert.assertFalse("empty data from " + standardFile.getAbsolutePath(),
         standard.isEmpty());
 
-    final File inputFile = new File(srcDir, testFileBasicName + ".htm");
+    final File inputFile = new File(srcDir, testFileBasicName + ".html");
     final String inputData = readInputFile(inputFile);
     Assert.assertNotNull("null data from " + inputFile.getAbsolutePath(),
         standard);

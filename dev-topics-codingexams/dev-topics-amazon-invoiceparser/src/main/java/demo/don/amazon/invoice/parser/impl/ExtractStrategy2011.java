@@ -11,12 +11,12 @@ package demo.don.amazon.invoice.parser.impl;
 
 import demo.don.amazon.invoice.parser.ExtractStrategy;
 
-public class ExtractStrategy2012 extends AbstractExtractStrategy implements
+public class ExtractStrategy2011 extends AbstractExtractStrategy implements
     ExtractStrategy
 {
-  public ExtractStrategy2012()
+  public ExtractStrategy2011()
   {
-    setName("2012");
+    setName("2011");
   }
 
   @Override
@@ -34,16 +34,23 @@ public class ExtractStrategy2012 extends AbstractExtractStrategy implements
       p = fileInfo.indexOf(fileType, start);
       if (p < 0)
       {
-        data.append("\"**** No entry for '" + ExtractStrategy.DETAILS_FOR_ORDER
-            + "'\" or '" + ExtractStrategy.FINAL_DETAILS_FOR_ORDER + "'");
-        return;
+        inv = InvoiceType.SUMMARY;
+        fileType = ExtractStrategy.SUMMARY_ORDER;
+        p = fileInfo.indexOf(fileType, start);
+        if (p < 0)
+        {
+          data.append("\"**** No entry for '"
+              + ExtractStrategy.DETAILS_FOR_ORDER + "'\" or '"
+              + ExtractStrategy.FINAL_DETAILS_FOR_ORDER + "'");
+          return;
+        }
       }
     }
 
     // addWithLimit(data, QUOTE);
 
     int a = p + fileType.length();
-    int b = fileInfo.indexOf(SPACE, a);
+    int b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
     final String invoice = AbstractExtractStrategy.removeProblems(fileInfo
         .substring(a, b));
     addWithLimitBig(data, invoice);
@@ -81,13 +88,24 @@ public class ExtractStrategy2012 extends AbstractExtractStrategy implements
     b = fileInfo.indexOf(A_TAG_END, a);
 
     String title = fileInfo.substring(a, b).trim();
-    if (ExtractStrategy.ORDER_SUMMARY.equals(title))
+    if (title.startsWith(BAD_TITLE))
     {
-      b = remember;
-      p = fileInfo.indexOf(NOT_ORDER_SUMMARY, remember);
-      a = p + NOT_ORDER_SUMMARY.length();
-      b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
-      title = fileInfo.substring(a, b).trim();
+      p = fileInfo.indexOf(NEXT_STEP, remember);
+      if (p < 0)
+        title = "**BAD_TITLE_SPEC**";
+      else
+      {
+        remember = p + NEXT_STEP.length();
+        p = fileInfo.indexOf(NOT_ORDER_SUMMARY2, remember);
+        if (p < 0)
+          title = "**ALSO_BAD_TITLE_SPEC**";
+        else
+        {
+          a = p + NOT_ORDER_SUMMARY2.length();
+          b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
+          title = fileInfo.substring(a, b).trim();
+        }
+      }
     }
 
     if (title.isEmpty())
