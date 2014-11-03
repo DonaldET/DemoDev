@@ -17,9 +17,9 @@
 	<artifactId>demodev-topics-amazon-codingchallange</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Amazon - Create recommendation Engine</name>
+	<name>Amazon - Create Recommendation Engine</name>
 
-	<description>Recommend games based on frieds games</description>
+	<description>Recommend games based on friends games</description>
 
 	<properties>
 	</properties>
