@@ -28,6 +28,7 @@
 		<module>dev-topics-amazon-invoiceparser</module>
 		<module>dev-topics-apple-compounditerator</module>
 		<module>dev-topics-apple-factorial</module>
+		<module>dev-topics-cisco-sieve</module>
 		<module>dev-topics-elance-diagonal</module>
 		<module>dev-topics-gap-cart</module>
 		<module>dev-topics-gesail-twowriters</module>
