@@ -24,9 +24,34 @@ import java.util.Map;
 import demo.don.amazon.invoice.parser.ExtractStrategy;
 
 /**
- * Parse input files, defined by path strings, extract required data depending
- * on the named extraction strategy, and write to extracted fields to output
- * files, also defined by path strings.
+ * Parse input files, defined my path strings, extract required data, and write
+ * to output files, also defined by path strings. The <em>2012</em> algorithm
+ * test data files are located at:
+ * <ol>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com  Digital Order Summary.htm</code></li>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com  Digital Order Summary10.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com  Digital Order Summary13.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2012/Amazon.com - Order 103-4039722-7521802</code></li>
+ * </ol>
+ * The <em>2011</em> algorithm test data files are located at:
+ * <ol>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com  Digital Order Summary.htm</code></li>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com  Digital Order Summary10.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com  Digital Order Summary13.htm</code>
+ * </li>
+ * <li>
+ * <code>src/test/resources/D2011/Amazon.com - Order 103-4039722-7521802</code></li>
+ * </ol>
  * 
  * @author Donald Trummell
  */

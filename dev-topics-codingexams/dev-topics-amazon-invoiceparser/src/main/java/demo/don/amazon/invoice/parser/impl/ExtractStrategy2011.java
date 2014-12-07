@@ -11,11 +11,6 @@ package demo.don.amazon.invoice.parser.impl;
 
 import demo.don.amazon.invoice.parser.ExtractStrategy;
 
-/**
- * Defines the concrete extract method for 2011 invoices
- * 
- * @author Donald Trummell
- */
 public class ExtractStrategy2011 extends AbstractExtractStrategy implements
     ExtractStrategy
 {
@@ -28,258 +23,122 @@ public class ExtractStrategy2011 extends AbstractExtractStrategy implements
   protected void extractDetailsImpl(final String fileName,
       final String fileInfo, final StringBuilder data, final int start)
   {
-    int a = start;
-    int b = start;
-    int p = start;
-
     // Invoice
     InvoiceType inv = InvoiceType.DET;
-    String fileType = ExtractStrategy.P_ORD_DET;
-    p = fileInfo.indexOf(fileType, start);
+    String fileType = ExtractStrategy.DETAILS_FOR_ORDER;
+    int p = fileInfo.indexOf(fileType, start);
     if (p < 0)
     {
       inv = InvoiceType.FINAL_DET;
-      fileType = ExtractStrategy.P_ORD_DET_FINAL;
+      fileType = ExtractStrategy.FINAL_DETAILS_FOR_ORDER;
       p = fileInfo.indexOf(fileType, start);
       if (p < 0)
       {
         inv = InvoiceType.SUMMARY;
-        fileType = ExtractStrategy.P_ORD_SMRY_HASH;
+        fileType = ExtractStrategy.SUMMARY_ORDER;
         p = fileInfo.indexOf(fileType, start);
         if (p < 0)
         {
-          data.append("\"**** No entry for '" + ExtractStrategy.P_ORD_DET
-              + "' or '" + ExtractStrategy.P_ORD_DET_FINAL + "' or '"
-              + ExtractStrategy.P_ORD_SMRY_HASH + "'");
+          data.append("\"**** No entry for '"
+              + ExtractStrategy.DETAILS_FOR_ORDER + "'\" or '"
+              + ExtractStrategy.FINAL_DETAILS_FOR_ORDER + "'");
           return;
         }
       }
     }
 
-    a = p + fileType.length();
-    b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
-    if (b < 0)
-      b = fileInfo.indexOf(LINE_BREAK, a);
-    if (b < 0)
-      b = fileInfo.indexOf(LINE_BREAK.toUpperCase(), a);
-    if (b < 0)
-      throw new IllegalArgumentException("no invoice close tag");
+    // addWithLimit(data, QUOTE);
 
+    int a = p + fileType.length();
+    int b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
     final String invoice = AbstractExtractStrategy.removeProblems(fileInfo
         .substring(a, b));
     addWithLimitBig(data, invoice);
 
+    // addWithLimit(data, QUOTE);
+
     if (InvoiceType.FINAL_DET == inv)
     {
       addWithLimit(data, SEPERATOR);
-      data.append("**** No entry info for '" + ExtractStrategy.P_ORD_DET_FINAL
-          + "'");
+      // addWithLimit(data, QUOTE);
+      data.append("**** No entry info for '"
+          + ExtractStrategy.FINAL_DETAILS_FOR_ORDER + "'");
+      // addWithLimit(data, QUOTE);
       return;
     }
 
     // Date
-    int remember = b + 1;
-    final ScanResult dateScanResult = parseDate(fileInfo, remember, true);
-    final String dateStr = dateScanResult.getValue();
-    b = dateScanResult.getEndPointer();
-
     addWithLimit(data, SEPERATOR);
+    p = fileInfo.indexOf(DIGITAL_ORDER, b + 1);
+    a = p + DIGITAL_ORDER.length();
+    b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
+    String dateStr = fileInfo.substring(a, b).trim();
+    if (dateStr.isEmpty())
+      dateStr = EMPTY_DATE;
+    dateStr = dateParse(dateStr);
     addWithLimitBig(data, dateStr);
 
     // Title
-    remember = b + 1;
-    ScanResult titleScanResult = findTitle1(fileInfo, remember);
-    String title = titleScanResult.getValue();
-    if (title == null || title.isEmpty() || title.startsWith(R_EMPTY_FMT_TITLE)
-        || title.startsWith(R_EMPTY_TITLE)
-        || title.startsWith(R_UNTITLED_LOOK_FAILED))
+    addWithLimit(data, SEPERATOR);
+    // addWithLimit(data, QUOTE);
+    int remember = b + 1;
+    p = fileInfo.indexOf(A_TAG_BEGIN, remember);
+    a = fileInfo.indexOf(A_TAG_CLOSE, p + A_TAG_BEGIN.length());
+    a += A_TAG_CLOSE.length();
+    b = fileInfo.indexOf(A_TAG_END, a);
+
+    String title = fileInfo.substring(a, b).trim();
+    if (title.startsWith(BAD_TITLE))
     {
-      titleScanResult = findTitle2(fileInfo, remember);
-      title = titleScanResult.getValue();
-      if (title == null || title.isEmpty()
-          || title.startsWith(R_EMPTY_FMT_TITLE)
-          || title.startsWith(R_EMPTY_TITLE)
-          || title.startsWith(R_UNTITLED_LOOK_FAILED))
-      {
-        titleScanResult = findTitle3(fileInfo, remember);
-        title = titleScanResult.getValue();
-      }
-    }
-    b = titleScanResult.getEndPointer();
-
-    title = titleFormatter(title.isEmpty() ? R_EMPTY_FMT_TITLE : title);
-
-    addWithLimit(data, SEPERATOR);
-    addWithLimitBig(data, title);
-
-    // Order type (e.g. Kindle)
-    remember = b;
-    final ScanResult orderScanResult = parseOrderType(fileInfo, remember);
-    final String type = orderScanResult.getValue();
-    b = orderScanResult.getEndPointer();
-
-    addWithLimit(data, SEPERATOR);
-    addWithLimitBig(data, type);
-
-    // Total
-    remember = b + 1;
-    final ScanResult totalScanResult = parseGrandTotal(fileInfo, remember);
-    final String totalStr = totalScanResult.getValue();
-    b = totalScanResult.getEndPointer();
-
-    addWithLimit(data, SEPERATOR);
-    addWithLimitBig(data, totalStr);
-  }
-
-  // ---------------------------------------------------------------------------
-
-  private ScanResult findTitle1(final String fileInfo, final int start)
-  {
-    int b = start;
-    String title = "";
-
-    String beginner = P_INTRODUCER;
-    int p = fileInfo.indexOf(beginner, start);
-    if (p < 0)
-      title = R_UNTITLED_LOOK_FAILED;
-    else
-    {
-      int a = p + beginner.length();
-      String ender = QUOTED_TAG_CLOSE;
-      p = fileInfo.indexOf(ender, a);
+      p = fileInfo.indexOf(NEXT_STEP, remember);
       if (p < 0)
-        title = R_UNTITLED_LOOK_FAILED + "-" + ender;
+        title = "**BAD_TITLE_SPEC**";
       else
       {
-        a = p + ender.length();
-        ender = A_TAG_CLOSE;
-        b = fileInfo.indexOf(ender, a);
-        if (b < 0)
-        {
-          title = R_UNTITLED_LOOK_FAILED + "-" + ender;
-          b = start;
-        }
+        remember = p + NEXT_STEP.length();
+        p = fileInfo.indexOf(NOT_ORDER_SUMMARY2, remember);
+        if (p < 0)
+          title = "**ALSO_BAD_TITLE_SPEC**";
         else
         {
+          a = p + NOT_ORDER_SUMMARY2.length();
+          b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
           title = fileInfo.substring(a, b).trim();
-          b = b - 1;
         }
       }
     }
 
-    if (!title.startsWith(R_UNTITLED_LOOK_FAILED))
-    {
-      if (title.isEmpty())
-        title = R_EMPTY_TITLE;
-      else
-      {
-        title = titleFormatter(title);
-        if (title.isEmpty())
-          title = R_EMPTY_FMT_TITLE;
-      }
-    }
-
-    return new ScanResult(title, b);
-  }
-
-  private ScanResult findTitle2(final String fileInfo, final int start)
-  {
-    int b = start;
-    String title = "";
-
-    String beginner = P_NEXT_STEP;
-    int p = fileInfo.indexOf(beginner, start);
-    if (p < 0)
-    {
-      beginner = P_NEXT_STEP2;
-      p = fileInfo.indexOf(beginner, start);
-      if (p < 0)
-      {
-        beginner = P_NEXT_STEP3;
-        p = fileInfo.indexOf(beginner, start);
-      }
-    }
-
-    if (p < 0)
-      title = R_UNTITLED_LOOK_FAILED + beginner;
-    else
-    {
-      int a = p + beginner.length();
-      beginner = BOLD_OPEN_TAG;
-      p = fileInfo.indexOf(beginner, a);
-      if (p < 0)
-      {
-        beginner = BOLD_OPEN_TAG.toUpperCase();
-        p = fileInfo.indexOf(beginner, a);
-        if (p < 0)
-          throw new IllegalStateException("no title " + beginner + " opener");
-      }
-      a = p + beginner.length();
-
-      String ender = BOLD_CLOSE_TAG;
-      p = fileInfo.indexOf(ender, a);
-      if (p < 0)
-      {
-        ender = BOLD_CLOSE_TAG.toUpperCase();
-        p = fileInfo.indexOf(ender, a);
-        if (p < 0)
-          throw new IllegalStateException("no title " + ender + " closer");
-      }
-
-      b = p;
-      title = fileInfo.substring(a, b).trim();
-      b = b - 1;
-    }
-
     if (title.isEmpty())
-      title = R_EMPTY_TITLE;
-    else
+      title = "Untitled";
+    title = this.titleFormatter(title);
+
+    addWithLimitBig(data, title);
+    // addWithLimit(data, QUOTE);
+
+    // Order type (e.g. Kindle)
+    addWithLimit(data, SEPERATOR);
+    // addWithLimit(data, QUOTE);
+    p = fileInfo.indexOf(KINDLE_EDITION, b + 1);
+    if (p > 0)
     {
-      title = titleFormatter(title);
-      if (title.isEmpty())
-        title = R_EMPTY_FMT_TITLE;
+      a = p;
+      b = a + KINDLE_EDITION.length();
+      addWithLimitBig(data, fileInfo.substring(a, b).trim());
     }
+    else
+      addWithLimit(data, "[OTHER]");
+    // addWithLimit(data, QUOTE);
 
-    return new ScanResult(title, b);
-  }
-
-  private ScanResult findTitle3(final String fileInfo, final int start)
-  {
-    int b = start;
-    String title = "";
-
-    String beginner = "<A href=\"http://www.amazon.com/gp/product";
-    int p = fileInfo.indexOf(beginner, start);
+    // Total
+    addWithLimit(data, SEPERATOR);
+    p = fileInfo.indexOf(GRAND_TOTAL, b + 1);
     if (p < 0)
-      title = R_UNTITLED_LOOK_FAILED + beginner;
+      addWithLimitBig(data, "No '" + GRAND_TOTAL + "' entry");
     else
     {
-      int a = p + beginner.length();
-      beginner = QUOTED_TAG_CLOSE;
-      p = fileInfo.indexOf(beginner, a);
-      if (p < 0)
-        throw new IllegalStateException("no title " + beginner + " opener");
-      a = p + beginner.length();
-
-      String ender = A_TAG_CLOSE.toUpperCase();
-      p = fileInfo.indexOf(ender, a);
-      if (p < 0)
-        throw new IllegalStateException("no title " + ender + " closer");
-
-      b = p;
-      title = fileInfo.substring(a, b).trim();
-      b = b - 1;
+      a = p + GRAND_TOTAL.length();
+      b = fileInfo.indexOf(BOLD_CLOSE_TAG, a);
+      addWithLimitBig(data, fileInfo.substring(a, b).trim());
     }
-
-    if (title.isEmpty())
-      title = R_EMPTY_TITLE;
-    else
-    {
-      title = titleFormatter(title);
-      if (title.isEmpty())
-        title = R_EMPTY_FMT_TITLE;
-    }
-
-    return new ScanResult(title, b);
   }
 }

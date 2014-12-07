@@ -15,50 +15,20 @@ import java.util.Date;
 
 import demo.don.amazon.invoice.parser.ExtractStrategy;
 
-/**
- * Shared parsing utilities and error checking on the interface working method,
- * also defines the abstract template method
- * 
- * @author Donald Trummell
- */
 public abstract class AbstractExtractStrategy implements ExtractStrategy
 {
-  public static class ScanResult
-  {
-    private final String value;
-    private final int endPointer;
-
-    public ScanResult(String value, int endPointer)
-    {
-      this.value = value;
-      this.endPointer = endPointer;
-    }
-
-    public String getValue()
-    {
-      return value;
-    }
-
-    public int getEndPointer()
-    {
-      return endPointer;
-    }
-
-    @Override
-    public String toString()
-    {
-      return "[" + getClass().getSimpleName() + ";  0x"
-          + Integer.toHexString(hashCode()) + ";  value: " + value
-          + ";  endPointer: " + endPointer + "]";
-    }
-  }
-
   private String name = null;
 
+  protected static final String EMPTY_DATE = "01/01/1901";
+  protected static final String BAD_DATE = "12/31/1900";
   protected static final SimpleDateFormat parseFmt = new SimpleDateFormat(
       "MMM dd, yyyy");
   protected static final SimpleDateFormat displayFmt = new SimpleDateFormat(
       "MM/dd/yyyy");
+
+  protected AbstractExtractStrategy()
+  {
+  }
 
   @Override
   public final void extractDetails(final String fileName,
@@ -116,7 +86,7 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
     return cumulator;
   }
 
-  protected String dateStringParse(final String src)
+  protected String dateParse(final String src)
   {
     if (src == null)
       throw new IllegalArgumentException("null date");
@@ -135,96 +105,7 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
       return pex.getMessage();
     }
 
-    return input == null ? R_BAD_DATE : displayFmt.format(input);
-  }
-
-  protected ScanResult parseDate(final String fileInfo, final int start,
-      final boolean tryUpper)
-  {
-    int b = start;
-    String dateStr = R_BAD_DATE;
-
-    String beginner = P_DIGITAL_ORDER;
-    int p = fileInfo.indexOf(beginner, start);
-    if (p > -1)
-    {
-      int a = p + beginner.length();
-      String ender = BOLD_CLOSE_TAG;
-      p = fileInfo.indexOf(ender, a);
-      if (tryUpper)
-      {
-        if (p < 0)
-          p = fileInfo.indexOf(ender.toUpperCase(), a);
-      }
-      if (p > -1)
-      {
-        b = p;
-        dateStr = fileInfo.substring(a, b).trim();
-        if (dateStr.isEmpty())
-          dateStr = R_EMPTY_DATE;
-        dateStr = dateStringParse(dateStr);
-        b = p + ender.length() - 1;
-      }
-    }
-
-    return new ScanResult(dateStr, b);
-  }
-
-  protected ScanResult parseOrderType(final String fileInfo, final int start)
-  {
-    int b = start;
-    String type = R_OTHER;
-
-    String beginner = P_ORDER_TYPE_OPEN;
-    int p = fileInfo.indexOf(beginner, start);
-    if (p > -1)
-    {
-      int remember = p + beginner.length();
-      String ender = P_ORDER_TYPE_CLOSE;
-      p = fileInfo.indexOf(ender, remember);
-      if (p > -1)
-      {
-        b = p + ender.length() - 1;
-        type = R_KINDLE_EDITION;
-      }
-    }
-
-    return new ScanResult(type, b);
-  }
-
-  protected ScanResult parseGrandTotal(final String fileInfo, final int start)
-  {
-    int b = start;
-    String totalStr = "";
-    String beginner = P_GRAND_TOTAL_DOLLAR;
-    int p = fileInfo.indexOf(beginner, start);
-    if (p < 0)
-    {
-      beginner = P_GRAND_TOTAL;
-      p = fileInfo.indexOf(beginner, start);
-    }
-
-    if (p < 0)
-      totalStr = "No '" + P_GRAND_TOTAL_DOLLAR + "' or '" + P_GRAND_TOTAL
-          + "' entry";
-    else
-    {
-      int a = p + beginner.length();
-      String ender = BOLD_CLOSE_TAG;
-      b = fileInfo.indexOf(ender, a);
-      if (b < 0)
-        b = fileInfo.indexOf(ender.toUpperCase(), a);
-      if (b < 0)
-        throw new IllegalStateException("No '" + P_GRAND_TOTAL_DOLLAR
-            + "' entry closer found");
-
-      totalStr = fileInfo.substring(a, b).trim();
-      if (totalStr.startsWith("$"))
-        totalStr = totalStr.substring(1).trim();
-      b = b - 1;
-    }
-
-    return new ScanResult(totalStr, b);
+    return input == null ? BAD_DATE : displayFmt.format(input);
   }
 
   protected String titleFormatter(final String src)
@@ -260,12 +141,11 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
     if (!cpy.isEmpty())
     {
       cpy = cpy.replaceAll("\\&+", "{amp}");
-      cpy = cpy.replaceAll("\\s+", " ");
       cpy = cpy.replaceAll("\\,+", ";");
-      cpy = cpy.replaceAll("\\<.*\\>", "");
+      cpy = cpy.replaceAll("\\s+", " ");
     }
 
-    return cpy.trim();
+    return cpy;
   }
 
   public String getName()
