@@ -9,32 +9,29 @@
  */
 package demo.don.amazon.invoice.parser.impl.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.don.amazon.invoice.parser.ExtractStrategy;
 import demo.don.amazon.invoice.parser.impl.ExtractStrategy2011;
-import demo.don.amazon.invoice.parser.impl.InvoiceLister;
-import demo.file.util.FileUtils;
 
-public class Strategy2011Test
+public class Strategy2011Test extends CheckStrategy
 {
   private static final String TEST_SRC_DIR = "src/test/resources/D2011/";
   private static final String TEST_STD_DIR = "src/test/resources/D2011Std/";
 
-  private static final String[] testFiles = {
-      "Amazon.com  Digital Order Summary00",
-      "Amazon.com  Digital Order Summary03",
-      "Amazon.com - Order 105-8473708-6521838" };
+  private static String[] testFiles = { "Amazon.com  Digital Order Summary00",
+      "Amazon.com  Digital Order Summary03", /*
+                                              * 03 and 09 are same data from
+                                              * different browser versions
+                                              */
+      "Amazon.com  Digital Order Summary09",
+      "Amazon.com - Order 105-8473708-6521838",
+      "Amazon_com Digital Order Summary_grid" };
 
-  private ExtractStrategy es = null;
+  private static String[] testFilesExt = { ".html", ".html", ".html", ".html",
+      ".htm" };
 
   @Before
   public void setUp() throws Exception
@@ -49,120 +46,45 @@ public class Strategy2011Test
   }
 
   @Test
-  public void testExtractDetails()
-  {
-    Assert.assertTrue(true);
-  }
-
-  @Test
   public void testGetName()
   {
     Assert.assertEquals("name differs", "2011",
         ((ExtractStrategy2011) es).getName());
   }
 
-  @Test
-  public void testAccessDataDirectories()
+  @Override
+  protected String getTestSrcDir()
   {
-    checkDirAccess(new File(TEST_SRC_DIR));
-    checkDirAccess(new File(TEST_STD_DIR));
+    return TEST_SRC_DIR;
   }
 
-  @Test
-  public void testAccessDataFile()
+  @Override
+  protected String getTestStdDir()
   {
-    for (final String fn : testFiles)
-    {
-      String fileName = fn + ".html";
-      Assert.assertNotNull(fileName + " not accessable",
-          checkFileAccess(TEST_SRC_DIR, fileName));
-      fileName = fn + ".txt";
-      Assert.assertNotNull(fileName + " not accessable",
-          checkFileAccess(TEST_STD_DIR, fileName));
-    }
+    return TEST_STD_DIR;
   }
 
-  @Test
-  public void testParseFileData()
+  @Override
+  protected String[] getTestFiles()
   {
-    for (final String fn : testFiles)
-      checkATestFile(es, fn, ParserHelperTest.getJavaTempDir(), TEST_SRC_DIR,
-          TEST_STD_DIR);
+    return testFiles;
   }
 
-  // ---------------------------------------------------------------------------
-
-  public static File checkFileAccess(final String testDir, final String fileName)
+  @Override
+  protected void setTestFiles(final String[] newTestFiles)
   {
-    final File dir = new File(testDir);
-    final File file = new File(dir, fileName);
-    Assert
-        .assertTrue(file.getAbsolutePath() + " does not exist", file.exists());
-    Assert.assertTrue(file.getAbsolutePath() + " not a file", file.isFile());
-    Assert.assertTrue(file.getAbsolutePath() + " not readable", file.canRead());
-
-    return file;
+    testFiles = newTestFiles;
   }
 
-  public static void checkDirAccess(final File dirFile)
+  @Override
+  protected String[] getTestFilesExt()
   {
-    Assert.assertTrue(dirFile.getAbsolutePath() + " does not exist",
-        dirFile.exists());
-    Assert.assertTrue(dirFile.getAbsolutePath() + " not directory",
-        dirFile.isDirectory());
-    Assert.assertTrue(dirFile.getAbsolutePath() + " not readable",
-        dirFile.canRead());
+    return testFilesExt;
   }
 
-  public static void checkATestFile(final ExtractStrategy es,
-      final String testFileBasicName, final File tempDir, final String srcDir,
-      final String stdDir)
+  @Override
+  protected void setTestFilesExt(final String[] newTestFilesExt)
   {
-    final File standardFile = new File(stdDir, testFileBasicName + ".txt");
-    final String standard = FileUtils.collectTrimmedFileData(standardFile)
-        .trim();
-    Assert.assertNotNull("null data from " + standardFile.getAbsolutePath(),
-        standard);
-    Assert.assertFalse("empty data from " + standardFile.getAbsolutePath(),
-        standard.isEmpty());
-
-    final File inputFile = new File(srcDir, testFileBasicName + ".html");
-    final String inputData = readInputFile(inputFile);
-    Assert.assertNotNull("null data from " + inputFile.getAbsolutePath(),
-        standard);
-    Assert.assertFalse("empty data from " + inputFile.getAbsolutePath(),
-        standard.isEmpty());
-
-    final StringBuilder data = new StringBuilder();
-    es.extractDetails(inputFile.getAbsolutePath(), inputData, data, 0);
-    Assert.assertTrue(
-        "empty data from parse of " + inputFile.getAbsolutePath(),
-        data.length() > 0);
-    Assert.assertEquals("parse of " + inputFile.getAbsolutePath()
-        + " differs from " + standardFile.getAbsolutePath(), standard,
-        data.toString());
-  }
-
-  public static String readInputFile(final File inputFile)
-  {
-    boolean status = false;
-    final StringBuilder srcData = new StringBuilder();
-    InputStream srcStream = null;
-    try
-    {
-      srcStream = new FileInputStream(inputFile);
-      status = InvoiceLister.cumulateFile(srcData, srcStream,
-          inputFile.getAbsolutePath());
-    }
-    catch (FileNotFoundException ex)
-    {
-      Assert.fail("unable to find " + inputFile.getAbsolutePath() + ": "
-          + ex.getMessage());
-    }
-
-    if (!status)
-      Assert.fail("unable to red " + inputFile.getAbsolutePath());
-
-    return srcData.toString();
+    testFilesExt = newTestFilesExt;
   }
 }
