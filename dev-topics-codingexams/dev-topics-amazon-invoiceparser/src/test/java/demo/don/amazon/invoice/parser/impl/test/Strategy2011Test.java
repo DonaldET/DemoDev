@@ -22,16 +22,16 @@ public class Strategy2011Test extends CheckStrategy
   private static final String TEST_STD_DIR = "src/test/resources/D2011Std/";
 
   private static String[] testFiles = { "Amazon.com  Digital Order Summary00",
-      "Amazon.com  Digital Order Summary03", /*
-                                              * 03 and 09 are same data from
-                                              * different browser versions
-                                              */
-      "Amazon.com  Digital Order Summary09",
-      "Amazon.com - Order 105-8473708-6521838",
-      "Amazon_com Digital Order Summary_grid" };
+      "Amazon.com  Digital Order Summary01",
+      "Amazon.com  Digital Order Summary02",
+      "Amazon.com  Digital Order Summary03",
+      "Amazon.com  Digital Order Summary04",
+      "Amazon.com  Digital Order Summary05",
+      "Amazon.com - Order 104-5512103-2692241",
+      "Amazon.com - Order 105-8473708-6521838" };
 
   private static String[] testFilesExt = { ".html", ".html", ".html", ".html",
-      ".htm" };
+      ".html", ".html", ".html", ".html", };
 
   @Before
   public void setUp() throws Exception

@@ -69,14 +69,6 @@ public class ExtractStrategy2011 extends AbstractExtractStrategy implements
         .substring(a, b));
     addWithLimitBig(data, invoice);
 
-    if (InvoiceType.FINAL_DET == inv)
-    {
-      addWithLimit(data, SEPERATOR);
-      data.append("**** No entry info for '" + ExtractStrategy.P_ORD_DET_FINAL
-          + "'");
-      return;
-    }
-
     // Date
     int remember = b + 1;
     final ScanResult dateScanResult = parseDate(fileInfo, remember, true);
@@ -85,6 +77,15 @@ public class ExtractStrategy2011 extends AbstractExtractStrategy implements
 
     addWithLimit(data, SEPERATOR);
     addWithLimitBig(data, dateStr);
+
+    // No further parsing needed
+    if (InvoiceType.FINAL_DET == inv)
+    {
+      addWithLimit(data, SEPERATOR);
+      data.append("**** No entry info for '" + ExtractStrategy.P_ORD_DET_FINAL
+          + "'");
+      return;
+    }
 
     // Title
     remember = b + 1;
@@ -191,12 +192,17 @@ public class ExtractStrategy2011 extends AbstractExtractStrategy implements
     int p = fileInfo.indexOf(beginner, start);
     if (p < 0)
     {
-      beginner = P_NEXT_STEP2;
+      beginner = P_NEXT_STEP1;
       p = fileInfo.indexOf(beginner, start);
       if (p < 0)
       {
-        beginner = P_NEXT_STEP3;
+        beginner = P_NEXT_STEP2;
         p = fileInfo.indexOf(beginner, start);
+        if (p < 0)
+        {
+          beginner = P_NEXT_STEP3;
+          p = fileInfo.indexOf(beginner, start);
+        }
       }
     }
 

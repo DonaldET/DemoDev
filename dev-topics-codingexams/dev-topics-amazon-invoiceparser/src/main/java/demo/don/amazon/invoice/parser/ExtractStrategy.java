@@ -53,6 +53,7 @@ public interface ExtractStrategy
   public static final String P_ORD_SMRY_HASH = "Order Summary #";
   public static final String P_INTRODUCER = "<a href=\"http://www.amazon.com/gp/product";
   public static final String P_NEXT_STEP = "<td valign=\"top\" align=\"left\" style=\"padding:10px\">";
+  public static final String P_NEXT_STEP1 = "<tr><td valign=\"top\" align=\"left\">";
   public static final String P_NEXT_STEP2 = "<td align=\"left\" valign=\"top\">";
   public static final String P_NEXT_STEP3 = "<TD align=\"left\" valign=\"top\">";
   public static final String P_KE_SPACER = "                   ";

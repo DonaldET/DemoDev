@@ -156,6 +156,7 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
         if (p < 0)
           p = fileInfo.indexOf(ender.toUpperCase(), a);
       }
+      
       if (p > -1)
       {
         b = p;
@@ -167,7 +168,9 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
       }
     }
 
-    return new ScanResult(dateStr, b);
+    final ScanResult scanOfDateResult = new ScanResult(dateStr, b);
+
+    return scanOfDateResult;
   }
 
   protected ScanResult parseOrderType(final String fileInfo, final int start)

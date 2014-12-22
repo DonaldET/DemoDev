@@ -1,0 +1,8 @@
+cd >> "Amazon.com  Digital Order Summary00.html"
+cd >> "Amazon.com  Digital Order Summary01.html"
+cd >> "Amazon.com  Digital Order Summary02.html"
+cd >> "Amazon.com  Digital Order Summary03.html"
+cd >> "Amazon.com  Digital Order Summary04.html"
+cd >> "Amazon.com  Digital Order Summary05.html"
+cd >> "Amazon.com - Order 104-5512103-2692241.html"
+cd >> "Amazon.com - Order 105-8473708-6521838.html"
