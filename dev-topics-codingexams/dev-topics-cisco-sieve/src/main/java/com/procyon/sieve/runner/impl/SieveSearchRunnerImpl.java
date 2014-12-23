@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
 package com.procyon.sieve.runner.impl;
 
 import org.apache.commons.lang.Validate;
@@ -5,6 +14,12 @@ import org.apache.commons.lang.Validate;
 import com.procyon.sieve.runner.SieveSearchRunner;
 import com.procyon.sieve.searcher.SieveSearcher;
 
+/**
+ * Runs a sieve search instance that incorporates an algorithm run repeatedly
+ * while being timmed
+ * 
+ * @author Donald Trummell
+ */
 public class SieveSearchRunnerImpl implements SieveSearchRunner
 {
   private boolean initialized = false;

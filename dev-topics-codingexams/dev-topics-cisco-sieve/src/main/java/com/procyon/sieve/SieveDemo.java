@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
+ */
 package com.procyon.sieve;
 
 import java.util.ArrayList;
@@ -14,6 +23,12 @@ import com.procyon.sieve.searcher.impl.NiaveSearcher;
 import com.procyon.sieve.searcher.impl.RadixSearcher;
 import com.procyon.sieve.searcher.impl.TreeMapSearcher;
 
+/**
+ * Runs various sieve searcher instances using different algorithms while timing
+ * the runs configured with different parameters.
+ * 
+ * @author Donald Trummell
+ */
 public class SieveDemo
 {
   public static final int TEST_SIZE = 1000000;
