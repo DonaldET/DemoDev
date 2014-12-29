@@ -12,8 +12,8 @@ package demo.geturner.binarysearch.impl;
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Sort by recursively invoking this method on the greater or lesser half of the
- * remaining values.
+ * Search by recursively invoking this method on the greater or lesser half of
+ * the remaining values; this is a binary search implementation.
  * 
  * @author Donald Trummell
  *

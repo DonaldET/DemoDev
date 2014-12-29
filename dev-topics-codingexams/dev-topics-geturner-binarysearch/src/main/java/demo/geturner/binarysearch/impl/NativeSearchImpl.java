@@ -14,7 +14,7 @@ import java.util.Arrays;
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Sort using Java <code>Arrays</code> sort method.
+ * Search using Java <code>Arrays</code> native binary search method.
  * 
  * @author Donald Trummell
  *

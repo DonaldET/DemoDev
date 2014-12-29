@@ -19,7 +19,7 @@ import demo.geturner.binarysearch.impl.IterativeSearchImpl;
 import demo.geturner.binarysearch.impl.NativeSearchImpl;
 
 /**
- * Test performance of Iterative and Native search methods
+ * Test performance of Iterative and Native search methods with optional display
  * 
  * @author Donald Trummell
  */

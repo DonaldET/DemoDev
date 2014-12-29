@@ -18,7 +18,8 @@ import demo.scanner.api.TopXScanner;
 
 /**
  * Using a sorted array of top <em>X</em> elements with binary search to
- * determine the correct replace position in the candidate array
+ * determine the correct replacement or insertion position in the candidate
+ * array
  * 
  * @author Donald Trummell
  */
@@ -171,11 +172,13 @@ public class SortedArrayScanner extends AbstractTopXScanner implements
           + " equals or exceeds length " + x);
 
     //
-    // Move left, [1, (IP - 1)] => [0, (IP-2)] as a block of (ip - 1)
+    // Move left, [1, (IP - 1)] => [0, (IP-2)] as a block of (ip - 1) entries
 
     for (int i = 1; i <= ip - 1; i++)
+    {
       // Optimization over arraycopy
       topAry[i - 1] = topAry[i]; // no temporary buffer
+    }
 
     topAry[ip - 1] = g;
   }

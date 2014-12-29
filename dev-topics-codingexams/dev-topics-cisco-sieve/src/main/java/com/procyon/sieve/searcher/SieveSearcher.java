@@ -10,6 +10,7 @@
 package com.procyon.sieve.searcher;
 
 /**
+ * This project compares techniques to search an array of integer.
  * 
  * @author Donald Trummell
  */

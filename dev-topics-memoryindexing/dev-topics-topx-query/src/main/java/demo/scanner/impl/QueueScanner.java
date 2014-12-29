@@ -50,7 +50,7 @@ public class QueueScanner extends AbstractTopXScanner implements TopXScanner
     final PriorityQueue<Game> pq = new PriorityQueue<Game>();
 
     //
-    // The first X just go into the queue, no check for replacement
+    // The first X scores just go into the queue, no check for replacement
 
     do
     {
@@ -61,7 +61,8 @@ public class QueueScanner extends AbstractTopXScanner implements TopXScanner
     while (more && pq.size() < x);
 
     //
-    // The remainder replace something in the queue when added
+    // The remaining scores replace something in the queue when added to the
+    // queue
 
     while (more)
     {
@@ -77,8 +78,7 @@ public class QueueScanner extends AbstractTopXScanner implements TopXScanner
 
     //
     // Pull out ordered from least value to largest value, and then reverse
-    // order
-    // so largest to least is entered into output
+    // the order so largest to least is entered into output
 
     final Deque<Game> lifo = new ArrayDeque<Game>();
     Game g = pq.poll();

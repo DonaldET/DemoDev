@@ -15,10 +15,17 @@ import demo.scanner.impl.SortedArrayScanner;
 /**
  * Compares the performance of <em>priority queue</em> and <em>sorted array</em>
  * based scanners on "<em>top X</em>" queries across a random collection of
- * <code>Game</code> instances. <code>Game</code> instances have an ascending
- * comparator that allows the instances to be ordered on several attributes. The
- * "<em>Top X</em>" query returns a sorted collection of the desired subset of the
- * <code>Game</code> instances.
+ * integer instances. Integer instances have an ascending comparator that allows
+ * the instances to be ordered on value.
+ * <p>
+ * This project compares several techniques to capture the <em>top x</em> values
+ * from a large list of integer elements. Four implementations are compared for
+ * performance in an application; a binary search approach; a niave searcher, a
+ * radix searcher, and a <code>TreeMap</code> searcher. This application is
+ * related to the TopX application in that both compare methods of capturing the
+ * <em>top or bottom x</em> elements of a list, but the TopX implementation
+ * concentrates on the comparison with the binary search approaches and this
+ * application compares several techniques in less detail.
  * <p>
  * This example uses the motivation of finding the (say) top 10 scores of a
  * complex <em>game</em> where several game attributes allow for unique

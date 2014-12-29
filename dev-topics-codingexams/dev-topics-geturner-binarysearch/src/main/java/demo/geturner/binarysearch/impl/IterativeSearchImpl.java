@@ -12,7 +12,8 @@ package demo.geturner.binarysearch.impl;
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Sort by manipulating index values using binary algorithm
+ * Search by manipulating index values using a binary search algorithm; replaces
+ * recursion with iteration
  * 
  * @author Donald Trummell
  *

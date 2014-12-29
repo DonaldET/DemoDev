@@ -24,8 +24,8 @@ import com.procyon.sieve.searcher.impl.RadixSearcher;
 import com.procyon.sieve.searcher.impl.TreeMapSearcher;
 
 /**
- * Runs various sieve searcher instances using different algorithms while timing
- * the runs configured with different parameters.
+ * Runs various sieve searcher instances, implemented using different algorithms
+ * while timing the runs configured with different parameters.
  * 
  * @author Donald Trummell
  */

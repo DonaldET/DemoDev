@@ -19,7 +19,7 @@ import demo.geturner.binarysearch.impl.IterativeSearchImpl;
 import demo.geturner.binarysearch.impl.RecursiveSearchImpl;
 
 /**
- * Test performance of Iterative and Recursize methods
+ * Test performance of Iterative and Recursive binary search methods
  * 
  * @author Donald Trummell
  */

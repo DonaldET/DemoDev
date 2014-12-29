@@ -10,7 +10,7 @@
 package demo.geturner.binarysearch;
 
 /**
- * Generalized binary search of an array of <code>Comparable</code> items
+ * Generalized binary search of a sorted array of <code>Comparable</code> items
  * 
  * @author Donald Trummell
  *

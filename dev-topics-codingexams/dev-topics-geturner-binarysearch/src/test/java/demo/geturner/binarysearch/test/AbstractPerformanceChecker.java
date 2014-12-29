@@ -18,7 +18,7 @@ import org.junit.Assert;
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Shared testing code.
+ * Shared testing code to determine performance.
  * 
  * @author Donald Trummell
  */

@@ -12,8 +12,8 @@ package demo.geturner.binarysearch.impl;
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Shared parameter checking code, all <code>BinarySearch</code> implementations
- * extend this class.
+ * Shared parameter checking code that all <code>BinarySearch</code>
+ * implementations use, and so they need to extend this class.
  * <p>
  * As an interesting performance note, the <code>iterative</code> implementation
  * is about 40% <em>slower</em> than the <code>recursive</code> implementation.

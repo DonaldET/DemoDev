@@ -14,7 +14,8 @@ import java.util.Comparator;
 import java.util.Date;
 
 /**
- * Defines key field data associated with a Game
+ * Defines key field data associated with a Game, along with the
+ * &quot;score&quot; defining the capture.
  * 
  * @author Donald Trummell
  */

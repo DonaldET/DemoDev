@@ -19,7 +19,7 @@ import org.junit.Test;
 import demo.geturner.binarysearch.BinarySearch;
 
 /**
- * Shared tests
+ * Common tests for different binary search methods
  * 
  * @author Donald Trummell
  */

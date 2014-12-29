@@ -14,8 +14,12 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * A <em>Scanner</em> implementationsummarizes information about data items it
- * examines through an iterator
+ * A <em>Scanner</em> implementation summarizes information about data items it
+ * examines through an iterator; primarily capturing the <em>top X</em> scores
+ * in a gaming context, and providing them in descending order.
+ * <p>
+ * There are two primary implementations; a PriorityQueue based scanner and a
+ * sorted array with binary search scanner.
  * 
  * @author Donald Trummell
  */
