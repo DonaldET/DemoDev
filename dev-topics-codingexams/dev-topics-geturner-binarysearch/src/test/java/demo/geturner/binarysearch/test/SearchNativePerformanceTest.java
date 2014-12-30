@@ -96,8 +96,8 @@ public class SearchNativePerformanceTest extends AbstractPerformanceChecker
         + ".  Running values are:  ITR: " + totItr + ";  REC: " + totAlt,
         faster >= -0.05);
 
-    final double expectedfaster = 0.30;
-    final double allowedVariance = 0.20;
+    final double expectedfaster = 0.35;
+    final double allowedVariance = 0.25;
     final double actualVariance = round2Places(Math
         .abs(faster - expectedfaster));
 

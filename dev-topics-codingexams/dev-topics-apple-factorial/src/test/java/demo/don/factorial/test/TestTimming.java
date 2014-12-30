@@ -63,7 +63,7 @@ public class TestTimming
 
     Assert.assertTrue("Simple (" + elapsedSimple
         + ") faster than pre-compute (" + elapsedPre + ")",
-        elapsedPre < elapsedSimple);
+        elapsedPre <= elapsedSimple);
   }
 
   private long computeRepresentativeSample(final MathHelper mh,
