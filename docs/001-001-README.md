@@ -20,7 +20,8 @@ The _StaticResources_ directory contains instructions on how to setup a MAVEN an
 ##Sub-Project Categories
 
 *DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Sub-projects include:
-- *codingexams*: Codind and Algorithm questions asked over a whiteboard or in a collaboration environment.
+- *algorithms*: Math algorithm demonstrations.
+- *codingexams*: Codind and Algorithm interview questions asked over a whiteboard or in a collaboration environment.
 - *hacks*: Unusual solutions to interesting problems that don't necessarily reflect so-called _best practices_.
 - *jerseyservices*: RESTful service implementations using the **Jersey framework**
 - *memoryindexing*: In-memory search algorithms
