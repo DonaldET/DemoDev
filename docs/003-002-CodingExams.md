@@ -16,8 +16,9 @@ Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title,
 Appdynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
 Apple | _factorial_ | Contrast two factorial algorithms
+Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
-
+Lumendata | _duplicatechecker_ | Finds duplicate column values in a row

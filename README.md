@@ -33,6 +33,18 @@ The _StaticResources_ directory contains instructions on how to setup a MAVEN an
 Sub-projects usually include a “business” motivation for the coding example.  The examples also show good _OO design principals_, such as *KISS*, *DRY* (don’t repeat yourself), and *SOLID* (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.)
 
 The sub-project solution collaborators have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. All sub-projects include ‘JUnit’ tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  This is accomplished by using the regression aspect of these tests. Many of the projects appear _complicated_ by use of the *Spring* framework.  This is done to illustrate _Spring_ usage in addition to the basic technique shown in the example. Overall, a professional Software Engineer would provide background for the code, some guidelines on usage in the _JavaDoc_ entries, and tips to help maintain the code.  Example invocation with unit tests help in achieving these goals.
+##Sub-Project Math Algorithms
+
+These Mathmematical Algorithms show methods of performance testing and demonstrate coding principles like:
+- Separation of interface and implementation
+- Use of multiple implementations (Strategy and Command Patterns)
+- JUnit tests where feasible
+
+###Selected _Math Algorithms_ Content
+
+Project | Description
+------- | -----------
+_largenumeric_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors
 ##Sub-Project Coding Exams
 
 These coding exams are elaborations on topics discussed during interviews and “take home” coding problems.  The resulting solutions demonstrate a “professional engineering” approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
@@ -51,11 +63,12 @@ Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title,
 Appdynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
 Apple | _factorial_ | Contrast two factorial algorithms
+Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
-
+Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
 ##Sub-Project Hacks
 
 These short examples demonstrate _“less than the best”_ coding practices that are sometimes used to get around a solution constraint until a better solution can be found.
