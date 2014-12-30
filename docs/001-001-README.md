@@ -9,10 +9,10 @@ Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may s
 #Getting Started
 
 All the information needed to build these projects is detailed in the _BuildResources_ document described next.  The process you will follow is:
-1. Download required dependencies (e.g., Java and MAVEN)
-2. Install and test the dependencies
-3. Download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/)
-4. ON the command line, from the downloaded directory, execute:
+ 1. Download required dependencies (e.g., Java and MAVEN)
+ 2. Install and test the dependencies
+ 3. Download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/)
+ 4. ON the command line, from the downloaded directory, execute:
     _mvn clean install_
 
 The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET\DemoDev_.
