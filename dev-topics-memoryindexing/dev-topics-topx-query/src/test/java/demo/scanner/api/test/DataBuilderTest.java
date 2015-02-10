@@ -47,9 +47,9 @@ public class DataBuilderTest
   @Before
   public void setUp() throws Exception
   {
-    dataBuilder = (GameDataBuilder) dbContext.getBean("test.game.data.builder",
+    dataBuilder = dbContext.getBean("test.game.data.builder",
         GameDataBuilder.class);
-    baseDate = (Long) dbContext.getBean("test.base.time", java.lang.Long.class);
+    baseDate = dbContext.getBean("test.base.time", java.lang.Long.class);
   }
 
   @After

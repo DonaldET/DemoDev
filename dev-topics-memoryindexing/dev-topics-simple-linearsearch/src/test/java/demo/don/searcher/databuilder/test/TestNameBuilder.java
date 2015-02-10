@@ -22,6 +22,7 @@ public class TestNameBuilder extends TestCase
     super(name);
   }
 
+  @Override
   protected void setUp() throws Exception
   {
     super.setUp();
@@ -29,6 +30,7 @@ public class TestNameBuilder extends TestCase
     builder = new NameBuilder();
   }
 
+  @Override
   protected void tearDown() throws Exception
   {
     builder = null;
@@ -38,19 +40,22 @@ public class TestNameBuilder extends TestCase
 
   public void testFLNameEql()
   {
-    assertEquals("idential failed", DataBuilderTestConstants.o1, DataBuilderTestConstants.o1);
+    assertEquals("idential failed", DataBuilderTestConstants.o1,
+        DataBuilderTestConstants.o1);
     assertEquals("hc: idential failed", DataBuilderTestConstants.o1.hashCode(),
         DataBuilderTestConstants.o1.hashCode());
 
     assertEquals("equal content failed", DataBuilderTestConstants.o4,
         DataBuilderTestConstants.o4a);
-    assertEquals("hc: equal content failed", DataBuilderTestConstants.o4.hashCode(),
+    assertEquals("hc: equal content failed",
+        DataBuilderTestConstants.o4.hashCode(),
         DataBuilderTestConstants.o4a.hashCode());
 
     assertFalse("different equal",
         DataBuilderTestConstants.o1.equals(DataBuilderTestConstants.o2));
     assertFalse("hc: different equal",
-        DataBuilderTestConstants.o1.hashCode() == DataBuilderTestConstants.o2.hashCode());
+        DataBuilderTestConstants.o1.hashCode() == DataBuilderTestConstants.o2
+            .hashCode());
   }
 
   public void testFLNameCompareTo()
@@ -67,14 +72,15 @@ public class TestNameBuilder extends TestCase
 
   public void testFLNameCompare()
   {
-    assertEquals("idential failed", 0,
-        DataBuilderTestConstants.o1.compare(DataBuilderTestConstants.o1, DataBuilderTestConstants.o1));
+    assertEquals("idential failed", 0, DataBuilderTestConstants.o1.compare(
+        DataBuilderTestConstants.o1, DataBuilderTestConstants.o1));
     assertEquals("equal content failed", 0,
-        DataBuilderTestConstants.o4.compare(DataBuilderTestConstants.o4, DataBuilderTestConstants.o4a));
-    assertEquals("less failed", -1,
-        DataBuilderTestConstants.o1.compare(DataBuilderTestConstants.o1, DataBuilderTestConstants.o2));
-    assertEquals("greater failed", 1,
-        DataBuilderTestConstants.o4.compare(DataBuilderTestConstants.o4, DataBuilderTestConstants.o3));
+        DataBuilderTestConstants.o4.compare(DataBuilderTestConstants.o4,
+            DataBuilderTestConstants.o4a));
+    assertEquals("less failed", -1, DataBuilderTestConstants.o1.compare(
+        DataBuilderTestConstants.o1, DataBuilderTestConstants.o2));
+    assertEquals("greater failed", 1, DataBuilderTestConstants.o4.compare(
+        DataBuilderTestConstants.o4, DataBuilderTestConstants.o3));
   }
 
   public void testFLNameCloneCompare()
@@ -83,8 +89,8 @@ public class TestNameBuilder extends TestCase
     final int n = unorderedCopy.length;
     assertEquals("size differs", DataBuilderTestConstants.unordered.length, n);
     for (int i = 0; i < n; i++)
-      assertEquals("entry[" + i + "] differs", DataBuilderTestConstants.unordered[i],
-          unorderedCopy[i]);
+      assertEquals("entry[" + i + "] differs",
+          DataBuilderTestConstants.unordered[i], unorderedCopy[i]);
     assertTrue("array comparision failed",
         Arrays.equals(DataBuilderTestConstants.unordered, unorderedCopy));
   }
@@ -101,19 +107,23 @@ public class TestNameBuilder extends TestCase
 
   public void testUserIDEql()
   {
-    assertEquals("idential failed", DataBuilderTestConstants.uo1, DataBuilderTestConstants.uo1);
-    assertEquals("hc: idential failed", DataBuilderTestConstants.uo1.hashCode(),
+    assertEquals("idential failed", DataBuilderTestConstants.uo1,
+        DataBuilderTestConstants.uo1);
+    assertEquals("hc: idential failed",
+        DataBuilderTestConstants.uo1.hashCode(),
         DataBuilderTestConstants.uo1.hashCode());
 
     assertEquals("equal content failed", DataBuilderTestConstants.uo4,
         DataBuilderTestConstants.uo4a);
-    assertEquals("hc: equal content failed", DataBuilderTestConstants.uo4.hashCode(),
+    assertEquals("hc: equal content failed",
+        DataBuilderTestConstants.uo4.hashCode(),
         DataBuilderTestConstants.uo4a.hashCode());
 
     assertFalse("different equal",
         DataBuilderTestConstants.uo1.equals(DataBuilderTestConstants.uo2));
     assertFalse("hc: different equal",
-        DataBuilderTestConstants.uo1.hashCode() == DataBuilderTestConstants.uo2.hashCode());
+        DataBuilderTestConstants.uo1.hashCode() == DataBuilderTestConstants.uo2
+            .hashCode());
   }
 
   public void testUserIDCompareTo()
@@ -130,31 +140,35 @@ public class TestNameBuilder extends TestCase
 
   public void testUserIDCompare()
   {
-    assertEquals("idential failed", 0,
-        DataBuilderTestConstants.uo1.compare(DataBuilderTestConstants.uo1, DataBuilderTestConstants.uo1));
+    assertEquals("idential failed", 0, DataBuilderTestConstants.uo1.compare(
+        DataBuilderTestConstants.uo1, DataBuilderTestConstants.uo1));
     assertEquals("equal content failed", 0,
-        DataBuilderTestConstants.uo4.compare(DataBuilderTestConstants.uo4, DataBuilderTestConstants.uo4a));
-    assertEquals("less failed", -1,
-        DataBuilderTestConstants.uo1.compare(DataBuilderTestConstants.uo1, DataBuilderTestConstants.uo2));
-    assertEquals("greater failed", 1,
-        DataBuilderTestConstants.uo4.compare(DataBuilderTestConstants.uo4, DataBuilderTestConstants.uo3));
+        DataBuilderTestConstants.uo4.compare(DataBuilderTestConstants.uo4,
+            DataBuilderTestConstants.uo4a));
+    assertEquals("less failed", -1, DataBuilderTestConstants.uo1.compare(
+        DataBuilderTestConstants.uo1, DataBuilderTestConstants.uo2));
+    assertEquals("greater failed", 1, DataBuilderTestConstants.uo4.compare(
+        DataBuilderTestConstants.uo4, DataBuilderTestConstants.uo3));
   }
 
   public void testUserIDCloneCompare()
   {
-    final UserID[] unorderedCopy = DataBuilderTestConstants.uidUnordered.clone();
+    final UserID[] unorderedCopy = DataBuilderTestConstants.uidUnordered
+        .clone();
     final int n = unorderedCopy.length;
-    assertEquals("size differs", DataBuilderTestConstants.uidUnordered.length, n);
+    assertEquals("size differs", DataBuilderTestConstants.uidUnordered.length,
+        n);
     for (int i = 0; i < n; i++)
-      assertEquals("entry[" + i + "] differs", DataBuilderTestConstants.uidUnordered[i],
-          unorderedCopy[i]);
+      assertEquals("entry[" + i + "] differs",
+          DataBuilderTestConstants.uidUnordered[i], unorderedCopy[i]);
     assertTrue("array comparision failed",
         Arrays.equals(DataBuilderTestConstants.uidUnordered, unorderedCopy));
   }
 
   public void testUserIDSort()
   {
-    final UserID[] unorderedCopy = DataBuilderTestConstants.uidUnordered.clone();
+    final UserID[] unorderedCopy = DataBuilderTestConstants.uidUnordered
+        .clone();
     assertFalse("array comparision wrongly succeeded",
         Arrays.equals(DataBuilderTestConstants.uidOrdered, unorderedCopy));
     Arrays.sort(unorderedCopy);

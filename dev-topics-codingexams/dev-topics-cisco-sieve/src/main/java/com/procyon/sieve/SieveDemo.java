@@ -117,7 +117,7 @@ public class SieveDemo
   {
     List<Integer> testDataList = new ArrayList<Integer>(testSize);
     for (int i = 0; i < testSize; i++)
-      testDataList.add((int) Math.min(i % bound + 1, testSize));
+      testDataList.add(Math.min(i % bound + 1, testSize));
 
     Collections.shuffle(testDataList);
 

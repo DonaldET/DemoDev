@@ -112,7 +112,7 @@ public class StubDaoTest
     for (int i = 0; i < testCustomerSize; i++)
     {
       final CustomerID customerID = testCustomerIDs.get(i);
-      final CustomerID libCustomerID = (CustomerID) libraryCustomerIDs.get(i);
+      final CustomerID libCustomerID = libraryCustomerIDs.get(i);
       if (!customerID.equals(libCustomerID))
       {
         dcount++;

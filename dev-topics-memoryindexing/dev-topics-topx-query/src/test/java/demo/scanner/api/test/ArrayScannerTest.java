@@ -57,12 +57,11 @@ public class ArrayScannerTest
   @Before
   public void setUp() throws Exception
   {
-    baseDate = (Long) arrayContext.getBean("test.base.time",
+    baseDate = arrayContext.getBean("test.base.time",
         java.lang.Long.class);
-    game1 = (Game) arrayContext.getBean("test.game.001", Game.class);
-    gameList = (List<Game>) arrayContext.getBean("test.game.list", List.class);
-    scanner = (SortedArrayScanner) arrayContext.getBean(SCANNER_BEAN_NAME,
-        SortedArrayScanner.class);
+    game1 = arrayContext.getBean("test.game.001", Game.class);
+    gameList = arrayContext.getBean("test.game.list", List.class);
+    scanner = arrayContext.getBean(SCANNER_BEAN_NAME, SortedArrayScanner.class);
   }
 
   @After

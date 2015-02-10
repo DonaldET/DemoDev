@@ -472,7 +472,8 @@ public class NameBuilder
       for (String line = br.readLine(); line != null; line = br.readLine())
       {
         final String[] tokens = splitDelims.split(line, 0);
-        Validate.notNull(tokens, "tokens null for " + String.valueOf(line));
+        Validate.notNull(tokens,
+            label + ":tokens null for " + String.valueOf(line));
         if (tokens.length > 0)
           values.add(tokens);
       }

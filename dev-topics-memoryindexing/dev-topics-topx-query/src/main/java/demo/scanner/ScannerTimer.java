@@ -110,14 +110,13 @@ public class ScannerTimer
 
   private void setup()
   {
-    dataBuilder = (GameDataBuilder) queueContext.getBean(GAME_DATA_BUILDER,
-        GameDataBuilder.class);
-    baseDate = (Long) queueContext
-        .getBean(TEST_BASE_TIME, java.lang.Long.class);
-    queueScanner = (QueueScanner) queueContext.getBean(QUEUE_SCANNER_BEAN_NAME,
+    dataBuilder = queueContext
+        .getBean(GAME_DATA_BUILDER, GameDataBuilder.class);
+    baseDate = queueContext.getBean(TEST_BASE_TIME, java.lang.Long.class);
+    queueScanner = queueContext.getBean(QUEUE_SCANNER_BEAN_NAME,
         QueueScanner.class);
-    arrayScanner = (SortedArrayScanner) queueContext.getBean(
-        ARRAY_SCANNER_BEAN_NAME, SortedArrayScanner.class);
+    arrayScanner = queueContext.getBean(ARRAY_SCANNER_BEAN_NAME,
+        SortedArrayScanner.class);
   }
 
   private void warmup(final int x)
@@ -156,11 +155,10 @@ public class ScannerTimer
     dataBuilder.destroy();
 
     if (display)
-      System.out.println("Elapsed: "
-          + String.format("%3d", elapsed)
+      System.out.println("Elapsed: " + String.format("%3d", elapsed)
           + " msec;  Per: "
-          + String.format("%4.3f",
-              scale(1000.0 * (double) elapsed / (double) nCases, 6)) + " usec");
+          + String.format("%4.3f", scale(1000.0 * elapsed / nCases, 6))
+          + " usec");
 
     checkTest(label, x, topList);
 

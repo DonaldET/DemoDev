@@ -48,7 +48,7 @@ public class UserID extends FLName implements Comparable<FLName>,
     if (obj == null)
       return -1;
 
-    int cv = mapToOne(super.compareTo((FLName) obj));
+    int cv = mapToOne(super.compareTo(obj));
     if (cv == 0)
       cv = mapToOne(email.compareTo(obj.email));
 

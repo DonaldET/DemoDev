@@ -43,8 +43,8 @@ public class GameTest
   @Before
   public void setUp() throws Exception
   {
-    early = (Game) gameContext.getBean("test.early.game", Game.class);
-    later = (Game) gameContext.getBean("test.later.game", Game.class);
+    early = gameContext.getBean("test.early.game", Game.class);
+    later = gameContext.getBean("test.later.game", Game.class);
   }
 
   @After

@@ -117,7 +117,7 @@ public class GameBean implements Game, Cloneable
     info.append(";  playedOn: ");
     info.append(playedOn);
     info.append("--[");
-    info.append((long) (playedOn == null ? 0l : playedOn.getTime()));
+    info.append(playedOn == null ? 0l : playedOn.getTime());
     info.append("]");
 
     return info.toString();

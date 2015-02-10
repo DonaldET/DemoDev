@@ -15,6 +15,7 @@ import com.procyon.sieve.searcher.SieveSearcher;
 
 public class NiaveSearcher implements SieveSearcher
 {
+  @Override
   public int[] search(final int repeats, final int[] data, final int topCount)
   {
     int[] copy = data.clone();
@@ -33,6 +34,7 @@ public class NiaveSearcher implements SieveSearcher
     return result;
   }
 
+  @Override
   public String getName()
   {
     return "Sort All First";

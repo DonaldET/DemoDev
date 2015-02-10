@@ -35,6 +35,7 @@ public abstract class AbstractDiagLister implements DiagLister
    * 
    * @return A string listing the elements in a diagonal of the matrix
    */
+  @Override
   public String listDiag(final char[][] matrix, final int row, final int col)
   {
     if (matrix == null)

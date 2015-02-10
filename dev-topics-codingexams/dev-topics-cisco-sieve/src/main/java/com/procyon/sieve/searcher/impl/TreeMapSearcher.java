@@ -30,6 +30,7 @@ public class TreeMapSearcher implements SieveSearcher
     }
   }
 
+  @Override
   public int[] search(final int repeats, final int[] data, final int topCount)
   {
     final Map<Integer, Integer> topPicks = new TreeMap<Integer, Integer>();
@@ -91,6 +92,7 @@ public class TreeMapSearcher implements SieveSearcher
     return ends;
   }
 
+  @Override
   public String getName()
   {
     return "TreeMap - Red-Black Tree";

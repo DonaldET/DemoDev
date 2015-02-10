@@ -57,12 +57,10 @@ public class QueueScannerTest
   @Before
   public void setUp() throws Exception
   {
-    baseDate = (Long) queueContext.getBean("test.base.time",
-        java.lang.Long.class);
-    game1 = (Game) queueContext.getBean("test.game.001", Game.class);
-    gameList = (List<Game>) queueContext.getBean("test.game.list", List.class);
-    scanner = (QueueScanner) queueContext.getBean(SCANNER_BEAN_NAME,
-        QueueScanner.class);
+    baseDate = queueContext.getBean("test.base.time", java.lang.Long.class);
+    game1 = queueContext.getBean("test.game.001", Game.class);
+    gameList = queueContext.getBean("test.game.list", List.class);
+    scanner = queueContext.getBean(SCANNER_BEAN_NAME, QueueScanner.class);
   }
 
   @After

@@ -36,6 +36,7 @@ public class TestStringIndexSearcherImpl extends TestCase
     super(name);
   }
 
+  @Override
   protected void setUp() throws Exception
   {
     super.setUp();
@@ -44,6 +45,7 @@ public class TestStringIndexSearcherImpl extends TestCase
     searcher.setSearchIndex(searchIndex);
   }
 
+  @Override
   protected void tearDown() throws Exception
   {
     searcher = null;

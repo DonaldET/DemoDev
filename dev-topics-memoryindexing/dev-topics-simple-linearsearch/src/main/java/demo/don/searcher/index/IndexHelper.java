@@ -51,8 +51,8 @@ public class IndexHelper
   /**
    * The largest positive value represented in the MAX_DIGITS field
    */
-  public static final int MAX_VALUE = (int) (Math.ceil(Math.pow(
-      ((double) RADIX), (double) MAX_DIGITS))) - 1;
+  public static final int MAX_VALUE = (int) (Math.ceil(Math.pow((RADIX),
+      MAX_DIGITS))) - 1;
 
   /**
    * The character version of the symbol string

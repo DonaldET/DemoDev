@@ -20,6 +20,7 @@ public class RadixSearcher implements SieveSearcher
     this.bound = bound;
   }
 
+  @Override
   public int[] search(final int repeats, final int[] data, final int topCount)
   {
     byte[] flags = new byte[bound + 1];
@@ -38,6 +39,7 @@ public class RadixSearcher implements SieveSearcher
     return results;
   }
 
+  @Override
   public String getName()
   {
     return "Radix Search";

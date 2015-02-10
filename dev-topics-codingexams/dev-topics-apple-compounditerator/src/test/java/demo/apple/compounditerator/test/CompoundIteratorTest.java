@@ -211,7 +211,7 @@ public class CompoundIteratorTest extends TestCase
     int count = 0;
     while (shouldCallHasNext ? iter.hasNext() : (count < numInts))
     {
-      final Integer integerFromIterator = (Integer) iter.next();
+      final Integer integerFromIterator = iter.next();
       assertEquals("Unexpected value returned from CompoundIterator; "
           + "test data was: " + intMatrixToString(testData) + ". ",
           new Integer(count++), integerFromIterator);

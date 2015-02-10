@@ -79,8 +79,8 @@ public abstract class CheckStrategy
   {
     int i = 0;
     for (final String fn : getTestFiles())
-      checkATestFile(getTestFilesExt()[i++], es, fn,
-          ParserHelperTest.getJavaTempDir(), getTestSrcDir(), getTestStdDir());
+      checkATestFile(getTestFilesExt()[i++], es, fn, getTestSrcDir(),
+          getTestStdDir());
   }
 
   public static void checkDirAccess(final File dirFile)
@@ -94,8 +94,7 @@ public abstract class CheckStrategy
   }
 
   public static void checkATestFile(final String ext, final ExtractStrategy es,
-      final String testFileBasicName, final File tempDir, final String srcDir,
-      final String stdDir)
+      final String testFileBasicName, final String srcDir, final String stdDir)
   {
     final File standardFile = new File(stdDir, testFileBasicName + ".txt");
     final String standard = FileUtils.collectTrimmedFileData(standardFile)

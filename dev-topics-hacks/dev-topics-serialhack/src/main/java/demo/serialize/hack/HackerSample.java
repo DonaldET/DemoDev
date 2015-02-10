@@ -1,10 +1,11 @@
 /*
- Copyright (c) 2014. Donald Trummell. All Rights Reserved.
- Permission to use, copy, modify, and distribute this software and its documentation
- for educational, research, and not-for-profit purposes, without fee and without
- a signed licensing agreement, is hereby granted, provided that the above
- copyright notice, and this paragraph, appear in all copies, modifications, and
- distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
  */
 package demo.serialize.hack;
 
@@ -86,7 +87,7 @@ public class HackerSample
       int primeIdx = seedIdx;
       for (int i = 0; i < 3; i++)
       {
-        key *= (long) primes[primeIdx];
+        key *= primes[primeIdx];
         primeIdx += 2;
         if (primeIdx >= primes.length)
           primeIdx = primeIdx % primes.length;

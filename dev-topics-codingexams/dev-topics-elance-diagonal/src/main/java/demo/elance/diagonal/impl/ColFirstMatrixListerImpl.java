@@ -24,6 +24,7 @@ public class ColFirstMatrixListerImpl extends AbstractMatrixLister implements
   {
   }
 
+  @Override
   protected String matrixListerImpl(final char[][] matrix)
   {
     final DiagLister diagLister = getDiagLister();

@@ -34,7 +34,7 @@ public class RightShiftSequenceGenerator implements SequenceGenerator
   @Override
   public float correctSum()
   {
-    return (float) (2.0 * (double) element * (double) initialFactor * (1.0 - 1.0 / Math
+    return (float) (2.0 * element * initialFactor * (1.0 - 1.0 / Math
         .pow(2.0, iteration)));
   }
 

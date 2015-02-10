@@ -46,6 +46,7 @@ public class SearchNativePerformanceTest extends AbstractPerformanceChecker
     searchNat = null;
   }
 
+  @SuppressWarnings("cast")
   @Test
   public void testInstantiation()
   {

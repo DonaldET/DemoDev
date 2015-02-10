@@ -52,7 +52,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  *       . . .};
  *   searchIndex[2210438]: {|john|adelson|john.adelson_0@gmail.com{000|aaron|adelson|aaron.adelson_0@gmail.com{001|abigail|adelson|abigail.adelson_0@aol.com{002|adalyn|adelson|adalyn.adelson_0@hotmail.com{003|adam|adelson|adam.a . . .|}
  * ]
- *
+ * 
  * *** Single name Timing using Like
  * 5 non-repeating tests using Like, selected from 278 test names, and searched in 46035 users
  * Single Test[0], pattern 'aaron' got 20 matches in 0 milliseconds
@@ -60,7 +60,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * Single Test[2], pattern 'gage' got 20 matches in 0 milliseconds
  * Single Test[3], pattern 'kira' got 20 matches in 0 milliseconds
  * Single Test[4], pattern 'parker' got 20 matches in 0 milliseconds
- *
+ * 
  * *** Multiple names Timing using Like
  * Repeating tests for 278 test names in 46035 users
  * Multi-run[0] = [0.447, 0, 16, 6.722]
@@ -68,7 +68,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * Multi-run[2] = [0.447, 0, 16, 6.722]
  * Multi-run[3] = [0.396, 0, 16, 6.067]
  * Multi-run[4] = [0.393, 0, 16, 5.958]
- *
+ * 
  * *** Multiple no-match names Timing (failed search) using Like
  * Repeating tests for 278 test names in 46035 users
  * Multi-run[0] = [3.421, 0, 16, 41.683]
@@ -76,7 +76,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * Multi-run[2] = [3.425, 0, 16, 41.77]
  * Multi-run[3] = [3.375, 0, 16, 41.206]
  * Multi-run[4] = [3.367, 0, 16, 41.24]
- *
+ * 
  * *** Single name Timing using Contains
  * 5 non-repeating tests using Contains, selected from 278 test names, and searched in 46035 users
  * Single Test[0], pattern 'aaron' got 20 matches in 0 milliseconds
@@ -84,7 +84,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * Single Test[2], pattern 'gage' got 20 matches in 0 milliseconds
  * Single Test[3], pattern 'kira' got 20 matches in 0 milliseconds
  * Single Test[4], pattern 'parker' got 20 matches in 0 milliseconds
- *
+ * 
  * *** Multiple names Timing using Contains
  * Repeating tests for 278 test names in 46035 users
  * Multi-run[0] = [0.903, 0, 16, 13.254]
@@ -92,7 +92,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * Multi-run[2] = [0.9, 0, 16, 13.257]
  * Multi-run[3] = [0.896, 0, 16, 13.151]
  * Multi-run[4] = [0.9, 0, 16, 13.257]
- *
+ * 
  * *** Multiple no-match names Timing (failed search) using Contains
  * Repeating tests for 278 test names in 46035 users
  * Multi-run[0] = [8.083, 0, 17, 60.925]
@@ -100,7 +100,7 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * Multi-run[2] = [8.029, 0, 17, 60.985]
  * Multi-run[3] = [8.105, 0, 22, 60.986]
  * Multi-run[4] = [8.231, 0, 16, 15.12]
- *
+ * 
  * *** Done!
  * </code>
  * </pre>
@@ -266,9 +266,9 @@ public class IndexRunner
       sum2 += time4One * time4One;
     }
     final long elapsed = System.currentTimeMillis() - start;
-    final double trials = (double) patterns.length;
-    final double overheadMean = (double) elapsed / trials;
-    double u = (double) sum / trials;
+    final double trials = patterns.length;
+    final double overheadMean = elapsed / trials;
+    double u = sum / trials;
     double delta = appRound(overheadMean - u, 10000.0);
 
     Validate.isTrue(delta < maxTolerance,
@@ -277,7 +277,7 @@ public class IndexRunner
             + ", delta is ", delta);
 
     return new Number[] { appRound(u, 1000.0), min, max,
-        appRound((double) sum2 / trials - u * u, 1000.0) };
+        appRound(sum2 / trials - u * u, 1000.0) };
   }
 
   private double appRound(double x, double scale)

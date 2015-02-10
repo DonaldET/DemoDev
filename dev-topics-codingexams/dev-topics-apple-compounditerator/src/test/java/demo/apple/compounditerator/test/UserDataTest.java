@@ -44,6 +44,7 @@ public class UserDataTest extends TestCase
   {
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   @Before
   public void setUp() throws Exception
@@ -51,6 +52,7 @@ public class UserDataTest extends TestCase
     userData = (UserData<Integer>) context.getBean(TEST_UDATA_NAME);
   }
 
+  @Override
   @After
   public void tearDown() throws Exception
   {
@@ -85,7 +87,7 @@ public class UserDataTest extends TestCase
       int k = 0;
       while (iterators[i].hasNext())
       {
-        assertEquals("iterator[" + i + "]{" + k + "} incorrect", (int) (k + 1),
+        assertEquals("iterator[" + i + "]{" + k + "} incorrect", k + 1,
             iterators[i].next().intValue());
         k++;
       }

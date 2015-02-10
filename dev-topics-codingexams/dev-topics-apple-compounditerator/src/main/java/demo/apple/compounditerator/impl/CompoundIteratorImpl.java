@@ -1,10 +1,11 @@
 /*
- Copyright (c) 2014. Donald Trummell. All Rights Reserved.
- Permission to use, copy, modify, and distribute this software and its documentation
- for educational, research, and not-for-profit purposes, without fee and without
- a signed licensing agreement, is hereby granted, provided that the above
- copyright notice, and this paragraph, appear in all copies, modifications, and
- distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
+ * Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission to use,
+ * copy, modify, and distribute this software and its documentation for
+ * educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above
+ * copyright notice, and this paragraph, appear in all copies, modifications,
+ * and distributions. Contact dtrummell@gmail.com for commercial licensing
+ * opportunities.
  */
 package demo.apple.compounditerator.impl;
 
@@ -117,6 +118,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
   /**
    * @see demo.apple.compounditerator.CompoundIterator#hasNext()
    */
+  @Override
   public boolean hasNext()
   {
     if (currentIterator == null)
@@ -135,15 +137,13 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
       }
       return hasNext;
     }
-    else
-    {
-      return false;
-    }
+    return false;
   }
 
   /**
    * @see demo.apple.compounditerator.CompoundIterator#next()
    */
+  @Override
   public E next()
   {
     if (hasNext())
@@ -165,6 +165,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
   /**
    * @see demo.apple.compounditerator.CompoundIterator#remove()
    */
+  @Override
   public void remove() throws UnsupportedOperationException
   {
     throw new UnsupportedOperationException(getClass().getName()
@@ -173,6 +174,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
 
   // ---------------------------------------------------------------------------
 
+  @Override
   public void setListOfIterators(final Iterator<E>[] iterators)
   {
     if (iterators == null)
@@ -195,6 +197,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
   /**
    * @see demo.apple.compounditerator.CompoundIterator#getCurrentIteratorIndex()
    */
+  @Override
   public int getIteratorCount()
   {
     return listOfIterators.size();
@@ -203,6 +206,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
   /**
    * @see demo.apple.compounditerator.CompoundIterator#getCurrentIteratorIndex()
    */
+  @Override
   public int getCurrentIteratorIndex()
   {
     return currentIteratorIndex;
@@ -211,6 +215,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
   /**
    * @see demo.apple.compounditerator.CompoundIterator#getCurrentIterator()
    */
+  @Override
   public Iterator<E> getCurrentIterator()
   {
     return currentIterator;

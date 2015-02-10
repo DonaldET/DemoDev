@@ -33,6 +33,7 @@ public class SieveSearchRunnerImpl implements SieveSearchRunner
   {
   }
 
+  @Override
   public void init(final int repeats, final int[] data, final int topCount,
       final SieveSearcher searcher)
   {
@@ -54,6 +55,7 @@ public class SieveSearchRunnerImpl implements SieveSearchRunner
     return;
   }
 
+  @Override
   public int[] runTest()
   {
     Validate.isTrue(initialized, "uninitialized");
@@ -72,21 +74,25 @@ public class SieveSearchRunnerImpl implements SieveSearchRunner
     return topValues;
   }
 
+  @Override
   public int getRepeats()
   {
     return repeats;
   }
 
+  @Override
   public int[] getData()
   {
     return data;
   }
 
+  @Override
   public int getTopCount()
   {
     return topCount;
   }
 
+  @Override
   public SieveSearcher getSearcher()
   {
     return searcher;

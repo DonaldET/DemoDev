@@ -39,6 +39,7 @@ public class DiagListerImplTests extends TestCase
   /**
    * @throws java.lang.Exception
    */
+  @Override
   public void setUp() throws Exception
   {
     diagLister = new DiagListerImpl();
@@ -47,6 +48,7 @@ public class DiagListerImplTests extends TestCase
   /**
    * @throws java.lang.Exception
    */
+  @Override
   public void tearDown() throws Exception
   {
     diagLister = null;

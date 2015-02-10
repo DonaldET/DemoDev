@@ -8,18 +8,20 @@ public class TestIndexHelper extends TestCase
   private static final int TEST_RADIX = 62;
   private static final int TEST_MAX_DIGITS = 3;
   private static final int TEST_MAX_VALUE = (int) (Math.ceil(Math.pow(
-      ((double) IndexHelper.RADIX), (double) IndexHelper.MAX_DIGITS))) - 1;
+      (IndexHelper.RADIX), IndexHelper.MAX_DIGITS))) - 1;
 
   public TestIndexHelper(final String name)
   {
     super(name);
   }
 
+  @Override
   protected void setUp() throws Exception
   {
     super.setUp();
   }
 
+  @Override
   protected void tearDown() throws Exception
   {
     super.tearDown();

@@ -27,6 +27,7 @@ public class BinaryArraySearcher implements SieveSearcher
     }
   }
 
+  @Override
   public int[] search(final int repeats, final int[] data, final int topCount)
   {
     final int[] topPicks = new int[topCount];
@@ -71,6 +72,7 @@ public class BinaryArraySearcher implements SieveSearcher
     return topPicks;
   }
 
+  @Override
   public String getName()
   {
     return "Sorted Array / Binary Search";
