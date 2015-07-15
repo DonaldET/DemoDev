@@ -112,10 +112,85 @@ public class QuadSolver
       final float tolerance)
   {
     final List<Float> betterRoots = new ArrayList<Float>();
-    betterRoots.add(improveOneRoot(r1Inp, tolerance));
-    betterRoots.add(improveOneRoot(r2Inp, tolerance));
+
+    final float r1 = improveOneRoot(r1Inp, tolerance);
+    float r2 = improveOneRoot(r2Inp, tolerance);
+    if (computeEPS(r1, r2) < tolerance && r1 != 0.0)
+    {
+      float r2Est = (c / a) / r1;
+      float yR2 = evaluate(r2Est);
+      if (computeEPS((float) 0.0, yR2) < tolerance)
+        r2 = r2Est;
+      else
+      {
+        final float bound = (float) 1.0;
+        r2 = bisectionImprove(r2Est, tolerance / (float) 16.0, r2Inp - bound,
+            r2Inp + bound);
+      }
+    }
+
+    betterRoots.add(r1);
+    betterRoots.add(r2);
 
     return betterRoots;
+  }
+
+  private float bisectionImprove(final float rInp, final float tolerance,
+      final float lowBound, final float highBound)
+  {
+    float lft = Math.min(lowBound, highBound);
+    float rgt = Math.max(lowBound, highBound);
+    float mid = rInp;
+    float eps = rgt - lft;
+
+    final int biLimit = limit;
+    int itr = 1;
+    int toLowerHalf = 0;
+    int toUpperHalf = 0;
+
+    while (eps >= tolerance)
+    {
+      if (itr >= biLimit)
+      {
+        System.err.println("\nWARNING: no bisection convergence after "
+            + biLimit + " iterations");
+        System.err.println("Input interval : [" + lowBound + ", " + highBound
+            + "]");
+        System.err.println("Output interval: [" + lft + ", " + rgt + "]");
+        System.err.println("To Upper: " + toUpperHalf + ";  To Lower: "
+            + toLowerHalf);
+
+        return rInp;
+      }
+
+      mid = (lft + rgt) / (float) 2.0;
+      float midY = evaluate(mid);
+      float rgtY = evaluate(rgt);
+
+      if (midY * rgtY >= 0.0)
+      {
+        rgt = mid;
+        toUpperHalf++;
+      }
+      else
+      {
+        lft = mid;
+        toLowerHalf++;
+      }
+
+      eps = rgt - lft;
+
+      itr++;
+    }
+
+    mid = (lft + rgt) / (float) 2.0;
+    
+    // System.err
+    // .println("\nBinary Est -- Input: " + rInp + ";  ITR: " + itr
+    // + ";  eps: " + eps + " or [" + lft + ", : " + rgt + "];  value: "
+    // + mid);
+
+    return mid;
   }
 
   //
@@ -139,7 +214,7 @@ public class QuadSolver
     {
       if (itr >= limit)
         throw new IllegalStateException("no convergence after " + itr
-            + " iterations, EPS: " + epsR);
+            + " iterations, EPS R: " + epsR);
 
       r = rNew;
       y = yNew;
