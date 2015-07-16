@@ -10,6 +10,7 @@
 package demo.algo.quadsolve;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,7 +20,6 @@ import java.util.List;
  */
 public class QuadSolver
 {
-
   private final float a;
   private final float b;
   private final float c;
@@ -67,8 +67,10 @@ public class QuadSolver
    * <pre>
    * DESC = Sqrt( b * b - 4 * a * c)
    * root 1 = (-b + DESC) / (2 * a)
-   * root 1 = (-b - DESC) / (2 * a)
+   * root 2 = (-b - DESC) / (2 * a)
    * </pre>
+   * 
+   * Roots returned are first sorted low to high.
    * 
    * @return
    */
@@ -79,6 +81,8 @@ public class QuadSolver
     final float twoA = a + a;
     result.add((-b - discriminent) / twoA);
     result.add((-b + discriminent) / twoA);
+
+    Collections.sort(result);
 
     return result;
   }
@@ -131,6 +135,7 @@ public class QuadSolver
 
     betterRoots.add(r1);
     betterRoots.add(r2);
+    Collections.sort(betterRoots);
 
     return betterRoots;
   }
@@ -184,7 +189,7 @@ public class QuadSolver
     }
 
     mid = (lft + rgt) / (float) 2.0;
-    
+
     // System.err
     // .println("\nBinary Est -- Input: " + rInp + ";  ITR: " + itr
     // + ";  eps: " + eps + " or [" + lft + ", : " + rgt + "];  value: "
@@ -236,8 +241,8 @@ public class QuadSolver
   public static float computeEPS(final float trueValue,
       final float observedValue)
   {
-    return (trueValue == 0.0) ? Math.abs(trueValue - observedValue) : Math
-        .abs(trueValue - observedValue) / Math.abs(trueValue);
+    final float delta = Math.abs(trueValue - observedValue);
+    return (trueValue == 0.0) ? delta : (delta / Math.abs(trueValue));
   }
 
   // -------------------------------------------------------------------------

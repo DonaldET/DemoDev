@@ -9,6 +9,7 @@
  */
 package demo.algo.quadsolve.test;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.After;
@@ -103,7 +104,7 @@ public class QuadTest
 
     // Verifies roots are inaccurate
     final List<Float> roots = getRoots(qs);
-    final StringBuilder msg = verifyRootsAreZerosUnchecked(
+    final StringBuilder msg = verifyRootsAreZerosUnchecked(false,
         "CatastrophicCancellation", qs, roots.get(0).floatValue(), roots.get(1)
             .floatValue(), QuadSolver.ACCURACY_FACTOR);
     if (msg.length() < 1)
@@ -113,47 +114,142 @@ public class QuadTest
   @Test
   public void testIteration()
   {
+    //
+    // Accuracy for iterative solution
+
+    final float accuracyFactor = QuadSolver.ACCURACY_FACTOR;
+
     final QuadSolver qs = getPerturbedQS();
     final List<Float> roots = getRoots(qs);
+    // Both roots bad, differs by 0.0390625
+    verifyRootsAreZeros("normal quad root", qs, roots.get(0), roots.get(1),
+        (float) 0.04);
 
-    final float improveTolerance = QuadSolver.ACCURACY_FACTOR;
-    final List<Float> improvedRoots = getIterativeRoots(qs, roots.get(0)
-        .floatValue(), roots.get(1).floatValue(), improveTolerance);
-    
-    // Root 2 still does not work well, using 0.0078125
+    final List<Float> improvedRoots = getIterativeRoots(qs,
+        (float) (accuracyFactor / 8.0));
+
+    //
+    // Verify improved roots differ from original roots
+    checkRootsDiffer(accuracyFactor, roots, improvedRoots);
+
+    // Root 2 still does not work well, using 0.0390625
     // verifyRootsAreZeros("Iteration", qs, improvedRoots.get(0),
     // improvedRoots.get(1), QuadSolver.ACCURACY_FACTOR);
     verifyRootsAreZeros("Iteration", qs, improvedRoots.get(0),
-        improvedRoots.get(1), (float) 0.008);
+        improvedRoots.get(1), (float) 0.04);
   }
 
   // -------------------------------------------------------------------------
 
+  /**
+   * We expect one or more roots to be different
+   * 
+   * @param accuracyFactor
+   * @param roots
+   * @param improvedRoots
+   */
+  private void checkRootsDiffer(final float accuracyFactor,
+      final List<Float> roots, final List<Float> improvedRoots)
+  {
+    boolean echo = false;
+    final StringBuilder msg = new StringBuilder();
+    for (int i = 0; i < roots.size(); i++)
+    {
+      final float root = roots.get(i);
+      final float improvedRoot = improvedRoots.get(i);
+      final float eps = QuadSolver.computeEPS(root, improvedRoot);
+
+      if (eps > accuracyFactor)
+      {
+        if (msg.length() > 0)
+          msg.append("\n");
+
+        msg.append("Comparison of root[" + i + "] -- eps: ");
+        msg.append(eps);
+        msg.append(";  rq: ");
+        msg.append(root);
+        msg.append(";  ri: ");
+        msg.append(improvedRoot);
+
+        if (echo)
+          System.err.println(msg.toString());
+      }
+      else
+      {
+        Assert.assertEquals("perturbed vs iterative root[" + i + "] differs",
+            roots.get(i), improvedRoots.get(i), accuracyFactor);
+      }
+    }
+    Assert.assertTrue("no change in roots", msg.length() > 0);
+  }
+
+  /**
+   * Get equation roots using standard solution
+   * 
+   * @param qs
+   * 
+   * @return the roots for the stored equation
+   */
   private List<Float> getRoots(final QuadSolver qs)
   {
     final List<Float> roots = qs.solve();
     Assert.assertNotNull("null root array returned", roots);
     Assert.assertEquals("wrong size", 2, roots.size());
-
     Assert.assertNotNull("r1 null", roots.get(0));
     Assert.assertNotNull("r2 null", roots.get(1));
 
+    Collections.sort(roots);
+
     return roots;
+  }
+
+  /**
+   * Calculate iterative roots
+   * 
+   * @param qs
+   * @param tolerance
+   * 
+   * @return the alternative iterative roots
+   */
+  private List<Float> getIterativeRoots(final QuadSolver qs,
+      final float tolerance)
+  {
+    final List<Float> roots = getRoots(qs);
+
+    final float r1 = roots.get(0).floatValue();
+    final float r2 = roots.get(1).floatValue();
+
+    //
+    // Finds differing roots and converges
+    final List<Float> iterativeRoots = qs.improve(r1, r2, tolerance);
+
+    //
+    // Does not converge
+    // final List<Float> iterativeRoots = qs.improve(r2, r1, tolerance);
+
+    Assert.assertNotNull("iterative null", iterativeRoots);
+    Assert.assertEquals("iterative root count bad", roots.size(),
+        iterativeRoots.size());
+
+    Collections.sort(iterativeRoots);
+
+    return iterativeRoots;
   }
 
   private StringBuilder verifyRootsAreZeros(final String label,
       final QuadSolver qs, final float r1, final float r2, final float tolerance)
   {
-    final StringBuilder msg = verifyRootsAreZerosUnchecked(label, qs, r1, r2,
-        tolerance);
+    final StringBuilder msg = verifyRootsAreZerosUnchecked(true, label, qs, r1,
+        r2, tolerance);
     if (msg.length() > 0)
       Assert.fail("Solution failed :: " + msg.toString());
 
     return msg;
   }
 
-  private StringBuilder verifyRootsAreZerosUnchecked(final String label,
-      final QuadSolver qs, final float r1, final float r2, final float tolerance)
+  private StringBuilder verifyRootsAreZerosUnchecked(final boolean echo,
+      final String label, final QuadSolver qs, final float r1, final float r2,
+      final float tolerance)
   {
     StringBuilder msg = new StringBuilder();
     float yR1 = qs.evaluate(r1);
@@ -164,16 +260,25 @@ public class QuadTest
     float yR2 = qs.evaluate(r2);
     float epsR2 = QuadSolver.computeEPS((float) 0.0, yR2);
     if (epsR2 > tolerance)
+    {
       msg.append(" IMP_R2[" + r2 + "]: " + yR2 + " differs from 0.0 by "
           + epsR2 + ";  tolerance: " + tolerance);
 
-    System.err.println("\n" + label + " -- a: " + qs.getA() + "; b: "
-        + qs.getB() + "; c: " + qs.getC() + ";    R1: " + r1 + " [" + epsR1
-        + "],    R2: " + r2 + " [" + epsR2 + "]");
+      if (echo)
+        System.err.println("\n" + label + " -- a: " + qs.getA() + "; b: "
+            + qs.getB() + "; c: " + qs.getC() + ";    R1: " + r1 + " [" + epsR1
+            + "],    R2: " + r2 + " [" + epsR2 + "]");
+    }
 
     return msg;
   }
 
+  /**
+   * Generate an equation close to the original, but with different coefficients
+   * and therefore different roots
+   * 
+   * @return the perturbed quad solver with the altered coefficients
+   */
   private QuadSolver getPerturbedQS()
   {
     final float accuracyFactor = QuadSolver.ACCURACY_FACTOR;
@@ -199,15 +304,5 @@ public class QuadTest
     // tolerance);
 
     return qs;
-  }
-
-  private List<Float> getIterativeRoots(final QuadSolver qs, final float r1,
-      final float r2, final float tolerance)
-  {
-    final List<Float> improvedRoots = qs.improve(r1, r2, tolerance);
-    Assert.assertNotNull("improvedRoots null", improvedRoots);
-    Assert.assertEquals("improvedRoots count differs", 2, improvedRoots.size());
-
-    return improvedRoots;
   }
 }
