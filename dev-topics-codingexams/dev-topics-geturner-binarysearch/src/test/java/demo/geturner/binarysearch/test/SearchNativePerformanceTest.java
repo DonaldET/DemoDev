@@ -98,7 +98,7 @@ public class SearchNativePerformanceTest extends AbstractPerformanceChecker
         faster >= -0.05);
 
     final double expectedfaster = 0.35;
-    final double allowedVariance = 0.25;
+    final double allowedVariance = 0.30;
     final double actualVariance = round2Places(Math
         .abs(faster - expectedfaster));
 
