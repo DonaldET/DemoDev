@@ -33,4 +33,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<groupId>demodev.topics</groupId>
 </project>
