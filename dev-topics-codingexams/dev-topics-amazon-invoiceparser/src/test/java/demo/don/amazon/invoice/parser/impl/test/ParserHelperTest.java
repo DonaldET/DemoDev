@@ -114,11 +114,9 @@ public class ParserHelperTest
     if (data == null)
       throw new IllegalArgumentException("data null");
 
-    boolean status = false;
-    FileOutputStream fos = null;
-    try
+    boolean status = false;   
+    try (FileOutputStream fos = new FileOutputStream(testFile);)
     {
-      fos = new FileOutputStream(testFile);
       final byte[] bytes = data.getBytes();
       if (bytes != null && bytes.length > 0)
         fos.write(bytes);
@@ -134,18 +132,6 @@ public class ParserHelperTest
     {
       Assert.fail("error writing " + testFile.getAbsolutePath() + "; "
           + ioEx.getMessage());
-    }
-    finally
-    {
-      if (fos != null)
-        try
-        {
-          fos.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
     }
 
     return status;

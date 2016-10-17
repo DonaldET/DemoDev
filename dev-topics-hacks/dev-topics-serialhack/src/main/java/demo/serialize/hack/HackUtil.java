@@ -42,15 +42,10 @@ public class HackUtil implements Serializable
 
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     try
-    {
-      ObjectOutput output = new ObjectOutputStream(bos);
-      try
+    {     
+      try (ObjectOutput output = new ObjectOutputStream(bos);)
       {
         output.writeObject(obj);
-      }
-      finally
-      {
-        output.close();
       }
     }
     catch (final IOException ex)
@@ -71,18 +66,11 @@ public class HackUtil implements Serializable
       throw new IllegalArgumentException("instance empty");
 
     Serializable result = null;
-    final ByteArrayInputStream bis = new ByteArrayInputStream(instance);
-    try
+    try (ByteArrayInputStream bis = new ByteArrayInputStream(instance))
     {
-      ObjectInput input = new ObjectInputStream(bis);
-      try
+      try (ObjectInput input = new ObjectInputStream(bis);)
       {
         result = (Serializable) input.readObject();
-      }
-      finally
-      {
-        if (input != null)
-          input.close();
       }
     }
     catch (final ClassNotFoundException ex)
@@ -93,19 +81,6 @@ public class HackUtil implements Serializable
     catch (final IOException ex)
     {
       throw new IllegalStateException("I/O error: " + ex.getMessage(), ex);
-    }
-    finally
-    {
-      if (bis != null)
-        try
-        {
-          bis.close();
-        }
-        catch (final IOException ioEx)
-        {
-          throw new IllegalStateException("I/O error closing input stream, "
-              + ioEx.getMessage(), ioEx);
-        }
     }
 
     return result;

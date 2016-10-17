@@ -53,13 +53,13 @@ public class SerialRunner implements Launch
 
     final List<Throwable> exceptions = Collections
         .synchronizedList(new ArrayList<Throwable>());
-
-    if (trace)
+    
+    if (isTrace())
       System.err.println("++++ Serial: " + "Starting . . .");
 
     try
     {
-      if (trace)
+      if (isTrace())
         System.err.println("++++ Serial: " + "wrap-run");
       wrapAndRun(runnables, exceptions);
     }
@@ -119,7 +119,7 @@ public class SerialRunner implements Launch
       {
         try
         {
-          if (trace)
+          if (isTrace())
             System.err.println("++++ Serial - Runnable <"
                 + Thread.currentThread().getName() + ">: Running");
           submittedRunnable.run();
@@ -130,7 +130,7 @@ public class SerialRunner implements Launch
         }
         finally
         {
-          if (trace)
+          if (isTrace())
             System.err.println("++++ Serial - Runnable <"
                 + Thread.currentThread().getName() + ">: done");
         }

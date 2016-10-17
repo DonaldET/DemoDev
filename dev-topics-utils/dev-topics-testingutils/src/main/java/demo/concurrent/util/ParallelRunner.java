@@ -198,7 +198,7 @@ public class ParallelRunner implements Launch
       @Override
       public void run()
       {
-        if (trace)
+        if (isTrace())
           System.err
               .println("++++ Parallel - Runnable <"
                   + Thread.currentThread().getName()
@@ -206,14 +206,14 @@ public class ParallelRunner implements Launch
         allReady.countDown(); // Count this thread as running
         try
         {
-          if (trace)
+          if (isTrace())
             System.err
                 .println("++++ Parallel - Runnable <"
                     + Thread.currentThread().getName()
                     + ">: waiting init complete");
           initDone.await(); // Block run until pool is created
 
-          if (trace)
+          if (isTrace())
             System.err.println("++++ Parallel - Runnable <"
                 + Thread.currentThread().getName() + ">: submitting");
           submittedRunnable.run();
@@ -224,7 +224,7 @@ public class ParallelRunner implements Launch
         }
         finally
         {
-          if (trace)
+          if (isTrace())
             System.err.println("++++ Parallel - Runnable <"
                 + Thread.currentThread().getName()
                 + ">: counting down thread as done");

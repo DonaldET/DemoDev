@@ -1,9 +1,0 @@
-
-apply plugin: 'war'
-
-description = 'Safe Collection Service War'
-dependencies {
-    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version:'2.10.1'
-    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version:'2.10.1'
-  compile project(':demodev-topics-jerseyservices-parent:demodev-topics-safecollection')
-}

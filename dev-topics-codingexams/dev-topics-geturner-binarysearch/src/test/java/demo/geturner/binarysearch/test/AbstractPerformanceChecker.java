@@ -90,13 +90,13 @@ public abstract class AbstractPerformanceChecker
     return probs;
   }
 
-  protected double round2Places(double x)
+  protected double round2Places(final double x)
   {
     final double scale2places = 100.0;
 
     final double signum = Math.signum(x);
-    x = signum * (Math.rint(Math.abs(x * scale2places) + 0.5) / scale2places);
+    final double y = signum * (Math.rint(Math.abs(x * scale2places) + 0.5) / scale2places);
 
-    return x;
+    return y;
   }
 }

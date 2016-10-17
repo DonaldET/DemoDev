@@ -1,8 +1,0 @@
-
-description = 'Cisco - Sieve Low Values'
-dependencies {
-    compile group: 'commons-lang', name: 'commons-lang', version:'2.3'
-    runtime group: 'log4j', name: 'log4j', version:'1.2.16'
-    runtime group: 'org.slf4j', name: 'slf4j-api', version:'1.7.7'
-    runtime group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.7'
-}

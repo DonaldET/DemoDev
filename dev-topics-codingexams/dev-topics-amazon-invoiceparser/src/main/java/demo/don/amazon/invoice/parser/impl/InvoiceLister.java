@@ -129,12 +129,8 @@ public class InvoiceLister
 
     boolean status = true;
 
-    InputStreamReader isr = null;
-    BufferedReader br = null;
-    try
+    try (InputStreamReader isr = new InputStreamReader(srcStream); BufferedReader br = new BufferedReader(isr, 1024))
     {
-      isr = new InputStreamReader(srcStream);
-      br = new BufferedReader(isr, 1024);
       int count = 0;
       String line = null;
       do
@@ -158,26 +154,13 @@ public class InvoiceLister
       }
       while (line != null);
     }
-    finally
+    catch (IOException ioEx)
     {
-      if (br != null)
-        try
-        {
-          br.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
-      else if (isr != null)
-        try
-        {
-          isr.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
+      status = false;
+      final String msg = " **** Input file " + inputLabel
+          + " failed during close \n      {"
+          + ioEx.getClass().getSimpleName() + "};  Msg: " + ioEx.getMessage();
+      System.err.println(ERR_FLAG + msg);
     }
 
     return status;

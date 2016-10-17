@@ -53,10 +53,8 @@ public class FileUtilsTest
   public void testInputLocation()
   {
     int data = -1;
-    FileInputStream fis = null;
-    try
+    try (FileInputStream fis = new FileInputStream(TEST_SRC_PATH);)
     {
-      fis = new FileInputStream(TEST_SRC_PATH);
       data = fis.read();
     }
     catch (FileNotFoundException fnfEx)
@@ -66,18 +64,6 @@ public class FileUtilsTest
     catch (IOException ioEx)
     {
       Assert.fail("input read error: " + ioEx.getMessage());
-    }
-    finally
-    {
-      if (fis != null)
-        try
-        {
-          fis.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
     }
 
     Assert.assertFalse("test file empty", -1 == data);
@@ -87,10 +73,8 @@ public class FileUtilsTest
   public void testStandardLocation()
   {
     int data = -1;
-    FileInputStream fis = null;
-    try
+    try (FileInputStream fis = new FileInputStream(TEST_STD__PATH);)
     {
-      fis = new FileInputStream(TEST_STD__PATH);
       data = fis.read();
     }
     catch (FileNotFoundException fnfEx)
@@ -100,18 +84,6 @@ public class FileUtilsTest
     catch (IOException ioEx)
     {
       Assert.fail("input read error: " + ioEx.getMessage());
-    }
-    finally
-    {
-      if (fis != null)
-        try
-        {
-          fis.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
     }
 
     Assert.assertFalse("test file empty", -1 == data);

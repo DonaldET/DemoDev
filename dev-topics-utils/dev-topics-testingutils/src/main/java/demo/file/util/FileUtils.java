@@ -84,14 +84,10 @@ public class FileUtils
 
     boolean status = true;
 
-    InputStream istr = null;
-    InputStreamReader isr = null;
-    BufferedReader br = null;
-    try
+    try (InputStream istr = new FileInputStream(inputFile);
+    	   InputStreamReader isr = new InputStreamReader(istr);		 
+    		 BufferedReader br = new BufferedReader(isr, 1024);)
     {
-      istr = new FileInputStream(inputFile);
-      isr = new InputStreamReader(istr);
-      br = new BufferedReader(isr, 1024);
       int count = 0;
       String line = null;
       do
@@ -126,27 +122,11 @@ public class FileUtils
       System.err.println(ERR_FLAG + "Unable to find file "
           + inputFile.getAbsolutePath() + "\n" + ERR_FLAG + fnfEx.getMessage());
     }
-    finally
+    catch (IOException ioEx)
     {
-      if (br != null)
-        try
-        {
-          br.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
-      else if (isr != null)
-        try
-        {
-          isr.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
-    }
+      System.err.println(ERR_FLAG + "Unable to find file "
+          + inputFile.getAbsolutePath() + "\n" + ERR_FLAG + ioEx.getMessage());
+	  }
 
     return status;
   }

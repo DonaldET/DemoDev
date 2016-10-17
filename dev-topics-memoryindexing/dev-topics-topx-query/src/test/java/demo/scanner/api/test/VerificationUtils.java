@@ -50,12 +50,10 @@ public class VerificationUtils
       throw new IllegalArgumentException("buffer allocation size small, "
           + maxBufSize);
 
-    InputStream ctx = null;
-    try
+    System.err.println("Locating " + resourceLocator);
+    try (InputStream ctx = VerificationUtils.class.getClassLoader().getResourceAsStream(
+            resourceLocator);)
     {
-      System.err.println("Locating " + resourceLocator);
-      ctx = VerificationUtils.class.getClassLoader().getResourceAsStream(
-          resourceLocator);
       if (ctx == null)
         System.err.println("     Resource not found at " + resourceLocator);
       else
@@ -76,17 +74,9 @@ public class VerificationUtils
         System.err.println("Saw:\n" + s + "\n---");
       }
     }
-    finally
+    catch (IOException ioEx)
     {
-      if (ctx != null)
-        try
-        {
-          ctx.close();
-        }
-        catch (IOException ignore)
-        {
-          // Ignore
-        }
-    }
+    	ioEx.printStackTrace();
+	  }
   }
 }

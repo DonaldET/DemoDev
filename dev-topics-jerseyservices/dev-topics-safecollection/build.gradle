@@ -1,5 +1,0 @@
-
-description = 'Safe Collection Service'
-dependencies {
-    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version:'2.10.1'
-}
