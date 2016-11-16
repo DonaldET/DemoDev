@@ -1,6 +1,6 @@
 #Welcome
 
-These small _DemoDev_ projects illustrate useful techniques for building Java and J2EE related applications.  This collection of projects is the nuclease of a book on Java programming.
+These small _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nucleus of a future book on Java programming.
 
 The projects use Maven to build and JUnit test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
@@ -12,7 +12,7 @@ All the information needed to build these projects is detailed in the _BuildReso
  1. Download required dependencies (e.g., Java and MAVEN)
  2. Install and test the dependencies
  3. Download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/])
- 4. ON the command line, from the downloaded directory, execute:
+ 4. Onnucleusnucleus the command line, from the downloaded directory, execute:
     _mvn clean install_
 
 The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET\DemoDev_.
@@ -114,7 +114,13 @@ Project | Description
 ------- | -----------
 _DemoGenerator_ | A Freemarker based text generation utility supporting configurable symbol interpolation, composible context/model properties specifications, composible template specifications, and driven by command-line parameters.  This utility is used by _WindPower Explorer_ to create Oozie properties files and HQL table specifications.
 
+* * *
+
 ##Build Information
+
+Last tested versions:
+1. java version "1.8.0_112"
+2. Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T08:41:47-08:00)
 
   **** Count of Repository Development Files and Resources
 
