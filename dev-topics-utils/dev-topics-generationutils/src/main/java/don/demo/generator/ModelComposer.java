@@ -6,9 +6,18 @@ import java.util.Properties;
 /**
  * Create a model/context for code generation from a template
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ * 
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-public interface ModelComposer extends Serializable {
+public interface ModelComposer extends Serializable
+{
 
     /**
      * Compose model/context from a default and override version of the required
@@ -22,6 +31,5 @@ public interface ModelComposer extends Serializable {
      * 
      * @return the fully composed model/context created from the inputs
      */
-    public abstract Properties composeModel(String defaultContext,
-            String overrideContextList[]);
+    public abstract Properties composeModel(String defaultContext, String overrideContextList[]);
 }

@@ -11,16 +11,26 @@ import java.util.Arrays;
  * argument conventions. They are nominally processed and checked for semantics
  * by <code>Args4J</code>.
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ * 
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-public interface TextSourceGenerator extends Serializable {
+public interface TextSourceGenerator extends Serializable
+{
 
     /**
      * Results of the generation operation
      * 
-     * @author dtrumme
+     * @author Donald Trummell
      */
-    public static final class Result implements Serializable {
+    public static final class Result implements Serializable
+    {
 
         private static final long serialVersionUID = 5416332145467620370L;
         private final String srcDir;
@@ -32,11 +42,9 @@ public interface TextSourceGenerator extends Serializable {
         private final int filesRead;
         private final int filesWritten;
 
-        public Result(final String srcDir, final String[] templateList,
-                final String defaultContext,
-                final String[] overrideContextList, final String dstDir,
-                final String[] generatedFileList, final int filesRead,
-                final int filesWritten) {
+        public Result(final String srcDir, final String[] templateList, final String defaultContext,
+                final String[] overrideContextList, final String dstDir, final String[] generatedFileList,
+                final int filesRead, final int filesWritten) {
             super();
             this.srcDir = srcDir;
             this.templateList = templateList;
@@ -49,26 +57,24 @@ public interface TextSourceGenerator extends Serializable {
         }
 
         @Override
-        public int hashCode() {
+        public int hashCode()
+        {
             final int prime = 3607;
             int result = 1;
-            result = prime
-                    * result
-                    + ((defaultContext == null) ? 0 : defaultContext.hashCode());
-            result = prime * result
-                    + ((dstDir == null) ? 0 : dstDir.hashCode());
+            result = prime * result + ((defaultContext == null) ? 0 : defaultContext.hashCode());
+            result = prime * result + ((dstDir == null) ? 0 : dstDir.hashCode());
             result = prime * result + filesRead;
             result = prime * result + filesWritten;
             result = prime * result + Arrays.hashCode(generatedFileList);
             result = prime * result + Arrays.hashCode(overrideContextList);
-            result = prime * result
-                    + ((srcDir == null) ? 0 : srcDir.hashCode());
+            result = prime * result + ((srcDir == null) ? 0 : srcDir.hashCode());
             result = prime * result + Arrays.hashCode(templateList);
             return result;
         }
 
         @Override
-        public boolean equals(Object obj) {
+        public boolean equals(Object obj)
+        {
             if (this == obj)
                 return true;
             if (obj == null)
@@ -76,16 +82,22 @@ public interface TextSourceGenerator extends Serializable {
             if (getClass() != obj.getClass())
                 return false;
             Result other = (Result) obj;
-            if (defaultContext == null) {
+            if (defaultContext == null)
+            {
                 if (other.defaultContext != null)
                     return false;
-            } else if (!defaultContext.equals(other.defaultContext))
-                return false;
-            if (dstDir == null) {
+            }
+            else
+                if (!defaultContext.equals(other.defaultContext))
+                    return false;
+            if (dstDir == null)
+            {
                 if (other.dstDir != null)
                     return false;
-            } else if (!dstDir.equals(other.dstDir))
-                return false;
+            }
+            else
+                if (!dstDir.equals(other.dstDir))
+                    return false;
             if (filesRead != other.filesRead)
                 return false;
             if (filesWritten != other.filesWritten)
@@ -94,58 +106,67 @@ public interface TextSourceGenerator extends Serializable {
                 return false;
             if (!Arrays.equals(overrideContextList, other.overrideContextList))
                 return false;
-            if (srcDir == null) {
+            if (srcDir == null)
+            {
                 if (other.srcDir != null)
                     return false;
-            } else if (!srcDir.equals(other.srcDir))
-                return false;
+            }
+            else
+                if (!srcDir.equals(other.srcDir))
+                    return false;
             if (!Arrays.equals(templateList, other.templateList))
                 return false;
             return true;
         }
 
-        public String getSrcDir() {
+        public String getSrcDir()
+        {
             return srcDir;
         }
 
-        public String[] getTemplateList() {
+        public String[] getTemplateList()
+        {
             return templateList;
         }
 
-        public String getDefaultContext() {
+        public String getDefaultContext()
+        {
             return defaultContext;
         }
 
-        public String[] getOverrideContextList() {
+        public String[] getOverrideContextList()
+        {
             return overrideContextList;
         }
 
-        public String getDstDir() {
+        public String getDstDir()
+        {
             return dstDir;
         }
 
-        public String[] getGeneratedFileList() {
+        public String[] getGeneratedFileList()
+        {
             return generatedFileList;
         }
 
-        public int getFilesRead() {
+        public int getFilesRead()
+        {
             return filesRead;
         }
 
-        public int getFilesWritten() {
+        public int getFilesWritten()
+        {
             return filesWritten;
         }
 
         @Override
-        public String toString() {
-            return "[Result - 0x" + Integer.toHexString(hashCode())
-                    + ";\n  srcDir: " + srcDir + ";\n  templateList: "
-                    + Arrays.toString(templateList) + ";\n  defaultContext: "
-                    + defaultContext + ";\n  overrideContextList: "
-                    + Arrays.toString(overrideContextList) + ";\n  dstDir: "
-                    + dstDir + ";\n  generatedFileList: "
-                    + Arrays.toString(generatedFileList) + ";\n  filesRead: "
-                    + filesRead + ";  filesWritten: " + filesWritten + "]";
+        public String toString()
+        {
+            return "[Result - 0x" + Integer.toHexString(hashCode()) + ";\n  srcDir: " + srcDir + ";\n  templateList: "
+                    + Arrays.toString(templateList) + ";\n  defaultContext: " + defaultContext
+                    + ";\n  overrideContextList: " + Arrays.toString(overrideContextList) + ";\n  dstDir: " + dstDir
+                    + ";\n  generatedFileList: " + Arrays.toString(generatedFileList) + ";\n  filesRead: " + filesRead
+                    + ";  filesWritten: " + filesWritten + "]";
         }
     }
 

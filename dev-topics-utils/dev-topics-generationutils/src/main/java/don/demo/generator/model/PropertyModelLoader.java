@@ -8,7 +8,15 @@ import java.util.Properties;
  * variables for interpolation, from a path. The path may be a file, a
  * class-path, or a URL for <code>Spring</code> based implementations.
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ * 
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
 public interface PropertyModelLoader extends Serializable {
 

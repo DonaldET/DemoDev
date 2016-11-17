@@ -11,15 +11,23 @@ import don.demo.generator.arguments.ArgumentParser;
 /**
  * Run the generator passing in command-line arguments
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ *
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-public class TextSourceGeneratorRunner implements Serializable {
+public class TextSourceGeneratorRunner implements Serializable
+{
     private static final long serialVersionUID = -6173219947683706066L;
 
     private static final String APP_CONTEXT_PATH = "classpath:META-INF/main/spring/app-main-context.xml";
 
-    private static final Logger LOGGER = Logger
-            .getLogger(TextSourceGeneratorRunner.class);
+    private static final Logger LOGGER = Logger.getLogger(TextSourceGeneratorRunner.class);
 
     /**
      * Read and parse template(s) and produce generated output based on model;
@@ -28,9 +36,11 @@ public class TextSourceGeneratorRunner implements Serializable {
      * @param args
      *            command-line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args)
+    {
         System.out.println("\nTextSourceGeneratorRunner");
-        if (LOGGER.isInfoEnabled()) {
+        if (LOGGER.isInfoEnabled())
+        {
             LOGGER.info("\n========================================================="
                     + "\n                                                         "
                     + "\n          TextSourceGenerator Runner                     "
@@ -42,15 +52,18 @@ public class TextSourceGeneratorRunner implements Serializable {
         final Result result = processWithArgs(generator, args);
 
         final boolean failed = result == null;
-        if (failed) {
+        if (failed)
+        {
             System.err.println("Generator run failed!\n");
-        } else {
-            System.out.println("\nGeneration Information:\n"
-                    + String.valueOf(result));
+        }
+        else
+        {
+            System.out.println("\nGeneration Information:\n" + String.valueOf(result));
         }
 
         System.out.println("\nTextSourceGeneratorRunner - done");
-        if (LOGGER.isInfoEnabled()) {
+        if (LOGGER.isInfoEnabled())
+        {
             LOGGER.info("\n========================================================="
                     + "\n                                                         "
                     + "\n          TextSourceGenerator Done                       "
@@ -58,7 +71,8 @@ public class TextSourceGeneratorRunner implements Serializable {
                     + "\n=========================================================");
         }
 
-        if (failed) {
+        if (failed)
+        {
             System.exit(1);
         }
     }
@@ -68,12 +82,14 @@ public class TextSourceGeneratorRunner implements Serializable {
     /**
      * Load spring and get bean with processing implementation
      */
-    private static TextSourceGenerator readyApplication() {
+    private static TextSourceGenerator readyApplication()
+    {
         final ClassPathXmlApplicationContext springContext = getSpringAppContext();
         final String configVersion = (String) springContext.getBean("version");
         final String msg = "  Configuration version: " + configVersion;
         System.out.println(msg);
-        if (LOGGER.isInfoEnabled()) {
+        if (LOGGER.isInfoEnabled())
+        {
             LOGGER.info(msg);
         }
 
@@ -91,15 +107,18 @@ public class TextSourceGeneratorRunner implements Serializable {
      * 
      * @return a <code>Result</code> instance or <code>null</code> if failed
      */
-    private static Result processWithArgs(final TextSourceGenerator generator,
-            final String[] args) {
+    private static Result processWithArgs(final TextSourceGenerator generator, final String[] args)
+    {
 
         Result result = null;
-        try {
+        try
+        {
             result = generator.process(args);
-        } catch (RuntimeException rex) {
-            if (!ArgumentParser.UNSPECIFIED_ARGUMENT_ERROR.equals(rex
-                    .getMessage())) {
+        }
+        catch (RuntimeException rex)
+        {
+            if (!ArgumentParser.UNSPECIFIED_ARGUMENT_ERROR.equals(rex.getMessage()))
+            {
                 throw rex;
             }
         }
@@ -112,7 +131,8 @@ public class TextSourceGeneratorRunner implements Serializable {
      * 
      * @return the populated context
      */
-    private static ClassPathXmlApplicationContext getSpringAppContext() {
+    private static ClassPathXmlApplicationContext getSpringAppContext()
+    {
         System.err.println("  Loading context " + APP_CONTEXT_PATH);
 
         return new ClassPathXmlApplicationContext(APP_CONTEXT_PATH);

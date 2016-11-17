@@ -19,9 +19,18 @@ import freemarker.template.Version;
  * Freemarker utilities to manage interpolation control; hide unwanted
  * interpolation requests in the template.
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ * 
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-public final class FreemarkerHelper implements Serializable {
+public final class FreemarkerHelper implements Serializable
+{
     private static final long serialVersionUID = -869478639649790967L;
     private static final String EMPTY_CLASS_PREFIX = "";
 
@@ -34,23 +43,25 @@ public final class FreemarkerHelper implements Serializable {
     /**
      * Return results of configuring Freemarker
      * 
-     * @author dtrumme
+     * @author Donald Trummell
      */
-    public static final class ConfigAndLoader {
+    public static final class ConfigAndLoader
+    {
         private final Configuration configuration;
         private final FileTemplateLoader loader;
 
-        public ConfigAndLoader(final Configuration configuration,
-                final FileTemplateLoader loader) {
+        public ConfigAndLoader(final Configuration configuration, final FileTemplateLoader loader) {
             this.configuration = configuration;
             this.loader = loader;
         }
 
-        public Configuration getConfiguration() {
+        public Configuration getConfiguration()
+        {
             return configuration;
         }
 
-        public FileTemplateLoader getLoader() {
+        public FileTemplateLoader getLoader()
+        {
             return loader;
         }
     }
@@ -63,7 +74,8 @@ public final class FreemarkerHelper implements Serializable {
      * 
      * @return the valid directory path as a file
      */
-    public static File validateDirPath(final String baseTemplatePath) {
+    public static File validateDirPath(final String baseTemplatePath)
+    {
         if (baseTemplatePath == null)
             throw new IllegalArgumentException("baseTemplatePath null");
         final String basePath = baseTemplatePath.trim();
@@ -72,14 +84,11 @@ public final class FreemarkerHelper implements Serializable {
 
         final File baseFilePath = new File(basePath);
         if (!baseFilePath.exists())
-            throw new IllegalArgumentException("basePath " + basePath
-                    + " does not exist");
+            throw new IllegalArgumentException("basePath " + basePath + " does not exist");
         if (!baseFilePath.isDirectory())
-            throw new IllegalArgumentException("basePath " + basePath
-                    + " not a directory");
+            throw new IllegalArgumentException("basePath " + basePath + " not a directory");
         if (!baseFilePath.canRead())
-            throw new IllegalArgumentException("basePath " + basePath
-                    + " not readable");
+            throw new IllegalArgumentException("basePath " + basePath + " not readable");
 
         return baseFilePath;
     }
@@ -92,19 +101,20 @@ public final class FreemarkerHelper implements Serializable {
      * 
      * @return the loader
      */
-    public static FileTemplateLoader createFileTemplateLoader(
-            final File baseTemplatePath) {
+    public static FileTemplateLoader createFileTemplateLoader(final File baseTemplatePath)
+    {
         if (baseTemplatePath == null)
             throw new IllegalArgumentException("baseTemplatePath null");
 
         FileTemplateLoader ftl = null;
-        try {
+        try
+        {
             ftl = new ModifiedInterpolationTemplateLoader(baseTemplatePath);
-        } catch (IOException ex) {
-            throw new IllegalArgumentException(
-                    "error creating template loader using base path "
-                            + baseTemplatePath.getPath() + "; message: "
-                            + ex.getMessage(), ex);
+        }
+        catch (IOException ex)
+        {
+            throw new IllegalArgumentException("error creating template loader using base path "
+                    + baseTemplatePath.getPath() + "; message: " + ex.getMessage(), ex);
         }
 
         return ftl;
@@ -122,20 +132,21 @@ public final class FreemarkerHelper implements Serializable {
      *            the string to use in place of the opener
      * @return the loader
      */
-    public static FileTemplateLoader createFileTemplateLoader(
-            final File baseTemplatePath, final String opener,
-            final String replacement) {
+    public static FileTemplateLoader createFileTemplateLoader(final File baseTemplatePath, final String opener,
+            final String replacement)
+    {
         if (baseTemplatePath == null)
             throw new IllegalArgumentException("baseTemplatePath null");
 
         ModifiedInterpolationTemplateLoader ftl = null;
-        try {
+        try
+        {
             ftl = new ModifiedInterpolationTemplateLoader(baseTemplatePath);
-        } catch (IOException ex) {
-            throw new IllegalArgumentException(
-                    "error creating template loader using base path "
-                            + baseTemplatePath.getPath() + "; message: "
-                            + ex.getMessage(), ex);
+        }
+        catch (IOException ex)
+        {
+            throw new IllegalArgumentException("error creating template loader using base path "
+                    + baseTemplatePath.getPath() + "; message: " + ex.getMessage(), ex);
         }
 
         ftl.setOpener(opener);
@@ -155,30 +166,28 @@ public final class FreemarkerHelper implements Serializable {
      * @throws Illegal
      *             argument exception of base template path is unusable
      */
-    public static ConfigAndLoader configureFreemarker(
-            final FileTemplateLoader fileTemplateLoader) {
+    public static ConfigAndLoader configureFreemarker(final FileTemplateLoader fileTemplateLoader)
+    {
         if (fileTemplateLoader == null)
             throw new IllegalArgumentException("ftl null");
 
-        final Configuration cfg = new Configuration(
-                Configuration.VERSION_2_3_23);
+        final Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
         cfg.setIncompatibleImprovements(new Version(2, 3, 20));
-        cfg.setClassForTemplateLoading(FreemarkerHelper.class,
-                EMPTY_CLASS_PREFIX);
+        cfg.setClassForTemplateLoading(FreemarkerHelper.class, EMPTY_CLASS_PREFIX);
         cfg.setDefaultEncoding("UTF-8");
         cfg.setLocale(Locale.US);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setTemplateLoader(fileTemplateLoader);
-        final DefaultObjectWrapperBuilder dowb = new DefaultObjectWrapperBuilder(
-                Configuration.getVersion());
+        final DefaultObjectWrapperBuilder dowb = new DefaultObjectWrapperBuilder(Configuration.getVersion());
         final DefaultObjectWrapper dow = dowb.build();
         cfg.setObjectWrapper(dow);
 
         return new ConfigAndLoader(cfg, fileTemplateLoader);
     }
 
-    public static Template retrieveTemplate(final Configuration cfg,
-            final String templateBaseDir, final String templateFileName) {
+    public static Template retrieveTemplate(final Configuration cfg, final String templateBaseDir,
+            final String templateFileName)
+    {
         if (cfg == null)
             throw new IllegalArgumentException("cfg null");
 
@@ -191,17 +200,18 @@ public final class FreemarkerHelper implements Serializable {
             throw new IllegalArgumentException("templateFileName empty");
 
         Template template = null;
-        try {
+        try
+        {
             template = cfg.getTemplate(templateFileName);
-        } catch (IOException ex) {
-            throw new IllegalArgumentException("unable to retrieve template "
-                    + templateFileName + " at " + templateBaseDir
-                    + "; message: " + ex.getMessage(), ex);
+        }
+        catch (IOException ex)
+        {
+            throw new IllegalArgumentException("unable to retrieve template " + templateFileName + " at "
+                    + templateBaseDir + "; message: " + ex.getMessage(), ex);
         }
 
         if (template == null)
-            throw new IllegalArgumentException(
-                    "null attempting to retrieve template " + templateFileName);
+            throw new IllegalArgumentException("null attempting to retrieve template " + templateFileName);
 
         return template;
     }
@@ -214,19 +224,23 @@ public final class FreemarkerHelper implements Serializable {
      * 
      * @return string value of reader content
      */
-    public static String cacheFile(final Reader reader) {
+    public static String cacheFile(final Reader reader)
+    {
         if (reader == null)
             throw new IllegalArgumentException("reader null");
 
         final StringBuilder buf = new StringBuilder(2048);
         final BufferedReader br = new BufferedReader(reader, 2048);
-        for (int i = 1;; i++) {
+        for (int i = 1;; i++)
+        {
             String line = null;
-            try {
+            try
+            {
                 line = br.readLine();
-            } catch (IOException ex) {
-                throw new IllegalArgumentException("I/O error on line " + i
-                        + ", message: " + ex.getMessage(), ex);
+            }
+            catch (IOException ex)
+            {
+                throw new IllegalArgumentException("I/O error on line " + i + ", message: " + ex.getMessage(), ex);
             }
             if (line == null)
                 break;
@@ -254,8 +268,8 @@ public final class FreemarkerHelper implements Serializable {
      * 
      * @return the substituted text
      */
-    public static String replaceOpeners(final String tplText,
-            final String opener, final String replacement) {
+    public static String replaceOpeners(final String tplText, final String opener, final String replacement)
+    {
         if (tplText == null)
             throw new IllegalArgumentException("tplText null");
         if (opener == null)
@@ -272,11 +286,13 @@ public final class FreemarkerHelper implements Serializable {
 
         final StringBuilder fixedTpl = new StringBuilder();
         int last = 0;
-        do {
+        do
+        {
             //
             // If no more opener found, then copy and quit
             int p = tplText.indexOf(opener, last);
-            if (p == -1) {
+            if (p == -1)
+            {
                 fixedTpl.append(tplText.substring(last));
                 break;
             }
@@ -289,7 +305,8 @@ public final class FreemarkerHelper implements Serializable {
             //
             // If at end, then just add lone opener
             final int behind = p + olth;
-            if (behind >= lth) {
+            if (behind >= lth)
+            {
                 fixedTpl.append(opener);
                 break;
             }
@@ -301,7 +318,8 @@ public final class FreemarkerHelper implements Serializable {
             fixedTpl.append("{".equals(peek) ? replacement : opener);
             fixedTpl.append(peek);
             last = beyond;
-        } while (last < lth);
+        }
+        while (last < lth);
 
         return fixedTpl.toString();
     }
@@ -319,8 +337,8 @@ public final class FreemarkerHelper implements Serializable {
      *            the replacement string used in place of the magic
      * @return the substituted text
      */
-    public static String replaceMagic(final String tplText, final String magic,
-            final String replacement) {
+    public static String replaceMagic(final String tplText, final String magic, final String replacement)
+    {
         if (tplText == null)
             throw new IllegalArgumentException("tplText null");
         if (magic == null)
@@ -337,11 +355,13 @@ public final class FreemarkerHelper implements Serializable {
 
         final StringBuilder fixedTpl = new StringBuilder();
         int last = 0;
-        do {
+        do
+        {
             //
             // If no more magic found, then copy and quit
             int p = tplText.indexOf(magic, last);
-            if (p == -1) {
+            if (p == -1)
+            {
                 fixedTpl.append(tplText.substring(last));
                 break;
             }
@@ -355,7 +375,8 @@ public final class FreemarkerHelper implements Serializable {
             //
             // If at end, then just add lone magic
             last = p + mlth;
-        } while (last < lth);
+        }
+        while (last < lth);
 
         return fixedTpl.toString();
     }
@@ -368,19 +389,27 @@ public final class FreemarkerHelper implements Serializable {
      * 
      * @return a displayable hex formatted string
      */
-    public static String dumpAsHex(final String param) {
+    public static String dumpAsHex(final String param)
+    {
         final StringBuilder disp = new StringBuilder();
-        if (param == null) {
+        if (param == null)
+        {
             disp.append("null");
-        } else {
+        }
+        else
+        {
             final int lth = param.length();
-            if (lth < 1) {
+            if (lth < 1)
+            {
                 disp.append("empty");
-            } else {
+            }
+            else
+            {
                 final char[] cparam = param.toCharArray();
                 final int clth = cparam.length;
                 disp.append(String.format("(%3d; %3d):", lth, clth));
-                for (int i = 0; i < clth; i++) {
+                for (int i = 0; i < clth; i++)
+                {
                     final int c = 0xFFFF & cparam[i];
                     disp.append(String.format(" %02x", c));
                 }

@@ -8,9 +8,18 @@ import java.util.Map.Entry;
  * Builds list of matching inputs and output under corresponding base
  * directories
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ * 
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-public interface InputOutputBuilder extends Serializable {
+public interface InputOutputBuilder extends Serializable
+{
 
     /**
      * Match input and output path entries; a single asterisk in the output
@@ -30,8 +39,6 @@ public interface InputOutputBuilder extends Serializable {
      * 
      * @return list of matched input-output pairs
      */
-    public abstract List<Entry<String, String>> createPairedList(
-            final String srcDir, final String[] templateList,
-            final String dstDir, final String[] generatedFileList,
-            final boolean useSrcDir);
+    public abstract List<Entry<String, String>> createPairedList(final String srcDir, final String[] templateList,
+            final String dstDir, final String[] generatedFileList, final boolean useSrcDir);
 }

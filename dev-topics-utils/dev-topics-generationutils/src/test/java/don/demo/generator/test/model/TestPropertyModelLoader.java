@@ -11,24 +11,40 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import don.demo.generator.model.PropertyModelLoader;
 
-public class TestPropertyModelLoader {
-
+/**
+ * Tests a context (model) loader, using properties files, and Spring based.
+ * 
+ * @author Donald Trummell
+ *
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
+ */
+public class TestPropertyModelLoader
+{
     private static final String SPRING_TEST_APP_CONTEXT = "/META-INF/main/spring/test-app-context.xml";
 
-    private static boolean[] initialized = new boolean[] { false };
+    private static boolean[] initialized = new boolean[]
+    { false };
 
     private static ApplicationContext ctx = null;
 
     private PropertyModelLoader modelLoader = null;
 
     @Before
-    public void setUp() throws Exception {
-        synchronized (initialized) {
-            if (!initialized[0]) {
+    public void setUp() throws Exception
+    {
+        synchronized (initialized)
+        {
+            if (!initialized[0])
+            {
                 //
                 // Initialize
-                final ApplicationContext ctxT = new ClassPathXmlApplicationContext(
-                        SPRING_TEST_APP_CONTEXT);
+                final ApplicationContext ctxT = new ClassPathXmlApplicationContext(SPRING_TEST_APP_CONTEXT);
                 Assert.assertNotNull(SPRING_TEST_APP_CONTEXT + " null", ctxT);
 
                 final String ver = (String) ctxT.getBean("version.test");
@@ -47,27 +63,28 @@ public class TestPropertyModelLoader {
     private String testVersion = null;
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() throws Exception
+    {
         modelLoader = null;
     }
 
     @Test
-    public void testAllNeededBeansPresent() {
+    public void testAllNeededBeansPresent()
+    {
         String name = "version";
         version = (String) ctx.getBean(name);
-        Assert.assertEquals("bean " + name + " differs", "1.0.0-SNAPSHOT",
-                version);
+        Assert.assertEquals("bean " + name + " differs", "1.0.0-SNAPSHOT", version);
 
         name = "version.test";
         testVersion = (String) ctx.getBean(name);
-        Assert.assertEquals("bean " + name + " differs", "TEST-1.0.0-SNAPSHOT",
-                testVersion);
+        Assert.assertEquals("bean " + name + " differs", "TEST-1.0.0-SNAPSHOT", testVersion);
 
         Assert.assertNotNull("modelLoader null", modelLoader);
     }
 
     @Test
-    public void testLoadFlatPropertiesFile() {
+    public void testLoadFlatPropertiesFile()
+    {
         final String testSpec = "classpath:model_read_tests/MyTestAppModel.properties";
         final Properties model = modelLoader.loadProperties(testSpec);
         Assert.assertNotNull("model" + testSpec + " null", model);
@@ -77,24 +94,27 @@ public class TestPropertyModelLoader {
         expected.setProperty("an_object_id", "1250 Plymouth Ave.");
         expected.setProperty("an_object_value", "Balboa Park Station");
         expected.setProperty("override_me", "basic");
-        Assert.assertEquals("properties lengths differ", expected.size(),
-                model.size());
+        Assert.assertEquals("properties lengths differ", expected.size(), model.size());
 
         int n = 0;
         int m = 0;
-        for (final Object key : model.keySet()) {
+        for (final Object key : model.keySet())
+        {
             final Object ve = expected.get(key);
             final Object vm = model.get(key);
             boolean ne = ve == null;
-            if (ne) {
+            if (ne)
+            {
                 ne = vm == null;
-            } else {
+            }
+            else
+            {
                 ne = ve.equals(vm);
             }
 
-            if (!ne) {
-                System.err.println("key[" + m + "] " + key
-                        + " differs; expected: " + ve + ";  model: " + vm);
+            if (!ne)
+            {
+                System.err.println("key[" + m + "] " + key + " differs; expected: " + ve + ";  model: " + vm);
                 n++;
             }
 

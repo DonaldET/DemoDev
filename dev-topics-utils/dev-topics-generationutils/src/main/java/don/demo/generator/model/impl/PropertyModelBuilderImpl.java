@@ -10,11 +10,19 @@ import don.demo.generator.model.PropertyModelBuilder;
  * Cumulates properties with augmentation properties overriding previous
  * properties
  * 
- * @author dtrumme
+ * @author Donald Trummell
+ * 
+ *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         to use, copy, modify, and distribute this software and its
+ *         documentation for educational, research, and not-for-profit purposes,
+ *         without fee and without a signed licensing agreement, is hereby
+ *         granted, provided that the above copyright notice, and this
+ *         paragraph, appear in all copies, modifications, and distributions.
+ *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
 @Service("modelbuilder")
-public class PropertyModelBuilderImpl implements PropertyModelBuilder,
-        Cloneable {
+public class PropertyModelBuilderImpl implements PropertyModelBuilder, Cloneable
+{
     private static final long serialVersionUID = -3698564031525804109L;
     private final Properties model = new Properties();
 
@@ -22,7 +30,8 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
     }
 
     public PropertyModelBuilderImpl(final Properties initialModel) {
-        if (initialModel == null) {
+        if (initialModel == null)
+        {
             throw new IllegalArgumentException("initialModel null");
         }
         model.putAll(initialModel);
@@ -37,7 +46,8 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
      * @return this instance of the <code>PropertyModelBuilder</code?
      */
     @Override
-    public PropertyModelBuilder augment(final Properties properties) {
+    public PropertyModelBuilder augment(final Properties properties)
+    {
         if (properties != null)
             this.model.putAll(properties);
 
@@ -50,7 +60,8 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
      * @return a non-null copy of the associated properties
      */
     @Override
-    public Properties build() {
+    public Properties build()
+    {
         final Properties copy = new Properties();
         copy.putAll(this.model);
 
@@ -61,7 +72,8 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
      * Clear any associated properties
      */
     @Override
-    public void clear() {
+    public void clear()
+    {
         model.clear();
     }
 
@@ -71,9 +83,9 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
      * Provide deep copy
      */
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        final PropertyModelBuilderImpl copy = (PropertyModelBuilderImpl) super
-                .clone();
+    protected Object clone() throws CloneNotSupportedException
+    {
+        final PropertyModelBuilderImpl copy = (PropertyModelBuilderImpl) super.clone();
         final Properties values = copy.build();
         copy.model.clear();
         copy.augment(values);
@@ -82,7 +94,8 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         final int prime = 2309;
         int result = 1;
         result = prime * result + ((model == null) ? 0 : model.hashCode());
@@ -90,7 +103,8 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final Object obj)
+    {
         if (this == obj)
             return true;
         if (obj == null)
@@ -98,17 +112,20 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder,
         if (getClass() != obj.getClass())
             return false;
         final PropertyModelBuilderImpl other = (PropertyModelBuilderImpl) obj;
-        if (model == null) {
+        if (model == null)
+        {
             if (other.model != null)
                 return false;
-        } else if (!model.equals(other.model))
-            return false;
+        }
+        else
+            if (!model.equals(other.model))
+                return false;
         return true;
     }
 
     @Override
-    public String toString() {
-        return "[PropertyModelBuilderImpl -0x"
-                + Integer.toHexString(hashCode()) + ";  model=" + model + "]";
+    public String toString()
+    {
+        return "[PropertyModelBuilderImpl -0x" + Integer.toHexString(hashCode()) + ";  model=" + model + "]";
     }
 }
