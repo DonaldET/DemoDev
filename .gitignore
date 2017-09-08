@@ -236,6 +236,7 @@ pip-log.txt
 #############
 ## Maven
 #############
+dependency-reduced-pom.xml
 
 #############
 ## Jersey
