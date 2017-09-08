@@ -1,5 +1,5 @@
 ::
-: appendDocs.cmd - 2014.8.11
+: appendDocs.cmd - 2017.9.8
 :
 : Assemble README.md from docs sub-directory
 ::

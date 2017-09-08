@@ -1,7 +1,12 @@
 ##Build Information
+* * *
+###Build Information
 
+Last tested versions:
+1. java version "1.8.0_112"
+2. Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T08:41:47-08:00)
 
-  **** Count of Repository Development Files and Resources
+  * * * * Count of Repository Development Files and Resources
 
   MAVEN POM files: 28
 

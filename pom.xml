@@ -25,6 +25,7 @@
 		<module>dev-topics-codingexams</module>
 		<module>dev-topics-memoryindexing</module>
 		<module>dev-topics-nosql</module>
+		<module>demodev-topics-staticresources-parent</module>
 	</modules>
 
 	<prerequisites>

@@ -1,6 +1,6 @@
 ##Sub-Project Coding Exams
 
-These coding exams are elaborations on topics discussed during interviews and “take home” coding problems.  The resulting solutions demonstrate a “professional engineering” approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
+These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
 
 These solutions also demonstrate coding principles like:
 - Separation of interface and implementation
@@ -11,7 +11,7 @@ These solutions also demonstrate coding principles like:
 
 Client | Project | Description
 ------ | ------- | -----------
-Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called “Games Your Friends Play”. The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don’t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns
+Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Appdynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source

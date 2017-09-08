@@ -1,6 +1,6 @@
 ##Sub-Project Math Algorithms
 
-These Mathmematical Algorithms show methods of performance testing and demonstrate coding principles like:
+These Mathematical Algorithms show methods of performance testing and demonstrate coding principles like:
 - Separation of interface and implementation
 - Use of multiple implementations (Strategy and Command Patterns)
 - JUnit tests where feasible
