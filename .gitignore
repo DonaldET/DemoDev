@@ -232,3 +232,13 @@ pip-log.txt
 #############
 .gradle*
 *taskArtifacts*
+
+#############
+## Maven
+#############
+
+#############
+## Jersey
+#############
+MANIFEST.MF
+

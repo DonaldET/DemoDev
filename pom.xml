@@ -25,7 +25,6 @@
 		<module>dev-topics-codingexams</module>
 		<module>dev-topics-memoryindexing</module>
 		<module>dev-topics-nosql</module>
-		<module>demodev-topics-staticresources-parent</module>
 	</modules>
 
 	<prerequisites>
@@ -60,7 +59,7 @@
 		</repository>
 	</repositories>
 
-	<properties>	
+	<properties>
 		<!-- Predefined MAVEN settings -->
 		<maven.compiler.version>3.5.1</maven.compiler.version>
 		<maven.test.failure.ignore>false</maven.test.failure.ignore>
