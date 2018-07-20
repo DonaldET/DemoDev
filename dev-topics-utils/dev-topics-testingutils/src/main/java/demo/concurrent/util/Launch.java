@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Execute the list of <code>Runnable</code> instances capturing runtime errors.
  * 
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface Launch
 {

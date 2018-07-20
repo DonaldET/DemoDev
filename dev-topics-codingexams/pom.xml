@@ -26,6 +26,7 @@
 	<modules>
 		<module>dev-topics-amazon-codingchallange</module>
 		<module>dev-topics-amazon-invoiceparser</module>
+		<module>dev-topics-amazon-rangeconsolidator</module>
 		<module>dev-topics-apple-compounditerator</module>
 		<module>dev-topics-apple-factorial</module>
 		<module>dev-topics-cisco-sieve</module>

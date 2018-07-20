@@ -21,7 +21,7 @@ import java.util.function.Function;
 /**
  * File utilities to aid testing
  * 
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class FileUtils
 {

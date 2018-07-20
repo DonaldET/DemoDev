@@ -35,7 +35,7 @@ import java.util.concurrent.TimeoutException;
  * <code>Runnable</code> instances in the pool must perform their own
  * synchronization.
  * 
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ParallelRunner implements Launch
 {

@@ -14,7 +14,7 @@ package demo.concurrent.util.test;
  * coordinates starting and stopping threads, but does not synchronize the
  * incrementing.
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class CumuloTestData implements Runnable
 {

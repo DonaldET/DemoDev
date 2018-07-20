@@ -19,7 +19,7 @@ import demo.system.util.EnvLister;
 /**
  * Verify some of the extracted property and environment values
  * 
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class EnvListerTest
 {

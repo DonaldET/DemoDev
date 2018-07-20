@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * Obtain environment and property values for debugging
  * 
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class EnvLister
 {
