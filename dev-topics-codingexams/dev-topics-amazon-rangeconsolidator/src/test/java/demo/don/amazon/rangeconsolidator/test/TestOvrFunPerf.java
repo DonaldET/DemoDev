@@ -26,7 +26,7 @@ public class TestOvrFunPerf
 
     // test execution times are too variable in run one, so run several times to
     // reduce variability, creating a test group
-    private static final int TEST_GROUP_REPETITION_FACTOR = 12;
+    private static final int TEST_GROUP_REPETITION_FACTOR = 15;
 
     // creates ITERATIONS test batches with INITIAL test groups in the first one
     // and incrementing by STEP test groups each iteration
@@ -39,7 +39,7 @@ public class TestOvrFunPerf
     private static final int INTERVAL_UBOUND = 10000;
 
     // Dump timings for analysis
-    private static final boolean display = true;
+    private static final boolean display = false;
 
     private static List<Interval> generateTestCases(final int seed, final int n, final int min, final int max)
     {
