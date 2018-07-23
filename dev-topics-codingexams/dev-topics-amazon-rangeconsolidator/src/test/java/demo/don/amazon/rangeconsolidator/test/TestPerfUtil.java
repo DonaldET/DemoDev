@@ -23,7 +23,7 @@ public abstract class TestPerfUtil
 
     // test execution times are too variable in run one, so run several times to
     // reduce variability, creating a test group
-    static final int TEST_GROUP_REPETITION_FACTOR = 15;
+    static final int TEST_GROUP_REPETITION_FACTOR = 21;
 
     /**
      * Prevent construction
@@ -31,7 +31,7 @@ public abstract class TestPerfUtil
     private TestPerfUtil() {
     }
 
-    public static List<Interval> generateTestCases(final int seed, final int n, final int min, final int max)
+    private static List<Interval> generateTestCases(final int seed, final int n, final int min, final int max)
     {
         final List<Interval> testCases = new ArrayList<Interval>(n);
         final Random random = new Random(seed);
@@ -48,10 +48,8 @@ public abstract class TestPerfUtil
     /**
      * Repeat execution to average out variation
      */
-    public static long timeRepeatedMerger(final int repetition, final List<Interval> testCases, final Overlap ovr)
+    private static long timeRepeatedMerger(final int repetition, final List<Interval> testCases, final Overlap ovr)
     {
-        ovr.merge(testCases.subList(0, Math.min(testCases.size(), TestPerfUtil.SMOOTHING_SAMPLE_SIZE))); // for
-                                                                                                         // JIT
         final long startNano = System.nanoTime();
         for (int i = 0; i < repetition; i++)
         {
@@ -64,8 +62,8 @@ public abstract class TestPerfUtil
     /**
      * Return median execution time
      */
-    public static long smoothRepeatedMergerTime(final int repetition, final List<Interval> testCases, final Overlap ovr,
-            final int sampleSize)
+    private static long smoothRepeatedMergerTime(final int repetition, final List<Interval> testCases,
+            final Overlap ovr, final int sampleSize)
     {
         final List<Long> times = new ArrayList<Long>(sampleSize);
         for (int i = 0; i < sampleSize; i++)
@@ -76,26 +74,28 @@ public abstract class TestPerfUtil
         return times.get(sampleSize / 2);
     }
 
+    private static List<Interval> generateTestData(final int seed, final int length)
+    {
+        return TestPerfUtil.generateTestCases(seed, length, TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
+    }
+
     /**
      * Test increasing number of intervals
      */
     public static List<long[]> runTestSequence(final boolean display, final String title, final int repetition,
             final Overlap ovr, final int initial, final int step, final int testCnt)
     {
-        final List<long[]> results = new ArrayList<long[]>(testCnt);
-        int intervalCount = initial;
         if (display)
         {
             System.out.println(String.format("\n%s from %d by step %d to %d with %d repeats per interval count", title,
-                    initial, step, intervalCount + (testCnt - 1) * step, repetition));
+                    initial, step, initial + (testCnt - 1) * step, repetition));
         }
-        final List<Interval> testCases = TestPerfUtil.generateTestCases(TestPerfUtil.INITIAL_SEED, initial,
-                TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
-        TestPerfUtil.smoothRepeatedMergerTime(repetition, testCases, ovr, TestPerfUtil.SMOOTHING_SAMPLE_SIZE); // for
-                                                                                                               // JIT
+        final List<long[]> results = new ArrayList<long[]>(testCnt);
         for (int test = 1; test <= testCnt; test++)
         {
-            intervalCount = testCases.size();
+            final List<Interval> testCases = TestPerfUtil.generateTestData(TestPerfUtil.INITIAL_SEED,
+                    initial + (test - 1) * step);
+            final int intervalCount = testCases.size();
             if (display)
             {
                 System.out.print(String.format("%3d.  %5d intervals", test, intervalCount));
@@ -111,10 +111,6 @@ public abstract class TestPerfUtil
             }
             results.add(new long[]
             { intervalCount, elapsed });
-
-            intervalCount += step;
-            testCases.addAll(TestPerfUtil.generateTestCases(TestPerfUtil.INITIAL_SEED + 31 * test, step,
-                    TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND));
         }
 
         return results;

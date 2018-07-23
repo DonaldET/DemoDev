@@ -34,38 +34,30 @@ public class TestOvrFunPerf
     }
 
     @Test
-    public void testPerfL2R()
+    public void testPerfLftOrRgt()
     {
-        System.gc();
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR;
         final int n_tests = TEST_COUNT;
-        final List<long[]> testResult = TestPerfUtil.runTestSequence(display, "Left-to-Right", repetition,
-                new OverlapL2R(), INITIAL_TRIALS, STEP_TRIALS, n_tests);
-        long last = Long.MIN_VALUE;
-        for (int i = 0; i < n_tests; i++)
-        {
-            final long current = testResult.get(i)[1];
-            Assert.assertTrue("non-monotic at " + i + ", last: " + last + "; current: " + current + "; count: "
-                    + testResult.get(i)[0], last < current);
-            last = current;
-        }
-    }
 
-    @Test
-    public void testPerfR2L()
-    {
         System.gc();
-        final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR + 3;
-        final int n_tests = TEST_COUNT;
-        final List<long[]> testResult = TestPerfUtil.runTestSequence(display, "Right-to-left", repetition,
+        final List<long[]> testResultL2R = TestPerfUtil.runTestSequence(display, "Left-to-Right", repetition,
+                new OverlapL2R(), INITIAL_TRIALS, STEP_TRIALS, n_tests);
+        System.gc();
+        final List<long[]> testResultR2L = TestPerfUtil.runTestSequence(display, "Right-to-left", repetition,
                 new OverlapR2L(), INITIAL_TRIALS, STEP_TRIALS, n_tests);
-        long last = Long.MIN_VALUE;
+
+        int reversed = 0;
+        long last = Integer.MIN_VALUE;
         for (int i = 0; i < n_tests; i++)
         {
-            final long current = testResult.get(i)[1];
-            Assert.assertTrue("non-monotic at " + i + ", last: " + last + "; current: " + current + "; count: "
-                    + testResult.get(i)[0], last < current);
-            last = current;
+            final long l2r = testResultL2R.get(i)[1];
+            final long r2l = testResultR2L.get(i)[1];
+            Assert.assertTrue("incorrect orger at " + i + ", LRS: " + l2r + ";  R2L: " + r2l + "; count: "
+                    + testResultL2R.get(i)[0] + " and " + testResultR2L.get(i)[0], l2r > r2l);
+            if (last > l2r)
+                reversed++;
+            last = l2r;
         }
+        Assert.assertTrue("too many reversals", reversed < 2);
     }
 }
