@@ -11,9 +11,16 @@ public abstract class AbstractOverlap implements Overlap
 
     public List<Interval> sortIntervals(final List<Interval> unsorted)
     {
-        final List<Interval> sorted = new ArrayList<Interval>();
-        sorted.addAll(unsorted);
-        Collections.sort(sorted);
+        final int n = unsorted.size();
+        final List<Interval> sorted = new ArrayList<Interval>(n);
+        if (n > 0)
+        {
+            sorted.addAll(unsorted);
+            if (n > 1)
+            {
+                Collections.sort(sorted);
+            }
+        }
         return sorted;
     }
 }

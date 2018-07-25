@@ -48,7 +48,7 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
         {
             throw new IllegalArgumentException("intervals null");
         }
-        List<Interval> copyOfOrdered = this.sortIntervals(intervals);
+        final List<Interval> copyOfOrdered = sortIntervals(intervals);
         int n = copyOfOrdered.size();
         if (n < 2)
         {
