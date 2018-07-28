@@ -5,9 +5,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import demo.don.amazon.rangeconsolidator.OverlapR2L;
+import demo.don.amazon.rangeconsolidator.OverlapLeetCode;
 
-public class TestOvrFunPerf10xR2L
+public class TestOvrFunPerf10xLC
 {
     // creates ITERATIONS test batches with INITIAL test groups in the first one
     // and incrementing by STEP test groups each iteration
@@ -37,7 +37,7 @@ public class TestOvrFunPerf10xR2L
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR / 2;
         final int n_tests = TEST_COUNT;
 
-        TestPerfUtil.timeAndTest(display, "Right-to-left", new OverlapR2L(), repetition, n_tests, 2, INITIAL_TRIALS,
+        TestPerfUtil.timeAndTest(display, "LeetCode", new OverlapLeetCode(), repetition, n_tests, 2, INITIAL_TRIALS,
                 STEP_TRIALS);
     }
 }

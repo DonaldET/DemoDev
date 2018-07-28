@@ -1,9 +1,6 @@
 package demo.don.amazon.rangeconsolidator.test;
 
-import java.util.List;
-
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -37,21 +34,10 @@ public class TestOvrFunPerf10xL2R
     @Ignore
     public void testPerfL2Rx10()
     {
-        System.gc();
-        final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR + 5;
+        final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR / 3;
         final int n_tests = TEST_COUNT;
-        final List<long[]> testResult = TestPerfUtil.runTestSequence(display, "Left-to-Right-10x", repetition,
-                new OverlapL2R(), INITIAL_TRIALS, STEP_TRIALS, n_tests);
 
-        int reversed = 0;
-        long last = Integer.MIN_VALUE;
-        for (int i = 0; i < n_tests; i++)
-        {
-            final long current = testResult.get(i)[1];
-            if ((double) Math.abs(last - current) / (double) Math.max(last, current) > 0.45)
-                reversed++;
-            last = current;
-        }
-        Assert.assertTrue("too many reversals, " + reversed, reversed < 7);
+        TestPerfUtil.timeAndTest(display, "Left-to-left", new OverlapL2R(), repetition, n_tests, 2, INITIAL_TRIALS,
+                STEP_TRIALS);
     }
 }

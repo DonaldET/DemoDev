@@ -1,5 +1,6 @@
 package demo.don.amazon.rangeconsolidator;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -42,13 +43,14 @@ public class OverlapL2R extends AbstractOverlap implements Overlap
      * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
      */
     @Override
-    public Merger merge(final List<Interval> intervals)
+    public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
     {
         if (intervals == null)
         {
             throw new IllegalArgumentException("intervals null");
         }
-        final List<Interval> copyOfOrdered = sortIntervals(intervals);
+        final List<Interval> copyOfOrdered = sortIntervals(intervals,
+                optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
         int n = copyOfOrdered.size();
         if (n < 2)
         {
@@ -72,7 +74,7 @@ public class OverlapL2R extends AbstractOverlap implements Overlap
             else
             {
                 // Overlap
-                copyOfOrdered.set(nxt_pos, new Interval(curnt.low, nxt.hi));
+                nxt.low = curnt.low;
                 copyOfOrdered.remove(curnt_pos);
                 n -= 1;
                 merges++;

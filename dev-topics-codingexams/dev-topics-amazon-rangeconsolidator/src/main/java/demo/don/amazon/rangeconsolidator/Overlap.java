@@ -1,5 +1,6 @@
 package demo.don.amazon.rangeconsolidator;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -29,31 +30,20 @@ public interface Overlap
     }
 
     /**
-     * An interval has a low-high pair and knows how to self order (first by
-     * low, then by high.)
+     * An interval has a low-high pair and is ordered for searching (first by
+     * low, then by high.) Note that this class must be mutable for the Leet
+     * Code solution to work, and had been adapted by the other solutions.
      * 
      * @author Donald Trummell (dtrummell@gmail.com)
      */
-    public static final class Interval implements Comparable<Interval>
+    public static final class Interval
     {
-        public final int low;
-        public final int hi;
+        public int low;
+        public int hi;
 
         public Interval(final int low, final int hi) {
             this.low = low;
             this.hi = hi;
-        }
-
-        @Override
-        public int compareTo(final Interval otherMe)
-        {
-            if (otherMe == null)
-            {
-                return -1;
-            }
-
-            int diff = this.low - otherMe.low;
-            return diff != 0 ? diff : this.hi - otherMe.hi;
         }
 
         @Override
@@ -76,7 +66,9 @@ public interface Overlap
             if (getClass() != obj.getClass())
                 return false;
 
-            return compareTo((Interval) obj) == 0;
+            final Interval other = (Interval) obj;
+
+            return this.low == other.low ? (this.hi == other.hi ? true : false) : false;
         }
 
         @Override
@@ -86,5 +78,5 @@ public interface Overlap
         }
     }
 
-    public abstract Merger merge(final List<Interval> intervals);
+    public abstract Merger merge(final List<Interval> intervals, final Comparator<Interval> comparator);
 }
