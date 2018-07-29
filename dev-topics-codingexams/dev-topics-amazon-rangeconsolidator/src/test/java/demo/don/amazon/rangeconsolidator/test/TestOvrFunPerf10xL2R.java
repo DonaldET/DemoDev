@@ -37,7 +37,7 @@ public class TestOvrFunPerf10xL2R
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR / 3;
         final int n_tests = TEST_COUNT;
 
-        TestPerfUtil.timeAndTest(display, "Left-to-left", new OverlapL2R(), repetition, n_tests, 2, INITIAL_TRIALS,
+        TestPerfUtil.timeAndTest(display, "Left-to-right", new OverlapL2R(), repetition, n_tests, 2, INITIAL_TRIALS,
                 STEP_TRIALS);
     }
 }
