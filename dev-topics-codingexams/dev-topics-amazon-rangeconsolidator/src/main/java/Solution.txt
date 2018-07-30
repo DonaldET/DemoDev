@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * Formated as required by Leet Code; Uses array list with right-to-left pass, less space than linked list and marginally faster
+ * 
+ * @author Donald Trummell <dtrummell@gmail.com>
+ */
+public class Solution
+{
+    static final class SolutionMergeComparator implements Comparator<Interval>
+    {
+        @Override
+        public int compare(final Interval a, final Interval b)
+        {
+            return a.start < b.start ? -1 : (a.start > b.start ? 1 : (a.end < b.end ? -1 : (a.end > b.end ? 1 : 0)));
+        }
+    }
+
+    private List<Interval> sortIntervals(final List<Interval> unsorted, final Comparator<Interval> comparator)
+    {
+        final int n = unsorted.size();
+        final List<Interval> sorted = new ArrayList<Interval>(n);
+        if (n > 0)
+        {
+            sorted.addAll(unsorted);
+            if (n > 1)
+            {
+                Collections.sort(sorted, comparator);
+            }
+        }
+        return sorted;
+    }
+
+    public List<Interval> merge(final List<Interval> intervals)
+    {
+        final List<Interval> copyOfOrdered = sortIntervals(intervals, new SolutionMergeComparator());
+        int n = copyOfOrdered.size();
+        if (n < 2)
+        {
+            return copyOfOrdered;
+        }
+
+        int lhs_pos = n - 2;
+        int rhs_pos = n - 1;
+
+        do
+        {
+            final Interval lhs = copyOfOrdered.get(lhs_pos);
+            final Interval rhs = copyOfOrdered.get(rhs_pos);
+            if (rhs.start > lhs.end)
+            {
+                // No overlap
+                rhs_pos = lhs_pos;
+                lhs_pos--;
+            }
+            else
+            {
+                // Overlap
+                lhs.end = rhs.end;
+                copyOfOrdered.remove(rhs_pos);
+                rhs_pos = lhs_pos;
+                lhs_pos--;
+            }
+        }
+        while (lhs_pos >= 0);
+
+        return copyOfOrdered;
+    }
+}

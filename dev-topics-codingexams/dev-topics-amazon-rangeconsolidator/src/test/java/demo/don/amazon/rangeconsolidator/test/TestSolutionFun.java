@@ -81,6 +81,6 @@ class TestSolutionRunner
 
     private Overlap.Interval LC2Ovr(final Solution.Interval lcInt)
     {
-        return new Overlap.Interval(lcInt.low, lcInt.hi);
+        return new Overlap.Interval(lcInt.start, lcInt.end);
     }
 }

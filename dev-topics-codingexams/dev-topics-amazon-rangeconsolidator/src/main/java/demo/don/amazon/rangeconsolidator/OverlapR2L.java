@@ -26,7 +26,7 @@ import java.util.List;
  * 
  * <a href=
  * "https://livecode.amazon.jobs/session/04d9e66e-ce1a-42fd-8854-cb9c1c800268">Built
- * for Amazon here</a>, but taken from <a href=
+ * for Amazon here</a>, but also taken from the educational site <a href=
  * "https://leetcode.com/problems/merge-intervals/description/">LeetCode</a>.
  * 
  * @author Donald Trummell (dtrummell@gmail.com)
@@ -43,14 +43,14 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
      * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
      */
     @Override
-    public Merger merge(final List<Interval> intervals, final Comparator<Interval> comparator)
+    public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
     {
         if (intervals == null)
         {
             throw new IllegalArgumentException("intervals null");
         }
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
-                comparator == null ? new AbstractOverlap.MergeComparator() : comparator);
+                optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
         int n = copyOfOrdered.size();
         if (n < 2)
         {
@@ -74,7 +74,7 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
             else
             {
                 // Overlap
-                lhs.hi = rhs.hi;
+                lhs.hi = Math.max(lhs.hi, rhs.hi);
                 copyOfOrdered.remove(rhs_pos);
                 merges++;
                 rhs_pos = lhs_pos;

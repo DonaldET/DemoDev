@@ -14,12 +14,12 @@ public class Solution
 {
     public static final class Interval
     {
-        public int low;
-        public int hi;
+        public int start;
+        public int end;
 
-        public Interval(final int low, final int hi) {
-            this.low = low;
-            this.hi = hi;
+        public Interval(final int start, final int end) {
+            this.start = start;
+            this.end = end;
         }
 
         @Override
@@ -27,8 +27,8 @@ public class Solution
         {
             final int prime = 31;
             int result = 1;
-            result = prime * result + hi;
-            result = prime * result + low;
+            result = prime * result + end;
+            result = prime * result + start;
             return result;
         }
 
@@ -44,13 +44,13 @@ public class Solution
 
             final Interval other = (Interval) obj;
 
-            return this.low == other.low ? (this.hi == other.hi ? true : false) : false;
+            return this.start == other.start ? (this.end == other.end ? true : false) : false;
         }
 
         @Override
         public String toString()
         {
-            return "[" + low + ", " + hi + "]";
+            return "[" + start + ", " + end + "]";
         }
     }
 
@@ -59,7 +59,7 @@ public class Solution
         @Override
         public int compare(final Solution.Interval a, final Solution.Interval b)
         {
-            return a.low < b.low ? -1 : (a.low > b.low ? 1 : (a.hi < b.hi ? -1 : (a.hi > b.hi ? 1 : 0)));
+            return a.start < b.start ? -1 : (a.start > b.start ? 1 : (a.end < b.end ? -1 : (a.end > b.end ? 1 : 0)));
         }
     }
 
@@ -84,7 +84,7 @@ public class Solution
         {
             final Solution.Interval lhs = copyOfOrdered.get(lhs_pos);
             final Solution.Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.low > lhs.hi)
+            if (rhs.start > lhs.end)
             {
                 // No overlap
                 rhs_pos = lhs_pos;
@@ -93,7 +93,7 @@ public class Solution
             else
             {
                 // Overlap
-                lhs.hi = rhs.hi;
+                lhs.end = Math.max(lhs.end, rhs.end);
                 copyOfOrdered.remove(rhs_pos);
                 rhs_pos = lhs_pos;
                 lhs_pos--;

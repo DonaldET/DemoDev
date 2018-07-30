@@ -34,6 +34,17 @@ public class TestOvrFun
     }
 
     @Test
+    public void testTestCases()
+    {
+        System.err.println("\nTest Data");
+        for (final TestDef testDef : testCases)
+        {
+            System.err.println(testDef.inputSet);
+        }
+        Assert.assertTrue("no tests", testCases.size() > 0);
+    }
+
+    @Test
     public void testFunL2R()
     {
         final TestOvrRunner runner = new TestOvrRunner(new OverlapL2R(), "left-to-right");

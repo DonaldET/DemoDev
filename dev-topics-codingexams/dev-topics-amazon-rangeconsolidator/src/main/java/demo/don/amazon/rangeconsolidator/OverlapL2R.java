@@ -58,29 +58,30 @@ public class OverlapL2R extends AbstractOverlap implements Overlap
         }
 
         int merges = 0;
-        int curnt_pos = 0;
-        int nxt_pos = 1;
+        int lhs_pos = 0;
+        int rhs_pos = 1;
 
         do
         {
-            final Interval curnt = copyOfOrdered.get(curnt_pos);
-            final Interval nxt = copyOfOrdered.get(nxt_pos);
-            if (nxt.low > curnt.hi)
+            final Interval lhs = copyOfOrdered.get(lhs_pos);
+            final Interval rhs = copyOfOrdered.get(rhs_pos);
+            if (rhs.low > lhs.hi)
             {
                 // No overlap
-                curnt_pos = nxt_pos;
-                nxt_pos++;
+                lhs_pos = rhs_pos;
+                rhs_pos++;
             }
             else
             {
                 // Overlap
-                nxt.low = curnt.low;
-                copyOfOrdered.remove(curnt_pos);
+                rhs.low = lhs.low;
+                rhs.hi = Math.max(lhs.hi, rhs.hi);
+                copyOfOrdered.remove(lhs_pos);
                 n -= 1;
                 merges++;
             }
         }
-        while (nxt_pos < n);
+        while (rhs_pos < n);
 
         return new Merger(merges, copyOfOrdered);
     }

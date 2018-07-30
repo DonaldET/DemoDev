@@ -27,7 +27,7 @@ public abstract class TestPerfUtil
 
     // test execution times are too variable in run one, so run several times to
     // reduce variability, creating a test group
-    static final int TEST_GROUP_REPETITION_FACTOR = 21;
+    static final int TEST_GROUP_REPETITION_FACTOR = 25;
 
     //
     // Functional test data
@@ -46,9 +46,9 @@ public abstract class TestPerfUtil
         expected = Arrays.asList();
         testCases.add(new TestDef(inputSet, testLabel, expected, 0));
 
-        inputSet = Arrays.asList();
+        inputSet = Arrays.asList(new Interval(1, 4));
         testLabel = "Set 2 - Trivial";
-        expected = new ArrayList<Interval>();
+        expected = Arrays.asList(new Interval(1, 4));
         testCases.add(new TestDef(inputSet, testLabel, expected, 0));
 
         inputSet = Arrays.asList(new Interval(1, 10), new Interval(1, 10), new Interval(1, 10));
@@ -70,6 +70,16 @@ public abstract class TestPerfUtil
         testLabel = "Set 6 - No overlap";
         expected = Arrays.asList(new Interval(-2, -1), new Interval(1, 15), new Interval(17, 17));
         testCases.add(new TestDef(inputSet, testLabel, expected, 0));
+
+        inputSet = Arrays.asList(new Interval(1, 4), new Interval(2, 3));
+        testLabel = "Set 7 - Leet Code overlap failure";
+        expected = Arrays.asList(new Interval(1, 4));
+        testCases.add(new TestDef(inputSet, testLabel, expected, 1));
+
+        inputSet = Arrays.asList(new Interval(3, 4), new Interval(2, 5));
+        testLabel = "Set 8 - Leet Code overlap failure";
+        expected = Arrays.asList(new Interval(2, 5));
+        testCases.add(new TestDef(inputSet, testLabel, expected, 1));
     }
 
     /**
