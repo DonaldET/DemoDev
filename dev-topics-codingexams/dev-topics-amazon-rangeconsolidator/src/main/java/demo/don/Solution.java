@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Formated (almost) as required by Leet Code for submission
+ * Formated (almost) as required for Leet Code for submission
  * 
  * @author Donald Trummell <dtrummell@gmail.com>
  */
@@ -63,11 +63,6 @@ public class Solution
         }
     }
 
-    public static void main(String[] args)
-    {
-        System.err.println("Invoked");
-    }
-
     public List<Solution.Interval> merge(final List<Solution.Interval> intervals)
     {
         final List<Solution.Interval> copyOfOrdered = sortIntervals(intervals, new SolutionMergeComparator());
@@ -109,13 +104,16 @@ public class Solution
     }
 
     private List<Solution.Interval> sortIntervals(final List<Solution.Interval> unsorted,
-            final Comparator<Solution.Interval> comparator)
+            final Comparator<Interval> comparator)
     {
         final int n = unsorted.size();
         final List<Solution.Interval> sorted = new ArrayList<Solution.Interval>(n);
         if (n > 0)
         {
-            sorted.addAll(unsorted);
+            for (final Solution.Interval intr : unsorted)
+            {
+                sorted.add(new Solution.Interval(intr.start, intr.end));
+            }
             if (n > 1)
             {
                 Collections.sort(sorted, comparator);
