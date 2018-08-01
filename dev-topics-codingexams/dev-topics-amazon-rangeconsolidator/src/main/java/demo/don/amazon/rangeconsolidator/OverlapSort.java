@@ -22,10 +22,6 @@ public class OverlapSort extends AbstractOverlap implements Overlap
     @Override
     public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
     {
-        if (intervals == null)
-        {
-            throw new IllegalArgumentException("intervals null");
-        }
         assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
                 optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);

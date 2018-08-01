@@ -1,5 +1,6 @@
 package demo.don.amazon.rangeconsolidator;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,7 +23,8 @@ import java.util.List;
  * high greater than or equal to the second candidate high</li>
  * </ul>
  * 
- * <strong>Note:</strong>this version merges right to left.
+ * <strong>Note:</strong>this version merges left-to-right as well, but removes
+ * using null and copies out merged ranges.
  * 
  * <a href=
  * "https://livecode.amazon.jobs/session/04d9e66e-ce1a-42fd-8854-cb9c1c800268">Built
@@ -45,14 +47,10 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
     @Override
     public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
     {
-        if (intervals == null)
-        {
-            throw new IllegalArgumentException("intervals null");
-        }
         assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
                 optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
-        int n = copyOfOrdered.size();
+        final int n = copyOfOrdered.size();
         if (n < 2)
         {
             return new Merger(0, copyOfOrdered);
@@ -66,24 +64,26 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
         {
             final Interval lhs = copyOfOrdered.get(lhs_pos);
             final Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.start > lhs.end)
-            {
-                // No overlap
-                lhs_pos = rhs_pos;
-                rhs_pos++;
-            }
-            else
+            if (rhs.start <= lhs.end)
             {
                 // Overlap
                 rhs.start = lhs.start;
                 rhs.end = Math.max(lhs.end, rhs.end);
-                copyOfOrdered.remove(lhs_pos);
-                n -= 1;
-                merges++;
+                copyOfOrdered.set(lhs_pos, null);
+                merges += 1;
             }
+            lhs_pos = rhs_pos;
+            rhs_pos++;
         }
         while (rhs_pos < n);
 
-        return new Merger(merges, copyOfOrdered);
+        final List<Interval> merged = new ArrayList<Interval>(n - merges);
+        for (final Interval intr : copyOfOrdered)
+        {
+            if (intr != null)
+                merged.add(intr);
+        }
+
+        return new Merger(merges, merged);
     }
 }
