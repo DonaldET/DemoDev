@@ -68,7 +68,7 @@ public class TestOvrFun
     @Test
     public void testRandomGeneration()
     {
-        final int randomTestCaseCount = 3;
+        final int randomTestCaseCount = 5;
         final List<Interval> randomTestCases = TestPerfUtil.generateTestCases(TestPerfUtil.INITIAL_SEED,
                 randomTestCaseCount, TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
         Assert.assertEquals("random test data size wrong", randomTestCaseCount, randomTestCases.size());
@@ -86,8 +86,8 @@ public class TestOvrFun
 
         if (display)
         {
-            System.err.println("\nSample Unordered random test data: " + randomTestCases.subList(0, 20));
-            System.err.println("Sample ordered random test data  : " + ordered.subList(0, 20));
+            System.err.println("\nSample Unordered random test data: " + randomTestCases.subList(0, 5));
+            System.err.println("Sample ordered random test data  : " + ordered.subList(0, 5));
         }
     }
 
@@ -166,16 +166,19 @@ public class TestOvrFun
         final int randomTestCaseCount = 5;
         final List<Interval> randomTestCases = TestPerfUtil.generateTestCases(TestPerfUtil.INITIAL_SEED,
                 randomTestCaseCount, TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
-        System.err.println("\n------\nLC-R2L Input     : " + randomTestCases);
+        if (display)
+            System.err.println("\n------\nLC-R2L Input     : " + randomTestCases);
 
         final OverlapLeetCode overlapLeetCode = new OverlapLeetCode();
         List<Interval> sortedIntervals = overlapLeetCode.sortIntervals(randomTestCases,
                 new OverlapLeetCode.IntervalComparator());
-        System.err.println("LC Ordered       : " + sortedIntervals);
+        if (display)
+            System.err.println("LC Ordered       : " + sortedIntervals);
 
         final OverlapR2L overlapR2L = new OverlapR2L();
         sortedIntervals = overlapR2L.sortIntervals(randomTestCases, new OverlapR2L.MergeComparator());
-        System.err.println("R2L Ordered      : " + sortedIntervals);
+        if (display)
+            System.err.println("R2L Ordered      : " + sortedIntervals);
 
         final Merger lcMerge = overlapLeetCode.merge(randomTestCases, null);
         final Merger r2lMerge = overlapR2L.merge(randomTestCases, null);
@@ -185,9 +188,12 @@ public class TestOvrFun
         final int n_result_lc = lcMerge.merged.size();
         final int n_result_r2l = r2lMerge.merged.size();
 
-        System.err.println("\nLC-R2L Input2    : " + randomTestCases);
-        System.err.println("LC  merged       : " + lcMerge.merged);
-        System.err.println("R2L merged       : " + r2lMerge.merged);
+        if (display)
+        {
+            System.err.println("\nLC-R2L Input2    : " + randomTestCases);
+            System.err.println("LC  merged       : " + lcMerge.merged);
+            System.err.println("R2L merged       : " + r2lMerge.merged);
+        }
 
         final int minMatchingSize = Math.min(n_result_lc, n_result_r2l);
         for (int i = 0; i < minMatchingSize; i++)
@@ -215,16 +221,19 @@ public class TestOvrFun
         final int randomTestCaseCount = 5;
         final List<Interval> randomTestCases = TestPerfUtil.generateTestCases(TestPerfUtil.INITIAL_SEED,
                 randomTestCaseCount, TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
-        System.err.println("\n------\nLC-L2R Input     : " + randomTestCases);
+        if (display)
+            System.err.println("\n------\nLC-L2R Input     : " + randomTestCases);
 
         final OverlapLeetCode overlapLeetCode = new OverlapLeetCode();
         List<Interval> sortedIntervals = overlapLeetCode.sortIntervals(randomTestCases,
                 new OverlapLeetCode.IntervalComparator());
-        System.err.println("LC Ordered       : " + sortedIntervals);
+        if (display)
+            System.err.println("LC Ordered       : " + sortedIntervals);
 
         final OverlapL2R overlapL2R = new OverlapL2R();
         sortedIntervals = overlapL2R.sortIntervals(randomTestCases, new OverlapR2L.MergeComparator());
-        System.err.println("L2R Ordered      : " + sortedIntervals);
+        if (display)
+            System.err.println("L2R Ordered      : " + sortedIntervals);
 
         final Merger lcMerge = overlapLeetCode.merge(randomTestCases, null);
         final Merger l2rMerge = overlapL2R.merge(randomTestCases, null);
@@ -234,9 +243,12 @@ public class TestOvrFun
         final int n_result_lc = lcMerge.merged.size();
         final int n_result_l2r = l2rMerge.merged.size();
 
-        System.err.println("\nLC-L2R Input2    : " + randomTestCases);
-        System.err.println("LC  merged       : " + lcMerge.merged);
-        System.err.println("L2R merged       : " + l2rMerge.merged);
+        if (display)
+        {
+            System.err.println("\nLC-L2R Input2    : " + randomTestCases);
+            System.err.println("LC  merged       : " + lcMerge.merged);
+            System.err.println("L2R merged       : " + l2rMerge.merged);
+        }
 
         final int minMatchingSize = Math.min(n_result_lc, n_result_l2r);
         for (int i = 0; i < minMatchingSize; i++)
@@ -264,12 +276,14 @@ public class TestOvrFun
         final int randomTestCaseCount = 5;
         final List<Interval> randomTestCases = TestPerfUtil.generateTestCases(TestPerfUtil.INITIAL_SEED,
                 randomTestCaseCount, TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
-        System.err.println("\n------\nR2L-L2R Input    : " + randomTestCases);
+        if (display)
+            System.err.println("\n------\nR2L-L2R Input    : " + randomTestCases);
 
         final OverlapR2L overlapR2L = new OverlapR2L();
         final List<Interval> sortedIntervals = overlapR2L.sortIntervals(randomTestCases,
                 new OverlapR2L.MergeComparator());
-        System.err.println("R2L-L2R Ordered  : " + sortedIntervals);
+        if (display)
+            System.err.println("R2L-L2R Ordered  : " + sortedIntervals);
 
         final Merger rtlMerge = overlapR2L.merge(randomTestCases, null);
         final Merger l2rMerge = new OverlapL2R().merge(randomTestCases, null);
@@ -279,9 +293,12 @@ public class TestOvrFun
         final int n_result_lc = rtlMerge.merged.size();
         final int n_result_r2l = l2rMerge.merged.size();
 
-        System.err.println("\nR2L-L2R Input2   : " + randomTestCases);
-        System.err.println("R2L merged       : " + rtlMerge.merged);
-        System.err.println("L2R merged       : " + l2rMerge.merged);
+        if (display)
+        {
+            System.err.println("\nR2L-L2R Input2   : " + randomTestCases);
+            System.err.println("R2L merged       : " + rtlMerge.merged);
+            System.err.println("L2R merged       : " + l2rMerge.merged);
+        }
 
         final int minMatchingSize = Math.min(n_result_lc, n_result_r2l);
         for (int i = 0; i < minMatchingSize; i++)

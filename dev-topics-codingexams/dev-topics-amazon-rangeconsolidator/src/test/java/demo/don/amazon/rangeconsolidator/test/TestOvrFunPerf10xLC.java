@@ -37,7 +37,7 @@ public class TestOvrFunPerf10xLC
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR / 2;
         final int n_tests = TEST_COUNT;
 
-        TestPerfUtil.timeAndTest(display, "LeetCode", new OverlapLeetCode(), repetition, n_tests, 2, INITIAL_TRIALS,
+        TestPerfUtil.timeAndTest(display, "Leet-Code", new OverlapLeetCode(), repetition, n_tests, 2, INITIAL_TRIALS,
                 STEP_TRIALS);
     }
 }

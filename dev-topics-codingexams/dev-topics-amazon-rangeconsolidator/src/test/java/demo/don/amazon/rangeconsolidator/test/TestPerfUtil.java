@@ -27,7 +27,7 @@ public abstract class TestPerfUtil
 
     // test execution times are too variable in run one, so run several times to
     // reduce variability, creating a test group
-    static final int TEST_GROUP_REPETITION_FACTOR = 25;
+    static final int TEST_GROUP_REPETITION_FACTOR = 16;
 
     //
     // Functional test data
