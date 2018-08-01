@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Formated as required by Leet Code
+ * Formated (almost) as required by Leet Code for submission
  * 
  * @author Donald Trummell <dtrummell@gmail.com>
  */
@@ -70,36 +70,36 @@ public class Solution
 
     public List<Solution.Interval> merge(final List<Solution.Interval> intervals)
     {
-        final List<Solution.Interval> copyOfOrdered = sortIntervals(intervals, new SolutionMergeComparator());
+        final List<Interval> copyOfOrdered = sortIntervals(intervals, new SolutionMergeComparator());
         int n = copyOfOrdered.size();
         if (n < 2)
         {
             return copyOfOrdered;
         }
 
-        int lhs_pos = n - 2;
-        int rhs_pos = n - 1;
+        int lhs_pos = 0;
+        int rhs_pos = 1;
 
         do
         {
-            final Solution.Interval lhs = copyOfOrdered.get(lhs_pos);
-            final Solution.Interval rhs = copyOfOrdered.get(rhs_pos);
+            final Interval lhs = copyOfOrdered.get(lhs_pos);
+            final Interval rhs = copyOfOrdered.get(rhs_pos);
             if (rhs.start > lhs.end)
             {
                 // No overlap
-                rhs_pos = lhs_pos;
-                lhs_pos--;
+                lhs_pos = rhs_pos;
+                rhs_pos++;
             }
             else
             {
                 // Overlap
-                lhs.end = Math.max(lhs.end, rhs.end);
-                copyOfOrdered.remove(rhs_pos);
-                rhs_pos = lhs_pos;
-                lhs_pos--;
+                rhs.start = lhs.start;
+                rhs.end = Math.max(lhs.end, rhs.end);
+                copyOfOrdered.remove(lhs_pos);
+                n -= 1;
             }
         }
-        while (lhs_pos >= 0);
+        while (rhs_pos < n);
 
         return copyOfOrdered;
     }

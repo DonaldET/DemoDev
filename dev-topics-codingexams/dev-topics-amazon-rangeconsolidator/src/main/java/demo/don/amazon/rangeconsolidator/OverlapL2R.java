@@ -49,6 +49,7 @@ public class OverlapL2R extends AbstractOverlap implements Overlap
         {
             throw new IllegalArgumentException("intervals null");
         }
+        assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
                 optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
         int n = copyOfOrdered.size();
@@ -65,7 +66,7 @@ public class OverlapL2R extends AbstractOverlap implements Overlap
         {
             final Interval lhs = copyOfOrdered.get(lhs_pos);
             final Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.low > lhs.hi)
+            if (rhs.start > lhs.end)
             {
                 // No overlap
                 lhs_pos = rhs_pos;
@@ -74,8 +75,8 @@ public class OverlapL2R extends AbstractOverlap implements Overlap
             else
             {
                 // Overlap
-                rhs.low = lhs.low;
-                rhs.hi = Math.max(lhs.hi, rhs.hi);
+                rhs.start = lhs.start;
+                rhs.end = Math.max(lhs.end, rhs.end);
                 copyOfOrdered.remove(lhs_pos);
                 n -= 1;
                 merges++;

@@ -30,20 +30,20 @@ public interface Overlap
     }
 
     /**
-     * An interval has a low-high pair and is ordered for searching (first by
-     * low, then by high.) Note that this class must be mutable for the Leet
+     * An interval has a start-end pair and is ordered for searching (first by
+     * start, then by end.) Note that this class must be mutable for the Leet
      * Code solution to work, and had been adapted by the other solutions.
      * 
      * @author Donald Trummell (dtrummell@gmail.com)
      */
     public static final class Interval
     {
-        public int low;
-        public int hi;
+        public int start;
+        public int end;
 
-        public Interval(final int low, final int hi) {
-            this.low = low;
-            this.hi = hi;
+        public Interval(final int start, final int end) {
+            this.start = start;
+            this.end = end;
         }
 
         @Override
@@ -51,8 +51,8 @@ public interface Overlap
         {
             final int prime = 31;
             int result = 1;
-            result = prime * result + hi;
-            result = prime * result + low;
+            result = prime * result + end;
+            result = prime * result + start;
             return result;
         }
 
@@ -68,13 +68,13 @@ public interface Overlap
 
             final Interval other = (Interval) obj;
 
-            return this.low == other.low ? (this.hi == other.hi ? true : false) : false;
+            return this.start == other.start ? (this.end == other.end ? true : false) : false;
         }
 
         @Override
         public String toString()
         {
-            return "[" + low + ", " + hi + "]";
+            return "[" + start + ", " + end + "]";
         }
     }
 

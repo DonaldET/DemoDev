@@ -16,7 +16,7 @@ public class OverlapLeetCode extends AbstractOverlap implements Overlap
         @Override
         public int compare(final Interval a, final Interval b)
         {
-            return a.low < b.low ? -1 : a.low == b.low ? 0 : 1;
+            return a.start < b.start ? -1 : a.start == b.start ? 0 : 1;
         }
     }
 
@@ -30,15 +30,15 @@ public class OverlapLeetCode extends AbstractOverlap implements Overlap
      * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
      */
     @Override
-    public Merger merge(final List<Interval> intervals, final Comparator<Interval> comparator)
+    public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
     {
         if (intervals == null)
         {
             throw new IllegalArgumentException("intervals null");
         }
-        assert comparator == null;
+        assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
-                comparator == null ? new IntervalComparator() : comparator);
+                optionalComparator == null ? new IntervalComparator() : optionalComparator);
         int n = copyOfOrdered.size();
         if (n < 2)
         {
@@ -51,7 +51,7 @@ public class OverlapLeetCode extends AbstractOverlap implements Overlap
         {
             // if the list of merged intervals is empty or if the current
             // interval does not overlap with the previous, simply append it.
-            if (merged.isEmpty() || merged.getLast().hi < interval.low)
+            if (merged.isEmpty() || merged.getLast().end < interval.start)
             {
                 merged.add(interval);
             }
@@ -59,7 +59,7 @@ public class OverlapLeetCode extends AbstractOverlap implements Overlap
             {
                 // otherwise, there is overlap, so we merge the current and
                 // previous intervals.
-                merged.getLast().hi = Math.max(merged.getLast().hi, interval.hi);
+                merged.getLast().end = Math.max(merged.getLast().end, interval.end);
                 merges++;
             }
         }

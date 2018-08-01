@@ -75,7 +75,7 @@ class TestSolutionRunner
         final int n = ovrInt.size();
         final List<Solution.Interval> solInt = new ArrayList<Solution.Interval>(n);
         for (final Overlap.Interval ovr : ovrInt)
-            solInt.add(new Solution.Interval(ovr.low, ovr.hi));
+            solInt.add(new Solution.Interval(ovr.start, ovr.end));
         return solInt;
     }
 

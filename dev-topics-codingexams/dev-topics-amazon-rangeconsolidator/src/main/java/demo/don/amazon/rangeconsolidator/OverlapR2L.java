@@ -49,6 +49,7 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
         {
             throw new IllegalArgumentException("intervals null");
         }
+        assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
                 optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
         int n = copyOfOrdered.size();
@@ -58,30 +59,30 @@ public class OverlapR2L extends AbstractOverlap implements Overlap
         }
 
         int merges = 0;
-        int lhs_pos = n - 2;
-        int rhs_pos = n - 1;
+        int lhs_pos = 0;
+        int rhs_pos = 1;
 
         do
         {
             final Interval lhs = copyOfOrdered.get(lhs_pos);
             final Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.low > lhs.hi)
+            if (rhs.start > lhs.end)
             {
                 // No overlap
-                rhs_pos = lhs_pos;
-                lhs_pos--;
+                lhs_pos = rhs_pos;
+                rhs_pos++;
             }
             else
             {
                 // Overlap
-                lhs.hi = Math.max(lhs.hi, rhs.hi);
-                copyOfOrdered.remove(rhs_pos);
+                rhs.start = lhs.start;
+                rhs.end = Math.max(lhs.end, rhs.end);
+                copyOfOrdered.remove(lhs_pos);
+                n -= 1;
                 merges++;
-                rhs_pos = lhs_pos;
-                lhs_pos--;
             }
         }
-        while (lhs_pos >= 0);
+        while (rhs_pos < n);
 
         return new Merger(merges, copyOfOrdered);
     }

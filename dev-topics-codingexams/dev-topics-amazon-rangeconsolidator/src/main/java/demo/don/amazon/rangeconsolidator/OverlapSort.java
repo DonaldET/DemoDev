@@ -20,14 +20,15 @@ public class OverlapSort extends AbstractOverlap implements Overlap
      * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
      */
     @Override
-    public Merger merge(final List<Interval> intervals, final Comparator<Interval> comparator)
+    public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
     {
         if (intervals == null)
         {
             throw new IllegalArgumentException("intervals null");
         }
+        assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
-                comparator == null ? new AbstractOverlap.MergeComparator() : comparator);
+                optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
         int n = copyOfOrdered.size();
         if (n < 2)
         {

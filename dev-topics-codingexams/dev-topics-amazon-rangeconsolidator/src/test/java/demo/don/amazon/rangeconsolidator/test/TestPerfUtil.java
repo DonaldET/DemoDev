@@ -15,7 +15,7 @@ import demo.don.amazon.rangeconsolidator.Overlap.Interval;
 public abstract class TestPerfUtil
 {
     // Provides Repeatability for the test
-    public static final int INITIAL_SEED = 7187;
+    public static final long INITIAL_SEED = 7187;
 
     // rerun an individual test-group and compute a central-tendency statistic
     // for execution time
@@ -76,10 +76,11 @@ public abstract class TestPerfUtil
         expected = Arrays.asList(new Interval(1, 4));
         testCases.add(new TestDef(inputSet, testLabel, expected, 1));
 
-        inputSet = Arrays.asList(new Interval(3, 4), new Interval(2, 5));
-        testLabel = "Set 8 - Leet Code overlap failure";
-        expected = Arrays.asList(new Interval(2, 5));
-        testCases.add(new TestDef(inputSet, testLabel, expected, 1));
+        inputSet = Arrays.asList(new Interval(4217, 9573), new Interval(6729, 7161), new Interval(3402, 7649),
+                new Interval(7743, 9454), new Interval(2706, 8358));
+        testLabel = "Set 8 - Random generated overlap failure";
+        expected = Arrays.asList(new Interval(2706, 9573));
+        testCases.add(new TestDef(inputSet, testLabel, expected, 4));
     }
 
     /**
@@ -88,18 +89,25 @@ public abstract class TestPerfUtil
     private TestPerfUtil() {
     }
 
-    private static List<Interval> generateTestCases(final int seed, final int n, final int min, final int max)
+    public static List<Interval> generateTestCases(final long seed, final int n, final int min, final int max)
     {
+        assert min <= max;
+        final int width = (max - min) + 1;
         final List<Interval> testCases = new ArrayList<Interval>(n);
         final Random random = new Random(seed);
         for (int i = 0; i < n; i++)
         {
-            final int v1 = random.nextInt((max - min) + 1) + min;
-            final int v2 = random.nextInt((max - min) + 1) + min;
+            final int v1 = getRandomNum(random, i, width, min);
+            final int v2 = getRandomNum(random, i, width, min);
             final Interval v = new Interval(Math.min(v1, v2), Math.max(v1, v2));
             testCases.add(v);
         }
         return testCases;
+    }
+
+    private static int getRandomNum(final Random random, final int ignore, final int width, final int min)
+    {
+        return (ignore <= 0) ? random.nextInt(width) + min : random.nextInt(width) + min + 1;
     }
 
     /**
@@ -132,7 +140,7 @@ public abstract class TestPerfUtil
         return times.get(sampleSize / 2);
     }
 
-    private static List<Interval> generateTestData(final int seed, final int length)
+    private static List<Interval> generateTestData(final long seed, final int length)
     {
         return TestPerfUtil.generateTestCases(seed, length, TestPerfUtil.INTERVAL_LBOUND, TestPerfUtil.INTERVAL_UBOUND);
     }

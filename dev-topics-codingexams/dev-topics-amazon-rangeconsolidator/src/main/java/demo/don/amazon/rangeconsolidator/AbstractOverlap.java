@@ -12,7 +12,7 @@ public abstract class AbstractOverlap implements Overlap
         @Override
         public int compare(final Interval a, final Interval b)
         {
-            return a.low < b.low ? -1 : (a.low > b.low ? 1 : (a.hi < b.hi ? -1 : (a.hi > b.hi ? 1 : 0)));
+            return a.start < b.start ? -1 : (a.start > b.start ? 1 : (a.end < b.end ? -1 : (a.end > b.end ? 1 : 0)));
         }
     }
 
@@ -25,7 +25,10 @@ public abstract class AbstractOverlap implements Overlap
         final List<Interval> sorted = new ArrayList<Interval>(n);
         if (n > 0)
         {
-            sorted.addAll(unsorted);
+            for (final Interval intr : unsorted)
+            {
+                sorted.add(new Interval(intr.start, intr.end));
+            }
             if (n > 1)
             {
                 Collections.sort(sorted, comparator);
