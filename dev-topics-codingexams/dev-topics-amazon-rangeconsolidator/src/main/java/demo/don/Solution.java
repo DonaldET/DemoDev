@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Formated (almost) as required for Leet Code for submission
+ * Formatted (almost) as required for Leet Code submission (53% with Collections.remove, 68% with manual remove)
  * 
  * @author Donald Trummell <dtrummell@gmail.com>
  */
@@ -72,35 +72,28 @@ public class Solution
             return copyOfOrdered;
         }
 
-        int merges = 0;
         int lhs_pos = 0;
         int rhs_pos = 1;
 
         do
         {
-            final Interval lhs = copyOfOrdered.get(lhs_pos);
-            final Interval rhs = copyOfOrdered.get(rhs_pos);
+            final Solution.Interval lhs = copyOfOrdered.get(lhs_pos);
+            final Solution.Interval rhs = copyOfOrdered.get(rhs_pos);
             if (rhs.start <= lhs.end)
             {
                 // Overlap
                 rhs.start = lhs.start;
                 rhs.end = Math.max(lhs.end, rhs.end);
                 copyOfOrdered.set(lhs_pos, null);
-                merges += 1;
             }
             lhs_pos = rhs_pos;
             rhs_pos++;
         }
         while (rhs_pos < n);
 
-        final List<Solution.Interval> merged = new ArrayList<Solution.Interval>(n - merges);
-        for (final Interval intr : copyOfOrdered)
-        {
-            if (intr != null)
-                merged.add(intr);
-        }
+        copyOfOrdered.removeAll(Collections.singleton(null));
 
-        return merged;
+        return copyOfOrdered;
     }
 
     private List<Solution.Interval> sortIntervals(final List<Solution.Interval> unsorted,

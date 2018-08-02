@@ -4,11 +4,11 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Formated as required by Leet Code; Uses array list with right-to-left pass, less space than linked list and marginally faster
+ * Formatted (almost) as required for Leet Code submission (68.25%)
  * 
  * @author Donald Trummell <dtrummell@gmail.com>
  */
-public class Solution
+class Solution
 {
     static final class SolutionMergeComparator implements Comparator<Interval>
     {
@@ -19,54 +19,43 @@ public class Solution
         }
     }
 
-    private List<Interval> sortIntervals(final List<Interval> unsorted, final Comparator<Interval> comparator)
-    {
-        final int n = unsorted.size();
-        final List<Interval> sorted = new ArrayList<Interval>(n);
-        if (n > 0)
-        {
-            sorted.addAll(unsorted);
-            if (n > 1)
-            {
-                Collections.sort(sorted, comparator);
-            }
-        }
-        return sorted;
-    }
-
     public List<Interval> merge(final List<Interval> intervals)
     {
-        final List<Interval> copyOfOrdered = sortIntervals(intervals, new SolutionMergeComparator());
-        int n = copyOfOrdered.size();
+        Collections.sort(intervals, new SolutionMergeComparator());
+        final int n = intervals.size();
         if (n < 2)
         {
-            return copyOfOrdered;
+            return intervals;
         }
 
-        int lhs_pos = n - 2;
-        int rhs_pos = n - 1;
+        int merges = 0;
+        int lhs_pos = 0;
+        int rhs_pos = 1;
 
         do
         {
-            final Interval lhs = copyOfOrdered.get(lhs_pos);
-            final Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.start > lhs.end)
-            {
-                // No overlap
-                rhs_pos = lhs_pos;
-                lhs_pos--;
-            }
-            else
+            final Interval lhs = intervals.get(lhs_pos);
+            final Interval rhs = intervals.get(rhs_pos);
+            if (rhs.start <= lhs.end)
             {
                 // Overlap
-                lhs.end = rhs.end;
-                copyOfOrdered.remove(rhs_pos);
-                rhs_pos = lhs_pos;
-                lhs_pos--;
+                rhs.start = lhs.start;
+                rhs.end = Math.max(lhs.end, rhs.end);
+                intervals.set(lhs_pos, null);
+                merges += 1;
             }
+            lhs_pos = rhs_pos;
+            rhs_pos++;
         }
-        while (lhs_pos >= 0);
+        while (rhs_pos < n);
 
-        return copyOfOrdered;
+        final List<Interval> merged = new ArrayList<Interval>(n - merges);
+        for (final Interval intr : intervals)
+        {
+            if (intr != null)
+                merged.add(intr);
+        }
+
+        return merged;
     }
 }
