@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Formatted (almost) as required for Leet Code submission (68.25%)
+ * Formatted (almost) as required for Leet Code submission (rank: 68.25%)
  * 
  * @author Donald Trummell <dtrummell@gmail.com>
  */

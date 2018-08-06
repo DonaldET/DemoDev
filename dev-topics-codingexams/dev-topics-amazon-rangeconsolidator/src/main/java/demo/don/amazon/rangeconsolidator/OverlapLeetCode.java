@@ -5,7 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Isolate sort work from actual interval merging
+ * Isolate sort work from actual interval merging. This implementation is taken
+ * from (<a href="https://leetcode.com/problems/merge-intervals/solution/">Leet
+ * Code</a>) and modified for performance testing.
  * 
  * @author Donald Trummell (dtrummell@gmail.com)
  */
@@ -35,15 +37,14 @@ public class OverlapLeetCode extends AbstractOverlap implements Overlap
         assert optionalComparator == null;
         final List<Interval> copyOfOrdered = sortIntervals(intervals,
                 optionalComparator == null ? new IntervalComparator() : optionalComparator);
-        int n = copyOfOrdered.size();
-        if (n < 2)
+        if (copyOfOrdered.size() < 2)
         {
             return new Merger(0, copyOfOrdered);
         }
 
         int merges = 0;
-        LinkedList<Interval> merged = new LinkedList<Interval>();
-        for (Interval interval : copyOfOrdered)
+        final LinkedList<Interval> merged = new LinkedList<Interval>();
+        for (final Interval interval : copyOfOrdered)
         {
             // if the list of merged intervals is empty or if the current
             // interval does not overlap with the previous, simply append it.

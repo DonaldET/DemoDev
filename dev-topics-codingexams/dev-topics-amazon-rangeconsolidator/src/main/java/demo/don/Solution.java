@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Formatted (almost) as required for Leet Code submission (53% with Collections.remove, 68% with manual remove)
+ * Formatted (almost) as required for Leet Code submission (rank 53% with Collections.remove, 68% with manual remove)
  * 
  * @author Donald Trummell <dtrummell@gmail.com>
  */
