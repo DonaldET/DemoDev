@@ -63,7 +63,7 @@ Apple | _compounditerator_ | Concatenate data sources using a list of iterators 
 Apple | _factorial_ | Contrast two factorial algorithms
 Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
-Amazon | _rangeconsolidator_ | Scan a list of ranges and collapse overlapping ranges.
+Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well.
 Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
