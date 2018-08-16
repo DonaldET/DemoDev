@@ -4,30 +4,23 @@
 	a signed licensing agreement, is hereby granted, provided that the above 
 	copyright notice, and this paragraph, appear in all copies, modifications, 
 	and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>demodev.topics</groupId>
-		<artifactId>demodev-topics-parent</artifactId>
+		<artifactId>demodev-topics-utils-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>demodev.topics</groupId>
-	<artifactId>demodev-topics-utils-parent</artifactId>
-	<name>Demonstration of Development _UTILS_</name>
-	<description>Parent Project for UTILS</description>
-
-	<packaging>pom</packaging>
+	<artifactId>demodev-topics-badaddr</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<url>http://www.linkedin.com/in/donaldtrummell/</url>
+	<packaging>jar</packaging>
+	<name>Addition Performance Testing Utilities</name>
 
-	<modules>
-		<module>dev-topics-badaddr</module>
-		<module>dev-topics-generationutils</module>
-		<module>dev-topics-testingutils</module>
-	</modules>
+	<description>Test Accuracy and Speed of Summation over large sequences</description>
 
 	<properties>
 	</properties>
@@ -41,4 +34,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<groupId>demodev.topics</groupId>
 </project>
