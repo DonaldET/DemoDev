@@ -1,6 +1,6 @@
-##Build Information
+## Build Information
 * * *
-###Build Information
+### Build Information
 
 Last tested versions:
 1. java version "1.8.0_112"
@@ -24,7 +24,7 @@ Last tested versions:
 
   XML files      : 131
 
-##MAVEN Summary
+## MAVEN Summary
 
 [INFO] ------------------------------------------------------------------------
 

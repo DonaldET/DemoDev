@@ -6,7 +6,7 @@ The projects use Maven to build and JUnit test artifacts.  The _root_ parent pro
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin.com/in/donaldtrummell/).
 
-#Getting Started
+# Getting Started
 
 All the information needed to build these projects is detailed in the _BuildResources_ document described next.  The process you will follow is:
  1. Download required dependencies (e.g., Java and MAVEN)
@@ -17,7 +17,7 @@ All the information needed to build these projects is detailed in the _BuildReso
 
 The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET\DemoDev_.
 
-##Sub-Project Categories
+## Sub-Project Categories
 
 *DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Sub-projects include:
 - *algorithms*: Math algorithm demonstrations.
@@ -28,24 +28,24 @@ The _StaticResources_ directory contains instructions on how to setup a MAVEN an
 - *utils*: Utilities used by _DemoDev_ and related projects (code generation used by _WindPower Explorer_)
 
 
-##Sub-Project Structure
+## Sub-Project Structure
 
 Sub-projects usually include a _business_ motivation for the coding example.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes.
 
 The sub-project solution collaborators have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. All sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  This is accomplished by using the regression aspect of these tests. Many of the projects appear _complicated_ by use of the *Spring* framework.  This is done to illustrate _Spring_ usage in addition to the basic techniques shown in the example. Overall, a professional Software Engineer would provide background for the code, some guidelines on usage in the _JavaDoc_ entries, and tips to help maintain the code.  Example invocation with unit tests help in achieving these goals.
-##Sub-Project Math Algorithms
+## Sub-Project Math Algorithms
 
 These Mathematical Algorithms show methods of performance testing and demonstrate coding principles like:
 - Separation of interface and implementation
 - Use of multiple implementations (Strategy and Command Patterns)
 - JUnit tests where feasible
 
-###Selected _Math Algorithms_ Content
+### Selected _Math Algorithms_ Content
 
 Project | Description
 ------- | -----------
 _largenumeric_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors
-##Sub-Project Coding Exams
+## Sub-Project Coding Exams
 
 These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked during an interview.  Solutions include MAVEN builds, JUnit tests, and JavaDoc.
 
@@ -54,7 +54,7 @@ These solutions also demonstrate coding principles like:
 - Use of multiple implementations (Strategy and Command Patterns)
 - JUnit tests where feasible
 
-###Selected _Exam_ Content
+### Selected _Exam_ Content
 
 Client | Project | Description
 ------ | ------- | -----------
@@ -70,20 +70,20 @@ Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
-##Sub-Project Hacks
+## Sub-Project Hacks
 
 These short examples demonstrate _"less than the best"_ coding practices that are sometimes used to get around a solution constraint until a better solution can be found.
 
-###Selected _Hacks_ Content
+### Selected _Hacks_ Content
 
 Project | Description
 ------- | -----------
 _serialhack_ | Use serialization to assign value to a private field lacking a setter
-##Sub-Project Memory Indexing
+## Sub-Project Memory Indexing
 
 These examples demonstrate in-memory searching algorithms that stress simple approaches where possible.
 
-###Selected _MemoryIndexing_ Content
+### Selected _MemoryIndexing_ Content
 
 Project | Description
 ------- | -----------
@@ -91,26 +91,26 @@ _simple linear search_ | Use specially formatted names and attributes and perfor
 _top X query_| Compares the performance of priority queue and sorted array based scanners on "top X" queries across a random collection of Game instances. Game instances have an ascending comparator that allows the instances to be ordered on several attributes. The "Top X" query returns a sorted collection of the desired subset of Game instances.
 
 The _top X query_ example uses the motivation of finding the (say) top 10 scores of a complex game where several game attributes allow for unique ordering. We vary the number of inputs to scan and the size of the top set. Since 100 elements is a large list, that is our upper limit for this performance test.
-##Sub-Project NoSQL
+## Sub-Project NoSQL
 
 These examples demonstrate NoSQL persistence.
 
-###Selected _NoSQL_ Content
+### Selected _NoSQL_ Content
 
 Project | Description
 ------- | -----------
 __TBD__ | __TBD__
-##Sub-Project Utilities
+## Sub-Project Utilities
 
 These projects are wrking code used by DemoDev and related projects. The of course illustrate good engineering practices.
 
-###Selected _Utilities_ Content
+### Selected _Utilities_ Content
 
 Project | Description
 ------- | -----------
-_DemoGenerator_ | A Freemarker based text generation utility supporting configurable symbol interpolation, composible context/model properties specifications, composable template specifications, and driven by command-line parameters.  This utility is used by _WindPower Explorer_ to create Oozie properties files and HQL table specifications.##Build Information
+_DemoGenerator_ | A Freemarker based text generation utility supporting configurable symbol interpolation, composible context/model properties specifications, composable template specifications, and driven by command-line parameters.  This utility is used by _WindPower Explorer_ to create Oozie properties files and HQL table specifications.## Build Information
 * * *
-###Build Information
+### Build Information
 
 Last tested versions:
 1. java version "1.8.0_112"
@@ -134,7 +134,7 @@ Last tested versions:
 
   XML files      : 131
 
-##MAVEN Summary
+## MAVEN Summary
 
 [INFO] ------------------------------------------------------------------------
 

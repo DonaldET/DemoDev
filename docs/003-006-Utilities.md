@@ -1,8 +1,8 @@
-##Sub-Project Utilities
+## Sub-Project Utilities
 
 These projects are wrking code used by DemoDev and related projects. The of course illustrate good engineering practices.
 
-###Selected _Utilities_ Content
+### Selected _Utilities_ Content
 
 Project | Description
 ------- | -----------

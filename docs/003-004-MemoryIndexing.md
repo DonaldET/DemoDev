@@ -1,8 +1,8 @@
-##Sub-Project Memory Indexing
+## Sub-Project Memory Indexing
 
 These examples demonstrate in-memory searching algorithms that stress simple approaches where possible.
 
-###Selected _MemoryIndexing_ Content
+### Selected _MemoryIndexing_ Content
 
 Project | Description
 ------- | -----------
