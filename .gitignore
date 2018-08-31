@@ -42,6 +42,12 @@ local.properties
 .buildpath
 
 #################
+## PyCharm
+#################
+
+.idea/
+
+#################
 ## Visual Studio
 #################
 

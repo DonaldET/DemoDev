@@ -95,7 +95,7 @@ public class SearchNativePerformanceTest extends AbstractPerformanceChecker
 
     Assert.assertTrue("Iterative unexpectedly slower by " + faster
         + ".  Running values are:  ITR: " + totItr + ";  REC: " + totAlt,
-        faster >= -0.1);
+        faster >= -0.20);
 
     final double expectedfaster = 0.35;
     final double allowedVariance = 0.45;

@@ -138,7 +138,7 @@ public class AdditionChecker
     private static final String TEST_HEADER = "n,expected,actual,delta,relative,sigd,elapsed,label";
 
     private static List<Integer> testRanges = Arrays.asList(10, 100, 1_000, 10_000, 100_000, 1_000_000, 5_000_000,
-            10_000_000, 50_000_000);
+            10_000_000, 50_000_000, 75_000_000);
 
     private static final double PRIME_DIVISOR = 7919.0;
 
@@ -189,7 +189,7 @@ public class AdditionChecker
                 final Summation testResult = badr.doOperation(label, testSeq, isParallel);
                 final double estimatedSum = testResult.testSum;
                 final double deltaErr = trueSum - estimatedSum;
-                final double relErr = deltaErr / trueSum * RELATIVE_ERROR_PPB;
+                final double relErr = deltaErr / trueSum;
 
                 return new Result(estimatedSum, deltaErr, relErr, testResult.elapsed);
             }
@@ -408,7 +408,8 @@ public class AdditionChecker
             final double rel = theResult.relErr;
             final double timeInMS = (double) theResult.elapsed / 1000000.0;
             report.print(String.format("%d, %.5f, %.5f", testSize, trueSum, theResult.estimated));
-            report.print(String.format(", %.4e, %.3e, %.1f", theResult.delErr, rel, estimateSignificantDigits(rel)));
+            report.print(String.format(", %.4e, %.3e, %.1f", theResult.delErr, rel * RELATIVE_ERROR_PPB,
+                    estimateSignificantDigits(rel)));
             report.println(String.format(", %.3f, %s", timeInMS, label));
         }
         final long elapsed = System.currentTimeMillis() - start;
