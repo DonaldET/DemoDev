@@ -138,7 +138,7 @@ public class AdditionChecker
     private static final String TEST_HEADER = "n,expected,actual,delta,relative,sigd,elapsed,label";
 
     private static List<Integer> testRanges = Arrays.asList(10, 100, 1_000, 10_000, 100_000, 1_000_000, 5_000_000,
-            10_000_000, 50_000_000, 75_000_000);
+            10_000_000, 50_000_000, 75_000_000, 100_000_000);
 
     private static final double PRIME_DIVISOR = 7919.0;
 
