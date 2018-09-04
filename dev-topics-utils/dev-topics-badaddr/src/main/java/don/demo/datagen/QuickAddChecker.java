@@ -32,12 +32,19 @@ public class QuickAddChecker {
 		}
 		sum_exp /= LARGE_PRIME;
 
+		System.out.println("\nUse streams SUM");
+		sum_f = test_seq.stream().reduce(0.0, Double::sum);
+		double delta = sum_f - sum_exp;
+		System.out
+				.println(String.format("\nNo-shuffle fractional stream sum is %f;  delta: %f;" + "  relative error: %e",
+						sum_f, delta, delta / sum_exp));
+
 		System.out.println("\nNow Shuffle");
 		Collections.shuffle(test_seq, new Random(3677));
 
 		System.out.println("\nUse streams SUM");
 		sum_f = test_seq.stream().reduce(0.0, Double::sum);
-		double delta = sum_f - sum_exp;
+		delta = sum_f - sum_exp;
 		System.out.println(String.format("Forward fractional stream sum is %f;  delta: %f;" + "  relative error: %e",
 				sum_f, delta, delta / sum_exp));
 

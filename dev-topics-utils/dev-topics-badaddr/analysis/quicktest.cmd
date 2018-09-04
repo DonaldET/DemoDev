@@ -1,6 +1,6 @@
 @echo off
-echo Running quick addition test
-time/T
+echo. Running quick Java addition test
+set starttm=%time%
 java -cp .;..\target\classes\ don.demo.datagen.QuickAddChecker
-time/T
-echo Done
+set endtm=%time%
+echo. Done: %starttm% to %endtm%

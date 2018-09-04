@@ -1,6 +1,6 @@
 @echo off
-echo Running quick addition test
-time/T
+echo. Running quick addition test
+set starttm=%time%
 python add_tester.py
-time/T
-echo Done
+set endtm=%time%
+echo. Done: %starttm% to %endtm%

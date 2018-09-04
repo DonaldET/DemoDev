@@ -27,15 +27,19 @@ if __name__ == '__main__':
         test_seq[i] = test_seq[i] / LARGE_PRIME
     sum_exp /= LARGE_PRIME
 
+    sum_f = sum(test_seq)
+    delta = sum_f - sum_exp
+    print('\nNo-shuffle fractional builtin sum is {:f};  delta: {:f};'
+          '  relative error: {:e}'.format(sum_f, delta, delta / sum_exp))
+
     print('\nNow Shuffle')
     random.seed(3677)
     random.shuffle(test_seq)
 
     print('\nUse builtin SUM')
     sum_f = sum(test_seq)
-
     delta = sum_f - sum_exp
-    print('Forward fractional stream sum is {:f};  delta: {:f};'
+    print('Forward fractional builtin sum is {:f};  delta: {:f};'
           '  relative error: {:e}'.format(sum_f, delta, delta / sum_exp))
 
     print('\nUse uncorrected SUM')
