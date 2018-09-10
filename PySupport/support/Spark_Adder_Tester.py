@@ -3,44 +3,33 @@ from __future__ import print_function
 
 import random
 
-    def _
-    n = int(50000000)
-    print('Addition Accuracy Test for sequence {:d} long'.format(n))
+from pyspark.sql.types import StructType
+from pyspark.sql.types import StructField
+from pyspark.sql.types import StringType, IntegerType
 
-    test_seq = list()
-    for i in range(n):
-        test_seq.append((float(i) + 1.0))
-    print('  forward: ', test_seq[:6])
+n = int(50000000)
+LARGE_PRIME = float(7919)
+RAND_SEED = 3677
+random.seed(RAND_SEED)
 
-    sum_exp = (float(n) / 2.0) * (float(n) + 1.0)
-    print('  exp sum: {:.0f}'.format(sum_exp))
-    assert int(sum_exp) == sum_exp
 
-    sum_f = sum(test_seq)
-    print('  act sum: {:.0f}'.format(sum_f))
-    assert sum_f == sum_exp
+def _make_test_data(seq_size):
+    """
+    Create a known test sequence of the specified size
+    :param seq_size:
+    :return: A list of float values and their correct sum
+    """
+    gen_seq = list()
+    for i in range(seq_size):
+        gen_seq.append((float(i) + 1.0) / LARGE_PRIME)
+    true_sum = (float(seq_size) / 2.0) * (float(seq_size) + 1.0) if seq_size % 2 == 0 else float(seq_size) * (
+            float(seq_size) + 1.0) / 2.0
+    random.shuffle(gen_seq)
+    return gen_seq, true_sum
 
-    LARGE_PRIME = float(7919)
-    print('\nNow divide by large prime {:.0f}'.format(LARGE_PRIME))
-    for i in range(n):
-        test_seq[i] = test_seq[i] / LARGE_PRIME
-    sum_exp /= LARGE_PRIME
 
-    print('\nNow Shuffle')
-    random.seed(3677)
-    random.shuffle(test_seq)
-
-    print('\nUse builtin SUM')
-    sum_f = sum(test_seq)
-
-    delta = sum_f - sum_exp
-    print('Forward fractional stream sum is {:f};  delta: {:f};'
-          '  relative error: {:e}'.format(sum_f, delta, delta / sum_exp))
-
-    print('\nUse uncorrected SUM')
-    sum_f = 0.0
-    for i in range(n):
-        sum_f += test_seq[i]
-    delta = sum_f - sum_exp
-    print('Forward fractional simple sum is {:f};  delta: {:f};'
-          '  relative error: {:e}'.format(sum_f, delta, delta / sum_exp))
+def _make_df(test_seq):
+    schema = StructType([StructField("value", IntegerType(), True)])
+    rdd = spark.parallelize(test_seq)
+    df = sqlContext.createDataFrame(rdd, schema)
+    return df

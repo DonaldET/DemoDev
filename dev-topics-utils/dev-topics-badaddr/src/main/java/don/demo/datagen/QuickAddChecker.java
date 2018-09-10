@@ -32,7 +32,6 @@ public class QuickAddChecker {
 		}
 		sum_exp /= LARGE_PRIME;
 
-		System.out.println("\nUse streams SUM");
 		sum_f = test_seq.stream().reduce(0.0, Double::sum);
 		double delta = sum_f - sum_exp;
 		System.out
