@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2018. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -34,6 +34,7 @@
 		<module>dev-topics-gap-cart</module>
 		<module>dev-topics-gesail-twowriters</module>
 		<module>dev-topics-geturner-binarysearch</module>
+		<module>dev-topics-granular-sudoku</module>
 		<module>dev-topics-lumendata-duplicatechecker</module>
 	</modules>
 
