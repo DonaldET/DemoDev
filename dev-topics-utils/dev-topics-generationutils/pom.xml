@@ -16,7 +16,7 @@
 	</parent>
 
 	<artifactId>demodev-topics-demogenerator</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>Generation Utilities</name>
 
@@ -119,7 +119,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
+				<!-- <version>${maven-compiler-plugin.version}</version> -->
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>

@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2018. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -14,13 +14,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>demodev.topics</groupId>
+	<!-- <groupId>demodev.topics</groupId> -->
 	<artifactId>demodev-topics-nosql-parent</artifactId>
 	<name>Demonstration of Development _NOSQL_</name>
 	<description>Parent Project for NOSQL</description>
 
 	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<url>http://www.linkedin.com/in/donaldtrummell/</url>
 
 	<modules>

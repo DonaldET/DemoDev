@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2014. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2018. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -15,7 +15,7 @@
 	</parent>
 
 	<artifactId>demodev-topics-elance-diagonal-lister</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>Elance - Matrix Diagonal Lister</name>
 

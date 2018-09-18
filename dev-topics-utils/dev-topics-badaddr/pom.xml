@@ -16,7 +16,7 @@
 	</parent>
 
 	<artifactId>demodev-topics-badaddr</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>Addition Performance Testing Utilities</name>
 
@@ -34,5 +34,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<groupId>demodev.topics</groupId>
+	<!-- <groupId>demodev.topics</groupId> -->
 </project>
