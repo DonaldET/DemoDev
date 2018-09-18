@@ -20,7 +20,7 @@
 	<packaging>jar</packaging>
 	<name>Testing Utilities</name>
 
-	<description>Inject a unique key value through serialization</description>
+	<description>Runtime utilities helpful in testing</description>
 
 	<properties>
 	</properties>
