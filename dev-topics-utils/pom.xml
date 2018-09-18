@@ -15,13 +15,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>demodev.topics</groupId>
+	<!--  <groupId>demodev.topics</groupId> -->
 	<artifactId>demodev-topics-utils-parent</artifactId>
 	<name>Demonstration of Development _UTILS_</name>
 	<description>Parent Project for UTILS</description>
 
 	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<!--  <version>1.0.0-SNAPSHOT</version> -->
 	<url>http://www.linkedin.com/in/donaldtrummell/</url>
 
 	<modules>
