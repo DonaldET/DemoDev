@@ -46,7 +46,7 @@ public class SearchPerformanceTest extends AbstractPerformanceChecker
     searchRec = null;
   }
 
-  @SuppressWarnings("cast")
+  //@SuppressWarnings("cast")
   @Test
   public void testInstantiation()
   {
