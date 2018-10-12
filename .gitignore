@@ -53,6 +53,7 @@ PySupport/venv/
 ## RStudio
 #################
 *.Rproj
+.Rhistory
 
 .idea/
 venv/
