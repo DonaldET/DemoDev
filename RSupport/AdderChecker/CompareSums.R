@@ -1,7 +1,7 @@
 # CompareSums.R - compute summation by various standard R methods and
 # compare the relative error of each method using exact sum.
-source("GenerateData.R")
-source("SimpleSums.R")
+source("AdderChecker/GenerateData.R")
+source("AdderChecker/SimpleSums.R")
 
 TEST_SIZE <- 5.0e+07
 labels <- c("stats.lm ", "for.loop ", "moment.u ", "R.std.sum")
