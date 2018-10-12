@@ -47,6 +47,7 @@ local.properties
 
 .idea/
 venv/
+PySupport/venv/
 
 #################
 ## Visual Studio
