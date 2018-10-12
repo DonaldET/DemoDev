@@ -50,6 +50,15 @@ venv/
 PySupport/venv/
 
 #################
+## RStudio
+#################
+*.Rproj
+
+.idea/
+venv/
+PySupport/venv/
+
+#################
 ## Visual Studio
 #################
 
