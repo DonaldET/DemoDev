@@ -49,6 +49,14 @@ local.properties
 venv/
 PySupport/venv/
 
+
+#################
+## Intellij
+#################
+
+*.iml
+
+
 #################
 ## RStudio
 #################
