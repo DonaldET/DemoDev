@@ -1,4 +1,4 @@
-package don.demo.generator.wrapper;
+package don.demo.generator.wrappers;
 
 import don.demo.generator.InputOutputBuilder;
 import java.nio.file.Path;

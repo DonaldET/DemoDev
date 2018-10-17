@@ -1,4 +1,4 @@
-package don.demo.generator.wrapper;
+package don.demo.generator.wrappers;
 
 import don.demo.generator.ModelComposer;
 import don.demo.generator.model.PropertyModelBuilder;

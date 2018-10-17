@@ -27,14 +27,14 @@
 		<property name="DisplayParameterErrors" value="TRUE" />
 	</bean>
 	<bean id="tsgcomposemodel"
-		class="don.demo.generator.wrapper.TSGComposeModel" scope="singleton" />
+		class="don.demo.generator.wrappers.TSGComposeModel" scope="singleton" />
 	<bean id="tsggenerator"
-		class="don.demo.generator.wrapper.TSGGenerator" scope="singleton" />
+		class="don.demo.generator.wrappers.TSGGenerator" scope="singleton" />
 	<bean id="tsginputoutputbuilder"
-		class="don.demo.generator.wrapper.TSGInputOutputBuilder"
+		class="don.demo.generator.wrappers.TSGInputOutputBuilder"
 		scope="singleton" />
 	<bean id="tsgparametersetup"
-		class="don.demo.generator.wrapper.TSGParameterSetup" scope="singleton" />
+		class="don.demo.generator.wrappers.TSGParameterSetup" scope="singleton" />
 	<bean id="modelbuilder"
 		class="don.demo.generator.model.impl.PropertyModelBuilderImpl"
 		scope="singleton" />
