@@ -1,6 +1,6 @@
 # Welcome
 
-These moderate _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nuclease of a book on Java programming.
+These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nuclease of a book on Java programming.
 
 The projects use Maven to build and JUnit test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
