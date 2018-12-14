@@ -1,5 +1,18 @@
 package don.demo.generator.wrappers;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import org.springframework.stereotype.Service;
+
 import don.demo.generator.Generator;
 import don.demo.generator.freemarker.FreemarkerHelper;
 import don.demo.generator.freemarker.ModifiedInterpolationTemplateLoader;
@@ -7,18 +20,6 @@ import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import org.springframework.stereotype.Service;
 
 /**
  * A generator uses a model and list of source-template pairs to produce generated results.
@@ -42,7 +43,7 @@ import org.springframework.stereotype.Service;
 @Service(value = "tsggenerator")
 public class TSGGenerator implements Generator {
 	private static final long serialVersionUID = 5003949308482754668L;
-	private static final int TEMPLATE_BUFFER_SIZE = 1048576;
+	// private static final int TEMPLATE_BUFFER_SIZE = 1048576;
 
 	@Override
 	public Generator.GenStats generate(Properties composedPropertiesModel, List<Map.Entry<String, String>> pairs) {

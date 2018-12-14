@@ -1,12 +1,14 @@
 package don.demo.generator.wrappers;
 
+import java.util.Properties;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import don.demo.generator.ModelComposer;
 import don.demo.generator.model.PropertyModelBuilder;
 import don.demo.generator.model.PropertyModelLoader;
-import java.io.PrintStream;
-import java.util.Properties;
-import javax.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Compose a model by overriding default properties with detail properties.

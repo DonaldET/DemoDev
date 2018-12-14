@@ -30,6 +30,8 @@ import org.springframework.stereotype.Service;
  */
 @Service(value = "tsginputoutputbuilder")
 public class TSGInputOutputBuilder implements InputOutputBuilder {
+	private static final long serialVersionUID = 8884065599802401879L;
+
 	@Override
 	public List<Map.Entry<String, String>> createPairedList(String srcDir, String[] templateList, String dstDir,
 			String[] generatedFileList, boolean useSrcDir) {
