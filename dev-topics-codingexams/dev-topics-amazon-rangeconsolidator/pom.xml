@@ -17,9 +17,9 @@
 	<artifactId>demodev-topics-amazon-rangeconsolidator</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>Amazon - Invoice Parser</name>
+	<name>Amazon - Range Consolidator</name>
 
-	<description>Integer Range Consolidation; collapse overlapping ranges </description>
+	<description>Integer Range Consolidation; collapse overlapping ranges</description>
 
 	<properties>
 	</properties>
