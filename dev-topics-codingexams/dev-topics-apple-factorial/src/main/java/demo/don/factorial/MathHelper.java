@@ -10,7 +10,7 @@ package demo.don.factorial;
 
 /**
  * A factorial implementation of <code>MathHelper</code> provides different
- * mechanisms to
+ * mechanisms to compute the factorial
  * 
  * @author Donald Trummell
  */

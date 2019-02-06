@@ -16,60 +16,52 @@ import demo.don.factorial.MathHelper;
  * 
  * @author Donald Trummell
  */
-public class PreComputedMathHelper implements MathHelper
-{
-  /**
-   * Pre-computed Table of size M has 0!, 1! . . . (M - 1)!
-   */
-  private static long[] zeroBasedPrecompute = { 1L, 1L, 2L, 6L, 24L, 120L,
-      720L, 5040L, 40320L, 362880L, 3628800L, 39916800L, 479001600L,
-      6227020800L, 87178291200L };
-  public static int knownLength = zeroBasedPrecompute.length;
+public class PreComputedMathHelper implements MathHelper {
+	/**
+	 * Pre-computed Table of size M has 0!, 1! . . . (M - 1)!
+	 */
+	private static long[] zeroBasedPrecompute = { 1L, 1L, 2L, 6L, 24L, 120L, 720L, 5040L, 40320L, 362880L, 3628800L,
+			39916800L, 479001600L, 6227020800L, 87178291200L, 1307674368000L, 20922789888000L };
+	public static int knownLength = zeroBasedPrecompute.length;
 
-  public PreComputedMathHelper()
-  {
-  }
+	public PreComputedMathHelper() {
+	}
 
-  @Override
-  public String getName()
-  {
-    return "PreComputed";
-  }
+	@Override
+	public String getName() {
+		return "PreComputed";
+	}
 
-  @Override
-  public long factorial(final int n)
-  {
-    if (n < 0)
-      throw new IllegalArgumentException("undefined factorial for " + n);
+	@Override
+	public long factorial(final int n) {
+		if (n < 0)
+			throw new IllegalArgumentException("undefined factorial for " + n);
 
-    //
-    // Use the table with 0! ... (M - 1)!
+		//
+		// Use the table with 0! ... (M - 1)!
 
-    final int lastIndex = knownLength - 1;
-    if (n <= lastIndex)
-      return zeroBasedPrecompute[n];
+		final int lastIndex = knownLength - 1;
+		if (n <= lastIndex)
+			return zeroBasedPrecompute[n];
 
-    if (n > MAX_FACTORIAL_ARGUMENT)
-      throw new IllegalArgumentException(n
-          + " is too big to compute factorial, max is "
-          + MAX_FACTORIAL_ARGUMENT);
+		if (n > MAX_FACTORIAL_ARGUMENT)
+			throw new IllegalArgumentException(
+					n + " is too big to compute factorial, max is " + MAX_FACTORIAL_ARGUMENT);
 
-    //
-    // Pre-computed Table of size M has 0!, 1! . . . (M - 1)!
-    // Compute N! beyond end of table,
-    // (M - 1)! * M * M+1 * ... N
-    //
+		//
+		// Pre-computed Table of size M has 0!, 1! . . . (M - 1)!
+		// Compute N! beyond end of table,
+		// (M - 1)! * M * M+1 * ... N
+		//
 
-    return bumpFactorial(n, knownLength, zeroBasedPrecompute[lastIndex]);
-  }
+		return bumpFactorial(n, knownLength, zeroBasedPrecompute[lastIndex]);
+	}
 
-  private static final long bumpFactorial(final int n, final int start,
-      final long tableValue)
-  {
-    long val = tableValue;
-    for (long f = start; f <= n; f++)
-      val *= f;
+	private static final long bumpFactorial(final int n, final int start, final long tableValue) {
+		long val = tableValue;
+		for (long f = start; f <= n; f++)
+			val *= f;
 
-    return val;
-  }
+		return val;
+	}
 }

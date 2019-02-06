@@ -45,7 +45,7 @@ public class TestFactorialPreComputed extends FactorialCheckerBase
   public void testLastInTable()
   {
     final int m = PreComputedMathHelper.knownLength - 1;
-    final long exp = 87178291200L; // 14!
+    final long exp = 20922789888000L; // 16!
     assertEquals("end of table [" + m + "] unequal", exp, getMh().factorial(m));
   }
 
@@ -53,7 +53,7 @@ public class TestFactorialPreComputed extends FactorialCheckerBase
   public void testFirstBeyondTable()
   {
     final int m = PreComputedMathHelper.knownLength;
-    final long exp = 1307674368000L; // 15!
+    final long exp = 355687428096000L; // 17!
     assertEquals("end of table [" + m + "] unequal", exp, getMh().factorial(m));
   }
 }
