@@ -290,8 +290,8 @@ public class Solution {
 		// |                  ^  ^
 		// -------------------|--|
 		//
-		// satisfies: a b c d *a* e ==> e d c b a
-		// depends  : a b->[] c->[] | d->a->b->[], c->[] | e b c ==> b c a e b
+		// satisfies      : a b c d *a* e ==> e d c b a
+		// depends/recurse: b c a e d
 		//
 		//
 		String[] simplestLook = { "\"a\", \"b\", \"c\"", "\"d\", \"a\", \"e\"", "\"e\"", "\"b\"", "\"c\"" };
