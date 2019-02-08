@@ -284,6 +284,19 @@ public class Solution {
 		String[] zeroLength = {};
 		processDependencies("Zero Length", zeroLength);
 
+		// [a=[b, c], d=[a, e], e=[], b=[], c=[]]
+		//
+		// A <---- D ----> E  B  C
+		// |                  ^  ^
+		// -------------------|--|
+		//
+		// satisfies: a b c d *a* e ==> e d c b a
+		// depends  : a b->[] c->[] | d->a->b->[], c->[] | e b c ==> b c a e b
+		//
+		//
+		String[] simplestLook = { "\"a\", \"b\", \"c\"", "\"d\", \"a\", \"e\"", "\"e\"", "\"b\"", "\"c\"" };
+		processDependencies("simpest look", simplestLook);
+
 		String[] simpleLook = { "\"D\", \"E\", \"F\"", "\"A\", \"G\"", "\"B\", \"C\"", "\"C\", \"E\"", "\"E\", \"F\"",
 				"\"F\"", "\"G\", \"B\"" };
 		processDependencies("simple look", simpleLook);
