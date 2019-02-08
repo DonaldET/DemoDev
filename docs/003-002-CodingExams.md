@@ -18,8 +18,10 @@ Amazon | _codingchallange_ | Create a recommendation feature (recommendation eng
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well.
 Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
+CreditKarma | _List Dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
+Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates.
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
