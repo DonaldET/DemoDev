@@ -4,6 +4,11 @@ These _DemoDev_ projects illustrate useful techniques for building Java, Service
 
 The projects use Maven to build and JUnit test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
+Supporting web sites for testing skills include:
+- [http://https://leetcode.com/](http://https://leetcode.com/ "Leet Code"), presenting problems and solutions in a white-board environment.
+- [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board testing environment.
+- [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment.
+
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin.com/in/donaldtrummell/). You may review the published form of this documentation at http://donaldet.github.io/DemoDev/.
 
 # Getting Started
@@ -21,7 +26,7 @@ The _StaticResources_ directory contains instructions on how to setup a MAVEN an
 
 *DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Sub-projects include:
 - *algorithms*: Math algorithm demonstrations.
-- *codingexams*: Codind and Algorithm interview questions asked over a whiteboard or in a collaboration environment.
+- *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment.
 - *hacks*: Unusual solutions to interesting problems that don't necessarily reflect so-called _best practices_.
 - *jerseyservices*: RESTful service implementations using the **Jersey framework**
 - *memoryindexing*: In-memory search algorithms
@@ -65,10 +70,12 @@ Amazon | _codingchallange_ | Create a recommendation feature (recommendation eng
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well.
 Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
+CreditKarma | _List Dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
+Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates.
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
 ## Sub-Project Hacks
 
