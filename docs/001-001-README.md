@@ -5,9 +5,9 @@ These _DemoDev_ projects illustrate useful techniques for building Java, Service
 The projects use Maven to build and JUnit test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
 Supporting web sites for testing skills include:
-- [http://https://leetcode.com/](http://https://leetcode.com/ "Leet Code"), presenting problems and solutions in a white-board environment.
-- [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board testing environment.
-- [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment.
+- [http://https://leetcode.com/](http://https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
+- [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
+- [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin.com/in/donaldtrummell/). You may review the published form of this documentation at http://donaldet.github.io/DemoDev/.
 
