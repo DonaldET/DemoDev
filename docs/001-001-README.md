@@ -20,7 +20,7 @@ All the information needed to build these projects is detailed in the _BuildReso
  4. On the command line, from the downloaded directory, execute:
     _mvn clean install_
 
-The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET\DemoDev_.
+The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET/DemoDev_.
 
 ## Sub-Project Categories
 
