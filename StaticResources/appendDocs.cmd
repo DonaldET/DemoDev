@@ -27,7 +27,7 @@ goto finis
 
 :
 :xx_setup_files
-set XX_srcDir=..\docs\
+set XX_srcDir=..\docs_sources\
 set XX_masterFile=README.md
 set XX_targetDir=..\
 set XX_allDocs=%XX_targetDir%%XX_masterFile%
