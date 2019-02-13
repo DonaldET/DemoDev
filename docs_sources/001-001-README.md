@@ -9,7 +9,7 @@ Supporting web sites for testing skills include:
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  His LinkedIn profile is found [www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/ "pretty view").
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  His LinkedIn profile is found [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
 
 # Getting Started
 
