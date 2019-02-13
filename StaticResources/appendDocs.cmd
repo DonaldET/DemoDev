@@ -45,6 +45,7 @@ goto finis
 :
 :finis
 echo. **** Assembling README.md completed
+copy /a %XX_targetDir%%XX_masterFile% ..\docs\%XX_masterFile%
 if defined XX_CurDir popd %XX_CurDir%
 
 set XX_CurDir=
