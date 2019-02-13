@@ -1,6 +1,6 @@
 # Welcome
 
-These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nuclease of a book on Java programming.
+These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nucleus of a book on programming, primarily with the Java language. Various object-oriented and functional techniques are illustrated with real examples.
 
 The projects use Maven to build and JUnit test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
@@ -9,14 +9,14 @@ Supporting web sites for testing skills include:
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  You may see his detailed profile [here](http://www.linkedin.com/in/donaldtrummell/). You may review the published form of this documentation at http://donaldet.github.io/DemoDev/.
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  His LinkedIn profile is found [http://[www.linkedin.com/in/donaldtrummell/](http://[www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/ "pretty view").
 
 # Getting Started
 
 All the information needed to build these projects is detailed in the _BuildResources_ document described next.  The process you will follow is:
  1. Download required dependencies (e.g., Java and MAVEN)
  2. Install and test the dependencies
- 3. Download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/])
+ 3. Download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/ "the source repo"))
  4. On the command line, from the downloaded directory, execute:
     _mvn clean install_
 
