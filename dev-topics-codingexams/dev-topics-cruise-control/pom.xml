@@ -1,0 +1,74 @@
+<!-- Copyright (c) 2018. Donald Trummell. All Rights Reserved. Permission 
+	to use, copy, modify, and distribute this software and its documentation 
+	for educational, research, and not-for-profit purposes, without fee and without 
+	a signed licensing agreement, is hereby granted, provided that the above 
+	copyright notice, and this paragraph, appear in all copies, modifications, 
+	and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>demodev.topics</groupId>
+		<artifactId>demodev-topics-codingexam-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>dev-topics-cruise-control</artifactId>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
+	<packaging>jar</packaging>
+	<name>Cruise Control - Process tasks sequentially</name>
+
+	<description>Process tasks sequentially with cooling time constraints</description>
+
+	<properties>
+	</properties>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${maven-shade-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>demo.gesail.twowriters.impl.ArrayConductor</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${exec-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>java</executable>
+					<arguments>
+						<argument>-jar</argument>
+						<argument>target\dev-topics-creditkarma-list-dependencies-1.0.0-SNAPSHOT.jar</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
