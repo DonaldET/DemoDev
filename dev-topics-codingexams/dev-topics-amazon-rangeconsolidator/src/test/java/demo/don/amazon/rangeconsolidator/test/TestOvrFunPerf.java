@@ -43,7 +43,7 @@ public class TestOvrFunPerf
         // ---------------------------
 
         final List<long[]> testResultLC = TestPerfUtil.timeAndTest(display, "Leet-Code", new OverlapLeetCode(),
-                repetition, n_tests, 3, INITIAL_TRIALS, STEP_TRIALS);
+                repetition, n_tests, 4, INITIAL_TRIALS, STEP_TRIALS);
         final List<long[]> testResultR2L = TestPerfUtil.timeAndTest(display, "Right-to-left", new OverlapR2L(),
                 repetition, n_tests, 3, INITIAL_TRIALS, STEP_TRIALS);
         TestPerfUtil.timeAndTest(display, "Left-to-right", new OverlapL2R(), repetition, n_tests, 3, INITIAL_TRIALS,
