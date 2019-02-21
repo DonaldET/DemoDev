@@ -11,7 +11,7 @@
 
 	<parent>
 		<groupId>demodev.topics</groupId>
-		<artifactId>demodev-topics-parent</artifactId>
+		<artifactId>demodev-topics-algorithms-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 

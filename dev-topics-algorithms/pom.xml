@@ -24,6 +24,7 @@
         <url>http://www.linkedin.com/in/donaldtrummell/</url>
 
         <modules>
+                <module>dev-topics-badaddr</module>
                 <module>dev-topics-largenumeric</module>
                 <module>dev-topics-quadradic</module>
                 <module>dev-topics-sieve</module>

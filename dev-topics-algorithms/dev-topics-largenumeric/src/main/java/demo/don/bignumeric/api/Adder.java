@@ -17,7 +17,7 @@ package demo.don.bignumeric.api;
  * <strong>Note:</strong>
  * <p>
  * This approach to floating point addition is based on work done at the
- * <em>Univesity of California</em>, Berkeley, in the early 70's, and originally
+ * <em>University of California</em>, Berkeley, in the early 70's, and originally
  * coded in <code>C++</code>.
  *
  * @author Donald Trummell
