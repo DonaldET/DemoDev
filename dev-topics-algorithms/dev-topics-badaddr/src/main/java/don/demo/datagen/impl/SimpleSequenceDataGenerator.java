@@ -20,7 +20,7 @@ public class SimpleSequenceDataGenerator implements DataGenerator
     }
 
     /**
-     * Create a simple sequence
+     * Create a simple sequence.
      */
     @Override
     public List<Double> generateSequence(final int start, final int step, final int n)
@@ -37,7 +37,7 @@ public class SimpleSequenceDataGenerator implements DataGenerator
     }
 
     /**
-     * Randomize sample
+     * Randomize sample.
      */
     @Override
     public void shuffleSample(final List<Double> sample)
@@ -47,10 +47,9 @@ public class SimpleSequenceDataGenerator implements DataGenerator
 
     /**
      * Scale down sample.
-     * 
      */
     @Override
-    public void divideScaleSample(List<Double> sample, final double divisor)
+    public void divideScaleSample(final List<Double> sample, final double divisor)
     {
         for (int i = 0; i < sample.size(); i++)
         {
