@@ -7,7 +7,7 @@ import java.util.Random;
 
 /**
  * Test summation methods for a specific sequence size. This is the test bed for
- * the addition checker.
+ * the addition checker utility program called <em>Bad Addr</em>.
  * 
  * @author Donald Trummell
  */
@@ -22,7 +22,7 @@ public class QuickAddChecker {
 		System.out.println(String.format("Check Addition Accuracy Test for sequence %d long", n));
 		final List<Double> test_seq = new ArrayList<Double>();
 		for (int i = 0; i < n; i++) {
-			test_seq.add((double) (i + 1.0));
+			test_seq.add((double)i + 1.0);
 		}
 		System.out.println("  forward: " + test_seq.subList(0, 6) + " . . . for " + test_seq.size() + " entries.");
 		double sum_exp = ((double) n / 2.0) * ((double) n + 1.0);
