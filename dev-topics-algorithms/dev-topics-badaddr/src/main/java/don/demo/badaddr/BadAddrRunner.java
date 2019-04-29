@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface BadAddrRunner
 {
-
     class Summation
     {
         public final String label;

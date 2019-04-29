@@ -7,8 +7,8 @@ import don.demo.badaddr.BadAddrRunner;
 /**
  * The Kahan algorithm provides a "<em>safe adder</em>" that more accurately
  * sums floating point numbers. This version is based on the one presented in
- * <a href="https://en.wikipedia.org/wiki/Kahan_summation_algorithm">Kahn
- * Summation Algorithm</a> found on Wikipedia. Supporting references are:
+ * <a href="https://en.wikipedia.org/wiki/Kahan_summation_algorithm">Kahan
+ * Summation Algorithm</a> found on Wikipeadia. Supporting references are:
  * <ol>
  * <li><a href=
  * "https://people.eecs.berkeley.edu/~demmel/AccurateSummation.pdf">An in depth
