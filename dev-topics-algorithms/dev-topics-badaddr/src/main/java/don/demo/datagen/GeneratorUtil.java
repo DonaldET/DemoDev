@@ -62,10 +62,12 @@ public class GeneratorUtil {
 	}
 
 	/**
-	 * Given: abs(re) <= 0.5 * 10**(-M) for M significant digits. As a result, M <=
-	 * log10(0.5) - log10(abs(re))
+	 * Given: abs(re) &lt;= 0.5 * 10**(-M) for M significant digits. As a result, M
+	 * &lt;= log10(0.5) - log10(abs(re))
 	 * 
 	 * @param rel relative error.
+	 * 
+	 * @return the fractional number of significant digits.
 	 */
 	public static double estimateSignificantDigits(final double rel) {
 		final double absrel = Math.abs(rel);

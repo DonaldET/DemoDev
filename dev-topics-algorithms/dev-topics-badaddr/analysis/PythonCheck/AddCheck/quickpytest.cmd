@@ -1,8 +1,8 @@
 @echo off
-echo. Running Java Quick Addition Checker
+echo. Running Python quick addition test
 set starttm=%time%
 timer
-java -cp .;..\target\classes\ don.demo.datagen.QuickAddChecker
+python add_tester.py
 timer /s
 set endtm=%time%
 echo.

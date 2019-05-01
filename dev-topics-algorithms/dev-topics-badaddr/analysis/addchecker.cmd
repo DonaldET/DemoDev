@@ -1,6 +1,10 @@
 @echo off
-echo Running full addition test
-time/T
-java -cp . -jar ..\deploy\AddChecker.jar
-time/T
-echo Done
+echo. Running Java Bad Adder Explorer test
+set starttm=%time%
+timer
+java -cp . -jar ..\deploy\BadAdder.jar
+timer /s
+set endtm=%time%
+echo.
+echo. Done: %starttm% to %endtm%
+echo.
