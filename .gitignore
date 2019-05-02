@@ -53,7 +53,6 @@ PySupport/venv/
 #################
 ## Intellij
 #################
-
 *.iml
 
 
@@ -62,10 +61,7 @@ PySupport/venv/
 #################
 *.Rproj
 .Rhistory
-
-.idea/
-venv/
-PySupport/venv/
+.RData
 
 #################
 ## Visual Studio
@@ -203,10 +199,10 @@ UpgradeLog*.htm
 App_Data/*.mdf
 App_Data/*.ldf
 
+
 #############
 ## Windows detritus
 #############
-
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -224,7 +220,6 @@ $RECYCLE.BIN/
 #############
 ## Python
 #############
-
 *.py[co]
 
 # Packages
@@ -268,4 +263,3 @@ dependency-reduced-pom.xml
 ## Jersey
 #############
 MANIFEST.MF
-
