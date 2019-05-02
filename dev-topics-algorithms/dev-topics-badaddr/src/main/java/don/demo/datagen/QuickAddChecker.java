@@ -15,12 +15,13 @@ import java.util.Random;
  */
 public class QuickAddChecker {
 	/* Sequence size */
-	public static final int n = 50_000_000;
+	public static final int SEQUENCE_SIZE = 50_000_000;
 
 	public QuickAddChecker() {
 	}
 
 	public static void main(final String[] args) {
+		final int n = SEQUENCE_SIZE;
 		System.out.println(String.format("\nCheck Addition Accuracy Test for sequence %d long", n));
 		final List<Double> test_seq = new ArrayList<Double>();
 		for (int i = 0; i < n; i++) {
@@ -28,7 +29,8 @@ public class QuickAddChecker {
 		}
 		System.out.println("  forward: " + String.valueOf(test_seq.subList(0, 6)).trim() + " . . . for "
 				+ test_seq.size() + " entries.");
-		double sum_exp = ((double) n / 2.0) * ((double) n + 1.0);
+		double sum_exp = (n % 2 == 0) ? ((double) n / 2.0) * ((double) n + 1.0)
+				: (double) n * (((double) n + 1.0) / 2.0);
 		System.out.println(String.format("  exp sum: %.0f", sum_exp));
 		assert Math.rint(sum_exp) == sum_exp;
 

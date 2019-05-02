@@ -13,7 +13,7 @@ if __name__ == '__main__':
         test_seq.append((float(i) + 1.0))
     print('  forward: ', str(test_seq[:6]), '. . .', test_seq[-1:])
 
-    sum_exp = (float(n) / 2.0) * (float(n) + 1.0)
+    sum_exp = (float(n) / 2.0) * (float(n) + 1.0) if (n % 2 == 0) else float(n) * ((float(n) + 1.0) / 2)
     print('  exp sum: {:.0f}'.format(sum_exp))
     assert int(sum_exp) == sum_exp
 
