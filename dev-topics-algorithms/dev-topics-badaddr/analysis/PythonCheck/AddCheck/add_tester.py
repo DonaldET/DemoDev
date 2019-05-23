@@ -1,11 +1,35 @@
+import math
 import random
 
 RAND_SEED = 607
 random.seed(RAND_SEED)
 LARGE_PRIME = float(7919)
 
-if __name__ == '__main__':
-    n = int(50000000)
+
+#
+# Given: abs(re) & lt;= 0.5 * 10 ** (-M) or M significant digits.
+#
+# As a result, M <= log10(0.5) - log10(abs(re))
+#
+# @param rel relative error.
+# return the fractional number of significant digits.
+#
+def estimate_significant_digits(rel):
+    abs_rel = abs(rel)
+    if abs_rel < 1.0E-15:
+        return 16.0
+
+    sig_digit_offset = math.log10(0.5)
+    sd = sig_digit_offset - math.log10(abs_rel)
+    assert sd >= 0.0
+
+    return round(sd, 1)
+
+
+#
+# Run addition of sequences n integer values long.
+#
+def run_sequence(n):
     print('\nPython Addition Accuracy Test for sequence {:d} long using seed {:d}'.format(n, RAND_SEED))
 
     test_seq = list()
@@ -74,3 +98,8 @@ if __name__ == '__main__':
           '  relative error: {:e}'.format(sum_f, delta, delta / sum_exp))
 
     print('\nPython Addition Check Done.\n')
+
+
+if __name__ == '__main__':
+    seq_length = int(50000000)
+    run_sequence(seq_length)

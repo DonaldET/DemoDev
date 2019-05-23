@@ -36,6 +36,8 @@ displayOf <- function(x) {
   return(format(x, trim = TRUE, digits = 16, nsmall = 8))
 }
 
+test_seq = c(1)
+
 QuickAddChecker <- function(n) {
   stopifnot(!is.null(n), is.numeric(n), n > 0)
 
@@ -78,31 +80,17 @@ QuickAddChecker <- function(n) {
         # Shuffle to introduce randomization in summation
         #
 
-        #   cat("\n--- Now Shuffle ---");
-        # Collections.shuffle(test_seq, new Random(3677));
-        # cat("Randomized");
-        # 
-        # sum_f = test_seq.stream().reduce(0.0, Double::sum);
-        # delta = sum_f - sum_exp;
-        # re = delta / sum_exp;
-        # cat(String.format("\nStream sum is %f;  delta: %f;" + "  relative error: %e;  sigd: %.1f", sum_f,
-        #                                  delta, re, GeneratorUtil.estimateSignificantDigits(re)));
-        # 
-        # sum_f = test_seq.stream().parallel().reduce(0.0, Double::sum);
-        # delta = sum_f - sum_exp;
-        # re = delta / sum_exp;
-        # System.out
-        # .println(String.format("\nParallel stream sum is %f;  delta: %f;" + "  relative error: %e;  sigd: %.1f",
-        #                        sum_f, delta, re, GeneratorUtil.estimateSignificantDigits(re)));
-        # 
-        # sum_f = 0.0;
-        # for (int i = 0; i < n; i++) {
-        #   sum_f += test_seq.get(i);
-        # }
-        # delta = sum_f - sum_exp;
-        # re = delta / sum_exp;
-        # cat(String.format("\nSimple sum is %f;" + "  delta: %f;  relative error: %e;  sigd: %.1f", sum_f,
-        #                                  delta, re, GeneratorUtil.estimateSignificantDigits(re)));
-        # 
+        cat("\n\n--- Now Shuffle ---");
+        test_seq <- sample(test_seq)
+        cat("Randomized")
+        
+        sum_f <- sum(test_seq)
+        delta = sum_f - sum_exp;
+        re = delta / sum_exp;
+        cat("\n\nShuffled BuiltIn sum is   ", displayOf(sum_f), " delta:", displayOf(delta),
+            " relative error:", displayOf(re), " sigd:", estimateSignificantDigits(re))
+
         cat("\n\nAccuracy test complete.\n");
 }
+
+QuickAddChecker(SEQUENCE_SIZE)
