@@ -15,7 +15,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>dev-topics-ijsde-problems</artifactId>
+	<artifactId>demodev-topics-ijsde-problems</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>IJSDE.com - Sample Problems for Skill Validation</name>
