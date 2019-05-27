@@ -45,7 +45,16 @@ package demo.easypost.pick;
  * <p>
  * { "4": 360, "5": 720 }
  * <p>
- * Note: See input in <codemain</code> below for test data.
+ * Notes:
+ * <ul>
+ * <li>See input in <codemain</code> below for test data.</li>
+ * <li>Problem originally given in Python, extensive work required to convert
+ * problem and test data to Java.</li>
+ * <li>Claim was that time-stamp integers were in GMT, but in Java, they were
+ * "America/Los_Angeles" time zone.</li>
+ * <li>Proposed solution was a sort input followed by break logic; actual
+ * solution used a map to record time stamps.</li>
+ * </ul>
  */
 
 import java.time.ZoneId;
