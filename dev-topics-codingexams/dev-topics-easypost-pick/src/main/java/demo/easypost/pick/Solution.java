@@ -1,5 +1,15 @@
 package demo.easypost.pick;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
  * In our fulfillment warehouses, workers use an app which records actions
  * performed. The three types of actions are: Picking, Receiving, and Shipping.
@@ -9,9 +19,8 @@ package demo.easypost.pick;
  * There are a few different types of actions, but let"s focus on picking. When
  * a worker starts a pick, an event with type <strong>Pick::Create</strong> is
  * emitted. When a worker picks an item, an event with type
- * <strong>Inventory::Pick</strong> is emitted.
- * <p>
- * events have the following fields:
+ * <strong>Inventory::Pick</strong> is emitted. Events have the following
+ * fields:
  * <ul>
  * <li>a pickId field which uniquely identifies a pick.</li>
  * <li>a ts field which is seconds since the unix epoch.</li>
@@ -41,32 +50,22 @@ package demo.easypost.pick;
  * <p>
  * Input: array of event objects
  * <p>
- * Output: dictionary from worker ID to seconds spent picking
- * <p>
- * { "4": 360, "5": 720 }
+ * Output: dictionary from worker ID to seconds spent picking (e.g., {"4": 360,
+ * "5": 720}".)
  * <p>
  * Notes:
  * <ul>
- * <li>See input in <codemain</code> below for test data.</li>
- * <li>Problem originally given in Python, extensive work required to convert
- * problem and test data to Java.</li>
- * <li>Claim was that time-stamp integers were in GMT, but in Java, they were
- * "America/Los_Angeles" time zone.</li>
+ * <li>See test input in <codemain</code> below for test data.</li>
+ * <li>Problem was originally posed in Python, extensive work required to
+ * convert problem and test data to Java.</li>
+ * <li>Claim was that time-stamp long-integer test values were in GMT, but when
+ * inspected in Java, they were "America/Los_Angeles" time zone.</li>
+ * <li>Proposed Java example used deprecated Java 7 time techniques; examples
+ * with Java 8 are given as well.</li>
  * <li>Proposed solution was a sort input followed by break logic; actual
  * solution used a map to record time stamps.</li>
  * </ul>
  */
-
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class Solution {
 
 	static class Event {
@@ -194,6 +193,10 @@ public class Solution {
 		return dintr8;
 	}
 
+	/**
+	 * Cumulate create and pick events in the time-interval of interest, and store
+	 * in map by unique pick identifier.
+	 */
 	private static Map<Integer, FilledOrder> getOrders(List<Event> events, int warehouseId, int tsStart, int tsEnd) {
 		Map<Integer, FilledOrder> orderHistory = new HashMap<Integer, FilledOrder>();
 
@@ -224,6 +227,9 @@ public class Solution {
 		return orderHistory;
 	}
 
+	/**
+	 * Summarize create-pick events to get elapsed time by warehouse.
+	 */
 	public Map<Integer, Integer> getSummary(List<Event> events, int warehouseId, int tsStart, int tsEnd) {
 		Map<Integer, FilledOrder> orderTimes = getOrders(events, warehouseId, tsStart, tsEnd);
 
