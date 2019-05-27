@@ -9,7 +9,7 @@ package demo.easypost.pick;
  * There are a few different types of actions, but let"s focus on picking.
  * When a worker starts a pick, an event with type Pick::Create is emitted. When a worker
  * picks an item, an event with type Inventory::Pick is emitted.
- * 
+ *
  * Both events have the following:
  * <ul>
  * <li>a pickId field which uniquely identifies a pick.</li>
@@ -36,6 +36,7 @@ package demo.easypost.pick;
  * Output: dictionary from worker ID to seconds spent picking
  * <p>
  * { "4": 360, "5": 720 }
+ * See input in xxxx below.
  */
 
 import java.time.ZoneId;
