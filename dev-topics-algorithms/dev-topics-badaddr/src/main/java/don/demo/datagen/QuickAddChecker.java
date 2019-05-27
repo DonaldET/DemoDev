@@ -37,6 +37,7 @@ public class QuickAddChecker {
 		}
 		System.out.println("  forward: " + String.valueOf(test_seq.subList(0, 6)).trim() + " . . . for "
 				+ test_seq.size() + " entries.");
+		@SuppressWarnings("all")
 		double sum_exp = (n % 2 == 0) ? sumNEven(n) : sumNOdd(n);
 		System.out.println(String.format("  exp sum: %.0f", sum_exp));
 		assert Math.rint(sum_exp) == sum_exp;
