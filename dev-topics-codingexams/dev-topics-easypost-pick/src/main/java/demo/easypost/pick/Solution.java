@@ -1,42 +1,51 @@
 package demo.easypost.pick;
 
 /**
- * In our fulfillment warehouses, workers use an app which records actions performed.
- * The three types of actions are:
- * Picking, Receiving and Shipping. We need to aggregate these
- * events to understand worker efficiency and throughput.
+ * In our fulfillment warehouses, workers use an app which records actions
+ * performed. The three types of actions are: Picking, Receiving, and Shipping.
+ * We need to aggregate these events to understand worker efficiency and
+ * throughput.
  * <p>
- * There are a few different types of actions, but let"s focus on picking.
- * When a worker starts a pick, an event with type Pick::Create is emitted. When a worker
- * picks an item, an event with type Inventory::Pick is emitted.
- *
- * Both events have the following:
+ * There are a few different types of actions, but let"s focus on picking. When
+ * a worker starts a pick, an event with type <strong>Pick::Create</strong> is
+ * emitted. When a worker picks an item, an event with type
+ * <strong>Inventory::Pick</strong> is emitted.
+ * <p>
+ * events have the following fields:
  * <ul>
  * <li>a pickId field which uniquely identifies a pick.</li>
  * <li>a ts field which is seconds since the unix epoch.</li>
  * <li>a workerId field which uniquely identifies a worker.</li>
  * <li>a warehouse_id field which uniquely identifies a warehouse.</li>
  * </ul>
- * Inventory::Pick also has an inventory_id field which uniquely identifies an inventory item. Here is an example of a Pick::Create event, expressed in JSON:
- * <pre><code>
+ * <strong>Inventory::Pick</strong> also has an inventory_id field which
+ * uniquely identifies an inventory item. Here is an example of a
+ * <strong>Pick::Create</strong> event, expressed in JSON:
+ * 
+ * <pre>
+ * <code>
  * {
- *   "type": "Pick::Create",
+ *   "type": "<strong>Pick::Create</strong>",
  *   "ts": 1524593594, # epoch time in seconds
  *   "workerId": 5,
  *   "warehouse_id": 1,
  *   "pickId": 1
  * }
- * </code></pre>
- * You are given an array, representing a sample of the event stream containing these events. Your goal is to write a function which calculates how long each worker spent doing picking
- * for a specified day and warehouse so that the supervisor of that warehouse can keep track
- * of his workers' performance.
+ * </code>
+ * </pre>
+ * 
+ * You are given an array, representing a sample of the event stream containing
+ * these events. Your goal is to write a function which calculates how long each
+ * worker spent doing picking for a specified day and warehouse so that the
+ * supervisor of that warehouse can keep track of his workers' performance.
  * <p>
  * Input: array of event objects
  * <p>
  * Output: dictionary from worker ID to seconds spent picking
  * <p>
  * { "4": 360, "5": 720 }
- * See input in xxxx below.
+ * <p>
+ * Note: See input in <codemain</code> below for test data.
  */
 
 import java.time.ZoneId;
