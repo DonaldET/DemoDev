@@ -1,0 +1,35 @@
+<!-- Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission 
+	to use, copy, modify, and distribute this software and its documentation 
+	for educational, research, and not-for-profit purposes, without fee and without 
+	a signed licensing agreement, is hereby granted, provided that the above 
+	copyright notice, and this paragraph, appear in all copies, modifications, 
+	and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>demodev.topics</groupId>
+		<artifactId>demodev-topics-codingexam-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>demodev-topics-wework-spiral</artifactId>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
+	<packaging>jar</packaging>
+	<name>WeWork Spiral Print Matrix</name>
+
+	<description>Print a matrix in a Spiral Pattern</description>
+
+	<properties>
+	</properties>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+</project>
