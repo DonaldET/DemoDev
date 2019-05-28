@@ -86,6 +86,7 @@ GE | _geturner binarysearch_ | compare a recursive and iterative solution to the
 Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates
 IJSDE | _Problems_ | Programming skills validation examples associated with a placement web-site. 
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
+Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie
 Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree
 WeWork | _spiral_ | Spiral-print a matrix (from LeetCode)
 
