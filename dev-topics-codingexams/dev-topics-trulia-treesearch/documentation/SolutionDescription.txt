@@ -1,0 +1,61 @@
+I have attached several Java files that represent a solution to the find-the-next-largest value in a special binary tree. The tree has parent nodes with zero or two children. Each node as an assigned value. The value in child nodes must be greater-then or equal to the parent node. A parent node with no references is the "root" of the tree.
+
+The problem was to find the next largest value after the initial parent node. I generalized the problem to collect some small number (N) of ordered unique node values.
+
+The solution collaborators are:
+ o TestDataManager.java - defines test data as a collection of node lists
+ o TreeConstructor.java - creates a HashMap-based tree structure from node lists, validates the resulting tree
+ o TreeSearchDemo.java - driver program that creates data and runs test for each test data sequence from TestDataManager.java.
+ o TreeSearch.java - the recursive search algorithm that collects the N ordered unique values (most interesting.)
+ o TSNode.java - defines a node in the special binary tree (name, value, left and right child references.)
+
+The search relies on knowing the last saved value, which is constrained to be unique and ordered ascending. As a result, we can use a simple list structure to store the last found item. We only view the end of the list to decide of we need another entry.
+
+Examining the order of test data shows a good TDD approach. First we get a framework, with test data, working. Unit tests were not used to save space. By initially checking and printing the test data, we get a good feeling for what the recursion should look like in TreeSearch.java. Then our test data allows us to test increasingly complex data structures to get a correct algorithm. A sample run follows:
+
+=== Sample Output ===
+
+Tree Search Demo Program
+
+Test 0: Adding node less than parent; with 3 nodes.
+Caught expected error: leftChild value 4 less than parent value 5
+
+Test 1: Single childless node; with 1 nodes.
+  Parent 'A'; has total of 1 nodes, has last minimum value 5, and expected next largest value is -2147483648
+    0. [TSNode - 0x70dea4e; name=A, value=5, leftChild=null, rightChild=null]
+  Search: []
+    -- Next Largest Value = -2147483648.
+
+Test 2: Single parent node, has one level, None; with 3 nodes.
+  Parent 'A'; has total of 3 nodes, has last minimum value 5, and expected next largest value is -2147483648
+    0. [TSNode - 0x5c647e05; name=A, value=5, leftChild=B, rightChild=C]
+    1. [TSNode - 0x33909752; name=B, value=5, leftChild=null, rightChild=null]
+    2. [TSNode - 0x55f96302; name=C, value=5, leftChild=null, rightChild=null]
+  Search: [[NextLargest- 0x3d4eac69; nodeName=A, value=5]]
+    -- Next Largest Value = -2147483648.
+
+Test 3: Single parent node, has one level; with 3 nodes.
+  Parent 'A'; has total of 3 nodes, has last minimum value 5, and expected next largest value is 7
+    0. [TSNode - 0x42a57993; name=A, value=5, leftChild=B, rightChild=C]
+    1. [TSNode - 0x75b84c92; name=B, value=5, leftChild=null, rightChild=null]
+    2. [TSNode - 0x6bc7c054; name=C, value=7, leftChild=null, rightChild=null]
+  Search: [[NextLargest- 0x232204a1; nodeName=A, value=5], [NextLargest- 0x4aa298b7; nodeName=C, value=7]]
+    -- Next Largest Value = 7.
+
+Test 4: Single parent node, has five levels; with 11 nodes.
+  Parent 'A'; has total of 11 nodes, has last minimum value 5, and expected next largest value is 6
+    0. [TSNode - 0x7d4991ad; name=A, value=5, leftChild=B, rightChild=C]
+    1. [TSNode - 0x28d93b30; name=B, value=5, leftChild=D, rightChild=E]
+    2. [TSNode - 0x1b6d3586; name=C, value=5, leftChild=F, rightChild=G]
+    3. [TSNode - 0x4554617c; name=D, value=5, leftChild=null, rightChild=null]
+    4. [TSNode - 0x74a14482; name=E, value=5, leftChild=null, rightChild=null]
+    5. [TSNode - 0x1540e19d; name=F, value=5, leftChild=null, rightChild=null]
+    6. [TSNode - 0x677327b6; name=G, value=5, leftChild=H, rightChild=I]
+    7. [TSNode - 0x14ae5a5; name=H, value=5, leftChild=J, rightChild=K]
+    8. [TSNode - 0x7f31245a; name=I, value=6, leftChild=null, rightChild=null]
+    9. [TSNode - 0x6d6f6e28; name=J, value=7, leftChild=null, rightChild=null]
+    10. [TSNode - 0x135fbaa4; name=K, value=8, leftChild=null, rightChild=null]
+  Search: [[NextLargest- 0x45ee12a7; nodeName=A, value=5], [NextLargest- 0x330bedb4; nodeName=I, value=6], [NextLargest- 0x2503dbd3; nodeName=J, value=7], [NextLargest- 0x4b67cf4d; nodeName=K, value=8]]
+    -- Next Largest Value = 6.
+
+This output can be generated using: mvn exec:java -Dexec.mainClass="demo.trulia.treesearch.TreeSearchDemo" -Dexec.classpathScope=runtime
