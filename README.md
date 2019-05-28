@@ -1,16 +1,20 @@
 # Welcome
 
-These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nucleus of a book on programming, primarily with the Java language. Various object-oriented and functional techniques are illustrated with real examples.
+These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and J2EE related applications.  This collection of projects is the nucleus of a book on programming primarily with the Java language. Various object-oriented and functional techniques are illustrated with real examples.
 
 The projects use Maven to build and JUnit test artifacts.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
 
-Supporting web sites for testing coding skills include:
-- [http://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
-- [http://https://leetcode.com/](http://https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
+Supporting web sites for testing Python and Java coding skills include:
+- [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
+- [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com.  His LinkedIn profile is found [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
+Additional support for SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
+- [https://paiza.io/projects/featured?language=mysql] (https://paiza.io/en/languages/mysql.)
+- Testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
+
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
 
 # Getting Started
 
@@ -82,6 +86,8 @@ GE | _geturner binarysearch_ | compare a recursive and iterative solution to the
 Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates
 IJSDE | _Problems_ | Programming skills validation examples associated with a placement web-site. 
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
+WeWork | _spiral_ | Spiral-print a matrix (from LeetCode)
+
 ## Sub-Project Hacks
 
 These short examples demonstrate _"less than the best"_ coding practices that are sometimes used to get around a solution constraint until a better solution can be found.
