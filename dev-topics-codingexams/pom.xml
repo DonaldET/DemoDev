@@ -42,6 +42,7 @@
 		<module>dev-topics-granular-sudoku</module>
 		<module>dev-topics-ijsde-problems</module>
 		<module>dev-topics-lumendata-duplicatechecker</module>
+		<module>dev-topics-socotra-ordered</module>
 		<module>dev-topics-trulia-treesearch</module>
 		<module>dev-topics-wework-spiral</module>
 	</modules>
