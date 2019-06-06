@@ -19,13 +19,14 @@ AppDynamics | _top X query_ | Query the top 10 game scores using a priority queu
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
 Apple | _factorial_ | Contrast two factorial algorithms
 Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
-CreditKarma | _List Dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
+CreditKarma | _list dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
 Cruise-Control | _task processor_ | Process tasks sequentially  with parameterizable cooling time and fixed execution times
 EasyPost | _pick_ | pick create-pick event pairs from an input stream and summarize times by location
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
+Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remove command facility 
 Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates
 IJSDE | _Problems_ | Programming skills validation examples associated with a placement web-site. 
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row

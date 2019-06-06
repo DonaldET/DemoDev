@@ -76,13 +76,14 @@ AppDynamics | _top X query_ | Query the top 10 game scores using a priority queu
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
 Apple | _factorial_ | Contrast two factorial algorithms
 Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
-CreditKarma | _List Dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
+CreditKarma | _list dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
 Cruise-Control | _task processor_ | Process tasks sequentially  with parameterizable cooling time and fixed execution times
 EasyPost | _pick_ | pick create-pick event pairs from an input stream and summarize times by location
 Elance | _diagonal_ | Square matrix diagonal elements list generator
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
 GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
 GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
+Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remove command facility 
 Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates
 IJSDE | _Problems_ | Programming skills validation examples associated with a placement web-site. 
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
@@ -132,99 +133,4 @@ _DemoGenerator_ | A Freemarker based text generation utility supporting configur
 * * *
 ### Build Information
 
-Last tested versions:
-1. java version "1.8.0_112"
-2. Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T08:41:47-08:00)
-
-  * * * * Count of Repository Development Files and Resources
-
-  MAVEN POM files: 28
-
-  Class Files    : 190
-
-  Archive Files  : 56
-
-  WAR Files      : 1
-
-  Java files     : 167
-
-  Java lines     : 17688
-
-  Java Test lines: 5753
-
-  XML files      : 131
-
-## MAVEN Summary
-
-[INFO] ------------------------------------------------------------------------
-
-[INFO] Reactor Summary:
-
-[INFO]
-
-[INFO] Demonstration of Development _TOPICS_ .............. SUCCESS [  0.582 s]
-
-[INFO] Demonstration of Development _UTILS_ ............... SUCCESS [  0.031 s]
-
-[INFO] Testing Utilities .................................. SUCCESS [  6.368 s]
-
-[INFO] Demonstration of Development _ALGORITHMS_ .......... SUCCESS [  0.016 s]
-
-[INFO] Large Numeric ...................................... SUCCESS [  0.078 s]
-
-[INFO] Demonstration of Development _HACKS_ ............... SUCCESS [  0.015 s]
-
-[INFO] Serial Hack and stand-alone Runner ................. SUCCESS [  0.802 s]
-
-[INFO] Demonstration of Development _JERSEY_ .............. SUCCESS [  0.016 s]
-
-[INFO] Safe Collection Service ............................ SUCCESS [  4.049 s]
-
-[INFO] Safe Collection Service War ........................ SUCCESS [  1.542 s]
-
-[INFO] Demonstration of Development _CODINGEXAMS_ ......... SUCCESS [  0.016 s]
-
-[INFO] Amazon - Create Recommendation Engine .............. SUCCESS [  4.399 s]
-
-[INFO] Amazon - Invoice Parser ............................ SUCCESS [  2.109 s]
-
-[INFO] Apple - Compound Iterator .......................... SUCCESS [  3.295 s]
-
-[INFO] Apple - Factorial Calculator ....................... SUCCESS [  1.146 s]
-
-[INFO] Cisco - Sieve Low Values ........................... SUCCESS [  1.202 s]
-
-[INFO] Elance - Matrix Diagonal Lister .................... SUCCESS [  0.574 s]
-
-[INFO] Gap - Shopping Cart Example ........................ SUCCESS [  0.785 s]
-
-[INFO] GE-Sail - Two Writers .............................. SUCCESS [  1.200 s]
-
-[INFO] GE-Turner - Binary Search .......................... SUCCESS [  2.707 s]
-
-[INFO] LuminData - Duplicate Column Checker ............... SUCCESS [  1.526 s]
-
-[INFO] Demonstration of Development _MEMORYINDEX_ ......... SUCCESS [  0.016 s]
-
-[INFO] Memory Index - Simple Linear Search ................ SUCCESS [  1.880 s]
-
-[INFO] Memory Index - PriorityQueue to capture Top X values SUCCESS [  3.993 s]
-
-[INFO] Demonstration of Development _NOSQL_ ............... SUCCESS [  0.016 s]
-
-[INFO] NoSQL - Memory Cache wrapping Persistence .......... SUCCESS [  0.790 s]
-
-[INFO] ------------------------------------------------------------------------
-
-[INFO] BUILD SUCCESS
-
-[INFO] ------------------------------------------------------------------------
-
-[INFO] Total time: 39.488 s
-
-[INFO] Finished at: 2014-12-29T22:58:01-08:00
-
-[INFO] Final Memory: 31M/156M
-
-[INFO] ------------------------------------------------------------------------
-
+**TBD**
