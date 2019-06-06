@@ -1,6 +1,6 @@
 ## Sub-Project Utilities
 
-These projects are wrking code used by DemoDev and related projects. The of course illustrate good engineering practices.
+These projects are working code used by *DemoDev* and related projects. They illustrate good engineering practices.
 
 ### Selected _Utilities_ Content
 
