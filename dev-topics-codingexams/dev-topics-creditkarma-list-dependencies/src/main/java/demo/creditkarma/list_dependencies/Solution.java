@@ -259,7 +259,7 @@ public class Solution {
 	// Generated Modules : ["A", "E", "F", "B", "C", "D"]
 	// Reversed Modules : ["D", "C", "B", "F", "E", "A"]
 	//
-	// ------ Accept Test, Ordered
+	// ------ Acceptance Test, Ordered
 	// Accept Test : {"A"=["B"], "B"=["X"], "C"=["D"], "X"=["Y"], "D"=["A"],
 	// "E"=["D"], "F"=["A", "C"], "Y"=[]}
 	// Ordered dependencies: {"A"=["B"], "B"=["X"], "C"=["D"], "D"=["A"], "E"=["D"],
