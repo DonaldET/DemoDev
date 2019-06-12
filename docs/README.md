@@ -131,8 +131,12 @@ Project | Description
 ------- | -----------
 _DemoGenerator_ | A Freemarker based text generation utility supporting configurable symbol interpolation, composible context/model properties specifications, composable template specifications, and driven by command-line parameters.  This utility is used by _WindPower Explorer_ to create Oozie properties files and HQL table specifications.
 
-These utilities are distributed using Java JAR files and invoked as executable Jars.## Build Information
-* * *
-### Build Information
+These utilities are distributed using Java JAR files and invoked as executable Jars.
 
-**TBD**
+## Build Information
+Collected statistics on Maven build structure.
+
+### Detailed Build Statistics
+
+**TBD**
+
