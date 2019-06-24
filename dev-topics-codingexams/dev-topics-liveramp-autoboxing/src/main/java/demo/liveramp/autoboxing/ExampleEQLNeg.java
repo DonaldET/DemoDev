@@ -1,4 +1,4 @@
-package demo.liveramp.autoboxbug;
+package demo.liveramp.autoboxing;
 
 import java.util.Random;
 
@@ -27,7 +27,7 @@ public class ExampleEQLNeg {
 		if (x2 == y2) {
 			System.out.println("Int from Object Equal as expected");
 		} else {
-			System.out.println("Int from Object Not equal!");
+			System.out.println("Int from Object Not Equal!");
 		}
 	}
 }

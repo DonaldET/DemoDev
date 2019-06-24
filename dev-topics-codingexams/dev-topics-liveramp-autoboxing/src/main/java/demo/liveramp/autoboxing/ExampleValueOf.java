@@ -1,4 +1,4 @@
-package demo.liveramp.autoboxbug;
+package demo.liveramp.autoboxing;
 
 public class ExampleValueOf {
 	public static void main(String[] args) {
