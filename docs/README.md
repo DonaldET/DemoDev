@@ -61,9 +61,9 @@ These coding exams are elaborations on topics discussed during interviews and "t
 
 These solutions also demonstrate coding principles like:
 - Separation of interface and implementation.
-- Use of multiple implementations (Strategy and Command Patterns.)
-- Test driven development (shown by reviewing testing order.)
-- JUnit tests where feasible.
+- Use of multiple implementations (e.g., Strategy and Command Patterns.)
+- Test driven development (shown by reviewing testing order; simple initial conditions to complex corner cases.)
+- JUnit framework tests where feasible, or custom test cases when created in an interview environment.
 
 ### Selected _Exam_ Content
 
@@ -86,6 +86,7 @@ GE | _geturner binarysearch_ | compare a recursive and iterative solution to the
 Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remove command facility 
 Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates
 IJSDE | _Problems_ | Programming skills validation examples associated with a placement web-site. 
+Liveramp | _autoboxing_ | Explores consequences of Java "autoboxing" of primative values, and examines integer comparison in the context of a Java ***Comparator***. 
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
 Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie
 Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree
