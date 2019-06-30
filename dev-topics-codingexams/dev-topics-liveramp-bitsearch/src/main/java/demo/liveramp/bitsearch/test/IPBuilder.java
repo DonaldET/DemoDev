@@ -16,7 +16,7 @@ import demo.liveramp.bitsearch.BitSearcher;
  */
 public class IPBuilder {
 
-	public static final int SEED = 7793;
+	public static final long SEED = 7793;
 
 	/**
 	 * Prevent construction

@@ -87,21 +87,33 @@ public class BitSearcher {
 	 *         usageCount) input map.
 	 */
 	public static int[] getKeys(Map<Integer, Integer> usageCount, boolean order) {
+		int[] keyAry = null;
 		Set<Integer> keySet = usageCount.keySet();
 		final int n = keySet.size();
-		Integer[] keys = new Integer[n];
-		if (n > 0) {
+		if (order && n > 1) {
+			// Extracted as sorted int array
+			Integer[] keys = new Integer[n];
 			keySet.toArray(keys);
-			if (order && n > 1) {
-				Arrays.sort(keys, new UnsignedComparator());
+			keySet = null;
+
+			//
+			// Sort with threads for performance
+			Arrays.parallelSort(keys, new UnsignedComparator());
+
+			keyAry = new int[n];
+			for (int i = 0; i < n; i++) {
+				keyAry[i] = keys[i];
 			}
 		} else {
-			return new int[0];
-		}
-
-		int[] keyAry = new int[n];
-		for (int i = 0; i < n; i++) {
-			keyAry[i] = keys[i];
+			// Extract as unsorted int array
+			keyAry = new int[n];
+			if (n > 0) {
+				int i = 0;
+				for (Integer key : keySet) {
+					keyAry[i++] = key;
+				}
+			}
+			keySet = null;
 		}
 
 		return keyAry;
@@ -121,6 +133,7 @@ public class BitSearcher {
 		public String toString() {
 			return "[Found - 0x" + Integer.toHexString(hashCode()) + ";  probe=" + probe + ",  cmp=" + cmp + "]";
 		}
+
 	}
 
 	/**
@@ -177,6 +190,8 @@ public class BitSearcher {
 	public static interface PrefixCounter {
 		public abstract String getName();
 
+		public abstract boolean isOrdered();
+
 		public abstract int countMatches(int mask, int pattern, int[] keys);
 	}
 
@@ -222,7 +237,12 @@ public class BitSearcher {
 	public static class SimpleCounter implements PrefixCounter {
 		@Override
 		public String getName() {
-			return getClass().getSimpleName();
+			return "PrefixCounter::" + getClass().getSimpleName();
+		}
+
+		@Override
+		public boolean isOrdered() {
+			return false;
 		}
 
 		@Override
@@ -237,7 +257,67 @@ public class BitSearcher {
 	public static class BoundedSearchCounter implements PrefixCounter {
 		@Override
 		public String getName() {
+			return "PrefixCounter::" + getClass().getSimpleName();
+		}
+
+		@Override
+		public boolean isOrdered() {
+			return true;
+		}
+
+		/**
+		 * Keys are unsigned integers in ascending order
+		 */
+		@Override
+		public int countMatches(final int mask, final int pattern, final int[] keys) {
+			final int n = keys.length;
+			int count = 0;
+			if (n > 0) {
+				if (n < 4) {
+					count = countMatches(mask, pattern, keys);
+				} else {
+					final Comparator<Integer> uc = new UnsignedComparator();
+					final Found insertp = findInsertionPoint(keys, mask, pattern);
+					int start = insertp.probe;
+					if (insertp.cmp == 0) {
+						count += countMatchesBeforeFirstFound(uc, mask, pattern, keys, start);
+						count += countMatchesInSortedArray(uc, mask, pattern, keys, start, n - start);
+					}
+				}
+			}
+
+			return count;
+		}
+
+		private int countMatchesBeforeFirstFound(final Comparator<Integer> uc, final int mask, final int pattern,
+				final int[] keys, int start) {
+			int count = 0;
+			final int wantedPrefix = mask & pattern;
+			int lookBack = start - 1;
+			while (lookBack >= 0) {
+				if (uc.compare(wantedPrefix, mask & keys[lookBack]) == 0) {
+					count++;
+					lookBack--;
+				} else {
+					break;
+				}
+			}
+			return count;
+		}
+	}
+
+	/**
+	 * Binary search to start, then stop after maximum is passed
+	 */
+	public static class SimpleSearchCounter implements PrefixCounter {
+		@Override
+		public String getName() {
 			return getClass().getSimpleName();
+		}
+
+		@Override
+		public boolean isOrdered() {
+			return false;
 		}
 
 		/**
