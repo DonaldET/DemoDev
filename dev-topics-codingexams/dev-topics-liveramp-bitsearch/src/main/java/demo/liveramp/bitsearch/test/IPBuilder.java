@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import demo.liveramp.bitsearch.BitSearcher;
+
 /**
  * Generates test IP and count populations for subnet extraction. As background,
  * please review some definitions of network vocabulary and the nature of the
@@ -70,31 +72,17 @@ public class IPBuilder {
 	}
 
 	/**
-	 * Defines a test population of IP addresses
-	 */
-	public static class PopulationParameters {
-		final int mask;
-		final int pattern;
-		final int count;
-
-		public PopulationParameters(int mask, int pattern, int count) {
-			this.mask = mask;
-			this.pattern = pattern;
-			this.count = count;
-		}
-	}
-
-	/**
 	 * Create IP populations defined by the (@code params) input list.
 	 * 
 	 * @param params A list of populations to generate
 	 * @return a collection of generated populations
 	 */
-	public static Map<Integer, Integer> generateObservedCounts(final List<PopulationParameters> params) {
+	public static Map<Integer, Integer> generateObservedCounts(
+			final List<BitSearcher.SubnetPopulationParameters> params) {
 		final int ntotal = params.stream().mapToInt((x) -> x.count).reduce(0, Integer::sum);
 		final Map<Integer, Integer> population = new HashMap<Integer, Integer>(ntotal);
 
-		for (PopulationParameters pp : params) {
+		for (BitSearcher.SubnetPopulationParameters pp : params) {
 			final Map<Integer, Integer> onePop = generateIPAddressesAndCounts(pp.count, pp.mask, pp.pattern);
 			population.putAll(onePop);
 		}

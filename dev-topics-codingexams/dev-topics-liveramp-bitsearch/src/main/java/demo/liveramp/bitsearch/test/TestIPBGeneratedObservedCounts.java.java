@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import demo.liveramp.bitsearch.BitSearcher.SubnetPopulationParameters;
+
 class TestIPBGenerateObservedCounts {
 	private int failures = 0;
-	private final List<IPBuilder.PopulationParameters> params;
+	private final List<SubnetPopulationParameters> params;
 
-	public TestIPBGenerateObservedCounts(final List<IPBuilder.PopulationParameters> params) {
+	public TestIPBGenerateObservedCounts(final List<SubnetPopulationParameters> params) {
 		this.params = params;
 	}
 
@@ -31,7 +33,7 @@ class TestIPBGenerateObservedCounts {
 				failures++;
 			}
 
-			for (IPBuilder.PopulationParameters param : params) {
+			for (SubnetPopulationParameters param : params) {
 				int testKey = param.mask & param.pattern;
 				Integer counts = popCounts.get(testKey);
 				if (counts == null | counts != param.count) {
@@ -48,7 +50,7 @@ class TestIPBGenerateObservedCounts {
 
 	private Map<Integer, Integer> getSubPopulationCounts(Map<Integer, Integer> population) {
 		Map<Integer, Integer> popCounts = new HashMap<Integer, Integer>();
-		for (IPBuilder.PopulationParameters param : params) {
+		for (SubnetPopulationParameters param : params) {
 			popCounts.put(param.mask & param.pattern, 0);
 		}
 
@@ -65,9 +67,9 @@ class TestIPBGenerateObservedCounts {
 		return popCounts;
 	}
 
-	private Integer findParamGroup(int popKey, List<IPBuilder.PopulationParameters> params) {
+	private Integer findParamGroup(int popKey, List<SubnetPopulationParameters> params) {
 		Integer group = null;
-		for (IPBuilder.PopulationParameters param : params) {
+		for (SubnetPopulationParameters param : params) {
 			int candidate = param.mask & param.pattern;
 			if ((popKey & param.mask) == candidate) {
 				group = candidate;

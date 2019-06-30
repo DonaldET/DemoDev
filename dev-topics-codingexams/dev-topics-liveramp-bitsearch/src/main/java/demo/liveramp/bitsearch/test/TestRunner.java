@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import demo.liveramp.bitsearch.BitSearcher;
+
 /**
  * Runs the entire test suite offering optional test enablement. Also supplies
  * definitions of test cases.
@@ -43,11 +45,11 @@ public class TestRunner {
 		return testCases;
 	}
 
-	private static List<IPBuilder.PopulationParameters> generateIPPopulationParams() {
-		final List<IPBuilder.PopulationParameters> params = new ArrayList<IPBuilder.PopulationParameters>();
-		params.add(new IPBuilder.PopulationParameters(0xfffffff0, 0x09000000, 16));
-		params.add(new IPBuilder.PopulationParameters(0xffffff00, 0x34000000, 256));
-		params.add(new IPBuilder.PopulationParameters(0xfffff000, 0x56000000, 343));
+	private static List<BitSearcher.SubnetPopulationParameters> generateIPPopulationParams() {
+		final List<BitSearcher.SubnetPopulationParameters> params = new ArrayList<BitSearcher.SubnetPopulationParameters>();
+		params.add(new BitSearcher.SubnetPopulationParameters(0xfffffff0, 0x09000000, 16));
+		params.add(new BitSearcher.SubnetPopulationParameters(0xffffff00, 0x34000000, 256));
+		params.add(new BitSearcher.SubnetPopulationParameters(0xfffff000, 0x56000000, 343));
 
 		return params;
 	}

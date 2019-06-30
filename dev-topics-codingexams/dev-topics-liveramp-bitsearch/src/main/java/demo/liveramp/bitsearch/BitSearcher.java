@@ -280,4 +280,20 @@ public class BitSearcher {
 			return count;
 		}
 	}
+
+	/**
+	 * Defines a test population of IP addresses and counts, with subnet mask and
+	 * pattern, each having count access entries
+	 */
+	public static class SubnetPopulationParameters {
+		public final int mask;
+		public final int pattern;
+		public final int count;
+
+		public SubnetPopulationParameters(int mask, int pattern, int count) {
+			this.mask = mask;
+			this.pattern = pattern;
+			this.count = count;
+		}
+	}
 }
