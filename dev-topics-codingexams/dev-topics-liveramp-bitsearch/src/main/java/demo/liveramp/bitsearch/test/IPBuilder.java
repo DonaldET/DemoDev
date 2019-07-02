@@ -84,7 +84,12 @@ public class IPBuilder {
 
 		for (BitSearcher.SubnetPopulationParameters pp : params) {
 			final Map<Integer, Integer> onePop = generateIPAddressesAndCounts(pp.count, pp.mask, pp.pattern);
-			population.putAll(onePop);
+			for (Map.Entry<Integer, Integer> e : onePop.entrySet()) {
+				if (population.put(e.getKey(), e.getValue()) != null) {
+					throw new IllegalStateException(
+							"Collision adding " + String.valueOf(e) + " to population for " + pp);
+				}
+			}
 		}
 
 		return population;
