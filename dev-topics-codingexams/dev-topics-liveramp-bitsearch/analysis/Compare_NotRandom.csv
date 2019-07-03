@@ -1,5 +1,5 @@
 
- Execute PerformanceRunn to test BitSearcher; ordered vs unordered search
+ Execute Performance Run to test BitSearcher; ordered vs unordered search
 
 Performance Test IP access count SubNet Finder
 Impl, Multiplier, Mask, Pattern, N, Count, LoadRuns, LoadTM, SearchRuns, SearchTM

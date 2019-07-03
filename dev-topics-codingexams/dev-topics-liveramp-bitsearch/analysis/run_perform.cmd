@@ -5,7 +5,7 @@
 ::::
 @echo off
 echo.
-echo. Execute PerformanceRunn to test BitSearcher; ordered vs unordered search
+echo. Execute Performance Run to test BitSearcher; ordered vs unordered search
 echo.
 setlocal
 set path2classes=..\target\classes
