@@ -163,10 +163,10 @@ public class PerformanceRunner {
 		final long startTM = System.nanoTime();
 		for (int i = 0; i < EXTRACT_SIZE; i++) {
 			if (ordered) {
-				keysOrdered = BitSearcher.getKeys(ipAccessCounts, ordered);
+				keysOrdered = BitSearcher.getKeys(ipAccessCounts, true);
 				n = keysOrdered.length;
 			} else {
-				keysUnordered = BitSearcher.getKeys(ipAccessCounts, ordered);
+				keysUnordered = BitSearcher.getKeys(ipAccessCounts, false);
 				n = keysUnordered.length;
 			}
 		}

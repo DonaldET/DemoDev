@@ -39,6 +39,7 @@ import java.util.Set;
  */
 public class BitSearcher {
 	public static final long SEED = 7687;
+	private static final boolean RANDOMIZED = true;
 
 	/**
 	 * Prevent construction
@@ -121,12 +122,14 @@ public class BitSearcher {
 			List<Integer> keys = new ArrayList<Integer>(keySet);
 			keySet = null;
 
-			Random r = new Random();
-			r.setSeed(SEED);
+			if (RANDOMIZED) {
+				Random r = new Random();
+				r.setSeed(SEED);
 
-			//
-			// Randomize to insure original order does not influence search
-			Collections.shuffle(keys, r);
+				//
+				// Randomize to insure original order does not influence search
+				Collections.shuffle(keys, r);
+			}
 
 			keyAry = new int[n];
 			for (int i = 0; i < n; i++) {
@@ -202,8 +205,7 @@ public class BitSearcher {
 	}
 
 	// -----------------------------------------------------------------------------------
-	// ---------- Bit Pattern Counter Implementations
-	// ------------------------------------
+	// ---------- Bit Pattern Counter Implementations ------------------------------------
 	// -----------------------------------------------------------------------------------
 
 	private static int countMatchesBeforeFirstFound(final Comparator<Integer> uc, final int mask, final int pattern,
