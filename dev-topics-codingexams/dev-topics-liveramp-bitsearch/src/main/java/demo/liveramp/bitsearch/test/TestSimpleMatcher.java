@@ -21,7 +21,7 @@ class TestSimpleMatcher {
 
 	public int runAll() {
 		final int nKeys = observedIPCounts.size();
-		System.out.println("\n**** Testing Simple Matcher [no sort requirede] (" + nKeys + " IP observations.)");
+		System.out.println("\n**** Testing Simple Matcher [no sort required] (" + nKeys + " IP observations.)");
 		int[] keys = BitSearcher.getKeys(observedIPCounts, true);
 		BitSearcher.PrefixCounter spc = new BitSearcher.SimpleCounter();
 
