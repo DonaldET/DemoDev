@@ -1,0 +1,5 @@
+Search: Hosts -  15.17 (BS); 11.00 (SS) [4.865 meg]
+        Acc   -  37.00 (BS); 84.83 (SS)  
+
+Load  : Hosts - 276.00 (BS); 87.00 (SS) [4.865 meg]
+        Acc   - 261.00 (BS); 76.00 (SS)

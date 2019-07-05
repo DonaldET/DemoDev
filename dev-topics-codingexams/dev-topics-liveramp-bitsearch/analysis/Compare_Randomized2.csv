@@ -3,78 +3,78 @@
 
 Performance Test IP access count SubNet Finder
 Impl, Multiplier, Mask, Pattern, N, Count, LoadRuns, LoadTM, SearchRuns, SearchTM
-BoundedSearchCounter-ORD, 1000, fff00000, 100000, 139000, 25000, 3, 67, 3, 5
-BoundedSearchCounter-ORD, 1000, fff00000, 200000, 139000, 21000, 3, 67, 3, 1
-BoundedSearchCounter-ORD, 1000, fff00000, 400000, 139000, 27000, 3, 67, 3, 1
-BoundedSearchCounter-ORD, 1000, fff00000, 800000, 139000, 22000, 3, 67, 3, 0
-BoundedSearchCounter-ORD, 1000, fff00000, 1000000, 139000, 24000, 3, 67, 3, 0
-BoundedSearchCounter-ORD, 1000, fff00000, 2000000, 139000, 20000, 3, 67, 3, 0
-SimpleSearchCounter -RND, 1000, fff00000, 100000, 139000, 25000, 3, 9, 3, 1
-SimpleSearchCounter -RND, 1000, fff00000, 200000, 139000, 21000, 3, 9, 3, 0
-SimpleSearchCounter -RND, 1000, fff00000, 400000, 139000, 27000, 3, 9, 3, 0
-SimpleSearchCounter -RND, 1000, fff00000, 800000, 139000, 22000, 3, 9, 3, 0
-SimpleSearchCounter -RND, 1000, fff00000, 1000000, 139000, 24000, 3, 9, 3, 0
-SimpleSearchCounter -RND, 1000, fff00000, 2000000, 139000, 20000, 3, 9, 3, 0
-BoundedSearchCounter-ORD, 5000, fff00000, 100000, 695000, 125000, 3, 88, 3, 5
-BoundedSearchCounter-ORD, 5000, fff00000, 200000, 695000, 105000, 3, 88, 3, 3
-BoundedSearchCounter-ORD, 5000, fff00000, 400000, 695000, 135000, 3, 88, 3, 3
-BoundedSearchCounter-ORD, 5000, fff00000, 800000, 695000, 110000, 3, 88, 3, 2
-BoundedSearchCounter-ORD, 5000, fff00000, 1000000, 695000, 120000, 3, 88, 3, 1
-BoundedSearchCounter-ORD, 5000, fff00000, 2000000, 695000, 100000, 3, 88, 3, 1
-SimpleSearchCounter -RND, 5000, fff00000, 100000, 695000, 125000, 3, 34, 3, 2
-SimpleSearchCounter -RND, 5000, fff00000, 200000, 695000, 105000, 3, 34, 3, 1
-SimpleSearchCounter -RND, 5000, fff00000, 400000, 695000, 135000, 3, 34, 3, 2
-SimpleSearchCounter -RND, 5000, fff00000, 800000, 695000, 110000, 3, 34, 3, 2
-SimpleSearchCounter -RND, 5000, fff00000, 1000000, 695000, 120000, 3, 34, 3, 2
-SimpleSearchCounter -RND, 5000, fff00000, 2000000, 695000, 100000, 3, 34, 3, 1
-BoundedSearchCounter-ORD, 10000, fff00000, 100000, 1390000, 250000, 3, 123, 3, 8
-BoundedSearchCounter-ORD, 10000, fff00000, 200000, 1390000, 210000, 3, 123, 3, 6
-BoundedSearchCounter-ORD, 10000, fff00000, 400000, 1390000, 270000, 3, 123, 3, 5
-BoundedSearchCounter-ORD, 10000, fff00000, 800000, 1390000, 220000, 3, 123, 3, 4
-BoundedSearchCounter-ORD, 10000, fff00000, 1000000, 1390000, 240000, 3, 123, 3, 3
-BoundedSearchCounter-ORD, 10000, fff00000, 2000000, 1390000, 200000, 3, 123, 3, 1
-SimpleSearchCounter -RND, 10000, fff00000, 100000, 1390000, 250000, 3, 74, 3, 3
-SimpleSearchCounter -RND, 10000, fff00000, 200000, 1390000, 210000, 3, 74, 3, 3
-SimpleSearchCounter -RND, 10000, fff00000, 400000, 1390000, 270000, 3, 74, 3, 3
-SimpleSearchCounter -RND, 10000, fff00000, 800000, 1390000, 220000, 3, 74, 3, 3
-SimpleSearchCounter -RND, 10000, fff00000, 1000000, 1390000, 240000, 3, 74, 3, 3
-SimpleSearchCounter -RND, 10000, fff00000, 2000000, 1390000, 200000, 3, 74, 3, 3
-BoundedSearchCounter-ORD, 20000, fff00000, 100000, 2780000, 500000, 3, 147, 3, 15
-BoundedSearchCounter-ORD, 20000, fff00000, 200000, 2780000, 420000, 3, 147, 3, 13
-BoundedSearchCounter-ORD, 20000, fff00000, 400000, 2780000, 540000, 3, 147, 3, 11
-BoundedSearchCounter-ORD, 20000, fff00000, 800000, 2780000, 440000, 3, 147, 3, 8
-BoundedSearchCounter-ORD, 20000, fff00000, 1000000, 2780000, 480000, 3, 147, 3, 5
-BoundedSearchCounter-ORD, 20000, fff00000, 2000000, 2780000, 400000, 3, 147, 3, 2
-SimpleSearchCounter -RND, 20000, fff00000, 100000, 2780000, 500000, 3, 505, 3, 7
-SimpleSearchCounter -RND, 20000, fff00000, 200000, 2780000, 420000, 3, 505, 3, 6
-SimpleSearchCounter -RND, 20000, fff00000, 400000, 2780000, 540000, 3, 505, 3, 7
-SimpleSearchCounter -RND, 20000, fff00000, 800000, 2780000, 440000, 3, 505, 3, 6
-SimpleSearchCounter -RND, 20000, fff00000, 1000000, 2780000, 480000, 3, 505, 3, 6
-SimpleSearchCounter -RND, 20000, fff00000, 2000000, 2780000, 400000, 3, 505, 3, 5
-BoundedSearchCounter-ORD, 25000, fff00000, 100000, 3475000, 625000, 3, 174, 3, 18
-BoundedSearchCounter-ORD, 25000, fff00000, 200000, 3475000, 525000, 3, 174, 3, 17
-BoundedSearchCounter-ORD, 25000, fff00000, 400000, 3475000, 675000, 3, 174, 3, 17
-BoundedSearchCounter-ORD, 25000, fff00000, 800000, 3475000, 550000, 3, 174, 3, 11
-BoundedSearchCounter-ORD, 25000, fff00000, 1000000, 3475000, 600000, 3, 174, 3, 8
-BoundedSearchCounter-ORD, 25000, fff00000, 2000000, 3475000, 500000, 3, 174, 3, 3
-SimpleSearchCounter -RND, 25000, fff00000, 100000, 3475000, 625000, 3, 254, 3, 11
-SimpleSearchCounter -RND, 25000, fff00000, 200000, 3475000, 525000, 3, 254, 3, 11
-SimpleSearchCounter -RND, 25000, fff00000, 400000, 3475000, 675000, 3, 254, 3, 9
-SimpleSearchCounter -RND, 25000, fff00000, 800000, 3475000, 550000, 3, 254, 3, 9
-SimpleSearchCounter -RND, 25000, fff00000, 1000000, 3475000, 600000, 3, 254, 3, 10
-SimpleSearchCounter -RND, 25000, fff00000, 2000000, 3475000, 500000, 3, 254, 3, 7
-BoundedSearchCounter-ORD, 35000, fff00000, 100000, 4865000, 875000, 3, 270, 3, 27
-BoundedSearchCounter-ORD, 35000, fff00000, 200000, 4865000, 735000, 3, 270, 3, 21
-BoundedSearchCounter-ORD, 35000, fff00000, 400000, 4865000, 945000, 3, 270, 3, 18
-BoundedSearchCounter-ORD, 35000, fff00000, 800000, 4865000, 770000, 3, 270, 3, 13
-BoundedSearchCounter-ORD, 35000, fff00000, 1000000, 4865000, 840000, 3, 270, 3, 9
-BoundedSearchCounter-ORD, 35000, fff00000, 2000000, 4865000, 700000, 3, 270, 3, 4
-SimpleSearchCounter -RND, 35000, fff00000, 100000, 4865000, 875000, 3, 379, 3, 11
-SimpleSearchCounter -RND, 35000, fff00000, 200000, 4865000, 735000, 3, 379, 3, 10
-SimpleSearchCounter -RND, 35000, fff00000, 400000, 4865000, 945000, 3, 379, 3, 12
-SimpleSearchCounter -RND, 35000, fff00000, 800000, 4865000, 770000, 3, 379, 3, 10
-SimpleSearchCounter -RND, 35000, fff00000, 1000000, 4865000, 840000, 3, 379, 3, 11
-SimpleSearchCounter -RND, 35000, fff00000, 2000000, 4865000, 700000, 3, 379, 3, 10
+BoundedSearchCounter-ORD, 1000, fff00000, 100000, 139000, 25000, 3, 82, 3, 9
+BoundedSearchCounter-ORD, 1000, fff00000, 200000, 139000, 21000, 3, 82, 3, 3
+BoundedSearchCounter-ORD, 1000, fff00000, 400000, 139000, 27000, 3, 82, 3, 3
+BoundedSearchCounter-ORD, 1000, fff00000, 800000, 139000, 22000, 3, 82, 3, 2
+BoundedSearchCounter-ORD, 1000, fff00000, 1000000, 139000, 24000, 3, 82, 3, 2
+BoundedSearchCounter-ORD, 1000, fff00000, 2000000, 139000, 20000, 3, 82, 3, 2
+SimpleSearchCounter -RND, 1000, fff00000, 100000, 139000, 25000, 3, 11, 3, 5
+SimpleSearchCounter -RND, 1000, fff00000, 200000, 139000, 21000, 3, 11, 3, 2
+SimpleSearchCounter -RND, 1000, fff00000, 400000, 139000, 27000, 3, 11, 3, 2
+SimpleSearchCounter -RND, 1000, fff00000, 800000, 139000, 22000, 3, 11, 3, 2
+SimpleSearchCounter -RND, 1000, fff00000, 1000000, 139000, 24000, 3, 11, 3, 2
+SimpleSearchCounter -RND, 1000, fff00000, 2000000, 139000, 20000, 3, 11, 3, 2
+BoundedSearchCounter-ORD, 5000, fff00000, 100000, 695000, 125000, 3, 91, 3, 11
+BoundedSearchCounter-ORD, 5000, fff00000, 200000, 695000, 105000, 3, 91, 3, 8
+BoundedSearchCounter-ORD, 5000, fff00000, 400000, 695000, 135000, 3, 91, 3, 7
+BoundedSearchCounter-ORD, 5000, fff00000, 800000, 695000, 110000, 3, 91, 3, 7
+BoundedSearchCounter-ORD, 5000, fff00000, 1000000, 695000, 120000, 3, 91, 3, 8
+BoundedSearchCounter-ORD, 5000, fff00000, 2000000, 695000, 100000, 3, 91, 3, 8
+SimpleSearchCounter -RND, 5000, fff00000, 100000, 695000, 125000, 3, 41, 3, 11
+SimpleSearchCounter -RND, 5000, fff00000, 200000, 695000, 105000, 3, 41, 3, 12
+SimpleSearchCounter -RND, 5000, fff00000, 400000, 695000, 135000, 3, 41, 3, 13
+SimpleSearchCounter -RND, 5000, fff00000, 800000, 695000, 110000, 3, 41, 3, 12
+SimpleSearchCounter -RND, 5000, fff00000, 1000000, 695000, 120000, 3, 41, 3, 17
+SimpleSearchCounter -RND, 5000, fff00000, 2000000, 695000, 100000, 3, 41, 3, 13
+BoundedSearchCounter-ORD, 10000, fff00000, 100000, 1390000, 250000, 3, 135, 3, 14
+BoundedSearchCounter-ORD, 10000, fff00000, 200000, 1390000, 210000, 3, 135, 3, 14
+BoundedSearchCounter-ORD, 10000, fff00000, 400000, 1390000, 270000, 3, 135, 3, 12
+BoundedSearchCounter-ORD, 10000, fff00000, 800000, 1390000, 220000, 3, 135, 3, 11
+BoundedSearchCounter-ORD, 10000, fff00000, 1000000, 1390000, 240000, 3, 135, 3, 18
+BoundedSearchCounter-ORD, 10000, fff00000, 2000000, 1390000, 200000, 3, 135, 3, 13
+SimpleSearchCounter -RND, 10000, fff00000, 100000, 1390000, 250000, 3, 98, 3, 20
+SimpleSearchCounter -RND, 10000, fff00000, 200000, 1390000, 210000, 3, 98, 3, 21
+SimpleSearchCounter -RND, 10000, fff00000, 400000, 1390000, 270000, 3, 98, 3, 26
+SimpleSearchCounter -RND, 10000, fff00000, 800000, 1390000, 220000, 3, 98, 3, 25
+SimpleSearchCounter -RND, 10000, fff00000, 1000000, 1390000, 240000, 3, 98, 3, 38
+SimpleSearchCounter -RND, 10000, fff00000, 2000000, 1390000, 200000, 3, 98, 3, 29
+BoundedSearchCounter-ORD, 20000, fff00000, 100000, 2780000, 500000, 3, 193, 3, 29
+BoundedSearchCounter-ORD, 20000, fff00000, 200000, 2780000, 420000, 3, 193, 3, 27
+BoundedSearchCounter-ORD, 20000, fff00000, 400000, 2780000, 540000, 3, 193, 3, 26
+BoundedSearchCounter-ORD, 20000, fff00000, 800000, 2780000, 440000, 3, 193, 3, 23
+BoundedSearchCounter-ORD, 20000, fff00000, 1000000, 2780000, 480000, 3, 193, 3, 33
+BoundedSearchCounter-ORD, 20000, fff00000, 2000000, 2780000, 400000, 3, 193, 3, 22
+SimpleSearchCounter -RND, 20000, fff00000, 100000, 2780000, 500000, 3, 236, 3, 46
+SimpleSearchCounter -RND, 20000, fff00000, 200000, 2780000, 420000, 3, 236, 3, 40
+SimpleSearchCounter -RND, 20000, fff00000, 400000, 2780000, 540000, 3, 236, 3, 52
+SimpleSearchCounter -RND, 20000, fff00000, 800000, 2780000, 440000, 3, 236, 3, 49
+SimpleSearchCounter -RND, 20000, fff00000, 1000000, 2780000, 480000, 3, 236, 3, 89
+SimpleSearchCounter -RND, 20000, fff00000, 2000000, 2780000, 400000, 3, 236, 3, 69
+BoundedSearchCounter-ORD, 25000, fff00000, 100000, 3475000, 625000, 3, 208, 3, 35
+BoundedSearchCounter-ORD, 25000, fff00000, 200000, 3475000, 525000, 3, 208, 3, 31
+BoundedSearchCounter-ORD, 25000, fff00000, 400000, 3475000, 675000, 3, 208, 3, 28
+BoundedSearchCounter-ORD, 25000, fff00000, 800000, 3475000, 550000, 3, 208, 3, 22
+BoundedSearchCounter-ORD, 25000, fff00000, 1000000, 3475000, 600000, 3, 208, 3, 32
+BoundedSearchCounter-ORD, 25000, fff00000, 2000000, 3475000, 500000, 3, 208, 3, 32
+SimpleSearchCounter -RND, 25000, fff00000, 100000, 3475000, 625000, 3, 282, 3, 58
+SimpleSearchCounter -RND, 25000, fff00000, 200000, 3475000, 525000, 3, 282, 3, 58
+SimpleSearchCounter -RND, 25000, fff00000, 400000, 3475000, 675000, 3, 282, 3, 58
+SimpleSearchCounter -RND, 25000, fff00000, 800000, 3475000, 550000, 3, 282, 3, 53
+SimpleSearchCounter -RND, 25000, fff00000, 1000000, 3475000, 600000, 3, 282, 3, 87
+SimpleSearchCounter -RND, 25000, fff00000, 2000000, 3475000, 500000, 3, 282, 3, 86
+BoundedSearchCounter-ORD, 35000, fff00000, 100000, 4865000, 875000, 3, 241, 3, 50
+BoundedSearchCounter-ORD, 35000, fff00000, 200000, 4865000, 735000, 3, 241, 3, 43
+BoundedSearchCounter-ORD, 35000, fff00000, 400000, 4865000, 945000, 3, 241, 3, 34
+BoundedSearchCounter-ORD, 35000, fff00000, 800000, 4865000, 770000, 3, 241, 3, 30
+BoundedSearchCounter-ORD, 35000, fff00000, 1000000, 4865000, 840000, 3, 241, 3, 31
+BoundedSearchCounter-ORD, 35000, fff00000, 2000000, 4865000, 700000, 3, 241, 3, 34
+SimpleSearchCounter -RND, 35000, fff00000, 100000, 4865000, 875000, 3, 405, 3, 82
+SimpleSearchCounter -RND, 35000, fff00000, 200000, 4865000, 735000, 3, 405, 3, 74
+SimpleSearchCounter -RND, 35000, fff00000, 400000, 4865000, 945000, 3, 405, 3, 87
+SimpleSearchCounter -RND, 35000, fff00000, 800000, 4865000, 770000, 3, 405, 3, 85
+SimpleSearchCounter -RND, 35000, fff00000, 1000000, 4865000, 840000, 3, 405, 3, 95
+SimpleSearchCounter -RND, 35000, fff00000, 2000000, 4865000, 700000, 3, 405, 3, 116
 
 Count Done!
 
