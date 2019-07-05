@@ -205,17 +205,17 @@ public class BitSearcher {
 	}
 
 	// -----------------------------------------------------------------------------------
-	// ---------- Bit Pattern Counter Implementations ------------------------------------
+	// ---------- Bit Pattern Counter Implementations
 	// -----------------------------------------------------------------------------------
 
-	private static int countMatchesBeforeFirstFound(final Comparator<Integer> uc, final int mask, final int pattern,
-			final int[] keys, int start) {
+	private static int countMatchesBeforeFirstFound(final Map<Integer, Integer> ipCounts, final Comparator<Integer> uc,
+			final int mask, final int pattern, final int[] keys, int start) {
 		int count = 0;
 		final int wantedPrefix = mask & pattern;
 		int lookBack = start - 1;
 		while (lookBack >= 0) {
 			if (uc.compare(wantedPrefix, mask & keys[lookBack]) == 0) {
-				count++;
+				count += ipCounts.get(keys[lookBack]);
 				lookBack--;
 			} else {
 				break;
@@ -224,8 +224,8 @@ public class BitSearcher {
 		return count;
 	}
 
-	private static int countMatchesAfterFirstFound(final Comparator<Integer> uc, final int mask, final int pattern,
-			final int[] keys, int start, int length) {
+	private static int countMatchesAfterFirstFound(final Map<Integer, Integer> ipCounts, final Comparator<Integer> uc,
+			final int mask, final int pattern, final int[] keys, int start, int length) {
 		int count = 0;
 		if (length < 1) {
 			return count;
@@ -235,7 +235,7 @@ public class BitSearcher {
 		for (int i = start; i < (start + length); i++) {
 			final int cmp = uc.compare(wantedPrefix, mask & keys[i]);
 			if (cmp == 0) {
-				count++;
+				count += ipCounts.get(keys[i]);
 			} else if (cmp > 0) {
 				break;
 			}
@@ -244,8 +244,8 @@ public class BitSearcher {
 		return count;
 	}
 
-	private static int countMatchesInUnsortedArray(final int mask, final int pattern, final int[] keys, int start,
-			int length) {
+	private static int countMatchesInUnsortedArray(final Map<Integer, Integer> ipCounts, final int mask,
+			final int pattern, final int[] keys, int start, int length) {
 		int count = 0;
 		if (length < 1) {
 			return count;
@@ -253,8 +253,8 @@ public class BitSearcher {
 
 		final int wantedPrefix = mask & pattern;
 		for (int i = start; i < (start + length); i++) {
-			if ((mask & keys[i]) == wantedPrefix) {
-				count++;
+			if (wantedPrefix == (mask & keys[i])) {
+				count += ipCounts.get(keys[i]);
 			}
 		}
 
@@ -271,7 +271,7 @@ public class BitSearcher {
 
 		public abstract boolean isOrdered();
 
-		public abstract int countMatches(int mask, int pattern, int[] keys);
+		public abstract int countMatches(final Map<Integer, Integer> ipCounts, int mask, int pattern, int[] keys);
 	}
 
 	/**
@@ -289,8 +289,9 @@ public class BitSearcher {
 		}
 
 		@Override
-		public int countMatches(final int mask, final int pattern, final int[] keys) {
-			return countMatchesInUnsortedArray(mask, pattern, keys, 0, keys.length);
+		public int countMatches(final Map<Integer, Integer> ipCounts, final int mask, final int pattern,
+				final int[] keys) {
+			return countMatchesInUnsortedArray(ipCounts, mask, pattern, keys, 0, keys.length);
 		}
 	}
 
@@ -312,19 +313,20 @@ public class BitSearcher {
 		 * Keys are unsigned integers in ascending order
 		 */
 		@Override
-		public int countMatches(final int mask, final int pattern, final int[] keys) {
+		public int countMatches(final Map<Integer, Integer> ipCounts, final int mask, final int pattern,
+				final int[] keys) {
 			final int n = keys.length;
 			int count = 0;
 			if (n > 0) {
 				if (n < 4) {
-					count = countMatches(mask, pattern, keys);
+					count = countMatches(ipCounts, mask, pattern, keys);
 				} else {
 					final Comparator<Integer> uc = new UnsignedComparator();
 					final Found insertp = findInsertionPoint(keys, mask, pattern);
 					int start = insertp.probe;
 					if (insertp.cmp == 0) {
-						count += countMatchesBeforeFirstFound(uc, mask, pattern, keys, start);
-						count += countMatchesAfterFirstFound(uc, mask, pattern, keys, start, n - start);
+						count += countMatchesBeforeFirstFound(ipCounts, uc, mask, pattern, keys, start);
+						count += countMatchesAfterFirstFound(ipCounts, uc, mask, pattern, keys, start, n - start);
 					}
 				}
 			}
@@ -351,11 +353,12 @@ public class BitSearcher {
 		 * Keys are unsigned integers in ascending order
 		 */
 		@Override
-		public int countMatches(final int mask, final int pattern, final int[] keys) {
+		public int countMatches(final Map<Integer, Integer> ipCounts, final int mask, final int pattern,
+				final int[] keys) {
 			final int n = keys.length;
 			int count = 0;
 			if (n > 0) {
-				count += countMatchesInUnsortedArray(mask, pattern, keys, 0, keys.length);
+				count += countMatchesInUnsortedArray(ipCounts, mask, pattern, keys, 0, keys.length);
 			}
 
 			return count;

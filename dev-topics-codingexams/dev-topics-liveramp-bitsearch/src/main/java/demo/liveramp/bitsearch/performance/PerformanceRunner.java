@@ -175,12 +175,11 @@ public class PerformanceRunner {
 		return new RunResult(label, EXTRACT_SIZE, elapsedTM, n);
 	}
 
-	private RunResult getCountAndTime(String label, int mask, int pattern, int[] ipAccessCounts,
-			PrefixCounter counter) {
+	private RunResult getCountAndTime(String label, int mask, int pattern, int[] keys, PrefixCounter counter) {
 		//
 		// Throw away initial run for hot-spot optimization
 
-		final int n1 = counter.countMatches(mask, pattern, ipAccessCounts);
+		final int n1 = counter.countMatches(ipAccessCounts, mask, pattern, keys);
 		System.gc();
 
 		//
@@ -192,7 +191,7 @@ public class PerformanceRunner {
 
 		final long startTM = System.nanoTime();
 		for (int i = 0; i < TEST_SIZE; i++) {
-			int n = counter.countMatches(mask + (rv - rv), pattern, ipAccessCounts);
+			int n = counter.countMatches(ipAccessCounts, mask + (rv - rv), pattern, keys);
 			if (n != n1) {
 				throw new IllegalStateException(
 						"Run {" + label + ":" + i + "} got wrong count of " + n + ", expected " + n1);
