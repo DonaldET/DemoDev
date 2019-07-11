@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Demogenerator Example">
+	<description>Build Example Deployment</description>
+
+	<echo>........</echo>
+	<echo>Demo Generator ANT example, uses </echo>
+	<echo>........</echo>
+
+	<loadproperties srcFile="build.properties" />
+	<echoproperties prefix="ant." />
+	<echo />
+	<echoproperties prefix="BUILD." />
+
+	<property name="BUILD.generator.jar" value="demodev-topics-demogenerator-1.0.0-SNAPSHOT.jar" />
+	<property name="BUILD.generator.path" value="../../target/" />
+	<property name="BUILD.generator.class" value="don.demo.generator.TextSourceGeneratorRunner" />
+
+	<target name="clean">
+		<echo>Cleaning target from base directory ${basedir}</echo>
+		<delete dir="${BUILD.target}" />
+		<mkdir dir="${BUILD.target}" />
+	</target>
+
+	<target name="init" description="initialize target directories" depends="clean">
+		<echo>Setting up target directory ${BUILD.target}</echo>
+		<copy includeemptydirs="false" todir="${BUILD.target}">
+			<fileset dir="${BUILD.immutable}" />
+		</copy>
+	</target>
+
+	<target name="build" depends="init">
+		<echo message="build" />
+	</target>
+
+</project>
