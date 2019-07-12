@@ -11,11 +11,12 @@ import don.demo.generator.model.PropertyModelBuilder;
 import don.demo.generator.model.PropertyModelLoader;
 
 /**
- * Compose a model by overriding default properties with detail properties.
+ * Compose a model, using Java properties files, by overriding default
+ * properties with zero or more detail properties.
  * 
  * @author Donald Trummell
  * 
- *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
  *         without fee and without a signed licensing agreement, is hereby
@@ -23,11 +24,12 @@ import don.demo.generator.model.PropertyModelLoader;
  *         paragraph, appear in all copies, modifications, and distributions.
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  * 
- * <pre>
+ *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+ * <strong>Note</strong>: See <a href=
+"http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
  * </code>
- * </pre>
+ *         </pre>
  */
 @Service(value = "tsgcomposemodel")
 public class TSGComposeModel implements ModelComposer {
@@ -53,6 +55,7 @@ public class TSGComposeModel implements ModelComposer {
 		} catch (RuntimeException rex) {
 			throw new IllegalArgumentException("unable to load default context " + defaultContext, rex);
 		}
+
 		this.modelBuilder.clear();
 		this.modelBuilder.augment(subModel);
 		if (overrideContextList != null) {

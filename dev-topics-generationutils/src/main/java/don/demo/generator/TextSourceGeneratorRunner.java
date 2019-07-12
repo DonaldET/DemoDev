@@ -1,6 +1,8 @@
 package don.demo.generator;
 
 import java.io.Serializable;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -39,12 +41,16 @@ public class TextSourceGeneratorRunner implements Serializable {
 	 */
 	public static void main(final String[] args) {
 		System.out.println("\nTextSourceGeneratorRunner - Copyright (c) 2019. Donald Trummell. All Rights Reserved");
+		Path basePath = Paths.get("./");
+		String baseDirPath = basePath.toAbsolutePath().toString();
+		System.out.println("\n  Working in path      : " + baseDirPath);
+
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("\n========================================================="
 					+ "\n                                                         "
 					+ "\n          TextSourceGenerator Runner                     "
-					+ "\n                                                         "
-					+ "\n=========================================================");
+					+ "\n             Copyright (c) 2019. Donald Trummell         "
+					+ "\n=========================================================" + "\nWorking in " + baseDirPath);
 		}
 
 		final TextSourceGenerator generator = readyApplication();
@@ -52,9 +58,17 @@ public class TextSourceGeneratorRunner implements Serializable {
 
 		final boolean failed = result == null;
 		if (failed) {
-			System.err.println("Generator run failed!\n");
+			final String msg = "Generator run failed!\n";
+			System.err.println(msg);
+			if (LOGGER.isInfoEnabled()) {
+				LOGGER.info(msg);
+			}
 		} else {
-			System.out.println("\nGeneration Information:\n" + String.valueOf(result));
+			final String msg = "\nGeneration Information:\n" + String.valueOf(result);
+			System.out.println(msg);
+			if (LOGGER.isInfoEnabled()) {
+				LOGGER.info(msg);
+			}
 		}
 
 		System.out.println("\nTextSourceGeneratorRunner - done");

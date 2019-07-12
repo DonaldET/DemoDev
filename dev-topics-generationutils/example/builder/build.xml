@@ -7,12 +7,14 @@
 	<echo>........</echo>
 
 	<loadproperties srcFile="build.properties" />
+	<!--
 	<echoproperties prefix="ant." />
 	<echo />
 	<echoproperties prefix="BUILD." />
+	-->
 
-	<property name="BUILD.generator.jar" value="demodev-topics-demogenerator-1.0.0-SNAPSHOT.jar" />
-	<property name="BUILD.generator.path" value="../../target/" />
+	<property name="BUILD.generator.jar" value="DemoGenerator.jar" />
+	<property name="BUILD.generator.path" value="../" />
 	<property name="BUILD.generator.class" value="don.demo.generator.TextSourceGeneratorRunner" />
 
 	<target name="clean">
@@ -22,13 +24,31 @@
 	</target>
 
 	<target name="init" description="initialize target directories" depends="clean">
-		<echo>Setting up target directory ${BUILD.target}</echo>
+		<echo>Copy immutable files to target directory ${BUILD.target}</echo>
 		<copy includeemptydirs="false" todir="${BUILD.target}">
-			<fileset dir="${BUILD.immutable}" />
+			<fileset dir="${BUILD.immutable}">
+				<exclude name="**/*.tpl" />
+			</fileset>
 		</copy>
 	</target>
 
-	<target name="build" depends="init">
+	<target name="generate">
+		<echo message="Generate artifacts using templates and properties" />
+		<!-- Usage:  -defaultContext VAL -dstDir VAL -generatedFileList VAL -overrideContextList VAL -srcDir VAL -templateList VAL -->
+		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
+			<arg value="-defaultContext shared_defs.properties" />
+			<arg value="-dstDir ../../gen_target" />
+			<arg value="-generatedFileList provenance.txt" />
+			<arg value="-overrideContextList target_defs.properties" />
+			<arg value="-srcDir ../../gen_source" />
+			<arg value="-templateList provenance.tpl" />
+			<classpath>
+				<pathelement location="${BUILD.generator.path}/${BUILD.generator.jar}" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="build" depends="init,generate">
 		<echo message="build" />
 	</target>
 

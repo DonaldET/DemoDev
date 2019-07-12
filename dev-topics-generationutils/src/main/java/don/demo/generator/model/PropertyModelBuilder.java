@@ -8,7 +8,7 @@ import java.util.Properties;
  * 
  * @author Donald Trummell
  * 
- *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
  *         without fee and without a signed licensing agreement, is hereby
@@ -19,8 +19,8 @@ import java.util.Properties;
 public interface PropertyModelBuilder extends Serializable {
 
 	/**
-	 * Augments the model with additional properties, optionally overriding existing
-	 * properties
+	 * Augments the model with additional Java properties, optionally overriding
+	 * existing properties
 	 * 
 	 * @param properties optionally null or empty properties to add
 	 * 
