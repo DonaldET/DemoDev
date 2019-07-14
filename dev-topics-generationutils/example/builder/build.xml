@@ -37,13 +37,13 @@
 		<!-- Sample CLI parameters: ..\DemoGenerator.jar -defaultContext file:shared_defs.properties -dstDir ../gen_target -generatedFileList provenance.txt -overrideContextList file:target_defs.properties -srcDir ../gen_source -templateList provenance.tpl -->
 		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
 			<arg value="-defaultContext" />
-			<arg value="file:shared_defs.properties" />
+			<arg value="shared_defs.properties" />
 			<arg value="-dstDir" />
 			<arg value="../gen_target" />
 			<arg value="-generatedFileList" />
 			<arg value="provenance.txt" />
 			<arg value="-overrideContextList" />
-			<arg value="file:target_defs.properties" />
+			<arg value="target_defs.properties" />
 			<arg value="-srcDir" />
 			<arg value="../gen_source" />
 			<arg value="-templateList" />

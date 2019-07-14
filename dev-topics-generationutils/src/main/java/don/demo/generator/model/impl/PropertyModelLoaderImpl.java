@@ -43,7 +43,7 @@ import don.demo.generator.model.PropertyModelLoader;
  * 
  * @author Donald Trummell
  * 
- *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
  *         without fee and without a signed licensing agreement, is hereby
@@ -52,96 +52,81 @@ import don.demo.generator.model.PropertyModelLoader;
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
 @Service("modelloader")
-public class PropertyModelLoaderImpl implements PropertyModelLoader
-{
-    private static final long serialVersionUID = 1640881080369640241L;
+public class PropertyModelLoaderImpl implements PropertyModelLoader {
+	private static final long serialVersionUID = 1640881080369640241L;
 
-    @Autowired
-    private ApplicationContext ctx;
+	@Autowired
+	private ApplicationContext ctx;
 
-    public PropertyModelLoaderImpl() {
-    }
+	public PropertyModelLoaderImpl() {
+	}
 
-    /**
-     * Load properties using a <code>Spring</code> resource loader
-     */
-    @Override
-    public Properties loadProperties(final String propertiesSpec)
-    {
-        if (propertiesSpec == null)
-            throw new IllegalArgumentException("propertiesSpec null");
-        if (propertiesSpec.isEmpty())
-            throw new IllegalArgumentException("propertiesSpec empty");
+	/**
+	 * Load properties using a <code>Spring</code> resource loader; default to file
+	 * resource type.
+	 */
+	@Override
+	public Properties loadProperties(final String rawPropertiesSpec) {
+		if (rawPropertiesSpec == null)
+			throw new IllegalArgumentException("rawPropertiesSpec null");
+		if (rawPropertiesSpec.trim().isEmpty())
+			throw new IllegalArgumentException("rawPropertiesSpec empty");
 
-        if (ctx == null)
-            throw new IllegalStateException("no application context set");
+		if (ctx == null)
+			throw new IllegalStateException("no application context set");
 
-        Resource resource = ctx.getResource(propertiesSpec);
-        try
-        {
-            resource = ctx.getResource(propertiesSpec);
-        }
-        catch (RuntimeException rex)
-        {
-            throw new IllegalArgumentException("error accessing " + propertiesSpec + "; message: " + rex.getMessage(),
-                    rex);
-        }
+		final String propertiesSpec = rawPropertiesSpec.contains(":") ? rawPropertiesSpec.trim()
+				: "file:" + rawPropertiesSpec.trim();
+		Resource resource = null;
+		try {
+			resource = ctx.getResource(propertiesSpec);
+		} catch (RuntimeException rex) {
+			throw new IllegalArgumentException("error accessing [" + propertiesSpec + "]; message: " + rex.getMessage(),
+					rex);
+		}
 
-        if (resource == null)
-            return null;
+		if (resource == null)
+			return null;
 
-        if (!resource.exists())
-        {
-            throw new IllegalArgumentException("resource " + propertiesSpec + " does not exist");
-        }
+		if (!resource.exists()) {
+			throw new IllegalArgumentException("resource " + propertiesSpec + " does not exist");
+		}
 
-        if (!resource.isReadable())
-        {
-            throw new IllegalArgumentException("resource " + propertiesSpec + " not readable");
-        }
+		if (!resource.isReadable()) {
+			throw new IllegalArgumentException("resource " + propertiesSpec + " not readable");
+		}
 
-        InputStream inputStream = null;
-        final Properties properties = new Properties();
-        try
-        {
-            inputStream = resource.getInputStream();
-            if (inputStream == null)
-            {
-                throw new IllegalArgumentException("resource input stream " + propertiesSpec + " null");
-            }
+		InputStream inputStream = null;
+		final Properties properties = new Properties();
+		try {
+			inputStream = resource.getInputStream();
+			if (inputStream == null) {
+				throw new IllegalArgumentException("resource input stream " + propertiesSpec + " null");
+			}
 
-            properties.load(inputStream);
-        }
-        catch (IOException ex)
-        {
-            throw new IllegalArgumentException(
-                    "resource input stream " + propertiesSpec + " got error: " + ex.getMessage(), ex);
-        }
-        finally
-        {
-            if (inputStream != null)
-                try
-                {
-                    inputStream.close();
-                }
-                catch (IOException e)
-                {
-                    // IGNORE - Swallow exception
-                }
-        }
+			properties.load(inputStream);
+		} catch (IOException ex) {
+			throw new IllegalArgumentException(
+					"resource input stream " + propertiesSpec + " got error: " + ex.getMessage(), ex);
+		} finally {
+			if (inputStream != null)
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					// IGNORE - Swallow exception
+				}
+		}
 
-        return properties;
-    }
+		return properties;
+	}
 
-    // --------------------------------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------------------------------
 
-    public ApplicationContext getCtx()
-    {
-        return ctx;
-    }
+	public ApplicationContext getCtx() {
+		return ctx;
+	}
 
-    public void setCtx(final ApplicationContext ctx)
-    {
-        this.ctx = ctx;
-    }
+	public void setCtx(final ApplicationContext ctx) {
+		this.ctx = ctx;
+	}
 }

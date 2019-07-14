@@ -19,10 +19,15 @@ import don.demo.generator.TextSourceGenerator;
  * Incrementally build properties model; this implementation is a Mediator
  * orchestratring the parameters and models construction with invoking the
  * generator.
+ * <p>
+ * This generator relies on a special implementation of Freemarker interfaces
+ * <code>FileTemplateLoader</code> and <code>TemplateLoader</code>, which uses
+ * "&at;&at;{" as an interpolation opener instead of the standard "${" (see
+ * <code>ModifiedInterpolationTemplateLoader</code>.)
  * 
  * @author Donald Trummell
  * 
- *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
  *         without fee and without a signed licensing agreement, is hereby
@@ -50,6 +55,7 @@ public class TextSourceGeneratorImpl implements Serializable, TextSourceGenerato
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info((Object) "Entering generation process");
 		}
+
 		final ParameterSetup.ParameterBean parameterBean = this.parameterSetup.setupArgs(args);
 		final Properties composedPropertiesModel = this.modelComposer.composeModel(parameterBean.getDefaultContext(),
 				parameterBean.getOverrideContextList());
@@ -62,6 +68,7 @@ public class TextSourceGeneratorImpl implements Serializable, TextSourceGenerato
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info((Object) ("Completed generation process: " + String.valueOf(result)));
 		}
+
 		return result;
 	}
 

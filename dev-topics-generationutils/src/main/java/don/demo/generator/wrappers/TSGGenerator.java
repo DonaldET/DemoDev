@@ -22,11 +22,12 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 /**
- * A generator uses a model and list of source-template pairs to produce generated results.
+ * A generator uses a model and list of source-template pairs to produce
+ * generated results.
  * 
  * @author Donald Trummell
  * 
- *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
+ *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
  *         without fee and without a signed licensing agreement, is hereby
@@ -34,11 +35,12 @@ import freemarker.template.TemplateException;
  *         paragraph, appear in all copies, modifications, and distributions.
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  * 
- * <pre>
+ *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+ * <strong>Note</strong>: See <a href=
+"http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
  * </code>
- * </pre>
+ *         </pre>
  */
 @Service(value = "tsggenerator")
 public class TSGGenerator implements Generator {
@@ -60,7 +62,10 @@ public class TSGGenerator implements Generator {
 			File templateBaseDir = this.processBaseDir(srcDir);
 			String baseDir = templateBaseDir.getPath();
 			FileTemplateLoader fileTemplateLoader = FreemarkerHelper.createFileTemplateLoader(templateBaseDir);
-			assert (fileTemplateLoader != null) : "createFileTemplateLoader returned null";
+			if (fileTemplateLoader == null) {
+				throw new IllegalStateException("createFileTemplateLoader returned null");
+			}
+
 			String replacement = ((ModifiedInterpolationTemplateLoader) fileTemplateLoader).getReplacement();
 			FreemarkerHelper.ConfigAndLoader cfgLoader = FreemarkerHelper.configureFreemarker(fileTemplateLoader);
 			Configuration cfg = cfgLoader.getConfiguration();
