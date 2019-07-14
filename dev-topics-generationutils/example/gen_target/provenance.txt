@@ -1,7 +1,0 @@
-Generated System Provenance
-
-Run date: No_Run_Date
-Source  : Thor
-Target  : Thor_Again
-Memory  : 128
-Tasks   : 5
