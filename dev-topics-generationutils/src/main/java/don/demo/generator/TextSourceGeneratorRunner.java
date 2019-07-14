@@ -57,7 +57,8 @@ public class TextSourceGeneratorRunner implements Serializable {
 		Path basePath = Paths.get("./");
 		String baseDirPath = basePath.toAbsolutePath().toString();
 
-		System.out.println("  Working in path      : " + baseDirPath);
+		System.out.println("\n");
+		System.out.println("\n  Working in path      : " + baseDirPath);
 		System.out.flush();
 
 		if (LOGGER.isInfoEnabled()) {

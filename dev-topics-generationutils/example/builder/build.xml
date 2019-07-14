@@ -17,13 +17,13 @@
 	<property name="BUILD.generator.path" value="../" />
 	<property name="BUILD.generator.class" value="don.demo.generator.TextSourceGeneratorRunner" />
 
-	<target name="clean">
+	<target name="clean" description="Remove previously generated files">
 		<echo>Cleaning target from base directory ${basedir}</echo>
 		<delete dir="${BUILD.target}" />
 		<mkdir dir="${BUILD.target}" />
 	</target>
 
-	<target name="init" description="initialize target directories" depends="clean">
+	<target name="init" depends="clean" description="initialize target directories">
 		<echo>Copy immutable files to target directory ${BUILD.target}</echo>
 		<copy includeemptydirs="false" todir="${BUILD.target}">
 			<fileset dir="${BUILD.immutable}">
@@ -32,29 +32,44 @@
 		</copy>
 	</target>
 
-	<target name="generate">
+	<target name="replaceTokensFromTemplate" description="Use ANT to replace tokens">
+		<echo message="ANT file interpolation" />
+		<!-- Copy task interpolates during copy -->
+		<copy todir="${BUILD.target}" verbose="false" overwrite="true" failonerror="true">
+			<fileset dir="${BUILD.src}">
+				<include name="**/*.apl" />
+			</fileset>
+
+			<!-- Filter chain interpolate from properties file -->
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+	</target>
+
+	<target name="generateFromTemplate" description="Use Freemarker template to generate values">
 		<echo message="Generate artifacts using templates and properties" />
-		<!-- Sample CLI parameters: ..\DemoGenerator.jar -defaultContext file:shared_defs.properties -dstDir ../gen_target -generatedFileList provenance.txt -overrideContextList file:target_defs.properties -srcDir ../gen_source -templateList provenance.tpl -->
+		<!-- Sample CLI parameters: ..\DemoGenerator.jar -defaultContext file:shared_defs.properties -dstDir BUILD.target -generatedFileList provenance.txt -overrideContextList file:target_defs.properties -srcDir ${BUILD.src} -templateList provenance.tpl -->
 		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
 			<arg value="-defaultContext" />
 			<arg value="shared_defs.properties" />
 			<arg value="-dstDir" />
-			<arg value="../gen_target" />
+			<arg value="${BUILD.target}" />
 			<arg value="-generatedFileList" />
-			<arg value="provenance.txt" />
+			<arg value="chef_custom_resource.rb,hive_vars.hql" />
 			<arg value="-overrideContextList" />
 			<arg value="target_defs.properties" />
 			<arg value="-srcDir" />
-			<arg value="../gen_source" />
+			<arg value="${BUILD.src}" />
 			<arg value="-templateList" />
-			<arg value="provenance.tpl" />
+			<arg value="chef_custom_resource.tpl,hive_vars.tpl" />
 			<classpath>
 				<pathelement location="${BUILD.generator.path}/${BUILD.generator.jar}" />
 			</classpath>
 		</java>
 	</target>
 
-	<target name="build" depends="init,generate">
+	<target name="build" depends="init,replaceTokensFromTemplate,generateFromTemplate" description="orchestrate target requests">
 		<echo message="build completed" />
 	</target>
 
