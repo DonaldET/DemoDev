@@ -38,7 +38,7 @@ import freemarker.template.TemplateException;
  *         <pre>
  * <code>
  * <strong>Note</strong>: See <a href=
-"http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+"http://www.benf.org/other/cfr/faq.html">for decompiling decompiling</a>
  * </code>
  *         </pre>
  */

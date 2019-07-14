@@ -17,8 +17,8 @@ import don.demo.generator.model.PropertyModelLoader;
  * concepts from Spring resource loaders (see <a href=
  * 'http://docs.spring.io/spring/docs/current/spring-framework-reference/html/resources.htm'>Spr
  * i n g Resource Loading</a>.
- * <p>
- * <table style="width:100%">
+ *
+ * <table style="width:100%" summary="Spring Resource Loader Details">
  * <tr>
  * <th>Prefix</th>
  * <th>Example</th>

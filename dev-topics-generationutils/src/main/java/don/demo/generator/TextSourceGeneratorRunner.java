@@ -11,7 +11,18 @@ import don.demo.generator.TextSourceGenerator.Result;
 import don.demo.generator.arguments.ArgumentParser;
 
 /**
- * Run the generator passing in command-line arguments
+ * Run the Freemarker-based generator by passing in command-line arguments and
+ * executing the generator implementation. Freemarker resources are:
+ * <ul>
+ * <li><a href="https://freemarker.apache.org/">Freemarker site</a></li>
+ * <li><a href="http://zetcode.com/java/freemarker/">Freemarker
+ * tutorial-1</a></li>
+ * <li><a href=
+ * "https://www.vogella.com/tutorials/FreeMarker/article.html">Freemarker
+ * tutorial-2</a></li>
+ * <li><a href="https://freemarker.apache.org/docs/index.html">Freemarker
+ * manual</a></li>
+ * </ul>
  * 
  * @author Donald Trummell
  *
@@ -40,15 +51,13 @@ public class TextSourceGeneratorRunner implements Serializable {
 	 * @param args command-line arguments
 	 */
 	public static void main(final String[] args) {
-		System.out.println(
-				"\nTextSourceGeneratorRunner - Copyright (c) 2019. Donald Trummell. All Rights Reserved" + "\n");
+		System.out.println("\n\nTextSourceGeneratorRunner - Copyright (c) 2019. Donald Trummell. All Rights Reserved");
 		System.out.flush();
+
 		Path basePath = Paths.get("./");
 		String baseDirPath = basePath.toAbsolutePath().toString();
 
-		System.out.println("\n");
-		System.out.flush();
-		System.out.println("\n  Working in path      : " + baseDirPath + "\n");
+		System.out.println("  Working in path      : " + baseDirPath);
 		System.out.flush();
 
 		if (LOGGER.isInfoEnabled()) {
@@ -142,13 +151,10 @@ public class TextSourceGeneratorRunner implements Serializable {
 		final String beansAppContextPath = loadedFrom == null ? "null"
 				: loadedFrom.toLowerCase().startsWith("file:") ? APP_BEANS_CONTEXT_PATH_FILE
 						: APP_BEANS_CONTEXT_PATH_JAR;
-		// System.err.println(" Loading beans application context " +
-		// beansAppContextPath + " from URL " + loadedFrom);
 
 		final String mainAppContextPath = loadedFrom == null ? "null"
 				: loadedFrom.toLowerCase().startsWith("file:") ? MAIN_APP_CONTEXT_PATH_FILE : MAIN_APP_CONTEXT_PATH_JAR;
-		// System.err.println(" Loading main applicaiton context " + mainAppContextPath
-		// + " from URL " + loadedFrom);
+
 		return new ClassPathXmlApplicationContext(new String[] { beansAppContextPath, mainAppContextPath });
 	}
 

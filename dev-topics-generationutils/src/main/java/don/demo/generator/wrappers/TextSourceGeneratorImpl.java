@@ -22,7 +22,7 @@ import don.demo.generator.TextSourceGenerator;
  * <p>
  * This generator relies on a special implementation of Freemarker interfaces
  * <code>FileTemplateLoader</code> and <code>TemplateLoader</code>, which uses
- * "&at;&at;{" as an interpolation opener instead of the standard "${" (see
+ * "@at;@at;{" as an interpolation opener instead of the standard "${" (see
  * <code>ModifiedInterpolationTemplateLoader</code>.)
  * 
  * @author Donald Trummell
@@ -37,8 +37,7 @@ import don.demo.generator.TextSourceGenerator;
  * 
  *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href=
-"http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+ * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html">for decompiling</a>
  * </code>
  *         </pre>
  */

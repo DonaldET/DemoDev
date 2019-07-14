@@ -42,7 +42,7 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder, Cloneable
 	 * 
 	 * @param properties optionally null or empty augmentation properties
 	 * 
-	 * @return this instance of the <code>PropertyModelBuilder</code?
+	 * @return this instance of the <code>PropertyModelBuilder</code>
 	 */
 	@Override
 	public PropertyModelBuilder augment(final Properties properties) {

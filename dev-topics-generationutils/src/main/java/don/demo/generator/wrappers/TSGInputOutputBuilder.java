@@ -22,11 +22,12 @@ import org.springframework.stereotype.Service;
  *         paragraph, appear in all copies, modifications, and distributions.
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  * 
- * <pre>
+ *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+ * <strong>Note</strong>: See <a href=
+"http://www.benf.org/other/cfr/faq.html"> for decompiling</a>
  * </code>
- * </pre>
+ *         </pre>
  */
 @Service(value = "tsginputoutputbuilder")
 public class TSGInputOutputBuilder implements InputOutputBuilder {

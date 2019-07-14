@@ -163,7 +163,7 @@ public final class FreemarkerHelper implements Serializable
      * 
      * @return a path-configured "configuration" and associated loader
      * 
-     * @throws Illegal
+     * @throws IllegalArgumentException
      *             argument exception of base template path is unusable
      */
     public static ConfigAndLoader configureFreemarker(final FileTemplateLoader fileTemplateLoader)

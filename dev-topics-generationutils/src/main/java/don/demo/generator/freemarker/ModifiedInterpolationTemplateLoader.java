@@ -16,6 +16,9 @@ import freemarker.cache.TemplateLoader;
  * normal interpolation request; that is, requests started by the dollar-sign
  * and curly-brace opener, and replace it with a special form that will be
  * recognized on post-processing template write.
+ * <p>
+ * An example template loader is found <a href=
+ * "https://docs.huihoo.com/freemarker/2.3.14/pgui_config_templateloading.html">here</a>
  * 
  * @author Donald Trummell
  * 
@@ -66,14 +69,13 @@ public class ModifiedInterpolationTemplateLoader extends FileTemplateLoader impl
 	}
 
 	/**
-	 * sdasdas
+	 * Read a template and optionally interpolate Freemarker expressions.
 	 * 
-	 * @param templateSource the template file from which normal interpolation
-	 *                       markers should be ignored by Freemarker
-	 * @param the            Java string encoding
+	 * @param templateSource the template file to read
+	 * @param encoding       Java string encoding
 	 * 
-	 * @return a Java reader implementation that can replace unwanted Freemarker
-	 *         interpolation markers with _magic_
+	 * @return the content of the processed template (just a copy if no
+	 *         interpolation needed.)
 	 */
 	@Override
 	public Reader getReader(final Object templateSource, final String encoding) throws IOException {
