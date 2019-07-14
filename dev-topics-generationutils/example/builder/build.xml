@@ -12,6 +12,8 @@
 	<echo />
 	<echoproperties prefix="BUILD." />
 	-->
+	<loadproperties srcFile="${GEN_master}" />
+	<loadproperties srcFile="${GEN_override}" />
 
 	<property name="BUILD.generator.jar" value="DemoGenerator.jar" />
 	<property name="BUILD.generator.path" value="../" />
@@ -33,12 +35,16 @@
 	</target>
 
 	<target name="replaceTokensFromTemplate" description="Use ANT to replace tokens">
+		<!-- Taken from https://medium.com/the-geeks-of-creately/using-ant-to-replace-template-values-during-build-4f28bd3f0334 -->
 		<echo message="ANT file interpolation" />
 		<!-- Copy task interpolates during copy -->
 		<copy todir="${BUILD.target}" verbose="false" overwrite="true" failonerror="true">
 			<fileset dir="${BUILD.src}">
 				<include name="**/*.apl" />
 			</fileset>
+
+			<!-- Change target file extension -->
+			<mapper type="glob" from="*.apl" to="*.txt" />
 
 			<!-- Filter chain interpolate from properties file -->
 			<filterchain>
@@ -52,13 +58,13 @@
 		<!-- Sample CLI parameters: ..\DemoGenerator.jar -defaultContext file:shared_defs.properties -dstDir BUILD.target -generatedFileList provenance.txt -overrideContextList file:target_defs.properties -srcDir ${BUILD.src} -templateList provenance.tpl -->
 		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
 			<arg value="-defaultContext" />
-			<arg value="shared_defs.properties" />
+			<arg value="${GEN_master}" />
 			<arg value="-dstDir" />
 			<arg value="${BUILD.target}" />
 			<arg value="-generatedFileList" />
 			<arg value="chef_custom_resource.rb,hive_vars.hql" />
 			<arg value="-overrideContextList" />
-			<arg value="target_defs.properties" />
+			<arg value="${GEN_override}" />
 			<arg value="-srcDir" />
 			<arg value="${BUILD.src}" />
 			<arg value="-templateList" />
