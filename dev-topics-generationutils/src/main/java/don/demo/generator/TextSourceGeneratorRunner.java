@@ -40,10 +40,16 @@ public class TextSourceGeneratorRunner implements Serializable {
 	 * @param args command-line arguments
 	 */
 	public static void main(final String[] args) {
-		System.out.println("\nTextSourceGeneratorRunner - Copyright (c) 2019. Donald Trummell. All Rights Reserved");
+		System.out.println(
+				"\nTextSourceGeneratorRunner - Copyright (c) 2019. Donald Trummell. All Rights Reserved" + "\n");
+		System.out.flush();
 		Path basePath = Paths.get("./");
 		String baseDirPath = basePath.toAbsolutePath().toString();
-		System.out.println("\n  Working in path      : " + baseDirPath);
+
+		System.out.println("\n");
+		System.out.flush();
+		System.out.println("\n  Working in path      : " + baseDirPath + "\n");
+		System.out.flush();
 
 		if (LOGGER.isInfoEnabled()) {
 			LOGGER.info("\n========================================================="
