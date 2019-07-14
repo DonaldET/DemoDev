@@ -3,7 +3,7 @@
 	<description>Build Example Deployment</description>
 
 	<echo>........</echo>
-	<echo>Demo Generator ANT example, uses </echo>
+	<echo>Demo Generator ANT example build example</echo>
 	<echo>........</echo>
 
 	<loadproperties srcFile="build.properties" />
@@ -34,14 +34,20 @@
 
 	<target name="generate">
 		<echo message="Generate artifacts using templates and properties" />
-		<!-- Usage:  -defaultContext VAL -dstDir VAL -generatedFileList VAL -overrideContextList VAL -srcDir VAL -templateList VAL -->
+		<!-- Sample CLI parameters: ..\DemoGenerator.jar -defaultContext file:shared_defs.properties -dstDir ../gen_target -generatedFileList provenance.txt -overrideContextList file:target_defs.properties -srcDir ../gen_source -templateList provenance.tpl -->
 		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
-			<arg value="-defaultContext shared_defs.properties" />
-			<arg value="-dstDir ../../gen_target" />
-			<arg value="-generatedFileList provenance.txt" />
-			<arg value="-overrideContextList target_defs.properties" />
-			<arg value="-srcDir ../../gen_source" />
-			<arg value="-templateList provenance.tpl" />
+			<arg value="-defaultContext" />
+			<arg value="file:shared_defs.properties" />
+			<arg value="-dstDir" />
+			<arg value="../gen_target" />
+			<arg value="-generatedFileList" />
+			<arg value="provenance.txt" />
+			<arg value="-overrideContextList" />
+			<arg value="file:target_defs.properties" />
+			<arg value="-srcDir" />
+			<arg value="../gen_source" />
+			<arg value="-templateList" />
+			<arg value="provenance.tpl" />
 			<classpath>
 				<pathelement location="${BUILD.generator.path}/${BUILD.generator.jar}" />
 			</classpath>
@@ -49,7 +55,7 @@
 	</target>
 
 	<target name="build" depends="init,generate">
-		<echo message="build" />
+		<echo message="build completed" />
 	</target>
 
 </project>

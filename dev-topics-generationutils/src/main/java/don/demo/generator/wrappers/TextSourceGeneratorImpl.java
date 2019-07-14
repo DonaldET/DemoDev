@@ -1,18 +1,19 @@
 package don.demo.generator.wrappers;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+
 import don.demo.generator.Generator;
 import don.demo.generator.InputOutputBuilder;
 import don.demo.generator.ModelComposer;
 import don.demo.generator.ParameterSetup;
 import don.demo.generator.TextSourceGenerator;
-
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import javax.annotation.Resource;
-
-import org.apache.log4j.Logger;
 
 /**
  * Incrementally build properties model; this implementation is a Mediator
@@ -29,11 +30,12 @@ import org.apache.log4j.Logger;
  *         paragraph, appear in all copies, modifications, and distributions.
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  * 
- * <pre>
+ *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+ * <strong>Note</strong>: See <a href=
+"http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
  * </code>
- * </pre>
+ *         </pre>
  */
 public class TextSourceGeneratorImpl implements Serializable, TextSourceGenerator {
 	private static final long serialVersionUID = 1503924918398309281L;

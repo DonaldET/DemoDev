@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import don.demo.generator.model.PropertyModelBuilder;
 
 /**
- * Accumulates Java properties with augmentation properties, overriding previous
- * values properties
+ * Accumulates Java properties with previously loaded augmentation properties,
+ * optinally overriding previous values properties
  * 
  * @author Donald Trummell
  * 
@@ -115,6 +115,6 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder, Cloneable
 
 	@Override
 	public String toString() {
-		return "[PropertyModelBuilderImpl -0x" + Integer.toHexString(hashCode()) + ";  model=" + model + "]";
+		return "[PropertyModelBuilderImpl - 0x" + Integer.toHexString(hashCode()) + ";  model: " + model + "]";
 	}
 }

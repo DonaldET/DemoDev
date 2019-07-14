@@ -11,8 +11,8 @@ import don.demo.generator.model.PropertyModelBuilder;
 import don.demo.generator.model.PropertyModelLoader;
 
 /**
- * Compose a model, using Java properties files, by overriding default
- * properties with zero or more detail properties.
+ * Compose a model, using a series of input Java properties files, by overriding
+ * default properties with zero or more detail properties.
  * 
  * @author Donald Trummell
  * 

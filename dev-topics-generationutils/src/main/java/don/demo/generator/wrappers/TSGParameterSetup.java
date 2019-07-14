@@ -1,9 +1,11 @@
 package don.demo.generator.wrappers;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import don.demo.generator.ParameterSetup;
 import don.demo.generator.arguments.ArgumentParser;
-import javax.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Capture parameters for generation process.
@@ -18,11 +20,12 @@ import org.springframework.stereotype.Service;
  *         paragraph, appear in all copies, modifications, and distributions.
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
  * 
- * <pre>
+ *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
+ * <strong>Note</strong>: See <a href=
+"http://www.benf.org/other/cfr/faq.html for decompiling">decompiling</a></strong>
  * </code>
- * </pre>
+ *         </pre>
  */
 @Service(value = "tsgparametersetup")
 public class TSGParameterSetup implements ParameterSetup {
