@@ -7,11 +7,6 @@
 	<echo>........</echo>
 
 	<loadproperties srcFile="build.properties" />
-	<!--
-	<echoproperties prefix="ant." />
-	<echo />
-	<echoproperties prefix="BUILD." />
-	-->
 	<loadproperties srcFile="${GEN_master}" />
 	<loadproperties srcFile="${GEN_override}" />
 
@@ -55,20 +50,19 @@
 
 	<target name="generateFromTemplate" description="Use Freemarker template to generate values">
 		<echo message="Generate artifacts using templates and properties" />
-		<!-- Sample CLI parameters: ..\DemoGenerator.jar -defaultContext file:shared_defs.properties -dstDir BUILD.target -generatedFileList provenance.txt -overrideContextList file:target_defs.properties -srcDir ${BUILD.src} -templateList provenance.tpl -->
 		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
 			<arg value="-defaultContext" />
 			<arg value="${GEN_master}" />
 			<arg value="-dstDir" />
 			<arg value="${BUILD.target}" />
 			<arg value="-generatedFileList" />
-			<arg value="chef_custom_resource.rb,hive_vars.hql" />
+			<arg value="chef_custom_resource.rb,hive_vars.hql" /> <!-- Source file list -->
 			<arg value="-overrideContextList" />
 			<arg value="${GEN_override}" />
 			<arg value="-srcDir" />
 			<arg value="${BUILD.src}" />
 			<arg value="-templateList" />
-			<arg value="chef_custom_resource.tpl,hive_vars.tpl" />
+			<arg value="chef_custom_resource.tpl,hive_vars.tpl" /> <!-- Matching target file list -->
 			<classpath>
 				<pathelement location="${BUILD.generator.path}/${BUILD.generator.jar}" />
 			</classpath>
@@ -76,7 +70,7 @@
 	</target>
 
 	<target name="build" depends="init,replaceTokensFromTemplate,generateFromTemplate" description="orchestrate target requests">
-		<echo message="build completed" />
+		<echo message="build steps completed" />
 	</target>
 
 </project>
