@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="build" name="Demogenerator Example">
-	<description>Build Example Deployment</description>
+<project basedir="." default="build" name="ANT_DevOps_Example">
+	<description>Build Deployment Artifacts</description>
 
 	<echo>........</echo>
 	<echo>Demo Generator ANT example build example</echo>
 	<echo>........</echo>
 
 	<loadproperties srcFile="build.properties" />
-	<loadproperties srcFile="${GEN_master}" />
 	<loadproperties srcFile="${GEN_override}" />
+	<!-- immutable properties, override take precedence -->
+	<loadproperties srcFile="${GEN_master}" />
+	<!-- over master proerties -->
+
+	<target name="check_env" description="test if production target">
+		<condition property="is_production">
+			<equals arg1="${GEN_target}" arg2="PRODUCTION" />
+		</condition>
+	</target>
+
+	<import file="generate.xml" as="freemarker" />
+
+	<target name="flag_production" depends="check_env" if="is_production">
+		<echo message="***** Creating PRODUCTION target" />
+	</target>
 
 	<property name="BUILD.generator.jar" value="DemoGenerator.jar" />
 	<property name="BUILD.generator.path" value="../" />
@@ -20,7 +34,7 @@
 		<mkdir dir="${BUILD.target}" />
 	</target>
 
-	<target name="init" depends="clean" description="initialize target directories">
+	<target name="init" depends="clean,flag_production" description="initialize target directories">
 		<echo>Copy immutable files to target directory ${BUILD.target}</echo>
 		<copy includeemptydirs="false" todir="${BUILD.target}">
 			<fileset dir="${BUILD.immutable}">
@@ -48,28 +62,16 @@
 		</copy>
 	</target>
 
-	<target name="generateFromTemplate" description="Use Freemarker template to generate values">
-		<echo message="Generate artifacts using templates and properties" />
-		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
-			<arg value="-defaultContext" />
-			<arg value="${GEN_master}" />
-			<arg value="-dstDir" />
-			<arg value="${BUILD.target}" />
-			<arg value="-generatedFileList" />
-			<arg value="chef_custom_resource.rb,hive_vars.hql" /> <!-- Source file list -->
-			<arg value="-overrideContextList" />
-			<arg value="${GEN_override}" />
-			<arg value="-srcDir" />
-			<arg value="${BUILD.src}" />
-			<arg value="-templateList" />
-			<arg value="chef_custom_resource.tpl,hive_vars.tpl" /> <!-- Matching target file list -->
-			<classpath>
-				<pathelement location="${BUILD.generator.path}/${BUILD.generator.jar}" />
-			</classpath>
-		</java>
+	<target name="generateCommon" description="Generate common files">
+		<echo>Generate common files</echo>
+		<antcall target="generateFromTemplate">
+			<param name="p3_target_list" value="chef_custom_resource.rb,hive_vars.hql,hive_query.hql" />
+			<param name="p5_source_dir" value="${BUILD.src}" />
+			<param name="p6_template_list" value="chef_custom_resource.tpl,hive_vars.tpl,hive_query.tpl" />
+		</antcall>
 	</target>
 
-	<target name="build" depends="init,replaceTokensFromTemplate,generateFromTemplate" description="orchestrate target requests">
+	<target name="build" depends="init,replaceTokensFromTemplate,generateCommon" description="orchestrate target requests">
 		<echo message="build steps completed" />
 	</target>
 
