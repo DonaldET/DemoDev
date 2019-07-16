@@ -12,13 +12,13 @@
 	<loadproperties srcFile="${GEN_master}" />
 	<!-- over master proerties -->
 
+	<import file="generate.xml" as="freemarker" />
+
 	<target name="check_env" description="test if production target">
 		<condition property="is_production">
 			<equals arg1="${GEN_target}" arg2="PRODUCTION" />
 		</condition>
 	</target>
-
-	<import file="generate.xml" as="freemarker" />
 
 	<target name="flag_production" depends="check_env" if="is_production">
 		<echo message="***** Creating PRODUCTION target" />
@@ -71,7 +71,16 @@
 		</antcall>
 	</target>
 
-	<target name="build" depends="init,replaceTokensFromTemplate,generateCommon" description="orchestrate target requests">
+	<target name="generateOptionalProd" unless="is_production" description="Generate production files">
+		<echo>Generate Non-production files</echo>
+		<antcall target="generateFromTemplate">
+			<param name="p3_target_list" value="prod_token.json" />
+			<param name="p5_source_dir" value="${BUILD.src}" />
+			<param name="p6_template_list" value="prod_token.tpl" />
+		</antcall>
+	</target>
+
+	<target name="build" depends="init,replaceTokensFromTemplate,generateCommon,generateOptionalProd" description="orchestrate target requests">
 		<echo message="build steps completed" />
 	</target>
 
