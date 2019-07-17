@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="build" name="ANT_DevOps_Example">
-	<description>Build Deployment Artifacts</description>
+	<description>Build Deployment Artifacts for multiple targets</description>
 
 	<echo>........</echo>
-	<echo>Demo Generator ANT example build example</echo>
+	<echo>ANT DevOps example, includes Generation</echo>
 	<echo>........</echo>
 
 	<loadproperties srcFile="build.properties" />
 	<loadproperties srcFile="${GEN_override}" />
-	<!-- immutable properties, override take precedence -->
 	<loadproperties srcFile="${GEN_master}" />
-	<!-- over master proerties -->
 
 	<import file="generate.xml" as="freemarker" />
+	<import file="interpolate.xml" as="expander" />
 
 	<target name="check_env" description="test if production target">
 		<condition property="is_production">
@@ -21,20 +20,15 @@
 	</target>
 
 	<target name="flag_production" depends="check_env" if="is_production">
-		<echo message="***** Creating PRODUCTION target" />
+		<echo message="--- PRODUCTION TARGET" />
 	</target>
 
-	<property name="BUILD.generator.jar" value="DemoGenerator.jar" />
-	<property name="BUILD.generator.path" value="../" />
-	<property name="BUILD.generator.class" value="don.demo.generator.TextSourceGeneratorRunner" />
-
 	<target name="clean" description="Remove previously generated files">
-		<echo>Cleaning target from base directory ${basedir}</echo>
 		<delete dir="${BUILD.target}" />
 		<mkdir dir="${BUILD.target}" />
 	</target>
 
-	<target name="init" depends="clean,flag_production" description="initialize target directories">
+	<target name="immutable" depends="clean,flag_production" description="initialize target directories">
 		<echo>Copy immutable files to target directory ${BUILD.target}</echo>
 		<copy includeemptydirs="false" todir="${BUILD.target}">
 			<fileset dir="${BUILD.immutable}">
@@ -43,36 +37,22 @@
 		</copy>
 	</target>
 
-	<target name="replaceTokensFromTemplate" description="Use ANT to replace tokens">
-		<!-- Taken from https://medium.com/the-geeks-of-creately/using-ant-to-replace-template-values-during-build-4f28bd3f0334 -->
-		<echo message="ANT file interpolation" />
-		<!-- Copy task interpolates during copy -->
-		<copy todir="${BUILD.target}" verbose="false" overwrite="true" failonerror="true">
-			<fileset dir="${BUILD.src}">
-				<include name="**/*.apl" />
-			</fileset>
-
-			<!-- Change target file extension -->
-			<mapper type="glob" from="*.apl" to="*.txt" />
-
-			<!-- Filter chain interpolate from properties file -->
-			<filterchain>
-				<expandproperties />
-			</filterchain>
-		</copy>
-	</target>
-
 	<target name="generateCommon" description="Generate common files">
 		<echo>Generate common files</echo>
 		<antcall target="generateFromTemplate">
-			<param name="p3_target_list" value="chef_custom_resource.rb,hive_vars.hql,hive_query.hql" />
+			<param name="p3_target_list" value="hive_vars.hql,hive_query.hql" />
 			<param name="p5_source_dir" value="${BUILD.src}" />
-			<param name="p6_template_list" value="chef_custom_resource.tpl,hive_vars.tpl,hive_query.tpl" />
+			<param name="p6_template_list" value="hive_vars.tpl,hive_query.tpl" />
 		</antcall>
 	</target>
 
-	<target name="generateOptionalProd" unless="is_production" description="Generate production files">
-		<echo>Generate Non-production files</echo>
+	<target name="expandTokens" depends="generateCommon" description="Use ANT to replace tokens">
+		<echo>Expand tokens using ANT</echo>
+		<antcall target="interpolateTemplate" />
+	</target>
+
+	<target name="generateProdOnly" depends="generateCommon" if="is_production" description="Generate production only files">
+		<echo>Generate production-only files</echo>
 		<antcall target="generateFromTemplate">
 			<param name="p3_target_list" value="prod_token.json" />
 			<param name="p5_source_dir" value="${BUILD.src}" />
@@ -80,7 +60,7 @@
 		</antcall>
 	</target>
 
-	<target name="build" depends="init,replaceTokensFromTemplate,generateCommon,generateOptionalProd" description="orchestrate target requests">
+	<target name="build" depends="immutable,expandTokens,generateProdOnly" description="orchestrate target requests">
 		<echo message="build steps completed" />
 	</target>
 

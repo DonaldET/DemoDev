@@ -2,7 +2,9 @@
 <project basedir="." name="Demogenerator Wrapper">
 	<description>Template Generation Task</description>
 
-	<echo>Generate Output from Template and Property Model using Freemarker</echo>
+	<property name="BUILD.generator.jar" value="DemoGenerator.jar" />
+	<property name="BUILD.generator.path" value="../" />
+	<property name="BUILD.generator.class" value="don.demo.generator.TextSourceGeneratorRunner" />
 
 	<target name="gen_init" description="Set default properties for caller">
 		<property name="p1_default_context" value="${GEN_master}" />
