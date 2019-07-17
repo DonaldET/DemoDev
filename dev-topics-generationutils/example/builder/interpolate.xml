@@ -3,8 +3,8 @@
 	<description>Template Generation Task</description>
 
 	<target name="inter_init" description="Set default properties for caller">
-		<property name="p1_target_dir" value="${BUILD.target}" />
-		<property name="p2_source_dir" value="${BUILD.src}" />
+		<property name="p1.target.dir" value="${BUILD.target}" />
+		<property name="p2.source.dir" value="${BUILD.src}" />
 	</target>
 
 	<!-- Standard property expander invoked from ANT -->
@@ -12,8 +12,8 @@
 		<!-- Taken from https://medium.com/the-geeks-of-creately/using-ant-to-replace-template-values-during-build-4f28bd3f0334 -->
 		<echo message="ANT file interpolation" />
 		<!-- Copy task interpolates during copy -->
-		<copy todir="${p1_target_dir}" verbose="false" overwrite="true" failonerror="true">
-			<fileset dir="${p2_source_dir}">
+		<copy todir="${p1.target.dir}" verbose="false" overwrite="true" failonerror="true">
+			<fileset dir="${p2.source.dir}">
 				<include name="**/*.apl" />
 			</fileset>
 

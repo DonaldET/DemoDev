@@ -14,12 +14,12 @@
 	<import file="interpolate.xml" as="expander" />
 
 	<target name="check_env" description="test if production target">
-		<condition property="is_production">
+		<condition property="is.production.env">
 			<equals arg1="${GEN_target}" arg2="PRODUCTION" />
 		</condition>
 	</target>
 
-	<target name="flag_production" depends="check_env" if="is_production">
+	<target name="flag_production" depends="check_env" if="is.production.env">
 		<echo message="--- PRODUCTION TARGET" />
 	</target>
 
@@ -40,9 +40,9 @@
 	<target name="generateCommon" description="Generate common files">
 		<echo>Generate common files</echo>
 		<antcall target="generateFromTemplate">
-			<param name="p3_target_list" value="hive_vars.hql,hive_query.hql" />
-			<param name="p5_source_dir" value="${BUILD.src}" />
-			<param name="p6_template_list" value="hive_vars.tpl,hive_query.tpl" />
+			<param name="p3.target.list" value="hive_vars.hql,hive_query.hql" />
+			<param name="p5.source.dir" value="${BUILD.src}" />
+			<param name="p6.template.list" value="hive_vars.tpl,hive_query.tpl" />
 		</antcall>
 	</target>
 
@@ -51,12 +51,12 @@
 		<antcall target="interpolateTemplate" />
 	</target>
 
-	<target name="generateProdOnly" depends="generateCommon" if="is_production" description="Generate production only files">
+	<target name="generateProdOnly" depends="generateCommon" if="is.production.env" description="Generate production only files">
 		<echo>Generate production-only files</echo>
 		<antcall target="generateFromTemplate">
-			<param name="p3_target_list" value="prod_token.json" />
-			<param name="p5_source_dir" value="${BUILD.src}" />
-			<param name="p6_template_list" value="prod_token.tpl" />
+			<param name="p3.target.list" value="prod_token.json" />
+			<param name="p5.source.dir" value="${BUILD.src}" />
+			<param name="p6.template.list" value="prod_token.tpl" />
 		</antcall>
 	</target>
 

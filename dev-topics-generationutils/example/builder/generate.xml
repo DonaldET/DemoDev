@@ -7,9 +7,9 @@
 	<property name="BUILD.generator.class" value="don.demo.generator.TextSourceGeneratorRunner" />
 
 	<target name="gen_init" description="Set default properties for caller">
-		<property name="p1_default_context" value="${GEN_master}" />
-		<property name="p2_target_dir" value="${BUILD.target}" />
-		<property name="p4_override_context" value="${GEN_override}" />
+		<property name="p1.default.context" value="${GEN_master}" />
+		<property name="p2.target.dir" value="${BUILD.target}" />
+		<property name="p4.override.context" value="${GEN_override}" />
 	</target>
 
 	<!-- Generator using Freemarker invoked from ANT -->
@@ -17,18 +17,18 @@
 		<echo message="Generate artifacts using templates and model properties" />
 		<java jar="${BUILD.generator.path}/${BUILD.generator.jar}" fork="true" failonerror="true" maxmemory="256m">
 			<arg value="-defaultContext" />
-			<arg value="${p1_default_context}" />
+			<arg value="${p1.default.context}" />
 			<arg value="-dstDir" />
-			<arg value="${p2_target_dir}" />
+			<arg value="${p2.target.dir}" />
 			<arg value="-generatedFileList" />
-			<arg value="${p3_target_list}" />
+			<arg value="${p3.target.list}" />
 			<!-- Matching target file list -->
 			<arg value="-overrideContextList" />
-			<arg value="${p4_override_context}" />
+			<arg value="${p4.override.context}" />
 			<arg value="-srcDir" />
-			<arg value="${p5_source_dir}" />
+			<arg value="${p5.source.dir}" />
 			<arg value="-templateList" />
-			<arg value="${p6_template_list}" />
+			<arg value="${p6.template.list}" />
 			<!-- Source file list -->
 			<classpath>
 				<pathelement location="${BUILD.generator.path}/${BUILD.generator.jar}" />
