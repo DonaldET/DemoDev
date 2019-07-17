@@ -28,7 +28,7 @@
 		<mkdir dir="${BUILD.target}" />
 	</target>
 
-	<target name="immutable" depends="clean,flag_production" description="initialize target directories">
+	<target name="immutable" depends="clean,flag_production" description="initialize target directories adding immutable files">
 		<echo>Copy immutable files to target directory ${BUILD.target}</echo>
 		<copy includeemptydirs="false" todir="${BUILD.target}">
 			<fileset dir="${BUILD.immutable}">
