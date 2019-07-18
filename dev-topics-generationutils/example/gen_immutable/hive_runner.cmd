@@ -9,5 +9,5 @@ echo. Running Hive - variable definitions
 type hive_vars.hql
 echo.
 echo. Running Hive - Hive query
-type hive_quey.hql
+type hive_query.hql
 echo.

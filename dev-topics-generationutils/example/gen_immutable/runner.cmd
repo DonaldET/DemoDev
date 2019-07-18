@@ -11,8 +11,6 @@ type provenance.txt
 echo.
 call hive_runner.cmd
 echo.
-call extract_runner.cmd
-echo.
 echo. Done!
 echo.
  
