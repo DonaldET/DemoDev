@@ -1,0 +1,10 @@
+Generated System Provenance for Sales Query
+
+Source  : PROD_REPO_URL
+Target  : PRODUCTION
+Memory  : 512M
+Tasks   : 12
+
+Generation Details for Sales Query
+Master Properties  : shared_defs.properties
+Override Properties: target_defs.properties

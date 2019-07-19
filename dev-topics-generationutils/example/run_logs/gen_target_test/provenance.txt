@@ -1,0 +1,10 @@
+Generated System Provenance for Sales Query
+
+Source  : TARGET_REPO_URL
+Target  : TEST
+Memory  : 256M
+Tasks   : 7
+
+Generation Details for Sales Query
+Master Properties  : shared_defs.properties
+Override Properties: target_defs_test.properties
