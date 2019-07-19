@@ -7,6 +7,7 @@
 --Generation date: Run date: @@{.now}
 
 set tbl_prefix=@@{GEN_env_prefix};
+set dbname=<#if GEN_target == "PRODUCTION">RAW_SALES<#else>RAW_SALES_SAMPLE</#if>;
 set base_source_table_name=@@{GEN_src_tbl};
 set source_table=${tbl_prefix}_${base_source_table_name};
 set base_target_table_name=@@{GEN_tgt_tbl};
