@@ -48,6 +48,7 @@
 		<module>dev-topics-socotra-ordered</module>
 		<module>dev-topics-trulia-treesearch</module>
 		<module>dev-topics-wework-spiral</module>
+		<module>dev-topics-wework-patterns</module>
 	</modules>
 
 	<properties>
