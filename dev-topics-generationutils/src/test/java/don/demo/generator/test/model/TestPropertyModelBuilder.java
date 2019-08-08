@@ -44,9 +44,6 @@ public class TestPropertyModelBuilder {
 				final ApplicationContext ctxT = new ClassPathXmlApplicationContext(SPRING_TEST_APP_CONTEXT);
 				Assert.assertNotNull(SPRING_TEST_APP_CONTEXT + " null", ctxT);
 
-				final String ver = (String) ctxT.getBean("version.test");
-				Assert.assertNotNull(SPRING_TEST_APP_CONTEXT + " null", ver);
-
 				ctx = ctxT;
 
 				initialized[0] = true;

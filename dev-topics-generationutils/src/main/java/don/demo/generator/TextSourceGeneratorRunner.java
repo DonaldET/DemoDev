@@ -106,7 +106,7 @@ public class TextSourceGeneratorRunner implements Serializable {
 	/**
 	 * Load spring and get bean with processing implementation
 	 */
-	private static TextSourceGenerator readyApplication() {
+	public static TextSourceGenerator readyApplication() {
 		myLoadSource();
 		final ClassPathXmlApplicationContext springContext = getSpringAppContext();
 		final String configVersion = (String) springContext.getBean("version");
@@ -128,7 +128,7 @@ public class TextSourceGeneratorRunner implements Serializable {
 	 * 
 	 * @return a <code>Result</code> instance or <code>null</code> if failed
 	 */
-	private static Result processWithArgs(final TextSourceGenerator generator, final String[] args) {
+	public static Result processWithArgs(final TextSourceGenerator generator, final String[] args) {
 
 		Result result = null;
 		try {
