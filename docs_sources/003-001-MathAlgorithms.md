@@ -9,4 +9,5 @@ These Mathematical Algorithms show methods of performance testing and demonstrat
 
 Project | Description
 ------- | -----------
-_largenumeric_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors
+_largenumeric_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors. This is the basis for the article: [https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/](https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/). 
+
