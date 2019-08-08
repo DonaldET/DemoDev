@@ -15,7 +15,8 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-        <!-- Run example: mvn exec:java -Dexec.mainClass="demo.wework.spiral.Solution" -Dexec.classpathScope=runtime -->
+	<!-- Run example: mvn exec:java -Dexec.mainClass="demo.wework.spiral.Solution" 
+		-Dexec.classpathScope=runtime -->
 	<!-- <groupId>demodev.topics</groupId> -->
 	<artifactId>demodev-topics-codingexam-parent</artifactId>
 	<name>Demonstration of Development _CODINGEXAMS_</name>
