@@ -23,6 +23,13 @@ import don.demo.generator.arguments.ArgumentParser;
  * <li><a href="https://freemarker.apache.org/docs/index.html">Freemarker
  * manual</a></li>
  * </ul>
+ * Sample Eclipse test run parameters:
+ * 
+ * <pre>
+ * <code>
+ * -defaultContext D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_config\shared_defs.properties -overrideContextList D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_config\target_defs.properties -srcDir D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_src -templateList hive_query.tpl -dstDir D:\GitHub\DemoDev\dev-topics-generationutils\.\target -generatedFileList hive_query.hql
+ * </code>
+ * </pre>
  * 
  * @author Donald Trummell
  *

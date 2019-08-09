@@ -75,8 +75,9 @@ public class PropertyModelLoaderImpl implements PropertyModelLoader {
 		if (ctx == null)
 			throw new IllegalStateException("no application context set");
 
-		final String propertiesSpec = rawPropertiesSpec.contains(":") ? rawPropertiesSpec.trim()
-				: "file:" + rawPropertiesSpec.trim();
+		final String propertiesSpec = rawPropertiesSpec.startsWith("file:")
+				|| rawPropertiesSpec.startsWith("classpath:") ? rawPropertiesSpec.trim()
+						: "file:" + rawPropertiesSpec.trim();
 		Resource resource = null;
 		try {
 			resource = ctx.getResource(propertiesSpec);

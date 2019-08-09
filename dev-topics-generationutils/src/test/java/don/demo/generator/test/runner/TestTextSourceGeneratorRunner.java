@@ -1,15 +1,22 @@
 package don.demo.generator.test.runner;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import demo.file.util.FileUtils;
 import don.demo.generator.TextSourceGenerator;
+import don.demo.generator.TextSourceGenerator.Result;
 import don.demo.generator.TextSourceGeneratorRunner;
 
 /**
@@ -31,10 +38,7 @@ public class TestTextSourceGeneratorRunner {
 	private static final String SPRING_TEST_APP_CONTEXT = "/META-INF/main/spring/test-app-context.xml";
 
 	private static boolean[] initialized = new boolean[] { false };
-
 	private static ApplicationContext ctx = null;
-
-	private static Logger LOGGER = null;
 
 	@Before
 	public void setUp() throws Exception {
@@ -46,8 +50,6 @@ public class TestTextSourceGeneratorRunner {
 				Assert.assertNotNull(SPRING_TEST_APP_CONTEXT + " null", ctxT);
 
 				ctx = ctxT;
-
-				LOGGER = Logger.getLogger(TextSourceGeneratorRunner.class);
 
 				initialized[0] = true;
 			}
@@ -79,11 +81,102 @@ public class TestTextSourceGeneratorRunner {
 	public void testHiveGen() {
 		final TextSourceGenerator generator = TextSourceGeneratorRunner.readyApplication();
 		Assert.assertNotNull("generator bean null", generator);
-//		// -defaultContext VAL -dstDir VAL -generatedFileList VAL -overrideContextList
-//		// VAL -srcDir VAL -templateList VAL
-//
-//		final String[] args = { "a", "b", "c" };
-//		final Result result = TextSourceGeneratorRunner.processWithArgs(generator, args);
-//		Assert.assertNotNull("processing result null", result);
+
+		/**
+		 * <pre>
+		 * <code>
+		 * Example:
+		 * 		 0. == -defaultContext,
+		 * 		 1. == D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_config\shared_defs.properties,
+		 * 		 2. == -overrideContextList,
+		 * 		 3. == D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_config\target_defs.properties,
+		 * 		 4. == -srcDir,
+		 * 		 5. == D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_src,
+		 * 		 6. == -templateList,
+		 * 		 7. == hive_query.tpl,
+		 * 		 8. == -dstDir,
+		 * 		 9. == D:\GitHub\DemoDev\dev-topics-generationutils\.\target,
+		 * 		 10. == -generatedFileList,
+		 * 		 11. == hive_query.hql
+		 * </code>
+		 * </pre>
+		 */
+		final String[] args = setupRun();
+		System.err.println("params: " + Arrays.toString(args));
+		final Result result = TextSourceGeneratorRunner.processWithArgs(generator, args);
+		Assert.assertNotNull("processing result null", result);
+		Assert.assertEquals("read count bad", 1, result.getFilesRead());
+		Assert.assertEquals("write count bad", 1, result.getFilesWritten());
+
+		String goldStandard = FileUtils.collectTrimmedFileData(goldStandardPath.toFile());
+		String generatedOutput = FileUtils.collectTrimmedFileData(hiveGenerated.toFile());
+		Assert.assertEquals("generated file differs", goldStandard, generatedOutput);
+	}
+
+	// ------------------------------------------------------------------------------------------
+
+	private static Path workDirPath = null;
+	private static Path sharedDef = null;
+	private static Path targetDef = null;
+	private static Path hiveTemplate = null;
+	private static Path hiveGenerated = null;
+	private static Path goldStandardPath = null;
+
+	private static String[] setupRun() {
+		Path contextDirPath = getVerifiedInputDir("src/test/resources/app_config");
+		Path sourceDirPath = getVerifiedInputDir("src/test/resources/app_src");
+
+		sharedDef = getInputFilePath(contextDirPath.toString(), "shared_defs.properties", true);
+		targetDef = getInputFilePath(contextDirPath.toString(), "target_defs.properties", true);
+		hiveTemplate = getInputFilePath(sourceDirPath.toString(), "hive_query.tpl", true);
+
+		final String workDir = "./target";
+		workDirPath = getVerifiedWorkDir(workDir, workDir + "TestTextSourceGeneratorRunner.txt");
+		hiveGenerated = getInputFilePath(workDirPath.toString(), "hive_query.hql", false);
+
+		Path goldStandardDirPath = getVerifiedInputDir("src/test/resources/goldStandard");
+		goldStandardPath = getInputFilePath(goldStandardDirPath.toString(), "hive_query.hql", true);
+
+		String[] args = { "-defaultContext", sharedDef.toString(), "-overrideContextList", targetDef.toString(),
+				"-srcDir", sourceDirPath.toString(), "-templateList", hiveTemplate.getFileName().toString(), "-dstDir",
+				workDirPath.toString(), "-generatedFileList", hiveGenerated.getFileName().toString() };
+
+		return args;
+	}
+
+	private static Path getInputFilePath(String dir, String fname, boolean checkExists) {
+		Path testPath = Paths.get(dir, fname);
+		if (checkExists) {
+			Assert.assertFalse(testPath + " is a directory", Files.isDirectory(testPath, LinkOption.NOFOLLOW_LINKS));
+			Assert.assertTrue(testPath + " isn't readable", Files.isReadable(testPath));
+		}
+
+		return testPath;
+	}
+
+	private static Path getVerifiedInputDir(String dir) {
+		Path readPath = Paths.get(dir);
+		Assert.assertTrue(dir + " (" + readPath + ") isn't a directory",
+				Files.isDirectory(readPath, LinkOption.NOFOLLOW_LINKS));
+
+		return readPath.toAbsolutePath();
+	}
+
+	private static Path getVerifiedWorkDir(String dir, String fname) {
+		Path testWriteFilePath = Paths.get(dir, fname);
+		Path testPath = null;
+		try {
+			Files.deleteIfExists(testWriteFilePath);
+			testPath = Files.createFile(testWriteFilePath);
+			Files.delete(testPath);
+			testPath = Paths.get(dir);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			Assert.fail("unable to write to " + fname + " in " + dir + "; failure: " + ex.getMessage());
+		}
+		Assert.assertTrue(dir + " (" + testPath + ") isn't a directory",
+				Files.isDirectory(testPath, LinkOption.NOFOLLOW_LINKS));
+
+		return testPath.toAbsolutePath();
 	}
 }
