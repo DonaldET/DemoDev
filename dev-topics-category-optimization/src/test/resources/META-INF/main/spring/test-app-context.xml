@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Test version of application context -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<description>Text based configuration generator.</description>
+
+	<context:component-scan base-package="don.demo.generator.*" />
+
+	<context:annotation-config />
+
+	<import resource="classpath:/META-INF/main/spring/app-context.xml" />
+
+	<bean id="version.test" class="java.lang.String" scope="singleton">
+		<constructor-arg>
+			<value>TEST-1.0.0-SNAPSHOT</value>
+		</constructor-arg>
+	</bean>
+
+</beans>

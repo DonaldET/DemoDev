@@ -15,12 +15,12 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>demodev-topics-demogenerator</artifactId>
+	<artifactId>demodev-topics-category-optimizer</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>Generation Utilities</name>
+	<name>Category Boundry Optimization Utility</name>
 
-	<description>Generate Configuration with Templates and Models</description>
+	<description>Examine Category Score Boundaries maximizing R-squared</description>
 
 	<groupId>don.demo</groupId>
 
