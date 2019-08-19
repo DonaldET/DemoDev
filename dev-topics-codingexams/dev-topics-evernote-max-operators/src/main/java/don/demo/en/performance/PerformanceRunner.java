@@ -11,7 +11,7 @@ import don.demo.en.calls.SolutionEventsQueue;
 import don.demo.en.performance.CallGenerator.Call;
 
 public class PerformanceRunner {
-	private static final int EXPECTED_MAX_CALLS = 6760;
+	private static final int EXPECTED_MAX_CALLS = 6489;
 
 	/**
 	 * Test range of interest

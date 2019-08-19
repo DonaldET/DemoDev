@@ -15,7 +15,7 @@ public class CallAnalyzer {
 
 	public static void main(String[] args) {
 		final int n = 250_000;
-		System.out.println("Call Generator Analyzer for " + n + " calls in a day:");
+		System.out.println("\nCall Generator Analyzer for " + n + " calls in a day:");
 
 		CallGenerator cg = new CallGenerator(CallFinderEvaluator.rangeStart, CallFinderEvaluator.rangeEnd,
 				CallFinderEvaluator.peaks, CallFinderEvaluator.durationMin, CallFinderEvaluator.durationMax);
