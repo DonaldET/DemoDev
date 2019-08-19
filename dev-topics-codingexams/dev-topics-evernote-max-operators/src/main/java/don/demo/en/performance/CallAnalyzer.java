@@ -20,7 +20,7 @@ public class CallAnalyzer {
 		CallGenerator cg = new CallGenerator(CallFinderEvaluator.rangeStart, CallFinderEvaluator.rangeEnd,
 				CallFinderEvaluator.peaks, CallFinderEvaluator.durationMin, CallFinderEvaluator.durationMax);
 		List<Call> rawCalls = cg.generate(n);
-		System.out.println("Raw (to the minute):\n  -- n       : " + rawCalls.size());
+		System.out.println("Raw (to the minute):\n  -- n            : " + rawCalls.size());
 
 		int minT = Integer.MAX_VALUE;
 		int maxT = Integer.MIN_VALUE;
@@ -33,10 +33,10 @@ public class CallAnalyzer {
 			minD = Math.min(minD, d);
 			maxD = Math.max(maxD, d);
 		}
-		System.out.println("  -- Min Time: " + minT);
-		System.out.println("  -- Max Time: " + maxT);
-		System.out.println("  -- Min len : " + minD);
-		System.out.println("  -- Max len : " + maxD);
+		System.out.println("  -- Min Time     : " + minT);
+		System.out.println("  -- Max Time     : " + maxT);
+		System.out.println("  -- Min duration : " + minD);
+		System.out.println("  -- Max duration : " + maxD);
 
 		SolutionBins sb = new SolutionBins();
 		int[] allCounts = sb.getHourlyMaxCallCounts(rawCalls);

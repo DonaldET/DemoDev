@@ -122,7 +122,7 @@ public class CallGenerator {
 
 	private static int[] getCallTimes(int rangeStart, int rangeEnd, int[] peaks, int durationMin, int durationMax) {
 
-		final int duration = durationMin + rand.nextInt(durationMax - durationMin + 1);
+		final int duration = durationMin + rand.nextInt(durationMax - durationMin);
 		final int callRange = rangeEnd - rangeStart + 1;
 		final int selector = rand.nextInt(peaks.length + 1);
 		final int centerPoint = selector < peaks.length ? peaks[selector] : rangeStart + rand.nextInt(callRange);
