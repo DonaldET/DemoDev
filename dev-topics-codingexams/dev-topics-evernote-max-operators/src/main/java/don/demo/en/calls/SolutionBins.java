@@ -5,10 +5,55 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import don.demo.en.performance.CallGenerator.Call;
 
 public class SolutionBins implements MaxCallFinder {
+	/**
+	 * For returning all call information
+	 */
+	public static class ActiveCall implements Comparable<ActiveCall> {
+		public final int time;
+		public final int count;
+
+		public ActiveCall(int time, int count) {
+			super();
+			this.time = time;
+			this.count = count;
+		}
+
+		@Override
+		public int compareTo(ActiveCall o) {
+			int d1 = this.time - o.time;
+			return d1 == 0 ? this.count - o.count : d1;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 37;
+			int result = 1;
+			result = prime * result + count;
+			result = prime * result + time;
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			return compareTo((ActiveCall) obj) == 0;
+		}
+
+		@Override
+		public String toString() {
+			return time + ", " + count;
+		}
+	}
 
 	public SolutionBins() {
 	}
@@ -69,5 +114,32 @@ public class SolutionBins implements MaxCallFinder {
 		}
 
 		return maxCalls;
+	}
+
+	/**
+	 * Supporting method for analysis; not part of original problem solution.
+	 * Returns maximum call count for a minute in an hour.
+	 * 
+	 * @param calls
+	 * @return
+	 */
+	public int[] getHourlyMaxCallCounts(List<Call> calls) {
+		Map<Integer, Integer> callCounts = new HashMap<Integer, Integer>(1024);
+		for (Call c : calls) {
+			for (int time = c.start; time <= c.end; time++) {
+				callCounts.merge(time, 1, (x, y) -> x + y);
+			}
+		}
+
+		int[] counts = new int[24];
+		int lth = callCounts.size();
+		if (lth > 0) {
+			for (Entry<Integer, Integer> e : callCounts.entrySet()) {
+				int t = e.getKey() / 60;
+				counts[t] = Math.max(counts[t], e.getValue());
+			}
+		}
+
+		return counts;
 	}
 }

@@ -16,7 +16,7 @@ public class PerformanceRunner {
 	/**
 	 * Test range of interest
 	 */
-	private static final int[] testDays = { 10, 20, 40, 50, 60, 70, 80, 90, 100, 110 };
+	private static final int[] testDays = { 1, 10, 20, 40, 50, 60, 70, 80, 90, 100, 110, 120 };
 
 	public static void main(String[] args) {
 		final int n = 250_000;

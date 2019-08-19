@@ -1,7 +1,6 @@
 package don.demo.en.performance;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
@@ -85,26 +84,18 @@ public class CallGenerator {
 	}
 
 	public static void main(String[] args) {
-		final int n = 30;
+		final int n = 25;
 		System.out.println("Call Generator Demo for " + n + " calls:");
-		final int rangeStart = 0;
-		final int rangeEnd = 1439;
-		final int[] peaks = { 498, 753, 1122 };
-		final int durationMin = 1;
-		final int durationMax = 25;
 
-		CallGenerator cg = new CallGenerator(rangeStart, rangeEnd, peaks, durationMin, durationMax);
+		System.out.println("\nN, Start, End, Duration");
+		CallGenerator cg = new CallGenerator(CallFinderEvaluator.rangeStart, CallFinderEvaluator.rangeEnd,
+				CallFinderEvaluator.peaks, CallFinderEvaluator.durationMin, CallFinderEvaluator.durationMax);
 		List<Call> calls = cg.generate(n);
 		int i = 0;
 		for (Call c : calls) {
-			System.out.println((++i) + ". " + c);
+			System.out.println((++i) + ", " + c.start + ", " + c.end + ", " + (c.end - c.start + 1));
 		}
-		System.out.println("Now sorted:");
-		Collections.sort(calls);
-		i = 0;
-		for (Call c : calls) {
-			System.out.println((++i) + ". " + c);
-		}
+		System.out.println("Done");
 	}
 
 	public List<Call> generate(int n) {
