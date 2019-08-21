@@ -1,0 +1,42 @@
+ Call Data Analyzer
+ $ java -cp .;..\target\classes don.demo.en.performance.CallAnalyzer -Xms128M -Xmx512M
+
+Call Generator Analyzer for 250000 calls in a day:
+Raw (to the minute):
+  -- n            : 250000
+  -- Min Time     : 0
+  -- Max Time     : 1439
+  -- Min duration : 1
+  -- Max duration : 25
+
+Hourly Max Call Count:
+  -- n       : 24
+  -- Min Cnt : 530
+  -- Max Cnt : 6489
+
+Hourly Detail:
+Hour, Count
+0, 1601
+1, 530
+2, 637
+3, 616
+4, 618
+5, 1625
+6, 3591
+7, 3599
+8, 3814
+9, 3640
+10, 6489
+11, 3759
+12, 3772
+13, 3599
+14, 3571
+15, 2767
+16, 3615
+17, 3603
+18, 3930
+19, 3663
+20, 3509
+21, 3508
+22, 543
+23, 1833

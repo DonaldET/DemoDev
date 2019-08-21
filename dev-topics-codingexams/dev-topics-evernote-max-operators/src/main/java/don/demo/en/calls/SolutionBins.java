@@ -9,6 +9,10 @@ import java.util.Map.Entry;
 
 import don.demo.en.performance.CallGenerator.Call;
 
+/**
+ * Map a date range to an arraya map to accumulate active calls based on time,
+ * map uses less space when calls are sparse.
+ */
 public class SolutionBins implements MaxCallFinder {
 	/**
 	 * For returning all call information

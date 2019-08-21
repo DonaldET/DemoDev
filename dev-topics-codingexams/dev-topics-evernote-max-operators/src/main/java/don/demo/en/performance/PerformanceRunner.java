@@ -1,5 +1,6 @@
 package don.demo.en.performance;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Random;
 
 import don.demo.en.calls.MaxCallFinder;
 import don.demo.en.calls.SolutionBins;
+import don.demo.en.calls.SolutionBinsLinear;
 import don.demo.en.calls.SolutionEventsQueue;
 import don.demo.en.performance.CallGenerator.Call;
 
@@ -17,6 +19,10 @@ public class PerformanceRunner {
 	 * Test range of interest
 	 */
 	private static final int[] testDays = { 1, 10, 20, 40, 50, 60, 70, 80, 90, 100, 110, 120 };
+
+	private enum Algo {
+		EVENT_QUEUE, MAP_BIN, LINEAR_BIN
+	};
 
 	public static void main(String[] args) {
 		final int n = 250_000;
@@ -30,19 +36,36 @@ public class PerformanceRunner {
 		Random r = new Random(737L);
 
 		final List<Call> calls = generateBaseDays(n);
+		List<Algo> algos = new ArrayList<Algo>();
+		for (Algo a : Algo.values()) {
+			algos.add(a);
+		}
+
 		for (int days : testDays) {
-			boolean isEvent = r.nextBoolean();
-			performOneRun(isEvent, days, calls, EXPECTED_MAX_CALLS);
-			performOneRun(!isEvent, days, calls, EXPECTED_MAX_CALLS);
+			Collections.shuffle(algos, r);
+			for (Algo a : algos) {
+				performOneRun(a, days, calls, EXPECTED_MAX_CALLS);
+			}
 		}
 		System.out.println("Done");
 	}
 
-	private static void performOneRun(boolean isEvent, int days, List<Call> calls, int expectedMaxCalls) {
+	private static void performOneRun(Algo algo, int days, List<Call> calls, int expectedMaxCalls) {
 		System.gc();
-		String label = isEvent ? "Event Queue" : "Binning";
-		MaxCallFinder finder = isEvent ? new SolutionEventsQueue() : new SolutionBins();
-		int maxCalls = processSample(label, finder, days, calls, isEvent);
+		String label = algo.name();
+		MaxCallFinder finder = null;
+		switch (algo) {
+		case EVENT_QUEUE:
+			finder = new SolutionEventsQueue();
+			break;
+		case MAP_BIN:
+			finder = new SolutionBins();
+			break;
+		case LINEAR_BIN:
+			finder = new SolutionBinsLinear();
+			break;
+		}
+		int maxCalls = processSample(label, finder, days, calls, algo == Algo.EVENT_QUEUE);
 		if (maxCalls != expectedMaxCalls) {
 			throw new IllegalStateException("wrong maxCalls for " + label + " on " + days + ": " + maxCalls
 					+ "; expected: " + expectedMaxCalls);
