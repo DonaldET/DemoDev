@@ -10,26 +10,16 @@
 
         <parent>
                 <groupId>demodev.topics</groupId>
-                <artifactId>demodev-topics-parent</artifactId>
+                <artifactId>demodev-topics-algorithms-parent</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
         </parent>
 
-        <!-- <groupId>demodev.topics</groupId> -->
-        <artifactId>demodev-topics-algorithms-parent</artifactId>
-        <name>Demonstration of Development _ALGORITHMS_</name>
-        <description>Parent Project for ALGORITHMS</description>
-
-        <packaging>pom</packaging>
+        <artifactId>demodev-topics-nasa-sensor</artifactId>
         <!-- <version>1.0.0-SNAPSHOT</version> -->
-        <url>http://www.linkedin.com/in/donaldtrummell/</url>
+        <packaging>jar</packaging>
+        <name>Radiation Sensor Shielding Monitor</name>
 
-        <modules>
-                <module>dev-topics-badaddr</module>
-                <module>dev-topics-largenumeric</module>
-                <module>dev-topics-nasa-sensor</module>
-                <module>dev-topics-quadradic</module>
-                <module>dev-topics-sieve</module>
-        </modules>
+        <description>Radiation Sensor Shielding Control Monitoring</description>
 
         <properties>
         </properties>

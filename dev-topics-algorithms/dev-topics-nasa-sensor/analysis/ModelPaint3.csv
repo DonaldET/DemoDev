@@ -1,0 +1,18 @@
+ALGO, ID, N, K, Time
+SolutionRecordCoatsByAreaMapped, 100, 500, 2, 0.0568437
+SolutionRecordCoatsByArea, 100, 500, 2, 0.016323
+SolutionRecordCoatsByArea, 101, 1000, 2, 0.0046335
+SolutionRecordCoatsByAreaMapped, 101, 1000, 2, 0.0056363
+SolutionRecordCoatsByAreaMapped, 102, 10000, 2, 0.0256479
+SolutionRecordCoatsByArea, 102, 10000, 2, 0.0081898
+SolutionRecordCoatsByAreaMapped, 103, 100000, 2, 0.1571464
+SolutionRecordCoatsByArea, 103, 100000, 2, 0.0130033
+SolutionRecordCoatsByAreaMapped, 104, 500000, 2, 0.5288678
+SolutionRecordCoatsByArea, 104, 500000, 2, 0.0288006
+SolutionRecordCoatsByAreaMapped, 105, 1000000, 2, 1.0148876
+SolutionRecordCoatsByArea, 105, 1000000, 2, 0.0556371
+SolutionRecordCoatsByAreaMapped, 106, 5000000, 2, 6.7780985
+SolutionRecordCoatsByArea, 106, 5000000, 2, 0.2655683
+SolutionRecordCoatsByAreaMapped, 107, 10000000, 7, 11.7613723
+SolutionRecordCoatsByArea, 107, 10000000, 7, 0.5102236
+Done
