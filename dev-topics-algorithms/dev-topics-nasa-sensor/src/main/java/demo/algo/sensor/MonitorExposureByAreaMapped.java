@@ -64,6 +64,8 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 		return area;
 	}
 
+	// -------------------------------------------------------------------------------------------------------------------------
+
 	public Map<Integer, Integer> getSensorRegions() {
 		return sensorRegions;
 	}

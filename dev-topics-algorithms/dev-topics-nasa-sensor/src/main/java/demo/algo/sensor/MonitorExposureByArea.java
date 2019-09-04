@@ -55,6 +55,8 @@ public class MonitorExposureByArea implements ExposureAreaFinder {
 		return (int) Arrays.stream(sensorRegions).filter(x -> x == k).count();
 	}
 
+	// -------------------------------------------------------------------------------------------------------------------------
+
 	public int[] getSensorRegions() {
 		return sensorRegions;
 	}

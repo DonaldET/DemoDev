@@ -1,62 +1,68 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import demo.algo.sensor.SensorMonitoring.BoundingBox;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
+import demo.algo.sensor.SensorMonitoring.RectangleComparator;
 
 /**
- * Overlapping rectangles-based technique where exposed regions are tracked.
+ * Graphics based technique where exposed regions are modeled at the pixel level
+ * using an array. Inputs are grouped by chains of overlapping regions to
+ * minimize the size of the pixel map (the Sensor.)
  */
 public class MonitorExposureOverlapped implements ExposureAreaFinder {
 
 	private static final Region ender = createEnder();
-	private Region lastMerged = null;
 
 	public static void main(String[] args) {
 	}
 
 	/**
-	 * Time complexity is O(n).
+	 * Time complexity is O(n * a), where n = number of exposure sessions, and a is
+	 * a measure of effort in a session (e.g., the mean area exposed regions per
+	 * session.) If, as implied by the problem statement, the area is relatively
+	 * fixed and small, and the number of sessions n is large, then the complexity
+	 * is, by definition, O(n).
 	 */
 	@Override
-	public int findArea(List<? extends Rectangle> exposedRegions, final int k) {
-		//
-		// Create ordered regions: O(n * log(n))
-		List<Region> regions = orderInputRectangles(exposedRegions, ender);
+	public int findArea(List<? extends Rectangle> exposures, final int k) {
+		List<Region> regions = orderInputRectangles(exposures, ender);
 
 		int area = 0;
 		LinkedList<Region> holding = new LinkedList<Region>();
 		Iterator<Region> itr = regions.iterator();
 		Region reg = itr.next();
-		holding.add(reg);
-		lastMerged = reg;
+		mergeIntoHoldings(reg, holding);
 
 		while (itr.hasNext()) {
-			//
-			// Hit the end?
 			reg = itr.next();
-			if (reg.equals(ender)) {
+			if (reg == ender) {
 				area = flushHolding(area, k, holding);
+				holding = null;
 				break;
 			}
 
 			//
-			// New rectangle outside last holding rectangle, then overlap analysis
-			if (isNonOverlapping(lastMerged, reg)) {
+			// Accumulate overlapping rectangles, process on flush
+
+			if (isNonOverlapping(holding.getLast(), reg)) {
 				area = flushHolding(area, k, holding);
 				holding = new LinkedList<Region>();
-				holding.add(reg);
-				lastMerged = reg;
-			} else {
-				//
-				// Merge the new rectangle into the current holding
-				mergeIntoHoldings(reg, holding);
 			}
+
+			//
+			// Merge the new rectangle into the current holding
+			mergeIntoHoldings(reg, holding);
+		}
+
+		if (reg != ender) {
+			throw new IllegalStateException("Did not encounter ending record");
 		}
 
 		return area;
@@ -85,14 +91,34 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	}
 
 	private int flushHolding(int area, int k, List<Region> holding) {
-		int matchingExposures = holding.stream().filter(r -> r.exposures == k).mapToInt(r -> r.area()).sum();
-		return area + matchingExposures;
+		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
+		int[] lclSensor = new int[(lclBox.width) * (lclBox.height)];
+		int lclArea = exposeSensor(lclSensor, lclBox, holding, k);
+		area += lclArea;
+		return area;
 	}
 
 	private void mergeIntoHoldings(Region reg, List<Region> holding) {
-		lastMerged = reg;
 		holding.add(reg);
 	}
+
+	private int exposeSensor(int[] sensor, BoundingBox bbox, List<Region> regions, int k) {
+		for (Region reg : regions) {
+			for (int y = reg.y1; y < reg.y2; y++) {
+				int ypos = y - bbox.lowerLeftY;
+				int yposR = bbox.height - ypos - 1;
+				for (int x = reg.x1; x < reg.x2; x++) {
+					int xpos = x - bbox.lowerLeftX;
+					int idx = yposR * bbox.width + xpos;
+					sensor[idx] += reg.exposures;
+				}
+			}
+		}
+
+		return (int) Arrays.stream(sensor).filter(r -> r == k).count();
+	}
+
+	// -------------------------------------------------------------------------------------------------------------------------
 
 	private static Region createEnder() {
 		return new Region(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,
@@ -112,36 +138,6 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		@Override
 		public String toString() {
 			return super.toString() + "[exposures=" + exposures + "]";
-		}
-	}
-
-	/**
-	 * Total ordering over rectangles;
-	 * <ol>
-	 * <li>lower left X</li>
-	 * <li>lower left Y</li>
-	 * <li>upper right X</li>
-	 * <li>upper right Y</li>
-	 * </ol>
-	 */
-	private static class RectangleComparator<T extends Rectangle> implements Comparator<T> {
-
-		public RectangleComparator() {
-		}
-
-		@Override
-		public int compare(T lhs, T rhs) {
-			int delta = lhs.x1 - rhs.x1;
-			if (delta == 0) {
-				delta = lhs.y1 - rhs.y1;
-				if (delta == 0) {
-					delta = lhs.x2 - rhs.x2;
-					if (delta == 0) {
-						delta = lhs.y2 - rhs.y2;
-					}
-				}
-			}
-			return delta;
 		}
 	}
 }

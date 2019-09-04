@@ -1,5 +1,6 @@
 package demo.algo.sensor;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -231,5 +232,35 @@ public interface SensorMonitoring {
 		}
 
 		return new BoundingBox(lowLftX, lowLftY, upRgtX - lowLftX, upRgtY - lowLftY);
+	}
+
+	/**
+	 * Total ordering over rectangles; up and to the right is further away.
+	 * <ol>
+	 * <li>lower left X</li>
+	 * <li>upper right X</li>
+	 * <li>lower left Y</li>
+	 * <li>upper right Y</li>
+	 * </ol>
+	 */
+	public static class RectangleComparator<T extends Rectangle> implements Comparator<T> {
+
+		public RectangleComparator() {
+		}
+
+		@Override
+		public int compare(T lhs, T rhs) {
+			int delta = lhs.x1 - rhs.x1;
+			if (delta == 0) {
+				delta = lhs.x2 - rhs.x2;
+				if (delta == 0) {
+					delta = lhs.y1 - rhs.y1;
+					if (delta == 0) {
+						delta = lhs.y2 - rhs.y2;
+					}
+				}
+			}
+			return delta;
+		}
 	}
 }
