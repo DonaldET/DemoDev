@@ -1,12 +1,14 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import demo.algo.sensor.SensorMonitoring.BoundingBox;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
@@ -19,6 +21,12 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	private int mergedCount = 0;
 	private int processedCount = 0;
 	private static final Region ender = createEnder();
+
+	private BoundingBox lclBox = null;
+	private int[] lclSensor = null;
+
+	private BoundingBox gblBox = null;
+	private int[] gblSensor = null;
 
 	public static void main(String[] args) {
 	}
@@ -33,6 +41,10 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
 		List<Region> regions = orderInputRectangles(exposures, ender);
+		gblBox = SensorMonitoring.findBoundingBox(regions);
+		gblSensor = new int[(gblBox.width + 1) * (gblBox.height + 1)];
+		int masterArea = updateSensor(gblSensor, gblBox, regions, k);
+		gblSensor = new int[(gblBox.width + 1) * (gblBox.height + 1)];
 
 		int area = 0;
 		LinkedList<Region> holding = new LinkedList<Region>();
@@ -68,7 +80,12 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 			throw new IllegalStateException("Did not encounter ending record; processed " + processedCount);
 		}
 
-		return area == 0 ? 3 : area;
+		if (masterArea != area) {
+			System.out.println(" . . . did " + processedCount + "; global area: " + area + " for " + regions.size()
+					+ " entries, expected " + masterArea);
+		}
+
+		return area;
 	}
 
 	private List<Region> orderInputRectangles(List<? extends Rectangle> exposures, Region ender) {
@@ -94,10 +111,21 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	}
 
 	private int flushHolding(int area, int k, List<Region> holding) {
-		int harea = holding.stream().filter(r -> r.exposures == k).mapToInt(r -> r.exposures * r.area()).sum();
-		System.out
-				.println(" . . . at " + processedCount + "; harea: " + harea + " for " + holding.size() + " entries.");
-		area += harea;
+		lclBox = SensorMonitoring.findBoundingBox(holding);
+		lclSensor = new int[(lclBox.width + 1) * (lclBox.height + 1)];
+		int lclArea = updateSensor(lclSensor, lclBox, holding, k);
+		lclSensor = null;
+
+		System.out.println(
+				"\n . . . at " + processedCount + "; local area: " + lclArea + " for " + holding.size() + " entries.");
+
+		area += lclArea;
+		int gblArea = updateSensor(gblSensor, gblBox, holding, k);
+		if (area != gblArea) {
+			System.out.println(" . . . at " + processedCount + "; global area: " + gblArea + " for " + holding.size()
+					+ " entries, expected " + area);
+		}
+
 		return area;
 	}
 
@@ -105,6 +133,24 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		mergedCount++;
 		holding.add(reg);
 	}
+
+	private int updateSensor(int[] sensor, BoundingBox bbox, List<Region> regions, int k) {
+		for (Region reg : regions) {
+			for (int y = reg.y1; y < reg.y2; y++) {
+				int ypos = y - bbox.lowerLeftY;
+				int yposR = bbox.height - ypos - 1;
+				for (int x = reg.x1; x < reg.x2; x++) {
+					int xpos = x - bbox.lowerLeftX;
+					int idx = yposR * bbox.width + xpos;
+					sensor[idx] += reg.exposures;
+				}
+			}
+		}
+
+		return Arrays.stream(sensor).filter(r -> r == k).sum();
+	}
+
+	// -------------------------------------------------------------------------------------------------------------------------
 
 	private static Region createEnder() {
 		return new Region(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,

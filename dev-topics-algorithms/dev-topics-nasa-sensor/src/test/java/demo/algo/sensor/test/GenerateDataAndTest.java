@@ -116,9 +116,16 @@ public class GenerateDataAndTest {
 		}
 
 		int exposedArea = finder.findArea(es.sessions, es.k);
-		Assert.assertEquals(
-				"test " + id + ", expected area " + es.expectedArea + " but got " + exposedArea + " for id " + id,
-				es.expectedArea, exposedArea);
+		if (es.k != es.expectedArea) {
+			StringBuilder msg = new StringBuilder(
+					"test " + id + ", sessions size: " + es.sessions.size() + ", k: " + es.k);
+			int i = 0;
+			for (Rectangle rec : es.sessions) {
+				msg.append("\n    " + (++i) + ". " + rec);
+			}
+			msg.append("\n");
+			Assert.assertEquals(msg.toString(), es.expectedArea, exposedArea);
+		}
 	}
 
 	public static List<Rectangle> generateRandomBursts(int n) {
