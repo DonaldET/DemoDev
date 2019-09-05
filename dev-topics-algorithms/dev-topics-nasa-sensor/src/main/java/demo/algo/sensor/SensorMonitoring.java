@@ -1,5 +1,6 @@
 package demo.algo.sensor;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -199,6 +200,10 @@ public interface SensorMonitoring {
 		}
 	}
 
+	/**
+	 * Find the smallest rectangle that encloses all rectangles in the exposure
+	 * list.
+	 */
 	public static BoundingBox findBoundingBox(List<? extends Rectangle> exposures) {
 		if (exposures == null) {
 			throw new IllegalArgumentException("exposures null");
@@ -235,6 +240,26 @@ public interface SensorMonitoring {
 	}
 
 	/**
+	 * Expose unit-area regions of the sensor, then find the area meeting the
+	 * criteria k.
+	 */
+	public static int exposeSensor(int[] sensor, BoundingBox bbox, List<? extends Rectangle> regions, int k) {
+		for (Rectangle reg : regions) {
+			for (int y = reg.y1; y < reg.y2; y++) {
+				int ypos = y - bbox.lowerLeftY;
+				int yposR = bbox.height - ypos - 1;
+				for (int x = reg.x1; x < reg.x2; x++) {
+					int xpos = x - bbox.lowerLeftX;
+					int idx = yposR * bbox.width + xpos;
+					sensor[idx]++;
+				}
+			}
+		}
+
+		return (int) Arrays.stream(sensor).filter(s -> s == k).count();
+	}
+
+	/**
 	 * Total ordering over rectangles; up and to the right is further away.
 	 * <ol>
 	 * <li>lower left X</li>
@@ -252,13 +277,13 @@ public interface SensorMonitoring {
 		public int compare(T lhs, T rhs) {
 			int delta = lhs.x1 - rhs.x1;
 			if (delta == 0) {
-				delta = lhs.x2 - rhs.x2;
-				if (delta == 0) {
-					delta = lhs.y1 - rhs.y1;
-					if (delta == 0) {
-						delta = lhs.y2 - rhs.y2;
-					}
-				}
+				delta = lhs.y1 - rhs.y1;
+//				if (delta == 0) {
+//					delta = lhs.x2 - rhs.x2;
+//					if (delta == 0) {
+//						delta = lhs.y2 - rhs.y2;
+//					}
+//				}
 			}
 			return delta;
 		}

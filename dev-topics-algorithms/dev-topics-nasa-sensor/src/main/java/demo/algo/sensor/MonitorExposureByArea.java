@@ -1,6 +1,5 @@
 package demo.algo.sensor;
 
-import java.util.Arrays;
 import java.util.List;
 
 import demo.algo.sensor.SensorMonitoring.BoundingBox;
@@ -27,32 +26,18 @@ public class MonitorExposureByArea implements ExposureAreaFinder {
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
+
 		//
 		// Get exposure session bounding box: O(n)
 		bbox = SensorMonitoring.findBoundingBox(exposures);
 
 		//
 		// Allocate bounding box of exposed Sensor region: O(1)
-		int squares = bbox.width * bbox.height;
-		sensorRegions = new int[squares];
+		sensorRegions = new int[bbox.width * bbox.height];
 
 		//
 		// Apply radiation per exposure: O(n * a)
-		for (Rectangle r : exposures) {
-			for (int y = r.y1; y < r.y2; y++) {
-				int ypos = y - bbox.lowerLeftY;
-				int yposR = bbox.height - ypos - 1;
-				for (int x = r.x1; x < r.x2; x++) {
-					int xpos = x - bbox.lowerLeftX;
-					int idx = yposR * bbox.width + xpos;
-					sensorRegions[idx]++;
-				}
-			}
-		}
-
-		//
-		// Count squares with at least K exposures: O(n)
-		return (int) Arrays.stream(sensorRegions).filter(x -> x == k).count();
+		return SensorMonitoring.exposeSensor(sensorRegions, bbox, exposures, k);
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------

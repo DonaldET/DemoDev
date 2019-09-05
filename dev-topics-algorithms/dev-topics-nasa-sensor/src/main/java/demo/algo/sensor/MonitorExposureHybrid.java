@@ -1,7 +1,6 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,6 +19,12 @@ import demo.algo.sensor.SensorMonitoring.RectangleComparator;
 public class MonitorExposureHybrid implements ExposureAreaFinder {
 
 	private static final Rectangle ender = createEnder();
+	private BoundingBox gblBbox = null;
+	private int[] gblReg = null;
+	private int gblArea = 0;
+	private int masterArea = 0;
+	private int processedCount = 0;
+	private int totalCount = 0;
 
 	public static void main(String[] args) {
 	}
@@ -33,16 +38,30 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
-		List<Rectangle> regions = orderInputRectangles(exposures, ender);
+		totalCount = exposures.size();
+		if (totalCount < 1) {
+			return 0;
+		}
+
+		List<Rectangle> regions = orderRectangles(exposures);
+
+		gblBbox = SensorMonitoring.findBoundingBox(exposures);
+		gblReg = new int[gblBbox.width * gblBbox.height];
+		masterArea = SensorMonitoring.exposeSensor(gblReg, gblBbox, regions, k);
+		gblReg = new int[gblBbox.width * gblBbox.height];
+
+		regions.add(ender);
 
 		int area = 0;
 		LinkedList<Rectangle> holding = new LinkedList<Rectangle>();
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle reg = itr.next();
 		mergeIntoHoldings(reg, holding);
+		processedCount++;
 
 		while (itr.hasNext()) {
 			reg = itr.next();
+			processedCount++;
 			if (reg == ender) {
 				area = flushHolding(area, k, holding);
 				holding = null;
@@ -69,7 +88,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		return area;
 	}
 
-	private List<Rectangle> orderInputRectangles(List<? extends Rectangle> exposures, Rectangle ender) {
+	private List<Rectangle> orderRectangles(List<? extends Rectangle> exposures) {
 		if (exposures == null | exposures.isEmpty()) {
 			throw new IllegalArgumentException("exposures null or empty");
 		}
@@ -81,7 +100,6 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		}
 
 		Collections.sort(regions, new RectangleComparator<Rectangle>());
-		regions.add(ender);
 
 		return regions;
 	}
@@ -92,31 +110,38 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	}
 
 	private int flushHolding(int area, int k, List<Rectangle> holding) {
+		int n = holding.size();
+		if (n < 1) {
+			return 0;
+		}
+
 		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
-		int[] lclSensor = new int[(lclBox.width) * (lclBox.height)];
-		int lclArea = exposeSensor(lclSensor, lclBox, holding, k);
+		int[] lclSensor = new int[lclBox.width * lclBox.height];
+		int lclArea = SensorMonitoring.exposeSensor(lclSensor, lclBox, holding, k);
+		int oldLcl = area;
 		area += lclArea;
+
+		int oldGbl = gblArea;
+		gblArea = SensorMonitoring.exposeSensor(gblReg, gblBbox, holding, k);
+		if (area != gblArea) {
+			StringBuilder msg = new StringBuilder("\nLocal area (" + oldLcl + " -> " + area + "); Global area ("
+					+ oldGbl + " -> " + +gblArea + ") approaching final area (" + masterArea + "), processed "
+					+ processedCount + " of " + totalCount + ", this chunk has " + n + " entries");
+			if (n > 0) {
+				msg.append(":");
+				for (int i = 0; i < Math.min(10, n); i++) {
+					msg.append("\n  " + holding.get(i));
+				}
+				msg.append("\n");
+			}
+			throw new IllegalStateException(msg.toString());
+		}
+
 		return area;
 	}
 
 	private void mergeIntoHoldings(Rectangle reg, List<Rectangle> holding) {
 		holding.add(reg);
-	}
-
-	private int exposeSensor(int[] sensor, BoundingBox bbox, List<Rectangle> regions, int k) {
-		for (Rectangle reg : regions) {
-			for (int y = reg.y1; y < reg.y2; y++) {
-				int ypos = y - bbox.lowerLeftY;
-				int yposR = bbox.height - ypos - 1;
-				for (int x = reg.x1; x < reg.x2; x++) {
-					int xpos = x - bbox.lowerLeftX;
-					int idx = yposR * bbox.width + xpos;
-					sensor[idx]++;
-				}
-			}
-		}
-
-		return (int) Arrays.stream(sensor).filter(r -> r == k).count();
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------
