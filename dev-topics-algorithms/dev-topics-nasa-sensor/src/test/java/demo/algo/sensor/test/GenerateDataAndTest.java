@@ -49,6 +49,11 @@ public class GenerateDataAndTest {
 	private static final List<Rectangle> session5 = new ArrayList<Rectangle>();
 	private static final int area5 = 23;
 
+	private static final int n6 = 4;
+	private static final int k6 = 4;
+	private static final List<Rectangle> session6 = new ArrayList<Rectangle>();
+	private static final int area6 = 625;
+
 	static {
 		testCases = 0;
 
@@ -82,6 +87,12 @@ public class GenerateDataAndTest {
 		session5.add(new Rectangle(11, 5, 14, 9));
 		session5.add(new Rectangle(0, 6, 8, 10));
 		testCases++;
+
+		session6.add(new Rectangle(350, 350, 375, 375));
+		session6.add(new Rectangle(200, 200, 500, 500));
+		session6.add(new Rectangle(300, 300, 400, 400));
+		session6.add(new Rectangle(0, 0, 1000, 1000));
+		testCases++;
 	}
 
 	/**
@@ -104,6 +115,8 @@ public class GenerateDataAndTest {
 			return new ExposureSession(n4, k4, area4, session4);
 		case 5:
 			return new ExposureSession(n5, k5, area5, session5);
+		case 6:
+			return new ExposureSession(n6, k6, area6, session6);
 		}
 
 		throw new IllegalArgumentException("no data for ID " + id);

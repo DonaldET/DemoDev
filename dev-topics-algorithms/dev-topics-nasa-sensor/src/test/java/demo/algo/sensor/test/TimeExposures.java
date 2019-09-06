@@ -8,6 +8,7 @@ import java.util.Random;
 import demo.algo.sensor.ExposureAreaFinder;
 import demo.algo.sensor.MonitorExposureByArea;
 import demo.algo.sensor.MonitorExposureByAreaMapped;
+import demo.algo.sensor.MonitorExposureHybrid;
 import demo.algo.sensor.SensorMonitoring;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
@@ -22,7 +23,7 @@ public class TimeExposures {
 	static {
 		finders.add(new MonitorExposureByAreaMapped());
 		finders.add(new MonitorExposureByArea());
-		// finders.add(new MonitorExposureHybrid());
+		finders.add(new MonitorExposureHybrid());
 
 		monitors = new ArrayList<Integer>(finders.size());
 		for (int i = 0; i < finders.size(); i++) {

@@ -277,9 +277,11 @@ public interface SensorMonitoring {
 		public int compare(T lhs, T rhs) {
 			int delta = lhs.x1 - rhs.x1;
 			if (delta == 0) {
-				delta = lhs.y1 - rhs.y1;
+				int lhsW = lhs.x2 - lhs.x1;
+				int rhsW = rhs.x2 - lhs.x1;
+				delta = rhsW - lhsW;
 				if (delta == 0) {
-					delta = lhs.x2 - rhs.x2;
+					delta = lhs.y1 - rhs.y1;
 					if (delta == 0) {
 						delta = lhs.y2 - rhs.y2;
 					}

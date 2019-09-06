@@ -19,12 +19,7 @@ import demo.algo.sensor.SensorMonitoring.RectangleComparator;
 public class MonitorExposureHybrid implements ExposureAreaFinder {
 
 	private static final Rectangle ender = createEnder();
-	private BoundingBox gblBbox = null;
-	private int[] gblReg = null;
-	private int gblArea = 0;
-	private int masterArea = 0;
-	private int processedCount = 0;
-	private int totalCount = 0;
+	private int rgtBound = Integer.MIN_VALUE;
 
 	public static void main(String[] args) {
 	}
@@ -38,18 +33,11 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
-		totalCount = exposures.size();
-		if (totalCount < 1) {
+		if (exposures.size() < 1) {
 			return 0;
 		}
 
 		List<Rectangle> regions = orderRectangles(exposures);
-
-		gblBbox = SensorMonitoring.findBoundingBox(exposures);
-		gblReg = new int[gblBbox.width * gblBbox.height];
-		masterArea = SensorMonitoring.exposeSensor(gblReg, gblBbox, regions, k);
-		gblReg = new int[gblBbox.width * gblBbox.height];
-
 		regions.add(ender);
 
 		int area = 0;
@@ -57,11 +45,9 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle reg = itr.next();
 		mergeIntoHoldings(reg, holding);
-		processedCount++;
 
 		while (itr.hasNext()) {
 			reg = itr.next();
-			processedCount++;
 			if (reg == ender) {
 				area = flushHolding(area, k, holding);
 				holding = null;
@@ -71,7 +57,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 			//
 			// Accumulate overlapping rectangles, process on flush
 
-			if (isNonOverlapping(holding.getLast(), reg)) {
+			if (isNonOverlapping(reg, rgtBound)) {
 				area = flushHolding(area, k, holding);
 				holding = new LinkedList<Rectangle>();
 			}
@@ -104,12 +90,13 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		return regions;
 	}
 
-	private boolean isNonOverlapping(Rectangle lhs, Rectangle rhs) {
+	private boolean isNonOverlapping(Rectangle rhs, int rightBound) {
 		// true if RHS is to the right of the LHS
-		return rhs.x1 >= lhs.x2;
+		return rhs.x1 >= rightBound;
 	}
 
 	private int flushHolding(int area, int k, List<Rectangle> holding) {
+		rgtBound = Integer.MIN_VALUE;
 		int n = holding.size();
 		if (n < 1) {
 			return 0;
@@ -118,30 +105,16 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
 		int[] lclSensor = new int[lclBox.width * lclBox.height];
 		int lclArea = SensorMonitoring.exposeSensor(lclSensor, lclBox, holding, k);
-		int oldLcl = area;
 		area += lclArea;
-
-		int oldGbl = gblArea;
-		gblArea = SensorMonitoring.exposeSensor(gblReg, gblBbox, holding, k);
-		if (area != gblArea) {
-			StringBuilder msg = new StringBuilder("\nLocal area (" + oldLcl + " -> " + area + "); Global area ("
-					+ oldGbl + " -> " + +gblArea + ") approaching final area (" + masterArea + "), processed "
-					+ processedCount + " of " + totalCount + ", this chunk has " + n + " entries");
-			if (n > 0) {
-				msg.append(":");
-				for (int i = 0; i < Math.min(10, n); i++) {
-					msg.append("\n  " + holding.get(i));
-				}
-				msg.append("\n");
-			}
-			throw new IllegalStateException(msg.toString());
-		}
 
 		return area;
 	}
 
 	private void mergeIntoHoldings(Rectangle reg, List<Rectangle> holding) {
 		holding.add(reg);
+		if (reg.x2 > rgtBound) {
+			rgtBound = reg.x2;
+		}
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------
