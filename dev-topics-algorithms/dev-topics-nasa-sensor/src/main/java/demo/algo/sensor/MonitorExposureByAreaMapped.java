@@ -57,7 +57,7 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 		// Count squares with at least K exposures: O(n)
 		int area = 0;
 		for (Entry<Integer, Integer> e : sensorRegions.entrySet()) {
-			if (e.getValue() == k) {
+			if (e.getValue() >= k) {
 				area++;
 			}
 		}

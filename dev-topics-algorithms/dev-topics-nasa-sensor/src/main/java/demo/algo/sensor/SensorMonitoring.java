@@ -256,7 +256,7 @@ public interface SensorMonitoring {
 			}
 		}
 
-		return (int) Arrays.stream(sensor).filter(s -> s == k).count();
+		return (int) Arrays.stream(sensor).filter(s -> s >= k).count();
 	}
 
 	/**
@@ -278,12 +278,12 @@ public interface SensorMonitoring {
 			int delta = lhs.x1 - rhs.x1;
 			if (delta == 0) {
 				delta = lhs.y1 - rhs.y1;
-//				if (delta == 0) {
-//					delta = lhs.x2 - rhs.x2;
-//					if (delta == 0) {
-//						delta = lhs.y2 - rhs.y2;
-//					}
-//				}
+				if (delta == 0) {
+					delta = lhs.x2 - rhs.x2;
+					if (delta == 0) {
+						delta = lhs.y2 - rhs.y2;
+					}
+				}
 			}
 			return delta;
 		}

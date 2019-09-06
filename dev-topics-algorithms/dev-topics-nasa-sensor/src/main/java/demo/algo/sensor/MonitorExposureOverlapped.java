@@ -1,7 +1,6 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -93,29 +92,13 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	private int flushHolding(int area, int k, List<Region> holding) {
 		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
 		int[] lclSensor = new int[(lclBox.width) * (lclBox.height)];
-		int lclArea = exposeSensor(lclSensor, lclBox, holding, k);
+		int lclArea = SensorMonitoring.exposeSensor(lclSensor, lclBox, holding, k);
 		area += lclArea;
 		return area;
 	}
 
 	private void mergeIntoHoldings(Region reg, List<Region> holding) {
 		holding.add(reg);
-	}
-
-	private int exposeSensor(int[] sensor, BoundingBox bbox, List<Region> regions, int k) {
-		for (Region reg : regions) {
-			for (int y = reg.y1; y < reg.y2; y++) {
-				int ypos = y - bbox.lowerLeftY;
-				int yposR = bbox.height - ypos - 1;
-				for (int x = reg.x1; x < reg.x2; x++) {
-					int xpos = x - bbox.lowerLeftX;
-					int idx = yposR * bbox.width + xpos;
-					sensor[idx] += reg.exposures;
-				}
-			}
-		}
-
-		return (int) Arrays.stream(sensor).filter(r -> r == k).count();
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------

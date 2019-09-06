@@ -32,7 +32,7 @@ public class GenerateDataAndTest {
 	private static final int n2 = 4;
 	private static final int k2 = 2;
 	private static final List<Rectangle> session2 = new ArrayList<Rectangle>();
-	private static final int area2 = 14;
+	private static final int area2 = 16;
 
 	private static final int n3 = 2;
 	private static final int k3 = 2;
@@ -42,12 +42,12 @@ public class GenerateDataAndTest {
 	private static final int n4 = 3;
 	private static final int k4 = 2;
 	private static final List<Rectangle> session4 = new ArrayList<Rectangle>();
-	private static final int area4 = 8;
+	private static final int area4 = 9;
 
 	private static final int n5 = 7;
 	private static final int k5 = 2;
 	private static final List<Rectangle> session5 = new ArrayList<Rectangle>();
-	private static final int area5 = 20;
+	private static final int area5 = 23;
 
 	static {
 		testCases = 0;

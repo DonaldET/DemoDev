@@ -8,8 +8,8 @@
 @echo. --- Create timmings ---
 @echo. -----------------------
 setlocal
-set classname=don.demo.ww2.fjbarn.test.TimePainting
-set classpath=..\bin
+set classname=demo.algo.sensor.test.TimeExposures
+set classpath=..\target\classes;..\target\test-classes
 set javacmd=java -cp .;%classpath% %classname% -Xms128M -Xmx512M
 echo. $ %javacmd%
 %javacmd%
