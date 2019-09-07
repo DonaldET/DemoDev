@@ -1,18 +1,29 @@
 package demo.algo.sensor.test;
 
-import demo.algo.sensor.MonitorExposureByArea;
+import demo.algo.sensor.MonitorExposureByAreaMapped;
 import demo.algo.sensor.SensorMonitoring.BoundingBox;
+import demo.algo.sensor.SensorMonitoring.ExposureSession;
+import demo.algo.sensor.SensorMonitoring.Rectangle;
 
 public class DumpSensorData {
 
-	private static final MonitorExposureByArea mapper = new MonitorExposureByArea();
+	private static final MonitorExposureByAreaMapped mapper = new MonitorExposureByAreaMapped();
 
 	public static void main(String[] args) {
-		System.out.println("\nDump of Test Data Sensor Regions");
-		for (int id = 0; id < GenerateDataAndTest.testCases; id++) {
+		System.out.print("\nDump of Test Data Sensor Regions");
+		for (int id = 0; id < GenerateDataAndTest.testCases - 1; id++) {
+			ExposureSession sessionData = GenerateDataAndTest.getSessionData(id);
 			System.out.println("\n-----------------------");
+			System.out.println("ID: " + id + ";  N: " + sessionData.n + ",  K: " + sessionData.k + ",  Area: "
+					+ sessionData.expectedArea);
+			for (Rectangle r : sessionData.sessions) {
+				System.out.println("   " + r);
+			}
+
 			GenerateDataAndTest.testData(id, mapper, false);
-			printSensor("\nData[" + id + "]", mapper.getSensorRegions(), mapper.getBbox());
+			int[] sensorRegion = mapper.getSensorRegions();
+			BoundingBox bbox = mapper.getBbox();
+			printSensor("Data[" + id + "]", sensorRegion, bbox);
 		}
 	}
 

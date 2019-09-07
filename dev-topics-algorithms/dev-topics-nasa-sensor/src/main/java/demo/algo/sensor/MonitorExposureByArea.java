@@ -11,8 +11,6 @@ import demo.algo.sensor.SensorMonitoring.Rectangle;
  * array is minimized using a bouding box around the exposed region.
  */
 public class MonitorExposureByArea implements ExposureAreaFinder {
-	private int[] sensorRegions = null;
-	private BoundingBox bbox = null;
 
 	public static void main(String[] args) {
 	}
@@ -20,33 +18,22 @@ public class MonitorExposureByArea implements ExposureAreaFinder {
 	/**
 	 * Time complexity is O(n * a), where n = number of exposure sessions, and a is
 	 * a measure of effort in a session (e.g., the mean area exposed regions per
-	 * session.) If, as implied by the problem statement, the area is relatively
-	 * fixed and small, and the number of sessions n is large, then the complexity
-	 * is, by definition, O(n).
+	 * session.) If the area is relatively fixed and small, and the number of
+	 * sessions n is large, then the complexity is, by definition, O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
 
 		//
 		// Get exposure session bounding box: O(n)
-		bbox = SensorMonitoring.findBoundingBox(exposures);
+		BoundingBox bbox = SensorMonitoring.findBoundingBox(exposures);
 
 		//
 		// Allocate bounding box of exposed Sensor region: O(1)
-		sensorRegions = new int[bbox.width * bbox.height];
+		int[] sensorRegions = new int[bbox.width * bbox.height];
 
 		//
 		// Apply radiation per exposure: O(n * a)
 		return SensorMonitoring.exposeSensor(sensorRegions, bbox, exposures, k);
-	}
-
-	// -------------------------------------------------------------------------------------------------------------------------
-
-	public int[] getSensorRegions() {
-		return sensorRegions;
-	}
-
-	public BoundingBox getBbox() {
-		return bbox;
 	}
 }

@@ -18,8 +18,12 @@ import demo.algo.sensor.SensorMonitoring.RectangleComparator;
  */
 public class MonitorExposureHybrid implements ExposureAreaFinder {
 
+	class State {
+		public int rgtHoldingBound = Integer.MIN_VALUE;
+		public int area = 0;
+	}
+
 	private static final Rectangle ender = createEnder();
-	private int rgtBound = Integer.MIN_VALUE;
 
 	public static void main(String[] args) {
 	}
@@ -40,16 +44,16 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		List<Rectangle> regions = orderRectangles(exposures);
 		regions.add(ender);
 
-		int area = 0;
+		State state = new State();
 		LinkedList<Rectangle> holding = new LinkedList<Rectangle>();
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle reg = itr.next();
-		mergeIntoHoldings(reg, holding);
+		state = mergeIntoHoldings(state, reg, holding);
 
 		while (itr.hasNext()) {
 			reg = itr.next();
 			if (reg == ender) {
-				area = flushHolding(area, k, holding);
+				state = flushHolding(state, k, holding);
 				holding = null;
 				break;
 			}
@@ -57,21 +61,21 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 			//
 			// Accumulate overlapping rectangles, process on flush
 
-			if (isNonOverlapping(reg, rgtBound)) {
-				area = flushHolding(area, k, holding);
+			if (isNonOverlapping(reg, state.rgtHoldingBound)) {
+				state = flushHolding(state, k, holding);
 				holding = new LinkedList<Rectangle>();
 			}
 
 			//
 			// Merge the new rectangle into the current holding
-			mergeIntoHoldings(reg, holding);
+			state = mergeIntoHoldings(state, reg, holding);
 		}
 
 		if (reg != ender) {
 			throw new IllegalStateException("Did not encounter ending record");
 		}
 
-		return area;
+		return state.area;
 	}
 
 	private List<Rectangle> orderRectangles(List<? extends Rectangle> exposures) {
@@ -95,26 +99,28 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		return rhs.x1 >= rightBound;
 	}
 
-	private int flushHolding(int area, int k, List<Rectangle> holding) {
-		rgtBound = Integer.MIN_VALUE;
+	private State flushHolding(State state, int k, List<Rectangle> holding) {
+		state.rgtHoldingBound = Integer.MIN_VALUE;
 		int n = holding.size();
 		if (n < 1) {
-			return 0;
+			return state;
 		}
 
 		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
 		int[] lclSensor = new int[lclBox.width * lclBox.height];
 		int lclArea = SensorMonitoring.exposeSensor(lclSensor, lclBox, holding, k);
-		area += lclArea;
+		state.area += lclArea;
 
-		return area;
+		return state;
 	}
 
-	private void mergeIntoHoldings(Rectangle reg, List<Rectangle> holding) {
+	private State mergeIntoHoldings(State state, Rectangle reg, List<Rectangle> holding) {
 		holding.add(reg);
-		if (reg.x2 > rgtBound) {
-			rgtBound = reg.x2;
+		if (reg.x2 > state.rgtHoldingBound) {
+			state.rgtHoldingBound = reg.x2;
 		}
+
+		return state;
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------

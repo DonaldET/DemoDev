@@ -260,13 +260,8 @@ public interface SensorMonitoring {
 	}
 
 	/**
-	 * Total ordering over rectangles; up and to the right is further away.
-	 * <ol>
-	 * <li>lower left X</li>
-	 * <li>upper right X</li>
-	 * <li>lower left Y</li>
-	 * <li>upper right Y</li>
-	 * </ol>
+	 * Total ordering over rectangles; we are only concerned about x dimension
+	 * overlap.
 	 */
 	public static class RectangleComparator<T extends Rectangle> implements Comparator<T> {
 
@@ -275,19 +270,7 @@ public interface SensorMonitoring {
 
 		@Override
 		public int compare(T lhs, T rhs) {
-			int delta = lhs.x1 - rhs.x1;
-			if (delta == 0) {
-				int lhsW = lhs.x2 - lhs.x1;
-				int rhsW = rhs.x2 - lhs.x1;
-				delta = rhsW - lhsW;
-				if (delta == 0) {
-					delta = lhs.y1 - rhs.y1;
-					if (delta == 0) {
-						delta = lhs.y2 - rhs.y2;
-					}
-				}
-			}
-			return delta;
+			return lhs.x1 - rhs.x1;
 		}
 	}
 }

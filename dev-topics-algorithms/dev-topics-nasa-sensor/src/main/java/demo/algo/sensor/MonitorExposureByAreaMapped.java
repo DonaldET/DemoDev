@@ -24,9 +24,8 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 	/**
 	 * Time complexity is O(n * a), where n = number of radiation exposure sessions,
 	 * and a is a measure of effort in a session (e.g., the mean area exposed per
-	 * session.) If, as implied by the problem statement, the area is relatively
-	 * fixed and small, and the number of sessions n is large, then the complexity
-	 * is, by definition, O(n).
+	 * session.) If the area is relatively fixed and small, and the number of
+	 * sessions n is large, then the complexity is, by definition, O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
@@ -55,19 +54,22 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 
 		//
 		// Count squares with at least K exposures: O(n)
-		int area = 0;
-		for (Entry<Integer, Integer> e : sensorRegions.entrySet()) {
-			if (e.getValue() >= k) {
-				area++;
-			}
-		}
-		return area;
+
+		return (int) sensorRegions.entrySet().stream().filter(e -> e.getValue() >= k).count();
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------
 
-	public Map<Integer, Integer> getSensorRegions() {
-		return sensorRegions;
+	public int[] getSensorRegions() {
+		int[] sensorGrid = new int[bbox.width * bbox.height];
+		for (Entry<Integer, Integer> e : sensorRegions.entrySet()) {
+			if (sensorGrid[e.getKey()] != 0) {
+				throw new IllegalStateException(e.getKey() + " has non-zero entry");
+			}
+			sensorGrid[e.getKey()] = e.getValue();
+		}
+
+		return sensorGrid;
 	}
 
 	public BoundingBox getBbox() {
