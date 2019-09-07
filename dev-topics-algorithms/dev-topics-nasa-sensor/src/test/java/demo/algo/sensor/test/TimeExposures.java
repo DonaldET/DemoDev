@@ -42,9 +42,9 @@ public class TimeExposures {
 	private static final Random rand = new Random(337L);
 
 	public static void main(String[] args) {
-		System.out.println("ALGO, ID, PIXELS, N, K, Time");
 		int pixels = SensorMonitoring.XY_UPPER_BOUND - SensorMonitoring.XY_LOWER_BOUND;
 		pixels *= pixels;
+		System.out.println("Exposure Data for " + pixels + "Virtual Pixels.\nALGO, ID, N, K, Time, US_Burst");
 		for (int i = 0; i < nbursts.length; i++) {
 			System.gc();
 			List<Rectangle> exposureSessions = GenerateDataAndTest.generateRandomBursts(nbursts[i]);
@@ -52,10 +52,10 @@ public class TimeExposures {
 			for (Integer implKey : monitors) {
 				ExposureAreaFinder finder = finders.get(implKey);
 				int id = 100 + i;
-				System.out.print(finder.getClass().getSimpleName() + ", " + (i + 100) + ", " + pixels + ", "
-						+ nbursts[i] + ", " + kval[i]);
+				System.out.print(
+						finder.getClass().getSimpleName() + ", " + (i + 100) + ", " + nbursts[i] + ", " + kval[i]);
 				double time = testFinder(id, nbursts[i], kval[i], areas[i], exposureSessions, finder);
-				System.out.println(", " + time);
+				System.out.println(", " + time + ", " + String.format("%.3f", (time / nbursts[i]) * 1.0E6));
 			}
 		}
 		System.out.println("Done");
