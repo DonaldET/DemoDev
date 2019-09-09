@@ -3,7 +3,6 @@ package demo.algo.sensor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import demo.algo.sensor.SensorMonitoring.BoundingBox;
@@ -30,10 +29,9 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 
 	/**
 	 * Time complexity is O(n * a), where n = number of exposure sessions, and a is
-	 * a measure of effort in a session (e.g., the mean area exposed regions per
-	 * session.) If, as implied by the problem statement, the area is relatively
-	 * fixed and small, and the number of sessions n is large, then the complexity
-	 * is, by definition, O(n).
+	 * a measure of algorithm effort in a session (e.g., the mean area exposed per
+	 * session.) If the exposed area is relatively fixed and small, and the number
+	 * of sessions n is large, then the complexity is, by definition, O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
@@ -45,7 +43,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		regions.add(ender);
 
 		State state = new State();
-		LinkedList<Rectangle> holding = new LinkedList<Rectangle>();
+		List<Rectangle> holding = new ArrayList<Rectangle>();
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle reg = itr.next();
 		state = mergeIntoHoldings(state, reg, holding);
@@ -63,7 +61,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 
 			if (isNonOverlapping(reg, state.rgtHoldingBound)) {
 				state = flushHolding(state, k, holding);
-				holding = new LinkedList<Rectangle>();
+				holding = new ArrayList<Rectangle>();
 			}
 
 			//
@@ -95,7 +93,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	}
 
 	private boolean isNonOverlapping(Rectangle rhs, int rightBound) {
-		// true if RHS is to the right of the LHS
+		// true if RHS left edge is to the right of the LHS right edge
 		return rhs.x1 >= rightBound;
 	}
 

@@ -6,9 +6,9 @@ import demo.algo.sensor.SensorMonitoring.BoundingBox;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
- * Graphics based technique where exposed regions are modeled at the pixel
- * level, and pixels are represented using an array. The area represented by the
- * array is minimized using a bouding box around the exposed region.
+ * Graphics based technique where exposed regions are modeled at the pixel level
+ * using an array. The area represented by the array is minimized using a
+ * bounding box around the entire sensor grid of exposed regions.
  */
 public class MonitorExposureByArea implements ExposureAreaFinder {
 
@@ -16,10 +16,10 @@ public class MonitorExposureByArea implements ExposureAreaFinder {
 	}
 
 	/**
-	 * Time complexity is O(n * a), where n = number of exposure sessions, and a is
-	 * a measure of effort in a session (e.g., the mean area exposed regions per
-	 * session.) If the area is relatively fixed and small, and the number of
-	 * sessions n is large, then the complexity is, by definition, O(n).
+	 * Time complexity is O(n * a), where n = number of radiation exposure sessions,
+	 * and a is a measure of algorithm effort in a session (e.g., the mean area
+	 * exposed per session.) If the exposed area is relatively fixed and small, and the
+	 * number of sessions n is large, then the complexity is, by definition, O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {

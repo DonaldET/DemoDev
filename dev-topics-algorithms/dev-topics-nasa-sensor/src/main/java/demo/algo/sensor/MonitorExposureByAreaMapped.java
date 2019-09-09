@@ -10,9 +10,9 @@ import demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel
- * level, but pixels are represented in a map (the Sensor), assuming sparse
+ * level, and pixels are represented in a map (the Sensor), assuming sparse
  * exposed regions over the interval of interest. The area represented by the
- * array is minimized using a bouding box around the exposed region.
+ * array is minimized using a bounding box around the exposed region.
  */
 public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 	private Map<Integer, Integer> sensorRegions = null;
@@ -23,9 +23,9 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 
 	/**
 	 * Time complexity is O(n * a), where n = number of radiation exposure sessions,
-	 * and a is a measure of effort in a session (e.g., the mean area exposed per
-	 * session.) If the area is relatively fixed and small, and the number of
-	 * sessions n is large, then the complexity is, by definition, O(n).
+	 * and a is a measure of algorithm effort in a session (e.g., the mean area per
+	 * session.) If the exposed area is relatively fixed and small, and the number
+	 * of sessions n is large, then the complexity is, by definition, O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
@@ -35,8 +35,7 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 
 		//
 		// Allocate bounding box of exposed Sensor region: O(1)
-		int squares = bbox.width * bbox.height;
-		sensorRegions = new HashMap<Integer, Integer>(squares);
+		sensorRegions = new HashMap<Integer, Integer>(bbox.width * bbox.height);
 
 		//
 		// Apply radiation per exposure: O(n * a)
