@@ -127,6 +127,21 @@ public interface SensorMonitoring {
 	}
 
 	/**
+	 * Total ordering over rectangles; we are only concerned about x dimension
+	 * overlap.
+	 */
+	public static class RectangleComparator<T extends Rectangle> implements Comparator<T> {
+
+		public RectangleComparator() {
+		}
+
+		@Override
+		public int compare(T lhs, T rhs) {
+			return lhs.x1 - rhs.x1;
+		}
+	}
+
+	/**
 	 * This collection represents inputs defining a radiation exposure session from
 	 * which we seek the rectangles exposed at least K times. Each rectangle
 	 * represents one exposure.
@@ -260,17 +275,49 @@ public interface SensorMonitoring {
 	}
 
 	/**
-	 * Total ordering over rectangles; we are only concerned about x dimension
-	 * overlap.
+	 * Create end-of-list marker for rectangles.
 	 */
-	public static class RectangleComparator<T extends Rectangle> implements Comparator<T> {
+	public static Rectangle createEnder() {
+		return new Rectangle(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,
+				SensorMonitoring.XY_UPPER_BOUND, SensorMonitoring.XY_UPPER_BOUND);
+	}
 
-		public RectangleComparator() {
+	/**
+	 * Sort the input by rectangle position X1
+	 */
+	public static Rectangle[] countingSort(List<? extends Rectangle> input, int max_x) {
+		final int n = input.size();
+		Rectangle[] output = new Rectangle[n];
+		if (n < 1) {
+			return output;
+		} else if (n < 2) {
+			output[0] = input.get(0);
+			return output;
 		}
 
-		@Override
-		public int compare(T lhs, T rhs) {
-			return lhs.x1 - rhs.x1;
+		//
+		// Count each rectangle Lower Left X value
+
+		int[] count = new int[max_x + 1];
+		for (Rectangle r : input) {
+			count[r.x1]++;
 		}
+
+		//
+		// Counts are accumulated to obtain positions
+
+		for (int i = 1; i <= max_x; ++i)
+			count[i] += count[i - 1];
+
+		//
+		// Build the output rectangle list
+
+		for (int i = 0; i < n; ++i) {
+			Rectangle inputRect = input.get(i);
+			output[count[inputRect.x1] - 1] = inputRect;
+			--count[inputRect.x1];
+		}
+
+		return output;
 	}
 }

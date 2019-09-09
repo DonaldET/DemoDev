@@ -1,28 +1,26 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import demo.algo.sensor.SensorMonitoring.BoundingBox;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
-import demo.algo.sensor.SensorMonitoring.RectangleComparator;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel level
  * using an array. Inputs are grouped by chains of overlapping rectangular
  * regions to minimize the size of the pixel map (the portion of the Sensor
- * exposed.)
+ * exposed.) We create the chain of overlap using a Counting Sort {O(n + k)}.
  */
-public class MonitorExposureHybrid implements ExposureAreaFinder {
+public class MonitorExposureHybridCS implements ExposureAreaFinder {
 
 	class State {
 		public int rgtHoldingBound = Integer.MIN_VALUE;
 		public int area = 0;
 	}
 
-	private static final Rectangle ender = createEnder();
+	private static final Rectangle ender = SensorMonitoring.createEnder();
 
 	public static void main(String[] args) {
 	}
@@ -77,9 +75,12 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	}
 
 	private List<Rectangle> orderRectangles(List<? extends Rectangle> exposures) {
-		List<Rectangle> regions = new ArrayList<Rectangle>(exposures);
-		Collections.sort(regions, new RectangleComparator<Rectangle>());
-		return regions;
+		Rectangle[] countingSorted = SensorMonitoring.countingSort(exposures, SensorMonitoring.XY_UPPER_BOUND);
+		List<Rectangle> sorted = new ArrayList<Rectangle>(countingSorted.length);
+		for (int i = 0; i < countingSorted.length; i++) {
+			sorted.add(countingSorted[i]);
+		}
+		return sorted;
 	}
 
 	private boolean isNonOverlapping(Rectangle rhs, int rightBound) {
@@ -109,12 +110,5 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		}
 
 		return state;
-	}
-
-	// -------------------------------------------------------------------------------------------------------------------------
-
-	private static Rectangle createEnder() {
-		return new Rectangle(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,
-				SensorMonitoring.XY_UPPER_BOUND, SensorMonitoring.XY_UPPER_BOUND);
 	}
 }

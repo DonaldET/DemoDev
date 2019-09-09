@@ -1,7 +1,7 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,16 +13,17 @@ import demo.algo.sensor.SensorMonitoring.RectangleComparator;
  * Graphics based technique where exposed regions are modeled at the pixel level
  * using an array. Inputs are grouped by chains of overlapping rectangular
  * regions to minimize the size of the pixel map (the portion of the Sensor
- * exposed.)
+ * exposed.) We create the chain of overlap using array parallel sort {O(n +
+ * k)}.
  */
-public class MonitorExposureHybrid implements ExposureAreaFinder {
+public class MonitorExposureHybridPS implements ExposureAreaFinder {
 
 	class State {
 		public int rgtHoldingBound = Integer.MIN_VALUE;
 		public int area = 0;
 	}
 
-	private static final Rectangle ender = createEnder();
+	private static final Rectangle ender = SensorMonitoring.createEnder();
 
 	public static void main(String[] args) {
 	}
@@ -77,9 +78,26 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 	}
 
 	private List<Rectangle> orderRectangles(List<? extends Rectangle> exposures) {
-		List<Rectangle> regions = new ArrayList<Rectangle>(exposures);
-		Collections.sort(regions, new RectangleComparator<Rectangle>());
-		return regions;
+		if (exposures == null) {
+			return new ArrayList<Rectangle>();
+		}
+
+		final int n = exposures.size();
+		List<Rectangle> sorted = new ArrayList<Rectangle>(n);
+		if (n < 2) {
+			sorted.add(exposures.get(0));
+		}
+
+		Rectangle[] parallelSorted = new Rectangle[n];
+		for (int i = 0; i < parallelSorted.length; i++) {
+			parallelSorted[i] = exposures.get(i);
+		}
+		Arrays.parallelSort(parallelSorted, new RectangleComparator<Rectangle>());
+
+		for (int i = 0; i < n; i++) {
+			sorted.add(parallelSorted[i]);
+		}
+		return sorted;
 	}
 
 	private boolean isNonOverlapping(Rectangle rhs, int rightBound) {
@@ -109,12 +127,5 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 		}
 
 		return state;
-	}
-
-	// -------------------------------------------------------------------------------------------------------------------------
-
-	private static Rectangle createEnder() {
-		return new Rectangle(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,
-				SensorMonitoring.XY_UPPER_BOUND, SensorMonitoring.XY_UPPER_BOUND);
 	}
 }
