@@ -1,0 +1,37 @@
+ -----------------------
+ --- Create timmings ---
+ -----------------------
+ $ java -cp .;..\target\classes;..\target\test-classes demo.algo.sensor.test.TimeExposures -Xms128M -Xmx512M
+Exposure Data for 1000000Virtual Pixels.
+ALGO, ID, N, K, Time, US_Burst
+MonitorExposureByArea, 100, 500, 2, 0.0685085, 137.017
+MonitorExposureHybrid, 100, 500, 2, 0.0085084, 17.017
+MonitorExposureByAreaMapped, 100, 500, 2, 0.0164563, 32.913
+MonitorExposureByAreaMapped, 101, 1000, 2, 0.009706, 9.706
+MonitorExposureHybrid, 101, 1000, 2, 0.0052186, 5.219
+MonitorExposureByArea, 101, 1000, 2, 0.0036229, 3.623
+MonitorExposureByAreaMapped, 102, 10000, 3, 0.0225844, 2.258
+MonitorExposureHybrid, 102, 10000, 3, 0.0181008, 1.810
+MonitorExposureByArea, 102, 10000, 3, 0.0074451, 0.745
+MonitorExposureByAreaMapped, 103, 100000, 5, 0.1870898, 1.871
+MonitorExposureHybrid, 103, 100000, 5, 0.0776264, 0.776
+MonitorExposureByArea, 103, 100000, 5, 0.0097269, 0.097
+MonitorExposureHybrid, 104, 500000, 18, 0.2423328, 0.485
+MonitorExposureByArea, 104, 500000, 18, 0.0382915, 0.077
+MonitorExposureByAreaMapped, 104, 500000, 18, 0.6526226, 1.305
+MonitorExposureByAreaMapped, 105, 1000000, 25, 1.7767652, 1.777
+MonitorExposureByArea, 105, 1000000, 25, 0.083286, 0.083
+MonitorExposureHybrid, 105, 1000000, 25, 0.4250433, 0.425
+MonitorExposureByArea, 106, 2000000, 51, 0.179463, 0.090
+MonitorExposureByAreaMapped, 106, 2000000, 51, 2.3500919, 1.175
+MonitorExposureHybrid, 106, 2000000, 51, 1.8538305, 0.927
+MonitorExposureByArea, 107, 5000000, 111, 0.4351593, 0.087
+MonitorExposureByAreaMapped, 107, 5000000, 111, 5.9481219, 1.190
+MonitorExposureHybrid, 107, 5000000, 111, 1.5068497, 0.301
+MonitorExposureHybrid, 108, 10000000, 217, 8.3034807, 0.830
+MonitorExposureByArea, 108, 10000000, 217, 0.8935814, 0.089
+MonitorExposureByAreaMapped, 108, 10000000, 217, 16.8187283, 1.682
+MonitorExposureByAreaMapped, 109, 15000000, 307, 21.8553609, 1.457
+MonitorExposureByArea, 109, 15000000, 307, 1.337062, 0.089
+MonitorExposureHybrid, 109, 15000000, 307, 4.6671512, 0.311
+Done

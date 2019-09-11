@@ -1,0 +1,47 @@
+ -----------------------
+ --- Create timmings ---
+ -----------------------
+ $ java -cp .;..\target\classes;..\target\test-classes demo.algo.sensor.test.TimeExposures -Xms128M -Xmx512M
+Exposure Data for 1000000Virtual Pixels.
+ALGO, ID, N, K, Time, US_Burst
+MonitorExposureHybridCS, 100, 500, 2, 0.0858415, 171.683
+MonitorExposureByAreaMapped, 100, 500, 2, 0.0171769, 34.354
+MonitorExposureByArea, 100, 500, 2, 0.0053237, 10.647
+MonitorExposureHybrid, 100, 500, 2, 0.0104027, 20.805
+MonitorExposureHybridCS, 101, 1000, 2, 0.0037224, 3.722
+MonitorExposureByAreaMapped, 101, 1000, 2, 0.0113438, 11.344
+MonitorExposureByArea, 101, 1000, 2, 0.0018319, 1.832
+MonitorExposureHybrid, 101, 1000, 2, 0.0027539, 2.754
+MonitorExposureHybridCS, 102, 10000, 3, 0.0062729, 0.627
+MonitorExposureHybrid, 102, 10000, 3, 0.0127392, 1.274
+MonitorExposureByAreaMapped, 102, 10000, 3, 0.0234903, 2.349
+MonitorExposureByArea, 102, 10000, 3, 0.0046157, 0.462
+MonitorExposureByAreaMapped, 103, 100000, 5, 0.1895376, 1.895
+MonitorExposureByArea, 103, 100000, 5, 0.0138782, 0.139
+MonitorExposureHybridCS, 103, 100000, 5, 0.0443531, 0.444
+MonitorExposureHybrid, 103, 100000, 5, 0.0822126, 0.822
+MonitorExposureByArea, 104, 500000, 18, 0.0425667, 0.085
+MonitorExposureByAreaMapped, 104, 500000, 18, 0.6853636, 1.371
+MonitorExposureHybrid, 104, 500000, 18, 0.25069, 0.501
+MonitorExposureHybridCS, 104, 500000, 18, 0.1487543, 0.298
+MonitorExposureHybridCS, 105, 1000000, 25, 0.2460218, 0.246
+MonitorExposureByArea, 105, 1000000, 25, 0.089633, 0.090
+MonitorExposureByAreaMapped, 105, 1000000, 25, 1.8581668, 1.858
+MonitorExposureHybrid, 105, 1000000, 25, 0.4497077, 0.450
+MonitorExposureHybridCS, 106, 2000000, 51, 0.5507809, 0.275
+MonitorExposureByAreaMapped, 106, 2000000, 51, 2.5602086, 1.280
+MonitorExposureByArea, 106, 2000000, 51, 0.1836354, 0.092
+MonitorExposureHybrid, 106, 2000000, 51, 0.9365816, 0.468
+MonitorExposureHybridCS, 107, 5000000, 111, 1.2822529, 0.256
+MonitorExposureByAreaMapped, 107, 5000000, 111, 8.1066341, 1.621
+MonitorExposureByArea, 107, 5000000, 111, 0.4711412, 0.094
+MonitorExposureHybrid, 107, 5000000, 111, 2.302284, 0.460
+MonitorExposureHybridCS, 108, 10000000, 217, 2.2456225, 0.225
+MonitorExposureByAreaMapped, 108, 10000000, 217, 15.0992215, 1.510
+MonitorExposureHybrid, 108, 10000000, 217, 4.1859973, 0.419
+MonitorExposureByArea, 108, 10000000, 217, 1.1330435, 0.113
+MonitorExposureByArea, 109, 15000000, 307, 1.3253665, 0.088
+MonitorExposureHybrid, 109, 15000000, 307, 7.7236353, 0.515
+MonitorExposureHybridCS, 109, 15000000, 307, 3.8117113, 0.254
+MonitorExposureByAreaMapped, 109, 15000000, 307, 30.0800816, 2.005
+Done
