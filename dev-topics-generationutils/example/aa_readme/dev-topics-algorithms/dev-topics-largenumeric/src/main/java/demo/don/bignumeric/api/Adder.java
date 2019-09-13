@@ -20,13 +20,13 @@ package demo.don.bignumeric.api;
  * <em>University of California</em>, Berkeley, in the early 70's, and originally
  * coded in <code>C++</code>.
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface Adder
 {
   /**
    * Add the sequence provided by the included generator.
-   * 
+   *
    * @return the status of processing the sequence
    */
   public abstract Result runSequence();
@@ -35,7 +35,7 @@ public interface Adder
 
   /**
    * The value of the sum over the processed sequence
-   * 
+   *
    * @return the sum of the generated sequence
    */
   public abstract float getSum();
@@ -43,7 +43,7 @@ public interface Adder
   /**
    * The penultimate sum, generated just prior to the final or last sum, used to
    * determine if the accumulator overflowed.
-   * 
+   *
    * @return the penultimate sum of the generated sequence
    */
   public abstract float getLastSum();

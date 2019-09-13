@@ -1,126 +1,118 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import demo.algo.sensor.SensorMonitoring.BoundingBox;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
-import demo.algo.sensor.SensorMonitoring.RectangleComparator;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel level
- * using an array. Inputs are grouped by chains of overlapping regions to
- * minimize the size of the pixel map (the Sensor.)
+ * using an array. Inputs are grouped by chains of overlapping rectangular
+ * regions to minimize the size of the pixel map (the portion of the Sensor
+ * exposed.) We create the chain of overlap using a Counting Sort {O(n + k)}.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class MonitorExposureOverlapped implements ExposureAreaFinder {
 
-	private static final Region ender = createEnder();
+	class State {
+		public int rgtHoldingBound = Integer.MIN_VALUE;
+		public int area = 0;
+	}
+
+	private static final Rectangle ender = SensorMonitoring.createEnder();
 
 	public static void main(String[] args) {
 	}
 
 	/**
 	 * Time complexity is O(n * a), where n = number of exposure sessions, and a is
-	 * a measure of effort in a session (e.g., the mean area exposed regions per
-	 * session.) If, as implied by the problem statement, the area is relatively
-	 * fixed and small, and the number of sessions n is large, then the complexity
-	 * is, by definition, O(n).
+	 * a measure of algorithm effort in a session (e.g., the mean area exposed per
+	 * session.) If the exposed area is relatively fixed and small, and the number
+	 * of sessions n is large, then the complexity is, by definition, O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
-		List<Region> regions = orderInputRectangles(exposures, ender);
+		if (exposures == null || exposures.size() < 1) {
+			return 0;
+		}
 
-		int area = 0;
-		LinkedList<Region> holding = new LinkedList<Region>();
-		Iterator<Region> itr = regions.iterator();
-		Region reg = itr.next();
-		mergeIntoHoldings(reg, holding);
+		List<Rectangle> regions = orderRectangles(exposures);
+		regions.add(ender);
+
+		State state = new State();
+		List<Rectangle> holding = new LinkedList<Rectangle>();
+		Iterator<Rectangle> itr = regions.iterator();
+		Rectangle reg = itr.next();
+		state = mergeIntoHoldings(state, reg, holding);
 
 		while (itr.hasNext()) {
 			reg = itr.next();
 			if (reg == ender) {
-				area = flushHolding(area, k, holding);
+				state = flushHolding(state, k, holding);
 				holding = null;
 				break;
 			}
 
 			//
-			// Accumulate overlapping rectangles, process on flush
+			// Accumulate overlapping rectangles, complete processing on flush
 
-			if (isNonOverlapping(holding.getLast(), reg)) {
-				area = flushHolding(area, k, holding);
-				holding = new LinkedList<Region>();
+			if (isNonOverlapping(reg, state.rgtHoldingBound)) {
+				state = flushHolding(state, k, holding);
+				holding = new LinkedList<Rectangle>();
 			}
 
 			//
 			// Merge the new rectangle into the current holding
-			mergeIntoHoldings(reg, holding);
+
+			state = mergeIntoHoldings(state, reg, holding);
 		}
 
 		if (reg != ender) {
 			throw new IllegalStateException("Did not encounter ending record");
 		}
 
-		return area;
+		return state.area;
 	}
 
-	private List<Region> orderInputRectangles(List<? extends Rectangle> exposures, Region ender) {
-		if (exposures == null | exposures.isEmpty()) {
-			throw new IllegalArgumentException("exposures null or empty");
+	private List<Rectangle> orderRectangles(List<? extends Rectangle> exposures) {
+		Rectangle[] countingSorted = SensorMonitoring.countingSort(exposures, SensorMonitoring.XY_UPPER_BOUND);
+		List<Rectangle> sorted = new ArrayList<Rectangle>(countingSorted.length);
+		for (int i = 0; i < countingSorted.length; i++) {
+			sorted.add(countingSorted[i]);
+		}
+		return sorted;
+	}
+
+	private boolean isNonOverlapping(Rectangle rhs, int rightBound) {
+		// true if RHS left edge is to the right of the LHS right edge
+		return rhs.x1 >= rightBound;
+	}
+
+	private State flushHolding(State state, int k, List<Rectangle> holding) {
+		state.rgtHoldingBound = Integer.MIN_VALUE;
+		int n = holding.size();
+		if (n < 1) {
+			return state;
 		}
 
-		List<Region> regions = new ArrayList<Region>(exposures.size());
-		for (Rectangle rec : exposures) {
-			Region pr = new Region(rec.x1, rec.y1, rec.x2, rec.y2, 1);
-			regions.add(pr);
-		}
-
-		Collections.sort(regions, new RectangleComparator<Region>());
-		regions.add(ender);
-
-		return regions;
-	}
-
-	private boolean isNonOverlapping(Region lhs, Region rhs) {
-		// true if RHS is to the right of the LHS
-		return rhs.x1 >= lhs.x2;
-	}
-
-	private int flushHolding(int area, int k, List<Region> holding) {
 		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
-		int[] lclSensor = new int[(lclBox.width) * (lclBox.height)];
+		int[] lclSensor = new int[lclBox.width * lclBox.height];
 		int lclArea = SensorMonitoring.exposeSensor(lclSensor, lclBox, holding, k);
-		area += lclArea;
-		return area;
+		state.area += lclArea;
+
+		return state;
 	}
 
-	private void mergeIntoHoldings(Region reg, List<Region> holding) {
+	private State mergeIntoHoldings(State state, Rectangle reg, List<Rectangle> holding) {
 		holding.add(reg);
-	}
-
-	// -------------------------------------------------------------------------------------------------------------------------
-
-	private static Region createEnder() {
-		return new Region(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,
-				SensorMonitoring.XY_UPPER_BOUND, SensorMonitoring.XY_UPPER_BOUND, Integer.MAX_VALUE);
-	}
-
-	// -------------------------------------------------------------------------------------------------------------------------
-
-	private static class Region extends Rectangle {
-		public int exposures;
-
-		public Region(int x1, int y1, int x2, int y2, int exposures) {
-			super(x1, y1, x2, y2);
-			this.exposures = exposures;
+		if (reg.x2 > state.rgtHoldingBound) {
+			state.rgtHoldingBound = reg.x2;
 		}
 
-		@Override
-		public String toString() {
-			return super.toString() + "[exposures=" + exposures + "]";
-		}
+		return state;
 	}
 }

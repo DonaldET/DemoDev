@@ -18,7 +18,7 @@ import org.apache.commons.lang3.Validate;
  * index is used by the <code>IndexSearcher</code> to find matches and
  * references the associated user attribute entry
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          the internal or raw data type of the processed search index

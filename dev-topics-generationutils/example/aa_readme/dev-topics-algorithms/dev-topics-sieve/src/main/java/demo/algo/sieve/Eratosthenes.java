@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Find primes in an interval using the Sieve of Eratosthenes method (see
  * <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wiki Sieve</a>.)
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class Eratosthenes {
 	private static final int First_Odd_Prime = 3;
@@ -24,7 +24,7 @@ public class Eratosthenes {
 
 	/**
 	 * Find primes using <em>Sieve</em> method.
-	 * 
+	 *
 	 * @param n the size of the sieve
 	 * @param start the starting value if the sieve
 	 * @return An optionally empty list of prime integers found in the sieve

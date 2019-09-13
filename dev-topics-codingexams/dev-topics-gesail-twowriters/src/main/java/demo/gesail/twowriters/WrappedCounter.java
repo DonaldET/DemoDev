@@ -11,8 +11,8 @@ package demo.gesail.twowriters;
 
 /**
  * A wrapper class around a long value used as a counter
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class WrappedCounter
 {

@@ -7,6 +7,11 @@ import org.junit.Test;
 import demo.algo.sensor.ExposureAreaFinder;
 import demo.algo.sensor.MonitorExposureByAreaMapped;
 
+/**
+ * Apply bursts and compute area, compare to expected.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ */
 public class TestExposureByAreaMapped {
 	private ExposureAreaFinder finder = null;
 

@@ -11,17 +11,17 @@ package demo.elance.diagonal;
 
 /**
  * A <code>MatrixLister</code> implementation provides this service method
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface MatrixLister
 {
   /**
    * List the elements of the matrix
-   * 
+   *
    * @param matrix
    *          input matrix to list
-   * 
+   *
    * @return the string of diagonal elements
    */
   public abstract String matrixLister(final char[][] matrix);

@@ -24,9 +24,9 @@ import freemarker.template.TemplateException;
 /**
  * A generator uses a model and list of source-template pairs to produce
  * generated results.
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -34,7 +34,7 @@ import freemarker.template.TemplateException;
  *         granted, provided that the above copyright notice, and this
  *         paragraph, appear in all copies, modifications, and distributions.
  *         Contact dtrummell@gmail.com for commercial licensing opportunities.
- * 
+ *
  *         <pre>
  * <code>
  * <strong>Note</strong>: See <a href=

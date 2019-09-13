@@ -19,8 +19,8 @@ import demo.geturner.binarysearch.BinarySearch;
 
 /**
  * Shared testing code to determine performance.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractPerformanceChecker
 {

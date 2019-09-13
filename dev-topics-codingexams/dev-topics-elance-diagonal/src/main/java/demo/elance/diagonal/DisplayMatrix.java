@@ -16,8 +16,8 @@ import demo.elance.diagonal.impl.RowFirstMatrixListerImpl;
 /**
  * A sample program that uses hard-coded test data and a @quot;
  * <em>row first</em> &quot; matrix diagonal listing implementation
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class DisplayMatrix
 {

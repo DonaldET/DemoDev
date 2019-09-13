@@ -25,7 +25,7 @@ public interface Pricer
   /**
    * Defines the number of items offered at the recorded price to drive Pricer
    *
-   * @author Donald Trummell
+   * @author Donald Trummell (dtrummell@gmail.com)
    */
   public static final class Offer
   {

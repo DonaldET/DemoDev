@@ -16,8 +16,8 @@ package demo.granular.sudoku;
  * constraint on the contents of individual regions. For example, the same
  * single integer may not appear twice in the same row, column, or any of the
  * nine 3×3 subregions of the 9x9 playing board.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface GameChecker {
 	public static final int SD_ROWS = 9;
@@ -27,7 +27,7 @@ public interface GameChecker {
 	/**
 	 * Validate a fully populated Sudoku grid, a puzzle, to evaluate if it is a
 	 * valid solution.
-	 * 
+	 *
 	 * @param puzzle
 	 * @return <code>true</code> if a valid puzzle, else false
 	 */

@@ -55,8 +55,8 @@ public class HackerSample
   /**
    * A sample serializable token containing an immutable instance of a known key
    * value
-   * 
-   * @author Donald Trummell
+   *
+   * @author Donald Trummell (dtrummell@gmail.com)
    */
   public static final class TokenFactory implements Serializable
   {

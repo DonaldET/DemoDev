@@ -14,8 +14,8 @@ import demo.elance.diagonal.MatrixLister;
 
 /**
  * Step through rows and add columns on the diagonal
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class RowFirstMatrixListerImpl extends AbstractMatrixLister implements
     MatrixLister

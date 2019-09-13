@@ -23,7 +23,7 @@ import org.apache.commons.lang3.Validate;
  * Similar logic is supported in the string index builder to make sure that
  * search fields are processed the same as patterns
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class IndexHelper
 {

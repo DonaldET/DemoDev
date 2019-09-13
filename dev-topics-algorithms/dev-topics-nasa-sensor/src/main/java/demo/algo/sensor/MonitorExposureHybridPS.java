@@ -15,6 +15,8 @@ import demo.algo.sensor.SensorMonitoring.RectangleComparator;
  * regions to minimize the size of the pixel map (the portion of the Sensor
  * exposed.) We create the chain of overlap using array parallel sort {O(n +
  * k)}.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class MonitorExposureHybridPS implements ExposureAreaFinder {
 
@@ -67,6 +69,7 @@ public class MonitorExposureHybridPS implements ExposureAreaFinder {
 
 			//
 			// Merge the new rectangle into the current holding
+
 			state = mergeIntoHoldings(state, reg, holding);
 		}
 

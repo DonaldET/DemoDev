@@ -15,15 +15,15 @@ import java.util.List;
  * A <code>DupDataReader</code> implementation reads data and creates a row
  * representation (<code>DataRow</code>) with column data values and the row
  * index where obtained
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface DupDataReader
 {
   /**
    * Load data from the source file according to the file format known to the
    * implementation and create a collection of <code>DataRow</code> instances
-   * 
+   *
    * @return <code>true</code> if load was successful
    */
   public abstract boolean loadData();

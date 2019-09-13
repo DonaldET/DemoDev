@@ -33,7 +33,7 @@ import demo.scanner.impl.SortedArrayScanner;
  * <em>top</em> set. Since 100 elements is a large list, that is our upper limit
  * for this performance test.
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ScannerTimer
 {

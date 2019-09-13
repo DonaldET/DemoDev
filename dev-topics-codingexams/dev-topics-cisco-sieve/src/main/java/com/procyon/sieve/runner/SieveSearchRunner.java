@@ -15,8 +15,8 @@ import com.procyon.sieve.searcher.SieveSearcher;
  * An implementation wraps a search algorithm in a &quot;runner&quot; that runs
  * repeated executions for different &quot;top&quot; counts and different
  * &quot;repeat&quot; counts
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface SieveSearchRunner
 {

@@ -30,8 +30,8 @@ import demo.don.impl.SpecialPricingRuleImpl;
 /**
  * Unit tests for building the cart and the tests are numbered to show build
  * order
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class GapCartImplTest
 {

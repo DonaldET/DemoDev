@@ -24,8 +24,8 @@ import demo.scanner.api.GameDataBuilder.ListOrder;
 /**
  * Creates artificial <code>Game</code> instances populated with artifical data
  * for testing
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 @SuppressWarnings("unused")
 public class SimpleGameDataBuilder implements Serializable, GameDataBuilder

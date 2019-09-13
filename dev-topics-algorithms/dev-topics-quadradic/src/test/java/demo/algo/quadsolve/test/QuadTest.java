@@ -21,8 +21,8 @@ import demo.algo.quadsolve.QuadSolver;
 
 /**
  * Verify solution accuracy
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class QuadTest
 {
@@ -143,7 +143,7 @@ public class QuadTest
 
   /**
    * We expect one or more roots to be different
-   * 
+   *
    * @param accuracyFactor
    * @param roots
    * @param improvedRoots
@@ -185,9 +185,9 @@ public class QuadTest
 
   /**
    * Get equation roots using standard solution
-   * 
+   *
    * @param qs
-   * 
+   *
    * @return the roots for the stored equation
    */
   private List<Float> getRoots(final QuadSolver qs)
@@ -205,10 +205,10 @@ public class QuadTest
 
   /**
    * Calculate iterative roots
-   * 
+   *
    * @param qs
    * @param tolerance
-   * 
+   *
    * @return the alternative iterative roots
    */
   private List<Float> getIterativeRoots(final QuadSolver qs,
@@ -276,7 +276,7 @@ public class QuadTest
   /**
    * Generate an equation close to the original, but with different coefficients
    * and therefore different roots
-   * 
+   *
    * @return the perturbed quad solver with the altered coefficients
    */
   private QuadSolver getPerturbedQS()

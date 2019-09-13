@@ -19,9 +19,9 @@ import freemarker.cache.TemplateLoader;
  * <p>
  * An example template loader is found <a href=
  * "https://docs.huihoo.com/freemarker/2.3.14/pgui_config_templateloading.html">here</a>
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -70,10 +70,10 @@ public class ModifiedInterpolationTemplateLoader extends FileTemplateLoader impl
 
 	/**
 	 * Read a template and optionally interpolate Freemarker expressions.
-	 * 
+	 *
 	 * @param templateSource the template file to read
 	 * @param encoding       Java string encoding
-	 * 
+	 *
 	 * @return the content of the processed template (just a copy if no
 	 *         interpolation needed.)
 	 */

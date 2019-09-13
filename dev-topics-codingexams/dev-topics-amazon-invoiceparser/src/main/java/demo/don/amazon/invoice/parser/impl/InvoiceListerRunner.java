@@ -12,8 +12,8 @@ package demo.don.amazon.invoice.parser.impl;
 /**
  * Parse command-line parameters and delegate parsing and extraction to the
  * named invoice lister.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class InvoiceListerRunner
 {

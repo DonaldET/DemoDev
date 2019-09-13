@@ -15,8 +15,8 @@ import demo.elance.diagonal.MatrixLister;
 /**
  * Base class for maxtix listing implementations, providing error checking and a
  * default <code>toString</code>.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractMatrixLister implements MatrixLister
 {

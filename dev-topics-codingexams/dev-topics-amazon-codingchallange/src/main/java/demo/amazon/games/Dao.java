@@ -22,7 +22,7 @@ import java.util.List;
  * identify a game) for an Amazon user</li>
  * </ul>
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface Dao
 {

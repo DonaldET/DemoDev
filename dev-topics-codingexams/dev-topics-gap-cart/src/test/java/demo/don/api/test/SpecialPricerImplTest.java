@@ -30,8 +30,8 @@ import demo.don.impl.SpecialPricerImpl;
  * <li>convert to interface</li>
  * <li>delegate to common pricing method</li>
  * </ol>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SpecialPricerImplTest
 {

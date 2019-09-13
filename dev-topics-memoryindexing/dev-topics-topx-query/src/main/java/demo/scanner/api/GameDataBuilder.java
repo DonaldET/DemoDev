@@ -15,14 +15,14 @@ import java.util.List;
 /**
  * An implementation of this interface is a factory for Game data; usually test
  * data
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface GameDataBuilder extends Serializable
 {
   /**
    * Defines sort orders on a list of games
-   * 
+   *
    * @author Donald Trummell
    */
   public enum ListOrder

@@ -23,8 +23,8 @@ import don.demo.generator.TextSourceGeneratorRunner;
  * Tests the runner that, informed by command-line parameters, executes a
  * generation run; this reads templates, uses Freemarker to process, and writes
  * to the target directory.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  *         Copyright (c) 2019. Donald E. Trummell. All Rights Reserved.
  *         Permission to use, copy, modify, and distribute this software and its

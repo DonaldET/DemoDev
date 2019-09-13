@@ -20,8 +20,8 @@ import demo.scanner.api.TopXScanner;
  * Encapsulates the input checking that a stream scanner should perform; offers
  * and extension point in the template method <code>getTopX</code>. Working
  * scanners are expected to extend this class, providing uniform error checking.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractTopXScanner implements TopXScanner
 {
@@ -55,7 +55,7 @@ public abstract class AbstractTopXScanner implements TopXScanner
   /**
    * Template method that is overridden by concrete implementation supplying the
    * algorithm to capture the top <em>X</em> entries
-   * 
+   *
    * @param x
    *          the number of top elements to capture
    * @param it

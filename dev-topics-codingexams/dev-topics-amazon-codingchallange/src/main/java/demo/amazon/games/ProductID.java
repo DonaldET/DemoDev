@@ -11,8 +11,8 @@ package demo.amazon.games;
 
 /**
  * Products (Games) are unique and so are their ids.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ProductID extends AbstractID implements Comparable<AbstractID>
 {

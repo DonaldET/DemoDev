@@ -13,8 +13,8 @@ import demo.elance.diagonal.DiagLister;
 
 /**
  * Validate inputs before delegating to diagonal lister implementation
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractDiagLister implements DiagLister
 {
@@ -25,14 +25,14 @@ public abstract class AbstractDiagLister implements DiagLister
   /**
    * Validate the parameters and delegate actual listing to the subclass using
    * the template (pattern) method <code>listDiagImpl</code>.
-   * 
+   *
    * @param matrix
    *          the non-null, non-empty two dimensional square matrix to list
    * @param row
    *          the starting row
    * @param col
    *          the starting column
-   * 
+   *
    * @return A string listing the elements in a diagonal of the matrix
    */
   @Override
@@ -65,7 +65,7 @@ public abstract class AbstractDiagLister implements DiagLister
   /**
    * Override this method with an implementation that uses the pre-validated
    * parameters to do the actual listing.
-   * 
+   *
    * @param matrix
    *          the non-null, non-empty two dimensional square matrix to list
    * @param n
@@ -74,7 +74,7 @@ public abstract class AbstractDiagLister implements DiagLister
    *          the starting row
    * @param col
    *          the starting column
-   * 
+   *
    * @return A string listing the elements in a diagonal of the matrix
    */
   protected abstract String listDiagImpl(final char[][] matrix, final int n,

@@ -24,14 +24,14 @@ import don.demo.generator.arguments.ArgumentParser;
  * manual</a></li>
  * </ul>
  * Sample Eclipse test run parameters:
- * 
+ *
  * <pre>
  * <code>
  * -defaultContext D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_config\shared_defs.properties -overrideContextList D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_config\target_defs.properties -srcDir D:\GitHub\DemoDev\dev-topics-generationutils\src\test\resources\app_src -templateList hive_query.tpl -dstDir D:\GitHub\DemoDev\dev-topics-generationutils\.\target -generatedFileList hive_query.hql
  * </code>
  * </pre>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
@@ -54,7 +54,7 @@ public class TextSourceGeneratorRunner implements Serializable {
 	/**
 	 * Read and parse template(s) and produce generated output based on model; all
 	 * required inputs are passed in using command-line arguments
-	 * 
+	 *
 	 * @param args command-line arguments
 	 */
 	public static void main(final String[] args) {
@@ -129,10 +129,10 @@ public class TextSourceGeneratorRunner implements Serializable {
 	/**
 	 * Process files defined by arguments using the generator. Parser validates
 	 * correct arguments but does not check file existence and other details
-	 * 
+	 *
 	 * @param generator source code generator to use
 	 * @param args      specification of files and models to process
-	 * 
+	 *
 	 * @return a <code>Result</code> instance or <code>null</code> if failed
 	 */
 	public static Result processWithArgs(final TextSourceGenerator generator, final String[] args) {
@@ -151,7 +151,7 @@ public class TextSourceGeneratorRunner implements Serializable {
 
 	/**
 	 * Load the application context using streams so they can reside in a jar
-	 * 
+	 *
 	 * @return the populated context
 	 */
 	private static ClassPathXmlApplicationContext getSpringAppContext() {

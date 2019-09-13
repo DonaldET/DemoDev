@@ -15,8 +15,8 @@ import java.util.Arrays;
 
 /**
  * Utility methods for testing
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class VerificationUtils
 {
@@ -34,7 +34,7 @@ public class VerificationUtils
    * Create the desired file with contents describing its location, and place in
    * the candidate class path locations. This method lists the contents,
    * allowing you to determine the location found on the class path
-   * 
+   *
    * @param resourceLocator
    *          the class path reference
    * @param maxBufSize

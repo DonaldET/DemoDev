@@ -25,8 +25,8 @@ import demo.amazon.games.daostrategy.StubDao;
 
 /**
  * Validate test data integrity
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class StubDaoTest
 {

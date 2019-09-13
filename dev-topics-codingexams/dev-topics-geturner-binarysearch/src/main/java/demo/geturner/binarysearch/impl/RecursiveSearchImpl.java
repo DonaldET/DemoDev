@@ -14,8 +14,8 @@ import demo.geturner.binarysearch.BinarySearch;
 /**
  * Search by recursively invoking this method on the greater or lesser half of
  * the remaining values; this is a binary search implementation.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of sorted array to search

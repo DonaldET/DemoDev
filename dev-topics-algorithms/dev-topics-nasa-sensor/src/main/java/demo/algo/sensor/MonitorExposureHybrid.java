@@ -14,6 +14,8 @@ import demo.algo.sensor.SensorMonitoring.RectangleComparator;
  * using an array. Inputs are grouped by chains of overlapping rectangular
  * regions to minimize the size of the pixel map (the portion of the Sensor
  * exposed.)
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class MonitorExposureHybrid implements ExposureAreaFinder {
 
@@ -66,6 +68,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 
 			//
 			// Merge the new rectangle into the current holding
+			
 			state = mergeIntoHoldings(state, reg, holding);
 		}
 

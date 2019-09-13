@@ -13,8 +13,8 @@ import demo.don.factorial.MathHelper;
 /**
  * Use a table of pre-computed factorial values to by-pass execution all
  * together or decrease the total number of required multiplications
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class PreComputedMathHelper implements MathHelper {
 	/**

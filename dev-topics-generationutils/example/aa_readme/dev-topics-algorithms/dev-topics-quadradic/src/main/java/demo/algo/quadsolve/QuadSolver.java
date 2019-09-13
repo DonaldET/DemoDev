@@ -15,8 +15,8 @@ import java.util.List;
 
 /**
  * Solve classical quadradic equations, direct and recursive
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class QuadSolver
 {
@@ -63,15 +63,15 @@ public class QuadSolver
 
   /**
    * For y = a * x *x + b * x + C; the standard solution is:
-   * 
+   *
    * <pre>
    * DESC = Sqrt( b * b - 4 * a * c)
    * root 1 = (-b + DESC) / (2 * a)
    * root 2 = (-b - DESC) / (2 * a)
    * </pre>
-   * 
+   *
    * Roots returned are first sorted low to high.
-   * 
+   *
    * @return
    */
   public List<Float> solve()
@@ -89,10 +89,10 @@ public class QuadSolver
 
   /**
    * Compute a * x * x + b * x + c at x
-   * 
+   *
    * @param x
    *          the argument
-   * 
+   *
    * @return the function value
    */
   public float evaluate(final float x)
@@ -102,14 +102,14 @@ public class QuadSolver
 
   /**
    * Improve both roots, one at a time, using an iterative method
-   * 
+   *
    * @param r1Inp
    *          root 1
    * @param r2Inp
    *          root 2
    * @param tolerance
    *          minimum accuracy
-   * 
+   *
    * @return
    */
   public List<Float> improve(final float r1Inp, float r2Inp,

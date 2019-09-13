@@ -21,8 +21,8 @@ import demo.don.bignumeric.impl.ShuffleSequenceGenerator;
 
 /**
  * Compare two addition algorithms for accuracy
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class Comparator
 {
@@ -40,7 +40,7 @@ public class Comparator
    * <em>University of California</em>, Berkeley, in the early 70's, and
    * originally coded in <code>C++</code>.
  * <p>
-   * 
+   *
    * @param args
    *          runtime argument; ignored
    */

@@ -20,8 +20,8 @@ import demo.scanner.api.TopXScanner;
  * Using a sorted array of top <em>X</em> elements with binary search to
  * determine the correct replacement or insertion position in the candidate
  * array
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SortedArrayScanner extends AbstractTopXScanner implements
     TopXScanner
@@ -99,7 +99,7 @@ public class SortedArrayScanner extends AbstractTopXScanner implements
 
   /**
    * We have potential top game, stuff into array if we need to keep it
-   * 
+   *
    * @param g
    *          the candidate game
    * @param topAry
@@ -152,7 +152,7 @@ public class SortedArrayScanner extends AbstractTopXScanner implements
    * Slide left (lower) part of the array left, before idx. We are only keeping
    * largest set of g, so insertion before [0] (smallest in set) is illegal.
    * Beyond end of array (idx >= x) is also illegal
-   * 
+   *
    * @param g
    *          the candidate game
    * @param topAry

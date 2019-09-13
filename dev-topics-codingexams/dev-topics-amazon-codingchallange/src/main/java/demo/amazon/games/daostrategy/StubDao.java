@@ -24,8 +24,8 @@ import demo.amazon.games.ProductID;
 
 /**
  * Stub provides test data with overlapping customer ids and product ids
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class StubDao implements Dao
 {
@@ -107,7 +107,7 @@ public class StubDao implements Dao
 
   /**
    * Optional data list
-   * 
+   *
    * @param argc
    *          launch parameters
    */

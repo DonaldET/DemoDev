@@ -18,8 +18,8 @@ import demo.elance.diagonal.DiagLister;
  * <li>upper-left-to-lower-right is delta==1</li>
  * <li>upper-right-to-lower left is delta==-1</li>
  * </ul>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class DiagListerImpl extends AbstractDiagLister implements DiagLister
 {

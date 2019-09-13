@@ -36,7 +36,7 @@ import demo.don.searcher.match.IndexSearcher;
  * <strong>Note:</strong> The characters <code>NAME_MARK</code> and
  * <code>INDEX_MARK</code> are not allowed in the text to search or the pattern
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  */
 public class StringIndexSearcherImpl implements IndexSearcher<String>
@@ -45,7 +45,7 @@ public class StringIndexSearcherImpl implements IndexSearcher<String>
    * Stores the associated index from a match and the next search index position
    * to test
    *
-   * @author Donald Trummell
+   * @author Donald Trummell (dtrummell@gmail.com)
    */
   public static final class ExtractIndex
   {

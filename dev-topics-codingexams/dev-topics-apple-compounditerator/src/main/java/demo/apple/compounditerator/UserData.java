@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * A <code>UserData</code> instance creates iterators from a list of data values
  * and an associated name
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of data managed as a list associated with an iterator

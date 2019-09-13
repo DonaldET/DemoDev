@@ -1,3 +1,8 @@
+/**
+ * Apply bursts and compute area, compare to expected.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ */
 package demo.algo.sensor.test;
 
 import org.junit.After;

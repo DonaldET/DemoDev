@@ -17,8 +17,8 @@ import demo.geturner.binarysearch.BinarySearch;
  * <p>
  * As an interesting performance note, the <code>iterative</code> implementation
  * is about 40% <em>slower</em> than the <code>recursive</code> implementation.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of sorted and searchable array
@@ -49,7 +49,7 @@ public abstract class AbstractBinarySearch<T extends Comparable<T>> implements
 
   /**
    * Find index of key in array or return KEY_NOT_FOUND.
-   * 
+   *
    * @param array
    *          the array to search
    * @param key

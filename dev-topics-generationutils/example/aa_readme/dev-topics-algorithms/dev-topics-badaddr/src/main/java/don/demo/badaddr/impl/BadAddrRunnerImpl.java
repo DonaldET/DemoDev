@@ -7,8 +7,8 @@ import don.demo.badaddr.BadAddrRunner;
 
 /**
  * Simple summation without error propagation protection
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class BadAddrRunnerImpl implements BadAddrRunner
 {

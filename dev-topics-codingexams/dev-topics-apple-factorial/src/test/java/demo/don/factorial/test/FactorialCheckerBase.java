@@ -20,8 +20,8 @@ import demo.don.factorial.MathHelper;
 /**
  * Test a <code>MathHelper</code> implementation for standard and boundary
  * conditions
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class FactorialCheckerBase
 {

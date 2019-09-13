@@ -5,6 +5,12 @@ import demo.algo.sensor.SensorMonitoring.BoundingBox;
 import demo.algo.sensor.SensorMonitoring.ExposureSession;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
+/**
+ * Create a simple character-based display of the radiated regions indicating
+ * the level of exposure. Regions are made relative, beginning at (0,0). 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ */
 public class DumpSensorData {
 
 	private static final MonitorExposureByAreaMapped mapper = new MonitorExposureByAreaMapped();

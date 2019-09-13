@@ -6,7 +6,7 @@ package don.demo.datagen;
  * <li>Find sample data generation limits.</li>
  * <li>Compute mathematical (exact) sum.</li>
  * </ul>
- * 
+ *
  * <pre>
  * <code>
  * A constant holding the largest positive finite value of type double,
@@ -14,14 +14,14 @@ package don.demo.datagen;
  * 0x1.fffffffffffffP+1023 and also equal to
  * Double.longBitsToDouble(0x7fefffffffffffffL) and ±1.79769313486231570E+308
  * (15 significant decimal digits)
- * 
+ *
  * From direct output:
  * o max - [1.79769313486231570e+308]
  * o min - [4.90000000000000000e-324]
  * </code>
  * </pre>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  */
 public class GeneratorUtil {
@@ -31,16 +31,16 @@ public class GeneratorUtil {
 
 	/**
 	 * Solve for max n such that: n * (n - 1) / 2 @lt@eq upperBound.
-	 * 
+	 *
 	 * <pre>
 	 * <code>
 	 * Solution of n^2 - n - 2 * uB @lt@eq is:
 	 * (-1 ± sqrt(1 + 8 * uB)) / 2
 	 * </code>
 	 * </pre>
-	 * 
+	 *
 	 * @param upperBound largest value allowed for sum-of-integers
-	 * 
+	 *
 	 * @return the n solving the relationship above.
 	 */
 	public static double limit_sum_long(final double upperBound) {
@@ -49,7 +49,7 @@ public class GeneratorUtil {
 
 	/**
 	 * Compute exact sum of first n integers.
-	 * 
+	 *
 	 * @param n upper limit
 	 * @return sum of 1 .. n
 	 */
@@ -64,9 +64,9 @@ public class GeneratorUtil {
 	/**
 	 * Given: abs(re) &lt;= 0.5 * 10**(-M) for M significant digits. As a result, M
 	 * &lt;= log10(0.5) - log10(abs(re))
-	 * 
+	 *
 	 * @param rel relative error.
-	 * 
+	 *
 	 * @return the fractional number of significant digits.
 	 */
 	public static double estimateSignificantDigits(final double rel) {

@@ -20,8 +20,8 @@ import demo.geturner.binarysearch.impl.NativeSearchImpl;
 
 /**
  * Test performance of Iterative and Native search methods with optional display
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SearchNativePerformanceTest extends AbstractPerformanceChecker {
 	private BinarySearch<Integer> searchNat = null;

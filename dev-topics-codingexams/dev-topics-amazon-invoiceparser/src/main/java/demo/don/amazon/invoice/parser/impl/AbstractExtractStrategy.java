@@ -18,8 +18,8 @@ import demo.don.amazon.invoice.parser.ExtractStrategy;
 /**
  * Shared parsing utilities and error checking on the interface working method,
  * also defines the abstract template method
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractExtractStrategy implements ExtractStrategy
 {
@@ -156,7 +156,7 @@ public abstract class AbstractExtractStrategy implements ExtractStrategy
         if (p < 0)
           p = fileInfo.indexOf(ender.toUpperCase(), a);
       }
-      
+
       if (p > -1)
       {
         b = p;

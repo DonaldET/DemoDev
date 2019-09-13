@@ -29,9 +29,9 @@ import freemarker.template.TemplateException;
  * hide from Freemarker. Examples inspired by blog (See
  * <a href='http://www.vogella.com/tutorials/FreeMarker/article.html'>this 2013
  * Vogella Freemarker example</a>.)
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -76,8 +76,8 @@ public class TestSimpleModifiedInterpolationTemplateLoader
 
     /**
      * Example object used in model
-     * 
-     * @author Donald Trummell
+     *
+     * @author Donald Trummell (dtrummell@gmail.com)
      */
     public static final class NVPair
     {
@@ -103,8 +103,8 @@ public class TestSimpleModifiedInterpolationTemplateLoader
 
     /**
      * Return test setup info
-     * 
-     * @author Donald Trummell
+     *
+     * @author Donald Trummell (dtrummell@gmail.com)
      */
     public static final class TplCfgFtl
     {

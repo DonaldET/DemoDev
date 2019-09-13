@@ -22,8 +22,8 @@ import demo.don.bignumeric.api.SequenceGenerator;
  * This approach to floating point addition is based on work done at the
  * <em>Univesity of California</em>, Berkeley, in the early 70's, and originally
  * coded in <code>C++</code>.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractAdder implements Adder
 {

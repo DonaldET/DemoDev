@@ -12,6 +12,8 @@ import demo.algo.sensor.SensorMonitoring.Rectangle;
  * using an array. Inputs are grouped by chains of overlapping rectangular
  * regions to minimize the size of the pixel map (the portion of the Sensor
  * exposed.) We create the chain of overlap using a Counting Sort {O(n + k)}.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class MonitorExposureHybridCS implements ExposureAreaFinder {
 
@@ -64,6 +66,7 @@ public class MonitorExposureHybridCS implements ExposureAreaFinder {
 
 			//
 			// Merge the new rectangle into the current holding
+
 			state = mergeIntoHoldings(state, reg, holding);
 		}
 

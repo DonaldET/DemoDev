@@ -24,8 +24,8 @@ import demo.don.impl.RegularPricerImpl;
 /**
  * Unit tests for building the pricing algorithm and the tests are numbered to
  * show build order
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class RegularPricerImplTest
 {

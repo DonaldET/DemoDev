@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * API for a generator that creates samples for testing summation error
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface DataGenerator
 {

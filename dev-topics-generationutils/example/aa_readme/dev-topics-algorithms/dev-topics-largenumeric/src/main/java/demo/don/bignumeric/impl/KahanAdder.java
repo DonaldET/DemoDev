@@ -19,7 +19,7 @@ import demo.don.bignumeric.api.SequenceGenerator;
  * algorithm.
  * <p>
  * A psuedo-code example is:
- * 
+ *
  * <pre>
  * <code>
  * function KahanSum(input)
@@ -34,8 +34,8 @@ import demo.don.bignumeric.api.SequenceGenerator;
  *    return sum
  * </code>
  * </pre>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class KahanAdder extends AbstractAdder implements Adder
 {

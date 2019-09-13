@@ -22,7 +22,7 @@ import demo.don.searcher.SearchIndex;
  * matches is not supported. Typically an <code>IndexSearcher</code> of a type
  * <code>T</code> is created using an <code>IndexBuilder</code> of the same type
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          the internal data type of search index

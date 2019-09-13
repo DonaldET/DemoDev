@@ -21,8 +21,8 @@ import demo.don.api.Pricer;
  * <li>Developed after Pricers and before Special (promotional) Rule</li>
  * <li>Pricer design modified to allow cart modification</li>
  * </ul>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SpecialPricingRuleImpl extends AbstractPricingRule
 {

@@ -19,7 +19,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 /**
  * Grizzly Launcher for testing.
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class Launcher implements Serializable
 {

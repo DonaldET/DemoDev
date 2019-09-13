@@ -11,14 +11,14 @@ package demo.don.factorial;
 /**
  * A factorial implementation of <code>MathHelper</code> provides different
  * mechanisms to compute the factorial
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface MathHelper
 {
   /**
    * Largest computable input with a representable factorial value for a long
-   * 
+   *
    * Note: maximum factorial(20) == 2432902008176640000
    */
   public static final int MAX_FACTORIAL_ARGUMENT = 20;
@@ -32,10 +32,10 @@ public interface MathHelper
 
   /**
    * Implement factorial on non-negative integer inputs
-   * 
+   *
    * @param n
    *          the factorial argument on which to compute the factorial
-   * 
+   *
    * @return the factorial of n
    */
   public abstract long factorial(int n);

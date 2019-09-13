@@ -16,8 +16,8 @@ import demo.apple.compounditerator.CompoundIterator;
 import demo.apple.compounditerator.UserData;
 
 /**
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of data in lists and iterators

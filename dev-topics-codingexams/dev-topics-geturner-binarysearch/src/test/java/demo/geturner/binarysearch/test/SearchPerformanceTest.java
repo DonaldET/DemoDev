@@ -20,8 +20,8 @@ import demo.geturner.binarysearch.impl.RecursiveSearchImpl;
 
 /**
  * Test performance of Iterative and Recursive binary search methods
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SearchPerformanceTest extends AbstractPerformanceChecker
 {

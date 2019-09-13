@@ -10,9 +10,9 @@ import java.util.Arrays;
  * arguments. The arguments are "strings" following the usual Java command-line
  * argument conventions. They are nominally processed and checked for semantics
  * by <code>Args4J</code>.
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -26,8 +26,8 @@ public interface TextSourceGenerator extends Serializable
 
     /**
      * Results of the generation operation
-     * 
-     * @author Donald Trummell
+     *
+     * @author Donald Trummell (dtrummell@gmail.com)
      */
     public static final class Result implements Serializable
     {
@@ -173,11 +173,11 @@ public interface TextSourceGenerator extends Serializable
     /**
      * Read models and templates, generate output files, and use arguments to
      * define the operation.
-     * 
+     *
      * @param args
      *            command-line like arguments to define models/contexts,
      *            templates, and directories.
-     * 
+     *
      * @return the result of processing the models and templates to produce the
      *         generated files.
      */

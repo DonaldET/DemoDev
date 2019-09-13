@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * A <code>FilteredUserData</code> instance provides access to a named
  * collection of values, presented as a <code>List</code>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of data stored in the named list

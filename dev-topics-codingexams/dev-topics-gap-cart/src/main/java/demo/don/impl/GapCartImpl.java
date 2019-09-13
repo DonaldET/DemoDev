@@ -56,8 +56,8 @@ import demo.don.api.PricingRule;
  * applicable, then by regular (standard) prices. A cart collects scanned
  * packets that are priced by rules orchestrating pricers holding collections of
  * offers. The <em>price</em> operation may be invoked on the cart at any time.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class GapCartImpl implements GapCart
 {
@@ -112,7 +112,7 @@ public class GapCartImpl implements GapCart
   /**
    * Returns the total price of items in the internal cart at any point in a
    * scan sequence
-   * 
+   *
    * @return the price of the items
    */
   @Override
@@ -126,7 +126,7 @@ public class GapCartImpl implements GapCart
 
   /**
    * Return the pricer
-   * 
+   *
    * @return returns the associated pricer or null
    */
   @Override
@@ -137,7 +137,7 @@ public class GapCartImpl implements GapCart
 
   /**
    * Assign a pricer
-   * 
+   *
    * @param pricerRule
    *          the pricing rule associated with this cart
    */

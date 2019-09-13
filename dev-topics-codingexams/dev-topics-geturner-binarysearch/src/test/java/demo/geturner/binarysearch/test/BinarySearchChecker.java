@@ -20,8 +20,8 @@ import demo.geturner.binarysearch.BinarySearch;
 
 /**
  * Common tests for different binary search methods
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class BinarySearchChecker
 {

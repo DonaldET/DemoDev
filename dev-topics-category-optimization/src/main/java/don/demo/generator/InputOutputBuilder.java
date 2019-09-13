@@ -7,9 +7,9 @@ import java.util.Map.Entry;
 /**
  * Builds list of matching inputs and output under corresponding base
  * directories
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -24,7 +24,7 @@ public interface InputOutputBuilder extends Serializable
     /**
      * Match input and output path entries; a single asterisk in the output
      * means copy from the input
-     * 
+     *
      * @param srcDir
      *            base directory for source/input templates
      * @param templateList
@@ -36,7 +36,7 @@ public interface InputOutputBuilder extends Serializable
      * @param useSrcDir
      *            if true, factor source-dir into input (template) path, else
      *            ignore
-     * 
+     *
      * @return list of matched input-output pairs
      */
     public abstract List<Entry<String, String>> createPairedList(final String srcDir, final String[] templateList,

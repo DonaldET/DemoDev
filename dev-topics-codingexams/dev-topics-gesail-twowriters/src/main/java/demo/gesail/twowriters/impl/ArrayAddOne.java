@@ -15,8 +15,8 @@ import demo.gesail.twowriters.AddOne;
  * A <code>Conductor</code> that uses an array as a counter. This class has a
  * main method and may be used to display the incrementing run to offer a visual
  * confirmation of the run
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ArrayAddOne extends AbstractAddOne<long[]> implements AddOne
 {

@@ -11,8 +11,8 @@ package demo.don.bignumeric.api;
 
 /**
  * Hold the status of the an adder processing a sequence from a generator.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class Result
 {
@@ -22,7 +22,7 @@ public class Result
 
   /**
    * Create an immutable instance.
-   * 
+   *
    * @param completedIterations
    *          true if completed
    * @param newMatchedPrevious

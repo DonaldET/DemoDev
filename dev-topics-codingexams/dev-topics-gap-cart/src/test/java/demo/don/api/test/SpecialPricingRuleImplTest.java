@@ -24,8 +24,8 @@ import demo.don.impl.SpecialPricingRuleImpl;
 /**
  * Unit tests for building the pricing rules and the tests are numbered to show
  * build order. This is created and tested after Pricers are completed.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SpecialPricingRuleImplTest
 {

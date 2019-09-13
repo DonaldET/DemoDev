@@ -15,8 +15,8 @@ import demo.don.bignumeric.api.SequenceGenerator;
 /**
  * A simple adder that eventually ignores additional addends because the running
  * sum is much larger than the addin.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class NaiveAdder extends AbstractAdder implements Adder
 {

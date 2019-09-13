@@ -18,9 +18,9 @@ import don.demo.generator.arguments.ArgumentParser;
  * parameters in a bean. See <a href='http://args4j.kohsuke.org/'>project
  * home</a>, <a href='https://github.com/kohsuke/args4j'>source code</a> and
  * <a href='http://args4j.kohsuke.org/sample.html'>for an example</a>.
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -96,12 +96,12 @@ public class ArgumentParserArgs4J implements ArgumentParser {
 
 	/**
 	 * Message formatter for argument error handling
-	 * 
+	 *
 	 * @param args   arge to parse
 	 * @param parser parser instance
 	 * @param label  error message label
 	 * @param ex     exception causing the parse problem
-	 * 
+	 *
 	 * @return a RuntimeException instance capturing error information
 	 */
 	public RuntimeException handleError(final String[] args, final CmdLineParser parser, final String label,

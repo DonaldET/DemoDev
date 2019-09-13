@@ -40,6 +40,8 @@ import java.util.List;
  * 8
  * </code>
  * </pre>
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface SensorMonitoring {
 	public static final int NK_UPPER_BOUND = 100_000;

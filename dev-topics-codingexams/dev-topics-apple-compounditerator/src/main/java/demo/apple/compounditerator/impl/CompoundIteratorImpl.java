@@ -19,8 +19,8 @@ import demo.apple.compounditerator.CompoundIterator;
 
 /**
  * A <code>CompoundIterator</code> implementation
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <E>
  */
@@ -42,10 +42,10 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
 
   /**
    * Add iterators to internal list of iterators
-   * 
+   *
    * @param iterators
    *          the iterators to add to internal list
-   * 
+   *
    * @return true if any added
    */
   private boolean copyIterator(final Iterator<E>[] iterators)
@@ -81,7 +81,7 @@ public class CompoundIteratorImpl<E> implements CompoundIterator<E>
 
   /**
    * Make the next iterator in the internal iterator list the current iterator
-   * 
+   *
    * @return true if there is a next iterator
    */
   private boolean moveToNextIterator()

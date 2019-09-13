@@ -8,8 +8,8 @@ import org.kohsuke.args4j.ExampleMode;
 
 /**
  * Support for command-line argument parsing.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its

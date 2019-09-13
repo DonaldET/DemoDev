@@ -24,8 +24,8 @@ import demo.scanner.api.Game;
  * by the <code>Game</code> interface; additional data may be supplied that,
  * while part of a <code>Game</code> instance, is not part of the unique game
  * identity (e.g., <em>key</em> is part of the identity.)
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class GameBean implements Game, Cloneable
 {
@@ -40,7 +40,7 @@ public class GameBean implements Game, Cloneable
 
   /**
    * Construct the game bean using <em>key</em> fields
-   * 
+   *
    * @param id
    *          a unique identifier across all games (e.g., a <em>GUID</em>
    * @param playerName
@@ -62,7 +62,7 @@ public class GameBean implements Game, Cloneable
 
   /**
    * Alternate constructor for the game bean using <em>key</em> fields
-   * 
+   *
    * @param id
    *          a unique identifier across all games (e.g., a <em>GUID</em>
    * @param playerName

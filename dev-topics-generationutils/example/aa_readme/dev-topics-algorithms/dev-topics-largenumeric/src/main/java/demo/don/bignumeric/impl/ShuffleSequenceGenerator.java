@@ -16,8 +16,8 @@ import demo.don.bignumeric.api.SequenceGenerator;
 /**
  * Generate a sequence of scaled, bounded randomized values within a range.
  * Maintain the correct sum to the current iteration.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ShuffleSequenceGenerator implements SequenceGenerator
 {
@@ -38,7 +38,7 @@ public class ShuffleSequenceGenerator implements SequenceGenerator
   /**
    * Compute the double precision sum of the first <em>n</em> terms as return
    * single precision.
-   * 
+   *
    * @return the sum of the first <em>iteration</em> terms
    */
   @Override

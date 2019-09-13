@@ -17,8 +17,8 @@ import demo.don.factorial.impl.PreComputedMathHelper;
 
 /**
  * Test the Precomputed implementation
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class TestFactorialPreComputed extends FactorialCheckerBase
 {

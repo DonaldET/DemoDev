@@ -11,8 +11,8 @@ package demo.amazon.games;
 
 /**
  * Customers are unique so ids should be unique as well.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class CustomerID extends AbstractID implements Comparable<AbstractID>
 {

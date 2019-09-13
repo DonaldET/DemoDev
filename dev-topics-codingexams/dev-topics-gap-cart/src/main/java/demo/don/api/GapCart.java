@@ -11,15 +11,15 @@ package demo.don.api;
 
 /**
  * Conceptual cart with price total strategy
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface GapCart
 {
   /**
    * A convenience method, the need for which was discovered during test
    * creation
-   * 
+   *
    * @param skuValues
    *          an array of sku values to scan
    * @return array of counts
@@ -31,7 +31,7 @@ public interface GapCart
    * <p>
    * <em>Note:</em> Discover returning count makes testing easier, and allows
    * for changing pricing algorithm based on scanned count.
-   * 
+   *
    * @param sku
    *          the sku of a single item
    * @return the count of scanned items with this queue
@@ -40,7 +40,7 @@ public interface GapCart
 
   /**
    * Return the total of items in the associated cart
-   * 
+   *
    * @return item total
    */
   public abstract int total();

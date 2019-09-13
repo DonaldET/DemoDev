@@ -16,8 +16,8 @@ import demo.gesail.twowriters.impl.WrappedConductor;
 
 /**
  * A test based on using a wrapped long value as a counter
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class WrappedConductorTest extends
     AbstractConductorChecker<WrappedCounter>

@@ -16,8 +16,8 @@ import demo.don.api.Pricer;
 
 /**
  * First concrete pricer from abstract base pricer
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class RegularPricerImpl extends AbstractPricer implements Pricer
 {

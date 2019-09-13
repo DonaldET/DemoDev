@@ -16,8 +16,8 @@ import java.util.Date;
 /**
  * Defines key field data associated with a Game, along with the
  * &quot;score&quot; defining the capture.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface Game extends Comparable<Game>, Comparator<Game>, Serializable,
     Cloneable

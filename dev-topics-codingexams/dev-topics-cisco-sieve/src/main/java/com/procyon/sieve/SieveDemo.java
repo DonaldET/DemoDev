@@ -26,8 +26,8 @@ import com.procyon.sieve.searcher.impl.TreeMapSearcher;
 /**
  * Runs various sieve searcher instances, implemented using different algorithms
  * while timing the runs configured with different parameters.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SieveDemo
 {

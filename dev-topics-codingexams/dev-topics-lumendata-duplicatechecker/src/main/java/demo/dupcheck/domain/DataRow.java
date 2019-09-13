@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * A <code>DataRow</code> implementation holds the processed data extracted from
  * the text file, including the associated index (zero based)
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface DataRow
 {

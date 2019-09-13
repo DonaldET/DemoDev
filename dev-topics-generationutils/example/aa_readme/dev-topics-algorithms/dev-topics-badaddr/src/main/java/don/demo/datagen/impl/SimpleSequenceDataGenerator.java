@@ -9,8 +9,8 @@ import don.demo.datagen.DataGenerator;
 
 /**
  * Generate summation testing samples.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SimpleSequenceDataGenerator implements DataGenerator
 {
@@ -59,7 +59,7 @@ public class SimpleSequenceDataGenerator implements DataGenerator
 
     /**
      * Sort sample small to large.
-     * 
+     *
      */
     @Override
     public void sortSampleAscending(List<Double> sample)

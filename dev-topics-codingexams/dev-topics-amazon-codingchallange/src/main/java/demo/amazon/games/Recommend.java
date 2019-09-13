@@ -15,8 +15,8 @@ import java.util.List;
  * Provide a customer recommendation for games to purchase based on their
  * friends library of games. We know the current customer's library and
  * associated friends libraries.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface Recommend
 {
@@ -24,7 +24,7 @@ public interface Recommend
    * Return the low-to-high ranked products recommended for customer based on
    * friends owning a game customer does not own, rank by popularity with
    * friends.
-   * 
+   *
    * @param id
    *          the customer for which a recommendation is generated
    * @return zero or more currently unowned product ids ranked by popularity

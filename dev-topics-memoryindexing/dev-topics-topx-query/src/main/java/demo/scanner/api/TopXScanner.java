@@ -20,8 +20,8 @@ import java.util.List;
  * <p>
  * There are two primary implementations; a PriorityQueue based scanner and a
  * sorted array with binary search scanner.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface TopXScanner extends Serializable
 {
@@ -33,7 +33,7 @@ public interface TopXScanner extends Serializable
   /**
    * Find the <em>x</em> largest elements, in descending order, from the input
    * data
-   * 
+   *
    * @param x
    *          the number of <em>top</em> elements to capture
    * @param it

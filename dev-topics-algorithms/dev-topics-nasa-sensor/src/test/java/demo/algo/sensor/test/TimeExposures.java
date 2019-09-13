@@ -14,6 +14,11 @@ import demo.algo.sensor.MonitorExposureHybridPS;
 import demo.algo.sensor.SensorMonitoring;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
+/**
+ * Apply bursts and compute area, record time.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ */
 public class TimeExposures {
 	private static final int[] nbursts = { 500, 1_000, 10_000, 100_000, 500_000, 1_000_000, 2_000_000, 5_000_000,
 			10_000_000, 15_000_000 };

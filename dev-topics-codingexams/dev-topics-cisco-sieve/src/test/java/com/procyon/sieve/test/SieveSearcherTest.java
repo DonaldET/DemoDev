@@ -27,8 +27,8 @@ import com.procyon.sieve.searcher.impl.TreeMapSearcher;
 /**
  * Functional test, find &quot;top&quot; five values - meaning least five values
  * - in a larger list
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SieveSearcherTest
 {

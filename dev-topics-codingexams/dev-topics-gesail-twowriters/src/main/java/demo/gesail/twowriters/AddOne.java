@@ -13,8 +13,8 @@ package demo.gesail.twowriters;
  * An <code>AddOne</code> implementation is a thread <code>Runnable</code> that
  * increments the counter and records the work done for testing, and expected to
  * return the values on completion
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface AddOne extends Runnable
 {

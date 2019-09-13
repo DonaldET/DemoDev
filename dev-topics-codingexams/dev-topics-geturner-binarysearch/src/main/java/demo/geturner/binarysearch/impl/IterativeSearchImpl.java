@@ -14,8 +14,8 @@ import demo.geturner.binarysearch.BinarySearch;
 /**
  * Search by manipulating index values using a binary search algorithm; replaces
  * recursion with iteration
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          the type of the sorted array to search

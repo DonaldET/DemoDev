@@ -15,8 +15,8 @@ import demo.elance.diagonal.impl.DiagListerImpl;
 
 /**
  * Test <code>DiagLister</code> implementations
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class DiagListerImplTests extends TestCase
 {

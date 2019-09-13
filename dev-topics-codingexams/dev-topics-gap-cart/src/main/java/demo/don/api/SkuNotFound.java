@@ -11,8 +11,8 @@ package demo.don.api;
 
 /**
  * Application error for failed SKU lookup
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SkuNotFound extends RuntimeException
 {

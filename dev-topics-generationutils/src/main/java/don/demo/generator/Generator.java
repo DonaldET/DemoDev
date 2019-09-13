@@ -7,9 +7,9 @@ import java.util.Properties;
 
 /**
  * A generated creates text output from templates and model/context properties
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -22,8 +22,8 @@ public interface Generator extends Serializable {
 
 	/**
 	 * Returns results of generation
-	 * 
-	 * @author Donald Trummell
+	 *
+	 * @author Donald Trummell (dtrummell@gmail.com)
 	 */
 	public static final class GenStats implements Serializable {
 		private static final long serialVersionUID = 1908356674482313616L;
@@ -80,12 +80,12 @@ public interface Generator extends Serializable {
 	/**
 	 * Generate output files from input files at the source directory using the
 	 * model/context
-	 * 
+	 *
 	 * @param composedPropertiesModel the model or context for code generation
 	 * @param srcDir                  the common source directory for the templates
 	 *                                in the pair list
 	 * @param pairs                   the input-output specifications for generation
-	 * 
+	 *
 	 * @return a <code>GenStats</code> instance summarizing processing
 	 */
 	public abstract GenStats generate(final Properties composedPropertiesModel, final String srcDir,
@@ -93,10 +93,10 @@ public interface Generator extends Serializable {
 
 	/**
 	 * Generate output files from input files using the model/context
-	 * 
+	 *
 	 * @param composedPropertiesModel the model or context for code generation
 	 * @param pairs                   the input-output specifications for generation
-	 * 
+	 *
 	 * @return a <code>GenStats</code> instance summarizing processing
 	 */
 	public abstract GenStats generate(final Properties composedPropertiesModel,

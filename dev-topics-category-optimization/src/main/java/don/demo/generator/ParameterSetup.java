@@ -5,9 +5,9 @@ import java.util.Arrays;
 
 /**
  * parse arguments as if obtained as string-based command-line parameters.
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -23,8 +23,8 @@ public interface ParameterSetup extends Serializable
      * Represents command-line formatted arguments that are parsed and set into
      * this bean. A context is the Freemarker model; it defines the variables
      * taking part in "interpolation".
-     * 
-     * @author Donald Trummell
+     *
+     * @author Donald Trummell (dtrummell@gmail.com)
      */
     public static class ParameterBean implements Serializable
     {
@@ -160,10 +160,10 @@ public interface ParameterSetup extends Serializable
 
     /**
      * Parse command-line type parameters
-     * 
+     *
      * @param args
      *            the parameters passed into utility
-     * 
+     *
      * @return a <code>ParameterBean</code> instance with parsed parameter
      *         values
      */

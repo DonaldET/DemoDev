@@ -15,8 +15,8 @@ import demo.gesail.twowriters.WrappedCounter;
 /**
  * A <code>Conductor</code> implementation based on a
  * <code>WrappedCounter</code> incrementing counter
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class WrappedConductor extends AbstractConductor<WrappedCounter>
     implements Conductor<WrappedCounter>

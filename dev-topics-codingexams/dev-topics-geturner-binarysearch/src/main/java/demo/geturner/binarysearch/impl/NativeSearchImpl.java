@@ -15,8 +15,8 @@ import demo.geturner.binarysearch.BinarySearch;
 
 /**
  * Search using Java <code>Arrays</code> native binary search method.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of sorted array to search

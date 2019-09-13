@@ -10,8 +10,8 @@ import demo.don.bignumeric.api.SequenceGenerator;
  * Then the sequence of n generated elements is: <em>e</em>*<em>f</em> +
  * <em>e</em>* <em>f</em>/2 + . . . + <em>e</em>*<em>f</em>/2**(n - 1). The sum
  * is given by the expression: <code>2*<em>e</em>*<em>f</em>(1 - 1/2**n)</code>.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class RightShiftSequenceGenerator implements SequenceGenerator
 {
@@ -28,7 +28,7 @@ public class RightShiftSequenceGenerator implements SequenceGenerator
   /**
    * Compute the closed form exact mathematical sum of the first
    * <em>iteration</em> terms.
-   * 
+   *
    * @return the sum of the first n terms
    */
   @Override

@@ -15,8 +15,8 @@ import demo.gesail.twowriters.Conductor;
 /**
  * Shared code for synchronizing and incrementing a counter, parameterized by
  * counter type
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <C>
  *          the counter type

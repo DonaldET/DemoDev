@@ -19,8 +19,8 @@ import demo.gesail.twowriters.Conductor;
 /**
  * Shared testing code to used to check counter values obtained by a
  * <code>Conductor</code>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <C>
  *          type of the counter

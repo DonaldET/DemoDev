@@ -17,7 +17,7 @@ import org.apache.commons.lang3.Validate;
  * Adds the Email as part of a Human identification by extending
  * <code>FLName</code>.
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class UserID extends FLName implements Comparable<FLName>,
     Comparator<FLName>, Cloneable

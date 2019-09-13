@@ -10,8 +10,8 @@ import java.util.Random;
  * the addition checker utility program called <em>Bad Addr</em>. Note that Java
  * does not exactly support IEEE math, and a summary found <a href=
  * "http://www6.uniovi.es/java-http/1.0alpha3/doc/javaspec/javaspec_10.html">here</a>.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class QuickAddChecker {
 	/* Sequence size */

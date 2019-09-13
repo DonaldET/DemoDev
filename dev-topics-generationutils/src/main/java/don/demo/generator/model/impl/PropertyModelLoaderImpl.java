@@ -40,9 +40,9 @@ import don.demo.generator.model.PropertyModelLoader;
  * <td>Loaded as a URL.</td>
  * </tr>
  * </table>
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,

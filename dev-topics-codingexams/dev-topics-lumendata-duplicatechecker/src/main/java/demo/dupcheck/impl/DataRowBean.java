@@ -16,8 +16,8 @@ import demo.dupcheck.domain.DataRow;
 /**
  * A bean implementing <code>DataRow</code> to hold the data from a row as
  * strings
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class DataRowBean implements DataRow
 {

@@ -11,8 +11,8 @@ package demo.geturner.binarysearch;
 
 /**
  * Generalized binary search of a sorted array of <code>Comparable</code> items
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          type of sorted and searchable items
@@ -23,7 +23,7 @@ public interface BinarySearch<T extends Comparable<T>>
 
   /**
    * Precondition is that the array is sorted
-   * 
+   *
    * @param array
    *          the sorted array to search
    * @param key

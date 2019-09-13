@@ -27,8 +27,8 @@ import demo.don.amazon.invoice.parser.ExtractStrategy;
  * Parse input files, defined by path strings, extract required data depending
  * on the named extraction strategy, and write to extracted fields to output
  * files, also defined by path strings.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class InvoiceLister
 {
@@ -60,14 +60,14 @@ public class InvoiceLister
   /**
    * Read the input file and extract the desired information using the named run
    * strategy.
-   * 
+   *
    * @param inputFileName
    *          input file path
    * @param outputFileName
    *          output file path
    * @param runStrategy
    *          the named strategy
-   * 
+   *
    * @return {@code true} if successfully processed.
    */
   public int execute(final String inputFileName, final String outputFileName,
@@ -102,14 +102,14 @@ public class InvoiceLister
   /**
    * Reads data from the input stream, cumulating it in the string builder, and
    * returning status.
-   * 
+   *
    * @param data
    *          the cumulated output data.
    * @param srcStream
    *          the input source data.
    * @param inputLabel
    *          the label associated with the input stream
-   * 
+   *
    * @return {@code true} if stream input successfully captured.
    */
   public static boolean cumulateFile(final StringBuilder data,

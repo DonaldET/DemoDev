@@ -15,8 +15,8 @@ import demo.gesail.twowriters.impl.ArrayConductor;
 
 /**
  * A test based on using an array as a counter
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ArrayConductorTest extends AbstractConductorChecker<long[]>
 {

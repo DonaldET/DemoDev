@@ -8,9 +8,9 @@ import don.demo.generator.ParameterSetup.ParameterBean;
 /**
  * This is an Arg4j Argument parsing implementation that packages arguments in a
  * bean
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -27,8 +27,8 @@ public interface ArgumentParser extends Serializable {
 
 	/**
 	 * Returns results of argument parsing
-	 * 
-	 * @author Donald Trummell
+	 *
+	 * @author Donald Trummell (dtrummell@gmail.com)
 	 */
 	public static final class ParseBean implements Serializable {
 		private static final long serialVersionUID = -9179999212429624505L;
@@ -59,11 +59,11 @@ public interface ArgumentParser extends Serializable {
 
 	/**
 	 * Parse arguments and return the ParameterBean
-	 * 
+	 *
 	 * @param args command-line arguments passed from a <code>main</code> method
-	 * 
+	 *
 	 * @return packaged parameter values and a list of aerguments
-	 * 
+	 *
 	 * @throws IllegalArgumentException if a parsing error occurred
 	 */
 	public abstract ParseBean parseArgs(final String[] args);

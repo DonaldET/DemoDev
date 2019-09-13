@@ -18,7 +18,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * SafeCollectioon Root resource (exposed at "safecollection" path)
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 @Path("safecollection")
 public class SafeCollection implements Serializable

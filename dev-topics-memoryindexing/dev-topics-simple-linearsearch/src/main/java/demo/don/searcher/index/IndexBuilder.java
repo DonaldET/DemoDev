@@ -24,7 +24,7 @@ import demo.don.searcher.UserID;
  * search index. Typical processing is to force to lower case, trim, remove
  * special characters, and disallow empty strings
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <T>
  *          the raw or internal data type of the processed search index

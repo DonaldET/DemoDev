@@ -9,6 +9,8 @@ import demo.algo.sensor.SensorMonitoring.Rectangle;
  * Graphics based technique where exposed regions are modeled at the pixel level
  * using an array. The area represented by the array is minimized using a
  * bounding box around the entire sensor grid of exposed regions.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class MonitorExposureByArea implements ExposureAreaFinder {
 

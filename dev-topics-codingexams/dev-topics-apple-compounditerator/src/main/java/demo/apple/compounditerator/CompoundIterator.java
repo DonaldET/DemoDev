@@ -13,8 +13,8 @@ import java.util.Iterator;
 /**
  * A <code>CompoundIterator</code> provides multiple concurrent access paths to
  * user data
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <E>
  *          Type iterator delivers

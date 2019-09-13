@@ -17,8 +17,8 @@ import demo.don.api.Pricer;
  * Applies regular/standard single-unit pricing
  * <p>
  * <em>Note</em> Developed after Pricers and before Special (promotional) rules.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class RegularPricingRuleImpl extends AbstractPricingRule
 {

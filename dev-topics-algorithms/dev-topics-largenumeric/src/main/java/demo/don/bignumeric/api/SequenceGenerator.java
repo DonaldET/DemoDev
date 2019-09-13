@@ -13,8 +13,8 @@ package demo.don.bignumeric.api;
  * Generate a sequence of floating point numbers, tracking invocations, and
  * returning the next generated element. Offer an accurate current sum
  * operation.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface SequenceGenerator
 {
@@ -23,7 +23,7 @@ public interface SequenceGenerator
   /**
    * Compute an accurate, hopefully exact, mathematical sum of the current
    * <em>iteration</em> terms.
-   * 
+   *
    * @return the sum of the first <em>iteration</em> terms
    */
   public abstract float correctSum();

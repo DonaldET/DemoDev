@@ -14,17 +14,17 @@ import java.util.List;
 /**
  * A <code>DupChecker</code> implementation provides various checking options
  * for the input data collected as <code>DataRow</code> instances
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface DupChecker
 {
   /**
    * Process the data for complete, incomplete, and duplicate checking
-   * 
+   *
    * @param data
    *          the processed input data
-   * 
+   *
    * @return the checking metrics
    */
   public abstract DataMetricsBean checkData(final List<DataRow> data);

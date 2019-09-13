@@ -19,8 +19,8 @@ import demo.dupcheck.domain.DupDataReader;
  * This is a test fixture that simulates reading and parsing a CSV file, and
  * creates a known data quality state to develop and test the checking
  * algorithms
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class StubDataReader implements DupDataReader
 {

@@ -18,9 +18,9 @@ import freemarker.template.Version;
 /**
  * Freemarker utilities to manage interpolation control; hide unwanted
  * interpolation requests in the template.
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -42,8 +42,8 @@ public final class FreemarkerHelper implements Serializable
 
     /**
      * Return results of configuring Freemarker
-     * 
-     * @author Donald Trummell
+     *
+     * @author Donald Trummell (dtrummell@gmail.com)
      */
     public static final class ConfigAndLoader
     {
@@ -68,10 +68,10 @@ public final class FreemarkerHelper implements Serializable
 
     /**
      * Validate that the base path is a readable directory
-     * 
+     *
      * @param baseTemplatePath
      *            the existing readable directory to validate
-     * 
+     *
      * @return the valid directory path as a file
      */
     public static File validateDirPath(final String baseTemplatePath)
@@ -95,10 +95,10 @@ public final class FreemarkerHelper implements Serializable
 
     /**
      * Create a Freemarker template loader for a base path
-     * 
+     *
      * @param baseTemplatePath
      *            the base directory from which templates will be loaded
-     * 
+     *
      * @return the loader
      */
     public static FileTemplateLoader createFileTemplateLoader(final File baseTemplatePath)
@@ -123,7 +123,7 @@ public final class FreemarkerHelper implements Serializable
     /**
      * Create a Freemarker template loader for a base path with optional opener
      * and replacement
-     * 
+     *
      * @param baseTemplatePath
      *            the base directory from which templates will be loaded
      * @param opener
@@ -157,12 +157,12 @@ public final class FreemarkerHelper implements Serializable
 
     /**
      * Configure a Freemarker context to use a template base path
-     * 
+     *
      * @param fileTemplateLoader
      *            the file template loader instance
-     * 
+     *
      * @return a path-configured "configuration" and associated loader
-     * 
+     *
      * @throws IllegalArgumentException
      *             argument exception of base template path is unusable
      */
@@ -218,10 +218,10 @@ public final class FreemarkerHelper implements Serializable
 
     /**
      * Read file wrapped by the reader and return as a string
-     * 
+     *
      * @param reader
      *            the reader to cache
-     * 
+     *
      * @return string value of reader content
      */
     public static String cacheFile(final Reader reader)
@@ -257,7 +257,7 @@ public final class FreemarkerHelper implements Serializable
      * by a <code>replacement</code> string. Note: if either <code>opener</code>
      * or replacement parameters are null, <code>tmplText</code> are copied and
      * no replacement is performed.
-     * 
+     *
      * @param tplText
      *            the template text to process
      * @param opener
@@ -265,7 +265,7 @@ public final class FreemarkerHelper implements Serializable
      *            to be replaced
      * @param replacement
      *            the character sequence to replace the openers
-     * 
+     *
      * @return the substituted text
      */
     public static String replaceOpeners(final String tplText, final String opener, final String replacement)
@@ -328,7 +328,7 @@ public final class FreemarkerHelper implements Serializable
      * A short string (<code>magic</code>), expected to be non-printable, is
      * replaced by the <code>replacement</code> string in <code>tplText</code>
      * content.
-     * 
+     *
      * @param tplText
      *            the template text in which replacement occurs
      * @param magic
@@ -383,10 +383,10 @@ public final class FreemarkerHelper implements Serializable
 
     /**
      * Dump a string as a sequence of hex characters
-     * 
+     *
      * @param param
      *            the string to convert to hex
-     * 
+     *
      * @return a displayable hex formatted string
      */
     public static String dumpAsHex(final String param)

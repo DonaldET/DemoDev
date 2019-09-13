@@ -12,8 +12,8 @@ package demo.amazon.games;
 /**
  * A basic customer identifier implementation providing <code>Object</code>
  * functions.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractID implements Comparable<AbstractID>
 {

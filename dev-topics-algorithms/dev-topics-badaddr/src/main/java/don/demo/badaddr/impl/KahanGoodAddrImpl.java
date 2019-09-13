@@ -21,8 +21,8 @@ import don.demo.badaddr.BadAddrRunner;
  * <li><a href="http://www.utm.edu/staff/cerkal/Lect4.html">ERROR
  * ANALYSIS</a></li>
  * </ol>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class KahanGoodAddrImpl implements BadAddrRunner
 {

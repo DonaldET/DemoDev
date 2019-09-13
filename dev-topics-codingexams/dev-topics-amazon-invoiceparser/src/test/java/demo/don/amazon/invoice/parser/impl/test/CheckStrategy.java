@@ -23,8 +23,8 @@ import demo.file.util.FileUtils;
 
 /**
  * Isolate common elements of test, test data definition in concrete classes
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class CheckStrategy
 {

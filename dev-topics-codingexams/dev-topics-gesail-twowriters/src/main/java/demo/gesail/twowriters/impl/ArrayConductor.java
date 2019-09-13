@@ -14,8 +14,8 @@ import demo.gesail.twowriters.Conductor;
 /**
  * A <code>Conductor</code> using an array based counter for incrementing, and
  * providing a main method so it can be run as a Java application
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ArrayConductor extends AbstractConductor<long[]> implements
     Conductor<long[]>

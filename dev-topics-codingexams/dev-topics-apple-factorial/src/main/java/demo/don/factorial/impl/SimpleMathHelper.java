@@ -13,8 +13,8 @@ import demo.don.factorial.MathHelper;
 
 /**
  * The conventional recursion computed factorial value
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SimpleMathHelper implements MathHelper
 {

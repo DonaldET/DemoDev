@@ -135,7 +135,7 @@ import don.demo.datagen.impl.SimpleSequenceDataGenerator;
  * parallelism benchmark</a></li>
  * </ul>
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class AdditionChecker {
 
@@ -152,8 +152,8 @@ public class AdditionChecker {
 
 	/**
 	 * Create a test sequence and it's actual sum.
-	 * 
-	 * @author Donald Trummell
+	 *
+	 * @author Donald Trummell (dtrummell@gmail.com)
 	 */
 	private interface SequenceBuilder {
 		public abstract List<Double> readyTestSequence(final int n);
@@ -163,7 +163,7 @@ public class AdditionChecker {
 
 	/**
 	 * Run a test for each element in the test sequence
-	 * 
+	 *
 	 * @author Donald Trummell
 	 */
 	private interface SingleTestRunner {

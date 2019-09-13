@@ -16,8 +16,8 @@ import java.util.List;
 /**
  * Runs the list of <code>Runnable</code> instances serially on the calling
  * thread.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SerialRunner implements Launch
 {
@@ -29,7 +29,7 @@ public class SerialRunner implements Launch
 
   /**
    * Single threaded runner.
-   * 
+   *
    * @param label
    *          identity information for run
    * @param runnables
@@ -53,7 +53,7 @@ public class SerialRunner implements Launch
 
     final List<Throwable> exceptions = Collections
         .synchronizedList(new ArrayList<Throwable>());
-    
+
     if (isTrace())
       System.err.println("++++ Serial: " + "Starting . . .");
 
@@ -77,7 +77,7 @@ public class SerialRunner implements Launch
 
   /**
    * Run the <code>Runnable</code> instances and capture errors.
-   * 
+   *
    * @param runnables
    *          the instances to run
    * @param exceptions
@@ -101,12 +101,12 @@ public class SerialRunner implements Launch
   /**
    * Wrap the <code>Runnable</code> with latches for synchronization; wait until
    * all are submitted and then start all.
-   * 
+   *
    * @param submittedRunnable
    *          the runnable to wrap
    * @param exceptions
    *          the error list used to capture errors
-   * 
+   *
    * @return the wrapped <code>Runnable</code>
    */
   private Runnable wrapRunnable(final Runnable submittedRunnable,

@@ -13,6 +13,8 @@ import demo.algo.sensor.SensorMonitoring.Rectangle;
  * level, and pixels are represented in a map (the Sensor), assuming sparse
  * exposed regions over the interval of interest. The area represented by the
  * array is minimized using a bounding box around the exposed region.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 	private Map<Integer, Integer> sensorRegions = null;

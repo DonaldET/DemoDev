@@ -22,8 +22,8 @@ import demo.dupcheck.domain.DupChecker;
 
 /**
  * A sample implementation of a duplicate data checker
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SimpleDupChecker implements DupChecker
 {

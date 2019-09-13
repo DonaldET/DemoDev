@@ -50,8 +50,8 @@ import demo.dupcheck.impl.StubDataReader;
  * Any two non-null columns are <em>duplicates</em> if their values are the same
  * in the same row.</li>
  * </ul>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class DupCheck
 {
@@ -73,7 +73,7 @@ public class DupCheck
    * Read data, process quality, and print reports. The report definition
    * parameters are above, and the file input may be defined by an additional
    * parameter
-   * 
+   *
    * @param args
    *          the command line arguments
    */
@@ -156,14 +156,14 @@ public class DupCheck
 
   /**
    * Parse the command line arguments.
-   * 
+   *
    * <ul>
    * <li>-f {input-file-path} - File path of the input data.</li>
    * <li>-l Display a formatted listing of the input data.</li>
    * <li>-s Display a Summary Report that prints the null, complete, incomplete,
    * and duplicate row-column combinations.
    * </ul>
-   * 
+   *
    * @param args
    *          the command-line parameters
    */

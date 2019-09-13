@@ -14,8 +14,8 @@ import demo.elance.diagonal.MatrixLister;
 
 /**
  * Step through starting columns and find rows from edge
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ColFirstMatrixListerImpl extends AbstractMatrixLister implements
     MatrixLister

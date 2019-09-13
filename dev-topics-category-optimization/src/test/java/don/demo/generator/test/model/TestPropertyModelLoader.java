@@ -13,8 +13,8 @@ import don.demo.generator.model.PropertyModelLoader;
 
 /**
  * Tests a context (model) loader, using properties files, and Spring based.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its

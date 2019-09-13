@@ -16,8 +16,8 @@ import demo.don.api.PricingRule;
 
 /**
  * Embodies applying Pricers in the correct order to price out a cart
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractPricingRule implements PricingRule
 {
@@ -29,7 +29,7 @@ public abstract class AbstractPricingRule implements PricingRule
 
   /**
    * Return price associated with the cart
-   * 
+   *
    * @param cart
    *          the items scanned
    * @return the price of the items
@@ -51,7 +51,7 @@ public abstract class AbstractPricingRule implements PricingRule
 
   /**
    * Template method; override to provide specific behavior
-   * 
+   *
    * @param cart
    * @return
    */

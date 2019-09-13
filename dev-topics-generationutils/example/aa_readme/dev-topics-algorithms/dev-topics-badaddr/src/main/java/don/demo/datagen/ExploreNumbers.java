@@ -10,7 +10,7 @@ import don.demo.datagen.impl.SimpleSequenceDataGenerator;
 /**
  * Explore floating point math and summation. Check runner implementations.
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ExploreNumbers
 {

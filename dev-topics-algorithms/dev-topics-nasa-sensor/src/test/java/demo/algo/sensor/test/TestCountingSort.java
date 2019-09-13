@@ -12,6 +12,11 @@ import demo.algo.sensor.SensorMonitoring;
 import demo.algo.sensor.SensorMonitoring.ExposureSession;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
+/**
+ * Validate counting sort.
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ */
 public class TestCountingSort {
 
 	@Before

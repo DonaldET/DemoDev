@@ -31,7 +31,7 @@ import demo.don.searcher.index.IndexHelper;
  * <strong>Note:</strong> The characters <code>NAME_MARK</code> and
  * <code>INDEX_MARK</code> are not allowed in the text to search or the pattern
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  */
 public class StringIndexBuilderImpl implements IndexBuilder<String>

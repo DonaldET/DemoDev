@@ -18,8 +18,8 @@ package demo.gesail.twowriters;
  * A <code>Conductor</code> is expected to alternate incrementing the counter
  * between two threads. Testing verifies that each thread participates, running
  * as an application allows visual verification of the alternation.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <C>
  *          the counter type

@@ -9,9 +9,9 @@ import don.demo.generator.model.PropertyModelBuilder;
 /**
  * Accumulates Java properties with previously loaded augmentation properties,
  * optinally overriding previous values properties
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -39,9 +39,9 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder, Cloneable
 
 	/**
 	 * Add properties to model and return this builder instance
-	 * 
+	 *
 	 * @param properties optionally null or empty augmentation properties
-	 * 
+	 *
 	 * @return this instance of the <code>PropertyModelBuilder</code>
 	 */
 	@Override
@@ -54,7 +54,7 @@ public class PropertyModelBuilderImpl implements PropertyModelBuilder, Cloneable
 
 	/**
 	 * Returns the current properties associated with the model
-	 * 
+	 *
 	 * @return a non-null copy of the associated properties
 	 */
 	@Override

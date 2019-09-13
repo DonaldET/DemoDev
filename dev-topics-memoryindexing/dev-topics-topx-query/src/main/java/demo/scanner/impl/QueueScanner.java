@@ -21,8 +21,8 @@ import demo.scanner.api.TopXScanner;
 /**
  * A concrete <code>TopXScanner</code> implementation that uses a
  * <code>PriorityQueue</code> to collect the top <em>X</em> elements
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class QueueScanner extends AbstractTopXScanner implements TopXScanner
 {

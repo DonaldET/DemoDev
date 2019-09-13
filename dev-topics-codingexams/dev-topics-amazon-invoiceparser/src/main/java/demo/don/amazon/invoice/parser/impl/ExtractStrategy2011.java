@@ -13,8 +13,8 @@ import demo.don.amazon.invoice.parser.ExtractStrategy;
 
 /**
  * Defines the concrete extract method for 2011 invoices
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class ExtractStrategy2011 extends AbstractExtractStrategy implements
     ExtractStrategy

@@ -23,7 +23,7 @@ import demo.don.factorial.impl.SimpleMathHelper;
 /**
  * Test timing of the two implementations
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class TestTimming
 {
@@ -56,7 +56,7 @@ public class TestTimming
     computeRepresentativeSample(mhPre, 1, MathHelper.MAX_FACTORIAL_ARGUMENT);
 
     System.gc();
-    
+
     final long elapsedSimple = computeRepresentativeSample(mhSimple,
         TIMMING_TRIALS, MathHelper.MAX_FACTORIAL_ARGUMENT);
     final long elapsedPre = computeRepresentativeSample(mhPre, TIMMING_TRIALS,

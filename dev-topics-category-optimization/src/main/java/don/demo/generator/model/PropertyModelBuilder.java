@@ -5,9 +5,9 @@ import java.util.Properties;
 
 /**
  * Incrementally build a properties model for use by a generator
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,
@@ -21,16 +21,16 @@ public interface PropertyModelBuilder extends Serializable {
 	/**
 	 * Augments the model with additional Java properties, optionally overriding
 	 * existing properties
-	 * 
+	 *
 	 * @param properties optionally null or empty properties to add
-	 * 
+	 *
 	 * @return this instance of the builder
 	 */
 	public abstract PropertyModelBuilder augment(final Properties properties);
 
 	/**
 	 * Computes current state of model
-	 * 
+	 *
 	 * @return the internal model
 	 */
 	public abstract Properties build();

@@ -72,7 +72,7 @@ import demo.amazon.games.Recommend;
  * <br>
  * The dominant performance from the steps above is O(<em>F</em> * <em>L</em>).
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SimpleRecommender implements Recommend
 {

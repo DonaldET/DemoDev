@@ -9,8 +9,8 @@ import don.demo.generator.arguments.tools.ArgumentUtils;
 
 /**
  * Test argument parsing utilities based on Args4J
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its

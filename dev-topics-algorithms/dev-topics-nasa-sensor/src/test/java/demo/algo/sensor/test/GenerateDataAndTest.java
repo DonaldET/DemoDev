@@ -12,7 +12,9 @@ import demo.algo.sensor.SensorMonitoring.ExposureSession;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
- * Randomly generate pixel saturation data
+ * Randomly generate pixel saturation data as bursts in rectangular regions.
+ * 
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class GenerateDataAndTest {
 	private static final Random rand = new Random(6047L);

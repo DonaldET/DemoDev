@@ -14,8 +14,8 @@ import demo.gesail.twowriters.WrappedCounter;
 
 /**
  * An <code>AddOne</code> based on a <code>WrappedCounter</code>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class WrappedAddOne extends AbstractAddOne<WrappedCounter> implements
     AddOne

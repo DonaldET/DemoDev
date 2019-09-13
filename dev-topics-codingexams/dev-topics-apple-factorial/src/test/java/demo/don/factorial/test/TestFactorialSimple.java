@@ -14,8 +14,8 @@ import demo.don.factorial.impl.SimpleMathHelper;
 
 /**
  * Test the simple implementation
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class TestFactorialSimple extends FactorialCheckerBase
 {

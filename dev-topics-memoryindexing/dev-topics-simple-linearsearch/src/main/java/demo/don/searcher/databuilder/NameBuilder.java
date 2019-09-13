@@ -38,7 +38,7 @@ import demo.don.searcher.UserID;
  * <p>
  * The fields of the user identifiers are cleaned and sorted
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class NameBuilder
 {

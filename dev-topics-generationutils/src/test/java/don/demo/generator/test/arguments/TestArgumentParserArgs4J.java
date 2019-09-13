@@ -15,9 +15,9 @@ import don.demo.generator.arguments.tools.ArgumentParserArgs4J;
 /**
  * Parses command line parameters, checking for required and converting single
  * string, comma-delimited lists into arrays of string.
- * 
- * @author Donald Trummell
- * 
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
+ *
  *         Copyright (c) 2016. Donald Trummell. All Rights Reserved. Permission
  *         to use, copy, modify, and distribute this software and its
  *         documentation for educational, research, and not-for-profit purposes,

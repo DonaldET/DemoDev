@@ -14,8 +14,8 @@ import java.util.Set;
 /**
  * Holds the result of checking a collection of <code>DataRow</code> instances,
  * read from input data; they are checked for completeness and duplication
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class DataMetricsBean
 {

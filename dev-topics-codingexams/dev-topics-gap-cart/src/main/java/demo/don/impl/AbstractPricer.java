@@ -31,8 +31,8 @@ import demo.don.api.SkuNotFound;
  * <li>Design change: add ability to remove scanned items from cart</li>
  * <li>Design change: add ability to ignore missing sku</li>
  * </ol>
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public abstract class AbstractPricer implements Pricer
 {
@@ -73,10 +73,10 @@ public abstract class AbstractPricer implements Pricer
    * Apply the packet pricing model represented by the second parameter to the
    * cart, this includes optionally modifying the cart by <em>removing</em>
    * purchased items
-   * 
+   *
    * @param cart
    * @param pricesBySku
-   * 
+   *
    * @return the total price and optionally modify the cart
    */
   protected int commonPricing(final Map<Character, Integer> cart,

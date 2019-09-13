@@ -23,8 +23,8 @@ import demo.apple.compounditerator.CompoundIterator;
 
 /**
  * Test the compound iterator against different types of user data
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class CompoundIteratorTest extends TestCase
 {

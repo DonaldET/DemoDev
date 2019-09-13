@@ -15,8 +15,8 @@ import demo.gesail.twowriters.Conductor;
 /**
  * The shared thread creation, launch, and waiting for completion code. A
  * <code>Conductor</code> also collects statistics used for testing
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  *
  * @param <C>
  *          the counter type

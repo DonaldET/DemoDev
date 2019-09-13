@@ -11,8 +11,8 @@ package demo.elance.diagonal;
 
 /**
  * An implementation lists the diagonal of a square matrix starting at an edge
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface DiagLister
 {
@@ -22,14 +22,14 @@ public interface DiagLister
    * <code>row</code> in [0, n] and <code>col</code> in [0, n), specifying an
    * outer edge. Note that an edge element has either <code>row</code> zero or
    * <code>col</code> zero. The matrix must not be empty
-   * 
+   *
    * @param matrix
    *          the non-null, non-empty two dimensional square matrix to list
    * @param row
    *          the starting row
    * @param col
    *          the starting column
-   * 
+   *
    * @return A string listing the elements in a diagonal of the matrix
    */
   public abstract String listDiag(final char[][] matrix, final int row,

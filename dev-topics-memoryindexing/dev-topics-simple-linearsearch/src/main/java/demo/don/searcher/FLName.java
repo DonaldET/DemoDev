@@ -25,7 +25,7 @@ import org.apache.commons.lang3.Validate;
  * <li>Provides <code>clone</code></li>
  * </ul>
  *
- * @author Donald Trummell
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class FLName implements Comparable<FLName>, Comparator<FLName>,
     Cloneable

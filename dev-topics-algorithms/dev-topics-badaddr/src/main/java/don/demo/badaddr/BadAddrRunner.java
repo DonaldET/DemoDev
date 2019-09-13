@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * Adder checking done with a "runner" using this API.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface BadAddrRunner
 {

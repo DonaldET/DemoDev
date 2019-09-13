@@ -17,8 +17,8 @@ import com.procyon.sieve.searcher.SieveSearcher;
 /**
  * Runs a sieve search instance that incorporates an algorithm run repeatedly
  * while being timmed
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class SieveSearchRunnerImpl implements SieveSearchRunner
 {

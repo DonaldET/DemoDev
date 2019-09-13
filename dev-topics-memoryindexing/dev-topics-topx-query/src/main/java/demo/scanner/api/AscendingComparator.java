@@ -20,8 +20,8 @@ import java.util.function.ToLongFunction;
  * Orders using <code>Game</code> bean fields that form a unique key across game
  * instances. The ordering can be ascending or descending, depending on the
  * constructor parameter.
- * 
- * @author Donald Trummell
+ *
+ * @author Donald Trummell (dtrummell@gmail.com)
  */
 public class AscendingComparator implements Comparator<Game>, Serializable
 {
