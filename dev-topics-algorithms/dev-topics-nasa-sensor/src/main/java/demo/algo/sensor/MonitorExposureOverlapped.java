@@ -44,7 +44,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		regions.add(ender);
 
 		State state = new State();
-		List<Rectangle> holding = new LinkedList<Rectangle>();
+		List<Region> holding = new LinkedList<Region>();
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle reg = itr.next();
 		state = mergeIntoHoldings(state, reg, holding);
@@ -62,7 +62,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 
 			if (isNonOverlapping(reg, state.rgtHoldingBound)) {
 				state = flushHolding(state, k, holding);
-				holding = new LinkedList<Rectangle>();
+				holding = new LinkedList<Region>();
 			}
 
 			//
@@ -92,7 +92,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		return rhs.x1 >= rightBound;
 	}
 
-	private State flushHolding(State state, int k, List<Rectangle> holding) {
+	private State flushHolding(State state, int k, List<Region> holding) {
 		state.rgtHoldingBound = Integer.MIN_VALUE;
 		int n = holding.size();
 		if (n < 1) {
@@ -107,12 +107,72 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		return state;
 	}
 
-	private State mergeIntoHoldings(State state, Rectangle reg, List<Rectangle> holding) {
-		holding.add(reg);
+	private State mergeIntoHoldings(State state, Rectangle rec, List<Region> holding) {
+		Region reg = new Region(rec);
 		if (reg.x2 > state.rgtHoldingBound) {
 			state.rgtHoldingBound = reg.x2;
 		}
 
+		holding.add(new Region(reg));
+
 		return state;
+	}
+}
+
+class Region extends Rectangle {
+	private final int exposure;
+
+	public Region(Rectangle rec) {
+		this(rec.x1, rec.y1, rec.x2, rec.y2);
+	}
+
+	public Region(int x1, int y1, int x2, int y2) {
+		this(x1, y1, x2, y2, 1);
+	}
+
+	public Region(int x1, int y1, int x2, int y2, int exposure) {
+		super(x1, y1, x2, y2);
+		this.exposure = exposure;
+	}
+
+	public int getExposure() {
+		return exposure;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + exposure;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass())
+			return false;
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj))
+			return false;
+		Region other = (Region) obj;
+		if (exposure != other.exposure) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder leadin = new StringBuilder(super.toString());
+		leadin.append("{exposure: ");
+		leadin.append(exposure);
+		leadin.append("}");
+
+		return leadin.toString();
 	}
 }

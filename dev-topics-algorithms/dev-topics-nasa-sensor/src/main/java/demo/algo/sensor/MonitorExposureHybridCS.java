@@ -106,10 +106,10 @@ public class MonitorExposureHybridCS implements ExposureAreaFinder {
 		return state;
 	}
 
-	private State mergeIntoHoldings(State state, Rectangle reg, List<Rectangle> holding) {
-		holding.add(reg);
-		if (reg.x2 > state.rgtHoldingBound) {
-			state.rgtHoldingBound = reg.x2;
+	private State mergeIntoHoldings(State state, Rectangle rec, List<Rectangle> holding) {
+		holding.add(rec);
+		if (rec.x2 > state.rgtHoldingBound) {
+			state.rgtHoldingBound = rec.x2;
 		}
 
 		return state;
