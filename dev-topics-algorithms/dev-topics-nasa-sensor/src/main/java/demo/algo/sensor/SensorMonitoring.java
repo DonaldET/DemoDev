@@ -165,7 +165,7 @@ public interface SensorMonitoring {
 				throw new IllegalArgumentException("n small, " + n);
 			}
 			if (n != sessions.size()) {
-				throw new IllegalArgumentException("n (" + n + ") differs from sessions (" + sessions.size());
+				throw new IllegalArgumentException("n (" + n + ") differs from actual sessions (" + sessions.size() + ")");
 			}
 			if (k < 0 || k > n) {
 				throw new IllegalArgumentException("exposures (" + k + ") is out of bounds [1-" + n + "]");

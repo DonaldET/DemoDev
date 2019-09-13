@@ -1,6 +1,7 @@
 package demo.algo.sensor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,6 +22,20 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	class State {
 		public int rgtHoldingBound = Integer.MIN_VALUE;
 		public int area = 0;
+	}
+
+	class Lapped {
+		public final List<Region> resolved;
+		public final boolean isOverlapped;
+		public final int lftBound;
+		public final int rgtBound;
+
+		public Lapped(List<Region> resolved, boolean isOverlapped, int lftBound, int rgtBound) {
+			this.resolved = resolved;
+			this.isOverlapped = isOverlapped;
+			this.lftBound = lftBound;
+			this.rgtBound = rgtBound;
+		}
 	}
 
 	private static final Rectangle ender = SensorMonitoring.createEnder();
@@ -101,7 +116,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 
 		BoundingBox lclBox = SensorMonitoring.findBoundingBox(holding);
 		int[] lclSensor = new int[lclBox.width * lclBox.height];
-		int lclArea = SensorMonitoring.exposeSensor(lclSensor, lclBox, holding, k);
+		int lclArea = exposeSensorRegion(lclSensor, lclBox, holding, k);
 		state.area += lclArea;
 
 		return state;
@@ -113,14 +128,59 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			state.rgtHoldingBound = reg.x2;
 		}
 
+		if (holding.isEmpty()) {
+			holding.add(new Region(reg));
+			return state;
+		}
+
+		//
+		// Note: holdings are ordered by X1
+
 		holding.add(new Region(reg));
 
 		return state;
 	}
+
+	private Lapped overlapp(Region lhs, Region rhs) {
+		if (lhs.x1 > rhs.x1) {
+			throw new IllegalArgumentException("LHS to the right of RHS ==> LHS: " + lhs + ";  RHS: " + rhs);
+		}
+
+		if (rhs.x1 >= lhs.x2 || rhs.y1 >= lhs.y2 || rhs.y2 <= lhs.y1) {
+			List<Region> ordered = new LinkedList<Region>();
+			ordered.add(lhs);
+			ordered.add(rhs);
+			return new Lapped(ordered, false, lhs.x1, Math.max(lhs.x2, rhs.x2));
+		}
+
+		Lapped result = null;
+
+		return result;
+	}
+
+	/**
+	 * Expose unit-area regions of the sensor, then find the area meeting the
+	 * criteria k.
+	 */
+	public static int exposeSensorRegion(int[] sensor, BoundingBox bbox, List<Region> regions, int k) {
+		for (Region reg : regions) {
+			for (int y = reg.y1; y < reg.y2; y++) {
+				int ypos = y - bbox.lowerLeftY;
+				int yposR = bbox.height - ypos - 1;
+				for (int x = reg.x1; x < reg.x2; x++) {
+					int xpos = x - bbox.lowerLeftX;
+					int idx = yposR * bbox.width + xpos;
+					sensor[idx] += reg.exposure;
+				}
+			}
+		}
+
+		return (int) Arrays.stream(sensor).filter(s -> s >= k).count();
+	}
 }
 
 class Region extends Rectangle {
-	private final int exposure;
+	public final int exposure;
 
 	public Region(Rectangle rec) {
 		this(rec.x1, rec.y1, rec.x2, rec.y2);
