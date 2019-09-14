@@ -161,13 +161,14 @@ public interface SensorMonitoring {
 			this.expectedArea = expectedArea;
 			this.sessions = sessions;
 
-			if (n < 1) {
+			if (n < 0) {
 				throw new IllegalArgumentException("n small, " + n);
 			}
 			if (n != sessions.size()) {
-				throw new IllegalArgumentException("n (" + n + ") differs from actual sessions (" + sessions.size() + ")");
+				throw new IllegalArgumentException(
+						"n (" + n + ") differs from actual sessions (" + sessions.size() + ")");
 			}
-			if (k < 0 || k > n) {
+			if (k < 0 || (n > 0 && k > n)) {
 				throw new IllegalArgumentException("exposures (" + k + ") is out of bounds [1-" + n + "]");
 			}
 		}
@@ -228,6 +229,7 @@ public interface SensorMonitoring {
 		if (exposures.isEmpty()) {
 			throw new IllegalArgumentException("exposures empty");
 		}
+
 		int lowLftX = Integer.MAX_VALUE;
 		int lowLftY = Integer.MAX_VALUE;
 		int upRgtX = Integer.MIN_VALUE;

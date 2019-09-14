@@ -29,12 +29,14 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		public final boolean isOverlapped;
 		public final int lftBound;
 		public final int rgtBound;
+		public final int area;
 
-		public Lapped(List<Region> resolved, boolean isOverlapped, int lftBound, int rgtBound) {
+		public Lapped(List<Region> resolved, boolean isOverlapped, int lftBound, int rgtBound, int area) {
 			this.resolved = resolved;
 			this.isOverlapped = isOverlapped;
 			this.lftBound = lftBound;
 			this.rgtBound = rgtBound;
+			this.area = area;
 		}
 	}
 
@@ -62,7 +64,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		List<Region> holding = new LinkedList<Region>();
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle reg = itr.next();
-		state = mergeIntoHoldings(state, reg, holding);
+		state = mergeIntoHoldings(state, reg, k, holding);
 
 		while (itr.hasNext()) {
 			reg = itr.next();
@@ -83,7 +85,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			//
 			// Merge the new rectangle into the current holding
 
-			state = mergeIntoHoldings(state, reg, holding);
+			state = mergeIntoHoldings(state, reg, k, holding);
 		}
 
 		if (reg != ender) {
@@ -104,13 +106,12 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 
 	private boolean isNonOverlapping(Rectangle rhs, int rightBound) {
 		// true if RHS left edge is to the right of the LHS right edge
-		return rhs.x1 >= rightBound;
+		return false;// rhs.x1 >= rightBound;
 	}
 
 	private State flushHolding(State state, int k, List<Region> holding) {
 		state.rgtHoldingBound = Integer.MIN_VALUE;
-		int n = holding.size();
-		if (n < 1) {
+		if (holding.isEmpty()) {
 			return state;
 		}
 
@@ -122,21 +123,66 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		return state;
 	}
 
-	private State mergeIntoHoldings(State state, Rectangle rec, List<Region> holding) {
-		Region reg = new Region(rec);
-		if (reg.x2 > state.rgtHoldingBound) {
-			state.rgtHoldingBound = reg.x2;
+	private State mergeIntoHoldings(State state, Rectangle rec, int k, List<Region> holding) {
+		Region region = new Region(rec);
+		if (region.x2 > state.rgtHoldingBound) {
+			state.rgtHoldingBound = region.x2;
 		}
 
+		System.err.println("Merging " + region + " into " + holding);
+
 		if (holding.isEmpty()) {
-			holding.add(new Region(reg));
+			System.err.println("Just adding " + region);
+			holding.add(new Region(region));
 			return state;
 		}
 
 		//
-		// Note: holdings are ordered by X1
+		// Note: holdings are ordered by X1, new entry at or to the right of any other
+		// holding
 
-		holding.add(new Region(reg));
+		int lclArea = 0;
+		for (int i = 0; i < holding.size(); i++) {
+			System.err.println("----- i: " + i + "; Size: " + holding.size() + ";  lclArea: " + lclArea);
+			Region listEntryI = holding.get(i);
+			if (listEntryI.x1 > region.x2) {
+				//
+				// List to right of input, no further overlap possible
+
+				System.err.println("Input right of List at " + i + "; List: " + listEntryI + "; Input: " + region);
+				holding.add(i, region);
+				break;
+			}
+
+			if (listEntryI.x2 < region.x1) {
+				//
+				// List to left of input, no overlap possible, list entry unneeded for future
+
+				if (listEntryI.exposure >= k) {
+					System.err.println("Toss out at " + i + " ==> " + holding.get(i));
+					lclArea += listEntryI.area();
+				}
+				holding.remove(i);
+				i--;
+				continue;
+			}
+
+			//
+			// At this point, LE.x2 >= R.x1 && LE.x1 <= R.x2, so
+			// LE starts to the left of end-of-input, and
+			// LE ends to the right of start-of-input, overlap in X
+			//
+
+			if (listEntryI.y2 <= region.y1 || listEntryI.y1 > region.y2) {
+				//
+				// List is below or above input, so no overlap
+
+				System.err.println("Above/Below");
+				holding.add(i + 1, region);
+				break;
+			}
+		}
+		state.area += lclArea;
 
 		return state;
 	}
@@ -146,11 +192,14 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			throw new IllegalArgumentException("LHS to the right of RHS ==> LHS: " + lhs + ";  RHS: " + rhs);
 		}
 
+		//
+		// If RHS outside LHS, then no overlapp
+
 		if (rhs.x1 >= lhs.x2 || rhs.y1 >= lhs.y2 || rhs.y2 <= lhs.y1) {
 			List<Region> ordered = new LinkedList<Region>();
 			ordered.add(lhs);
 			ordered.add(rhs);
-			return new Lapped(ordered, false, lhs.x1, Math.max(lhs.x2, rhs.x2));
+			return new Lapped(ordered, false, lhs.x1, Math.max(lhs.x2, rhs.x2), 0);
 		}
 
 		Lapped result = null;
@@ -175,7 +224,10 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			}
 		}
 
-		return (int) Arrays.stream(sensor).filter(s -> s >= k).count();
+		int exposedArea = (int) Arrays.stream(sensor).filter(s -> s >= k).count();
+		System.err.println("Exposed " + exposedArea + " for " + regions);
+
+		return exposedArea;
 	}
 }
 

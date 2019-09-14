@@ -6,10 +6,12 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import demo.algo.sensor.ExposureAreaFinder;
 import demo.algo.sensor.MonitorExposureHybrid;
+import demo.algo.sensor.MonitorExposureOverlapped;
 import demo.algo.sensor.SensorMonitoring.ExposureSession;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
 
@@ -24,7 +26,7 @@ public class TestExposureOverlappedTDD {
 
 	@Before
 	public void setUp() throws Exception {
-		finder = new MonitorExposureHybrid();
+		finder = new MonitorExposureOverlapped();
 	}
 
 	@After
@@ -32,19 +34,21 @@ public class TestExposureOverlappedTDD {
 		finder = null;
 	}
 
+	@Ignore
 	@Test
-	public void testOneNoOverlapp() {
+	public void testOneNoOverlap() {
 		int n = 1;
 		int k = 1;
 		final List<Rectangle> sessions = new ArrayList<Rectangle>();
 		sessions.add(new Rectangle(1, 1, 4, 5));
 		int area = 12;
 		ExposureSession es = new ExposureSession(n, k, area, sessions);
-		runTest("One-No-Overlapp", es);
+		runTest("One-No-Overlap", es);
 	}
 
+	@Ignore
 	@Test
-	public void testTwoNoOverlapp() {
+	public void testTwoNoOverlap() {
 		int n = 2;
 		int k = 1;
 		final List<Rectangle> sessions = new ArrayList<Rectangle>();
@@ -52,7 +56,49 @@ public class TestExposureOverlappedTDD {
 		sessions.add(new Rectangle(1, 6, 4, 10));
 		int area = 24;
 		ExposureSession es = new ExposureSession(n, k, area, sessions);
-		runTest("Two-No-Overlapp", es);
+		runTest("Two-No-Overlap", es);
+	}
+
+	@Ignore
+	@Test
+	public void testThreeNoOverlap() {
+		int n = 3;
+		int k = 1;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		sessions.add(new Rectangle(1, 1, 4, 5));
+		sessions.add(new Rectangle(5, 1, 8, 5));
+		sessions.add(new Rectangle(9, 1, 12, 5));
+		int area = 36;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("Three-No-Overlap-x", es);
+	}
+
+	@Ignore
+	@Test
+	public void testThreeNoOverlapVertical() {
+		int n = 3;
+		int k = 1;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		sessions.add(new Rectangle(1, 1, 4, 5));
+		sessions.add(new Rectangle(1, 6, 4, 10));
+		sessions.add(new Rectangle(1, 11, 4, 15));
+		int area = 36;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("Three-No-Overlap-y", es);
+	}
+
+	@Test
+	public void testFourNoOverlapTossOut() {
+		int n = 4;
+		int k = 1;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		sessions.add(new Rectangle(1, 1, 4, 5));
+		sessions.add(new Rectangle(1, 6, 4, 10));
+		sessions.add(new Rectangle(1, 11, 4, 15));
+		sessions.add(new Rectangle(5, 1, 8, 5));
+		int area = 36;//48;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("Four-No-Overlap-Toss", es);
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------

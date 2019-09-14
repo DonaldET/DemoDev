@@ -31,6 +31,10 @@ public class MonitorExposureByAreaMapped implements ExposureAreaFinder {
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
+		if (exposures.isEmpty()) {
+			return 0;
+		}
+
 		//
 		// Get exposure session bounding box: O(n)
 		bbox = SensorMonitoring.findBoundingBox(exposures);

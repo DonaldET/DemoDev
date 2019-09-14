@@ -20,11 +20,15 @@ public class MonitorExposureByArea implements ExposureAreaFinder {
 	/**
 	 * Time complexity is O(n * a), where n = number of radiation exposure sessions,
 	 * and a is a measure of algorithm effort in a session (e.g., the mean area
-	 * exposed per session.) If the exposed area is relatively fixed and small, and the
-	 * number of sessions n is large, then the complexity is, by definition, O(n).
+	 * exposed per session.) If the exposed area is relatively fixed and small, and
+	 * the number of sessions n is large, then the complexity is, by definition,
+	 * O(n).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
+		if (exposures.isEmpty()) {
+			return 0;
+		}
 
 		//
 		// Get exposure session bounding box: O(n)

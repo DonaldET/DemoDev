@@ -92,8 +92,7 @@ public class MonitorExposureHybrid implements ExposureAreaFinder {
 
 	private State flushHolding(State state, int k, List<Rectangle> holding) {
 		state.rgtHoldingBound = Integer.MIN_VALUE;
-		int n = holding.size();
-		if (n < 1) {
+		if (holding.isEmpty()) {
 			return state;
 		}
 
