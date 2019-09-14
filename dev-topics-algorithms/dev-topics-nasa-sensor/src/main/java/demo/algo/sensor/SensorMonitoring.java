@@ -68,7 +68,7 @@ public interface SensorMonitoring {
 			validate();
 		}
 
-		public int area() {
+		public int areaX() {
 			return side(x1, x2) * side(y1, y2);
 		}
 
@@ -123,8 +123,8 @@ public interface SensorMonitoring {
 
 		@Override
 		public String toString() {
-			return getClass().getSimpleName() + "-0x" + Integer.toHexString(hashCode()) + "[(" + x1 + ", " + y1 + "), ("
-					+ x2 + ", " + y2 + "); area: " + area() + "]";
+			return "[" + getClass().getSimpleName() + " - 0x" + Integer.toHexString(hashCode()) + "; (" + x1 + ", " + y1
+					+ "), (" + x2 + ", " + y2 + ")]";
 		}
 	}
 

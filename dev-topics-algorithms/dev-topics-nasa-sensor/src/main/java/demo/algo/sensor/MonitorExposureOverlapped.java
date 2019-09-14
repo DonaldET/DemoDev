@@ -187,7 +187,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		return state;
 	}
 
-	private Lapped overlapp(Region lhs, Region rhs) {
+	private Lapped overlap(Region lhs, Region rhs) {
 		if (lhs.x1 > rhs.x1) {
 			throw new IllegalArgumentException("LHS to the right of RHS ==> LHS: " + lhs + ";  RHS: " + rhs);
 		}
@@ -251,6 +251,10 @@ class Region extends Rectangle {
 		return exposure;
 	}
 
+	public int area() {
+		return (x2 - x1) * (y2 - y1);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -283,6 +287,8 @@ class Region extends Rectangle {
 		StringBuilder leadin = new StringBuilder(super.toString());
 		leadin.append("{exposure: ");
 		leadin.append(exposure);
+		leadin.append(", area: ");
+		leadin.append(area());
 		leadin.append("}");
 
 		return leadin.toString();

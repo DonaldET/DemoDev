@@ -10,7 +10,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import demo.algo.sensor.ExposureAreaFinder;
-import demo.algo.sensor.MonitorExposureHybrid;
 import demo.algo.sensor.MonitorExposureOverlapped;
 import demo.algo.sensor.SensorMonitoring.ExposureSession;
 import demo.algo.sensor.SensorMonitoring.Rectangle;
@@ -96,7 +95,7 @@ public class TestExposureOverlappedTDD {
 		sessions.add(new Rectangle(1, 6, 4, 10));
 		sessions.add(new Rectangle(1, 11, 4, 15));
 		sessions.add(new Rectangle(5, 1, 8, 5));
-		int area = 36;//48;
+		int area = 36;// 48;
 		ExposureSession es = new ExposureSession(n, k, area, sessions);
 		runTest("Four-No-Overlap-Toss", es);
 	}
