@@ -35,6 +35,17 @@ public class TestExposureOverlappedTDD {
 
 	@Ignore
 	@Test
+	public void testNoExposures() {
+		int n = 0;
+		int k = 1;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		int area = 0;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("No-exposures", es);
+	}
+
+	@Ignore
+	@Test
 	public void testOneNoOverlap() {
 		int n = 1;
 		int k = 1;
