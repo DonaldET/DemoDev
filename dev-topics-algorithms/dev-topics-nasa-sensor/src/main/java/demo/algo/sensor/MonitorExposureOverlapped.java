@@ -53,7 +53,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
-		if (exposures == null || exposures.size() < 1) {
+		if (exposures.isEmpty()) {
 			return 0;
 		}
 
@@ -88,8 +88,8 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			state = mergeIntoHoldings(state, reg, k, holding);
 		}
 
-		if (reg != ender) {
-			throw new IllegalStateException("Did not encounter ending record");
+		if (reg != ender || holding != null) {
+			throw new IllegalStateException("Did not encounter ending record, or did not clear holdings");
 		}
 
 		return state.area;
