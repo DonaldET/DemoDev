@@ -7,7 +7,7 @@ import demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Create a simple character-based display of the radiated regions indicating
- * the level of exposure. Regions are made relative, beginning at (0,0). 
+ * the level of exposure. Regions are made relative, beginning at (0,0).
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
@@ -35,6 +35,10 @@ public class DumpSensorData {
 
 	/**
 	 * Display Sensor region count
+	 * 
+	 * @param label         display label
+	 * @param sensorRegions a collection of regions to be displayed
+	 * @param bbox          the bounding box that contains all sensor regions
 	 */
 	public static void printSensor(String label, int sensorRegions[], BoundingBox bbox) {
 		int squares = bbox.width * bbox.height;

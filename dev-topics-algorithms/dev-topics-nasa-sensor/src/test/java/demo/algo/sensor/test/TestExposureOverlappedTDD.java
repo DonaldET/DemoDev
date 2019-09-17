@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import demo.algo.sensor.ExposureAreaFinder;
@@ -33,7 +32,6 @@ public class TestExposureOverlappedTDD {
 		finder = null;
 	}
 
-	@Ignore
 	@Test
 	public void testNoExposures() {
 		int n = 0;
@@ -44,7 +42,6 @@ public class TestExposureOverlappedTDD {
 		runTest("No-exposures", es);
 	}
 
-	@Ignore
 	@Test
 	public void testOneNoOverlap() {
 		int n = 1;
@@ -56,7 +53,6 @@ public class TestExposureOverlappedTDD {
 		runTest("One-No-Overlap", es);
 	}
 
-	@Ignore
 	@Test
 	public void testTwoNoOverlap() {
 		int n = 2;
@@ -69,7 +65,6 @@ public class TestExposureOverlappedTDD {
 		runTest("Two-No-Overlap", es);
 	}
 
-	@Ignore
 	@Test
 	public void testThreeNoOverlap() {
 		int n = 3;
@@ -83,7 +78,6 @@ public class TestExposureOverlappedTDD {
 		runTest("Three-No-Overlap-x", es);
 	}
 
-	@Ignore
 	@Test
 	public void testThreeNoOverlapVertical() {
 		int n = 3;
@@ -106,9 +100,45 @@ public class TestExposureOverlappedTDD {
 		sessions.add(new Rectangle(1, 6, 4, 10));
 		sessions.add(new Rectangle(1, 11, 4, 15));
 		sessions.add(new Rectangle(5, 1, 8, 5));
-		int area = 36;// 48;
+		int area = 48;
 		ExposureSession es = new ExposureSession(n, k, area, sessions);
 		runTest("Four-No-Overlap-Toss", es);
+	}
+
+	@Test
+	public void testSimpleOverlapLast() {
+		int n = 2;
+		int k = 2;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		sessions.add(new Rectangle(5, 3, 7, 5));
+		sessions.add(new Rectangle(3, 1, 6, 5));
+		int area = 2;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("Simple overlap, input last", es);
+	}
+
+	@Test
+	public void testSimpleOverlapFirst() {
+		int n = 2;
+		int k = 2;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		sessions.add(new Rectangle(1, 3, 4, 5));
+		sessions.add(new Rectangle(3, 1, 6, 5));
+		int area = 2;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("Simple overlap, input first", es);
+	}
+
+	@Test
+	public void testSimpleFullOverlap() {
+		int n = 2;
+		int k = 2;
+		final List<Rectangle> sessions = new ArrayList<Rectangle>();
+		sessions.add(new Rectangle(3, 3, 5, 5));
+		sessions.add(new Rectangle(2, 2, 6, 6));
+		int area = 4;
+		ExposureSession es = new ExposureSession(n, k, area, sessions);
+		runTest("Simple overlap, input first", es);
 	}
 
 	// -------------------------------------------------------------------------------------------------------------------------
@@ -119,7 +149,7 @@ public class TestExposureOverlappedTDD {
 		}
 
 		int exposedArea = finder.findArea(es.sessions, es.k);
-		if (es.k != es.expectedArea) {
+		if (exposedArea != es.expectedArea) {
 			StringBuilder msg = new StringBuilder(
 					"test " + id + ", sessions size: " + es.sessions.size() + ", k: " + es.k);
 			int i = 0;
@@ -129,6 +159,5 @@ public class TestExposureOverlappedTDD {
 			msg.append("\n");
 			Assert.assertEquals(msg.toString(), es.expectedArea, exposedArea);
 		}
-
 	}
 }

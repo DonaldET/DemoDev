@@ -8,38 +8,6 @@ import java.util.List;
  * <strong>Problem Definition</strong>
  * <P>
  * Blah
- * <p>
- * <strong>INPUT FORMAT:</strong>
- * <p>
- * The first line of input contains two integer, N and K, such that <em>(1 LE K
- * LE N LE 10**5)</em>. Each of the remaining N lines contains four integers:
- * [x1,y1,x2,y2], describing a rectangular exposed region, with lower-left
- * corner (x1,y1) and upper-right corner (x2,y2). All x and y values are in the
- * range 0..1000, and all rectangles have positive area.
- * <p>
- * <strong>OUTPUT FORMAT:</strong>
- * <p>
- * Please output the area of the Sensor that is exposed by K or more bursts of
- * radiation.
- * <p>
- * <strong>SAMPLE INPUT:</strong>
- * 
- * <pre>
- * <code>
- * 3 2
- * 1 1 5 5
- * 4 4 7 6
- * 3 3 8 7
- * </code>
- * </pre>
- * 
- * SAMPLE OUTPUT:
- * 
- * <pre>
- * <code>
- * 8
- * </code>
- * </pre>
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
@@ -66,10 +34,6 @@ public interface SensorMonitoring {
 			this.x2 = x2;
 			this.y2 = y2;
 			validate();
-		}
-
-		public int areaX() {
-			return side(x1, x2) * side(y1, y2);
 		}
 
 		private int side(int lleft, int uright) {
@@ -221,6 +185,9 @@ public interface SensorMonitoring {
 	/**
 	 * Find the smallest rectangle that encloses all rectangles in the exposure
 	 * list.
+	 * 
+	 * @param exposures a collection of exposed rectangles
+	 * @return the smallest rectangle that contains all the regions
 	 */
 	public static BoundingBox findBoundingBox(List<? extends Rectangle> exposures) {
 		if (exposures == null) {
@@ -261,6 +228,15 @@ public interface SensorMonitoring {
 	/**
 	 * Expose unit-area regions of the sensor, then find the area meeting the
 	 * criteria k.
+	 * 
+	 * @param sensor  the array representing exposure counts for the [X][Y] to
+	 *                [index] mapping
+	 * @param bbox    the smallest rectangular region that contains the exposed
+	 *                rectangles
+	 * @param regions the collection of exposed-region rectangles
+	 * @param k       the critical exposure value
+	 * @return the area of sensor exposed to at least <code>k</code> radiation
+	 *         bursts
 	 */
 	public static int exposeSensor(int[] sensor, BoundingBox bbox, List<? extends Rectangle> regions, int k) {
 		for (Rectangle reg : regions) {
@@ -280,6 +256,8 @@ public interface SensorMonitoring {
 
 	/**
 	 * Create end-of-list marker for rectangles.
+	 * 
+	 * @return a rectangle used to identify the end of a list of exposure rectangles
 	 */
 	public static Rectangle createEnder() {
 		return new Rectangle(SensorMonitoring.XY_UPPER_BOUND - 1, SensorMonitoring.XY_UPPER_BOUND - 1,
@@ -288,6 +266,11 @@ public interface SensorMonitoring {
 
 	/**
 	 * Sort the input by rectangle position X1
+	 * 
+	 * @param input the list of rectangles to be ordered ascending by X1
+	 * @param max_x the value of the largest key, keys are numbered 0 through
+	 *              <code>x_max</code>
+	 * @return an ordered copy of the input
 	 */
 	public static Rectangle[] countingSort(List<? extends Rectangle> input, int max_x) {
 		final int n = input.size();
