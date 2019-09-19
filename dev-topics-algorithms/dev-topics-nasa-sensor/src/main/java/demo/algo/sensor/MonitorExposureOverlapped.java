@@ -119,6 +119,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	}
 
 	private static final Rectangle ender = SensorMonitoring.createEnder();
+	private static boolean display = false;
 
 	public static void main(String[] args) {
 	}
@@ -138,15 +139,35 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 		List<Rectangle> regions = orderRectangles(exposures);
 		regions.add(ender);
 
+		if (display) {
+			System.err.println(" EN--- (" + regions.size() + ") ==> ");
+			for (Rectangle region : regions) {
+				System.err.println("\t" + region);
+			}
+		}
+
 		State state = new State();
 		List<Region> holding = new LinkedList<Region>();
 		Iterator<Rectangle> itr = regions.iterator();
 		Rectangle rec = itr.next();
+		int num = 0;
+		if (display) {
+			System.err.println("****R--- [" + num + "] ==> " + rec);
+			System.err.println(" MI--- (" + holding.size() + ")  Rec[" + num + "]: " + rec + " :: " + state + " :: ("
+					+ holding.size() + ")");
+		}
 		state = mergeIntoHoldings(state, rec, k, holding);
-
+		if (display)
+			System.err.println(" MO--- (" + holding.size() + ")  Rec[" + num + "]: " + rec + " :: " + state + " :: ("
+					+ holding.size() + ")");
 		while (itr.hasNext()) {
+			num++;
 			rec = itr.next();
+			if (display)
+				System.err.println("****R--- [" + num + "] ==> " + rec);
 			if (rec == ender) {
+				if (display)
+					System.err.println("****Ender (" + holding.size() + ")");
 				state = flushHolding(state, k, holding);
 				holding = null;
 				break;
@@ -158,12 +179,20 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			if (isNonOverlapping(rec, state.rgtHoldingBound)) {
 				state = flushHolding(state, k, holding);
 				holding = new LinkedList<Region>();
+				if (display)
+					System.err.println(" ---- Non-Overlap at [" + num + "] ==> " + rec);
 			}
 
 			//
 			// Merge the new rectangle into the current holding
 
+			if (display)
+				System.err.println(" MI--- (" + holding.size() + ")  Rec[" + num + "]: " + rec + " :: " + state
+						+ " :: (" + holding.size() + ")");
 			state = mergeIntoHoldings(state, rec, k, holding);
+			if (display)
+				System.err.println(" MO--- (" + holding.size() + ")  Rec[" + num + "]: " + rec + " :: " + state
+						+ " :: (" + holding.size() + ")");
 		}
 
 		if (rec != ender || holding != null) {
@@ -188,12 +217,22 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	}
 
 	private State flushHolding(State state, int k, List<Region> holding) {
+		if (display)
+			System.err.println("Flushing (" + holding.size() + "); state: " + state);
+
 		state.rgtHoldingBound = Integer.MIN_VALUE;
 		if (holding.isEmpty()) {
 			return state;
 		}
 
 		int lclArea = holding.stream().filter(h -> h.exposure >= k).mapToInt(h -> h.area()).sum();
+		if (display) {
+			System.err.println(" ---- Area: (lcl: " + lclArea + ", state: " + (state.area + lclArea) + ") ==> ("
+					+ holding.size() + ")");
+			for (Region r : holding) {
+				System.err.println("\t" + r);
+			}
+		}
 		state.area += lclArea;
 
 		return state;
@@ -222,52 +261,87 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	 *         </ul>
 	 */
 	private State mergeIntoHoldings(State state, Rectangle rec, int k, List<Region> holding) {
-		Region region = new Region(rec);
-		if (region.x2 > state.rgtHoldingBound) {
-			state.rgtHoldingBound = region.x2;
-		}
 
+		Region region = new Region(rec);
 		if (holding.isEmpty()) {
-			holding.add(new Region(region));
-			return state;
+			if (display)
+				System.err.println(" ---- inital intake");
+			return addRegion(state, region, holding);
 		}
 
 		boolean addedRegion = false;
 		int pos = 0;
 		while (pos < holding.size()) {
-			Region cur = holding.get(pos);
-			if (rec.x1 > cur.x2) {
+			Region current = holding.get(pos);
+			if (region.x1 >= current.x2) {
 				//
 				// No further overlap, link in and continue
 
+				int p0 = pos;
 				pos++;
-				holding.add(pos, region);
+				int p1 = pos;
+				state = addRegion(state, region, holding);
 				pos++;
+				int p2 = pos;
 				addedRegion = true;
+				if (display) {
+					System.err.println(" ---- END-NO-OVR: " + p0 + " | " + p1 + " | " + p2 + " in " + holding.size());
+					for (Region r : holding) {
+						System.err.println("\t" + r);
+					}
+				}
 				break;
 			}
 
-			Lapped overlap = overlap(region, cur);
+			Lapped overlap = overlap(region, current);
 			if (!overlap.isOverlapped) {
+				if (display) {
+					System.err.println(" ---- NO-OVR: [" + pos + "] in " + holding.size());
+					for (Region r : holding) {
+						System.err.println("\t" + r);
+					}
+				}
 				pos++;
 				continue;
 			}
 
+			//
+			// Overlap breaks holding rectangle into 4 potential chunks
+
 			int n = overlap.resolved.size();
 			if (n < 1) {
-				throw new IllegalStateException("expected overlap at " + pos + " for " + cur);
+				throw new IllegalStateException("expected overlap at " + pos + " for " + current);
 			}
 
+			if (display) {
+				System.err.println(
+						" ---- replacing[" + pos + "] == " + current + " with (" + overlap.resolved.size() + "):");
+				for (Region r : overlap.resolved) {
+					System.err.println("\t" + r);
+				}
+			}
 			holding.remove(pos);
 			for (int i = n - 1; i >= 0; i--) {
-				holding.add(pos, overlap.resolved.get(i));
+				Region rg = overlap.resolved.get(i);
+				holding.add(pos, rg);
 			}
 
 			pos += n;
 		}
 
-		if (!addedRegion) {
-			holding.add(region);
+		if (!addedRegion)
+
+		{
+			state = addRegion(state, region, holding);
+		}
+
+		return state;
+	}
+
+	private State addRegion(State state, Region region, List<Region> holding) {
+		holding.add(region);
+		if (region.x2 > state.rgtHoldingBound) {
+			state.rgtHoldingBound = region.x2;
 		}
 
 		return state;
@@ -299,9 +373,15 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 			pos = dx.a;
 		}
 
+		if (dy.b < priorBurst.y2) {
+			exposed.add(new Region(pos, dy.b, dx.b, priorBurst.y2, priorBurst.exposure));
+		}
 		exposed.add(new Region(pos, dy.a, dx.b, dy.b, priorBurst.exposure + 1));
-		pos = dx.b + 1;
+		if (dy.a > priorBurst.y1) {
+			exposed.add(new Region(pos, priorBurst.y1, dx.b, dy.a, priorBurst.exposure));
+		}
 
+		pos = dx.b;
 		if (pos < priorBurst.x2) {
 			exposed.add(new Region(pos, priorBurst.y1, priorBurst.x2, priorBurst.y2, priorBurst.exposure));
 		}
