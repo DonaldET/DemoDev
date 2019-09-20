@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Solve classical quadradic equations, direct and recursive
+ * Solve classical quadradic equations, using both direct and recursive approaches.
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */

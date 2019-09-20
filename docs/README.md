@@ -8,13 +8,14 @@ Some educational web sites for testing your Java and Python coding skills are:
 - [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
 - [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
+- https://app.codility.com/demo/take-sample-test/, like coderpad, codility is a testing environment offering practice problems.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
 Additional support for testing SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
 - SQL runner only: [https://paiza.io/projects/featured?language=mysql](https://paiza.io/projects/featured?language=mysql).
 - SQL skills testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
 
-Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
+Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
 
@@ -57,7 +58,11 @@ These Mathematical Algorithms show methods of performance testing and demonstrat
 
 Project | Description
 ------- | -----------
-_largenumeric_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors. This is the basis for the article: [https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/](https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/). 
+_badaddr_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors. This is the basis for the article: [https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/](https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/). 
+_quadradic_ | Example of a Quadradic Equation solver using both direct and iterative methods.. 
+_largenumeric_ | Example of the Kahn algorithm for mitigating some of the errors. 
+_nasa-sensor_ | Monitor sensor radiation exposure with multiple algorithms; trade off space and time.
+_sieve_ | Implements the classical method to find primes in an interval using the Sieve of Eratosthenes.
 
 ## Sub-Project Coding Exams
 
@@ -73,30 +78,31 @@ These solutions also demonstrate coding principles like:
 
 Client | Project | Description
 ------ | ------- | -----------
-Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns
+Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns. 
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well. This is the basis of the article: [https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/]( https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/). 
 AppDynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
-Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source
-Apple | _factorial_ | Contrast two factorial algorithms
-Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques
+Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source. 
+Apple | _factorial_ | Contrast two factorial algorithms. 
+Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques. 
 CreditKarma | _list dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
-Cruise-Control | _task processor_ | Process tasks sequentially  with parameterizable cooling time and fixed execution times
-EasyPost | _pick_ | pick create-pick event pairs from an input stream and summarize times by location
-Elance | _diagonal_ | Square matrix diagonal elements list generator
-Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies
-GE | _gesail twowriters_ | Has two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar
-GE | _geturner binarysearch_ | compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_.
-Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remove command facility 
-Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates
-IJSDE | _Problems_ | Programming skills validation examples associated with a placement web-site. 
+Cruise-Control | _task processor_ | Process tasks sequentially  with parameterizable cooling time and fixed execution times. 
+EasyPost | _pick_ | pick create-pick event pairs from an input stream and summarize times by location. 
+Elance | _diagonal_ | Square matrix diagonal elements list generator. 
+Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies. 
+GE | _gesail twowriters_ | Apply two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar. 
+GE | _geturner binarysearch_ | Compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_. 
+Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remove command facility. 
+Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates. 
+IJSDE | _Problems_ | Programming skills validation examples associated with a job-placement web-site. 
 Liveramp | _autoboxing_ | Explores consequences of Java "autoboxing" of primative values, and examines integer comparison in the context of a Java ***Comparator***. This is the basis of the article: [https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/](https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/). 
 Liveramp | _bitsearch_ | We must count unique 32 bit client IPs accessing our web-site over some time period (a day let’s say). This is the basis of the article: [https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/](https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/). The article show cases **TDD**., and will lead to an article about generating test data (e.g., see [https://queue.acm.org/detail.cfm?id=3355565](https://queue.acm.org/detail.cfm?id=3355565). 
-Lumendata | _duplicatechecker_ | Finds duplicate column values in a row
-Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie
-Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree
-WeWork | _spiral_ | Spiral-print a matrix (from LeetCode)
-WeWork | _patterns_ | Examples of Strategy, Factory, Bridge, and Decorator patterns
+Lumendata | _duplicatechecker_ | Finds duplicate column values in a row.
+Rakuten | _Merge_ | Merge two ordered arrays of integers, in place, using space O(1).
+Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie. 
+Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree.
+WeWork | _spiral_ | Spiral-print a matrix (from LeetCode).
+WeWork | _patterns_ | Examples of Strategy, Factory, Bridge, and Decorator patterns.
 
 ## Sub-Project Hacks
 
