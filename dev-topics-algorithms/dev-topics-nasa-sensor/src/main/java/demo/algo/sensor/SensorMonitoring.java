@@ -6,14 +6,34 @@ import java.util.List;
 
 /**
  * <strong>Problem Definition</strong>
- * <P>
- * Blah
+ * <p>
+ * We have a square radiation sensor with an overlaid grid of exposure regions,
+ * with the lower left grid as the origin. The positive X direction, to the
+ * right of the origin, is labeled 0 through 1000. Similarly, the positive Y
+ * direction is upward from the origin, and is also labeled 0 through 1000. The
+ * value 1000 is symbolically named <strong>XY_UPPER_BOUND</strong>. The grid
+ * uses arbitrary length units (e.g., microns) and defines a logical partition
+ * of the physical sensor area.
+ * <p>
+ * We validate the sensor using a radiation generator that emits rapid, random
+ * bursts of radiation falling on a rectangular region of the sensor. A sensor
+ * in use is expected to receive no more than a million bursts a second. The
+ * measurement period will encounter <strong>N</strong> total radiation bursts.
+ * If the accumulated bursts reach or exceed a threshold of <strong>K</strong>
+ * bursts over a monitoring period, then the sensor will &quot;white out&quot;
+ * for a period of time. For example, more than two bursts per millisecond in a
+ * grid square temporarily &quot;blind&quot; that square.
+ * <p>
+ * Ideally, we are able to compute the exposure level by area (bursts
+ * impinging on a sensor region) in sufficient time for the filter to be
+ * deployed. For example, we need to deploy the filter if we detect that 60%
+ * (600K squares) of the exposed sensor area has reached a critical value. That
+ * is areas exceeding the threshold of <strong>K</strong> bursts of radiation
+ * after <strong>N</strong> exposures.
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
 public interface SensorMonitoring {
-	public static final int NK_UPPER_BOUND = 100_000;
-	public static final int NK_LOWER_BOUND = 1;
 	public static final int XY_UPPER_BOUND = 1000;
 	public static final int XY_LOWER_BOUND = 0;
 
