@@ -35,6 +35,11 @@ public class MonitorExposureHybridPS implements ExposureAreaFinder {
 	 * a measure of algorithm effort in a session (e.g., the mean area exposed per
 	 * session.) If the exposed area is relatively fixed and small, and the number
 	 * of sessions n is large, then the complexity is, by definition, O(n).
+	 * <p>
+	 * Overlapping regions attempts to make each region smaller, thereby lowering
+	 * the number of squares needed to represent the exposures. However, it
+	 * introduces the need for sorting the input (an O(n * log(n)) operation, but
+	 * done in parallel).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {

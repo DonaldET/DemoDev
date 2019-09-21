@@ -13,7 +13,8 @@ import java.util.List;
  * direction is upward from the origin, and is also labeled 0 through 1000. The
  * value 1000 is symbolically named <strong>XY_UPPER_BOUND</strong>. The grid
  * uses arbitrary length units (e.g., microns) and defines a logical partition
- * of the physical sensor area.
+ * of the physical sensor area. An exposed area is a rectangle defined by the
+ * coordinates of its lower left and upper right corners {(x1, y1) to (x2, y2)}.
  * <p>
  * We validate the sensor using a radiation generator that emits rapid, random
  * bursts of radiation falling on a rectangular region of the sensor. A sensor
@@ -22,14 +23,14 @@ import java.util.List;
  * If the accumulated bursts reach or exceed a threshold of <strong>K</strong>
  * bursts over a monitoring period, then the sensor will &quot;white out&quot;
  * for a period of time. For example, more than two bursts per millisecond in a
- * grid square temporarily &quot;blind&quot; that square.
+ * grid square temporarily &quot;blinds&quot; that square.
  * <p>
- * Ideally, we are able to compute the exposure level by area (bursts
- * impinging on a sensor region) in sufficient time for the filter to be
- * deployed. For example, we need to deploy the filter if we detect that 60%
- * (600K squares) of the exposed sensor area has reached a critical value. That
- * is areas exceeding the threshold of <strong>K</strong> bursts of radiation
- * after <strong>N</strong> exposures.
+ * Ideally, we are able to compute the exposure level by area (bursts impinging
+ * on a sensor region) in sufficient time for the filter to be deployed. For
+ * example, we need to deploy the filter if we detect that 60% (600K squares) of
+ * the exposed sensor area has reached a critical value. That is areas exceeding
+ * the threshold of <strong>K</strong> bursts of radiation after
+ * <strong>N</strong> exposures.
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
