@@ -1,8 +1,8 @@
 import collections
 
 """
-Write a function that expands a HashMap to an array. The HashMap contains a key and a value your function will produce
-an array with the key repeated the respective number of times. Output order of the array does not matter.
+Write a function that expands a HashMap to an array. The HashMap contains a key and a value, from which your function
+will produce an array with the key repeated the respective number of times. Output order of the array does not matter.
  
 Convert a dictionary with key:count pairs to an array where each array entry has the key "value" replicated count times.
 """
