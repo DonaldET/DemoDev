@@ -98,8 +98,8 @@ IJSDE | _Problems_ | Programming skills validation examples associated with a jo
 Liveramp | _autoboxing_ | Explores consequences of Java "autoboxing" of primative values, and examines integer comparison in the context of a Java ***Comparator***. This is the basis of the article: [https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/](https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/). 
 Liveramp | _bitsearch_ | We must count unique 32 bit client IPs accessing our web-site over some time period (a day let’s say). This is the basis of the article: [https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/](https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/). The article show cases **TDD**., and will lead to an article about generating test data (e.g., see [https://queue.acm.org/detail.cfm?id=3355565](https://queue.acm.org/detail.cfm?id=3355565). 
 Lumendata | _duplicatechecker_ | Finds duplicate column values in a row.
+PINTR | _expand_ | Write a function that expands a HashMap to an array. The HashMap contains a key and a value, from which your function will produce an array with the key repeated the respective number of times. Output order of the array does not matter.
 Rakuten | _Merge_ | Merge two ordered arrays of integers, in place, using space O(1).
-PINTR | _expand_ | Write a function that expands a HashMap to an array. The HashMap contains a key and a value, from which your function will produce an array with the key repeated the respective number of times. Output order of the array does not matter. 
 Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie. 
 Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree.
 WeWork | _spiral_ | Spiral-print a matrix (from LeetCode).
