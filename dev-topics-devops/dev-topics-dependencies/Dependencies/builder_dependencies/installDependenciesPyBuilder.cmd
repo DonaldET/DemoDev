@@ -17,11 +17,11 @@ call %vactive%
 if ERRORLEVEL == 1 goto NO_VE_ERR
 set ve=YES
 
-echo. -- builder.py
-set bldr=builder.py
+echo.   -- builder.py
+set bldr=build.py
 if not exist %bldr% goto NO_BUILDER_ERR
 
-echo. -- PyBuilder
+echo.   -- PyBuilder
 set pyb=%scp%\pyb_.exe
 if not exist %pyb% goto NO_PYB_ERR
 
@@ -46,7 +46,7 @@ goto FINIS
 
 :NO_BUILDER_ERR
 echo.
-echo. No build file executable (%bldr%)!
+echo. No build file (%bldr%)!
 goto FINIS
 
 :NO_PYB_ERR
