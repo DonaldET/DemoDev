@@ -1,7 +1,7 @@
 :
 : installDependenciesPyBuilder.cmd
 :
-: INaall dependencies for PyBuilder in the virtual environment
+: Insall internal dependencies for PyBuilder in the virtual environment
 :
 @echo off
 setlocal

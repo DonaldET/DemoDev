@@ -1,7 +1,7 @@
 :
-: installDependenciesPyBuilder.cmd
+: installExternalDependenciesPyBuilder.cmd
 :
-: Insall internal dependencies for PyBuilder in the virtual environment
+: Install external dependencies for PyBuilder in the virtual environment
 :
 @echo off
 setlocal
@@ -9,7 +9,7 @@ set scp=venv\Scripts
 set vactive=%scp%\activate.bat
 set ve=NO
 echo.
-echo. Install dependencies for PyBuilder using the virtual environment venv
+echo. Install EXTERNAL dependencies for PyBuilder using the virtual environment venv
 if not exist %vactive% goto NO_VE_ERR
 
 echo.   -- Virtual environment setup
@@ -26,16 +26,16 @@ set pyb=%scp%\pyb_.exe
 if not exist %pyb% goto NO_PYB_ERR
 
 echo.
-echo.   -- Install PyBuilder Dependencies
+echo.   -- Install PyBuilder External Dependencies
 python -m pip --version
-%pyb% install_dependencies
-if ERRORLEVEL == 1 goto ERR_PYB_FAILED
+python -m pip install flake8
+if ERRORLEVEL == 1 goto ERR_XXX_FAILED
 
-echo.
-echo. Repair PIP
+:echo.
+:echo. Repair PIP
 python -m pip --version
-python -m pip install --upgrade pip
-if ERRORLEVEL == 1 goto ERR_PYB_INST
+:python -m pip install --upgrade pip
+:if ERRORLEVEL == 1 goto ERR_PYB_INST
 goto FINIS
 
 :NO_VE_ERR
@@ -63,7 +63,7 @@ goto FINIS
 
 :FINIS
 echo.
-echo. Install dependencies effort complete - remove virtual environment
+echo. Install EXTERNAL dependencies effort complete - remove virtual environment
 if "%ve%" == "yes" call %scp%\deactivate.bat
 
 endlocal
