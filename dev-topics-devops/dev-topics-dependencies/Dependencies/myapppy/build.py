@@ -7,11 +7,11 @@ use_plugin("python.flake8")
 use_plugin("python.coverage")
 use_plugin("python.distutils")
 
-
 name = "myapppy"
 default_task = "publish"
 
 
 @init
 def set_properties(project):
-    pass
+    project.set_property("coverage_break_build", False)  # default is True
+    project.build_depends_on("mock")
