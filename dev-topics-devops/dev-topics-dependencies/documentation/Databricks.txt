@@ -1,1 +1,0 @@
-myappy Library location: dbfs:/FileStore/jars/2906adf3_bbb0_49b1_9f3a_2f71fb83b053/myapppy-1.0.dev0-py3-none-any.whl
