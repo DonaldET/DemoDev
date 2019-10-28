@@ -46,8 +46,8 @@ local.properties
 #################
 
 .idea/
+virtualenv/
 venv/
-PySupport/venv/
 
 
 #################
