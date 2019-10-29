@@ -3,6 +3,7 @@ package don.demo.generator;
 import java.io.Serializable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -164,12 +165,13 @@ public class TextSourceGeneratorRunner implements Serializable {
 		boolean jarPath = loadedFrom.toLowerCase().startsWith("jar:");
 		String beansAppContextPath = jarPath ? APP_BEANS_CONTEXT_PATH_JAR : APP_BEANS_CONTEXT_PATH_FILE;
 		String mainAppContextPath = jarPath ? MAIN_APP_CONTEXT_PATH_JAR : MAIN_APP_CONTEXT_PATH_FILE;
-		ClassPathXmlApplicationContext ctx = loadSpringContextFiles(beansAppContextPath, mainAppContextPath);
+		ClassPathXmlApplicationContext ctx = loadSpringContextFiles(
+				new String[] { beansAppContextPath, mainAppContextPath });
 		if (ctx == null) {
 			jarPath = !jarPath;
 			beansAppContextPath = jarPath ? APP_BEANS_CONTEXT_PATH_JAR : APP_BEANS_CONTEXT_PATH_FILE;
 			mainAppContextPath = jarPath ? MAIN_APP_CONTEXT_PATH_JAR : MAIN_APP_CONTEXT_PATH_FILE;
-			ctx = loadSpringContextFiles(beansAppContextPath, mainAppContextPath);
+			ctx = loadSpringContextFiles(new String[] { beansAppContextPath, mainAppContextPath });
 			if (ctx == null) {
 				throw new IllegalStateException("unable to load " + loadedFrom);
 			}
@@ -178,17 +180,15 @@ public class TextSourceGeneratorRunner implements Serializable {
 		return ctx;
 	}
 
-	private static ClassPathXmlApplicationContext loadSpringContextFiles(final String beansAppContextPath,
-			final String mainAppContextPath) {
+	private static ClassPathXmlApplicationContext loadSpringContextFiles(final String[] contextPaths) {
 		ClassPathXmlApplicationContext ctx = null;
 		try {
-			ctx = new ClassPathXmlApplicationContext(new String[] { beansAppContextPath, mainAppContextPath });
+			ctx = new ClassPathXmlApplicationContext(contextPaths);
 		} catch (final Exception ex) {
 			if (ex instanceof BeanDefinitionStoreException) {
 				ctx = null;
 			} else {
-				throw new IllegalStateException("unable to load (" + beansAppContextPath + ", " + mainAppContextPath
-						+ ") due to " + ex.getMessage(), ex);
+				throw new IllegalStateException("unable to load (" + Arrays.deepToString(contextPaths) + ")");
 			}
 		}
 
