@@ -78,7 +78,7 @@ public class TestTextSourceGeneratorRunner {
 	}
 
 	@Test
-	public void testHiveGen() {
+	public void testRunnerWithHiveGen() {
 		final TextSourceGenerator generator = TextSourceGeneratorRunner.readyApplication();
 		Assert.assertNotNull("generator bean null", generator);
 
