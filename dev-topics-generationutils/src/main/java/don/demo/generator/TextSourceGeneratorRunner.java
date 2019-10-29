@@ -47,10 +47,8 @@ public class TextSourceGeneratorRunner implements Serializable {
 	private static final long serialVersionUID = 2679304604204119379L;
 
 	private static final String RESOURCE_BASE = "don/demo/generator/TextSourceGeneratorRunner.class";
-	private static final String APP_BEANS_CONTEXT_PATH_JAR = "classpath:META-INF/main/spring/app-context.xml";
-	private static final String APP_BEANS_CONTEXT_PATH_FILE = "classpath:/resources/META-INF/main/spring/app-context.xml";
-	private static final String MAIN_APP_CONTEXT_PATH_JAR = "classpath:META-INF/main/spring/app-main-context.xml";
-	private static final String MAIN_APP_CONTEXT_PATH_FILE = "classpath:/resources/META-INF/main/spring/app-main-context.xml";
+	private static final String[] CONTEXT_PATHS = { "classpath:%s/META-INF/main/spring/app-context.xml",
+			"classpath:%s/META-INF/main/spring/app-main-context.xml" };
 
 	private static final Logger LOGGER = Logger.getLogger(TextSourceGeneratorRunner.class);
 
@@ -162,16 +160,14 @@ public class TextSourceGeneratorRunner implements Serializable {
 		if (loadedFrom == null) {
 			throw new IllegalStateException("unable to load resource " + RESOURCE_BASE);
 		}
-		boolean jarPath = loadedFrom.toLowerCase().startsWith("jar:");
-		String beansAppContextPath = jarPath ? APP_BEANS_CONTEXT_PATH_JAR : APP_BEANS_CONTEXT_PATH_FILE;
-		String mainAppContextPath = jarPath ? MAIN_APP_CONTEXT_PATH_JAR : MAIN_APP_CONTEXT_PATH_FILE;
-		ClassPathXmlApplicationContext ctx = loadSpringContextFiles(
-				new String[] { beansAppContextPath, mainAppContextPath });
+		final boolean jarPath = loadedFrom.toLowerCase().startsWith("jar:");
+		String[] paths = Arrays.stream(CONTEXT_PATHS).map((String s) -> String.format(s, jarPath ? "" : "\resources"))
+				.toArray(String[]::new);
+		ClassPathXmlApplicationContext ctx = loadSpringContextFiles(paths);
 		if (ctx == null) {
-			jarPath = !jarPath;
-			beansAppContextPath = jarPath ? APP_BEANS_CONTEXT_PATH_JAR : APP_BEANS_CONTEXT_PATH_FILE;
-			mainAppContextPath = jarPath ? MAIN_APP_CONTEXT_PATH_JAR : MAIN_APP_CONTEXT_PATH_FILE;
-			ctx = loadSpringContextFiles(new String[] { beansAppContextPath, mainAppContextPath });
+			paths = Arrays.stream(CONTEXT_PATHS).map((String s) -> String.format(s, !jarPath ? "" : "\resources"))
+					.toArray(String[]::new);
+			ctx = loadSpringContextFiles(paths);
 			if (ctx == null) {
 				throw new IllegalStateException("unable to load " + loadedFrom);
 			}
@@ -188,7 +184,8 @@ public class TextSourceGeneratorRunner implements Serializable {
 			if (ex instanceof BeanDefinitionStoreException) {
 				ctx = null;
 			} else {
-				throw new IllegalStateException("unable to load (" + Arrays.deepToString(contextPaths) + ")");
+				throw new IllegalStateException(
+						"unable to load context paths: (" + Arrays.deepToString(contextPaths) + ")");
 			}
 		}
 
