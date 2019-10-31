@@ -3,27 +3,29 @@ Naming and structural conventions, along with collected statistics on Maven buil
 
 ### Java Package Naming Conventions
 
-*Packaging Conventions - "don."*:
+Projects have a package structure that reflects potential use outside of the ***DemoDev*** repository ("don") and for repository use only ("demo").
+
+- Packaging Conventions - "don."*:
+
 
 `D:\GitHub>findstr /srb "package " *.java | find "package don" > pkg_don.log`
 `D:\GitHub>find /C "package" pkg_don.log`
-`---------- PKG_DON.LOG: 87`
+`---------- PKG_DON.LOG: 78`
 
-*Packaging Conventions - "demo."*:
+- Packaging Conventions - "demo."*:
 
-`findstr /srb "package " *.java | find "package demo" > pkg_demo.log`
+
+
+`D:\GitHub>findstr /srb "package " *.java | find "package demo" > pkg_demo.log`
 `D:\GitHub>find /C "package" pkg_demo.log`
-`---------- PKG_DEMO.LOG: 262`
+`---------- PKG_DEMO.LOG: 280`
 
-Packaging Conventions - Other:
+- Packaging Conventions - Other:
+
 
 `D:\GitHub>findstr /srb "package " *.java | find /V "package don" | find /V "package demo" > pkg_other.log`
 `D:\GitHub>find /C "package" pkg_other.log`
-`---------- PKG_OTHER.LOG: 9`
-
-Packages with "don.*" are used for utilities 
-
-
+`---------- PKG_OTHER.LOG: 0`
 
 ### Detailed Build Statistics
 
