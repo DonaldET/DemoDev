@@ -7,9 +7,9 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package com.procyon.sieve.runner;
+package demo.cisco.sieve.runner;
 
-import com.procyon.sieve.searcher.SieveSearcher;
+import demo.cisco.sieve.searcher.SieveSearcher;
 
 /**
  * An implementation wraps a search algorithm in a &quot;runner&quot; that runs
@@ -18,18 +18,16 @@ import com.procyon.sieve.searcher.SieveSearcher;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public interface SieveSearchRunner
-{
-  public abstract void init(final int repeats, final int[] data,
-      final int topCount, final SieveSearcher searcher);
+public interface SieveSearchRunner {
+	public abstract void init(final int repeats, final int[] data, final int topCount, final SieveSearcher searcher);
 
-  public abstract int[] runTest();
+	public abstract int[] runTest();
 
-  public abstract int getRepeats();
+	public abstract int getRepeats();
 
-  public abstract int[] getData();
+	public abstract int[] getData();
 
-  public abstract int getTopCount();
+	public abstract int getTopCount();
 
-  public abstract SieveSearcher getSearcher();
+	public abstract SieveSearcher getSearcher();
 }

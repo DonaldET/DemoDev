@@ -7,17 +7,16 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package com.procyon.sieve.searcher;
+package demo.cisco.sieve.searcher;
 
 /**
- * This project compares techniques to search an array of integer.
+ * This project compares techniques to search an array of integers. We find
+ * &quot;top&quot; five values - meaning least five values - in a larger list
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public interface SieveSearcher
-{
-  public abstract String getName();
+public interface SieveSearcher {
+	public abstract String getName();
 
-  public abstract int[] search(final int repeats, final int[] data,
-      final int topCount);
+	public abstract int[] search(final int[] data, final int topCount);
 }
