@@ -1,6 +1,8 @@
 # Welcome
 
-These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional techniques are illustrated with real examples.
+These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional techniques are illustrated with real examples. Finally, a collection of coding questions is included to illustrate assessment of Java coding skills.
+
+Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. Potential usage is demonstrated in a DevOps sub-project collection of projects.
 
 #### Building Projects in the Repository
 
@@ -10,9 +12,9 @@ The Java projects use Maven to build and JUnit test artifacts for regression tes
 
 Most of DemoDev is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
 
-#### Learning Java and Coding Practice
+#### Java and Python Coding Practice, Data Management Free Resources 
 
-Some educational web sites for testing your Java and Python coding skills are:
+Here are some educational web sites for testing your Java and Python coding skills:
 
 - [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
 - [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
@@ -24,26 +26,26 @@ Additional support for testing SQL programming, which is heavily used in Data En
 - SQL runner only: [https://paiza.io/projects/featured?language=mysql](https://paiza.io/projects/featured?language=mysql).
 - SQL skills testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
 
-Finally, must of the Python content of this repository is concerned with Apache Spark, and a good free Spark implementation is hosted by Databricks (the community edition) found at  https://databricks.com/try-databricks.
+Finally, must of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  https://databricks.com/try-databricks.
 
 #### Commercial Opportunities
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
 
 # Getting Started
 
 All the information needed to build these projects is detailed in the _BuildResources_ document described next.  The process you will follow is:
- 1. Download required build dependencies (e.g., Java and MAVEN)
+ 1. Download required build dependencies (e.g., Java, MAVEN, and optionally ANT)
  2. Install and test the build dependencies
  3. Fork or download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/ "the source repo"))
  4. On the command line, from the downloaded base directory, execute:
     _mvn clean install_
 
-The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) This **GITHUB** hosted document contains links to the source code repository holding _DonaldET/DemoDev_.
+The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) BuildResources.pdf is a **GITHUB** hosted document that also contains links to the source code repository holding _DemoDev_.
 
 ## Sub-Project Categories
 
-*DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Sub-projects include:
+*DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Interesting sub-projects include:
 
 - *algorithms*: Math algorithm demonstrations.
 - *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment.
