@@ -1,4 +1,4 @@
-package don.demo.en.performance;
+package demo.en.performance;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,11 +6,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import don.demo.en.calls.MaxCallFinder;
-import don.demo.en.calls.SolutionBins;
-import don.demo.en.calls.SolutionBinsLinear;
-import don.demo.en.calls.SolutionEventsQueue;
-import don.demo.en.performance.CallGenerator.Call;
+import demo.en.calls.MaxCallFinder;
+import demo.en.calls.SolutionBins;
+import demo.en.calls.SolutionBinsLinear;
+import demo.en.calls.SolutionEventsQueue;
+import demo.en.performance.CallGenerator.Call;
 
 public class PerformanceRunner {
 	private static final int EXPECTED_MAX_CALLS = 6489;

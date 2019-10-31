@@ -1,10 +1,10 @@
-package don.demo.en.calls;
+package demo.en.calls;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import don.demo.en.performance.CallGenerator.Call;
+import demo.en.performance.CallGenerator.Call;
 
 public class SolutionEventsQueue implements MaxCallFinder {
 

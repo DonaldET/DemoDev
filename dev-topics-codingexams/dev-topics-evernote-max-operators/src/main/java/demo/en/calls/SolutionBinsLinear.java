@@ -1,13 +1,14 @@
-package don.demo.en.calls;
+package demo.en.calls;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import don.demo.en.performance.CallGenerator.Call;
+import demo.en.performance.CallGenerator.Call;
 
 /**
- * Directly map a date range to an array to accumulate active calls based on time.
+ * Directly map a date range to an array to accumulate active calls based on
+ * time.
  */
 public class SolutionBinsLinear implements MaxCallFinder {
 

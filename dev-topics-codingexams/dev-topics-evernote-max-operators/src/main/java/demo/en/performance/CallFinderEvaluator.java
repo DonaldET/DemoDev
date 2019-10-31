@@ -1,4 +1,4 @@
-package don.demo.en.performance;
+package demo.en.performance;
 
 public interface CallFinderEvaluator {
 	public static final double NANO_TO_SECOND = 1.E9;

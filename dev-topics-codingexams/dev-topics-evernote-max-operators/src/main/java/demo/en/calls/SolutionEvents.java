@@ -1,13 +1,13 @@
-package don.demo.en.calls;
+package demo.en.calls;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import don.demo.en.performance.CallFinderEvaluator;
-import don.demo.en.performance.CallGenerator;
-import don.demo.en.performance.CallGenerator.Call;
+import demo.en.performance.CallFinderEvaluator;
+import demo.en.performance.CallGenerator;
+import demo.en.performance.CallGenerator.Call;
 
 public class SolutionEvents implements MaxCallFinder {
 
