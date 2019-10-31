@@ -1,16 +1,24 @@
 # Welcome
 
-These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional techniques are illustrated with real examples. Finally, a collection of coding questions is included to illustrate assessment of Java coding skills.
+These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional coding techniques are illustrated with real examples. A collection of coding questions is included to illustrate industry-wide assessment of Java coding skills.
 
-Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. Potential usage is demonstrated in a DevOps sub-project collection of projects.
+Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. There is a DevOps sub-project collection of projects using some of the utilities.
 
 #### Building Projects in the Repository
 
-The Java projects use Maven to build and JUnit test artifacts for regression testing.  a Maven project is defined by a "***pom.xml***" file, and projects may be nested in a tree structure. The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree of related projects sharing common Maven dependencies. Maven shared plugins and _localized_ dependencies are included in parent projects and optionally overridden in child projects. there are far too many Maven tutorials to mention here, so just search the web for one that helps you.
+The Java projects in *DemoDev* use Maven to build and JUnit to test artifacts. Note that JUnit is an implementation, one of many, for regression testing.  A Maven build project is defined by an XML structure persisted in a "***pom.xml***" file located in the top level directory. Maven build projects may be nested in a tree structure.
+
+In a *tree* of Maven build projects, the _root_ (top-most) parent build project defines common MAVEN dependencies and version definitions in a *pom.xml*. Nested child build projects are located under the top-level parent build project, each child with their own *pom.xml* file, optionally defining overriding inherited MAVEN dependencies and versions.
+
+A child build project build may, in turn, be a parent of an even lower level child build project, thus forming a multi-level tree of related build projects, each inheriting common MAVEN dependencies.
+
+Maven creates a build using "*plugins*" that implement build actions. Similar to dependencies and versions, plugins are included in parent build projects and optionally overridden in child build projects.
+
+There are far too many Maven tutorials to mention here, so please search the web for one that helps you. More information is provided in the **Getting Started** section below.
 
 #### Java Requirement
 
-Most of DemoDev is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
+Most of *DemoDev* is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
 
 #### Java and Python Coding Practice, Data Management Free Resources 
 
@@ -19,7 +27,7 @@ Here are some educational web sites for testing your Java and Python coding skil
 - [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
 - [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
-- https://app.codility.com/demo/take-sample-test/, like coderpad, codility is a testing environment offering practice problems.
+- https://app.codility.com/demo/take-sample-test/, like coderpad, the codility web site is a testing environment offering practice problems.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
 Additional support for testing SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
@@ -28,39 +36,40 @@ Additional support for testing SQL programming, which is heavily used in Data En
 
 Finally, must of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  https://databricks.com/try-databricks.
 
-#### Commercial Opportunities
+#### *DemoDev* Content Commercial Opportunities
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
 
 # Getting Started
 
-All the information needed to build these projects is detailed in the _BuildResources_ document described next.  The process you will follow is:
+All the information needed to build these projects is detailed in the _BuildResources_ document described below.  The process you will follow is:
  1. Download required build dependencies (e.g., Java, MAVEN, and optionally ANT)
  2. Install and test the build dependencies
  3. Fork or download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/ "the source repo"))
  4. On the command line, from the downloaded base directory, execute:
     _mvn clean install_
 
-The _StaticResources_ directory contains instructions on how to setup a MAVEN and JAVA build environment (see document _BuildResources.pdf_.) BuildResources.pdf is a **GITHUB** hosted document that also contains links to the source code repository holding _DemoDev_.
+The _StaticResources_ directory references instructions on how to setup a MAVEN and JAVA build environment in document _BuildResources.pdf_. It is a **GITHUB** hosted document that also contains links back to this source code repository (*DemoDev*).
 
-## Sub-Project Categories
+## *DemoDev* Sub-Project Categories
 
 *DemoDev* is broken into multiple sub-project with each sub-project having a README.md file offering information about the sub-project and its contents.  Interesting sub-projects include:
 
 - *algorithms*: Math algorithm demonstrations.
-- *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment.
-- *hacks*: Unusual solutions to interesting problems that don't necessarily reflect so-called _best practices_.
+- *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment coding environment.
+- *hacks*: Unusual solutions to interesting problems that don't necessarily reflect _best practices_.
 - *jerseyservices*: RESTful Java service implementations using the **Jersey framework**
 - *memoryindexing*: In-memory search algorithms
-- *utils*: Utilities used by _DemoDev_ and related projects (code generation used by _WindPower Explorer_)
+- *utils*: Utilities used by _DemoDev_ and related projects (e.g., code generation used by _WindPower Explorer_)
 
 
 ## Sub-Project Structure
 
-Sub-projects usually include a _business_ motivation for the coding example.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes. Spring has a very readable overview of the *Liskov Substitution Principle* (see <https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/>.)
+Sub-projects usually include a _business_ motivation for the coding examples in this section of the repository.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes. Spring has a very readable overview of the *Liskov Substitution Principle* (see <https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/>.)
 
-The sub-projects have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. All sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  Stability over time is accomplished by using the regression aspect of these tests. Many of the projects appear _complicated_ by use of the *Spring* framework to solve a potentially simple problem.  This is done to illustrate _Spring_ usage in addition to the basic techniques shown in the example. Overall, a professional Software Engineer would provide background for the code, some guidelines on usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these goals.
-## Sub-Project Math Algorithms
+The sub-projects have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. Many sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  Stability over time is accomplished by using the regression aspect of these tests.
+
+Many of the projects appear _complicated_ by use of the *Spring* framework to solve a potentially simple problem.  This is done to illustrate _Spring_ usage in addition to the basic techniques shown in the example. Overall, a professional Software Engineer would provide background for the code, some guidelines on usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.## Sub-Project Math Algorithms
 
 These Mathematical Algorithms show methods of performance testing and demonstrate coding principles like:
 - Separation of interface and implementation
