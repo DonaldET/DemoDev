@@ -1,10 +1,19 @@
 # Welcome
 
-These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of projects is the nucleus of a book on programming primarily with the Java language. Various object-oriented and functional techniques are illustrated with real examples.
+These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional techniques are illustrated with real examples.
 
-The projects use Maven to build and JUnit test artifacts for regression testing.  The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree. Shared plugins and _localized_ dependencies are included in parent projects and sometimes overridden in child projects.
+#### Building Projects in the Repository
+
+The Java projects use Maven to build and JUnit test artifacts for regression testing.  a Maven project is defined by a "***pom.xml***" file, and projects may be nested in a tree structure. The _root_ parent project defines common MAVEN dependencies and versions. Nested child projects are located under the top-level parent project.  A child project may be a parent of lower level child projects forming a tree of related projects sharing common Maven dependencies. Maven shared plugins and _localized_ dependencies are included in parent projects and optionally overridden in child projects. there are far too many Maven tutorials to mention here, so just search the web for one that helps you.
+
+#### Java Requirement
+
+Most of DemoDev is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
+
+#### Learning Java and Coding Practice
 
 Some educational web sites for testing your Java and Python coding skills are:
+
 - [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
 - [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
@@ -15,9 +24,11 @@ Additional support for testing SQL programming, which is heavily used in Data En
 - SQL runner only: [https://paiza.io/projects/featured?language=mysql](https://paiza.io/projects/featured?language=mysql).
 - SQL skills testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
 
-Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
+Finally, must of the Python content of this repository is concerned with Apache Spark, and a good free Spark implementation is hosted by Databricks (the community edition) found at  https://databricks.com/try-databricks.
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
+#### Commercial Opportunities
+
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
 
 # Getting Started
 
