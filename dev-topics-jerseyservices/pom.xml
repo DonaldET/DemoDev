@@ -18,7 +18,7 @@
 	<!-- <groupId>demodev.topics</groupId> -->
 	<artifactId>demodev-topics-jerseyservices-parent</artifactId>
 	<name>Demonstration of Development _JERSEY_</name>
-	<description>Parent Project for Jersey based web service</description>
+	<description>Parent Project for Jersey based Web Service</description>
 
 	<packaging>pom</packaging>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
@@ -32,8 +32,8 @@
 	<properties>
 		<war.builder.version>3.2.2</war.builder.version>
 		<jersey.version>2.27</jersey.version>
-
 		<safecollection.version>1.0.0-SNAPSHOT</safecollection.version>
+		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>
 	</properties>
 
 	<dependencies>
@@ -41,7 +41,23 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.inject</groupId>
 			<artifactId>jersey-hk2</artifactId>
-            <version>${jersey.version}</version>
+			<version>${jersey.version}</version>
+			<!-- uncomment this to get JSON support: <dependency> <groupId>org.glassfish.jersey.media</groupId> 
+				<artifactId>jersey-media-moxy</artifactId> </dependency> -->
+		</dependency>
+
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>demodev.topics</groupId>
+			<artifactId>demodev-topics-vtestingutils</artifactId>
+			<version>${vtestingutils.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -49,8 +65,6 @@
 			<version>${jersey.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- uncomment this to get JSON support: <dependency> <groupId>org.glassfish.jersey.media</groupId> 
-			<artifactId>jersey-media-moxy</artifactId> </dependency> -->
 	</dependencies>
 
 	<build>
