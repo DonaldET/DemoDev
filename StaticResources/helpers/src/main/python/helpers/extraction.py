@@ -42,20 +42,20 @@ def _extractor(line, token_begin, token_end):
     line = str(line).strip()
     lth = len(line)
     if lth < 1:
-        return 'empty'
+        return '__empty'
 
     if lth < len(token_begin) + len(token_end) + 1:
-        return 'short'
+        return '__short'
 
     tk_start = line.find(token_begin)
     if tk_start < 0:
-        return 'missing'
+        return '__missing'
 
     tk_end = line.find(token_end, tk_start + 1)
     if tk_end < 0:
-        return 'error'
+        return '__error'
 
     if tk_start == tk_end:
-        return 'zero'
+        return '__zero'
 
     return line[tk_start + len(token_begin):tk_end]
