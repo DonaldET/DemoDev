@@ -27,6 +27,33 @@ def count_bounded_tokens(path, token_begin, token_end):
     return collected
 
 
+def find_bounded_tokens(path, token_begin, token_end):
+    """
+    Extract token value from a record in file record, building a list of files containing the token.
+
+    :param path: file with tokens
+    :param token_begin: string marking beginning of token
+    :param token_end: string marking end of token
+    :return: map with tokens processed and containing file lists.
+    """
+    collected = dict()
+    collected['__MAIN__'] = [str(path) + '|' + str(token_begin) + '|' + str(token_end)]
+
+    with open(path, 'r') as reader:
+        line = reader.readline()
+        while line:
+            key = _extractor(line, token_begin, token_end)
+            if not key.startswith('__'):
+                refs = set()
+                if key in collected:
+                    refs = collected[key]
+                refs.add(line[:line.find(':')])
+                collected[key] = refs
+            line = reader.readline()
+
+    return collected
+
+
 def _extractor(line, token_begin, token_end):
     """
     Extract and classify the token in a line.
