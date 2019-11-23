@@ -10,20 +10,18 @@ class ExtractTokenMainCase(unittest.TestCase):
     def test_main_key(self):
         cur_dir_name = os.path.dirname(os.path.abspath(__file__))
         data_location = os.path.abspath(os.path.join(cur_dir_name, data_rel_location))
-        info = count_bounded_tokens(data_location, '<artifactId>',
-                                    '</artifactId>')
+        info = count_bounded_tokens(data_location, '<artifactId>', '</artifactId>')
         self.assertIsNotNone(info)
         main_ky = '__MAIN__'
-        self.assertTrue(main_ky in info)
-        self.assertEqual(data_location + '|<artifactId>|</artifactId>', info[main_ky])
+        self.assertTrue(main_ky in info, main_ky)
+        self.assertEqual(data_location + '|<artifactId>|</artifactId>', info[main_ky], main_ky)
 
 
 class ExtractTokenCountCase(unittest.TestCase):
     def test__key_counts(self):
         cur_dir_name = os.path.dirname(os.path.abspath(__file__))
         data_location = os.path.abspath(os.path.join(cur_dir_name, data_rel_location))
-        info = count_bounded_tokens(data_location, '<artifactId>',
-                                    '</artifactId>')
+        info = count_bounded_tokens(data_location, '<artifactId>', '</artifactId>')
         self.assertIsNotNone(info)
         key_count = len(info)
         self.assertEqual(9, key_count, "wrong key count")
@@ -39,51 +37,48 @@ class ListTokensMainCase(unittest.TestCase):
     def test_main_key(self):
         cur_dir_name = os.path.dirname(os.path.abspath(__file__))
         data_location = os.path.abspath(os.path.join(cur_dir_name, data_rel_location))
-        info = find_bounded_tokens(data_location, '<artifactId>',
-                                   '</artifactId>')
+        info = find_bounded_tokens(data_location, '<artifactId>', '</artifactId>')
         self.assertIsNotNone(info)
         main_ky = '__MAIN__'
         self.assertTrue(main_ky in info)
-        self.assertEqual([data_location + '|<artifactId>|</artifactId>'], info[main_ky])
+        self.assertEqual([data_location + '|<artifactId>|</artifactId>'], info[main_ky], main_ky)
 
 
 class ListTokensRefCase(unittest.TestCase):
     def test_key_refs(self):
         cur_dir_name = os.path.dirname(os.path.abspath(__file__))
         data_location = os.path.abspath(os.path.join(cur_dir_name, data_rel_location))
-        info = find_bounded_tokens(data_location, '<artifactId>',
-                                   '</artifactId>')
+        info = find_bounded_tokens(data_location, '<artifactId>', '</artifactId>')
         self.assertIsNotNone(info)
         main_ky = '__MAIN__'
         self.assertTrue(main_ky in info)
-        self.assertEqual([data_location + '|<artifactId>|</artifactId>'], info[main_ky])
+        self.assertEqual([data_location + '|<artifactId>|</artifactId>'], info[main_ky], main_ky)
 
 
-##
-# {'__MAIN__':
-#     ['D:\\GitHub\\DemoDev\\StaticResources\\helpers\\src\\unittest\\resources\\plugins_data.txt|<artifactId>|</artifactId>'],
-# 'maven-resources-plugin': {'dev-topics-category-optimization\\pom.xml', 'pom.xml',
-#     'dev-topics-generationutils\\pom.xml',
-#     'dev-topics-devops\\dev-topics-dependencies\\pom.xml'},
-# 'maven-compiler-plugin': {'dev-topics-category-optimization\\pom.xml', 'pom.xml',
-#     'dev-topics-generationutils\\pom.xml',
-#     'dev-topics-devops\\dev-topics-dependencies\\pom.xml'},
-# 'maven-shade-plugin': {'dev-topics-memoryindexing\\dev-topics-simple-linearsearch\\pom.xml',
-#     'dev-topics-generationutils\\pom.xml', 'dev-topics-nosql\\dev-topics-cachewrappeddb\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-lumendata-duplicatechecker\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-amazon-invoiceparser\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-cruise-control\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-cisco-sieve\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-elance-diagonal\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-gesail-twowriters\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-amazon-rangeconsolidator\\pom.xml',
-#     'dev-topics-codingexams\\dev-topics-amazon-codingchallange\\pom.xml',
-#     'dev-topics-devops\\dev-topics-dependencies\\pom.xml',
-#     'dev-topics-memoryindexing\\dev-topics-topx-query\\pom.xml'},
-# 'maven-war-plugin': {'dev-topics-jerseyservices\\pom.xml'},
-# 'maven-jar-plugin': {'pom.xml'},
-# 'maven-surefire-plugin': {'pom.xml'}
-##
+class ListTokensRefOneCase(unittest.TestCase):
+
+    def test_one_refs(self):
+        cur_dir_name = os.path.dirname(os.path.abspath(__file__))
+        data_location = os.path.abspath(os.path.join(cur_dir_name, data_rel_location))
+        info = find_bounded_tokens(data_location, '<artifactId>', '</artifactId>')
+        self.assertIsNotNone(info)
+
+        main_ky = 'maven-surefire-plugin'
+        self.assertTrue(main_ky in info, main_ky)
+        self.assertEqual({'pom.xml'}, info[main_ky], main_ky)
+
+        main_ky = 'maven-war-plugin'
+        self.assertTrue(main_ky in info, main_ky)
+        self.assertEqual({'dev-topics-jerseyservices\\pom.xml'}, info[main_ky], main_ky)
+
+        main_ky = 'maven-compiler-plugin'
+        self.assertTrue(main_ky in info, main_ky)
+        self.assertEqual(
+            {'dev-topics-category-optimization\\pom.xml',
+             'dev-topics-devops\\dev-topics-dependencies\\pom.xml',
+             'dev-topics-generationutils\\pom.xml',
+             'pom.xml'},
+            info[main_ky], main_ky)
 
 
 if __name__ == '__main__':

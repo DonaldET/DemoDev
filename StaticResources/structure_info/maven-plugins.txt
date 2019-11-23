@@ -1,0 +1,49 @@
+ Capturing tokens in pom.xml files below ..\..\..\..\..
+
+bin\sts-bundle\sts-3.9.9.RELEASE\features\org.maven.ide.eclipse.ajdt.feature_0.14.0.201506231302\META-INF\maven\org.maven.ide.eclipse.ajdt\org.maven.ide.eclipse.ajdt.feature\pom.xml:				<artifactId>maven-osgi-packaging-plugin</artifactId>
+bin\sts-bundle\sts-3.9.9.RELEASE\features\org.maven.ide.eclipse.ajdt.feature_0.14.0.201506231302\META-INF\maven\org.maven.ide.eclipse.ajdt\org.maven.ide.eclipse.ajdt.feature\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+bin\sts-bundle\sts-3.9.9.RELEASE\features\org.maven.ide.eclipse.ajdt.feature_0.14.0.201506231302\META-INF\maven\org.maven.ide.eclipse.ajdt\org.maven.ide.eclipse.ajdt.feature\pom.xml:            <artifactId>maven-upload-plugin</artifactId>
+bin\sts-bundle\sts-3.9.9.RELEASE\plugins\org.springframework.tooling.cloudfoundry.manifest.ls_1.8.0.201906180627\servers\manifest-yaml-language-server\META-INF\maven\org.springframework.ide.vscode\manifest-yaml-language-server\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
+Documents\Gap\DemoDevGap\AntComposedProperties\pom.xml:				<artifactId>maven-eclipse-plugin</artifactId>
+Documents\Gap\DemoDevGap\AntComposedProperties\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+Documents\Gap\DemoDevGap\hive_test-master\pom.xml:					<artifactId>maven-gpg-plugin</artifactId>
+Documents\Gap\DemoDevGap\hive_test-master\pom.xml:					<artifactId>maven-eclipse-plugin</artifactId>
+Documents\Gap\DemoDevGap\hive_test-master\pom.xml:					<artifactId>maven-compiler-plugin</artifactId>
+Documents\Gap\DemoDevGap\hive_test-master\pom.xml:						<artifactId>maven-gpg-plugin</artifactId>
+Documents\Gap\DemoDevGap\Obfuscate\Obfuscate\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+Documents\Gap\DemoDevGap\RWBenchmark\pom.xml:					<artifactId>maven-compiler-plugin</artifactId>
+Documents\Gap\DemoDevGap\RWBenchmark\pom.xml:					<artifactId>maven-jar-plugin</artifactId>
+Documents\Gap\DemoDevGap\RWBenchmark\pom.xml:					<artifactId>maven-surefire-plugin</artifactId>
+Documents\Gap\DemoDevGap\SimpleSpring4\pom.xml:				<artifactId>maven-eclipse-plugin</artifactId>
+Documents\Gap\DemoDevGap\SimpleSpring4\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+Documents\Gap\GapDemos\ConfigurationJExamples\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+Documents\Gap\GapDemos\Modularity\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+GitHub\DemoDev\dev-topics-category-optimization\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
+GitHub\DemoDev\dev-topics-category-optimization\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-amazon-codingchallange\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-amazon-invoiceparser\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-amazon-rangeconsolidator\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-cisco-sieve\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-cruise-control\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-elance-diagonal\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-gesail-twowriters\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-codingexams\dev-topics-lumendata-duplicatechecker\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-devops\dev-topics-dependencies\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+GitHub\DemoDev\dev-topics-devops\dev-topics-dependencies\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
+GitHub\DemoDev\dev-topics-devops\dev-topics-dependencies\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-generationutils\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
+GitHub\DemoDev\dev-topics-generationutils\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
+GitHub\DemoDev\dev-topics-generationutils\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-jerseyservices\pom.xml:					<artifactId>maven-war-plugin</artifactId>
+GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-simple-linearsearch\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-topx-query\pom.xml:                                <artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\dev-topics-nosql\dev-topics-cachewrappeddb\pom.xml:                                <artifactId>maven-shade-plugin</artifactId>
+GitHub\DemoDev\pom.xml:					<artifactId>maven-compiler-plugin</artifactId>
+GitHub\DemoDev\pom.xml:					<artifactId>maven-resources-plugin</artifactId>
+GitHub\DemoDev\pom.xml:					<artifactId>maven-jar-plugin</artifactId>
+GitHub\DemoDev\pom.xml:					<artifactId>maven-surefire-plugin</artifactId>
+Temp2\RWBenchmark\pom.xml:					<artifactId>maven-compiler-plugin</artifactId>
+Temp2\RWBenchmark\pom.xml:					<artifactId>maven-jar-plugin</artifactId>
+Temp2\RWBenchmark\pom.xml:					<artifactId>maven-surefire-plugin</artifactId>
+
+ Captured tokens in pom.xml below ..\..\..\..\..

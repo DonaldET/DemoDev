@@ -12,6 +12,9 @@ echo.
 pushd %proj%
 findstr /S /C:"<artifactId>maven-" pom.xml
 popd
+goto finis
+
+
 
 :finis
 echo.

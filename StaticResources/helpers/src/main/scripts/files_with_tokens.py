@@ -1,5 +1,5 @@
 """
-Parse a file for instance of token values and count instances.
+Parse a file for instance of token values list files instances.
 Sample command line: "<artifactId>" "</artifactId>" "../../unittest/resources/plugins_data.txt"
 Token file format: <file name>: spaces <tk_begin>token_value<tk_end>
 """
@@ -24,10 +24,10 @@ def _setup():
 
 
 if __name__ == '__main__':
-    print("Count Tokens in Token file Path")
+    print("List files containing Token instances in Token file Path")
     tk_left, tk_right, path = _setup()
-    counts = extract.count_bounded_tokens(path, tk_left, tk_right)
-    keys = sorted(counts.keys())
+    refs = extract.find_bounded_tokens(path, tk_left, tk_right)
+    keys = sorted(refs.keys())
     for key in keys:
-        print("{0:25} {1:>6}".format(key, counts[key]))
+        print("{0:25} {1}".format(key, refs[key]))
     print("  -- Done")
