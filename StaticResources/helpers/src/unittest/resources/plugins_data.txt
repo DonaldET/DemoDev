@@ -1,4 +1,4 @@
- Capturing tokens in pom.xml files below ..\..\..\..\..
+ Capturing tokens in pom.xml files below D:\GitHub\DemoDev\StaticResources\helpers\src\unittest\resources\..\..\..\..\..
 
 dev-topics-category-optimization\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
 dev-topics-category-optimization\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
@@ -25,4 +25,4 @@ pom.xml:					<artifactId>maven-resources-plugin</artifactId>
 pom.xml:					<artifactId>maven-jar-plugin</artifactId>
 pom.xml:					<artifactId>maven-surefire-plugin</artifactId>
 
- Captured tokens in pom.xml below ..\..\..\..\..
+ Captured tokens in pom.xml below D:\GitHub\DemoDev\StaticResources\helpers\src\unittest\resources\..\..\..\..\..
