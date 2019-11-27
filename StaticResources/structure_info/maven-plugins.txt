@@ -1,7 +1,5 @@
  Capturing tokens in pom.xml files below D:\GitHub\DemoDev\StaticResources\helpers\src\unittest\resources\..\..\..\..\..
 
-dev-topics-category-optimization\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
-dev-topics-category-optimization\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
 dev-topics-codingexams\dev-topics-amazon-codingchallange\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
 dev-topics-codingexams\dev-topics-amazon-invoiceparser\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
 dev-topics-codingexams\dev-topics-amazon-rangeconsolidator\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
@@ -10,11 +8,7 @@ dev-topics-codingexams\dev-topics-cruise-control\pom.xml:				<artifactId>maven-s
 dev-topics-codingexams\dev-topics-elance-diagonal\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
 dev-topics-codingexams\dev-topics-gesail-twowriters\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
 dev-topics-codingexams\dev-topics-lumendata-duplicatechecker\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
-dev-topics-devops\dev-topics-dependencies\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
-dev-topics-devops\dev-topics-dependencies\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
 dev-topics-devops\dev-topics-dependencies\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
-dev-topics-generationutils\pom.xml:				<artifactId>maven-compiler-plugin</artifactId>
-dev-topics-generationutils\pom.xml:				<artifactId>maven-resources-plugin</artifactId>
 dev-topics-generationutils\pom.xml:				<artifactId>maven-shade-plugin</artifactId>
 dev-topics-jerseyservices\pom.xml:					<artifactId>maven-war-plugin</artifactId>
 dev-topics-memoryindexing\dev-topics-simple-linearsearch\pom.xml:				<artifactId>maven-shade-plugin</artifactId>

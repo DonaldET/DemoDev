@@ -31,7 +31,6 @@ goto fini
 :find_jar_deploys
 find "[jar]" %logFile% | find /c /v ""
 if ERRORLEVEL 1 goto count_failed
-echo.
 goto fini
 
 :
