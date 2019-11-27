@@ -14,6 +14,7 @@ echo.                distribution path: %distDir%
 set myDir=xxxx
 for %%F in (%0) do set myDir=%%~dpF
 echo.                     working from: %myDir%
+pushd %myDir%
 set distFile=%distDir%\%whlFile%
 if exist %distFile% goto got_dist_file
 echo.
@@ -69,7 +70,9 @@ echo.
 call %act%\deactivate.bat
 goto fini
 
+:
 :fini
+popd
 echo.
 echo. Done with (%distFile%)
 endlocal

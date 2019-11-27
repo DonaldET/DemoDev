@@ -1,6 +1,6 @@
 """
-Parse a file for instance of token values list files instances.
-Sample command line: "<artifactId>" "</artifactId>" "../../unittest/resources/plugins_data.txt"
+Parse extracted token file, created by the findstr command, for tokens and associated POM files containing the tokens.
+Sample invocation: "<artifactId>" "</artifactId>" "../../unittest/resources/plugins_data.txt"
 Token file format: <file name>: spaces <tk_begin>token_value<tk_end>
 """
 import argparse
@@ -19,7 +19,7 @@ def _setup():
     tk_end = args.tk_end
     print('  -- tk_end  : ' + tk_end)
     tk_path = args.path
-    print('  -- path    : ' + tk_path)
+    print('  -- path    : ' + tk_path + '\n')
     return tk_begin, tk_end, tk_path
 
 
@@ -29,5 +29,8 @@ if __name__ == '__main__':
     refs = extract.find_bounded_tokens(path, tk_left, tk_right)
     keys = sorted(refs.keys())
     for key in keys:
-        print("{0:25} {1}".format(key, refs[key]))
+        refList = sorted(refs[key])
+        print("{0:25} {1}".format(key, refList[0]))
+        for idx in range(1, len(refList)):
+            print("{0:25} {1}".format('', refList[idx]))
     print("  -- Done")

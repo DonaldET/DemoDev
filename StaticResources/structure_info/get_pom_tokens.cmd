@@ -19,12 +19,16 @@ set finderPath=..\helpers\src\unittest\resources
 echo.                          located in: %finderPath%
 set lst=maven-plugins.txt
 echo.                      into text file: %lst%
+
 set myDir=xxxx
 for %%F in (%0) do set myDir=%%~dpF
 echo.                        working from: %myDir%
+:pushd %myDir%
+
+echo.
 echo. WARNING: Execute maven clean first!
 echo.
-pushd %myDir%
+
 call %finderPath%\%finder% > %lst%
 if ERRORLEVEL == 1 goto extract_mods_failed
 echo. Done creating %lst%
