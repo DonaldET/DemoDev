@@ -1,7 +1,7 @@
 ::
 : count_maven_jars.cmd
 :
-: Examine Maven build long finding jar deployed projects (i.e., [ jar])
+: Examine Maven build log finding jar deployed projects (i.e., [ jar])
 ::
 @echo off
 echo.
