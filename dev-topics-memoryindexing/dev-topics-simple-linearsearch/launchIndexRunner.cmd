@@ -6,7 +6,7 @@
 @echo off
 echo.
 echo. Running the name index searcher timing test
-echo.   -- for LIKE/CONTAINS matching criterial and successful/failed searches;
+echo.   -- for LIKE/CONTAINS matching criteria and successful/failed searches;
 echo.   -- ending with no more than 20 matches.
 
 setlocal

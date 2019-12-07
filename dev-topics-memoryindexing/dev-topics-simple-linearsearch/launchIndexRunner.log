@@ -1,7 +1,7 @@
 *** SAMPLE TEST RUN: 12/07/2019 - Alienware R17 (I7-6700HQ @ 2.60 MHZ, 16MB Main Memory)
 
  Running the name index searcher timing test
-   -- for LIKE/CONTAINS matching criterial and successful/failed searches;
+   -- for LIKE/CONTAINS matching criteria and successful/failed searches;
    -- ending with no more than 20 matches.
    -- using jar target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar with class demo.don.searcher.runner.IndexRunner
  $ D:\Java\jdk1.8.0_231\bin\java -jar target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
