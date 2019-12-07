@@ -30,17 +30,17 @@ import demo.don.searcher.match.impl.StringIndexSearcherImpl;
  * <li>multiple pattern <em>failed</em> search</li>
  * <p>
  * </ol>
- * Note, there are no runtime parameters to this program and test data come from
- * the class path with configured file names.
+ * Note, there are no runtime command-line parameters to this program and test
+ * data come from the class path with configured file names.
  * </p>
  * <p>
  * The test search data comes from a <code>NameBuilder</code> instance that has
  * more than 46,000 fake entries, and uses a <code>String</code> based search
  * index. A list of timing values, shown in brackets, is: [the average, minimum,
- * maximum, and standard deviation} times for the test, calculated in
+ * maximum, and standard deviation] times for the test, calculated in
  * milliseconds.
  *
- * @author Donald Trummell (dtrummell@gmail.com)
+ * @author Donald Trummell
  */
 public class IndexRunner {
 
@@ -121,7 +121,8 @@ public class IndexRunner {
 	}
 
 	/**
-	 * Perform the desired query, locating up to the max parameter matches
+	 * Perform the desired query, locating up to the max parameter matches,
+	 * returning the matching values and timing results.
 	 *
 	 * @param pattern     the string to locate
 	 * @param maxReturned the maximum permitted number of matches
@@ -130,7 +131,7 @@ public class IndexRunner {
 	 *
 	 * @return a possibly empty set of results
 	 */
-	private MatchResults timeSearch(final String pattern, final int maxReturned, final boolean like) {
+	private MatchResults timeSingleSearch(final String pattern, final int maxReturned, final boolean like) {
 		Validate.notEmpty(pattern, "pattern empty");
 
 		final String cleanPattern = IndexHelper.filterPattern(pattern);
@@ -143,7 +144,8 @@ public class IndexRunner {
 	}
 
 	/**
-	 * Perform a single timing run for the set of test patterns
+	 * Perform a single timing run for each pattern in a set of test patterns; used
+	 * to find average search time of set of patterns.
 	 *
 	 * @param patterns     the string patterns to locate
 	 * @param maxTolerance the largest acceptable runtime variation around the mean
@@ -153,21 +155,24 @@ public class IndexRunner {
 	 * @return the average, min, max, and standard deviation of elapsed times to
 	 *         execute queries
 	 */
-	private Number[] timingOne(final String[] patterns, final double maxTolerance, final boolean like) {
+	private Number[] timeMultiplePatterns(final String[] patterns, final double maxTolerance, final boolean like) {
 		// Validate we have successful matches
 
 		final int maxMatchCount = IndexSearcher.DEFAULT_MATCH_LIMIT;
+
+		// Make sure all code is JIT processed and things initialized
 		final String p0 = patterns[0];
-		MatchResults results = timeSearch(p0, maxMatchCount, like);
+		MatchResults results = timeSingleSearch(p0, maxMatchCount, like);
 		Validate.notNull(results, "results null for " + p0);
 
+		// Now perform the actual timing
 		long min = Integer.MAX_VALUE;
 		long max = Integer.MIN_VALUE;
 		long sum = 0;
 		long sum2 = 0;
 		final long start = System.currentTimeMillis();
 		for (String pattern : patterns) {
-			results = timeSearch(pattern, maxMatchCount, like);
+			results = timeSingleSearch(pattern, maxMatchCount, like);
 			final long time4One = results.getElapsed();
 
 			if (time4One < min)
@@ -192,8 +197,15 @@ public class IndexRunner {
 		return new Number[] { appRound(u, 1000.0), min, max, appRound(sum2 / trials - u * u, 1000.0) };
 	}
 
+	/**
+	 * Return scaled results with rounding.
+	 * 
+	 * @param x     the value to scale
+	 * @param scale the scale factor (usually a power of ten)
+	 * @return the scaled result, rounded up to the nearest scaled integer value
+	 */
 	private double appRound(double x, double scale) {
-		return Math.rint(scale * x + 0.5) / scale;
+		return Math.rint(scale * x + (x < 0.0 ? -0.5 : 0.5)) / scale;
 	}
 
 	/**
@@ -219,7 +231,8 @@ public class IndexRunner {
 	}
 
 	private static void doSingleTimings(final IndexRunner runner, final String[] firstNames, final boolean like) {
-		System.out.println("\n*** Single name Timing using " + (like ? "Like" : "Contains"));
+		System.out.println("\n*** Single name timing using " + (like ? "Like" : "Contains")
+				+ ";\n    Average time for a single pattern");
 		final int nTests = 5;
 		final int nameDelta = firstNames.length / nTests;
 		System.out.println(nTests + " non-repeating tests using " + (like ? "Like" : "Contains") + ", selected from "
@@ -228,17 +241,15 @@ public class IndexRunner {
 		final int limit = IndexSearcher.DEFAULT_MATCH_LIMIT;
 
 		// Make sure all code is JIT processed and things initialized
-
 		for (int i = 0; i < nTests; i++) {
 			final String pattern = firstNames[i * nameDelta];
-			runner.timeSearch(pattern, limit, like);
+			runner.timeSingleSearch(pattern, limit, like);
 		}
 
 		// Now perform the actual timing
-
 		for (int i = 0; i < nTests; i++) {
 			final String pattern = firstNames[i * nameDelta];
-			final MatchResults results = runner.timeSearch(pattern, limit, like);
+			final MatchResults results = runner.timeSingleSearch(pattern, limit, like);
 			System.out.println("Single Test[" + i + "], pattern '" + pattern + "' got " + results.getMatches().length
 					+ " matches in " + results.getElapsed() + " milliseconds");
 		}
@@ -246,22 +257,22 @@ public class IndexRunner {
 
 	private static void doMultipleTimings(final IndexRunner runner, final String[] firstNames,
 			final double maxTolerance, final boolean like) {
-		System.out.println(
-				"\n*** Multiple names Timing using " + (like ? "Like" : "Contains") + ";\n    " + TIMING_LABEL);
+		System.out.println("\n*** Multiple names timing (averaging) using " + (like ? "Like" : "Contains")
+				+ ";  Average time per pattern;\n    " + TIMING_LABEL);
 		System.out.println(
 				"Repeating tests for " + runner.firstNameCount + " test names in " + runner.fakeUids.length + " users");
 
 		final int nTests = 5;
 		for (int i = 0; i < nTests; i++) {
-			final Number[] timing = runner.timingOne(firstNames, maxTolerance, like);
+			final Number[] timing = runner.timeMultiplePatterns(firstNames, maxTolerance, like);
 			System.out.println("Multi-run[" + i + "] = " + Arrays.toString(timing));
 		}
 	}
 
 	private static void doMultipleTimingsFailed(final IndexRunner runner, final String[] realFirstNames,
 			final double maxTolerance, final boolean like) {
-		System.out.println("\n*** Multiple no-match names Timing (failed search) using " + (like ? "Like" : "Contains")
-				+ ";\n    " + TIMING_LABEL);
+		System.out.println("\n*** Multiple no-match names timing (averaging) using " + (like ? "Like" : "Contains")
+				+ ";  Average time per pattern;\n    " + TIMING_LABEL);
 		System.out.println(
 				"Repeating tests for " + runner.firstNameCount + " test names in " + runner.fakeUids.length + " users");
 
@@ -271,7 +282,7 @@ public class IndexRunner {
 
 		final int nTests = 5;
 		for (int i = 0; i < nTests; i++) {
-			final Number[] timing = runner.timingOne(firstNames, maxTolerance, like);
+			final Number[] timing = runner.timeMultiplePatterns(firstNames, maxTolerance, like);
 			System.out.println("Multi-run[" + i + "] = " + Arrays.toString(timing));
 		}
 	}
