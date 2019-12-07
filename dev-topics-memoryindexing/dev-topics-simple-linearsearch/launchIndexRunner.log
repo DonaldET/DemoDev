@@ -3,8 +3,7 @@
  Running the name index searcher timing test
    -- for LIKE/CONTAINS matching criterial and successful/failed searches;
    -- ending with no more than 20 matches.
-
-  -- using jar target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar with class demo.don.searcher.runner.IndexRunner
+   -- using jar target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar with class demo.don.searcher.runner.IndexRunner
  $ D:\Java\jdk1.8.0_231\bin\java -jar target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
 
 *** Setup:
