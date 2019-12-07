@@ -1,0 +1,43 @@
+
+*** Display Modules following their dependencies ***
+
+------ Zero Length, Ordered
+Zero Length         : {}
+Ordered dependencies: {}
+Generated Modules   : []
+Reversed Modules    : []
+
+------ simple look, Ordered
+simple look         : {"D"=["E", "F"], "A"=["G"], "B"=["C"], "C"=["E"], "E"=["F"], "F"=[], "G"=["B"]}
+Ordered dependencies: {"A"=["G"], "B"=["C"], "C"=["E"], "D"=["E", "F"], "E"=["F"], "F"=[], "G"=["B"]}
+   ---- published dependencies: ["A", "G", "B", "C", "E", "F", "D"]
+Generated Modules   : ["A", "G", "B", "C", "E", "F", "D"]
+Reversed Modules    : ["D", "F", "E", "C", "B", "G", "A"]
+
+------ many looks, Ordered
+many looks          : {"D"=[], "B"=["C", "D", "A", "E"], "A"=["E"], "C"=["A"], "E"=["F"], "F"=[]}
+Ordered dependencies: {"A"=["E"], "B"=["A", "C", "D", "E"], "C"=["A"], "D"=[], "E"=["F"], "F"=[]}
+   ---- published dependencies: ["A", "E", "F", "B", "C", "D"]
+Generated Modules   : ["A", "E", "F", "B", "C", "D"]
+Reversed Modules    : ["D", "C", "B", "F", "E", "A"]
+
+------ front-back, Ordered
+front-back          : {"a"=["z"], "b"=["w"], "w"=["x", "y"], "x"=["a"], "y"=[], "z"=[]}
+Ordered dependencies: {"a"=["z"], "b"=["w"], "w"=["x", "y"], "x"=["a"], "y"=[], "z"=[]}
+   ---- published dependencies: ["a", "z", "b", "w", "x", "y"]
+Generated Modules   : ["a", "z", "b", "w", "x", "y"]
+Reversed Modules    : ["y", "x", "w", "b", "z", "a"]
+
+------ back-front, Ordered
+back-front         : {"z"=[], "y"=[], "x"=["a"], "w"=["y", "x"], "b"=["w"], "a"=["z"]}
+Ordered dependencies: {"a"=["z"], "b"=["w"], "w"=["x", "y"], "x"=["a"], "y"=[], "z"=[]}
+   ---- published dependencies: ["a", "z", "b", "w", "x", "y"]
+Generated Modules   : ["a", "z", "b", "w", "x", "y"]
+Reversed Modules    : ["y", "x", "w", "b", "z", "a"]
+
+------ Accept Test, Ordered
+Accept Test         : {"A"=["B"], "B"=["X"], "C"=["D"], "X"=["Y"], "D"=["A"], "E"=["D"], "F"=["A", "C"], "Y"=[]}
+Ordered dependencies: {"A"=["B"], "B"=["X"], "C"=["D"], "D"=["A"], "E"=["D"], "F"=["A", "C"], "X"=["Y"], "Y"=[]}
+   ---- published dependencies: ["A", "B", "X", "C", "D", "E", "F", "Y"]
+Generated Modules   : ["A", "B", "X", "C", "D", "E", "F", "Y"]
+Reversed Modules    : ["Y", "F", "E", "D", "C", "X", "B", "A"]

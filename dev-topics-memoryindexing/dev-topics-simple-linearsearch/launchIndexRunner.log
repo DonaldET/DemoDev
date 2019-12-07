@@ -1,0 +1,79 @@
+*** SAMPLE TEST RUN: 12/07/2019 - Alienware R17 (I7-6700HQ @ 2.60 MHZ, 16MB Main Memory)
+
+ Running the name index searcher timing test
+
+  -- using jar xx_class
+ $ D:\Java\jdk1.8.0_231\bin\java -jar target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
+
+*** Setup:
+[SearchIndex - 0x610455d6;
+  userIds[46035]: {
+      [UserID - 0x8bc1ac4d;  firstName: john;  lastName: adelson][email: john.adelson_0@gmail.com]
+      [UserID - 0xe5cc8bd9;  firstName: aaron;  lastName: adelson][email: aaron.adelson_0@gmail.com]
+      [UserID - 0xcf61c721;  firstName: abigail;  lastName: adelson][email: abigail.adelson_0@aol.com]
+      [UserID - 0x3eab53e3;  firstName: adalyn;  lastName: adelson][email: adalyn.adelson_0@hotmail.com]
+      [UserID - 0x15e93777;  firstName: adam;  lastName: adelson][email: adam.adelson_0@yahoo.com]
+      [UserID - 0x3b35c32b;  firstName: addison;  lastName: adelson][email: addison.adelson_0@gmail.com]
+      [UserID - 0x677183b0;  firstName: addison;  lastName: adelson][email: addison.adelson_0@intrinsx.com]
+      . . .};
+  searchIndex[2210438]: {|john|adelson|john.adelson_0@gmail.com{000|aaron|adelson|aaron.adelson_0@gmail.com{001|abigail|adelson|abigail.adelson_0@aol.com{002|adalyn|adelson|adalyn.adelson_0@hotmail.com{003|adam|adelson|adam.a . . .|}
+]
+
+*** Single name timing using Like;
+    Average time for a single pattern
+5 non-repeating tests using Like, selected from 278 test names, and searched in 46035 users
+Single Test[0], pattern 'aaron' got 20 matches in 1 milliseconds
+Single Test[1], pattern 'caroline' got 20 matches in 1 milliseconds
+Single Test[2], pattern 'gage' got 20 matches in 1 milliseconds
+Single Test[3], pattern 'kira' got 20 matches in 0 milliseconds
+Single Test[4], pattern 'parker' got 20 matches in 1 milliseconds
+
+*** Multiple names timing (averaging) using Like;  Average time per pattern;
+    A list of timing values, shown in brackets, is: [the average, minimum, maximum, and standard deviation] times for the test, all calculated in milliseconds.
+Repeating tests for 278 test names in 46035 users
+Multi-run[0] = [0.342, 0, 6, 0.333]
+Multi-run[1] = [0.303, 0, 1, 0.211]
+Multi-run[2] = [0.306, 0, 1, 0.213]
+Multi-run[3] = [0.292, 0, 1, 0.207]
+Multi-run[4] = [0.303, 0, 5, 0.283]
+
+*** Multiple no-match names timing (averaging) using Like;  Average time per pattern;
+    A list of timing values, shown in brackets, is: [the average, minimum, maximum, and standard deviation] times for the test, all calculated in milliseconds.
+Repeating tests for 278 test names in 46035 users
+Multi-run[0] = [2.652, 2, 4, 0.256]
+Multi-run[1] = [2.637, 2, 4, 0.253]
+Multi-run[2] = [2.655, 2, 4, 0.241]
+Multi-run[3] = [2.626, 2, 4, 0.242]
+Multi-run[4] = [2.637, 2, 4, 0.253]
+
+*** Single name timing using Contains;
+    Average time for a single pattern
+5 non-repeating tests using Contains, selected from 278 test names, and searched in 46035 users
+Single Test[0], pattern 'aaron' got 20 matches in 1 milliseconds
+Single Test[1], pattern 'caroline' got 20 matches in 1 milliseconds
+Single Test[2], pattern 'gage' got 20 matches in 1 milliseconds
+Single Test[3], pattern 'kira' got 20 matches in 1 milliseconds
+Single Test[4], pattern 'parker' got 20 matches in 1 milliseconds
+
+*** Multiple names timing (averaging) using Contains;  Average time per pattern;
+    A list of timing values, shown in brackets, is: [the average, minimum, maximum, and standard deviation] times for the test, all calculated in milliseconds.
+Repeating tests for 278 test names in 46035 users
+Multi-run[0] = [0.5, 0, 7, 0.517]
+Multi-run[1] = [0.461, 0, 7, 0.472]
+Multi-run[2] = [0.378, 0, 6, 0.343]
+Multi-run[3] = [0.5, 0, 2, 0.258]
+Multi-run[4] = [0.421, 0, 7, 0.395]
+
+*** Multiple no-match names timing (averaging) using Contains;  Average time per pattern;
+    A list of timing values, shown in brackets, is: [the average, minimum, maximum, and standard deviation] times for the test, all calculated in milliseconds.
+Repeating tests for 278 test names in 46035 users
+Multi-run[0] = [3.795, 2, 8, 1.768]
+Multi-run[1] = [3.788, 2, 8, 1.714]
+Multi-run[2] = [4.119, 2, 7, 2.084]
+Multi-run[3] = [3.195, 2, 5, 0.222]
+Multi-run[4] = [3.245, 2, 6, 0.315]
+
+*** Done!
+
+
+ run done.

@@ -1,0 +1,70 @@
+Buildfile: D:\GitHub\DemoDev\dev-topics-generationutils\example\builder\build.xml
+     [echo] ........
+     [echo] ANT DevOps example, includes Generation
+     [echo] ........
+
+clean:
+   [delete] Deleting directory D:\GitHub\DemoDev\dev-topics-generationutils\example\gen_target
+    [mkdir] Created dir: D:\GitHub\DemoDev\dev-topics-generationutils\example\gen_target
+
+check_env:
+
+flag_production:
+
+immutable:
+     [echo] Copy immutable files to target directory ../gen_target/
+     [copy] Copying 2 files to D:\GitHub\DemoDev\dev-topics-generationutils\example\gen_target
+
+generateCommon:
+     [echo] Generate common files
+     [echo] ........
+     [echo] ANT DevOps example, includes Generation
+     [echo] ........
+
+gen_init:
+
+generateFromTemplate:
+     [echo] Generate artifacts using templates and model properties
+     [java] log4j:WARN No appenders could be found for logger (don.demo.generator.TextSourceGeneratorRunner).
+     [java] log4j:WARN Please initialize the log4j system properly.
+     [java] log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+     [java] 
+     [java] 
+     [java] TextSourceGeneratorRunner - Copyright (c) 2019. Donald Trummell. All Rights Reserved
+     [java] 
+     [java] 
+     [java] 
+     [java]   Working in path      : D:\GitHub\DemoDev\dev-topics-generationutils\example\builder\.
+     [java]   Configuration version: 1.0.0-SNAPSHOT
+     [java] 
+     [java] Generation Information:
+     [java] [Result - 0x708796d;
+     [java]   srcDir: ../gen_source/;
+     [java]   templateList: [hive_vars.tpl, hive_query.tpl];
+     [java]   defaultContext: shared_defs.properties;
+     [java]   overrideContextList: [target_defs_test.properties];
+     [java]   dstDir: ../gen_target/;
+     [java]   generatedFileList: [hive_vars.hql, hive_query.hql];
+     [java]   filesRead: 2;  filesWritten: 2]
+     [java] 
+     [java] TextSourceGeneratorRunner - done
+
+expandTokens:
+     [echo] Expand tokens using ANT
+     [echo] ........
+     [echo] ANT DevOps example, includes Generation
+     [echo] ........
+
+inter_init:
+
+interpolateTemplate:
+     [echo] ANT file interpolation
+     [copy] Copying 1 file to D:\GitHub\DemoDev\dev-topics-generationutils\example\gen_target
+
+generateProdOnly:
+
+build:
+     [echo] build steps completed
+
+BUILD SUCCESSFUL
+Total time: 3 seconds

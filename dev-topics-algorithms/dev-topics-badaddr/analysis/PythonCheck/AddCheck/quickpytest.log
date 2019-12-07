@@ -1,0 +1,35 @@
+ Running Python quick addition test
+Timer 4.0 - Command Line Timer - www.Gammadyne.com
+Copyright (C) 2007-2017 by Greg Wittmeyer - All Rights Reserved
+Timer started: 4/30/2019 4:53:09 p.m.
+
+Python Addition Accuracy Test for sequence 50000000 long using seed 607
+  forward:  [1.0, 2.0, 3.0, 4.0, 5.0, 6.0] . . . [50000000.0]
+  exp sum: 1250000025000000
+  act sum: 1250000025000000 -- using SUM function
+  act sum: 1250000025000000 -- using RAW sum, smallest to largest
+
+ --- Now divide by large prime 7919 ---
+True sum is now 157848216315.191315
+
+BuiltIn SUM is 157848216315.191376;  delta: 0.000061;  relative error: 3.866699e-16
+
+Smallest to largest sum is 157848216315.191376;  delta: 0.000061;  relative error: 3.866699e-16
+
+Largest to smallest sum is 157848216315.191315;  delta: 0.000000;  relative error: 0.000000e+00
+
+ --- Now Shuffle ---
+Randomized!
+
+BuiltIn sum is 157848216315.192474;  delta: 0.001160;  relative error: 7.346728e-15
+
+Simple sum is 157848216315.192474;  delta: 0.001160;  relative error: 7.346728e-15
+
+Python Addition Check Done.
+
+Timer 4.0 - Command Line Timer - www.Gammadyne.com
+Copyright (C) 2007-2017 by Greg Wittmeyer - All Rights Reserved
+2 minutes, 4 seconds
+
+ Done: 16:53:09.59 to 16:55:13.90
+

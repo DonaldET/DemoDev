@@ -1,0 +1,48 @@
+
+ Install dependencies for PyBuilder using the virtual environment venv
+   -- Virtual environment setup
+   -- builder.py
+   -- PyBuilder
+
+   -- Install PyBuilder Dependencies
+pip 19.3.1 from D:\GitHub\DemoDev\StaticResources\helpers\venv\lib\site-packages\pip (python 3.7)
+PyBuilder version 0.12.0.dev20190116131423
+Build started at 2019-11-15 11:07:53
+------------------------------------------------------------
+[INFO]  Building pybuilder version 0.12.0.dev (0.12.0.dev20191115190754)
+[INFO]  Executing build in D:\GitHub\DemoDev\StaticResources\helpers
+[INFO]  Going to execute task install_dependencies
+[INFO]  Installing all dependencies
+[INFO]  Processing batch dependency 'pyassert'
+[INFO]  Processing batch dependency 'pyfix'
+[INFO]  Processing batch dependency 'pygments'
+[INFO]  Processing batch dependency 'pip~=9.0'
+[INFO]  Processing batch dependency 'setuptools~=39.0'
+[INFO]  Processing batch dependency 'tailer~=0.4'
+[INFO]  Processing batch dependency 'wheel~=0.31'
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: pybuilder
+             Version: 0.12.0.dev (0.12.0.dev20191115190754)
+      Base directory: D:\GitHub\DemoDev\StaticResources\helpers
+        Environments: 
+               Tasks: install_dependencies [17036 ms]
+Build finished at 2019-11-15 11:08:11
+Build took 17 seconds (17246 ms)
+
+ Repair PIP
+pip 9.0.3 from D:\GitHub\DemoDev\StaticResources\helpers\venv\lib\site-packages (python 3.7)
+Collecting pip
+  Using cached https://files.pythonhosted.org/packages/00/b6/9cfa56b4081ad13874b0c6f96af8ce16cfbc1cb06bedf8e9164ce5551ec1/pip-19.3.1-py2.py3-none-any.whl
+Installing collected packages: pip
+  Found existing installation: pip 9.0.3
+    Uninstalling pip-9.0.3:
+      Successfully uninstalled pip-9.0.3
+Successfully installed pip-19.3.1
+
+ Install dependencies effort complete - remove virtual environment
+
+ Done
+

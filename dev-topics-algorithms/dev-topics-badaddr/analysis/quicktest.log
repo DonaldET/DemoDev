@@ -1,0 +1,34 @@
+ Running Java Quick Addition Checker
+Timer 4.0 - Command Line Timer - www.Gammadyne.com
+Copyright (C) 2007-2017 by Greg Wittmeyer - All Rights Reserved
+Timer started: 4/30/2019 4:50:48 p.m.
+
+Check Addition Accuracy Test for sequence 50000000 long
+  forward: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0] . . . for 50000000 entries.
+  exp sum: 1250000025000000
+  act sum: 1250000025000000  -- by stream-reduce
+
+--- Now divide by large prime 7919 ---
+True sum is now 157848216315.191300
+
+No-shuffle stream sum is 157848216315.191380;  delta: 0.000061;  relative error: 3.866699e-16;  sigd: 16.0
+
+Largest to smallest sum is 157848216315.191300;  delta: 0.000000;  relative error: 0.000000e+00;  sigd: 16.0
+
+--- Now Shuffle ---
+Randomized
+
+Stream sum is 157848216315.200100;  delta: 0.008789;  relative error: 5.568047e-14;  sigd: 13.0
+
+Parallel stream sum is 157848216315.193240;  delta: 0.001923;  relative error: 1.218010e-14;  sigd: 13.7
+
+Simple sum is 157848216315.200100;  delta: 0.008789;  relative error: 5.568047e-14;  sigd: 13.0
+
+Accuracy test complete.
+
+Timer 4.0 - Command Line Timer - www.Gammadyne.com
+Copyright (C) 2007-2017 by Greg Wittmeyer - All Rights Reserved
+66.0 seconds
+
+ Done: 16:50:48.10 to 16:51:54.15
+

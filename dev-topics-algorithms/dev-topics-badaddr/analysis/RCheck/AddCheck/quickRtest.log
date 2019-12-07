@@ -1,0 +1,28 @@
+ Running R quick addition test
+Timer 4.0 - Command Line Timer - www.Gammadyne.com
+Copyright (C) 2007-2017 by Greg Wittmeyer - All Rights Reserved
+Timer started: 5/8/2019 12:37:39 p.m.
+
+R Language Addition Accuracy Test for sequence 5e+07 long
+  forward: 1 2 3 4 5 6 . . . for 50000000  entries.
+  exp sum: 1.250000025e+15
+  act sum: 1.250000025e+15   -- by BuiltIn SUM
+
+--- Now divide by large prime  7919  ---
+While operating on 0.0001262786 0.0002525571 0.0003788357 0.0005051143 0.0006313929 0.0007576714 ...
+True sum is now  157848216315.19131470
+
+No-shuffle BuiltIn sum is  157848216315.19131470  delta: 0.00000000  relative error: 0.00000000  sigd: 16
+Largest to smallest sum is 157848216315.19131470  delta: 0.00000000  relative error: 0.00000000  sigd: 16
+
+--- Now Shuffle ---Randomized
+
+Shuffled BuiltIn sum is    157848216315.19131470  delta: 0.00000000  relative error: 0.00000000  sigd: 16
+
+Accuracy test complete.
+Timer 4.0 - Command Line Timer - www.Gammadyne.com
+Copyright (C) 2007-2017 by Greg Wittmeyer - All Rights Reserved
+2 minutes, 23 seconds
+
+ Done: 12:37:39.40 to 12:40:02.76
+

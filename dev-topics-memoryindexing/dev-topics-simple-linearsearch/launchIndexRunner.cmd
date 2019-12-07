@@ -5,7 +5,7 @@
 ::
 @echo off
 echo.
-echo. Running the name index searcher timming test
+echo. Running the name index searcher timing test
 echo.
 
 setlocal

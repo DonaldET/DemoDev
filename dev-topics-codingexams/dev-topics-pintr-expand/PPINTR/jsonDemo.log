@@ -1,0 +1,30 @@
+JSON Object Manipulation Example
+Python Object        : {'foo': 'Chocolate is good', 'bar': [1, 2, 3, 4700.0], 'blatz': (True, False)}
+As dumps [encoded]   : {"foo": "Chocolate is good", "bar": [1, 2, 3, 4700.0], "blatz": [true, false]}
+As loads [decoded]   : {'foo': 'Chocolate is good', 'bar': [1, 2, 3, 4700.0], 'blatz': [True, False]}
+
+Try encoding WITHOUT the comment!
+Str without comment {
+        "foo": "Chocolate is good",
+        "bar": [1, 2, 3, 4.7E3],
+        "blatz": (True, False)
+    }
+As dumps [encoded]   : {"foo": "Chocolate is good", "bar": [1, 2, 3, 4700.0], "blatz": [true, false]}
+As loads [decoded]   : {'foo': 'Chocolate is good', 'bar': [1, 2, 3, 4700.0], 'blatz': [True, False]}
+
+Try encoding WITH the comment!
+Str with comment {
+        "foo": "Chocolate is good",
+        "bar": [1, 2, 3, 4.7E3],  # A python comment
+        "blatz": (True, False)
+    }
+As dumps [encoded]   : {"foo": "Chocolate is good", "bar": [1, 2, 3, 4700.0], "blatz": [true, false]}
+As loads [decoded]   : {'foo': 'Chocolate is good', 'bar': [1, 2, 3, 4700.0], 'blatz': [True, False]}
+
+Use Python representation of a JSON object with Eval
+Python Eval  Str[raw]: {
+        "foo": "Chocolate is good",
+        "bar": [1, 2, 3, 4.7E3],  # A python comment
+        "blatz": (True, False)
+    }
+              result: {'foo': 'Chocolate is good', 'bar': [1, 2, 3, 4700.0], 'blatz': (True, False)}

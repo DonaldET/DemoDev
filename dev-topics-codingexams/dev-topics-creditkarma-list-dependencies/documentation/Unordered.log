@@ -1,0 +1,37 @@
+
+*** Display Modules following their dependencies ***
+
+------ Zero Length, Unordered
+Zero Length         : {}
+Generated Modules   : []
+Reversed Modules    : []
+
+------ simple look, Unordered
+simple look         : {"D"=["E", "F"], "A"=["G"], "B"=["C"], "C"=["E"], "E"=["F"], "F"=[], "G"=["B"]}
+   ---- published dependencies: ["D", "E", "F", "A", "G", "B", "C"]
+Generated Modules   : ["D", "E", "F", "A", "G", "B", "C"]
+Reversed Modules    : ["C", "B", "G", "A", "F", "E", "D"]
+
+------ many looks, Unordered
+many looks          : {"D"=[], "B"=["C", "D", "A", "E"], "A"=["E"], "C"=["A"], "E"=["F"], "F"=[]}
+   ---- published dependencies: ["D", "B", "C", "A", "E", "F"]
+Generated Modules   : ["D", "B", "C", "A", "E", "F"]
+Reversed Modules    : ["F", "E", "A", "C", "B", "D"]
+
+------ front-back, Unordered
+front-back          : {"a"=["z"], "b"=["w"], "w"=["x", "y"], "x"=["a"], "y"=[], "z"=[]}
+   ---- published dependencies: ["a", "z", "b", "w", "x", "y"]
+Generated Modules   : ["a", "z", "b", "w", "x", "y"]
+Reversed Modules    : ["y", "x", "w", "b", "z", "a"]
+
+------ back-front, Unordered
+back-front         : {"z"=[], "y"=[], "x"=["a"], "w"=["y", "x"], "b"=["w"], "a"=["z"]}
+   ---- published dependencies: ["z", "y", "x", "a", "w", "b"]
+Generated Modules   : ["z", "y", "x", "a", "w", "b"]
+Reversed Modules    : ["b", "w", "a", "x", "y", "z"]
+
+------ Accept Test, Unordered
+Accept Test         : {"A"=["B"], "B"=["X"], "C"=["D"], "X"=["Y"], "D"=["A"], "E"=["D"], "F"=["A", "C"], "Y"=[]}
+   ---- published dependencies: ["A", "B", "X", "C", "D", "E", "F", "Y"]
+Generated Modules   : ["A", "B", "X", "C", "D", "E", "F", "Y"]
+Reversed Modules    : ["Y", "F", "E", "D", "C", "X", "B", "A"]
