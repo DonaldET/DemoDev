@@ -6,12 +6,14 @@
 @echo off
 echo.
 echo. Running the name index searcher timing test
+echo.   -- for LIKE/CONTAINS matching criterial and successful/failed searches;
+echo.   -- ending with no more than 20 matches.
 echo.
 
 setlocal
 set xx_jar=target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
 set xx_class=demo.don.searcher.runner.IndexRunner
-echo.  -- using jar %xx_jar" with class %xx_class%
+echo.  -- using jar %xx_jar% with class %xx_class%
 set xx_cmd=
 set xx_cmd=%xx_cmd%%JAVA_HOME%\bin\java
 set xx_cmd=%xx_cmd% -jar %xx_jar%
