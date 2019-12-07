@@ -1,7 +1,7 @@
 ::
 : launchIndexRunner.cmd - 2014.8.8
 :
-: Runs the Jar with the timming tests
+: Runs the Jar with the timing tests
 ::
 @echo off
 echo.
