@@ -27,104 +27,91 @@ import org.apache.commons.lang3.Validate;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class FLName implements Comparable<FLName>, Comparator<FLName>,
-    Cloneable
-{
-  private String firstName;
-  private String lastName;
+public class FLName implements Comparable<FLName>, Comparator<FLName>, Cloneable {
+	private String firstName;
+	private String lastName;
 
-  public FLName(final String firstName, final String lastName)
-  {
-    super();
+	public FLName(final String firstName, final String lastName) {
+		super();
 
-    Validate.notEmpty(firstName, "firstName empty");
-    this.firstName = firstName.trim().toLowerCase();
+		Validate.notEmpty(firstName, "firstName empty");
+		this.firstName = firstName.trim().toLowerCase();
 
-    Validate.notEmpty(lastName, "lastName empty");
-    this.lastName = lastName.trim().toLowerCase();
-  }
+		Validate.notEmpty(lastName, "lastName empty");
+		this.lastName = lastName.trim().toLowerCase();
+	}
 
-  public String getFirstName()
-  {
-    return firstName;
-  }
+	public String getFirstName() {
+		return firstName;
+	}
 
-  public void setFirstName(final String firstName)
-  {
-    this.firstName = firstName;
-  }
+	public void setFirstName(final String firstName) {
+		this.firstName = firstName;
+	}
 
-  public String getLastName()
-  {
-    return lastName;
-  }
+	public String getLastName() {
+		return lastName;
+	}
 
-  @Override
-  public int compare(final FLName o1, final FLName o2)
-  {
-    return o1 != null ? o1.compareTo(o2) : (o2 == null ? 0 : 1);
-  }
+	@Override
+	public int compare(final FLName o1, final FLName o2) {
+		return o1 != null ? o1.compareTo(o2) : (o2 == null ? 0 : 1);
+	}
 
-  @Override
-  public int compareTo(final FLName obj)
-  {
-    if (obj == null)
-      return -1;
+	@Override
+	public int compareTo(final FLName obj) {
+		if (obj == null)
+			return -1;
 
-    int cv = mapToOne(lastName.compareTo(obj.lastName));
-    if (cv == 0)
-      cv = mapToOne(firstName.compareTo(obj.firstName));
+		int cv = mapToOne(lastName.compareTo(obj.lastName));
+		if (cv == 0)
+			cv = mapToOne(firstName.compareTo(obj.firstName));
 
-    return cv;
-  }
+		return cv;
+	}
 
-  @Override
-  public int hashCode()
-  {
-    int hc = 7757;
-    hc = 3343 * hc + firstName.hashCode();
-    hc = 3343 * hc + lastName.hashCode();
+	@Override
+	public int hashCode() {
+		int hc = 7757;
+		hc = 3343 * hc + firstName.hashCode();
+		hc = 3343 * hc + lastName.hashCode();
 
-    return hc;
-  }
+		return hc;
+	}
 
-  @Override
-  public boolean equals(final Object obj)
-  {
-    if (obj instanceof FLName)
-      if (obj == this)
-        return true;
-      else if (getClass().equals(obj.getClass()))
-        return compareTo((FLName) obj) == 0;
+	@Override
+	public boolean equals(final Object obj) {
+		if (obj instanceof FLName)
+			if (obj == this)
+				return true;
+			else if (getClass().equals(obj.getClass()))
+				return compareTo((FLName) obj) == 0;
 
-    return false;
-  }
+		return false;
+	}
 
-  @Override
-  protected Object clone() throws CloneNotSupportedException
-  {
-    return super.clone();
-  }
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 
-  @Override
-  public String toString()
-  {
-    final StringBuilder msg = new StringBuilder();
-    msg.append("[");
-    msg.append(getClass().getSimpleName());
-    msg.append(" - 0x");
-    msg.append(Integer.toHexString(hashCode()));
-    msg.append(";  firstName: ");
-    msg.append(firstName);
-    msg.append(";  lastName: ");
-    msg.append(lastName);
-    msg.append("]");
+	@Override
+	public String toString() {
+		final StringBuilder msg = new StringBuilder();
+		msg.append("[");
+		msg.append(getClass().getSimpleName());
+		msg.append(" - 0x");
+		msg.append(Integer.toHexString(hashCode()));
+		msg.append(";  firstName: ");
+		msg.append(firstName);
+		msg.append(";  lastName: ");
+		msg.append(lastName);
+		msg.append("]");
 
-    return msg.toString();
-  }
+		return msg.toString();
+	}
 
-  protected int mapToOne(final int cv)
-  {
-    return cv < 0 ? -1 : (cv > 0 ? 1 : 0);
-  }
+	protected int mapToOne(final int cv) {
+		return cv < 0 ? -1 : (cv > 0 ? 1 : 0);
+	}
 }

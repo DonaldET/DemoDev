@@ -20,138 +20,119 @@ import org.apache.commons.lang3.Validate;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  *
- * @param <T>
- *          the internal or raw data type of the processed search index
+ * @param <T> the internal or raw data type of the processed search index
  */
-public class SearchIndex<T>
-{
-  /**
-   * The processed search index
-   */
-  private T searchIndex = null;
+public class SearchIndex<T> {
+	/**
+	 * The processed search index
+	 */
+	private T searchIndex = null;
 
-  /**
-   * The associated user identifiers from which the processed search index was
-   * created
-   */
-  private UserID[] userIds = null;
+	/**
+	 * The associated user identifiers from which the processed search index was
+	 * created
+	 */
+	private UserID[] userIds = null;
 
-  /**
-   * Construct a search index with a reference to another search index and the
-   * user identifiers used to construct the seach index
-   *
-   * @param searchIndex
-   *          the associated search index
-   * @param userIds
-   *          the user identifiers used to construct the associated search index
-   */
-  public SearchIndex(final T searchIndex, final UserID[] userIds)
-  {
-    super();
+	/**
+	 * Construct a search index with a reference to another search index and the
+	 * user identifiers used to construct the seach index
+	 *
+	 * @param searchIndex the associated search index
+	 * @param userIds     the user identifiers used to construct the associated
+	 *                    search index
+	 */
+	public SearchIndex(final T searchIndex, final UserID[] userIds) {
+		super();
 
-    setSearchIndex(searchIndex);
-    setUserIds(userIds);
-  }
+		setSearchIndex(searchIndex);
+		setUserIds(userIds);
+	}
 
-  public T getSearchIndex()
-  {
-    return searchIndex;
-  }
+	public T getSearchIndex() {
+		return searchIndex;
+	}
 
-  public UserID[] getUserIds()
-  {
-    return userIds;
-  }
+	public UserID[] getUserIds() {
+		return userIds;
+	}
 
-  public UserID getUserID(final int index)
-  {
-    return userIds[index];
-  }
+	public UserID getUserID(final int index) {
+		return userIds[index];
+	}
 
-  private void setSearchIndex(final T searchIndex)
-  {
-    Validate.notNull(searchIndex, "searchIndex null");
+	private void setSearchIndex(final T searchIndex) {
+		Validate.notNull(searchIndex, "searchIndex null");
 
-    this.searchIndex = searchIndex;
-  }
+		this.searchIndex = searchIndex;
+	}
 
-  private void setUserIds(final UserID[] userIds)
-  {
-    Validate.notNull(userIds, "userIds null");
-    Validate.notEmpty(userIds, "userIds empty");
+	private void setUserIds(final UserID[] userIds) {
+		Validate.notNull(userIds, "userIds null");
+		Validate.notEmpty(userIds, "userIds empty");
 
-    this.userIds = userIds;
-  }
+		this.userIds = userIds;
+	}
 
-  @Override
-  public String toString()
-  {
-    final StringBuilder msg = new StringBuilder();
-    msg.append("[");
-    msg.append(getClass().getSimpleName());
-    msg.append(" - 0x");
-    msg.append(Integer.toHexString(hashCode()));
-    msg.append(";\n  userIds");
+	@Override
+	public String toString() {
+		final StringBuilder msg = new StringBuilder();
+		msg.append("[");
+		msg.append(getClass().getSimpleName());
+		msg.append(" - 0x");
+		msg.append(Integer.toHexString(hashCode()));
+		msg.append(";\n  userIds");
 
-    if (userIds == null)
-      msg.append(": null");
-    else
-    {
-      final int nids = userIds.length;
-      if (nids < 1)
-        msg.append(": empty");
-      else
-      {
-        msg.append("[");
-        msg.append(nids);
-        msg.append("]: {");
-        final int lmt = Math.min(7, nids);
-        for (int i = 0; i < lmt; i++)
-        {
-          msg.append("\n      ");
-          msg.append(userIds[i]);
-        }
+		if (userIds == null)
+			msg.append(": null");
+		else {
+			final int nids = userIds.length;
+			if (nids < 1)
+				msg.append(": empty");
+			else {
+				msg.append("[");
+				msg.append(nids);
+				msg.append("]: {");
+				final int lmt = Math.min(7, nids);
+				for (int i = 0; i < lmt; i++) {
+					msg.append("\n      ");
+					msg.append(userIds[i]);
+				}
 
-        if (lmt < nids)
-          msg.append("\n      . . .");
-        msg.append("}");
-      }
+				if (lmt < nids)
+					msg.append("\n      . . .");
+				msg.append("}");
+			}
 
-      msg.append(";\n  searchIndex");
-      if (searchIndex == null)
-        msg.append(": null");
-      else
-      {
-        if (searchIndex instanceof String)
-        {
-          final String si = (String) searchIndex;
-          final int nsi = si.length();
-          if (nsi > 0)
-          {
-            msg.append("[");
-            msg.append(nsi);
-            msg.append("]: {");
+			msg.append(";\n  searchIndex");
+			if (searchIndex == null)
+				msg.append(": null");
+			else {
+				if (searchIndex instanceof String) {
+					final String si = (String) searchIndex;
+					final int nsi = si.length();
+					if (nsi > 0) {
+						msg.append("[");
+						msg.append(nsi);
+						msg.append("]: {");
 
-            final int lmt = Math.min(200, nsi);
-            msg.append(si.substring(0, lmt));
+						final int lmt = Math.min(200, nsi);
+						msg.append(si.substring(0, lmt));
 
-            if (lmt < nsi)
-            {
-              msg.append(" . . .");
-              msg.append(si.substring(nsi - 1));
-            }
-            msg.append("}");
-          }
-          else
-            msg.append(": empty");
-        }
-        else
-          msg.append(searchIndex);
-      }
-    }
+						if (lmt < nsi) {
+							msg.append(" . . .");
+							msg.append(si.substring(nsi - 1));
+						}
+						msg.append("}");
+					} else
+						msg.append(": empty");
+				} else
+					msg.append(searchIndex);
+			}
+		}
 
-    msg.append("\n]");
+		msg.append("\n]");
 
-    return msg.toString();
-  }
+		return msg.toString();
+	}
 }

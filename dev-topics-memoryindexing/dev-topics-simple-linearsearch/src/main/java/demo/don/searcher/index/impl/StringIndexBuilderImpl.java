@@ -34,43 +34,39 @@ import demo.don.searcher.index.IndexHelper;
  * @author Donald Trummell (dtrummell@gmail.com)
  *
  */
-public class StringIndexBuilderImpl implements IndexBuilder<String>
-{
-  /**
-   * Construct me
-   */
-  public StringIndexBuilderImpl()
-  {
-  }
+public class StringIndexBuilderImpl implements IndexBuilder<String> {
+	/**
+	 * Construct me
+	 */
+	public StringIndexBuilderImpl() {
+	}
 
-  /**
-   * @see demo.lookahead.index.IndexBuilder#buildIndex(demo.lookahead.UserID[])
-   */
-  @Override
-  public SearchIndex<String> buildIndex(final UserID[] userIds)
-  {
-    final StringBuilder idx = new StringBuilder();
+	/**
+	 * @see demo.lookahead.index.IndexBuilder#buildIndex(demo.lookahead.UserID[])
+	 */
+	@Override
+	public SearchIndex<String> buildIndex(final UserID[] userIds) {
+		final StringBuilder idx = new StringBuilder();
 
-    int ndx = -1;
-    for (UserID uid : userIds)
-    {
-      ndx++;
+		int ndx = -1;
+		for (UserID uid : userIds) {
+			ndx++;
 
-      idx.append(IndexBuilder.NAME_MARK);
-      idx.append(IndexHelper.filterPattern(uid.getFirstName()));
+			idx.append(IndexBuilder.NAME_MARK);
+			idx.append(IndexHelper.filterPattern(uid.getFirstName()));
 
-      idx.append(IndexBuilder.NAME_MARK);
-      idx.append(IndexHelper.filterPattern(uid.getLastName()));
+			idx.append(IndexBuilder.NAME_MARK);
+			idx.append(IndexHelper.filterPattern(uid.getLastName()));
 
-      idx.append(IndexBuilder.NAME_MARK);
-      idx.append(IndexHelper.filterPattern(uid.getEmail()));
+			idx.append(IndexBuilder.NAME_MARK);
+			idx.append(IndexHelper.filterPattern(uid.getEmail()));
 
-      idx.append(IndexBuilder.INDEX_MARK);
-      idx.append(IndexHelper.encode(ndx));
-    }
+			idx.append(IndexBuilder.INDEX_MARK);
+			idx.append(IndexHelper.encode(ndx));
+		}
 
-    idx.append(IndexBuilder.NAME_MARK);
+		idx.append(IndexBuilder.NAME_MARK);
 
-    return new SearchIndex<String>(idx.toString(), userIds);
-  }
+		return new SearchIndex<String>(idx.toString(), userIds);
+	}
 }

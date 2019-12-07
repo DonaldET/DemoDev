@@ -24,24 +24,20 @@ import demo.don.searcher.SearchIndex;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  *
- * @param <T>
- *          the internal data type of search index
+ * @param <T> the internal data type of search index
  */
-public interface IndexSearcher<T>
-{
-  public static final int DEFAULT_MATCH_LIMIT = 20;
+public interface IndexSearcher<T> {
+	public static final int DEFAULT_MATCH_LIMIT = 20;
 
-  public abstract int getMatchLimit();
+	public abstract int getMatchLimit();
 
-  public abstract void setMatchLimit(final int matchLimit);
+	public abstract void setMatchLimit(final int matchLimit);
 
-  public abstract SearchIndex<T> getSearchIndex();
+	public abstract SearchIndex<T> getSearchIndex();
 
-  public abstract void setSearchIndex(final SearchIndex<T> searchIndex);
+	public abstract void setSearchIndex(final SearchIndex<T> searchIndex);
 
-  public abstract int[] findUsingLike(final String leftMatchPattern,
-      final int maxReturned);
+	public abstract int[] findUsingLike(final String leftMatchPattern, final int maxReturned);
 
-  public abstract int[] findUsingContains(final String containsPattern,
-      final int maxReturned);
+	public abstract int[] findUsingContains(final String containsPattern, final int maxReturned);
 }

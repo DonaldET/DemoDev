@@ -26,30 +26,27 @@ import demo.don.searcher.UserID;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  *
- * @param <T>
- *          the raw or internal data type of the processed search index
- *          constructed by the index builder
+ * @param <T> the raw or internal data type of the processed search index
+ *            constructed by the index builder
  */
-public interface IndexBuilder<T>
-{
-  /**
-   * Special character delimiting the search fields
-   */
-  public static final String NAME_MARK = "|";
+public interface IndexBuilder<T> {
+	/**
+	 * Special character delimiting the search fields
+	 */
+	public static final String NAME_MARK = "|";
 
-  /**
-   * Special character marking the coded index of the associated user identifier
-   */
-  public static final String INDEX_MARK = "{";
+	/**
+	 * Special character marking the coded index of the associated user identifier
+	 */
+	public static final String INDEX_MARK = "{";
 
-  /**
-   * Create a search index of user identifiers that an index searcher uses to
-   * find matches of a pattern
-   *
-   * @param userIds
-   *          the data used to construct the search index
-   *
-   * @return the constructed search index
-   */
-  public abstract SearchIndex<T> buildIndex(final UserID[] userIds);
+	/**
+	 * Create a search index of user identifiers that an index searcher uses to find
+	 * matches of a pattern
+	 *
+	 * @param userIds the data used to construct the search index
+	 *
+	 * @return the constructed search index
+	 */
+	public abstract SearchIndex<T> buildIndex(final UserID[] userIds);
 }
