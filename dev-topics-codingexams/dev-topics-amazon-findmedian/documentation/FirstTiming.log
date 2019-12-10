@@ -1,0 +1,15 @@
+Sample first run (12/9/2019) in Eclipse
+---------------------------------------
+
+*** Time Median implementations for random input - execution time in milli-seconds.
+Test[0]; N: 10;    Simple: 0.1078;  Dual: 0.1041
+Test[1]; N: 15;    Simple: 0.3945;  Dual: 0.1656
+Test[2]; N: 25;    Simple: 0.4697;  Dual: 0.2859
+Test[3]; N: 50;    Simple: 0.9593;  Dual: 0.2899
+Test[4]; N: 75;    Simple: 0.6264;  Dual: 0.1655
+Test[5]; N: 100;    Simple: 0.7519;  Dual: 0.1344
+Test[6]; N: 150;    Simple: 1.6569;  Dual: 0.3087
+Test[7]; N: 200;    Simple: 2.3179;  Dual: 0.5264
+Test[8]; N: 500;    Simple: 7.2048;  Dual: 0.2791
+Test[9]; N: 1000;    Simple: 34.676;  Dual: 0.5028
+*** Done
