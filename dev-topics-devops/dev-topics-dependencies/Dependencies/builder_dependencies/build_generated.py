@@ -14,5 +14,4 @@ default_task = "publish"
 
 @init
 def set_properties(project):
-    project.set_property("coverage_break_build", False)  # default is True
-    project.build_depends_on("mock")
+    pass

@@ -2,10 +2,10 @@
 partitioner.py
 
 Creates selected partitions of a space of size objects into individual assignments; each assignment has a sequence of
-partitions of varying sizes (min to max) and an associated  score; a collector records the assignment with the maximum score
-
-Note: See AA_README.docx
+partitions of varying sizes (min to max) and an associated  score; a collector records the assignment with the maximum
+score (See AA_README.docx in field_validation.)
 """
+import sum_square_scorer as sss
 
 trace = False
 
@@ -38,33 +38,18 @@ class Assignment(object):
         return msg
 
 
-class SumSquareScorer(object):
-    """
-    Score a raw assignment (the collection of partition capacities) by summing squares of counts
-    """
-
-    def __init__(self):
-        pass
-
-    def measure(self, capacity_sequence):
-        """
-        Sum squares of counts
-        :param capacity_sequence: an ordered collection of partition capacity values in an assignment
-        :return: sum of squared counts
-        """
-        return sum([x * x for x in capacity_sequence])
-
-
 class Collector(object):
     """
-    A collector examines many raw assignments; it applies a score to each assignment and records the assignment with the maximum score
+    A collector examines many raw assignments, applies a score to each assignment, and records the assignment with
+    the maximum score
     """
 
-    def __init__(self, scorer=SumSquareScorer()):
+    def __init__(self, scorer):
         """
         Examine in-coming assignments and apply a score; record the assignment with the maximum score
         :param scorer:
         """
+        assert scorer is not None
         self.max_assignment = None
         self.examined = 0
         self.scorer = scorer
@@ -103,7 +88,7 @@ class Collector(object):
 class Space(object):
     """
     A space defines the min and max capacity bounds for a fixed number of partitions over size objects; it also
-    associates a collector that scores and records the assignment with the maximum score
+    associates a collector that scores and records the last generated assignment with the maximum score
     """
 
     def __init__(self, collector, partition_count, space_size, min_size, max_size):
@@ -137,7 +122,7 @@ class Space(object):
         """
         self.collector.reset()
         self.id_generator = 0
-        self.capacities = [0 for i in range(self.partition_count)]
+        self.capacities = [0 for _ in range(self.partition_count)]
         last = self._generate_me(self.space_size, 0)
 
         assert last > 0
@@ -145,7 +130,8 @@ class Space(object):
 
     def _generate_me(self, available, me):
         """
-        Recursively iterate through assignments; generate partition counts working left (low) to right (high) in partition sizing
+        Iterate through assignments; generate partition counts working left (low) to right (high) in
+        partition sizing
         :param available: the number of objects to divide into partitions
         :param me: the partition position in the assignment
         :return: the last value of the assignment generator
@@ -187,7 +173,7 @@ class Space(object):
 # Fake unit tests
 if __name__ == '__main__':
     def _test_runner(test_partition_count, test_space_size, test_min_size, test_max_size):
-        test_collector = Collector()
+        test_collector = Collector(sss.SumSquareScorer())
         spc = Space(test_collector, test_partition_count, test_space_size, test_min_size, test_max_size)
         print('  -- Initial :', str(spc))
         spc.generate_all()

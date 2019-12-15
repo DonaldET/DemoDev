@@ -8,7 +8,7 @@ use_plugin("python.coverage")
 use_plugin("python.distutils")
 
 
-name = "myapppy"
+name = "optimal_partitioning"
 default_task = "publish"
 
 

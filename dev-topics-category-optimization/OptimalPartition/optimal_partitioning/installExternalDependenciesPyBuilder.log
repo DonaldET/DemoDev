@@ -1,0 +1,26 @@
+
+ Install EXTERNAL dependencies for PyBuilder using the virtual environment venv
+   -- Virtual environment setup
+   -- builder.py
+   -- PyBuilder
+
+   -- Install PyBuilder External Dependencies
+pip 19.3.1 from D:\GitHub\DemoDev\dev-topics-category-optimization\OptimalPartition\optimal_partitioning\venv\lib\site-packages\pip (python 3.7)
+Collecting flake8
+  Using cached https://files.pythonhosted.org/packages/f8/1f/7ea40d1e4146ea55dbab41cda1376db092a75794914169aabd7e8d7a7def/flake8-3.7.9-py2.py3-none-any.whl
+Collecting entrypoints<0.4.0,>=0.3.0
+  Using cached https://files.pythonhosted.org/packages/ac/c6/44694103f8c221443ee6b0041f69e2740d89a25641e62fb4f2ee568f2f9c/entrypoints-0.3-py2.py3-none-any.whl
+Collecting pycodestyle<2.6.0,>=2.5.0
+  Using cached https://files.pythonhosted.org/packages/0e/0c/04a353e104d2f324f8ee5f4b32012618c1c86dd79e52a433b64fceed511b/pycodestyle-2.5.0-py2.py3-none-any.whl
+Collecting pyflakes<2.2.0,>=2.1.0
+  Using cached https://files.pythonhosted.org/packages/84/f2/ed0ffb887f8138a8fe5a621b8c0bb9598bfb3989e029f6c6a85ee66628ee/pyflakes-2.1.1-py2.py3-none-any.whl
+Collecting mccabe<0.7.0,>=0.6.0
+  Using cached https://files.pythonhosted.org/packages/87/89/479dc97e18549e21354893e4ee4ef36db1d237534982482c3681ee6e7b57/mccabe-0.6.1-py2.py3-none-any.whl
+Installing collected packages: entrypoints, pycodestyle, pyflakes, mccabe, flake8
+Successfully installed entrypoints-0.3 flake8-3.7.9 mccabe-0.6.1 pycodestyle-2.5.0 pyflakes-2.1.1
+pip 19.3.1 from D:\GitHub\DemoDev\dev-topics-category-optimization\OptimalPartition\optimal_partitioning\venv\lib\site-packages\pip (python 3.7)
+
+ Install EXTERNAL dependencies effort complete - remove virtual environment
+
+ Done
+

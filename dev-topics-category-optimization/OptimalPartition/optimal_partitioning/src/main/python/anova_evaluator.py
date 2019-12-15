@@ -1,31 +1,34 @@
 """
 anova_evaluator.py
 
-As with the partitioning, this code was first done in Visual Basic by Alan Bostrom at Iameter, later translated and improved
-for C++, again translated to Java, and finally appears in this Python version.
-
-ANOVA calculation methods are used to evaluate the "R-squared" statistic associated with a fixed categorization (partitioning)
-of an ordered set of interval-data values.
-
-Notes:
-  -- Sample calculator: http://vassarstats.net/anova1u.html
-  -- Wiki definition of ANOVA: https://en.wikipedia.org/wiki/One-way_analysis_of_variance
-  -- Reference 1: Sample summary including computation suggestions: https://www3.nd.edu/~rwilliam/xsoc63992/x52.pdf
-  -- Reference 2: Textbook: Statistical Concepts and Methods [Bhattacharyya], page 453
-
-Given K treatments, we have a simple one-factor model:
-
-We want to compare the means of K different populations; and we have K samples, each of size N[k]. Any individual score can be
-written as follows:
-   y[i,j]           = µ           + τ[j]            + ε[i,j],             where j = 1, K (# groups) and i = 1, 2, ..., N[K], or
-   Observation[i,j] = Grand Mean  + treatment[j]    + residual[i,j],      or
-   y[i,j]           = µ           + (Exp[*,j] - µ)  + (y[i,j] - Exp(*,j), where µ = Exp(Y[*,*])
+This code was first done in Visual Basic by Alan Bostrom at Iameter, later translated and improved
+for C++, again translated to Java, and finally appears in this Python version. ANOVA R-squared is computed.
 """
 
-import observation_manager
+from abstract_scorer import AbstractScorer
 
 
-class AnovaEvaluator(object):
+#
+# ANOVA calculation methods are used to evaluate the "R-squared" statistic associated with a fixed categorization
+# (partitioning) of an ordered set of interval-data values.
+#
+# Notes:
+#   -- Sample calculator: http://vassarstats.net/anova1u.html
+#   -- Wiki definition of ANOVA: https://en.wikipedia.org/wiki/One-way_analysis_of_variance
+#   -- Reference 1: Sample summary including computation suggestions: https://www3.nd.edu/~rwilliam/xsoc63992/x52.pdf
+#   -- Reference 2: Textbook: Statistical Concepts and Methods [Bhattacharyya], page 453
+#
+# Given K treatments, we have a simple one-factor model:
+#
+# We want to compare the means of K different populations; and we have K samples, each of size N[k]. Any individual
+# score can be written as follows:
+#
+# y[i,j]           = µ           + τ[j]            + ε[i,j],             where j = 1, K (# groups) and i =1..., N[K], or
+# Observation[i,j] = Grand Mean  + treatment[j]    + residual[i,j],      or
+# y[i,j]           = µ           + (Exp[*,j] - µ)  + (y[i,j] - Exp(*,j), where µ = Exp(Y[*,*])
+#
+
+class AnovaEvaluator(AbstractScorer):
     def __init__(self, observed_values):
         assert observed_values is not None
         observations = observed_values.observations
@@ -131,7 +134,7 @@ class AnovaEvaluator(object):
     # SS Total   =  SS Between     + SS Within
     #              (SS Explained)
     #
-    # Because synonyms:
+    # Because we use these synonyms:
     #   SS Within  = SS Errors     = SS Residual
     #   SS Between = SS Explained
     #
@@ -165,7 +168,7 @@ class AnovaEvaluator(object):
 
     def measure(self, capacity_sequence):
         """
-        Score a capacity sequence over data-preped values as eta_squared-squared (ANOVA equivalent of OLS R-squared)
+        Score a capacity sequence over prepared data values as eta_squared-squared (ANOVA equivalent of OLS R-squared)
         :param capacity_sequence: an ordered collection of partition capacity values in an assignment
         :return: Eta-squared of associated categories (ratio of explained SS to total SS
         """
@@ -181,23 +184,15 @@ class AnovaEvaluator(object):
             msg += ';\n  Sum X2      : {:s} = {:.3f}'.format(str(self.treatment_raw_sumx2),
                                                              sum(self.treatment_raw_sumx2))
             msg += ';\n  Means       : {:s} = {:.3f}'.format(str(self.treatment_mean), self.grand_mean)
-            msg += ';\n  Total SS    : {:s};    Treatment SS: {:s};    Residual SS : {:s}'.format(str(self.total_ss),
-                                                                                                  str(
-                                                                                                      self.treatment_ss),
-                                                                                                  str(self.residual_ss))
+            txt = ';\n  Total SS    : {:s};    Treatment SS: {:s};    Residual SS : {:s}'
+            msg += txt.format(str(self.total_ss), str(self.treatment_ss), str(self.residual_ss))
+
         if self.treatment_df is not None:
-            msg += ';\n  Total df    : {:s};    Treatment df: {:s};    Residual df : {:s}'.format(str(self.total_df),
-                                                                                                  str(
-                                                                                                      self.treatment_df),
-                                                                                                  str(self.error_df))
+            txt = ';\n  Total df    : {:s};    Treatment df: {:s};    Residual df : {:s}'
+            msg += txt.format(str(self.total_df), str(self.treatment_df), str(self.error_df))
 
         msg += ']'
         return msg
 
     def __str__(self):
         return self.__repr__()
-
-
-# Fake Unit Test
-if __name__ == '__main__':
-    print('\n==== Test ANOVA ====')

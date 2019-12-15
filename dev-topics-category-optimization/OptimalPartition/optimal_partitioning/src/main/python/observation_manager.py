@@ -1,23 +1,37 @@
 """
 observation_manager.py
 
-Observation management - handle weighted observations
-
-Implementation notes for Python vs Java
--- general comparison for Python sorting: http://stackoverflow.com/questions/30043067/python3-style-sorting-old-cmp-method-functionality-in-new-key-mechanism
--- sorting overview:
-
-The list of observations is large, so the Java implementation sorts in place.  Python equivalent operation from second reference:
-  -- Python lists have a built-in list.sort() method that modifies the list in-place.
-     There is also a sorted() built-in function that builds a new sorted list from an iterable.
+Observation management - handle weighted observations; and observation has a weight and a value.
 """
 
 
+#
+# A list of unweighted observations has observations with identical values, each having an independent, and possibly
+# identical, weight. Often the weights associated with unweighted observations has value 1.0.
+#
+# Implementation notes for Python vs Java
+# -- general comparison for Python sorting:
+#    http://stackoverflow.com/questions/30043067/python3-style-sorting-old-cmp-method-functionality-in-new-key-mechanism
+# -- sorting overview:
+#    The list of observations is large, so the Java/Python implementation sorts in place (list.sort())
+#
+
 def _key_comp(observation):
+    """
+    The sort comparison key
+    Args:
+        observation: A value and weight pair
+
+    Returns: the floating point representation for the value of the observation
+    """
     return float(observation.value)
 
 
 class Observation(object):
+    """
+    A collection of observations, with a weight and a value, represent a data set in a partition
+    """
+
     def __init__(self, value, weight=1.0):
         self.value = float(value)
         self.weight = float(weight)
@@ -33,6 +47,10 @@ class Observation(object):
 
 
 class ObservedValues:
+    """
+    Observed values are a collection of weighted observations
+    """
+
     def __init__(self):
         self.observations = []
 
@@ -61,6 +79,14 @@ class ObservedValues:
         return n
 
     def compress(self, delta):
+        """
+        Convert a sorted list of unweighted observations into a list of weighted observation by summing the weights
+        associated with a common observation value. Note, observation are modified in place to
+        Args:
+            delta: the minimum difference in values for two observations to be considered different
+        Returns: the total weights of all observations and modifies the observations inplace
+
+        """
         assert delta is not None
         delta = float(delta)
         assert delta >= 0.0
@@ -69,9 +95,11 @@ class ObservedValues:
         n = len(self.observations)
         w = n
         if n > 1:
+            last_value = self.observations[0].value
             new_obs = []
-            w = 0
             for unweighted_obs in self.observations:
+                assert last_value <= unweighted_obs.value
+                last_value = unweighted_obs.value
                 if len(new_obs) < 1:
                     new_obs.append(unweighted_obs)
                 else:
@@ -79,7 +107,6 @@ class ObservedValues:
                         new_obs.append(unweighted_obs)
                     else:
                         new_obs[-1].weight += unweighted_obs.weight
-                        w += unweighted_obs.weight
             self.observations = new_obs
             w = sum([observation.weight for observation in self.observations])
         return w
