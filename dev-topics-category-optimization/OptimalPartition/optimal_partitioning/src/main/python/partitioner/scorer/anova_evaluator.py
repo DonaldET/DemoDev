@@ -1,11 +1,10 @@
 """
 anova_evaluator.py
 
-This code was first done in Visual Basic by Alan Bostrom at Iameter, later translated and improved
+This AbstractScorer code was first done in Visual Basic by Alan Bostrom at Iameter, later translated and improved
 for C++, again translated to Java, and finally appears in this Python version. ANOVA R-squared is computed.
 """
-
-from abstract_scorer import AbstractScorer
+from partitioner.scorer import abstract_scorer as scorer
 
 
 #
@@ -28,7 +27,7 @@ from abstract_scorer import AbstractScorer
 # y[i,j]           = µ           + (Exp[*,j] - µ)  + (y[i,j] - Exp(*,j), where µ = Exp(Y[*,*])
 #
 
-class AnovaEvaluator(AbstractScorer):
+class AnovaEvaluator(scorer.AbstractScorer):
     def __init__(self, observed_values):
         assert observed_values is not None
         observations = observed_values.observations
@@ -168,9 +167,10 @@ class AnovaEvaluator(AbstractScorer):
 
     def measure(self, capacity_sequence):
         """
-        Score a capacity sequence over prepared data values as eta_squared-squared (ANOVA equivalent of OLS R-squared)
+        Score a capacity sequence (assignment) over prepared data values as eta_squared-squared (ANOVA equivalent of
+        OLS R-squared)
         :param capacity_sequence: an ordered collection of partition capacity values in an assignment
-        :return: Eta-squared of associated categories (ratio of explained SS to total SS
+        :return: Eta-squared of associated categories (ratio of explained SS to total SS)
         """
         self.set_category_counts(capacity_sequence)
         return self.treatment_ss / self.total_ss

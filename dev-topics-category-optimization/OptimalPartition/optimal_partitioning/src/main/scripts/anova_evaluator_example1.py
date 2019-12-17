@@ -1,33 +1,37 @@
 """
 anova_evaluator_example1.py
+
+Sand-alone runnner for ANOVA Scorer
 """
 
-import anova_evaluator
-import observation_manager
+from partitioner import observation_manager
+from partitioner.data_manager import data_manager
+from partitioner.scorer import anova_evaluator
 
 
-def _assemble_data(label, group_observations, old_samples):
-    assert old_samples is not None
-    group_observations = [observation_manager.Observation(float(x)) for x in group_observations]
-    old_samples.append(group_observations)
-    print('{:s} = {:s}'.format(label, str(group_observations)))
-    return group_observations, old_samples
+
+# def _assemble_data(label, input_data, collected_data):
+#     assert collected_data is not None
+#     input_data = [observation_manager.Observation(float(x)) for x in input_data]
+#     collected_data.append(input_data)
+#     print('{:s} = {:s}'.format(label, str(input_data)))
+#     return input_data, collected_data
 
 
 def _load_example1():
     observations = observation_manager.ObservedValues()
     samples = []
 
-    data, samples = _assemble_data('A', [10, 15, 8, 12, 15], samples)
+    data, samples = data_manager.assemble_data('A', [10, 15, 8, 12, 15], samples)
     observations.add_observations(data)
 
-    data, samples = _assemble_data('B', [14, 18, 21, 15], samples)
+    data, samples = data_manager.assemble_data('B', [14, 18, 21, 15], samples)
     observations.add_observations(data)
 
-    data, samples = _assemble_data('C', [17, 16, 14, 15, 17, 15, 18], samples)
+    data, samples = data_manager.assemble_data('C', [17, 16, 14, 15, 17, 15, 18], samples)
     observations.add_observations(data)
 
-    data, samples = _assemble_data('D', [12, 15, 17, 15, 16, 15], samples)
+    data, samples = data_manager.assemble_data('D', [12, 15, 17, 15, 16, 15], samples)
     observations.add_observations(data)
 
     group_n = [float(len(x)) for x in samples]

@@ -1,9 +1,9 @@
-import abstract_scorer as scorer
+from partitioner.scorer import abstract_scorer as scorer
 
 
 class SumSquareScorer(scorer.AbstractScorer):
     """
-    Score a raw assignment (the collection of partition capacities) by summing squares of counts
+    Score a raw assignment (the collection of partition capacities) by summing squares of counts. An example
     """
 
     def __init__(self):

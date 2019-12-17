@@ -5,7 +5,7 @@ Creates selected partitions of a space of size objects into individual assignmen
 partitions of varying sizes (min to max) and an associated  score; a collector records the assignment with the maximum
 score (See AA_README.docx in field_validation.)
 """
-import sum_square_scorer as sss
+from partitioner.scorer import sum_square_scorer as sss
 
 trace = False
 

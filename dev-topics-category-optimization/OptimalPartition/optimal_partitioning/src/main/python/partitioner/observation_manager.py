@@ -7,7 +7,9 @@ Observation management - handle weighted observations; and observation has a wei
 
 #
 # A list of unweighted observations has observations with identical values, each having an independent, and possibly
-# identical, weight. Often the weights associated with unweighted observations has value 1.0.
+# identical, weight. Often the weights associated with unweighted observations has value 1.0. In this case, the weight
+# is the count of the number of identical observations, identical meaning abs(x[i] - x[j]) < EPS for all i and j in the
+# set of equal observations.
 #
 # Implementation notes for Python vs Java
 # -- general comparison for Python sorting:
@@ -29,7 +31,7 @@ def _key_comp(observation):
 
 class Observation(object):
     """
-    A collection of observations, with a weight and a value, represent a data set in a partition
+    A collection of observations, each with a weight and a value, representing a data set in a partition
     """
 
     def __init__(self, value, weight=1.0):
@@ -48,13 +50,19 @@ class Observation(object):
 
 class ObservedValues:
     """
-    Observed values are a collection of weighted observations
+    Observed values are a collection from un-weighted observations, and then compressed to assign counts of identical
+    observations as weights.
     """
 
     def __init__(self):
         self.observations = []
 
     def add_observation(self, value):
+        """
+        Add an un-weighed observation (weight is one.)
+            value: the observation numeric value
+        Returns: number of accumulated unweighted observations
+        """
         assert value is not None
 
         self.observations.append(value)
@@ -70,13 +78,17 @@ class ObservedValues:
         return len(self.observations)
 
     def sort_me(self):
+        """
+        Orders unweighted observations and combines the weights of nominally equal observations.
+
+        Returns: the count of grouped observations, where equal observations are represented by a single value and
+        an accumulated weight.
+        """
         assert self.observations is not None
         n = len(self.observations)
-        assert n > 0
-
         if n > 1:
             self.observations.sort(key=lambda x: _key_comp(x))
-        return n
+        return len(self.observations)
 
     def compress(self, delta):
         """
@@ -85,7 +97,6 @@ class ObservedValues:
         Args:
             delta: the minimum difference in values for two observations to be considered different
         Returns: the total weights of all observations and modifies the observations inplace
-
         """
         assert delta is not None
         delta = float(delta)
