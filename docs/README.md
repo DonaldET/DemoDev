@@ -103,6 +103,7 @@ These solutions also demonstrate coding principles like:
 Client | Project | Description
 ------ | ------- | -----------
 Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns. 
+Amazon | _findmedian_ | Illustrate two methods of finding the median of a (non-infinite) stream of integers. One method is highly optimized compared to the other.
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well. This is the basis of the article: [https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/]( https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/). 
 AppDynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
@@ -167,10 +168,11 @@ These projects are working code used by *DemoDev* and related projects. They ill
 
 Project | Description
 ------- | -----------
-_DemoGenerator_ | A Freemarker based text generation utility supporting configurable symbol interpolation, composible context/model properties specifications, composable template specifications, and driven by command-line parameters.  This utility is used by _WindPower Explorer_ to create Oozie properties files and HQL table specifications.  This utility is the basis of the DevOps article: [https://www.linkedin.com/pulse/apache-ant-devops-practices-donald-trummell](https://www.linkedin.com/pulse/apache-ant-devops-practices-donald-trummell). 
+_category-optimizer_ | This is both a Java and Python based library and utility program that finds score boundaries in a collections of scores that optimizes the R-Squared value of the resulting categories. 
+_DemoGenerator_ | A Freemarker based text generation utility supporting configurable symbol interpolation, composible context/model properties specifications, composable template specifications, and driven by command-line parameters.  This utility is used by the _WindPowerExplorer_ repository to create Oozie properties files and HQL table specifications.  It is also the basis of the DevOps article: [https://www.linkedin.com/pulse/apache-ant-devops-practices-donald-trummell](https://www.linkedin.com/pulse/apache-ant-devops-practices-donald-trummell). 
 
-These utilities are distributed using Java JAR files and invoked as executable Jars.
-
+**Note**:
+These utilities are distributed using Java JAR files and invoked as executable Jars. The Python versions are created by *PyBuilder* and typically distributed as wheel files.
 ## Sub-Project DevOps
 
 DevOps projects are not directly used by *DemoDev* and related projects, but illustrate good development environment practices and useful Templates for creating those environments.
@@ -184,7 +186,7 @@ Project | Description
 The DevOps projects are templates meant to be forked (copied) and modified.
 
 ## Build Information
-Naming and structural conventions, along with collected statistics on Maven build structure.
+Naming and structural conventions, along with collected statistics on Maven build structure. Key Maven plugins are documented as well.
 
 ### Java Package Naming Conventions
 
@@ -211,6 +213,19 @@ Projects have a package structure that reflects potential use outside of the ***
 `D:\GitHub>findstr /srb "package " *.java | find /V "package don" | find /V "package demo" > pkg_other.log`
 `D:\GitHub>find /C "package" pkg_other.log`
 `---------- PKG_OTHER.LOG: 0`
+
+### Maven Plugins
+
+The plugins are used in the build structure to achieve build tasks.
+
+| Plugin                    | Description                                        | Link                                                    |
+| :------------------------ | :------------------------------------------------- | :------------------------------------------------------ |
+| *`maven-compiler-plugin`* | Defines Javac compiler source and runtime Java versions | https://maven.apache.org/plugins/maven-compiler-plugin/ |
+| *`maven-resources-plugin`* | Copies source and test resources to output | https://maven.apache.org/plugins/maven-resources-plugin/ |
+| *`maven-jar-plugin`* | Packages code and resources into a Jar with a Manifest | https://maven.apache.org/plugins/maven-jar-plugin/ |
+| *`maven-surefire-plugin`* | Runs the application tests based on testing dependencies | https://maven.apache.org/surefire/maven-surefire-plugin/ |
+
+
 
 ### Detailed Build Statistics
 
