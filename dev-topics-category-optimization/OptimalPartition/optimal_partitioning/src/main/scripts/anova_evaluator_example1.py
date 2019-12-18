@@ -9,6 +9,15 @@ from partitioner.data_manager import data_manager
 from partitioner.scorer import anova_evaluator
 
 
+# #################################################################################### #
+# Copyright (c) 2019. Donald E. Trummell. All Rights Reserved.                         #
+# Permission to use, copy, modify, and distribute this software and its documentation  #
+# for educational, research, and not-for-profit purposes, without fee and without      #
+# a signed licensing agreement, is hereby granted, provided that the above             #
+# copyright notice, and this paragraph, appear in all copies, modifications, and       #
+# distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.   #
+# #################################################################################### #
+
 
 # def _assemble_data(label, input_data, collected_data):
 #     assert collected_data is not None

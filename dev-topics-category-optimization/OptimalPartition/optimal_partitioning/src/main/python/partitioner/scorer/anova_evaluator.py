@@ -7,6 +7,15 @@ for C++, again translated to Java, and finally appears in this Python version. A
 from partitioner.scorer import abstract_scorer as scorer
 
 
+# #################################################################################### #
+# Copyright (c) 2019. Donald E. Trummell. All Rights Reserved.                         #
+# Permission to use, copy, modify, and distribute this software and its documentation  #
+# for educational, research, and not-for-profit purposes, without fee and without      #
+# a signed licensing agreement, is hereby granted, provided that the above             #
+# copyright notice, and this paragraph, appear in all copies, modifications, and       #
+# distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.   #
+# #################################################################################### #
+
 #
 # ANOVA calculation methods are used to evaluate the "R-squared" statistic associated with a fixed categorization
 # (partitioning) of an ordered set of interval-data values.

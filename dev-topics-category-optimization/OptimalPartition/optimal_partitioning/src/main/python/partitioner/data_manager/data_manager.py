@@ -3,6 +3,14 @@ data_manager.py
 
 Support organizing data for partition analysis
 """
+# #################################################################################### #
+# Copyright (c) 2019. Donald E. Trummell. All Rights Reserved.                         #
+# Permission to use, copy, modify, and distribute this software and its documentation  #
+# for educational, research, and not-for-profit purposes, without fee and without      #
+# a signed licensing agreement, is hereby granted, provided that the above             #
+# copyright notice, and this paragraph, appear in all copies, modifications, and       #
+# distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.   #
+# #################################################################################### #
 
 from partitioner import observation_manager
 
@@ -17,7 +25,7 @@ from partitioner import observation_manager
 
 def assemble_data(input_data, collected_data, label=None):
     """
-    Convert input data (sample_observations) to floating point values and accumulate
+    Convert input data (sample_observations) to floating point values and accumulate observations
         label: Optional label for printing the input
         input_data: the input data to convert to Observation instances
         collected_data: the prior list of accumulated Observation instances that is modified with additional input
@@ -37,22 +45,22 @@ def assemble_data(input_data, collected_data, label=None):
     return float_input
 
 
-def load_example1():
-    observations = observation_manager.ObservedValues()
+def load_example():
+    observed_values = observation_manager.ObservedValues()
     samples = []
 
     data, samples = assemble_data('A', [10, 15, 8, 12, 15], samples)
-    observations.add_observations(data)
+    observed_values.add_observations(data)
 
     data, samples = assemble_data('B', [14, 18, 21, 15], samples)
-    observations.add_observations(data)
+    observed_values.add_observations(data)
 
     data, samples = assemble_data('C', [17, 16, 14, 15, 17, 15, 18], samples)
-    observations.add_observations(data)
+    observed_values.add_observations(data)
 
     data, samples = assemble_data('D', [12, 15, 17, 15, 16, 15], samples)
-    observations.add_observations(data)
+    observed_values.add_observations(data)
 
     group_n = [float(len(x)) for x in samples]
 
-    return group_n, samples, observations
+    return group_n, samples, observed_values

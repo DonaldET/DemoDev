@@ -5,11 +5,20 @@ Observation management - handle weighted observations; and observation has a wei
 """
 
 
+# #################################################################################### #
+# Copyright (c) 2019. Donald E. Trummell. All Rights Reserved.                         #
+# Permission to use, copy, modify, and distribute this software and its documentation  #
+# for educational, research, and not-for-profit purposes, without fee and without      #
+# a signed licensing agreement, is hereby granted, provided that the above             #
+# copyright notice, and this paragraph, appear in all copies, modifications, and       #
+# distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.   #
+# #################################################################################### #
+
 #
-# A list of unweighted observations has observations with identical values, each having an independent, and possibly
-# identical, weight. Often the weights associated with unweighted observations has value 1.0. In this case, the weight
-# is the count of the number of identical observations, identical meaning abs(x[i] - x[j]) < EPS for all i and j in the
-# set of equal observations.
+# A list of unweighted observations frequently has observations with identical values, each having an independent, and
+# possibly identical, weight. Often the weights associated with unweighted observations has value 1.0. In this case,
+# the weight is the count of the number of identical observations, identical values meaning:
+# abs(x[i] - x[j]) < EPS for all i and j in the set of equal observations.
 #
 # Implementation notes for Python vs Java
 # -- general comparison for Python sorting:
@@ -23,7 +32,6 @@ def _key_comp(observation):
     The sort comparison key
     Args:
         observation: A value and weight pair
-
     Returns: the floating point representation for the value of the observation
     """
     return float(observation.value)
@@ -31,7 +39,8 @@ def _key_comp(observation):
 
 class Observation(object):
     """
-    A collection of observations, each with a weight and a value, representing a data set in a partition
+    An  observation has a weight and a value, representing a data element in a partition. A partition is a collection
+    of observations
     """
 
     def __init__(self, value, weight=1.0):
@@ -50,8 +59,9 @@ class Observation(object):
 
 class ObservedValues:
     """
-    Observed values are a collection from un-weighted observations, and then compressed to assign counts of identical
-    observations as weights.
+    Observed values are a collection of observation values and associated weights created from un-weighted input
+    observations. Once accumulated, (nearly) identical values are compressed to create single entries with weights
+    corresponding to the count of identical observations.
     """
 
     def __init__(self):
@@ -93,8 +103,7 @@ class ObservedValues:
     def compress(self, delta):
         """
         Convert a sorted list of unweighted observations into a list of weighted observation by summing the weights
-        associated with a common observation value. Note, observation are modified in place to
-        Args:
+        associated with a common (nearly identical) observation value. Note, observations are modified in place.
             delta: the minimum difference in values for two observations to be considered different
         Returns: the total weights of all observations and modifies the observations inplace
         """
