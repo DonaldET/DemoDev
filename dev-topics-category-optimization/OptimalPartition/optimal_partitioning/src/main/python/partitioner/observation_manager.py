@@ -15,8 +15,8 @@ Observation management - handle weighted observations; and observation has a wei
 # #################################################################################### #
 
 #
-# ObservationValues A list of unweighted observations frequently has observations with identical values, each having an
-# independent, and possibly identical, weight. Often the weights associated with unweighted observations has value 1.0.
+# ObservationValues is a list of weighted observations, which frequently have (nearly) identical values, each having an
+# independent, and possibly identical weight. Often the weights associated with unweighted observations has value 1.0.
 # In this case, the weight is the count of the number of identical observations, identical values meaning:
 # abs(x[i] - x[j]) < EPS for all i and j in the set of equal observations.
 #
@@ -46,6 +46,15 @@ class Observation(object):
     def __init__(self, value, weight=1.0):
         self.value = float(value)
         self.weight = float(weight)
+
+    def __hash__(self):
+        return 37 * hash(self.value) + hash(self.weight)
+
+    def __eq__(self, other):
+        return self.__class__ == other.__class__ and self.value == other.value and self.weight == other.weight
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def __repr__(self):
         msg = str(self.value)
@@ -100,7 +109,7 @@ class ObservedValues:
             self.observations.sort(key=lambda x: _key_comp(x))
         return len(self.observations)
 
-    def compress(self, delta):
+    def compress_me(self, delta):
         """
         Convert a sorted list of unweighted observations into a list of weighted observation by summing the weights
         associated with a common (nearly identical) observation value. Note, observations are modified in place.
@@ -162,40 +171,3 @@ class ObservedValues:
 
     def __str__(self):
         return self.__repr__()
-
-
-# Fake unit tests
-if __name__ == '__main__':
-    print('Testing Observations and ObservedValues\n')
-    obs = Observation(42)
-    print('an observation:', obs)
-    obs = Observation(3.14, 2.78)
-    print('another observation:', obs, '\n')
-
-    obs = ObservedValues()
-    print('Created a collection of Observations in ObservedValues', '\nObservations 0:', str(obs))
-
-    y = 0.0000
-    obs.add_observation(Observation(y))
-    print('Observations 1:', str(obs))
-
-    y = [0.0001]
-    obs.add_observations([Observation(yp) for yp in y])
-    print('Observations 1a:', str(obs))
-
-    y = [0.3333, 0.3334, 0.33335, 0.6666, 0.6667]
-    obs.add_observations([Observation(yp) for yp in y])
-    print('Observations 2:', str(obs))
-
-    y = [3.1415, 2.7818, -0.5000, -0.5002, 2.7819, 3.1416, 1.0000, 0.9999, 7.6300]
-    obs.add_observations([Observation(yp) for yp in y])
-    print('Observations 3:\n{:}\n'.format(str(obs)))
-
-    print('All un-sorted Observations:', [str(x) for x in obs.observations])
-    print('Sort ME:', obs.sort_me())
-    print('Sorted Observations:\n{:}\n'.format(str(obs)))
-
-    print('All un-compressed Observations:', [str(x) for x in obs.observations])
-    print('Compress ME:', obs.compress(0.0001))
-    print('Compressed Observations:\n{:}'.format(str(obs)))
-    print('All compressed Observations:', [str(x) for x in obs.observations])

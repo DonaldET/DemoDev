@@ -25,7 +25,7 @@ from partitioner import observation_manager
 
 def assemble_data(input_data, collected_data, label=None):
     """
-    Convert input data (sample_observations) to floating point values and accumulate observations
+    Convert input data (sample_observations) to floating point values and accumulate observations with default weight
         label: Optional label for printing the input
         input_data: the input data to convert to Observation instances
         collected_data: the prior list of accumulated Observation instances that is modified with additional input
