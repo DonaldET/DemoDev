@@ -15,9 +15,9 @@ Observation management - handle weighted observations; and observation has a wei
 # #################################################################################### #
 
 #
-# A list of unweighted observations frequently has observations with identical values, each having an independent, and
-# possibly identical, weight. Often the weights associated with unweighted observations has value 1.0. In this case,
-# the weight is the count of the number of identical observations, identical values meaning:
+# ObservationValues A list of unweighted observations frequently has observations with identical values, each having an
+# independent, and possibly identical, weight. Often the weights associated with unweighted observations has value 1.0.
+# In this case, the weight is the count of the number of identical observations, identical values meaning:
 # abs(x[i] - x[j]) < EPS for all i and j in the set of equal observations.
 #
 # Implementation notes for Python vs Java
@@ -29,7 +29,7 @@ Observation management - handle weighted observations; and observation has a wei
 
 def _key_comp(observation):
     """
-    The sort comparison key
+    The observation sort by value comparison key
     Args:
         observation: A value and weight pair
     Returns: the floating point representation for the value of the observation
@@ -59,7 +59,7 @@ class Observation(object):
 
 class ObservedValues:
     """
-    Observed values are a collection of observation values and associated weights created from un-weighted input
+    Observed values are a collection of observation values and associated weights created from weighted input
     observations. Once accumulated, (nearly) identical values are compressed to create single entries with weights
     corresponding to the count of identical observations.
     """
