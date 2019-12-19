@@ -2,7 +2,7 @@
 
 These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture and JEE related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional coding techniques are illustrated with real examples. A collection of coding questions is included to illustrate industry-wide assessment of Java coding skills.
 
-Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. There is a DevOps sub-project collection of projects using some of the utilities.
+Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. There is a DevOps sub-project collection of build related utilities.
 
 #### Building Projects in the Repository
 
@@ -65,7 +65,7 @@ The _StaticResources_ directory references instructions on how to setup a MAVEN 
 
 ## Sub-Project Structure
 
-Sub-projects usually include a _business_ motivation for the coding examples in this section of the repository.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes. Spring has a very readable overview of the *Liskov Substitution Principle* (see <https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/>.)
+Sub-projects usually include a _business_ motivation for the coding examples in this section of the repository.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes. Spring has a very readable overview of the *Liskov Substitution Principle* (see <https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/>.) While not directly illustrated in these examples, an important principle is the principle of least astonishment (or least surprise.) Related to KISS, it really means that a code reader is not surprised by the approach taken to solve a problem (see https://en.wikipedia.org/wiki/Principle_of_least_astonishment.)
 
 The sub-projects have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. Many sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  Stability over time is accomplished by using the regression aspect of these tests.
 
