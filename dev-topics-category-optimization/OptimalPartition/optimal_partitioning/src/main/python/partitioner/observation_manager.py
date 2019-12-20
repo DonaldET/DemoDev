@@ -1,7 +1,7 @@
 """
 observation_manager.py
 
-Observation management - handle weighted observations; and observation has a weight and a value.
+Observation management - handle weighted observations (an observation has weight and a value, weight defaults to 1.)
 """
 
 
@@ -74,27 +74,24 @@ class ObservedValues:
     """
 
     def __init__(self):
-        self.observations = []
+        self.observation_values = []
 
-    def add_observation(self, value):
+    def add_observation(self, observation):
         """
-        Add an un-weighed observation (weight is one.)
+        Add an observation (default weight is one.)
             value: the observation numeric value
-        Returns: number of accumulated unweighted observations
+        Returns: number of accumulated observations
         """
-        assert value is not None
+        assert observation is not None
+        self.observation_values.append(observation)
+        return len(self.observation_values)
 
-        self.observations.append(value)
-        return len(self.observations)
-
-    def add_observations(self, values):
-        assert values is not None
-        assert len(values) > 0
-
-        for value in values:
-            self.add_observation(value)
-
-        return len(self.observations)
+    def add_observations(self, observation_list):
+        assert observation_list is not None
+        assert len(observation_list) > 0
+        for observation in observation_list:
+            self.add_observation(observation)
+        return len(self.observation_values)
 
     def sort_me(self):
         """
@@ -103,11 +100,11 @@ class ObservedValues:
         Returns: the count of grouped observations, where equal observations are represented by a single value and
         an accumulated weight.
         """
-        assert self.observations is not None
-        n = len(self.observations)
+        assert self.observation_values is not None
+        n = len(self.observation_values)
         if n > 1:
-            self.observations.sort(key=lambda x: _key_comp(x))
-        return len(self.observations)
+            self.observation_values.sort(key=lambda x: _key_comp(x))
+        return len(self.observation_values)
 
     def compress_me(self, delta):
         """
@@ -119,14 +116,14 @@ class ObservedValues:
         assert delta is not None
         delta = float(delta)
         assert delta >= 0.0
-        assert self.observations is not None
+        assert self.observation_values is not None
 
-        n = len(self.observations)
+        n = len(self.observation_values)
         w = n
         if n > 1:
-            last_value = self.observations[0].value
+            last_value = self.observation_values[0].value
             new_obs = []
-            for unweighted_obs in self.observations:
+            for unweighted_obs in self.observation_values:
                 assert last_value <= unweighted_obs.value
                 last_value = unweighted_obs.value
                 if len(new_obs) < 1:
@@ -136,35 +133,37 @@ class ObservedValues:
                         new_obs.append(unweighted_obs)
                     else:
                         new_obs[-1].weight += unweighted_obs.weight
-            self.observations = new_obs
-            w = sum([observation.weight for observation in self.observations])
+            self.observation_values = new_obs
+            w = sum([observation.weight for observation in self.observation_values])
         return w
 
     def __repr__(self):
         msg = '[' + str(self.__class__)
         msg += ';  Nk: '
-        n = len(self.observations)
+        n = len(self.observation_values)
         msg += str(n)
         if n > 0:
-            msg += ';  {'
+            msg += '; Wgt: '
+            msg += str(sum([float(x.weight) for x in self.observation_values]))
+            msg += '; {'
             if n < 10:
                 for i in range(n):
                     if i > 0:
                         msg += ';  '
-                    msg += str(self.observations[i])
+                    msg += str(self.observation_values[i])
             else:
                 k = min(5, n)
                 for i in range(k):
                     if i > 0:
                         msg += ';  '
-                    msg += str(self.observations[i])
+                    msg += str(self.observation_values[i])
                 if n > k:
                     msg += '; . . .'
                     remaining = n - k
                     for i in range(remaining + 1, n):
                         if i > 0:
                             msg += ';  '
-                        msg += str(self.observations[i])
+                        msg += str(self.observation_values[i])
             msg += '}'
         msg += ']'
         return msg

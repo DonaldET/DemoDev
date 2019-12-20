@@ -6,7 +6,7 @@ Sand-alone runnner for ANOVA Scorer
 
 from partitioner import observation_manager
 from partitioner.data_manager import data_manager
-from partitioner.scorer import anova_evaluator
+from partitioner.scorer import anova_scorer
 
 
 # #################################################################################### #
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     print('Total SS (Dev)   : {:s}                  Total SS: {:.3f}'.format(str(total_ssd), sum(total_ssd)))
     print('\n===================\n')
 
-    ae = anova_evaluator.AnovaEvaluator(obs)
+    ae = anova_scorer.AnovaScorer(obs)
     print('Created    :\n', str(ae))
 
     n_in_bins = ae.set_category_counts(Nk)

@@ -1,3 +1,8 @@
+"""
+abstract_scorer.py
+
+Defines API for a Scorer
+"""
 from abc import ABC, abstractmethod
 
 
@@ -12,15 +17,20 @@ from abc import ABC, abstractmethod
 
 class AbstractScorer(ABC):
     """
-    Score a raw assignment (the collection of partition capacities)
+    Score a raw assignment (the collection of partition category_counts.) A partition creates a category by establishing
+    score boundaries that define category membership. A scorer is expected to have access to the actual scores
+    referenced by the category_counts. A scorer is expected to have access to the observations referenced by the
+    category sequence.
     """
 
     @abstractmethod
-    def measure(self, capacity_sequence):
+    def measure(self, category_counts):
         """
-        Compute the score associated with a partition assignment
+        Compute the score associated with a partition assignment; each partition has as many elements as the
+        corresponding category count entry. The scorer references the observations based on the category counts.
         Args:
-            capacity_sequence: the sequences of partitions
+            category_counts: the count of members of a potential category; each element of the category counts
+            defines the count of observations in the category.
         Returns: the numeric score (measure) associated with that assignment
         """
         pass

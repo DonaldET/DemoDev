@@ -5,7 +5,8 @@ from partitioner.observation_manager import Observation
 from partitioner.observation_manager import ObservedValues
 
 
-class MyTestCase(unittest.TestCase):
+class ObservationManagerTestCase(unittest.TestCase):
+
     def test_observation(self):
         obs1 = Observation(3)
         self.assertEqual(3, obs1.value, "value differs")
@@ -21,22 +22,22 @@ class MyTestCase(unittest.TestCase):
 
     def test_empty_observations(self):
         values = ObservedValues()
-        self.assertTrue(values.observations is not None)
-        self.assertEqual(0, len(values.observations))
+        self.assertTrue(values.observation_values is not None)
+        self.assertEqual(0, len(values.observation_values))
 
     def test_one_int_observation(self):
         values = ObservedValues()
         obs1 = Observation(3, 2)
         values.add_observation(obs1)
-        self.assertEqual(1, len(values.observations), "length differs")
-        self.assertEqual([obs1], values.observations, "stored observation differs")
+        self.assertEqual(1, len(values.observation_values), "length differs")
+        self.assertEqual([obs1], values.observation_values, "stored observation differs")
 
     def test_multiple_observations(self):
         values = ObservedValues()
         case = [7, 0, 8, 1, 3, 5, 6, 2, 4]
         values.add_observations([Observation(x) for x in case])
-        self.assertEqual(len(case), len(values.observations), "stored observations differ")
-        self.assertEqual([Observation(x) for x in case], values.observations, "stored observations differ")
+        self.assertEqual(len(case), len(values.observation_values), "stored observations differ")
+        self.assertEqual([Observation(x) for x in case], values.observation_values, "stored observations differ")
 
     def test_observations_sort(self):
         values = ObservedValues()
@@ -44,7 +45,7 @@ class MyTestCase(unittest.TestCase):
         values.add_observations([Observation(x) for x in case])
         case.sort()
         values.sort_me()
-        self.assertEqual([Observation(x) for x in case], values.observations, "sort failed")
+        self.assertEqual([Observation(x) for x in case], values.observation_values, "sort failed")
 
     def test_observations_compress(self):
         values = ObservedValues()
@@ -55,7 +56,7 @@ class MyTestCase(unittest.TestCase):
         values.sort_me()
         values.compress_me(0.001)
 
-        obs = values.observations
+        obs = values.observation_values
         self.assertEqual(len(counts), len(obs), "compressed lengths differ")
         for i in range(len(counts)):
             x = obs[i]
@@ -75,7 +76,7 @@ class MyTestCase(unittest.TestCase):
         values.sort_me()
         values.compress_me(delta)
 
-        obs = values.observations
+        obs = values.observation_values
         self.assertEqual(len(counts), len(obs), "compressed lengths differ")
         for i in range(len(counts)):
             x = obs[i]

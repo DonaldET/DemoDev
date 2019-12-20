@@ -1,7 +1,7 @@
 import unittest
 
 
-class MyTestCase(unittest.TestCase):
+class AnovaTestCase(unittest.TestCase):
     def test_(self):
         self.assertEqual(True, True)
 

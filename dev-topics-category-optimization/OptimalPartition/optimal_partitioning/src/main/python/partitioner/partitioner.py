@@ -1,9 +1,9 @@
 """
 partitioner.py
 
-Creates selected partitions of a space of size objects into individual assignments; each assignment has a sequence of
-partitions of varying sizes (min to max) and an associated  score; a collector records the assignment with the maximum
-score (See AA_README.docx in field_validation.)
+Creates selected category_counts of a space of size objects into individual assignments; each assignment has a sequence
+of category_counts of varying sizes (min to max) and an associated  score; a collector records the assignment with the
+maximum score (See AA_README.docx.)
 """
 from partitioner.scorer import sum_square_scorer as sss
 
@@ -21,15 +21,15 @@ trace = False
 
 class Assignment(object):
     """
-    An assignment associates a score with a collection of space partitions and an identifier
+    An assignment associates a score with a collection of space category_counts and has an identifier
     """
 
     def __init__(self, assignment_id, partitions, score):
         """
-        Create an assignment with a collection of space partitions, an identifier, and a score
+        Create an assignment with a collection of space category_counts, an identifier, and a score
         :param assignment_id: a unique identifier for this assignment
-        :param partitions: an ordered collection of capacities
-        :param score: a value associated with the partitions
+        :param partitions: an ordered collection of category_counts
+        :param score: a value associated with the category_counts
         """
         self.partition_id = assignment_id
         self.partitions = partitions
@@ -42,7 +42,7 @@ class Assignment(object):
         msg += ';  '.join(
             ['AssignID: {:s}'.format(str(self.partition_id)),
              'score: {:s}'.format(str(self.score)),
-             'capacities: {:s}'.format(str(self.partitions))])
+             'category_counts: {:s}'.format(str(self.partitions))])
         msg += ']'
         return msg
 
@@ -67,14 +67,14 @@ class Collector(object):
         self.max_assignment = None
         self.examined = 0
 
-    def add_assignment(self, assignment_id, capacity_sequence):
+    def add_assignment(self, assignment_id, category_count):
         """
         Assess an assignment, apply the score and record the assignment if it is the current max
         :param assignment_id: the identifier to apply to the assignment
-        :param capacity_sequence: the ordered sequence of capacities
+        :param category_count: the ordered sequence of category_counts
         :return: the current maximum assignment
         """
-        assignment = Assignment(assignment_id, list(capacity_sequence), self.scorer.measure(capacity_sequence))
+        assignment = Assignment(assignment_id, list(category_count), self.scorer.measure(category_count))
         if self.max_assignment is None:
             self.max_assignment = assignment
         elif self.max_assignment.score < assignment.score:
@@ -96,11 +96,20 @@ class Collector(object):
 
 class Space(object):
     """
-    A space defines the min and max capacity bounds for a fixed number of partitions over size objects; it also
+    A space defines the min and max count allowed for a fixed number of category_counts over size objects; it also
     associates a collector that scores and records the last generated assignment with the maximum score
     """
 
     def __init__(self, collector, partition_count, space_size, min_size, max_size):
+        """
+
+        Args:
+            collector:
+            partition_count:
+            space_size:
+            min_size:
+            max_size:
+        """
         assert collector is not None
         self.collector = collector
 
@@ -117,7 +126,7 @@ class Space(object):
         self.min_size = min_size
         self.max_size = max_size
         self.id_generator = 0
-        self.capacities = None
+        self.category_counts = None
 
         self.reserves = [(self.partition_count - i) * self.min_size for i in range(1, self.partition_count + 1)]
         if trace:
@@ -131,7 +140,7 @@ class Space(object):
         """
         self.collector.reset()
         self.id_generator = 0
-        self.capacities = [0 for _ in range(self.partition_count)]
+        self.category_counts = [0 for _ in range(self.partition_count)]
         last = self._generate_me(self.space_size, 0)
 
         assert last > 0
@@ -141,25 +150,25 @@ class Space(object):
         """
         Iterate through assignments; generate partition counts working left (low) to right (high) in
         partition sizing
-        :param available: the number of objects to divide into partitions
+        :param available: the number of objects to divide into category_counts
         :param me: the partition position in the assignment
         :return: the last value of the assignment generator
         """
         if me >= self.end_ptr:
             self.id_generator += 1
-            self.capacities[me] = available
+            self.category_counts[me] = available
             if trace:
                 print(self.id_generator, 'available:', available,
                       '--' if available < self.min_size else ('++' if available > self.max_size else '  '),
-                      'capacities', str(self.capacities),
+                      'category_counts', str(self.category_counts),
                       'Examined' if available <= self.max_size else ('***' if available < self.min_size else ''))
             if available <= self.max_size:
-                self.collector.add_assignment(self.id_generator, self.capacities)
+                self.collector.add_assignment(self.id_generator, self.category_counts)
             return self.id_generator
 
-        for capacity in range(self.min_size, min(self.max_size, available - self.reserves[me]) + 1):
-            self.capacities[me] = capacity
-            new_available = available - capacity
+        for count in range(self.min_size, min(self.max_size, available - self.reserves[me]) + 1):
+            self.category_counts[me] = count
+            new_available = available - count
             self._generate_me(new_available, me + 1)
         return self.id_generator
 
@@ -173,8 +182,8 @@ class Space(object):
              'min_size: {:d}'.format(self.min_size),
              'max_size: {:d}'.format(self.max_size),
              'id_generator {:d}'.format(self.id_generator),
-             'last capacities: {:s}'.format(
-                 'None' if self.capacities is None else '{' + str(self.capacities) + '}')])
+             'last category_counts: {:s}'.format(
+                 'None' if self.category_counts is None else '{' + str(self.category_counts) + '}')])
         msg += ']'
         return msg
 

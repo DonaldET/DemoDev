@@ -1,10 +1,10 @@
-from collections import namedtuple
 import unittest
 
 from partitioner.data_manager import data_manager
 
 
-class MyTestCase(unittest.TestCase):
+class DataManagerTestCase(unittest.TestCase):
+
     def test_assemble_data(self):
         in1 = [1, 2, 3]
         updated_collected = []
@@ -33,26 +33,6 @@ class MyTestCase(unittest.TestCase):
         for observation in observations:
             self.assertEqual(float_in[i], observation.value, "observation2[" + str(i) + "] differs")
             i = i + 1
-
-def load_example(input_data):
-    observations = observation_manager.ObservedValues()
-    samples = []
-
-    data, samples = data_manager.assemble_data('A', [10, 15, 8, 12, 15], samples)
-    observations.add_observations(data)
-
-    data, samples = data_manager.assemble_data('B', [14, 18, 21, 15], samples)
-    observations.add_observations(data)
-
-    data, samples = data_manager.assemble_data('C', [17, 16, 14, 15, 17, 15, 18], samples)
-    observations.add_observations(data)
-
-    data, samples = data_manager.assemble_data('D', [12, 15, 17, 15, 16, 15], samples)
-    observations.add_observations(data)
-
-    group_n = [float(len(x)) for x in samples]
-
-    return group_n, samples, observations
 
 
 if __name__ == '__main__':
