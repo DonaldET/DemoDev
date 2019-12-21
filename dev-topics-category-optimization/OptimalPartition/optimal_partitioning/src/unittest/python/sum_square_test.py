@@ -20,7 +20,11 @@ class SumSquareTestCase(unittest.TestCase):
 
         observation_values.add_observation(Observation(2, 1))
         scorer = SumSquareScorer(observation_values)
-        self.assertIsNotNone(scorer)
+
+        observation_values.add_observation(Observation(3, 1))
+        scorer = SumSquareScorer(observation_values)
+        with self.assertRaises(AssertionError):
+            score = scorer.measure([1, 2, 3])
 
     def test_two_categories(self):
         observation_values = ObservedValues()
@@ -47,5 +51,6 @@ def _local_deviation_sum(observations):
     mean = float(sum([x.value * x.weight for x in observations])) / float(w)
     return sum([((x.value - mean) ** 2) * x.weight for x in observations])
 
-    if __name__ == '__main__':
-        unittest.main()
+
+if __name__ == '__main__':
+    unittest.main()

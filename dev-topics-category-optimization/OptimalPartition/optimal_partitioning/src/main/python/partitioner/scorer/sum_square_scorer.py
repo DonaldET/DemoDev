@@ -27,7 +27,17 @@ class SumSquareScorer(scorer.AbstractScorer):
     def __init__(self, prepared_observations):
         assert prepared_observations is not None
         assert len(prepared_observations.observation_values) > 1
-        self.prepared_observations = prepared_observations
+        self.observation_values = prepared_observations.observation_values
+
+    def _check_counts(self, category_counts):
+        k = len(category_counts)
+        assert k > 1
+        for x in category_counts:
+            assert int(x) > 0 and int(x) == float(x)
+        n_in_bins = sum(category_counts)
+        n_observed = len(self.observation_values)
+        assert n_in_bins == n_observed
+        return n_observed, k
 
     def measure(self, category_counts):
         """
@@ -35,12 +45,14 @@ class SumSquareScorer(scorer.AbstractScorer):
         :param category_counts: an ordered collection of observation counts for each category in an assignment
         :return: sum of squared values
         """
+        self._check_counts(category_counts)
+
         i = 0
         sum_squares = 0.0
         for count in category_counts:
             k = i + count
             sum_squares += _sum_squared_deviations(
-                [self.prepared_observations.observation_values[j] for j in range(i, k)])
+                [self.observation_values[j] for j in range(i, k)])
             i = k
 
         return -sum_squares

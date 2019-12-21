@@ -1,8 +1,9 @@
 """
 anova_scorer.py
 
-This AbstractScorer code was first done in Visual Basic by Alan Bostrom at Iameter, later translated and improved
-for C++, again translated to Java, and finally appears in this Python version. Here, the ANOVA R-squared is computed.
+This Anova Scorer, based on the AbstractScorer was first done in Visual Basic by Alan Bostrom at Iameter. It was later
+translated to C++ and improved.Eventuall it was translated to Java 6, and finally appears in this Python version. The
+ANOVA R-Squared statistic is used as the measure.
 """
 from partitioner.scorer import abstract_scorer as scorer
 
@@ -40,10 +41,10 @@ class AnovaScorer(scorer.AbstractScorer):
 
     def __init__(self, observed_values):
         assert observed_values is not None
-        observations = observed_values.observations
-        assert observations is not None
-        assert len(observations) > 1
-        self.observed_values = observed_values
+        observed_values = observed_values.observations
+        assert observed_values is not None
+        assert len(observed_values) > 1
+        self.observation_values = observed_values
         self.category_counts = None
         self.treatment_raw_sumx = None
         self.treatment_raw_sumx2 = None
@@ -60,7 +61,7 @@ class AnovaScorer(scorer.AbstractScorer):
         self.f_ratio = None
 
     def _reset_anova(self):
-        assert self.observed_values is not None
+        assert self.observation_values is not None
         self.category_counts = None
         self.treatment_raw_sumx = None
         self.treatment_raw_sumx2 = None
@@ -84,7 +85,7 @@ class AnovaScorer(scorer.AbstractScorer):
             assert int(x) > 0 and int(x) == float(x)
         self.category_counts = [int(x) for x in category_counts]
         n_in_bins = sum(self.category_counts)
-        n_observed = len(self.observed_values.observations)
+        n_observed = len(self.observation_values)
         assert n_in_bins == n_observed
         return n_observed, k
 
@@ -94,7 +95,7 @@ class AnovaScorer(scorer.AbstractScorer):
         SS Total = (SS Treatment, SS Between, SS Explained) + (SS Residual, SS Error, SS Within)
         :return: observation count and category count
         """
-        assert self.observed_values is not None
+        assert self.observation_values is not None
         n_observed = 0
         self.treatment_raw_sumx = []
         self.treatment_raw_sumx2 = []
@@ -128,11 +129,11 @@ class AnovaScorer(scorer.AbstractScorer):
         return n_observed, k
 
     def _get_sum_x(self, low_index, high_index):
-        observations = self.observed_values.observations
+        observations = self.observation_values.observations
         return sum([x.value for x in observations[low_index: high_index + 1]])
 
     def _get_sum_x2(self, low_index, high_index):
-        observations = self.observed_values.observations
+        observations = self.observation_values.observations
         return sum([x.value * x.value for x in observations[low_index: high_index + 1]])
 
     #
@@ -161,7 +162,7 @@ class AnovaScorer(scorer.AbstractScorer):
         assert self.treatment_raw_sumx is not None
         k = len(self.category_counts)
         self.treatment_df = k - 1
-        n_observed = len(self.observed_values.observations)
+        n_observed = len(self.observation_values.observations)
         self.error_df = n_observed - k
         self.total_df = n_observed - 1
         self.ms_treatments = self.treatment_ss / float(self.treatment_df)
@@ -187,7 +188,7 @@ class AnovaScorer(scorer.AbstractScorer):
 
     def __repr__(self):
         msg = '[' + str(self.__class__)
-        msg += ';\n     Observations: {:s}'.format(str(self.observed_values))
+        msg += ';\n     Observations: {:s}'.format(str(self.observation_values))
         if self.category_counts is not None:
             msg += ';\n  Counts      : {:s} = {:d}'.format(str(self.category_counts), sum(self.category_counts))
             msg += ';\n  Sum X       : {:s} = {:.3f}'.format(str(self.treatment_raw_sumx), sum(self.treatment_raw_sumx))
