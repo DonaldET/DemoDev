@@ -15,14 +15,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+	<groupId>don.demo</groupId>
 	<artifactId>demodev-topics-demogenerator</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>Template Generation Utility</name>
 
 	<description>Generate Configuration with Templates and Models</description>
-
-	<groupId>don.demo</groupId>
 
 	<properties>
 		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>

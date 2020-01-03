@@ -15,14 +15,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+	<groupId>don.demo</groupId>
 	<artifactId>demodev-topics-dependencies</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>DEVOPS - Dependency Management</name>
 
 	<description>Compare Java and Python Dependency Management</description>
-
-	<groupId>don.demo</groupId>
 
 	<properties>
 		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>

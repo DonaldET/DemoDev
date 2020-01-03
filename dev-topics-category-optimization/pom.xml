@@ -15,14 +15,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+	<groupId>don.demo</groupId>
 	<artifactId>demodev-topics-category-optimizer</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
 	<name>Category Boundry Optimization Utility</name>
 
 	<description>Examine Category Score Boundaries maximizing R-squared</description>
-
-	<groupId>don.demo</groupId>
 
 	<properties>
 		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>
