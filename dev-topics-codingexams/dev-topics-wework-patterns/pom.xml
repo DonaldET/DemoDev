@@ -18,7 +18,7 @@
 	<artifactId>demodev-topics-wework-pattern</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>WeWork Design Pattern Examples</name>
+	<name>WeWork - Design Pattern Examples</name>
 
 	<description>Examples of Strategy, Factory, Bridge, and Decorator Patterns</description>
 

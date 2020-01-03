@@ -18,7 +18,7 @@
 	<artifactId>demodev-topics-liveramp-bitsearch</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>IP address and Access count Search Algorithms</name>
+	<name>LiveRamp2 - IP address and Access count Search Algorithms</name>
 
 	<description>Compare techniques to search for subnet bit strings in a collection of IP address and access counts</description>
 

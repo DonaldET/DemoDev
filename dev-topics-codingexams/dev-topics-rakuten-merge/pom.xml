@@ -18,9 +18,9 @@
 	<artifactId>demodev-topics-rakuten-merge</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>Merge Two Arrays</name>
+	<name>Rakuten - Merge Two Arrays</name>
 
-	<description>Merge Arrays with Space Order One</description>
+	<description>Merge Arrays with Additional Space Order One</description>
 
 	<properties>
 	</properties>

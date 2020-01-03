@@ -18,7 +18,7 @@
 	<artifactId>demodev-topics-grandrounds-rover</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>Rover Command Simulation</name>
+	<name>GrandRounds - Rover Command Simulation</name>
 
 	<description>Simulate movement of a planetary rove on a plain defined by a grid</description>
 
