@@ -88,6 +88,15 @@ _largenumeric_ | Example of the Kahn algorithm for mitigating some of the errors
 _nasa-sensor_ | Monitor sensor radiation exposure with multiple algorithms; trade off space and time. This is the basis of the article: [https://www.linkedin.com/pulse/needs-really-fast-donald-trummell/](https://www.linkedin.com/pulse/needs-really-fast-donald-trummell/). 
 _sieve_ | Implements the classical method to find primes in an interval using the Sieve of Eratosthenes.
 
+## Sub-Project Big Data
+
+TBD.
+
+### Selected _Big Data_ Content
+
+Project | Description
+------- | -----------
+_tbd_ | TBD
 ## Sub-Project Coding Exams
 
 These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  Some problems were from sites offering coding practice. The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked in these situations.  Solutions presented here include MAVEN builds, JUnit tests, and JavaDoc. Many of these problems were originally done under time constraints and considerable cleanup was required before presentation here.
@@ -161,6 +170,18 @@ These examples demonstrate NoSQL persistence.
 Project | Description
 ------- | -----------
 __TBD__ | __TBD__
+## Sub-Project DevOps
+
+DevOps projects are not directly used by *DemoDev* and related projects, but illustrate good development environment practices and useful Templates for creating those environments.
+
+### Selected *DevOps* Content
+
+Project | Description
+------- | -----------
+*Dependencies* | A sample Python project (***myapppy***), with *PyBuilder* and *PyCharm*, is set up to mimic Java development environments (*Maven* and *Eclipse*). The project enables creation of binary deployable artifacts.  This utility is the basis of the DevOps article: [https://www.linkedin.com/pulse/setting-up-python-project-virtual-environment-pycharm-donald-trummell](https://www.linkedin.com/pulse/setting-up-python-project-virtual-environment-pycharm-donald-trummell). 
+
+The DevOps projects are templates meant to be forked (copied) and modified.
+
 ## Sub-Project Utilities
 
 These projects are working code used by *DemoDev* and related projects. They illustrate good engineering practices and represent useful utilities.
@@ -174,18 +195,6 @@ _DemoGenerator_ | A Freemarker based text generation utility supporting configur
 
 **Note**:
 These utilities are distributed using Java JAR files and invoked as executable Jars. The Python versions are created by *PyBuilder* and typically distributed as wheel files.
-## Sub-Project DevOps
-
-DevOps projects are not directly used by *DemoDev* and related projects, but illustrate good development environment practices and useful Templates for creating those environments.
-
-### Selected *DevOps* Content
-
-Project | Description
-------- | -----------
-*Dependencies* | A sample Python project (***myapppy***), with *PyBuilder* and *PyCharm*, is set up to mimic Java development environments (*Maven* and *Eclipse*). The project enables creation of binary deployable artifacts.  This utility is the basis of the DevOps article: [https://www.linkedin.com/pulse/setting-up-python-project-virtual-environment-pycharm-donald-trummell](https://www.linkedin.com/pulse/setting-up-python-project-virtual-environment-pycharm-donald-trummell). 
-
-The DevOps projects are templates meant to be forked (copied) and modified.
-
 ## Build Information
 Naming and structural conventions, along with collected statistics on Maven build structure. Key Maven plugins are documented as well.
 

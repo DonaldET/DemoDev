@@ -1,9 +1,9 @@
-## Sub-Project Hacks
+## Sub-Project Big Data
 
-These short examples demonstrate _"less than the best"_ coding practices that are sometimes used to get around a solution constraint until a better solution can be found.
+TBD.
 
-### Selected _Hacks_ Content
+### Selected _Big Data_ Content
 
 Project | Description
 ------- | -----------
-_serialhack_ | Use serialization to assign value to a private field lacking a setter
+_tbd_ | TBD
