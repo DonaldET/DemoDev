@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2020. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -30,6 +30,7 @@
 		<module>dev-topics-jerseyservices</module>
 		<module>dev-topics-memoryindexing</module>
 		<module>dev-topics-nosql</module>
+		<module>dev-topics-bigdata</module>
 	</modules>
 
 	<prerequisites>
