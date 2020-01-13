@@ -18,7 +18,7 @@ There are far too many Maven tutorials to mention here, so please search the web
 
 #### Java Requirement
 
-Most of *DemoDev* is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, https://github.com/javaterminal/tryjshell, offers a browser-accessible version of the REPL. They provide a hosted version at https://tryjshell.org/.
+Most of *DemoDev* is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, called [https://github.com/javaterminal/tryjshell](https://github.com/javaterminal/tryjshell "tryjshell"), offers a browser-accessible version of the Java REPL. They also provide a hosted version at [https://tryjshell.org/](https://tryjshell.org/).
 
 #### Java and Python Coding Practice, Data Management Free Resources 
 
@@ -27,25 +27,36 @@ Here are some educational web sites for testing your Java and Python coding skil
 - [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
 - [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
-- https://app.codility.com/demo/take-sample-test/, like coderpad, the codility web site is a testing environment offering practice problems.
+- [https://app.codility.com/demo/take-sample-test/](https://app.codility.com/demo/take-sample-test/ "Codility"), like coderpad, the codility web site is a testing environment offering practice problems.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
 
-Additional support for testing SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
+#### SQL Learning Resources
+
+Support for testing SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
+
+- Online SQL teaching instances: [http://sqlfiddle.com/](http://sqlfiddle.com/) and [https://www.freesqldatabase.com/](https://www.freesqldatabase.com/).
 - SQL runner only: [https://paiza.io/projects/featured?language=mysql](https://paiza.io/projects/featured?language=mysql).
 - SQL skills testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
 
-Finally, must of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  https://databricks.com/try-databricks.
+Additional SQL learning resources include:
+
+- The W3Schools editor [https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in](https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in).
+- A free online course is found at: [https://www.codecademy.com/learn/learn-sql](https://www.codecademy.com/learn/learn-sql).
+- An Oracle teaching link: [https://livesql.oracle.com/apex/f?p=590:1000](https://livesql.oracle.com/apex/f?p=590:1000) (see [https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/](https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/ "for an overview").
+- A link discussing free courses: [https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html](https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html).
+
+Finally, much of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  [https://databricks.com/try-databricks](https://databricks.com/try-databricks "try Databricks").
 
 #### *DemoDev* Content Commercial Opportunities
 
-Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at the "pretty view" [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/).
+Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at  [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/ "the pretty view").
 
 # Getting Started
 
 All the information needed to build these projects is detailed in the _BuildResources_ document described below.  The process you will follow is:
  1. Download required build dependencies (e.g., Java, MAVEN, and optionally ANT)
  2. Install and test the build dependencies
- 3. Fork or download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/ "the source repo"))
+ 3. Fork or download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/ "the source repo")
  4. On the command line, from the downloaded base directory, execute:
     _mvn clean install_
 
@@ -65,7 +76,7 @@ The _StaticResources_ directory references instructions on how to setup a MAVEN 
 
 ## Sub-Project Structure
 
-Sub-projects usually include a _business_ motivation for the coding examples in this section of the repository.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes. Spring has a very readable overview of the *Liskov Substitution Principle* (see <https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/>.) While not directly illustrated in these examples, an important principle is the principle of least astonishment (or least surprise.) Related to KISS, it really means that a code reader is not surprised by the approach taken to solve a problem (see https://en.wikipedia.org/wiki/Principle_of_least_astonishment.)
+Sub-projects usually include a _business_ motivation for the coding examples in this section of the repository.  The examples also show good _OO design principals_, such as _KISS_, _DRY_ (don't repeat yourself), and _SOLID_ (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion.) This site violates _YAGNI_ for educational purposes. Spring has a very readable overview of the *Liskov Substitution Principle* (see https://springframework.guru/principles-of-object-oriented-design/liskov-substitution-principle/.) While not directly illustrated in these examples, an important principle is the principle of least astonishment (or least surprise.) Related to KISS, it really means that a code reader is not surprised by the approach taken to solve a problem (see [https://en.wikipedia.org/wiki/Principle_of_least_astonishment](https://en.wikipedia.org/wiki/Principle_of_least_astonishment "least surprise").)
 
 The sub-projects have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. Many sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  Stability over time is accomplished by using the regression aspect of these tests.
 
