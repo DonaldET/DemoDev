@@ -56,7 +56,7 @@ Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additio
 All the information needed to build these projects is detailed in the _BuildResources_ document described below.  The process you will follow is:
  1. Download required build dependencies (e.g., Java, MAVEN, and optionally ANT)
  2. Install and test the build dependencies
- 3. Fork or download the source code from the GitHub repository (see [http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/](http://www.github.com/DonaldET/DemoDev/ "the source repo")
+ 3. Fork or download the source code from the GitHub repository (see [https://github.com/DonaldET/DemoDev](https://github.com/DonaldET/DemoDev "the source repo") for code access.)
  4. On the command line, from the downloaded base directory, execute:
     _mvn clean install_
 
