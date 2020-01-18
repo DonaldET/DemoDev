@@ -47,11 +47,11 @@ Additional SQL learning resources include:
 
 Finally, much of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  [https://databricks.com/try-databricks](https://databricks.com/try-databricks "try Databricks").
 
-#### *DemoDev* Content Commercial Opportunities
+## *DemoDev* Content Commercial Opportunities
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at  [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/ "the pretty view").
 
-This project contributes to the ***Wind Power Explorer*** project (see [https://github.com/WindPowerExplorer/FullSai](https://github.com/WindPowerExplorer/FullSail "FullSail") repository) with permission.
+This project contributes to the ***Wind Power Explorer*** project (see the [https://github.com/WindPowerExplorer/FullSail](https://github.com/WindPowerExplorer/FullSail "FullSail") repository) with permission.
 
 # Getting Started
 
