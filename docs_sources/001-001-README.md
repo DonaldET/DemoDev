@@ -8,7 +8,7 @@ These ***DemoDev*** projects illustrate techniques for building Java based compo
 - DevOps examples.
 - Interview questions.
 
-A collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. Often these coding solutions are do not follow programming best practices to meet a time or complexity constraint in an interview. However, the other sub-projects follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview, and the **Sub-Project Structure** shown below.
+A collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. Often these coding solutions do not follow programming best practices in order to meet a time or complexity constraint in an interview. However, the other sub-projects follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview, and the **Sub-Project Structure** description documented below.
 
 Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. There is also a DevOps sub-project collection of build related utilities and templating.
 
@@ -18,7 +18,7 @@ The Java projects in *DemoDev* use Maven to build and JUnit to test artifacts. N
 
 In a *tree* of Maven build projects, the _root_ (top-most) parent build project defines common MAVEN dependencies and version definitions in a *pom.xml*. Nested child build projects are located under the top-level parent build project, each child with their own *pom.xml* file, optionally overriding inherited MAVEN dependencies and versions.
 
-A child build project build may, in turn, be a parent of an even lower level child build project, thus forming a multi-level tree of related build projects, each inheriting common MAVEN dependencies.
+A child Maven build project build may, in turn, be a parent of an even lower level child build project, thus forming a multi-level tree of related build projects, each inheriting common MAVEN dependencies.
 
 Maven creates a build using "*plugins*" that implement build actions. Similar to dependencies and versions, plugins are included in parent build projects and optionally overridden in child build projects.
 
