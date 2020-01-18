@@ -1,6 +1,12 @@
 # Welcome
 
-These ***DemoDev*** projects illustrate useful techniques for building Java based components for Service Oriented Architecture (microservices and cloud-native) related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional coding techniques are illustrated with real examples.
+These ***DemoDev*** projects illustrate techniques for building Java based components used in Service Oriented Architecture (microservices and cloud-native) related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Topics included are:
+
+- Various object-oriented and functional coding techniques are illustrated with real examples.
+- Ready-to-uses utilities as libraries and executables.
+- Performance testing approaches.
+- DevOps examples.
+- Interview questions.
 
 A collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. Often these coding solutions are do not follow programming best practices to meet a time or complexity constraint in an interview. However, the other sub-projects follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview, and the **Sub-Project Structure** shown below.
 
