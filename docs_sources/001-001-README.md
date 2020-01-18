@@ -1,6 +1,6 @@
 # Welcome
 
-These _DemoDev_ projects illustrate useful techniques for building Java, Service Oriented Architecture (microservices and cloud-native) related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional coding techniques are illustrated with real examples. A collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. These examples follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview.
+These ***DemoDev*** projects illustrate useful techniques for building Java, Service Oriented Architecture (microservices and cloud-native) related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Various object-oriented and functional coding techniques are illustrated with real examples. A collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. These examples follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview.
 
 Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. There is also a DevOps sub-project collection of build related utilities and templating.
 
@@ -50,6 +50,8 @@ Finally, much of the Python content of this repository is concerned with *Apache
 #### *DemoDev* Content Commercial Opportunities
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at  [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/ "the pretty view").
+
+This project contributes to the ***Wind Power Explorer*** project (see [https://github.com/WindPowerExplorer/FullSai](https://github.com/WindPowerExplorer/FullSail "FullSail") repository) with permission.
 
 # Getting Started
 
