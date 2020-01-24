@@ -15,12 +15,12 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>demodev-topics-amazon-infrastructure</artifactId>
+	<artifactId>demodev-topics-gesichtbuch-infrastructure</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>Amazon - Infrastructure</name>
+	<name>Gesicht Buch - Infrastructure</name>
 	
-	<description>Minimum Task Timer and Longest Substring with Unique Characters</description>
+	<description>Minimum Task Timer, Longest Substring with Unique Characters, Stream to Lines, and sum nearest target</description>
 
 	<properties>
 	</properties>

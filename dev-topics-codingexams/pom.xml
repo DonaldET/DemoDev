@@ -27,13 +27,12 @@
 	<url>http://www.linkedin.com/in/donaldtrummell/</url>
 
 	<modules>
+		<module>dev-topics-apple-factorial</module>
+		<module>dev-topics-apple-compounditerator</module>
 		<module>dev-topics-amazon-codingchallange</module>
 		<module>dev-topics-amazon-findmedian</module>
-		<module>dev-topics-amazon-infrastructure</module>
 		<module>dev-topics-amazon-invoiceparser</module>
 		<module>dev-topics-amazon-rangeconsolidator</module>
-		<module>dev-topics-apple-compounditerator</module>
-		<module>dev-topics-apple-factorial</module>
 		<module>dev-topics-cisco-sieve</module>
 		<module>dev-topics-creditkarma-list-dependencies</module>
 		<module>dev-topics-cruise-control</module>
@@ -42,6 +41,7 @@
 		<module>dev-topics-evernote-max-operators</module>
 		<module>dev-topics-gap-cart</module>
 		<module>dev-topics-gesail-twowriters</module>
+		<module>dev-topics-gesichtbuch-infrastructure</module>
 		<module>dev-topics-geturner-binarysearch</module>
 		<module>dev-topics-grandrounds-rover</module>
 		<module>dev-topics-granular-sudoku</module>
