@@ -20,7 +20,7 @@
 	<packaging>jar</packaging>
 	<name>Gesicht Buch - Infrastructure</name>
 	
-	<description>Minimum Task Timer, Longest Substring with Unique Characters, Stream to Lines, and sum nearest target</description>
+	<description>Minimum Task Timer, Longest Substring with Unique Characters, Stream to Lines, and Sum of three nearest target</description>
 
 	<properties>
 	</properties>
