@@ -28,6 +28,7 @@ Elance | _diagonal_ | Square matrix diagonal elements list generator.
 Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies. 
 GE | _gesail twowriters_ | Apply two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar. 
 GE | _geturner binarysearch_ | Compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_. 
+Gesicht Buch | _Infrastructure_ | Minimum Task Timer, Longest Substring with Unique Characters, Stream to Lines, and Sum of three nearest target. 
 Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remove command facility. 
 Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates. 
 IJSDE | _Problems_ | Programming skills validation examples associated with a job-placement web-site. 
