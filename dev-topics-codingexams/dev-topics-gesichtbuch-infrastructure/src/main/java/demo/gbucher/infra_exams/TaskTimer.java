@@ -1,4 +1,4 @@
-package demo.facebook.infra_exams;
+package demo.gbucher.infra_exams;
 
 import java.util.ArrayList;
 import java.util.Arrays;
