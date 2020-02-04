@@ -7,12 +7,12 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.cisco.sieve.runner.impl;
+package don.demo.cisco.sieve.runner.impl;
 
 import org.apache.commons.lang.Validate;
 
-import demo.cisco.sieve.runner.SieveSearchRunner;
-import demo.cisco.sieve.searcher.SieveSearcher;
+import don.demo.cisco.sieve.runner.SieveSearchRunner;
+import don.demo.cisco.sieve.searcher.SieveSearcher;
 
 /**
  * Runs a sieve search instance that incorporates an algorithm run repeatedly

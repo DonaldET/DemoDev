@@ -7,9 +7,9 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.cisco.sieve.runner;
+package don.demo.cisco.sieve.runner;
 
-import demo.cisco.sieve.searcher.SieveSearcher;
+import don.demo.cisco.sieve.searcher.SieveSearcher;
 
 /**
  * An implementation wraps a search algorithm in a &quot;runner&quot; that runs

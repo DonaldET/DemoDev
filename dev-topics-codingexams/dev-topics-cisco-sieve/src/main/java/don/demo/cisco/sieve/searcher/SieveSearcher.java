@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.cisco.sieve.searcher;
+package don.demo.cisco.sieve.searcher;
 
 /**
  * This project compares techniques to search an array of integers. We find

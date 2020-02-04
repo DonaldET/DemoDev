@@ -7,14 +7,14 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.cisco.sieve.searcher.impl;
+package don.demo.cisco.sieve.searcher.impl;
 
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-import demo.cisco.sieve.searcher.SieveSearcher;
+import don.demo.cisco.sieve.searcher.SieveSearcher;
 
 public class TreeMapSearcher implements SieveSearcher {
 	public static class Ends {

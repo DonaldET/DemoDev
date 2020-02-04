@@ -7,32 +7,36 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.cisco.sieve.searcher.impl;
+package don.demo.cisco.sieve.searcher.impl;
 
-import java.util.Arrays;
+import don.demo.cisco.sieve.searcher.SieveSearcher;
 
-import demo.cisco.sieve.searcher.SieveSearcher;
+public class RadixSearcher implements SieveSearcher {
+	final int bound;
 
-public class NiaveSearcher implements SieveSearcher {
+	public RadixSearcher(final int bound) {
+		this.bound = bound;
+	}
+
 	@Override
 	public int[] search(final int[] data, final int topCount) {
-		int[] copy = data.clone();
-		Arrays.sort(copy);
+		byte[] flags = new byte[bound + 1];
 
-		int[] result = new int[topCount];
-		int j = 0;
-		result[j] = copy[0];
-		for (int i = 1; j < topCount - 1 && i < data.length; i++) {
-			int v = copy[i];
-			if (v != result[j])
-				result[++j] = v;
+		for (int i = 0; i < data.length; i++)
+			flags[data[i]] = 1;
+
+		final int[] results = new int[topCount];
+		int foundCount = 0;
+		for (int i = 1; foundCount < topCount && i <= flags.length; i++) {
+			if (flags[i] != 0)
+				results[foundCount++] = i;
 		}
 
-		return result;
+		return results;
 	}
 
 	@Override
 	public String getName() {
-		return "Sort All First";
+		return "Radix Search";
 	}
 }

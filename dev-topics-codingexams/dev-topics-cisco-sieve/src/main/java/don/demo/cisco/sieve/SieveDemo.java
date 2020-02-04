@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.cisco.sieve;
+package don.demo.cisco.sieve;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,13 +15,13 @@ import java.util.List;
 
 import org.apache.commons.lang.Validate;
 
-import demo.cisco.sieve.runner.SieveSearchRunner;
-import demo.cisco.sieve.runner.impl.SieveSearchRunnerImpl;
-import demo.cisco.sieve.searcher.SieveSearcher;
-import demo.cisco.sieve.searcher.impl.BinaryArraySearcher;
-import demo.cisco.sieve.searcher.impl.NiaveSearcher;
-import demo.cisco.sieve.searcher.impl.RadixSearcher;
-import demo.cisco.sieve.searcher.impl.TreeMapSearcher;
+import don.demo.cisco.sieve.runner.SieveSearchRunner;
+import don.demo.cisco.sieve.runner.impl.SieveSearchRunnerImpl;
+import don.demo.cisco.sieve.searcher.SieveSearcher;
+import don.demo.cisco.sieve.searcher.impl.BinaryArraySearcher;
+import don.demo.cisco.sieve.searcher.impl.NiaveSearcher;
+import don.demo.cisco.sieve.searcher.impl.RadixSearcher;
+import don.demo.cisco.sieve.searcher.impl.TreeMapSearcher;
 
 /**
  * Runs various sieve searcher instances, implemented using different algorithms
