@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.don.bignumeric.api;
+package don.demo.bignumeric.api;
 
 /**
  * Generate a sequence of floating point numbers, tracking invocations, and

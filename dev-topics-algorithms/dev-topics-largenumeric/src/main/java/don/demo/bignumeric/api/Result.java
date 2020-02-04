@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.don.bignumeric.api;
+package don.demo.bignumeric.api;
 
 /**
  * Hold the status of the an adder processing a sequence from a generator.

@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.don.bignumeric.api;
+package don.demo.bignumeric.api;
 
 /**
  * An adder sums sequences of values. We are primarily interested in addition

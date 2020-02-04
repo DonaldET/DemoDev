@@ -7,10 +7,10 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.don.bignumeric.impl;
+package don.demo.bignumeric.impl;
 
-import demo.don.bignumeric.api.Adder;
-import demo.don.bignumeric.api.SequenceGenerator;
+import don.demo.bignumeric.api.Adder;
+import don.demo.bignumeric.api.SequenceGenerator;
 
 /**
  * A simple adder that eventually ignores additional addends because the running
@@ -18,17 +18,14 @@ import demo.don.bignumeric.api.SequenceGenerator;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class NaiveAdder extends AbstractAdder implements Adder
-{
-  public NaiveAdder(final SequenceGenerator generator, final long maxIterations)
-  {
-    super(generator, maxIterations);
-    this.name = getClass().getSimpleName();
-  }
+public class NaiveAdder extends AbstractAdder implements Adder {
+	public NaiveAdder(final SequenceGenerator generator, final long maxIterations) {
+		super(generator, maxIterations);
+		this.name = getClass().getSimpleName();
+	}
 
-  @Override
-  protected float updateSum(final float sum, final float element)
-  {
-    return sum + element;
-  }
+	@Override
+	protected float updateSum(final float sum, final float element) {
+		return sum + element;
+	}
 }
