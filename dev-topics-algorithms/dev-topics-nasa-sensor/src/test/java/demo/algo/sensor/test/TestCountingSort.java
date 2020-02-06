@@ -8,9 +8,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.algo.sensor.SensorMonitoring;
-import demo.algo.sensor.SensorMonitoring.ExposureSession;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.SensorMonitoring;
+import don.demo.algo.sensor.SensorMonitoring.ExposureSession;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Validate counting sort.

@@ -1,9 +1,9 @@
 package demo.algo.sensor.test;
 
-import demo.algo.sensor.MonitorExposureByAreaMapped;
-import demo.algo.sensor.SensorMonitoring.BoundingBox;
-import demo.algo.sensor.SensorMonitoring.ExposureSession;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.MonitorExposureByAreaMapped;
+import don.demo.algo.sensor.SensorMonitoring.BoundingBox;
+import don.demo.algo.sensor.SensorMonitoring.ExposureSession;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Create a simple character-based display of the radiated regions indicating

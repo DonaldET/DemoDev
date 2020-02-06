@@ -6,10 +6,10 @@ import java.util.Random;
 
 import org.junit.Assert;
 
-import demo.algo.sensor.ExposureAreaFinder;
-import demo.algo.sensor.SensorMonitoring;
-import demo.algo.sensor.SensorMonitoring.ExposureSession;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.ExposureAreaFinder;
+import don.demo.algo.sensor.SensorMonitoring;
+import don.demo.algo.sensor.SensorMonitoring.ExposureSession;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Randomly generate pixel saturation data as bursts in rectangular regions.

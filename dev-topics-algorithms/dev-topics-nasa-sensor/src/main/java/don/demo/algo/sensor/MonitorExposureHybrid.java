@@ -1,13 +1,13 @@
-package demo.algo.sensor;
+package don.demo.algo.sensor;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import demo.algo.sensor.SensorMonitoring.BoundingBox;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
-import demo.algo.sensor.SensorMonitoring.RectangleComparator;
+import don.demo.algo.sensor.SensorMonitoring.BoundingBox;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.SensorMonitoring.RectangleComparator;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel level

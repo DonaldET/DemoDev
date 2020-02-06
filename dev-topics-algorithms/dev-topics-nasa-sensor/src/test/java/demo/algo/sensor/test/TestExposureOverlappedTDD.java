@@ -8,10 +8,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.algo.sensor.ExposureAreaFinder;
-import demo.algo.sensor.MonitorExposureOverlapped;
-import demo.algo.sensor.SensorMonitoring.ExposureSession;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.ExposureAreaFinder;
+import don.demo.algo.sensor.MonitorExposureOverlapped;
+import don.demo.algo.sensor.SensorMonitoring.ExposureSession;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Apply bursts and compute area, compare to expected.

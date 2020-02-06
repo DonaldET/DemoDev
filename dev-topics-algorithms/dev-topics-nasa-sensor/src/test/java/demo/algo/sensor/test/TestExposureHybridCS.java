@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.algo.sensor.ExposureAreaFinder;
-import demo.algo.sensor.MonitorExposureHybridCS;
+import don.demo.algo.sensor.ExposureAreaFinder;
+import don.demo.algo.sensor.MonitorExposureHybridCS;
 
 /**
  * Apply bursts and compute area, compare to expected.

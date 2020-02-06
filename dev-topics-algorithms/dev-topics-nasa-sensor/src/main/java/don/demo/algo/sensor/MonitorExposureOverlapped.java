@@ -1,11 +1,11 @@
-package demo.algo.sensor;
+package don.demo.algo.sensor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel level

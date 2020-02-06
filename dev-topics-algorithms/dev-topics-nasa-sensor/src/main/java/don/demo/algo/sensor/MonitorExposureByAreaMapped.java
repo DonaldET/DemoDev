@@ -1,12 +1,12 @@
-package demo.algo.sensor;
+package don.demo.algo.sensor;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import demo.algo.sensor.SensorMonitoring.BoundingBox;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.SensorMonitoring.BoundingBox;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel

@@ -1,8 +1,8 @@
-package demo.algo.sensor;
+package don.demo.algo.sensor;
 
 import java.util.List;
 
-import demo.algo.sensor.SensorMonitoring.Rectangle;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * An implementation finds the area of exposed sensor regions with the desired

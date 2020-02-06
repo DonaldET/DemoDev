@@ -1,24 +1,21 @@
-package demo.algo.sensor;
+package don.demo.algo.sensor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import demo.algo.sensor.SensorMonitoring.BoundingBox;
-import demo.algo.sensor.SensorMonitoring.Rectangle;
-import demo.algo.sensor.SensorMonitoring.RectangleComparator;
+import don.demo.algo.sensor.SensorMonitoring.BoundingBox;
+import don.demo.algo.sensor.SensorMonitoring.Rectangle;
 
 /**
  * Graphics based technique where exposed regions are modeled at the pixel level
  * using an array. Inputs are grouped by chains of overlapping rectangular
  * regions to minimize the size of the pixel map (the portion of the Sensor
- * exposed.) We create the chain of overlap using array parallel sort {O(n +
- * k)}.
+ * exposed.) We create the chain of overlap using a Counting Sort {O(n + k)}.
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class MonitorExposureHybridPS implements ExposureAreaFinder {
+public class MonitorExposureHybridCS implements ExposureAreaFinder {
 
 	class State {
 		public int rgtHoldingBound = Integer.MIN_VALUE;
@@ -38,8 +35,8 @@ public class MonitorExposureHybridPS implements ExposureAreaFinder {
 	 * <p>
 	 * Overlapping regions attempts to make each region smaller, thereby lowering
 	 * the number of squares needed to represent the exposures. However, it
-	 * introduces the need for sorting the input (an O(n * log(n)) operation, but
-	 * done in parallel).
+	 * introduces the need for sorting the input (but counting sort is an O(n + k)
+	 * operation).
 	 */
 	@Override
 	public int findArea(List<? extends Rectangle> exposures, final int k) {
@@ -86,24 +83,10 @@ public class MonitorExposureHybridPS implements ExposureAreaFinder {
 	}
 
 	private List<Rectangle> orderRectangles(List<? extends Rectangle> exposures) {
-		if (exposures == null) {
-			return new ArrayList<Rectangle>();
-		}
-
-		final int n = exposures.size();
-		List<Rectangle> sorted = new ArrayList<Rectangle>(n);
-		if (n < 2) {
-			sorted.add(exposures.get(0));
-		}
-
-		Rectangle[] parallelSorted = new Rectangle[n];
-		for (int i = 0; i < parallelSorted.length; i++) {
-			parallelSorted[i] = exposures.get(i);
-		}
-		Arrays.parallelSort(parallelSorted, new RectangleComparator<Rectangle>());
-
-		for (int i = 0; i < n; i++) {
-			sorted.add(parallelSorted[i]);
+		Rectangle[] countingSorted = SensorMonitoring.countingSort(exposures, SensorMonitoring.XY_UPPER_BOUND);
+		List<Rectangle> sorted = new ArrayList<Rectangle>(countingSorted.length);
+		for (int i = 0; i < countingSorted.length; i++) {
+			sorted.add(countingSorted[i]);
 		}
 		return sorted;
 	}

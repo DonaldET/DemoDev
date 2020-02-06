@@ -9,8 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.algo.sensor.ExposureAreaFinder;
-import demo.algo.sensor.MonitorExposureHybrid;
+import don.demo.algo.sensor.ExposureAreaFinder;
+import don.demo.algo.sensor.MonitorExposureHybrid;
 
 public class TestExposureHybrid {
 	private ExposureAreaFinder finder = null;
