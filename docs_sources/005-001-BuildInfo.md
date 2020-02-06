@@ -11,7 +11,7 @@ Projects have a package structure that reflects potential use outside of the ***
 
 `D:\GitHub\DemoDev>find /C "package" pkg_don.log`
 
-`---------- PKG_DON.LOG: 78`
+`---------- PKG_DON.LOG: 111`
 
 - Packaging Conventions - "demo.*"
 
@@ -19,7 +19,7 @@ Projects have a package structure that reflects potential use outside of the ***
 
 `D:\GitHub\DemoDev>find /C "package" pkg_demo.log`
 
-`---------- PKG_DEMO.LOG: 280`
+`---------- PKG_DEMO.LOG: 231`
 
 - Packaging Conventions - Other:
 
