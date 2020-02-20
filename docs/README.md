@@ -34,6 +34,7 @@ Here are some educational web sites for testing your Java and Python coding skil
 
 - [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
 - [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
+- [https://app.codility.com/programmers/](https://app.codility.com/programmers/), presenting training examples and a multi-language testing environment; primarily used as a developer skills testing environment.
 - [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
 - [https://app.codility.com/demo/take-sample-test/](https://app.codility.com/demo/take-sample-test/ "Codility"), like coderpad, the codility web site is a testing environment offering practice problems.
 - [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
@@ -59,14 +60,14 @@ Finally, much of the Python content of this repository is concerned with *Apache
 
 Please contact _Donald Trummell_ via Email using dtrummell@gmail.com for additional information regarding commercial use of projects in this repository.  His LinkedIn profile is found at [http://www.linkedin.com/in/donaldtrummell/](http://www.linkedin.com/in/donaldtrummell/ "here"). You may review the published form of this documentation at  [http://donaldet.github.io/DemoDev/](http://donaldet.github.io/DemoDev/ "the pretty view").
 
-This project contributes to the ***Wind Power Explorer*** project (see the [https://github.com/WindPowerExplorer/FullSail](https://github.com/WindPowerExplorer/FullSail "FullSail") repository) with permission.
+This project contributes utility and algorithmic components to the ***Wind Power Explorer*** project, with permission (please see the [https://github.com/WindPowerExplorer/FullSail](https://github.com/WindPowerExplorer/FullSail "FullSail") repository).
 
 # Getting Started
 
 All the information needed to build these projects is detailed in the _BuildResources_ document described below.  The process you will follow is:
  1. Download required build dependencies (e.g., Java, MAVEN, and optionally ANT)
  2. Install and test the build dependencies
- 3. Fork or download the source code from the GitHub repository (see [https://github.com/DonaldET/DemoDev](https://github.com/DonaldET/DemoDev "the source repo") for code access.)
+ 3. Fork or download the source code from the GitHub repository (see the DemoDev repository at [https://github.com/DonaldET/DemoDev](https://github.com/DonaldET/DemoDev "the source repo") for source code access.)
  4. On the command line, from the downloaded base directory, execute:
     _mvn clean install_
 
@@ -90,7 +91,7 @@ Sub-projects usually include a _business_ motivation for the coding examples in 
 
 The sub-projects have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. Many sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  Stability over time is accomplished by using the regression aspect of these tests.
 
-Many of the projects appear _complicated_ by use of the *Spring* framework to solve a potentially simple problem.  This is done to illustrate _Spring_ usage in addition to the basic techniques shown in the example. Overall, a professional Software Engineer would provide background for the code, some guidelines on usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.
+Many of the projects appear unnecessarily _complicated_ by use of the *Spring* framework to solve what may appear to be a potentially simple problem.  This is done to illustrate _Spring_ usage as well as the basic techniques shown in the example. Overall, a professional Software Engineer working on production cide would provide background for code implementation choices, some guidelines on deployment and usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.
 
 ## Sub-Project Math Algorithms
 
@@ -104,7 +105,7 @@ These Mathematical Algorithms show methods of performance testing and demonstrat
 Project | Description
 ------- | -----------
 _badaddr_ | Demonstrates uncontrolled relative errors from floating point addition and the Kahn algorithm for mitigating some of the errors. This is the basis for the article: [https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/](https://www.linkedin.com/pulse/just-doesnt-add-up-part-1-donald-trummell/).
-_cpuconcurrent_ | Compare Java 8 streaming performance of *forEach* and *collect* approaches to computing using multiple threads. We will add a Python version using multiple processes to concurrently compute the same values. This is the basis of the LinkedIn article **TBD**. See [http://mathforum.org/dr.math/faq/faq.property.glossary.html](http://mathforum.org/dr.math/faq/faq.property.glossary.html "this") for background on the properties of addition. 
+_cpuconcurrent_ | Compare Java 8 streaming performance of *forEach* and *collect* approaches to computing using multiple threads. We will add a Python version using multiple processes to concurrently compute the same values. This is the basis of the LinkedIn article **TBD**. See [http://mathforum.org/dr.math/faq/faq.property.glossary.html](http://mathforum.org/dr.math/faq/faq.property.glossary.html "this") for background on the mathematical properties of addition. 
 _largenumeric_ | Example of the *Kahn Addition Algorithm* for mitigating some of the errors associated with a long sequence of additions. Computer floating point addition is neither commutative nor associative. 
 _nasa-sensor_ | Monitor sensor radiation exposure with multiple algorithms; trade off space and time. This is the basis of the article: [https://www.linkedin.com/pulse/needs-really-fast-donald-trummell/](https://www.linkedin.com/pulse/needs-really-fast-donald-trummell/). 
 _quadradic_ | Example of a Quadradic Equation solver using both direct and iterative methods.
