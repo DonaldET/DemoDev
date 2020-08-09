@@ -33,6 +33,8 @@ public class Arabic2RomanTest {
 		Assert.assertEquals("small param", "", converter.arabic2Roman(0));
 	}
 
+	// Initial test sequence
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeParameterFails() {
 		Assert.assertEquals("negative param fails", "BAD", converter.arabic2Roman(-1));
@@ -40,6 +42,11 @@ public class Arabic2RomanTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testBigParameterFails() {
-		Assert.assertEquals("Big param fails", "BAD", converter.arabic2Roman(4000));
+		Assert.assertEquals("Big param fails", "BAD", converter.arabic2Roman(4001));
+	}
+
+	@Test
+	public void testInitial0() {
+		Assert.assertEquals("0 failed", "", converter.arabic2Roman(0));
 	}
 }
