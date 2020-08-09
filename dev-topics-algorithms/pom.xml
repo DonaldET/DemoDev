@@ -32,6 +32,7 @@
 		<module>dev-topics-largenumeric</module>
 		<module>dev-topics-nasa-sensor</module>
 		<module>dev-topics-quadradic</module>
+		<module>dev-topics-romannumerals</module>
 		<module>dev-topics-sieve</module>
 	</modules>
 
