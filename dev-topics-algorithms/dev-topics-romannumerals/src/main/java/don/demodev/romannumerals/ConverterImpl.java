@@ -37,6 +37,21 @@ public class ConverterImpl implements Converter {
 	}
 
 	private String convertRoman2ArabicImpl(final int arabic) {
-		return "";
+		final StringBuilder roman = new StringBuilder();
+		int numeralIndex = 0;
+		int value = arabic;
+		while (value > 0) {
+			int romanValue = Converter.mapping[numeralIndex].arabic;
+			int howMany = value / romanValue;
+			if (howMany > 0) {
+				for (int i = 0; i < howMany; i++) {
+					roman.append(Converter.mapping[numeralIndex].romanSymbol);
+				}
+				value -= howMany * Converter.mapping[numeralIndex].arabic;
+			}
+			numeralIndex++;
+		}
+
+		return roman.toString();
 	}
 }
