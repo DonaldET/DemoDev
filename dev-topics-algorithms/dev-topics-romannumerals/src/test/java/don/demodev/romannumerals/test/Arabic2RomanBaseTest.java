@@ -63,12 +63,14 @@ public class Arabic2RomanBaseTest {
 		Assert.assertEquals("One failed", "I", converter.arabic2Roman(1));
 		Assert.assertEquals("two failed", "II", converter.arabic2Roman(2));
 		Assert.assertEquals("three failed", "III", converter.arabic2Roman(3));
-		Assert.assertEquals("four failed", "IIII", converter.arabic2Roman(4));
+		// Assert.assertEquals("four failed", "IIII", converter.arabic2Roman(4)); fails because too many I symbols
+		Assert.assertEquals("four failed", "IV", converter.arabic2Roman(4));
 		Assert.assertEquals("five failed", "V", converter.arabic2Roman(5));
 		Assert.assertEquals("six failed", "VI", converter.arabic2Roman(6));
 		Assert.assertEquals("seven failed", "VII", converter.arabic2Roman(7));
 		Assert.assertEquals("eight failed", "VIII", converter.arabic2Roman(8));
-		Assert.assertEquals("nine failed", "VIIII", converter.arabic2Roman(9));
+		// Assert.assertEquals("nine failed", "VIIII", converter.arabic2Roman(9)); fails because too many I symbols
+		Assert.assertEquals("nine failed", "IX", converter.arabic2Roman(9));
 		Assert.assertEquals("ten failed", "X", converter.arabic2Roman(10));
 		Assert.assertEquals("eleven failed", "XI", converter.arabic2Roman(11));
 		Assert.assertEquals("twelve failed", "XII", converter.arabic2Roman(12));
@@ -82,5 +84,18 @@ public class Arabic2RomanBaseTest {
 		Assert.assertEquals("1161 failed", "MCLXI", converter.arabic2Roman(1161));
 		int sum = Arrays.stream(Converter.mapping).map(n -> n.arabic).mapToInt(Integer::intValue).sum();
 		Assert.assertEquals("all digits sum value, " + sum + ", failed", "MDCLXVI", converter.arabic2Roman(sum));
+	}
+	
+	public void testSubtractive() {
+//		IX = 9 (10 - 1 = 9)
+//				XL = 40 (50 - 10 = 40)
+//				CML = 950 (900 + 50 = 950)
+//				4.	You can only subtract powers of 10 (I, X, C).
+//				95 = XCV (100 - 10 + 5 = 95)
+//				You cannot write 95 as VC because V is not a power of 10.
+//				5.	You cannot subtract more than one number from another number.
+//				18 = XVIII (10 + 5 + 1 + 1 + 1 = 18)
+//				You cannot write 18 as IIXX.
+
 	}
 }
