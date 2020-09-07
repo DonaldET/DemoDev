@@ -31,8 +31,8 @@ public interface Launch
    *          the maximum execution timeout
    * @return a optionally empty list of exceptions encountered while running
    * 
-   * @throws InterruptedException
-   * @throws TimeoutException
+   * @throws InterruptedException from runnable
+   * @throws TimeoutException from runnable
    */
   public abstract List<Throwable> launchRunnables(final String label,
       final List<? extends Runnable> runnables, final int maxTimeoutSeconds)

@@ -12,8 +12,14 @@ package don.demodev.romannumerals;
  * <a href="https://en.wikipedia.org/wiki/Change-making_problem">the change
  * problem</a>.)
  * <p>
- * Rules for Roman Numeral representation are found at <a
- * href="http://www.solano.edu/academic_success_center/forms/math/Roman%20Numerals.pdf"solono.edu</a>.
+ * Rules for Roman Numeral representation are found at <a href=
+ * "http://www.solano.edu/academic_success_center/forms/math/Roman%20Numerals.pdf">solono.edu</a>.
+ * <p>
+ * This implementation uses up to three occurrances of the largest roman numeral
+ * <strong>N</strong> no greater than the arabic value. This is the
+ * <em>additive</em> strategy. There may be a &quot;remainder&quot; after
+ * applying the additive strategy that may be reduced by using the
+ * <em>subtractive</em> strategy.
  * 
  * @author Don
  */
@@ -75,6 +81,14 @@ public class ConverterImpl implements Converter {
 
 	}
 
+	/**
+	 * Additive notation uses up to three sequential instances of a roman numeral.
+	 * 
+	 * @param arabic       binary value to convert to roman numeral
+	 * @param numeralIndex current roman numeral to work on
+	 * 
+	 * @return the roman numerals corresponding to the potential additive notation.
+	 */
 	public RomanNotation useAdditiveNotation(final int arabic, final int numeralIndex) {
 		if (arabic < 1) {
 			return new RomanNotation("", 0);
@@ -97,15 +111,30 @@ public class ConverterImpl implements Converter {
 
 	public static final int[] powerOf10 = { 2, 4, 6 }; // C, X, I
 
+	/**
+	 * Subtractive notation assumes additive notation has already been used to find
+	 * whole number multiples of the current roman numeral, starting with largest
+	 * numeral first.
+	 * 
+	 * @param arabic       binary value to convert to roman numeral
+	 * @param numeralIndex current roman numeral to work on in the representation.
+	 * 
+	 * @return the roman numerals corresponding to the potential subtractive
+	 *         notation.
+	 */
 	public RomanNotation useSubtractiveNotation(final int arabic, final int numeralIndex) {
+		final int romanValue = Converter.mapping[numeralIndex].arabic;
+		if (romanValue <= arabic) {
+			throw new IllegalArgumentException("arabic value " + arabic + " is bigger than the current roman numeral "
+					+ romanValue + " [" + numeralIndex + "]");
+		}
+
 		if (arabic < 1 || numeralIndex == Converter.mapping.length - 1) {
 			return new RomanNotation("", 0);
 		}
 
-		final int romanValue = Converter.mapping[numeralIndex].arabic;
-		if (romanValue == arabic) {
-			return new RomanNotation("", 0);
-		}
+		//
+		// Try to subtract the largest value possible
 
 		for (int i = powerOf10.length - 1; i >= 0; i--) {
 			int subtracted = romanValue - mapping[powerOf10[i]].arabic;

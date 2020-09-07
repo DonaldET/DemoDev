@@ -38,13 +38,13 @@ public interface Converter {
 			new Roman2Arabic("I", 1) };
 
 	/**
-	 * Upper limit of non-negative intgegers to convert
+	 * Upper limit of non-negative integers to convert
 	 */
-	public static final int MAX_CONVERSION = 4000;
+	public static final int MAX_CONVERSION = 3999;
 
 	/**
-	 * Convert a non-negative integer less than <code>MAX_CONVERSION</code> to Roman
-	 * Numerals
+	 * Convert a non-negative integer not greater than <code>MAX_CONVERSION</code>
+	 * to Roman Numerals
 	 * 
 	 * @param arabic integer to convert
 	 * 
