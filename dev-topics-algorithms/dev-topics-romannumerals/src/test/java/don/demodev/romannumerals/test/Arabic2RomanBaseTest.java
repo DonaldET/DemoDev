@@ -16,7 +16,7 @@ import don.demodev.romannumerals.ConverterImpl;
  * Numerals</a> reference describes Roman numerals and provides test cases. A
  * clear definition of how numbers are represented is <a href=
  * "http://www.solano.edu/academic_success_center/forms/math/Roman%20Numerals.pdf">in
- * this teaching reference</a>.
+ * this teaching reference</a>, as well as test cases.
  * 
  * @author Don
  */
