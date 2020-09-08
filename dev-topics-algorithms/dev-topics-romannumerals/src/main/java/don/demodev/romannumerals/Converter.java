@@ -2,7 +2,24 @@ package don.demodev.romannumerals;
 
 /**
  * Convert a binary integer to a Roman numeral string representation, and scan a
- * string of Roman numerals and convert to binary.
+ * string of Roman numerals and convert to binary. This
+ * <a href= "https://en.wikipedia.org/wiki/Roman_numerals">Wikipedia Roman
+ * Numerals</a> reference describes Roman numerals and their uses.
+ * <p>
+ * The problem of Roman numerals representing numbers is similar the classical
+ * change-making problem see
+ * <a href="https://en.wikipedia.org/wiki/Change-making_problem">the change
+ * problem</a>.)
+ * <p>
+ * Rules for Roman Numeral representation are found at <a href=
+ * "http://www.solano.edu/academic_success_center/forms/math/Roman%20Numerals.pdf">solono.edu</a>.
+ * <p>
+ * This implementation uses up to three occurrances of the largest roman numeral
+ * <strong>N</strong> no greater than the arabic value. This is the
+ * <em>additive</em> strategy. There may be a &quot;remainder&quot; after
+ * applying the additive strategy, which may be reduced by using the
+ * <em>subtractive</em> strategy. This approach is applied iteratively until the
+ * entire arabic value is converted to roman numerals.
  * 
  * @author Don
  */

@@ -1,6 +1,7 @@
 package don.demodev.romannumerals.test;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -108,12 +109,29 @@ public class Arabic2RomanBaseTest {
 		Assert.assertEquals("1909 failed", "MCMIX", converter.arabic2Roman(1909));
 		Assert.assertEquals("1949 failed", "MCMIL", converter.arabic2Roman(1949));
 	}
-	
+
 	@Test
 	public void testGeneralSubtractive() {
 		Assert.assertEquals("9 failed", "IX", converter.arabic2Roman(9));
 		Assert.assertEquals("49 failed", "IL", converter.arabic2Roman(49));
 		Assert.assertEquals("95 failed", "XCV", converter.arabic2Roman(95));
 		Assert.assertEquals("LARGEST value 3999, failed", "MMMIM", converter.arabic2Roman(3999));
+	}
+
+	@Test
+	public void testCPUPerformance() {
+		final int testSize = 10000;
+		final Random r = new Random(7177L);
+		final int[] testValues = r.ints(testSize, 1, Converter.MAX_CONVERSION).toArray();
+
+		Assert.assertEquals("1909 failed!", "MCMIX", converter.arabic2Roman(1909));
+
+		long t = System.nanoTime();
+		for (int arabic : testValues) {
+			converter.arabic2Roman(arabic);
+		}
+		double elapsed = (System.nanoTime() - t) / 1000.0;
+		System.out.println(converter.getClass().getSimpleName() + " required " + elapsed + " us for "
+				+ testValues.length + " operations.");
 	}
 }
