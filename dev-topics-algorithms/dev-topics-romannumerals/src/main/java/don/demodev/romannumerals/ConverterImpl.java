@@ -10,7 +10,7 @@ package don.demodev.romannumerals;
 public class ConverterImpl implements Converter {
 
 	private static final RomanNotation EMPTY_ROMAN_NOTATION = new RomanNotation("", 0);
-	private static String[] symbols;
+	private static final String[] symbols;
 
 	static {
 		final int n = Converter.mapping.length;

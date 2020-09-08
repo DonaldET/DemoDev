@@ -9,6 +9,22 @@ package don.demodev.romannumerals;
  */
 public class ConverterImplRecursive implements Converter {
 
+	private static final String[] symbols;
+
+	static {
+		final int n = Converter.mapping.length;
+		final int nseq = 3;
+		symbols = new String[n];
+		int j = 0;
+		for (Roman2Arabic ra : Converter.mapping) {
+			StringBuilder sb = new StringBuilder(nseq);
+			for (int i = 0; i < nseq; i++) {
+				sb.append(ra.romanSymbol);
+			}
+			symbols[j++] = sb.toString();
+		}
+	}
+
 	private static final class RomanNumeralNotation {
 		public final String romanNumerals;
 		public final int remainder;
@@ -71,27 +87,19 @@ public class ConverterImplRecursive implements Converter {
 	 * @param numeralIndex the roman numeral value to use representing the arabic
 	 *                     value.
 	 * 
-	 * @return the inhanced roman numeral representation and the reduced arabic
+	 * @return the enhanced Roman numeral representation and the reduced arabic
 	 *         value.
 	 */
 	public RomanNumeralNotation useAdditiveNotation(final RomanNumeralNotation input, final int numeralIndex) {
-		if (input.remainder < 1) {
-			return input;
-		}
-
 		final int romanValue = Converter.mapping[numeralIndex].arabic;
 		final int howMany = input.remainder / romanValue;
 		if (howMany < 1) {
 			return input;
 		}
 
-		final StringBuilder roman = new StringBuilder(input.romanNumerals);
 		final int limitedUsed = Math.min(3, howMany);
-		for (int i = 0; i < limitedUsed; i++) {
-			roman.append(Converter.mapping[numeralIndex].romanSymbol);
-		}
-
-		return new RomanNumeralNotation(roman.toString(), input.remainder - limitedUsed * romanValue);
+		return new RomanNumeralNotation(input.romanNumerals + symbols[numeralIndex].substring(0, limitedUsed),
+				input.remainder - limitedUsed * romanValue);
 	}
 
 	public static final int[] powerOf10 = { 2, 4, 6 }; // C, X, I
