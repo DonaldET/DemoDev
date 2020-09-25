@@ -7,36 +7,10 @@ package don.demodev.romannumerals;
  * 
  * @author Don
  */
-public class ConverterImplRecursive implements Converter {
-
-	private static final String[] symbols;
-
-	static {
-		final int n = Converter.mapping.length;
-		final int nseq = 3;
-		symbols = new String[n];
-		int j = 0;
-		for (Roman2Arabic ra : Converter.mapping) {
-			StringBuilder sb = new StringBuilder(nseq);
-			for (int i = 0; i < nseq; i++) {
-				sb.append(ra.romanSymbol);
-			}
-			symbols[j++] = sb.toString();
-		}
-	}
-
-	private static final class RomanNumeralNotation {
-		public final String romanNumerals;
-		public final int remainder;
-
-		public RomanNumeralNotation(String romanNumerals, int remainder) {
-			super();
-			this.romanNumerals = romanNumerals;
-			this.remainder = remainder;
-		}
-	}
+public class ConverterImplRecursive extends ConverterBase implements Converter {
 
 	public ConverterImplRecursive() {
+		super();
 	}
 
 	@Override
@@ -101,8 +75,6 @@ public class ConverterImplRecursive implements Converter {
 		return new RomanNumeralNotation(input.romanNumerals + symbols[numeralIndex].substring(0, limitedUsed),
 				input.remainder - limitedUsed * romanValue);
 	}
-
-	public static final int[] powerOf10 = { 2, 4, 6 }; // C, X, I
 
 	public RomanNumeralNotation useSubtractiveNotation(final RomanNumeralNotation input, final int numeralIndex) {
 		if (input.remainder < 1 || numeralIndex == Converter.mapping.length - 1) {

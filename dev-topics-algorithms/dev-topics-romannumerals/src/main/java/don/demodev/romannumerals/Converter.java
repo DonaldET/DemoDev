@@ -14,12 +14,12 @@ package don.demodev.romannumerals;
  * Rules for Roman Numeral representation are found at <a href=
  * "http://www.solano.edu/academic_success_center/forms/math/Roman%20Numerals.pdf">solono.edu</a>.
  * <p>
- * This implementation uses up to three occurrances of the largest roman numeral
- * <strong>N</strong> no greater than the arabic value. This is the
+ * This implementation uses up to three occurrences of the largest roman numeral
+ * <strong>N</strong> no greater than the Arabic value. This is the
  * <em>additive</em> strategy. There may be a &quot;remainder&quot; after
  * applying the additive strategy, which may be reduced by using the
  * <em>subtractive</em> strategy. This approach is applied iteratively until the
- * entire arabic value is converted to roman numerals.
+ * entire arabic value is converted to Roman numerals.
  * 
  * @author Don
  */

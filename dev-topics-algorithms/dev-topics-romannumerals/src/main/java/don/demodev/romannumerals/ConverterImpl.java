@@ -7,26 +7,12 @@ package don.demodev.romannumerals;
  * 
  * @author Don
  */
-public class ConverterImpl implements Converter {
+public class ConverterImpl extends ConverterBase implements Converter {
 
 	private static final RomanNotation EMPTY_ROMAN_NOTATION = new RomanNotation("", 0);
-	private static final String[] symbols;
-
-	static {
-		final int n = Converter.mapping.length;
-		final int nseq = 3;
-		symbols = new String[n];
-		int j = 0;
-		for (Roman2Arabic ra : Converter.mapping) {
-			StringBuilder sb = new StringBuilder(nseq);
-			for (int i = 0; i < nseq; i++) {
-				sb.append(ra.romanSymbol);
-			}
-			symbols[j++] = sb.toString();
-		}
-	}
 
 	public ConverterImpl() {
+		super();
 	}
 
 	@Override
@@ -38,13 +24,15 @@ public class ConverterImpl implements Converter {
 			throw new IllegalArgumentException("argument large");
 		}
 
-		return convertRoman2ArabicImpl(arabic);
+		return convert2Roman(arabic);
 	}
 
 	@Override
 	public int roman2Arabic(String roman) {
-		throw new IllegalStateException("no implemented");
+		throw new IllegalStateException("not yet implemented");
 	}
+
+	// ------------------------------------------------------------------------------------------------
 
 	private static final class RomanNotation {
 		public final String romanNumerals;
@@ -67,7 +55,7 @@ public class ConverterImpl implements Converter {
 	 * 
 	 * @return a string with roman numerals representing the arabic input value.
 	 */
-	private String convertRoman2ArabicImpl(final int arabic) {
+	private String convert2Roman(final int arabic) {
 		final StringBuilder roman = new StringBuilder();
 		int numeralIndex = 0;
 		int value = arabic;
@@ -111,8 +99,6 @@ public class ConverterImpl implements Converter {
 		final int limitedUsed = Math.min(3, howMany);
 		return new RomanNotation(symbols[numeralIndex].substring(0, limitedUsed), limitedUsed * romanValue);
 	}
-
-	public static final int[] powerOf10 = { 2, 4, 6 }; // C, X, I
 
 	/**
 	 * Subtractive notation assumes additive notation has already been used to find
