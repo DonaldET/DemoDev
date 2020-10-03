@@ -243,7 +243,7 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	 * during the merge.
 	 * <p>
 	 * 
-	 * @param state   the current holding state (area and right edge)
+	 * @param input_state   the current holding state (area and right edge)
 	 * @param rec     the rectangle to merge into holdingd
 	 * @param k       the exposure saturation limit defining exposed ares
 	 * @param holding the current list of exposed regions, ordered ascending by X1
@@ -260,8 +260,8 @@ public class MonitorExposureOverlapped implements ExposureAreaFinder {
 	 *         <li>the holding collection is always subject to overlap</li>
 	 *         </ul>
 	 */
-	private State mergeIntoHoldings(State state, Rectangle rec, int k, List<Region> holding) {
-
+	private State mergeIntoHoldings(State input_state, Rectangle rec, int k, List<Region> holding) {
+		State state = input_state;
 		Region region = new Region(rec);
 		if (holding.isEmpty()) {
 			if (display)

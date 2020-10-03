@@ -61,7 +61,8 @@ class Support {
 	}
 
 	// Java-11 has this function
-	static String repeatString(String s, int n) {
+	static String repeatString(String s, final int nreps) {
+		int n = nreps;
 		if (s == null || s.isEmpty() || n < 1) {
 			return "";
 		}
