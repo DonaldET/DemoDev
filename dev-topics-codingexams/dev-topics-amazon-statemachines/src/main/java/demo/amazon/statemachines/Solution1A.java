@@ -1,7 +1,66 @@
+package demo.amazon.statemachines;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * We must count the number of completely packed bins. A string representing a
+ * packed bin consists of two sequential pipe characters ("|") with one or more
+ * intervening asterisk ("*") characters. An empty bin is indicated by two
+ * sequential pipe characters with no intervening asterisks, or by a single pipe
+ * character ending a string.
+ * <p>
+ * For example, &quot;<strong>||***|*</strong>&quot; represents an empty bin, a
+ * filled bin, and an incomplete bin. We examine a sub-sequence of characters of
+ * the input string that represents our packing. We count the number of complete
+ * bins in the sub-sequence. A sub-sequence of the string has a starting and
+ * ending index (one based.) Using the string above as a sample input, we have:
+ * <table>
+ * <caption><em>Sample Input</em></caption>
+ * <tr>
+ * <th>Begin</th>
+ * <th>End</th>
+ * <th>String</th>
+ * <th>Count</th>
+ * </tr>
+ * <tr>
+ * <td>1</td>
+ * <td>3</td>
+ * <td>||*</td>
+ * <td>0</td>
+ * </tr>
+ * <tr>
+ * <td>2</td>
+ * <td>2</td>
+ * <td>|</td>
+ * <td>0</td>
+ * </tr>
+ * <tr>
+ * <td>2</td>
+ * <td>6</td>
+ * <td>|***|</td>
+ * <td>1</td>
+ * </tr>
+ * <tr>
+ * <td>3</td>
+ * <td>5</td>
+ * <td>***</td>
+ * <td>0</td>
+ * </tr>
+ * <tr>
+ * <td>5</td>
+ * <td>7</td>
+ * <td>*|*</td>
+ * <td>0</td>
+ * </tr>
+ * </table>
+ * <p>
+ * This solution uses string split to break the packing string into array
+ * elements counts completed bins.
+ * 
+ * @author Donald Trummell
+ */
 public class Solution1A {
 
 	private static class Result {
@@ -33,17 +92,17 @@ public class Solution1A {
 			return result;
 		}
 
-		private static Integer countItems(String pull) {
+		private static Integer countItems(String subsequence) {
 			int result = 0;
-			int plth = pull.length();
-			if (plth > 0) {
-				String[] compart = pull.split("[|]");
+			int slth = subsequence.length();
+			if (slth > 0) {
+				String[] compart = subsequence.split("[|]");
 				int nc = compart.length;
 				for (int j = 0; j < nc; j++) {
-					if ((j == 0) && pull.charAt(0) != '|') {
+					if ((j == 0) && subsequence.charAt(0) != '|') {
 						continue;
 
-					} else if ((j == nc - 1) && pull.charAt(plth - 1) != '|') {
+					} else if ((j == nc - 1) && subsequence.charAt(slth - 1) != '|') {
 						continue;
 					}
 					if (!compart[j].isEmpty()) {

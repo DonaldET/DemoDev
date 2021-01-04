@@ -1,7 +1,16 @@
+package demo.amazon.statemachines;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Solve the same problem described in
+ * {@link demo.amazon.statemachines.Solution1A}. Solution uses a state machine
+ * while parsing through the input string.
+ * 
+ * @author Donald Trummell
+ */
 public class Solution1B {
 
 	private static class Result {
@@ -33,13 +42,13 @@ public class Solution1B {
 			return result;
 		}
 
-		private static Integer countItems(String pull) {
+		private static Integer countItems(String subsequence) {
 			int result = 0;
-			int plth = pull.length();
-			if (plth > 0) {
+			int slth = subsequence.length();
+			if (slth > 0) {
 				boolean pipe = false;
 				int count = 0;
-				for (char c : pull.toCharArray()) {
+				for (char c : subsequence.toCharArray()) {
 					if (c == '|') {
 						if (pipe) { // end of compartment
 							if (count > 0) {
