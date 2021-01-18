@@ -17,6 +17,7 @@ Amazon | _findmedian_ | Illustrate two methods of finding the median of a (non-i
 Amazon | _infrastructure_ | We solve two problems: find the minimum times to complete a list of tasks in dependency order; find the longest substring of a string, with the substring having k or fewer unique characters.
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well. This is the basis of the article: [https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/]( https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/). 
+Amazon | _statemachines_ | Find filled bins in a packing structure; dynamically monitor the number of active servers in a cluster.
 AppDynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source. 
 Apple | _factorial_ | Contrast two factorial algorithms. 

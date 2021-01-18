@@ -1,6 +1,6 @@
 # Welcome
 
-These ***DemoDev*** projects illustrate techniques for building Java based components used in Service Oriented Architecture (microservices and cloud-native) related applications.  This collection of Java projects is the nucleus of an upcoming book on Java programming. Topics included are:
+These ***DemoDev*** projects illustrate techniques for building Java based components, and is a collection of Java projects forms the nucleus of an upcoming book on Java programming. Service Oriented Architecture examples are included as well. Topics included are:
 
 - Various object-oriented and functional coding techniques are illustrated with real examples.
 - Ready-to-uses utilities as libraries and executables.
@@ -8,9 +8,9 @@ These ***DemoDev*** projects illustrate techniques for building Java based compo
 - DevOps examples.
 - Interview questions.
 
-A collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. Often these coding solutions do not follow programming best practices in order to meet a time or complexity constraint in an interview. However, the other sub-projects follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview, and the **Sub-Project Structure** description documented below.
+One sub-topic is a collection of interviewing coding questions is included to illustrate industry-wide assessment of Java coding skills. Often these coding solutions do not follow programming best practices in order to meet a time or complexity constraint in an interview. However, the other sub-projects follow well known programming principles. Please see [https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74](https://medium.com/better-programming/kiss-dry-and-code-principles-every-developer-should-follow-b77d89f51d74) for an overview, and scan the **Sub-Project Structure** description documented below.
 
-Algorithms and performance testing approaches are included in the repository, as well as ready-to-use utility programs and libraries. There is also a DevOps sub-project collection of build related utilities and templating.
+Algorithms and performance testing approaches are included in the repository, along with ready-to-use utility programs and libraries. There is also a DevOps sub-project collection of build related utilities and templating.
 
 #### Building Projects in the Repository
 
@@ -71,13 +71,14 @@ All the information needed to build these projects is detailed in the _BuildReso
  4. On the command line, from the downloaded base directory, execute:
     _mvn clean install_
 
-The _StaticResources_ directory references instructions on how to setup a MAVEN and JAVA build environment in document _BuildResources.pdf_. It is a **GITHUB** hosted document that also contains links back to this source code repository (*DemoDev*).
+The _StaticResources_ directory references instructions on how to setup a MAVEN and JAVA build environment in document _BuildResources.pdf_. The PDF is a **GITHUB** hosted document that also contains links back to this source code repository (*DemoDev*).
 
 ## *DemoDev* Sub-Project Categories
 
 *DemoDev* is composed of multiple sub-projects, with each sub-project having a README.md file offering information about the sub-project and its contents.  Interesting sub-projects include:
 
 - *algorithms*: Math algorithm demonstrations.
+- optimizations: Useful utilities around optimizing processes.
 - *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment coding environment.
 - *hacks*: Unusual solutions to interesting problems that don't necessarily reflect _best practices_.
 - *jerseyservices*: RESTful Java service implementations using the **Jersey framework**
@@ -137,6 +138,7 @@ Amazon | _findmedian_ | Illustrate two methods of finding the median of a (non-i
 Amazon | _infrastructure_ | We solve two problems: find the minimum times to complete a list of tasks in dependency order; find the longest substring of a string, with the substring having k or fewer unique characters.
 Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
 Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well. This is the basis of the article: [https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/]( https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/). 
+Amazon | _statemachines_ | Find filled bins in a packing structure; dynamically monitor the number of active servers in a cluster.
 AppDynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
 Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source. 
 Apple | _factorial_ | Contrast two factorial algorithms. 
