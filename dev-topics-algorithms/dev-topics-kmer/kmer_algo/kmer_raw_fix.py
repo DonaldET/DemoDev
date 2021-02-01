@@ -11,13 +11,6 @@ Minor edits were made to meet PEP-8 requirements, along with some timing code. A
 the code as a comment below. The inner loop was simplified as well.
 """
 
-
-# D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-kmer\kmer_algo>python kmer_raw_fix.py
-# Start fixed raw article algorithm
-# Number of generated k-mers: 67108864, elapsed time: 70.063 seconds.
-# Finish!
-
-
 def convert(c):
     if c == 'A':
         return 'C'

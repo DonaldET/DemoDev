@@ -6,15 +6,6 @@ kmer_article_c.py
 Compute all kmer combinations like an odometer using C-like representation strategy
 """
 
-# D:\Temp2\kmer\kmer_algo>python kmer_article_c.py
-# Start KMER Computation using C approach
-# Nucleotides: ACGT;  Sequence Length: 13;  K-MERs Generated: 67108864
-# First: ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A']
-# Last : ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
-# Number of generated k-mers: 67108864
-# Elapsed time: 14.781 secs
-# Finished!
-
 nucleotides = "ACGT"
 nc = len(nucleotides)
 nucleotides_rotation = (1, 2, 3, 0)

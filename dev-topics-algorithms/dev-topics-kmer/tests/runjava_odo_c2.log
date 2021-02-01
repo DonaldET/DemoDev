@@ -1,0 +1,10 @@
+ Run the Java odometer version with C optimizations
+ $ java -cp ..\target\classes\ don.demodev.kmer.KmerC
+Start KMER Computation with Odometer Algorithm and C Optimizations
+Nucleotides: ACGT;  Sequence Length: 13;  K-MERs expected: 67108864
+First: AAAAAAAAAAAAA
+Last : TTTTTTTTTTTTT
+Number of generated k-mers: 67108864
+Elapsed time: 0.2141634 secs
+Finished!
+

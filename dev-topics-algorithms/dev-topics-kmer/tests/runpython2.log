@@ -1,0 +1,35 @@
+ 
+ Python Algorithm Testing
+ 
+ 
+ Initial Raw Algorithm from Article
+Start raw article algorithm
+Number of generated k-mers: 67108864, elapsed time: 71.031 seconds.
+Finish!
+Start fixed raw article algorithm
+Number of generated k-mers: 67108864, elapsed time: 67.891 seconds.
+Finish!
+ 
+ 
+ Cleaned up Odometer Algorithm
+Start KMER Computation by Constructing Lists
+Nucleotides: ACGT;  Sequence Length: 13;  K-MERs expected: 67108864
+First: AAAAAAAAAAAAA
+Last : TTTTTTTTTTTTT
+Number of generated k-mers: 67108864
+Elapsed time: 39.703 secs
+Finished!
+Start KMER Computation
+Nucleotides: ACGT;  Sequence Length: 13;  K-MERs expected: 67108864
+First: ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A']
+Last : ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
+Number of generated k-mers: 67108864
+Elapsed time: 16.141 secs
+Finished!
+Start KMER Computation using C approach
+Nucleotides: ACGT;  Sequence Length: 13;  K-MERs expected: 67108864
+First: ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A']
+Last : ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
+Number of generated k-mers: 67108864
+Elapsed time: 14.437 secs
+Finished!

@@ -1,16 +1,5 @@
 package don.demodev.kmer;
 
-//D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-kmer\tests>run_odo.cmd
-//Run the Java odometer version with C optimiations
-//$ java -cp ..\target\classes\ don.demodev.kmer.KmerC
-//Start KMER Computation with Odometer Algorithm and C Optimizations
-//Nucleotides: ACGT;  Sequence Length: 13;  K-MERs expected: 67108864
-//First: AAAAAAAAAAAAA
-//Last : TTTTTTTTTTTTT
-//Number of generated k-mers: 67108864
-//Elapsed time: 0.2456602 secs
-//Finished!
-
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -61,7 +50,6 @@ public class KmerOdometer {
 		System.out.println("Last : " + dsp);
 
 		int count = 1;
-		dsp = new String(s, StandardCharsets.UTF_8);
 		long startimeNs = System.nanoTime();
 		while (!Arrays.equals(s, sLast)) {
 			count += 1;

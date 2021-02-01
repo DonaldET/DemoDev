@@ -7,15 +7,6 @@ Compute all kmer combinations using construction of list
 
 """
 
-# D:\Temp2\kmer\kmer_algo>python kmer_article.py
-# Start KMER Computation by Constructing Lists
-# Nucleotides: ACGT;  Sequence Length: 13;  K-MERs Generated: 67108864
-# First: AAAAAAAAAAAAA
-# Last : TTTTTTTTTTTTT
-# Number of generated k-mers: 67108864
-# Elapsed time: 41.078 secs
-# Finished!
-
 nucleotides = "ACGT"
 nucleotides_rotation = {'A': 'C', 'C': 'G', 'G': 'T', 'T': 'A'}
 
@@ -67,7 +58,7 @@ def process(len_str):
 
 if __name__ == '__main__':
     print("Start KMER Computation by Constructing Lists")
-    nucleotides_len = 2
+    nucleotides_len = 13
     total_sequences = round(float(len(nucleotides)) ** nucleotides_len)
     print(
         f"Nucleotides: {str(nucleotides)};  Sequence Length: {str(nucleotides_len)};  \
