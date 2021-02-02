@@ -36,7 +36,6 @@ for i in range(len_str):
 for i in range(len_str):
     s_last += ender
 
-pos = 0
 counter = 1
 start_time_ns = time.monotonic_ns()  # Added timing code
 while s != s_last:
