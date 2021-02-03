@@ -49,11 +49,9 @@ public class KmerC {
 		System.out.println("Last : " + dsp);
 
 		int count = 1;
-		dsp = new String(s, StandardCharsets.UTF_8);
 		long startimeNs = System.nanoTime();
 		while (!Arrays.equals(s, sLast)) {
 			count += 1;
-
 			int pos = kmerLength - 1;
 			while (pos >= 0) {
 				s[pos] = nucleotidesRotation[s[pos] & 0xFF];

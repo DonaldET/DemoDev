@@ -4,7 +4,6 @@ import time
 kmer_article.py
 
 Compute all kmer combinations using construction of list
-
 """
 
 nucleotides = "ACGT"
@@ -12,8 +11,8 @@ nucleotides_rotation = {'A': 'C', 'C': 'G', 'G': 'T', 'T': 'A'}
 
 
 def _build_by_append(s, pos, new_nucleotide):
-    last = len(s) - 1
     if pos > 0:
+        last = len(s) - 1
         if pos < last:
             s_new = s[0:pos] + new_nucleotide + s[pos + 1:]
         else:
@@ -37,7 +36,7 @@ def process(len_str):
 
     count = 1
     # if display:
-    # print(f"{count}.\t{s}")
+    #     print(f"{count}.\t{s}")
     start_time_ns = time.monotonic_ns()
     while s != s_last:
         count += 1
@@ -51,7 +50,7 @@ def process(len_str):
             pos -= 1
 
         # if display:
-        # print(f"{count}.\t{s}")
+        #     print(f"{count}.\t{s}")
     end_time_ns = time.monotonic_ns()
     return count, float(end_time_ns - start_time_ns) / 1000000.0
 

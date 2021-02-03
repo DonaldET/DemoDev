@@ -53,7 +53,6 @@ public class KmerOdometer {
 		long startimeNs = System.nanoTime();
 		while (!Arrays.equals(s, sLast)) {
 			count += 1;
-
 			int pos = kmerLength - 1;
 			while (pos >= 0) {
 				s[pos] = (byte) (nucleotidesRotation.get((char) (s[pos] & 0xFF)) & 0x00FF);
