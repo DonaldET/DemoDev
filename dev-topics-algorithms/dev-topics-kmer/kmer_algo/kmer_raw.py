@@ -7,8 +7,7 @@ Compute all KMER combinations using construction of list for each new KMER. This
 article at https://towardsdatascience.com/how-fast-is-c-compared-to-python-978f18f474c7, and written by Naser Tamimi
 (see https://tamimi-naser.medium.com/.)
 
-Minor edits were made to meet PEP-8 requirements, along with some timing code. A timing run was also pasted into
-the code as a comment below.
+Minor edits were made to meet PEP-8 requirements, along with some timing code.
 """
 
 def convert(c):
