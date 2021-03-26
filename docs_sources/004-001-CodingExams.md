@@ -1,12 +1,12 @@
 ## Sub-Project Coding Exams
 
-These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  Some problems were from sites offering coding practice. The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked in these situations.  Solutions presented here include MAVEN builds, JUnit tests, and JavaDoc. Many of these problems were originally done under time constraints and considerable cleanup was required before presentation here.
+These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  Some problems were from educational sites offering coding practice. The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked in these situations.  Solutions presented here include MAVEN builds, JUnit tests, and JavaDoc. Many of these problems were originally done under time constraints and considerable cleanup was required before presentation here in *DemoDev*.
 
 These solutions also demonstrate coding principles like:
 - Separation of interface and implementation.
 - Use of multiple implementations (e.g., Strategy and Command Patterns.)
 - Test driven development (shown by reviewing testing order; simple initial conditions to complex corner cases.)
-- JUnit framework tests where feasible, or custom test cases when created in an interview environment.
+- JUnit framework tests where feasible, or custom test cases when created in an interviewing environment.
 
 ### Selected _Exam_ Content
 
