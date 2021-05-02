@@ -14,7 +14,7 @@ Algorithms and performance testing approaches are included in the repository, al
 
 ### Building Projects in the Repository
 
-[create anchor](#a-b-c)
+aaa[create anchor](#a-b-c)bbb
 
 The Java projects in *DemoDev* use Maven to build and JUnit to test artifacts. Note that JUnit is a framework, one of many, for regression testing.  A Maven build project is defined by an XML structure persisted in a "***pom.xml***" file located in the build project directory. Maven build projects may be nested in a tree structure.
 
