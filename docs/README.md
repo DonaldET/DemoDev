@@ -1,5 +1,5 @@
 # Welcome
-
+[create](#welcome)
 These ***DemoDev*** projects illustrate techniques for building Java based components, and is a collection of Java projects forms the nucleus of an upcoming book on Java programming. Service Oriented Architecture examples are included as well. Topics included are:
 
 - Various object-oriented and functional coding techniques are illustrated with real examples.
@@ -13,8 +13,6 @@ One sub-topic is a collection of interviewing coding questions is included to il
 Algorithms and performance testing approaches are included in the repository, along with ready-to-use utility programs and libraries. There is also a DevOps sub-project collection of build related utilities and templating.
 
 ### Building Projects in the Repository
-
-aaa[create anchor](#a-b-c)bbb
 
 The Java projects in *DemoDev* use Maven to build and JUnit to test artifacts. Note that JUnit is a framework, one of many, for regression testing.  A Maven build project is defined by an XML structure persisted in a "***pom.xml***" file located in the build project directory. Maven build projects may be nested in a tree structure.
 
