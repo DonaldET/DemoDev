@@ -1,5 +1,7 @@
 # Welcome
+
 [create](#welcome)
+
 These ***DemoDev*** projects illustrate techniques for building Java based components, and is a collection of Java projects forms the nucleus of an upcoming book on Java programming. Service Oriented Architecture examples are included as well. Topics included are:
 
 - Various object-oriented and functional coding techniques are illustrated with real examples.
@@ -66,13 +68,11 @@ The sub-projects have their _JavaDoc_ entries explaining their role in the solut
 
 Many of the projects appear unnecessarily _complicated_ by use of the *Spring* framework to solve what may appear to be a potentially simple problem.  This is done to illustrate _Spring_ usage as well as the basic techniques shown in the example. Overall, a professional Software Engineer working on production code would provide background for code implementation choices, some guidelines on deployment and usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.
 
-## Other  helpful resources
+## Other helpful resources
 
 - See [Learning-Resources](README.md) for  tools to improve Java, Python, and  SQL skills.
 
-- click [Welcome](README.md#welcome).
-
-## Sub-Project Math Algorithms.
+- Click [Welcome](README.md#welcome).## Sub-Project Math Algorithms
 
 These Mathematical Algorithms show methods of performance testing and demonstrate coding principles like:
 - Separation of interface and implementation
