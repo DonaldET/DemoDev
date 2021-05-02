@@ -1,6 +1,5 @@
+[](#top-of-page)
 # Welcome
-
-[create](#welcome)
 
 These ***DemoDev*** projects illustrate techniques for building Java based components, and is a collection of Java projects forms the nucleus of an upcoming book on Java programming. Service Oriented Architecture examples are included as well. Topics included are:
 
@@ -72,7 +71,8 @@ Many of the projects appear unnecessarily _complicated_ by use of the *Spring* f
 
 - See [Learning-Resources](README.md) for  tools to improve Java, Python, and  SQL skills.
 
-- Click [Welcome](README.md#welcome).## Sub-Project Math Algorithms
+- Click [Welcome](README.md#welcome).
+## Sub-Project Math Algorithms
 
 These Mathematical Algorithms show methods of performance testing and demonstrate coding principles like:
 - Separation of interface and implementation
