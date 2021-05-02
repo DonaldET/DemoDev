@@ -66,7 +66,7 @@ The sub-projects have their _JavaDoc_ entries explaining their role in the solut
 
 Many of the projects appear unnecessarily _complicated_ by use of the *Spring* framework to solve what may appear to be a potentially simple problem.  This is done to illustrate _Spring_ usage as well as the basic techniques shown in the example. Overall, a professional Software Engineer working on production code would provide background for code implementation choices, some guidelines on deployment and usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.
 
-## Other resources
+## Other  helpful resources
 
 - See [Learning-Resources](README.md) for  tools to improve Java, Python, and  SQL skills.
 
