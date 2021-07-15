@@ -1,3 +1,4 @@
+[](#top-of-page)
 # Welcome
 
 These ***DemoDev*** projects illustrate techniques for building Java based components, and is a collection of Java projects forms the nucleus of an upcoming book on Java programming. Service Oriented Architecture examples are included as well. Topics included are:
@@ -12,7 +13,7 @@ One sub-topic is a collection of interviewing coding questions is included to il
 
 Algorithms and performance testing approaches are included in the repository, along with ready-to-use utility programs and libraries. There is also a DevOps sub-project collection of build related utilities and templating.
 
-#### Building Projects in the Repository
+### Building Projects in the Repository
 
 The Java projects in *DemoDev* use Maven to build and JUnit to test artifacts. Note that JUnit is a framework, one of many, for regression testing.  A Maven build project is defined by an XML structure persisted in a "***pom.xml***" file located in the build project directory. Maven build projects may be nested in a tree structure.
 
@@ -24,37 +25,9 @@ Maven creates a build using "*plugins*" that implement build actions. Similar to
 
 There are far too many Maven tutorials to mention here, so please search the web for one that helps you. More information is provided in the **Getting Started** section below.
 
-#### Java Requirement
+### Java Requirement
 
 Most of *DemoDev* is built using Java 8, but Java 9 introduced the REPL (Run-Execute-Print-Loop); an interactive Java runtime environment. Many of us are still tied to Java 8 for business reasons, but would like to experiment with the REPL. This site, called [https://github.com/javaterminal/tryjshell](https://github.com/javaterminal/tryjshell "tryjshell"), offers a browser-accessible version of the Java REPL. They also provide a hosted version at [https://tryjshell.org/](https://tryjshell.org/).
-
-#### Java and Python Coding Practice, Data Management Free Resources 
-
-Here are some educational web sites for testing your Java and Python coding skills:
-
-- [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
-- [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
-- [https://app.codility.com/programmers/](https://app.codility.com/programmers/), presenting training examples and a multi-language testing environment; primarily used as a developer skills testing environment.
-- [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
-- [https://app.codility.com/programmers/](https://app.codility.com/programmers/ "Codility"), like coderpad, the codility web site is a testing environment offering practice problems.
-- [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
-
-#### SQL Learning Resources
-
-Support for testing SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
-
-- Online SQL teaching instances: [http://sqlfiddle.com/](http://sqlfiddle.com/) and [https://www.freesqldatabase.com/](https://www.freesqldatabase.com/).
-- SQL runner only: [https://paiza.io/projects/featured?language=mysql](https://paiza.io/projects/featured?language=mysql).
-- SQL skills testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
-
-Additional SQL learning resources include:
-
-- The W3Schools editor [https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in](https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in).
-- A free online course is found at: [https://www.codecademy.com/learn/learn-sql](https://www.codecademy.com/learn/learn-sql).
-- An Oracle teaching link: [https://livesql.oracle.com/apex/f?p=590:1000](https://livesql.oracle.com/apex/f?p=590:1000) (see [https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/](https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/ "for an overview").
-- A link discussing free courses: [https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html](https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html).
-
-Finally, much of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  [https://databricks.com/try-databricks](https://databricks.com/try-databricks "try Databricks").
 
 ## *DemoDev* Content Commercial Opportunities
 
@@ -79,11 +52,11 @@ The _StaticResources_ directory references instructions on how to setup a MAVEN 
 
 - *algorithms*: Math algorithm demonstrations.
 - optimizations: Useful utilities around optimizing processes.
-- *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment coding environment.
 - *hacks*: Unusual solutions to interesting problems that don't necessarily reflect _best practices_.
 - *jerseyservices*: RESTful Java service implementations using the **Jersey framework**
 - *memoryindexing*: In-memory search algorithms
 - *utils*: Utilities used by _DemoDev_ and related projects (e.g., code generation used by _WindPower Explorer_)
+- *codingexams*: Coding and Algorithm interview questions asked over a whiteboard or in a collaboration environment coding environment.
 
 
 ## Sub-Project Structure
@@ -92,8 +65,13 @@ Sub-projects usually include a _business_ motivation for the coding examples in 
 
 The sub-projects have their _JavaDoc_ entries explaining their role in the solution and the portion of the problem they address. Many sub-projects include JUnit tests because this reflects good _TDD_ practice and allows maintenance of the examples over time.  Stability over time is accomplished by using the regression aspect of these tests.
 
-Many of the projects appear unnecessarily _complicated_ by use of the *Spring* framework to solve what may appear to be a potentially simple problem.  This is done to illustrate _Spring_ usage as well as the basic techniques shown in the example. Overall, a professional Software Engineer working on production cide would provide background for code implementation choices, some guidelines on deployment and usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.
+Many of the projects appear unnecessarily _complicated_ by use of the *Spring* framework to solve what may appear to be a potentially simple problem.  This is done to illustrate _Spring_ usage as well as the basic techniques shown in the example. Overall, a professional Software Engineer working on production code would provide background for code implementation choices, some guidelines on deployment and usage in the _JavaDoc_ entries, and tips to help maintain the code.  The example invocations within unit tests help in achieving these documentation goals.
 
+## Other helpful resources
+
+- See [Learning-Resources](README.md) for  tools to improve Java, Python, and  SQL skills.
+
+- Click [Welcome](README.md#welcome).
 ## Sub-Project Math Algorithms
 
 These Mathematical Algorithms show methods of performance testing and demonstrate coding principles like:
@@ -119,51 +97,6 @@ TBD.
 Project | Description
 ------- | -----------
 _tbd_ | TBD
-## Sub-Project Coding Exams
-
-These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  Some problems were from sites offering coding practice. The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked in these situations.  Solutions presented here include MAVEN builds, JUnit tests, and JavaDoc. Many of these problems were originally done under time constraints and considerable cleanup was required before presentation here.
-
-These solutions also demonstrate coding principles like:
-- Separation of interface and implementation.
-- Use of multiple implementations (e.g., Strategy and Command Patterns.)
-- Test driven development (shown by reviewing testing order; simple initial conditions to complex corner cases.)
-- JUnit framework tests where feasible, or custom test cases when created in an interview environment.
-
-### Selected _Exam_ Content
-
-Client | Project | Description
------- | ------- | -----------
-Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns. 
-Amazon | _findmedian_ | Illustrate two methods of finding the median of a (non-infinite) stream of integers. One method is highly optimized compared to the other.
-Amazon | _infrastructure_ | We solve two problems: find the minimum times to complete a list of tasks in dependency order; find the longest substring of a string, with the substring having k or fewer unique characters.
-Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
-Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well. This is the basis of the article: [https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/]( https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/). 
-Amazon | _statemachines_ | Find filled bins in a packing structure; dynamically monitor the number of active servers in a cluster.
-AppDynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
-Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source. 
-Apple | _factorial_ | Contrast two factorial algorithms. 
-Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques. 
-CreditKarma | _list dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
-Cruise-Control | _task processor_ | Process tasks sequentially  with parameterizable cooling time and fixed execution times. 
-EasyPost | _pick_ | pick create-pick event pairs from an input stream and summarize times by location. 
-Elance | _diagonal_ | Square matrix diagonal elements list generator. 
-Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies. 
-GE | _gesail twowriters_ | Apply two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar. 
-GE | _geturner binarysearch_ | Compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_. 
-Gesicht Buch | _Infrastructure_ | Minimum Task Timer, Longest Substring with Unique Characters, Stream to Lines, and Sum of three nearest target. 
-Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remote command facility. 
-Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates. 
-IJSDE | _Problems_ | Programming skills validation examples associated with a job-placement web-site. 
-Liveramp | _autoboxing_ | Explores consequences of Java "autoboxing" of primative values, and examines integer comparison in the context of a Java ***Comparator***. This is the basis of the article: [https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/](https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/). 
-Liveramp | _bitsearch_ | We must count unique 32 bit client IPs accessing our web-site over some time period (a day let’s say). This is the basis of my article: [https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/](https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/). The article show cases **TDD**., and will lead to an article about generating test data (e.g.., see [https://queue.acm.org/detail.cfm?id=3355565](https://queue.acm.org/detail.cfm?id=3355565).) 
-Lumendata | _duplicatechecker_ | Finds duplicate column values in a row.
-PINTR | _expand_ | Write a function that expands a HashMap to an array. The HashMap contains a key and a value, from which your function will produce an array with the key repeated the respective number of times. Output order of the array does not matter.
-Rakuten | _Merge_ | Merge two ordered arrays of integers, in place, using space O(1).
-Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie. 
-Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree.
-WeWork | _spiral_ | Spiral-print a matrix (from LeetCode).
-WeWork | _patterns_ | Examples of Strategy, Factory, Bridge, and Decorator patterns.
-
 ## Sub-Project Hacks
 
 These short examples demonstrate _"less than the best"_ coding practices that are sometimes used to get around a solution constraint until a better solution can be found.
@@ -219,7 +152,81 @@ _DemoGenerator_ | A Freemarker based text generation utility supporting configur
 
 **Note**:
 These utilities are distributed using Java JAR files and invoked as executable Jars. The Python versions are created by *PyBuilder* and typically distributed as wheel files.
-## Build Information
+## Sub-Project Coding Exams
+
+These coding exams are elaborations on topics discussed during interviews and "take home" coding problems.  Some problems were from educational sites offering coding practice. The resulting solutions demonstrate a "professional engineering" approach to simple coding questions asked in these situations.  Solutions presented here include MAVEN builds, JUnit tests, and JavaDoc. Many of these problems were originally done under time constraints and considerable cleanup was required before presentation here in *DemoDev*.
+
+These solutions also demonstrate coding principles like:
+- Separation of interface and implementation.
+- Use of multiple implementations (e.g., Strategy and Command Patterns.)
+- Test driven development (shown by reviewing testing order; simple initial conditions to complex corner cases.)
+- JUnit framework tests where feasible, or custom test cases when created in an interviewing environment.
+
+### Selected _Exam_ Content
+
+Client | Project | Description
+------ | ------- | -----------
+Amazon | _codingchallange_ | Create a recommendation feature (recommendation engine) called "Games Your Friends Play". The recommendation logic is based on the following rules: a customer should only be recommended games that their friends own but they don"t; the recommendations priority is driven by how many friends own a game - if multiple friends own a particular game, it should be higher in the recommendations than a game that only one friend owns. 
+Amazon | _findmedian_ | Illustrate two methods of finding the median of a (non-infinite) stream of integers. One method is highly optimized compared to the other.
+Amazon | _infrastructure_ | We solve two problems: find the minimum times to complete a list of tasks in dependency order; find the longest substring of a string, with the substring having k or fewer unique characters.
+Amazon | _invoiceparser_ | Scan an Amazon EBook invoice and extract date, title, type and amount of book purchase.
+Amazon | _rangeconsolidator_ | Scan a list of integer ranges and merge overlapping ranges, collapsing them into an all-inclusive range. Performance test as well. This is the basis of the article: [https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/]( https://www.linkedin.com/pulse/lies-damn-algorithm-analysis-donald-trummell/). 
+Amazon | _statemachines_ | Find filled bins in a packing structure; dynamically monitor the number of active servers in a cluster.
+AppDynamics | _top X query_ | Query the top 10 game scores using a priority queue; note that this is in sub-project _MemoryIndexing_.
+Apple | _compounditerator_ | Concatenate data sources using a list of iterators for each data source. 
+Apple | _factorial_ | Contrast two factorial algorithms. 
+Cisco | _sieve_ | Capture the _top X_ elements of a random integer array using four techniques. 
+CreditKarma | _list dependencies_ | Given a list of modules names, each with a list of named dependencies, output a list with dependencies of a module appearing before the module itself.
+Cruise-Control | _task processor_ | Process tasks sequentially  with parameterizable cooling time and fixed execution times. 
+EasyPost | _pick_ | pick create-pick event pairs from an input stream and summarize times by location. 
+Elance | _diagonal_ | Square matrix diagonal elements list generator. 
+Gap | _gap cart_ | A sample shopping cart implementation with pricing strategies. 
+GE | _gesail twowriters_ | Apply two threads alternately incrementing a counter; uses multiple counter implementations, and includes unit tests and a runnable jar. 
+GE | _geturner binarysearch_ | Compare a recursive and iterative solution to the classical binary search algorithm; includes example of the _template pattern_. 
+Gesicht Buch | _Infrastructure_ | Minimum Task Timer, Longest Substring with Unique Characters, Stream to Lines, and Sum of three nearest target. 
+Grand Tour | _mars rover_ | Simulate a planetary rover vehicle remote command facility. 
+Granular | _Sudoku Game Checker_ | Check rows, columns, and 3x3 cells for duplicates. 
+IJSDE | _Problems_ | Programming skills validation examples associated with a job-placement web-site. 
+Liveramp | _autoboxing_ | Explores consequences of Java "autoboxing" of primative values, and examines integer comparison in the context of a Java ***Comparator***. This is the basis of the article: [https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/](https://www.linkedin.com/pulse/pilot-error-java-autoboxing-donald-trummell/). 
+Liveramp | _bitsearch_ | We must count unique 32 bit client IPs accessing our web-site over some time period (a day let’s say). This is the basis of my article: [https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/](https://www.linkedin.com/pulse/test-driven-development-tdd-really-works-donald-trummell-1c/). The article show cases **TDD**., and will lead to an article about generating test data (e.g.., see [https://queue.acm.org/detail.cfm?id=3355565](https://queue.acm.org/detail.cfm?id=3355565).) 
+Lumendata | _duplicatechecker_ | Finds duplicate column values in a row.
+PINTR | _expand_ | Write a function that expands a HashMap to an array. The HashMap contains a key and a value, from which your function will produce an array with the key repeated the respective number of times. Output order of the array does not matter.
+Rakuten | _Merge_ | Merge two ordered arrays of integers, in place, using space O(1).
+Socotra | _ordered_ | Print by first by frequency, but then by first appearance for tie. 
+Trulia | _treesearch_ | Find the "second largest value" in a specially constructed binary tree.
+WeWork | _spiral_ | Spiral-print a matrix (from LeetCode).
+WeWork | _patterns_ | Examples of Strategy, Factory, Bridge, and Decorator patterns.
+
+## Learning-Resources
+These web-sites are great places to learn the art of programming by actually doing programming exercises. We also recommend some helpful books.
+
+#### Java and Python Coding Practice, Data Management Free Resources 
+
+Here are some educational web sites for testing your Java and Python coding skills:
+
+- [https://www.hackerrank.com/](https://www.hackerrank.com/ "Hacker Rank"), test problems and competitive scoring.
+- [https://leetcode.com/](https://leetcode.com/ "Leet Code"), presenting problems and solutions in a peer-reviewed development environment.
+- [https://app.codility.com/programmers/](https://app.codility.com/programmers/), presenting training examples and a multi-language testing environment; primarily used as a developer skills testing environment.
+- [https://coderpad.io/](https://coderpad.io/ "Coder Pad"), a white-board development environment for coding exams.
+- [https://app.codility.com/programmers/](https://app.codility.com/programmers/ "Codility"), like coderpad, the codility web site is a testing environment offering practice problems.
+- [https://www.pramp.com/#/](https://www.pramp.com/#/ "Pramp"), an interactive coding interview environment for practicing coding interviews.
+
+#### SQL Learning Resources
+
+Support for testing SQL programming, which is heavily used in Data Engineering, includes these sites that run MySQL sandboxes:
+
+- Online SQL teaching instances: [http://sqlfiddle.com/](http://sqlfiddle.com/) and [https://www.freesqldatabase.com/](https://www.freesqldatabase.com/).
+- SQL runner only: [https://paiza.io/projects/featured?language=mysql](https://paiza.io/projects/featured?language=mysql).
+- SQL skills testing: [https://coderpad.io/demo](https://coderpad.io/demo) and the practice sandbox [https://coderpad.io/sandbox](https://coderpad.io/sandbox).
+
+Additional SQL learning resources include:
+
+- The W3Schools editor [https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in](https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in).
+- A free online course is found at: [https://www.codecademy.com/learn/learn-sql](https://www.codecademy.com/learn/learn-sql).
+- An Oracle teaching link: [https://livesql.oracle.com/apex/f?p=590:1000](https://livesql.oracle.com/apex/f?p=590:1000) (see [https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/](https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/ "for an overview").
+- A link discussing free courses: [https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html](https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html).
+
+Finally, much of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  [https://databricks.com/try-databricks](https://databricks.com/try-databricks "try Databricks").## Build Information
 Naming and structural conventions, along with collected statistics on Maven build structure. Key Maven plugins are documented as well.
 
 ### Java Package Naming Conventions
