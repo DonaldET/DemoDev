@@ -1,0 +1,5 @@
+Here is an example of a shared document an how "merging" operates.
+Line 1 - AAA
+Line 2 - BBB
+Line 3 - CCC
+End of document.
