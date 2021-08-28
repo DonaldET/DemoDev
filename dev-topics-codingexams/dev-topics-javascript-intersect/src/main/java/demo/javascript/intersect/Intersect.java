@@ -23,7 +23,7 @@ package demo.javascript.intersect;
  * <p>
  * Problem taken from <a href=
  * "https://javascript.plainenglish.io/a-common-javascript-phone-screen-question-asked-by-facebook-357a0139c458">a
- * JavaSript site</a>.
+ * JavaSript site</a> claiming it is a FaceBook interview question.
  * 
  * @author Donald Trummell
  */
