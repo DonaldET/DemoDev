@@ -2,7 +2,7 @@
  * WPESimulator.hpp
  *
  *  Created on: Sep 2, 2021
- *      Author: Don
+ *      Author: Donald Trummell
  */
 
 #ifndef WPESIMULATION_HPP_
@@ -13,7 +13,8 @@
 #include <iostream>
 using namespace std;
 
-#include "WPE_Util.hpp"
 #include "WPE_PolyEval.hpp"
+#include "WPE_Util.hpp"
+#include "WPE_PowerCalc.hpp"
 
 #endif /* WPESIMULATION_HPP_ */

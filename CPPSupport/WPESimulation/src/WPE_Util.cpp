@@ -2,7 +2,7 @@
  * WPE_Util.cpp
  *
  *  Created on: Sep 2, 2021
- *      Author: Don
+ *      Author: Donald Trummell
  */
 
 #include "WPE_Util.hpp"

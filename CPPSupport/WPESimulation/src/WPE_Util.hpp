@@ -2,7 +2,7 @@
  * WPE_Util.hpp
  *
  *  Created on: Sep 2, 2021
- *      Author: Don
+ *      Author: Donald Trummell
  */
 
 #ifndef WPE_UTIL_HPP_

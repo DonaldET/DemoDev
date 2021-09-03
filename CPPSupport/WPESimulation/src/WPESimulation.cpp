@@ -7,75 +7,7 @@
 //============================================================================
 
 #include "WPESimulation.hpp"
-
-//////// --- Wind Simulation Constructs
-
-struct Power_Point {
-	int position;
-	int generator_type;
-	long exp_time;              // t (milliseconds)
-	double speed;               // m/s
-	double delta_power;         // w (x10^6)
-};
-
-//////// --- Turbine Power Simulation Constructs
-
-struct Turbine_Power_Factors {
-	double l;                  // Blade length
-	double a;                  // Blade swept area
-	double cp;	               // Efficiency (0 < Cp <= .59
-};
-
-//////// --- Power Generation Constructs
-
-struct Wind_Factors {
-	double rho;
-};
-
 void test_PolyEval();
-
-//////// --- Power calculations
-
-// See https://www.raeng.org.uk/publications/other/23-wind-turbine and
-// http://www.windandwet.com/windturbine/power_calc/index.php
-double power_extracted(const double v, const Wind_Factors wf,
-		const Turbine_Power_Factors tp) {
-	return (double) 0.5 * wf.rho * tp.a * v * v * v * tp.cp / 1000000.0;
-}
-
-// v = cube_root(2*p/(rho*cp)), but remove cp because we did not extract it all
-double wind_speed_drop(double p, const Wind_Factors &wf,
-		const Turbine_Power_Factors &tp) {
-	return cbrt((double) 2.0 * p / wf.rho);
-}
-
-void power_generated(const Power_Point &input, const Wind_Factors &wf,
-		const Turbine_Power_Factors &tp, Power_Point &output) {
-	output.position = input.position;
-	output.generator_type = input.generator_type;
-	output.exp_time = input.exp_time;
-	double v = input.speed;
-	double p = power_extracted(v, wf, tp);
-	output.delta_power = p;
-	output.speed = v - wind_speed_drop(p, wf, tp);
-}
-
-void display_TPF(const Turbine_Power_Factors &tpf) {
-	cout << "TPF   -> Blade Length: " << tpf.l << "; swept area: " << tpf.a
-			<< "; Cp: " << tpf.cp << endl;
-}
-
-void display_WF(const Wind_Factors &wf) {
-	cout << "WF    -> rho: " << wf.rho << endl;
-}
-
-void display_PPoint(const Power_Point &powerPoint) {
-	cout << "Power -> Pos: " << powerPoint.position << ";  Type: "
-			<< powerPoint.generator_type;
-	cout << ";  Time: " << powerPoint.exp_time << ";  Speed: "
-			<< powerPoint.speed;
-	cout << ";  delta: " << powerPoint.delta_power << endl;
-}
 
 int main() {
 	cout << "*** Simulate Wind Power Generation ***" << endl;
