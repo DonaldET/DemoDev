@@ -6,17 +6,7 @@
 // Description : Estimate wind power generation
 //============================================================================
 
-# define _USE_MATH_DEFINES
-#include <cmath>
-#include <iostream>
-using namespace std;
-#include <sys/time.h>
-
-long get_current_time_ms() {
-	struct timeval time_now { };
-	gettimeofday(&time_now, nullptr);
-	return (time_now.tv_sec * 1000L) + ((time_now.tv_usec + 500) / 1000L);
-}
+#include "WPESimulation.hpp"
 
 //////// --- Wind Simulation Constructs
 
@@ -42,9 +32,12 @@ struct Wind_Factors {
 	double rho;
 };
 
+void test_PolyEval();
+
 //////// --- Power calculations
 
-// See https://www.raeng.org.uk/publications/other/23-wind-turbine
+// See https://www.raeng.org.uk/publications/other/23-wind-turbine and
+// http://www.windandwet.com/windturbine/power_calc/index.php
 double power_extracted(const double v, const Wind_Factors wf,
 		const Turbine_Power_Factors tp) {
 	return (double) 0.5 * wf.rho * tp.a * v * v * v * tp.cp / 1000000.0;
@@ -88,6 +81,8 @@ int main() {
 	cout << "*** Simulate Wind Power Generation ***" << endl;
 	cout << "    Time: " << get_current_time_ms() << endl << endl;
 
+	test_PolyEval();
+
 	struct Turbine_Power_Factors tp;
 	tp.l = 52.0;               // m
 	tp.a = M_PI * tp.l * tp.l; // m^2
@@ -125,4 +120,21 @@ int main() {
 	}
 	cout << "Done." << endl;
 	return EXIT_SUCCESS;
+}
+
+void test_PolyEval() {
+	cout << endl << "Testing polynomial evaluation" << endl;
+	const double coef[] = { 1.0, 2.0, 3.0 };
+	const int n = sizeof coef / sizeof(double);
+	cout << " f(";
+	for (int i = 0; i < n; i++) {
+		if (i > 0)
+			cout << ", ";
+		cout << coef[i];
+	}
+	cout << "; ";
+	double x = 2.0;
+	cout << x;
+	double y = polyEval(coef, n, x);
+	cout << ") = " << y << endl << endl;
 }
