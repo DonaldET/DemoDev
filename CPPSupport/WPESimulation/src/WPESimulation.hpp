@@ -13,8 +13,8 @@
 #include <iostream>
 using namespace std;
 
+#include "WPE_PowerCalc.hpp"
 #include "WPE_PolyEval.hpp"
 #include "WPE_Util.hpp"
-#include "WPE_PowerCalc.hpp"
 
 #endif /* WPESIMULATION_HPP_ */

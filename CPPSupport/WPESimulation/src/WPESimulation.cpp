@@ -7,6 +7,7 @@
 //============================================================================
 
 #include "WPESimulation.hpp"
+
 void test_PolyEval();
 
 int main() {
@@ -55,7 +56,7 @@ int main() {
 }
 
 void test_PolyEval() {
-	cout << endl << "Testing polynomial evaluation" << endl;
+	cout << endl << "Testing polynomial evaluation:" << endl;
 	const double coef[] = { 1.0, 2.0, 3.0 };
 	const int n = sizeof coef / sizeof(double);
 	cout << " f(";
@@ -64,7 +65,7 @@ void test_PolyEval() {
 			cout << ", ";
 		cout << coef[i];
 	}
-	cout << "; ";
+	cout << "; x=";
 	double x = 2.0;
 	cout << x;
 	double y = polyEval(coef, n, x);
