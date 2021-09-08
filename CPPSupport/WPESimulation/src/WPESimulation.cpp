@@ -57,7 +57,7 @@ int main() {
 
 void test_PolyEval() {
 	cout << endl << "Testing polynomial evaluation:" << endl;
-	const double coef[] = { 1.0, 2.0, 3.0 };
+	const double coef[] = { 3.0, 2.0, 1.0 };
 	const int n = sizeof coef / sizeof(double);
 	cout << " f(";
 	for (int i = 0; i < n; i++) {

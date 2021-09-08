@@ -33,7 +33,7 @@ double power_extracted(const double v, const Wind_Factors wf,
 	return (double) 0.5 * wf.rho * tp.a * v * v * v * tp.cp / 1000000.0;
 }
 
-// v = cube_root(2*p/(rho*cp)), but remove cp because we did not extract it all
+// v = cube_root(2*p/(rho*cp)), but remove cp because we did not extract all potential power
 double wind_speed_drop(double p_extracted, const Wind_Factors &wf,
 		const Turbine_Power_Factors &tp) {
 	return cbrt((double) 2.0 * p_extracted / wf.rho);

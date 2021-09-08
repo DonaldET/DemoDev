@@ -9,9 +9,11 @@
 
 double polyEval(const double coef[], const int ncoef, const double x) {
 
-	double yval = coef[0];
-	for (int i = 1; i < ncoef; i++) {
-		yval = x * yval + coef[i];
+	double yval = 0;
+	if (ncoef > 0) {
+		for (int i = ncoef - 1; i >= 0; i--) {
+			yval = x * yval + coef[i];
+		}
 	}
 	return yval;
 }
