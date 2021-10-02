@@ -2,10 +2,9 @@ package demo.liveramp.autoboxing;
 
 public class ExampleGTR {
 	public static void main(String[] args) {
-		final int[] testVals = { Integer.MIN_VALUE, (Integer.MIN_VALUE + 1), -128, -127,
-				-2, -1, 0, 1, 2, 127, 128, (Integer.MAX_VALUE - 1) };
-		System.out.println("Checking greater-than/less-than comparision for " +
-				testVals.length + " integers.");
+		final int[] testVals = { Integer.MIN_VALUE, (Integer.MIN_VALUE + 1), -128, -127, -2, -1, 0, 1, 2, 127, 128,
+				(Integer.MAX_VALUE - 1) };
+		System.out.println("Checking greater-than/less-than comparision for " + testVals.length + " integers.");
 
 		int pgtr = 0;
 		int pXgtr = 0;
@@ -20,8 +19,8 @@ public class ExampleGTR {
 				pXgtr++;
 			}
 
-			final Integer ix = new Integer(x);
-			final Integer iy = new Integer(y);
+			final Integer ix = x;
+			final Integer iy = y;
 			if (ix > iy) {
 				ogtr++;
 			} else {

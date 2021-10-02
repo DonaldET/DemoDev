@@ -14,8 +14,8 @@ public class ExampleEQLNeg {
 			System.out.println("Not equal!");
 		}
 
-		final Integer ix = new Integer(x);
-		final Integer iy = new Integer(y);
+		final Integer ix = x;
+		final Integer iy = y;
 		if (ix == iy) {
 			System.out.println("Object Equal as expected");
 		} else {

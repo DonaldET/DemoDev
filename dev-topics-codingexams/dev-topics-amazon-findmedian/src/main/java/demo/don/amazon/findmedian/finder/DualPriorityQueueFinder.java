@@ -235,11 +235,11 @@ public class DualPriorityQueueFinder implements MedianFinder {
 		Integer upperTop = upper.peek();
 		int lowerLth = lower.size();
 		int upperLth = upper.size();
-		Double median = null;
+		double median = -1.0;
 		if (lowerLth == upperLth) {
-			median = new Double((lowerTop + upperTop) / 2.0);
+			median = (lowerTop + upperTop) / 2.0;
 		} else {
-			median = new Double(((lowerLth > upperLth) ? lowerTop.intValue() : upperTop.intValue()));
+			median = ((lowerLth > upperLth) ? lowerTop.intValue() : upperTop.intValue());
 		}
 
 		return median;
