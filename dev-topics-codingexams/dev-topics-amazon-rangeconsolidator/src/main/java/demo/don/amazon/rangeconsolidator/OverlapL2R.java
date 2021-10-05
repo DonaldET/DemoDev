@@ -31,55 +31,47 @@ import java.util.List;
  * 
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class OverlapL2R extends AbstractOverlap implements Overlap
-{
-    public OverlapL2R() {
-        super();
-    }
+public class OverlapL2R extends AbstractOverlap implements Overlap {
+	public OverlapL2R() {
+		super();
+	}
 
-    /**
-     * Merge overlapping ranges, each range a low-high pair.
-     * 
-     * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
-     */
-    @Override
-    public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
-    {
-        assert optionalComparator == null;
-        final List<Interval> copyOfOrdered = sortIntervals(intervals,
-                optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
-        int n = copyOfOrdered.size();
-        if (n < 2)
-        {
-            return new Merger(0, copyOfOrdered);
-        }
+	/**
+	 * Merge overlapping ranges, each range a low-high pair.
+	 * 
+	 * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
+	 */
+	@Override
+	public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator) {
+		assert optionalComparator == null;
+		final List<Interval> copyOfOrdered = sortIntervals(intervals,
+				optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
+		int n = copyOfOrdered.size();
+		if (n < 2) {
+			return new Merger(0, copyOfOrdered);
+		}
 
-        int merges = 0;
-        int lhs_pos = 0;
-        int rhs_pos = 1;
+		int merges = 0;
+		int lhs_pos = 0;
+		int rhs_pos = 1;
 
-        do
-        {
-            final Interval lhs = copyOfOrdered.get(lhs_pos);
-            final Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.start > lhs.end)
-            {
-                // No overlap
-                lhs_pos = rhs_pos;
-                rhs_pos++;
-            }
-            else
-            {
-                // Overlap
-                rhs.start = lhs.start;
-                rhs.end = Math.max(lhs.end, rhs.end);
-                copyOfOrdered.remove(lhs_pos);
-                n -= 1;
-                merges++;
-            }
-        }
-        while (rhs_pos < n);
+		do {
+			final Interval lhs = copyOfOrdered.get(lhs_pos);
+			final Interval rhs = copyOfOrdered.get(rhs_pos);
+			if (rhs.start > lhs.end) {
+				// No overlap
+				lhs_pos = rhs_pos;
+				rhs_pos++;
+			} else {
+				// Overlap
+				rhs.start = lhs.start;
+				rhs.end = Math.max(lhs.end, rhs.end);
+				copyOfOrdered.remove(lhs_pos);
+				n -= 1;
+				merges++;
+			}
+		} while (rhs_pos < n);
 
-        return new Merger(merges, copyOfOrdered);
-    }
+		return new Merger(merges, copyOfOrdered);
+	}
 }

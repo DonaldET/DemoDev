@@ -33,57 +33,50 @@ import java.util.List;
  * 
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class OverlapR2L extends AbstractOverlap implements Overlap
-{
-    public OverlapR2L() {
-        super();
-    }
+public class OverlapR2L extends AbstractOverlap implements Overlap {
+	public OverlapR2L() {
+		super();
+	}
 
-    /**
-     * Merge overlapping ranges, each range a low-high pair.
-     * 
-     * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
-     */
-    @Override
-    public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator)
-    {
-        assert optionalComparator == null;
-        final List<Interval> copyOfOrdered = sortIntervals(intervals,
-                optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
-        final int n = copyOfOrdered.size();
-        if (n < 2)
-        {
-            return new Merger(0, copyOfOrdered);
-        }
+	/**
+	 * Merge overlapping ranges, each range a low-high pair.
+	 * 
+	 * @see demo.don.amazon.rangeconsolidator.Overlap#merge(java.util.List)
+	 */
+	@Override
+	public Merger merge(final List<Interval> intervals, final Comparator<Interval> optionalComparator) {
+		assert optionalComparator == null;
+		final List<Interval> copyOfOrdered = sortIntervals(intervals,
+				optionalComparator == null ? new AbstractOverlap.MergeComparator() : optionalComparator);
+		final int n = copyOfOrdered.size();
+		if (n < 2) {
+			return new Merger(0, copyOfOrdered);
+		}
 
-        int merges = 0;
-        int lhs_pos = 0;
-        int rhs_pos = 1;
+		int merges = 0;
+		int lhs_pos = 0;
+		int rhs_pos = 1;
 
-        do
-        {
-            final Interval lhs = copyOfOrdered.get(lhs_pos);
-            final Interval rhs = copyOfOrdered.get(rhs_pos);
-            if (rhs.start <= lhs.end)
-            {
-                // Overlap
-                rhs.start = lhs.start;
-                rhs.end = Math.max(lhs.end, rhs.end);
-                copyOfOrdered.set(lhs_pos, null);
-                merges += 1;
-            }
-            lhs_pos = rhs_pos;
-            rhs_pos++;
-        }
-        while (rhs_pos < n);
+		do {
+			final Interval lhs = copyOfOrdered.get(lhs_pos);
+			final Interval rhs = copyOfOrdered.get(rhs_pos);
+			if (rhs.start <= lhs.end) {
+				// Overlap
+				rhs.start = lhs.start;
+				rhs.end = Math.max(lhs.end, rhs.end);
+				copyOfOrdered.set(lhs_pos, null);
+				merges += 1;
+			}
+			lhs_pos = rhs_pos;
+			rhs_pos++;
+		} while (rhs_pos < n);
 
-        final List<Interval> merged = new ArrayList<Interval>(n - merges);
-        for (final Interval intr : copyOfOrdered)
-        {
-            if (intr != null)
-                merged.add(intr);
-        }
+		final List<Interval> merged = new ArrayList<Interval>(n - merges);
+		for (final Interval intr : copyOfOrdered) {
+			if (intr != null)
+				merged.add(intr);
+		}
 
-        return new Merger(merges, merged);
-    }
+		return new Merger(merges, merged);
+	}
 }

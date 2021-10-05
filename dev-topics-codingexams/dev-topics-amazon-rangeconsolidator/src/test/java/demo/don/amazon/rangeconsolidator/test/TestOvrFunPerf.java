@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import demo.don.amazon.rangeconsolidator.OverlapL2R;
@@ -35,6 +36,7 @@ public class TestOvrFunPerf
     }
 
     @Test
+    @Ignore		// Performance testing only
     public void testPerfAll()
     {
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR;
