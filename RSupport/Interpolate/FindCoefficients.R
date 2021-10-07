@@ -6,7 +6,7 @@ WEP.cp.fit <- function(generator, x, y) {
   # model3 <- lm(y ~ x + I(x^2) + I(x^3))
   # summary(model3)
 
-  print('Fifth Power Fit')
+  print('Fifth Power Fit for', generator)
   model5 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5))
   summary(model5)
   

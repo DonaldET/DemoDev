@@ -6,6 +6,7 @@
  */
 
 #include "WPE_Util.hpp"
+#include <sys/time.h>
 
 long get_current_time_ms() {
 	struct timeval time_now { };
