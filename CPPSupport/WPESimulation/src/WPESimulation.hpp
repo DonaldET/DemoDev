@@ -11,6 +11,7 @@
 # define _USE_MATH_DEFINES
 #include <cmath>
 #include <iostream>
+#include <stdlib.h>
 
 #include "WPE_PowerCalc.hpp"
 #include "WPE_PolyEval.hpp"

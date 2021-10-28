@@ -41,13 +41,20 @@ void display_PPoint(const Power_Point &powerPoint, const double drop) {
 
 // See https://www.raeng.org.uk/publications/other/23-wind-turbine and
 // http://www.windandwet.com/windturbine/power_calc/index.php
+// mega-whatts
 double power_extracted(const double v, const Wind_Factors &wf,
 		const Turbine_Power_Factors &tp) {
 	if (v < tp.cut_in || v > tp.cut_out) {
 		return 0.0;
 	}
 	const int ncoef = sizeof(tp.coef) / sizeof(double);
-	const double cp = polyEval(&tp.coef[0], ncoef, v);
+	double cp = polyEval(&tp.coef[0], ncoef, v);
+	if (cp < 0.0) {
+		cp = 0.0;
+	} else
+		if (cp > 0.59) {
+		cp = 0.59;
+	}
 	return (double) 0.5 * wf.rho * tp.a * v * v * v * cp / 1000000.0;
 }
 
