@@ -1,0 +1,20 @@
+*** Simulate Wind Power Generation ***
+    Time0: -893276262
+    Time1: -893276262
+    Elapsed = 387 ms.
+
+Testing polynomial evaluation:
+ f(3 + 2*x + 1*x^2; x=2) = 11
+
+TPF   -> Blade Length: 52; swept area: 8494.87; cut-in speed: 2; cut-out speed: 27
+         Coef: -0.268364, 0.238552, -0.0200144, 4.24332e-05, 3.78091e-05, -8.79624e-07
+WF    -> rho: 1.23
+
+******
+** 745 MS required for 10 generators against 34 random wind speeds over 25000 repetitions.
+** Calculations  : 8500000
+** Avg Power (Mw): 1.09063
+** Avg Speed drop: 0.820791 m/s
+******
+Done.
+command took 0:0:1.33 (1.33s total)
