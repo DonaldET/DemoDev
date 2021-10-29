@@ -17,6 +17,7 @@ const double winds[] = { 8.0, 11.0, 5.0, 24.0, 30.0, 7.0, 3.0, 26.0, 2.0, 9.0,
 		21.0, 13.0, 3.0, 6.0, 20.0, 22.0, 26.0, 6.0, 29.0, 23.0, 6.0, 16.0 };
 /* The number of random wind speeds */
 const long RANDOM_WIND_COUNT = sizeof(winds) / sizeof(double);
+/* Number of repetitions */
 const long REPEATS = 25000;
 
 void populate_test_coefficient(struct Turbine_Power_Factors &tp);
@@ -64,6 +65,7 @@ int main() {
 			double drop = 0.0;
 			for (long generator = 0; generator < INLINE_GENERATORS;
 					generator++) {
+				count++;
 				drop = power_generated(pre, wf, tp, post);
 				if (drop < 0.0) {
 					cout << "****ERROR: drop " << drop << " bad at generator "
