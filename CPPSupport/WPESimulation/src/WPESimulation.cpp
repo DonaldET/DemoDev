@@ -3,7 +3,7 @@
 // Author      : Donald Trummell
 // Version     : 0.1.0
 // Copyright   : (c) 2021
-// Description : Estimate wind power generation
+// Description : Simulate wind electric power generation - alpha C++ version
 //============================================================================
 
 #include "WPESimulation.hpp"
@@ -24,24 +24,40 @@ void populate_test_coefficient(struct Turbine_Power_Factors &tp);
 void test_time();
 void test_PolyEval();
 
+/**
+ * Calculate power generated in a wind channel of N generators; perform the calculation
+ * for multiple random wind speeds; repeat sufficient CPU is used to get a good timing.
+ */
 int main() {
-	cout << "*** Simulate Wind Power Generation ***" << endl;
+	cout << "*** Simulate Wind Power Generation (C++ alpha) ***" << endl;
 
 	test_time();
 	test_PolyEval();
 
+	//
+	// Simulation Process is:
+	// 1) Organize statistics
+	// 2) Create input structure
+	// 3) Create output structure
+	// 4) Calculate power generation, input -> output
+	// 5) Update statistics
+	// 6) Swap input and output
+	// 7) Repeat from (4) N times (N is number of generators in a wind channel
+	//
+
 	struct Turbine_Power_Factors tp;
-	tp.l = 52.0;               // m
-	tp.a = M_PI * tp.l * tp.l; // m^2
+	tp.l = 52.0;               	// m
+	tp.a = M_PI * tp.l * tp.l;	// m^2
 	populate_test_coefficient(tp);
-	tp.cut_in = 2;
-	tp.cut_out = 27;
+	tp.cut_in = 2;				// m/s
+	tp.cut_out = 27;			// m/s
 	display_TPF(tp);
 
 	struct Wind_Factors wf;
 	wf.rho = 1.23;             // kg/m3
 	display_WF(wf);
 
+	/* The input-output power generation points */
 	struct Power_Point p1, p2;
 
 	long count = 0;

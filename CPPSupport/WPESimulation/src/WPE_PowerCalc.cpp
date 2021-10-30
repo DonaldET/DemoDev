@@ -51,16 +51,15 @@ double power_extracted(const double v, const Wind_Factors &wf,
 	double cp = polyEval(&tp.coef[0], ncoef, v);
 	if (cp < 0.0) {
 		cp = 0.0;
-	} else
-		if (cp > 0.59) {
+	} else if (cp > 0.59) {
 		cp = 0.59;
 	}
 	return (double) 0.5 * wf.rho * tp.a * v * v * v * cp / 1000000.0;
 }
 
-// v = cube_root(2*p/(rho*cp)), but remove cp because we did not extract all potential power
-double wind_speed_drop(const double p_extracted, const Wind_Factors &wf,
-		const Turbine_Power_Factors &tp) {
+// v = cube_root(2*p/(rho*cp)), but use Cp == 1; because while
+// we did not extract all potential power, we still impeded the wind
+double wind_speed_drop(const double p_extracted, const Wind_Factors &wf) {
 	return cbrt((double) 2.0 * p_extracted / wf.rho);
 }
 
@@ -73,7 +72,7 @@ double power_generated(const Power_Point &input, const Wind_Factors &wf,
 	const double v = input.speed;
 	const double p = power_extracted(v, wf, tp);
 	output.delta_power = p;
-	const double drop = wind_speed_drop(p, wf, tp);
+	const double drop = wind_speed_drop(p, wf);
 	output.speed = v - drop;
 	return (drop);
 }
