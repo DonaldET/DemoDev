@@ -14,12 +14,12 @@
                 <version>1.0.0-SNAPSHOT</version>
         </parent>
 
-        <artifactId>demodev-topics-kmer</artifactId>
+        <artifactId>demodev-topics-wpe</artifactId>
         <!-- <version>1.0.0-SNAPSHOT</version> -->
         <packaging>jar</packaging>
-        <name>KMER Generator Algorithm</name>
+        <name>Wind Power Generation Algorithm</name>
 
-        <description>Generate KMER Nucleotide Sequences</description>
+        <description>Simulate Electric Power Generation from Random Wind</description>
 
         <properties>
         </properties>

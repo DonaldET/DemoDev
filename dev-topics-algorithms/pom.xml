@@ -35,6 +35,7 @@
 		<module>dev-topics-quadradic</module>
 		<module>dev-topics-romannumerals</module>
 		<module>dev-topics-sieve</module>
+		<module>dev-topics-wpe</module>
 	</modules>
 
 	<properties>
