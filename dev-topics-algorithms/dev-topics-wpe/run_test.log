@@ -1,0 +1,19 @@
+ Java WPE Simulation Example
+*** Simulate Wind Power Generation (Java alpha version) ***
+    Time0: 1636787965646
+    Time1: 1636787965646
+    Elapsed = 13 ms.
+Testing polynomial evaluation:
+ f(3.0 + 2.0*x + 1.0*x^2; x=2.0) = 11.0
+TPF   -> Blade Length: 52.0; swept area: 8494.8665353068; cut-in speed: 2.0; cut-out speed: 27.0
+         Coef: -0.268364, 0.2385518, -0.02001438, 4.243324E-5, 3.78091E-5, -8.796243E-7
+WF    -> rho: 1.23
+
+******
+** 466 MS required for 10 generators against 34 random wind speeds over 25000 repetitions.
+** Calculations  : 8500000
+** Avg Power (Mw): 1.0906333037345795
+** Avg Speed drop: 0.8207912530027296 m/s
+******
+Done.
+command took 0:0:1.16 (1.16s total)
