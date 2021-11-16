@@ -27,7 +27,7 @@ public interface PowerCalculator {
 	 * @author Donald Trummell
 	 */
 	public static class PowerPoint {
-		public int position; // generator position on grip
+		public int position; // generator position on grid
 		public int generatorType; // enum-like value linking generator characteristics to position in wind farm.
 		public long experimentTime; // t (milliseconds)
 		public double speed; // m/s
@@ -50,7 +50,7 @@ public interface PowerCalculator {
 	public static class TurbinePowerFactors {
 		public double l; // Blade length
 		public double a; // Blade swept area
-		public double coef[]; // Polynomial approximation of Cp as function of wind speed'
+		public double coef[]; // Coefficients of a polynomial approximation of Cp as function of wind speed'
 		public double cutInSpeed; // Initial power generation wind speed
 		public double cutOutSpeed; // Just exceeds greatest operational wind speed
 	};

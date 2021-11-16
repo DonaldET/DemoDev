@@ -1,7 +1,7 @@
 #
 #  WPE_Util.cpp
 # 
-#   Provide real time
+#   Provide wall-clock actual time
 #
 from datetime import datetime
 

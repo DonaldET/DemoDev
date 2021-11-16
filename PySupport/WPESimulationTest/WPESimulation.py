@@ -3,7 +3,7 @@
 # Author      : Donald Trummell
 # Version     : 0.1.0
 # Copyright   : (c) 2021
-# Description : Estimate wind power generation
+# Description : Simulate wind power generation
 # ============================================================================
 
 from math import pi
@@ -24,9 +24,11 @@ _RANDOM_WIND_COUNT = len(_winds)
 _REPEATS = 25000
 
 
-def populate_test_coefficient() -> list[float]:
+def populate_test_coefficient(tpf: WPE_PowerCalc.TurbinePowerFactors) -> list[float]:
     e33_coef: list[float] = [-2.683640e-01, 2.385518e-01,
                              -2.001438e-02, 4.243324e-05, 3.780910e-05, -8.796243e-07]
+    for _i in range(WPE_PowerCalc.TPF_npower):
+        tpf.coef[_i] = e33_coef[_i]
     return e33_coef
 
 
@@ -44,13 +46,13 @@ def test_time() -> None:
 
 def test_poly_eval() -> None:
     print("Testing polynomial evaluation:")
-    coef: list[float] = [3.0, 2.0, 1.0]
-    print(" f(" + str(coef[0]) + " + " + str(coef[1]) + "*x + " + str(coef[2])
+    cp_est_coef: list[float] = [3.0, 2.0, 1.0]
+    print(" f(" + str(cp_est_coef[0]) + " + " + str(cp_est_coef[1]) + "*x + " + str(cp_est_coef[2])
           + "*x^2", end='')
     print("; x=", end='')
     x: float = 2.0
     print(str(x), end='')
-    y: float = WPE_PolyEval.poly_eval(coef, x)
+    y: float = WPE_PolyEval.poly_eval(cp_est_coef, x)
     print(") = " + str(y) + "\n")
 
 
@@ -60,15 +62,32 @@ if __name__ == '__main__':
     test_time()
     test_poly_eval()
 
-    l: float = 52.0
-    a: float = pi * l * l
-    tp = WPE_PowerCalc.Turbine_Power_Factors_Record(l, a,
-                                                    populate_test_coefficient(), 2,
-                                                    27)
-    WPE_PowerCalc.display_tpf(tp)
+    #
+    # Simulation Process is:
+    # 1) Organize statistics
+    # 2) Create input structure
+    # 3) Create output structure
+    # 4) Calculate power generation, input -> output
+    # 5) Update statistics
+    # 6) Swap input and output
+    # 7) Repeat from (4) N times (N is number of generators in a wind channel
+    #
 
-    wf = WPE_PowerCalc.Wind_Factors_Record(1.23)
+    blade_length: float = 52.0  # m
+    swept_area: float = pi * blade_length * blade_length  # m^2
+    coef: list[float] = [0.0 for _i in range(WPE_PowerCalc.TPF_npower)]
+    cut_in = 2  # m/s
+    cut_out = 27  # m/s
+    tpf: WPE_PowerCalc.TurbinePowerFactors = WPE_PowerCalc.TurbinePowerFactors(blade_length, swept_area, coef, cut_in,
+                                                                               cut_out)
+    populate_test_coefficient(tpf)
+    WPE_PowerCalc.display_tpf(tpf)
+
+    wf = WPE_PowerCalc.WindFactors(1.23)
     WPE_PowerCalc.display_wf(wf)
+
+    p1 = WPE_PowerCalc.PowerPoint(3344, 0, 0, 0, 0)
+    p2 = WPE_PowerCalc.PowerPoint(3344, 0, 0, 0, 0)
 
     count: int = 0
     sumPower: float = 0.0
@@ -76,21 +95,28 @@ if __name__ == '__main__':
     start: int = WPE_Util.get_current_time_ms()
     for rep in range(_REPEATS):
         for wind in _winds:
-            p1 = WPE_PowerCalc.Power_Point_Record(3344, 0, 0, wind, 0)
-            p2 = WPE_PowerCalc.Power_Point_Record(3344, 0, 0, 0, 0)
+            # self.position: int = position  # generator position on grid
+            # # enum-like value linking generator characteristics to position in wind farm.
+            # self.generator_type: int = generator_type
+            # self.exp_time: int = exp_time  # t (milliseconds)
+            # self.speed: float = speed  # m / s
+            # self.delta_power: float = delta_power  # watts (x10 ^ 6)
+
+            p1.position = 3344
+            p1.generator_type = 0
+            p1.exp_time = 0
+            p1.speed = wind
+            p1.delta_power = 0.0
+
             pre = p1
             post = p2
-
-            # WPE_PowerCalc.display_ppoint(pre, 0)
-            pre = WPE_PowerCalc.Power_Point_Record(pre.position, pre.generator_type, pre.exp_time + 1, pre.speed,
-                                                   pre.delta_power)
+            # WPE_PowerCalc.display_PPoint(pre, 0)
+            pre.exp_time += 1
 
             drop: float = 0.0
             for generator in range(_INLINE_GENERATORS):
                 count += 1
-                post_output = []
-                drop = WPE_PowerCalc.power_generated(pre, wf, tp, post_output)
-                post = post_output[0]
+                drop = WPE_PowerCalc.power_generated(pre, wf, tpf, post)
                 if drop < 0.0:
                     print("****ERROR: drop " + str(drop) + " bad at generator "
                           + str(generator) + " of wind " + str(wind)
@@ -100,10 +126,11 @@ if __name__ == '__main__':
                     sumDrop += drop
                     sumPower += post.delta_power
 
-                # WPE_PowerCalc.display_ppoint(post, drop)
-                tmp = pre
-                pre = WPE_PowerCalc.Power_Point_Record(post.position, post.generator_type, post.exp_time + 1,
-                                                       post.speed, post.delta_power)
+                # WPE_PowerCalc.display_PPoint(post, drop);
+
+                tmp: WPE_PowerCalc.PowerPoint = pre
+                pre = post
+                pre.exp_time += 1
                 post = tmp
 
     stop: int = WPE_Util.get_current_time_ms()

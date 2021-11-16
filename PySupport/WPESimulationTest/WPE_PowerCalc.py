@@ -4,55 +4,57 @@
 # Calculate power output for a wind generator
 #
 
-from collections import namedtuple
-
 import WPE_PolyEval
+
 
 # //////--- Generator power Simulation Constructs
 
-# Power_Point record
-# 	position: int				Generator position on grid
-# 	generator_type: int         Make/Model integer identifier
-# 	exp_time: int				Experiment time t
-# 	speed: float				Wind speed, m/s
-# 	delta_power: float			Power generated, Watts (x10^6)
+class PowerPoint:
+    def __init__(self, position: int, generator_type: int, exp_time: int, speed: float, delta_power: float):
+        self.position: int = position  # generator position on grid
+        # enum-like value linking generator characteristics to position in wind farm.
+        self.generator_type: int = generator_type
+        self.exp_time: int = exp_time  # t (milliseconds)
+        self.speed: float = speed  # m / s
+        self.delta_power: float = delta_power  # watts (x10 ^ 6)
 
-Power_Point_Record = namedtuple('Power_Point', 'position, generator_type, exp_time, speed, delta_power')
 
 # //////--- Turbine Power Simulation Constructs
 
 TPF_npower: int = 6  # number of polynomial coefficients (polynomial degree + 1)
-# Turbine_Power_Factors record
-# 	l: float                  	Blade length, m
-# 	a: float;                  	Blade swept area, m^2
-# 	coef: list[float]; 			Polynomial approximation of Cp as function of wind speed'
-# 	cut_in: float             	Minimum wind speed to generate power
-# 	cut_out: float            	Maximum operational wind speed
 
-Turbine_Power_Factors_Record = namedtuple('Turbine_Power_Factors', 'l, a, coef, cut_in, cut_out')
+
+class TurbinePowerFactors:
+    def __init__(self, blade_length: float, a: float, coef: list[float], cut_in: float, cut_out: float):
+        self.l: float = blade_length  # Blade length
+        self.a: float = a  # Blade swept area
+        # coefficients of a polynomial approximation of Cp as function of wind speed'
+        self.coef: list[float] = coef
+        self.cut_in: float = cut_in  # Initial power generation wind speed
+        self.cut_out: float = cut_out  # Just exceeds greatest operational wind speed
+
 
 # //////--- Power Generation Constructs
 
-# Wind_Factors record
-# 	rho: float             		Air density, kg/m^3
-
-Wind_Factors_Record = namedtuple('Wind_Factors', 'rho')
+class WindFactors:
+    def __init__(self, rho: float):
+        self.rho: float = rho  # Air density, kg / m ^ 3
 
 
 # //////--- Structure Display
 
-def display_tpf(tpf) -> None:
+def display_tpf(tpf: TurbinePowerFactors) -> None:
     print("TPF   -> Blade Length: " + str(tpf.l) + "; swept area: " + str(tpf.a)
           + "; cut-in speed: " + str(tpf.cut_in) + "; cut-out speed: "
           + str(tpf.cut_out))
     print("         Coef: " + str(tpf.coef))
 
 
-def display_wf(wf):
+def display_wf(wf: WindFactors):
     print("WF    -> rho: " + str(wf.rho))
 
 
-def display_ppoint(power_point, drop: float) -> None:
+def display_ppoint(power_point: PowerPoint, drop: float) -> None:
     print("Power -> Pos: " + str(power_point.position) + ";  Type: "
           + str(power_point.generator_type), end='')
     print(";  Time: " + str(power_point.exp_time) + ";  Speed: "
@@ -65,36 +67,37 @@ def display_ppoint(power_point, drop: float) -> None:
 # See https://www.raeng.org.uk/publications/other/23-wind-turbine and
 # http://www.windandwet.com/windturbine/power_calc/index.php
 # mega-whatts
-def power_extracted(v: float, wf,
-                    tp) -> float:
-    if v < tp.cut_in or v > tp.cut_out:
+def power_extracted(v: float, wf: WindFactors, tpf: TurbinePowerFactors) -> float:
+    if v < tpf.cut_in or v > tpf.cut_out:
         return 0.0
 
-    cp: float = WPE_PolyEval.poly_eval(tp.coef, v)
+    cp: float = WPE_PolyEval.poly_eval(tpf.coef, v)
     if cp < 0.0:
         cp = 0.0
     else:
         if cp > 0.59:
             cp = 0.59
 
-    return 0.5 * wf.rho * tp.a * v * v * v * cp / 1000000.0
+    return 0.5 * wf.rho * tpf.a * v * v * v * cp / 1000000.0
 
 
 _ONE_THIRD = 1.0 / 3.0
 
 
 # v = cube_root(2*p/(rho*cp)), but remove cp because we did not extract all potential power
-def wind_speed_drop(p_extracted: float, wf) -> float:
+def wind_speed_drop(p_extracted: float, wf: WindFactors) -> float:
     return (2.0 * p_extracted / wf.rho) ** _ONE_THIRD
 
 
 # Calculate the net power generated (using Cp) and the wind speed drop
-def power_generated(input_point, wf,
-                    tp, output_point) -> float:
+def power_generated(input_point: PowerPoint, wf: WindFactors,
+                    tpf: TurbinePowerFactors, output_point: PowerPoint) -> float:
+    output_point.position = input_point.position
+    output_point.generator_type = input_point.generator_type
+    output_point.exp_time = input_point.exp_time
     v: float = input_point.speed
-    p: float = power_extracted(v, wf, tp)
+    p: float = power_extracted(v, wf, tpf)
+    output_point.delta_power = p
     drop: float = wind_speed_drop(p, wf)
-    outpoint = Power_Point_Record(input_point.position, input_point.generator_type, input_point.exp_time,
-                                  v - drop, p)
-    output_point.append(outpoint)
+    output_point.speed = v - drop
     return drop
