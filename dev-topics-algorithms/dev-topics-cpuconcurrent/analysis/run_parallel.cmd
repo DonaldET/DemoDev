@@ -13,7 +13,8 @@ setlocal
 set xx_cp=..\target
 set xx_jar=demodev-topics-cpuconcurrent-1.0.0-SNAPSHOT.jar
 set xx_runner=don.demo.algo.cpuconcurrent.ParallelRunner
-set xx_cmd=java -cp .;%xx_cp%\%xx_jar% %xx_runner%
+set xx_cmd=java -Djava.util.concurrent.ForkJoinPool.common.parallelism=7 -cp .;%xx_cp%\%xx_jar% %xx_runner%
+echo. $ %xx_cmd%
 echo.
 echo.
 echo. List Collector

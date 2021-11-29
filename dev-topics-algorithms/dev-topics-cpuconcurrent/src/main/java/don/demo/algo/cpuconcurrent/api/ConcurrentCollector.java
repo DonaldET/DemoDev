@@ -19,15 +19,30 @@ public interface ConcurrentCollector extends Serializable {
 	 * @param <T> the computation result class that is collected in each thread
 	 */
 	public static class ComputationResult<T extends Comparable<T>> implements Comparable<ComputationResult<T>> {
+		/**
+		 * The key associated with the computation value
+		 */
 		public final String id;
+		/**
+		 * The value associated with the key
+		 */
 		public final T value;
 
+		/**
+		 * Construct me
+		 * 
+		 * @param id    the key
+		 * @param value the associated value
+		 */
 		public ComputationResult(final String id, final T value) {
 			super();
 			this.id = id;
 			this.value = value;
 		}
 
+		/**
+		 * Hashcode from state
+		 */
 		@Override
 		public int hashCode() {
 			final int prime = 71;
@@ -37,6 +52,9 @@ public interface ConcurrentCollector extends Serializable {
 			return result;
 		}
 
+		/**
+		 * Object equals based on state
+		 */
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -60,12 +78,18 @@ public interface ConcurrentCollector extends Serializable {
 			return true;
 		}
 
+		/**
+		 * Internal state as a stream
+		 */
 		@Override
 		public String toString() {
 			return "[" + getClass().getSimpleName() + " - 0x" + Integer.toHexString(hashCode()) + "; id: " + id
 					+ ", value: " + value + "]";
 		}
 
+		/**
+		 * CompareTo based on state
+		 */
 		@Override
 		public int compareTo(ComputationResult<T> other) {
 			int cmpr = this.id.compareTo(other.id);
@@ -74,7 +98,8 @@ public interface ConcurrentCollector extends Serializable {
 	}
 
 	/**
-	 * The default CPU intensive worker function that is applied to a batch of inputs
+	 * The default CPU intensive worker function that is applied to a batch of
+	 * inputs
 	 */
 	public static Function<Integer, Integer> worker = (Integer x) -> {
 		long a = (long) Math.log1p(20.0 * (double) x) + (long) (Math.expm1(x + 1.0) * 200.0);

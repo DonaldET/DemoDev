@@ -17,7 +17,7 @@ import don.demo.algo.cpuconcurrent.support.DataGenerator.MockDataDTO;
  * Compare parallel processing using <em>collectors</em> in Java 8
  * <code>Streams</code>. Each thread of parallel (multiple) execution accesses a
  * non-shared FIFO queue data structure that is combined across multiple threads
- * as they complete. Both Paarallel and Non-parallel executions require no
+ * as they complete. Both Parallel and Non-parallel executions require no
  * locking.
  * <p>
  * Note: initial test!
@@ -35,9 +35,21 @@ public class ParallelCollect {
 	 * @author Donald Trummell
 	 */
 	public static class Computation implements Comparable<Computation> {
+		/**
+		 * The key associated with the result
+		 */
 		public final String id;
+		/**
+		 * The computational result associated with the value
+		 */
 		public final Integer value;
 
+		/**
+		 * Construct me
+		 * 
+		 * @param id    the key
+		 * @param value the associated value
+		 */
 		public Computation(String id, Integer value) {
 			super();
 			this.id = id;
@@ -116,7 +128,7 @@ public class ParallelCollect {
 	public static void main(String[] args) {
 		int parallelism = displayParallelism();
 
-		estimateAverageWorkerTime(2000);
+		estimateAverageWorkerTime(2000, "non-parallel");
 
 		runSimulation(75, parallelism);
 		runSimulation(125, parallelism);
@@ -253,12 +265,12 @@ public class ParallelCollect {
 	 * 
 	 * @param ntrials the number of executions needed to get a stable timing
 	 */
-	private static void estimateAverageWorkerTime(int nWorkerTrials) {
+	private static void estimateAverageWorkerTime(int nWorkerTrials, String label) {
 		setupTestData(nWorkerTrials);
 		double avgWorkerTime = timeWorker(nWorkerTrials) / NANO_TO_MICRO;
-		System.out.println(String.format(
-				"  -- Average worker time: %.4f us, total non-parallel worker time is %.3f us for %d executions",
-				avgWorkerTime, avgWorkerTime * nWorkerTrials, nWorkerTrials));
+		System.out.println(
+				String.format("  -- Average %s worker time: %.4f us, total %s worker time is %.3f us for %d executions",
+						label, avgWorkerTime, label, avgWorkerTime * nWorkerTrials, nWorkerTrials));
 	}
 
 	/**

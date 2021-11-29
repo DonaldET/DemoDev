@@ -11,20 +11,38 @@ import org.junit.Test;
 
 import don.demo.algo.cpuconcurrent.api.ConcurrentCollector.ComputationResult;
 
+/**
+ * Test computational result DTO
+ *
+ * @author Donald Trummell
+ */
 public class ComputationResultTest {
 
 	private ComputationResult<Integer> one = new ComputationResult<Integer>("One", 1);
 
+	/**
+	 * Before each method
+	 * 
+	 * @throws Exception some error
+	 */
 	@Before
 	public void setUp() throws Exception {
 		one = new ComputationResult<Integer>("One", 1);
 	}
 
+	/**
+	 * After each method
+	 * 
+	 * @throws Exception some error
+	 */
 	@After
 	public void tearDown() throws Exception {
 		one = null;
 	}
 
+	/**
+	 * Check the equals methosd
+	 */
 	@Test
 	public void testEquals() {
 		Assert.assertEquals("self failed", one, one);
@@ -38,11 +56,17 @@ public class ComputationResultTest {
 		Assert.assertEquals("same compareTo self", 0, one.compareTo(oneB));
 	}
 
+	/**
+	 * Test the hashcode
+	 */
 	@Test
 	public void testHashCode() {
 		Assert.assertEquals("unexpected hash", 5644572, one.hashCode());
 	}
 
+	/**
+	 * Test the toString
+	 */
 	@Test
 	public void testToString() {
 		// e.g.: [ComputationResult - 0x56211c; id: One, value: 1]
@@ -53,6 +77,9 @@ public class ComputationResultTest {
 		Assert.assertEquals("toString failed", "[ComputationResult -  id: One, value: 1]", msg);
 	}
 
+	/**
+	 * Test compareTo
+	 */
 	@Test
 	public void testCompareTo() {
 		List<ComputationResult<Integer>> unordered = Arrays.asList(new ComputationResult<Integer>("One3", 3),
@@ -63,8 +90,8 @@ public class ComputationResultTest {
 		ordered.sort(null);
 		Assert.assertEquals("sort results differ", expected, ordered);
 
-		unordered = Arrays.asList(new ComputationResult<Integer>("One", 3),
-				new ComputationResult<Integer>("One", 2), one);
+		unordered = Arrays.asList(new ComputationResult<Integer>("One", 3), new ComputationResult<Integer>("One", 2),
+				one);
 		expected = Arrays.asList(one, new ComputationResult<Integer>("One", 2),
 				new ComputationResult<Integer>("One", 3));
 		ordered = new ArrayList<ComputationResult<Integer>>(unordered);

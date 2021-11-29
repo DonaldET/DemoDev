@@ -1,0 +1,103 @@
+
+ Run the parallel stream timer runner for different types of collection mechanisms
+ for both parallel and sequential operation.
+
+ $ java -Djava.util.concurrent.ForkJoinPool.common.parallelism=7 -cp .;..\target\demodev-topics-cpuconcurrent-1.0.0-SNAPSHOT.jar don.demo.algo.cpuconcurrent.ParallelRunner
+
+
+ List Collector
+
+Parallelization performance using run selector 0 running on 16 cores and 7 threads.
+  -- Average non-parallel[1] worker time: 0.0012 us, total non-parallel[1] worker time is 2.454 us for 2000 executions
+
+Collector,Mode,N,MicroSec
+ListCollector,non-Parallel[1],10,3.356
+ListCollector,Parallel[7],10,1.418
+ListCollector,non-Parallel[1],50,0.095
+ListCollector,Parallel[7],50,0.350
+ListCollector,non-Parallel[1],75,0.140
+ListCollector,Parallel[7],75,0.383
+ListCollector,non-Parallel[1],100,0.121
+ListCollector,Parallel[7],100,0.252
+ListCollector,non-Parallel[1],125,0.106
+ListCollector,Parallel[7],125,0.239
+ListCollector,non-Parallel[1],250,0.159
+ListCollector,Parallel[7],250,0.235
+ListCollector,non-Parallel[1],500,0.284
+ListCollector,Parallel[7],500,0.366
+ListCollector,non-Parallel[1],1000,0.549
+ListCollector,Parallel[7],1000,0.603
+ListCollector,non-Parallel[1],2000,0.843
+ListCollector,Parallel[7],2000,0.905
+ListCollector,non-Parallel[1],4000,1.434
+ListCollector,Parallel[7],4000,4.179
+ListCollector,non-Parallel[1],5000,1.782
+ListCollector,Parallel[7],5000,2.936
+
+--- Done
+
+
+ forEach with Synchronized HashMap
+
+Parallelization performance using run selector 1 running on 16 cores and 7 threads.
+  -- Average non-parallel[1] worker time: 0.0013 us, total non-parallel[1] worker time is 2.571 us for 2000 executions
+
+Collector,Mode,N,MicroSec
+ForEachCollector,non-Parallel[1],10,1.685
+ForEachCollector,Parallel[7],10,1.497
+ForEachCollector,non-Parallel[1],50,0.106
+ForEachCollector,Parallel[7],50,0.502
+ForEachCollector,non-Parallel[1],75,0.136
+ForEachCollector,Parallel[7],75,0.325
+ForEachCollector,non-Parallel[1],100,0.147
+ForEachCollector,Parallel[7],100,0.243
+ForEachCollector,non-Parallel[1],125,0.617
+ForEachCollector,Parallel[7],125,0.312
+ForEachCollector,non-Parallel[1],250,0.245
+ForEachCollector,Parallel[7],250,0.391
+ForEachCollector,non-Parallel[1],500,0.392
+ForEachCollector,Parallel[7],500,0.669
+ForEachCollector,non-Parallel[1],1000,0.678
+ForEachCollector,Parallel[7],1000,1.060
+ForEachCollector,non-Parallel[1],2000,1.247
+ForEachCollector,Parallel[7],2000,1.659
+ForEachCollector,non-Parallel[1],4000,2.308
+ForEachCollector,Parallel[7],4000,4.342
+ForEachCollector,non-Parallel[1],5000,3.150
+ForEachCollector,Parallel[7],5000,3.991
+
+--- Done
+
+
+ forEach with Concurrent HashMap
+
+Parallelization performance using run selector 2 running on 16 cores and 7 threads.
+  -- Average non-parallel[1] worker time: 0.0012 us, total non-parallel[1] worker time is 2.407 us for 2000 executions
+
+Collector,Mode,N,MicroSec
+ForEachConcurrentCollector,non-Parallel[1],10,3.213
+ForEachConcurrentCollector,Parallel[7],10,1.457
+ForEachConcurrentCollector,non-Parallel[1],50,0.181
+ForEachConcurrentCollector,Parallel[7],50,0.463
+ForEachConcurrentCollector,non-Parallel[1],75,0.177
+ForEachConcurrentCollector,Parallel[7],75,0.297
+ForEachConcurrentCollector,non-Parallel[1],100,0.244
+ForEachConcurrentCollector,Parallel[7],100,0.372
+ForEachConcurrentCollector,non-Parallel[1],125,0.204
+ForEachConcurrentCollector,Parallel[7],125,0.276
+ForEachConcurrentCollector,non-Parallel[1],250,0.333
+ForEachConcurrentCollector,Parallel[7],250,0.367
+ForEachConcurrentCollector,non-Parallel[1],500,0.616
+ForEachConcurrentCollector,Parallel[7],500,0.615
+ForEachConcurrentCollector,non-Parallel[1],1000,1.083
+ForEachConcurrentCollector,Parallel[7],1000,1.000
+ForEachConcurrentCollector,non-Parallel[1],2000,1.320
+ForEachConcurrentCollector,Parallel[7],2000,1.703
+ForEachConcurrentCollector,non-Parallel[1],4000,2.563
+ForEachConcurrentCollector,Parallel[7],4000,4.758
+ForEachConcurrentCollector,non-Parallel[1],5000,2.965
+ForEachConcurrentCollector,Parallel[7],5000,4.678
+
+--- Done
+
+ . . . done

@@ -9,18 +9,48 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Creates the test data
+ * 
+ * @author Donald Trummell
+ */
 public class DataGenerator implements Serializable {
 
 	private static final long serialVersionUID = -4607534050159466669L;
 
+	/**
+	 * DTO for test data
+	 * 
+	 * @author Donald Trummell
+	 */
 	public static class MockDataDTO implements Serializable {
 		private static final long serialVersionUID = 4594882194090278930L;
 
+		/**
+		 * Associated test data
+		 */
 		public final int[] data;
+		/**
+		 * Sum of test data
+		 */
 		public final int sumData;
+		/**
+		 * Count of unique elements
+		 */
 		public final int uniqueCount;
+		/**
+		 * The expected test values
+		 */
 		public final Set<String> expectedKeySet;
 
+		/**
+		 * Construct me
+		 * 
+		 * @param data           test data
+		 * @param sumData        the sum of data
+		 * @param uniqueCount    count of unique elements
+		 * @param expectedKeySet the expected set of values
+		 */
 		public MockDataDTO(int[] data, int sumData, int uniqueCount, Set<String> expectedKeySet) {
 			super();
 			this.data = data;
@@ -30,10 +60,19 @@ public class DataGenerator implements Serializable {
 		}
 	}
 
+	/**
+	 * Construct me
+	 */
 	public DataGenerator() {
 
 	}
 
+	/**
+	 * Create a test dataset of the desired size
+	 * 
+	 * @param desiredSetSize size of test data to generate
+	 * @return the DTO with the data
+	 */
 	public MockDataDTO generate(int desiredSetSize) {
 		if (desiredSetSize < 10) {
 			throw new IllegalArgumentException("desired set size too small");

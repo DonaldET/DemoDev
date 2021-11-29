@@ -133,7 +133,8 @@ public class ParallelRunner implements ConcurrentCollector {
 	 * Compare different data structures performance under different concurrency
 	 * scenarios.
 	 * 
-	 * @param args arg[0] is an integer where 0 = <code>ListCollector</code> and 1 =
+	 * @param args arg[0] is an integer where 0 = <code>ListCollector</code>, and 1
+	 *             = <code>ForEachCollector</code>, and 3 =
 	 *             <code>ForEachCollector</code>
 	 */
 	public static void main(String[] args) {
@@ -147,7 +148,7 @@ public class ParallelRunner implements ConcurrentCollector {
 		}
 		int parallelism = displayParameters();
 
-		estimateAverageWorkerTime(2000);
+		estimateAverageWorkerTime(2000, "non-parallel[1]");
 		System.out.println("\nCollector,Mode,N,MicroSec");
 
 		Arrays.stream(new int[] { 10, 50, 75, 100, 125, 250, 500, 1000, 2000, 4000, 5000 }).boxed()
@@ -179,7 +180,7 @@ public class ParallelRunner implements ConcurrentCollector {
 		long startTime = System.nanoTime();
 		StreamRunner<Collection<ComputationResult<Integer>>, IntStream, Integer, Integer> streamRunner = runners
 				.get(streamRunnerSelector);
-		System.out.print(streamRunner.getClass().getSimpleName() + "," + label);
+		System.out.print(streamRunner.getClass().getSimpleName() + "," + label + "[" + threadCount + "]");
 		Collection<ComputationResult<Integer>> batchResults = streamRunner.runStream(strm, worker);
 		long elapsedTime = System.nanoTime() - startTime;
 		double elp = elapsedTime / NANO_TO_MICRO;
@@ -249,12 +250,12 @@ public class ParallelRunner implements ConcurrentCollector {
 	 * 
 	 * @param ntrials the number of executions needed to get a stable timing
 	 */
-	private static void estimateAverageWorkerTime(int nWorkerTrials) {
+	private static void estimateAverageWorkerTime(int nWorkerTrials, String label) {
 		setupTestData(nWorkerTrials);
 		double avgWorkerTime = timeWorker(nWorkerTrials) / NANO_TO_MICRO;
-		System.out.println(String.format(
-				"  -- Average worker time: %.4f us, total non-parallel worker time is %.3f us for %d executions",
-				avgWorkerTime, avgWorkerTime * nWorkerTrials, nWorkerTrials));
+		System.out.println(
+				String.format("  -- Average %s worker time: %.4f us, total %s worker time is %.3f us for %d executions",
+						label, avgWorkerTime, label, avgWorkerTime * nWorkerTrials, nWorkerTrials));
 	}
 
 	/**

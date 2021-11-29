@@ -59,7 +59,7 @@ public class ParallelForEach {
 	public static void main(String[] args) {
 		int parallelism = displayParallelism();
 
-		estimateAverageWorkerTime(2000);
+		estimateAverageWorkerTime(2000, "non-parallel");
 
 		runSimulation(75, parallelism);
 		runSimulation(125, parallelism);
@@ -195,12 +195,12 @@ public class ParallelForEach {
 	 * 
 	 * @param ntrials the number of executions needed to get a stable timing
 	 */
-	private static void estimateAverageWorkerTime(int nWorkerTrials) {
+	private static void estimateAverageWorkerTime(int nWorkerTrials, String label) {
 		setupTestData(nWorkerTrials);
 		double avgWorkerTime = timeWorker(nWorkerTrials) / NANO_TO_MICRO;
 		System.out.println(String.format(
-				"  -- Average worker time: %.4f us, total non-parallel worker time is %.3f us for %d executions",
-				avgWorkerTime, avgWorkerTime * nWorkerTrials, nWorkerTrials));
+				"  -- Average %s worker time: %.4f us, total %sl worker time is %.3f us for %d executions", label,
+				avgWorkerTime, label, avgWorkerTime * nWorkerTrials, nWorkerTrials));
 	}
 
 	/**

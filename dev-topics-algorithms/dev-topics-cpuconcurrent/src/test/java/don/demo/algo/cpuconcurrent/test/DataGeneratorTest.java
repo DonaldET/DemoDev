@@ -10,30 +10,54 @@ import org.junit.Test;
 import don.demo.algo.cpuconcurrent.support.DataGenerator;
 import don.demo.algo.cpuconcurrent.support.DataGenerator.MockDataDTO;
 
+/**
+ * Test the mock data generator
+ * 
+ * @author Donald Trummell
+ */
 public class DataGeneratorTest {
 
 	private DataGenerator generator = null;
 
+	/**
+	 * Before each method
+	 * 
+	 * @throws Exception some error
+	 */
 	@Before
 	public void setUp() throws Exception {
 		generator = new DataGenerator();
 	}
 
+	/**
+	 * After each method
+	 * 
+	 * @throws Exception some error
+	 */
 	@After
 	public void tearDown() throws Exception {
 		generator = null;
 	}
 
+	/**
+	 * Test too small of a computation
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testGenerateSamll() {
 		generator.generate(2);
 	}
 
+	/**
+	 * Test too big of a computation
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testGenerateBig() {
 		generator.generate(123000000);
 	}
 
+	/**
+	 * Test 10 values
+	 */
 	@Test
 	public void testOnly10() {
 		int n = 10;

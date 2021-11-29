@@ -1,0 +1,102 @@
+
+ Run the parallel stream timer runner for different types of collection mechanisms
+ for both parallel and sequential operation.
+
+
+
+ List Collector
+
+Parallelization performance using run selector 0 running on 16 cores and 15 threads.
+  -- Average non-parallel[1] worker time: 0.0012 us, total non-parallel[1] worker time is 2.329 us for 2000 executions
+
+Collector,Mode,N,MicroSec
+ListCollector,non-Parallel[1],10,2.759
+ListCollector,Parallel[15],10,2.319
+ListCollector,non-Parallel[1],50,0.094
+ListCollector,Parallel[15],50,1.702
+ListCollector,non-Parallel[1],75,0.186
+ListCollector,Parallel[15],75,0.318
+ListCollector,non-Parallel[1],100,0.130
+ListCollector,Parallel[15],100,0.329
+ListCollector,non-Parallel[1],125,1.608
+ListCollector,Parallel[15],125,0.284
+ListCollector,non-Parallel[1],250,0.173
+ListCollector,Parallel[15],250,0.290
+ListCollector,non-Parallel[1],500,0.275
+ListCollector,Parallel[15],500,0.407
+ListCollector,non-Parallel[1],1000,0.534
+ListCollector,Parallel[15],1000,0.608
+ListCollector,non-Parallel[1],2000,0.828
+ListCollector,Parallel[15],2000,0.762
+ListCollector,non-Parallel[1],4000,1.651
+ListCollector,Parallel[15],4000,2.608
+ListCollector,non-Parallel[1],5000,1.833
+ListCollector,Parallel[15],5000,2.717
+
+--- Done
+
+
+ forEach with Synchronized HashMap
+
+Parallelization performance using run selector 1 running on 16 cores and 15 threads.
+  -- Average non-parallel[1] worker time: 0.0012 us, total non-parallel[1] worker time is 2.357 us for 2000 executions
+
+Collector,Mode,N,MicroSec
+ForEachCollector,non-Parallel[1],10,1.903
+ForEachCollector,Parallel[15],10,1.815
+ForEachCollector,non-Parallel[1],50,0.104
+ForEachCollector,Parallel[15],50,0.856
+ForEachCollector,non-Parallel[1],75,0.133
+ForEachCollector,Parallel[15],75,0.305
+ForEachCollector,non-Parallel[1],100,0.167
+ForEachCollector,Parallel[15],100,0.384
+ForEachCollector,non-Parallel[1],125,0.182
+ForEachCollector,Parallel[15],125,0.312
+ForEachCollector,non-Parallel[1],250,0.245
+ForEachCollector,Parallel[15],250,0.557
+ForEachCollector,non-Parallel[1],500,0.394
+ForEachCollector,Parallel[15],500,0.682
+ForEachCollector,non-Parallel[1],1000,0.740
+ForEachCollector,Parallel[15],1000,1.122
+ForEachCollector,non-Parallel[1],2000,1.213
+ForEachCollector,Parallel[15],2000,1.719
+ForEachCollector,non-Parallel[1],4000,2.373
+ForEachCollector,Parallel[15],4000,4.150
+ForEachCollector,non-Parallel[1],5000,3.159
+ForEachCollector,Parallel[15],5000,4.667
+
+--- Done
+
+
+ forEach with Concurrent HashMap
+
+Parallelization performance using run selector 2 running on 16 cores and 15 threads.
+  -- Average non-parallel[1] worker time: 0.0013 us, total non-parallel[1] worker time is 2.646 us for 2000 executions
+
+Collector,Mode,N,MicroSec
+ForEachConcurrentCollector,non-Parallel[1],10,2.970
+ForEachConcurrentCollector,Parallel[15],10,1.509
+ForEachConcurrentCollector,non-Parallel[1],50,0.210
+ForEachConcurrentCollector,Parallel[15],50,1.344
+ForEachConcurrentCollector,non-Parallel[1],75,0.213
+ForEachConcurrentCollector,Parallel[15],75,0.293
+ForEachConcurrentCollector,non-Parallel[1],100,0.248
+ForEachConcurrentCollector,Parallel[15],100,0.345
+ForEachConcurrentCollector,non-Parallel[1],125,0.226
+ForEachConcurrentCollector,Parallel[15],125,0.298
+ForEachConcurrentCollector,non-Parallel[1],250,0.332
+ForEachConcurrentCollector,Parallel[15],250,0.405
+ForEachConcurrentCollector,non-Parallel[1],500,0.636
+ForEachConcurrentCollector,Parallel[15],500,0.604
+ForEachConcurrentCollector,non-Parallel[1],1000,1.094
+ForEachConcurrentCollector,Parallel[15],1000,1.313
+ForEachConcurrentCollector,non-Parallel[1],2000,1.963
+ForEachConcurrentCollector,Parallel[15],2000,1.652
+ForEachConcurrentCollector,non-Parallel[1],4000,2.468
+ForEachConcurrentCollector,Parallel[15],4000,4.466
+ForEachConcurrentCollector,non-Parallel[1],5000,3.370
+ForEachConcurrentCollector,Parallel[15],5000,7.497
+
+--- Done
+
+ . . . done
