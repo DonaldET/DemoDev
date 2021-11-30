@@ -54,6 +54,7 @@ public class ParallelRunner implements ConcurrentCollector {
 	private static int sumData;
 	private static int uniqueCount;
 	private static List<StreamRunner<Collection<ComputationResult<Integer>>, IntStream, Integer, Integer>> runners = new ArrayList<>();
+	private static Function<Integer, Integer> worker = null;
 
 	static {
 		runners.add(new ListCollector());
@@ -133,11 +134,17 @@ public class ParallelRunner implements ConcurrentCollector {
 	 * Compare different data structures performance under different concurrency
 	 * scenarios.
 	 * 
-	 * @param args arg[0] is an integer where 0 = <code>ListCollector</code>, and 1
-	 *             = <code>ForEachCollector</code>, and 3 =
-	 *             <code>ForEachCollector</code>
+	 * @param args
+	 *             <ul>
+	 *             <li>arg[0] is an integer where 0 = <code>ListCollector</code>,
+	 *             and 1 = <code>ForEachCollector</code>, and 3 =
+	 *             <code>ForEachCollector</code></li>
+	 *             <li>arg[1] - optional, if f or F, then use fast worker, else use
+	 *             slow worker</li>
+	 *             </ul>
 	 */
 	public static void main(String[] args) {
+		System.out.print("Parallel Runner --- " + System.getProperty("java.runtime.version"));
 		if (args.length < 1) {
 			throw new IllegalArgumentException("No selector parameter supplied");
 		}
@@ -146,6 +153,14 @@ public class ParallelRunner implements ConcurrentCollector {
 		if (streamRunnerSelector < 0 || streamRunnerSelector >= runners.size()) {
 			throw new IllegalArgumentException("Selector incorrect! Saw " + selectorParam);
 		}
+		worker = ConcurrentCollector.slowWorker;
+		if (args.length > 1) {
+			if ("f".equals(args[1]) || "F".equals(args[1])) {
+				worker = ConcurrentCollector.fastWorker;
+				System.out.print(" -- Fast Worker");
+			}
+		}
+		System.out.println();
 		int parallelism = displayParameters();
 
 		estimateAverageWorkerTime(2000, "non-parallel[1]");
@@ -252,20 +267,20 @@ public class ParallelRunner implements ConcurrentCollector {
 	 */
 	private static void estimateAverageWorkerTime(int nWorkerTrials, String label) {
 		setupTestData(nWorkerTrials);
-		double avgWorkerTime = timeWorker(nWorkerTrials) / NANO_TO_MICRO;
+		double avgWorkerTime = averageTime4Worker(nWorkerTrials) / NANO_TO_MICRO;
 		System.out.println(
 				String.format("  -- Average %s worker time: %.4f us, total %s worker time is %.3f us for %d executions",
 						label, avgWorkerTime, label, avgWorkerTime * nWorkerTrials, nWorkerTrials));
 	}
 
 	/**
-	 * Apply the worker function over the number of trials; assume global data for
-	 * timing test is defined.
+	 * Apply the worker function over the number of trials and return an average;
+	 * assume global data for timing test is defined.
 	 * 
 	 * @param nTrials the number of executions
 	 * @return average time for execution, in nano-sec
 	 */
-	private static double timeWorker(int nTrials) {
+	private static double averageTime4Worker(int nTrials) {
 		int lth = data.length;
 		long startTime = System.nanoTime();
 		for (int i = 0; i < nTrials; i++) {

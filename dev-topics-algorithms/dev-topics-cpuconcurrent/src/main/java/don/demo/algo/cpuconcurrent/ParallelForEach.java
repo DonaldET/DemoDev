@@ -9,9 +9,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
 import java.util.stream.IntStream;
 
+import don.demo.algo.cpuconcurrent.api.ConcurrentCollector;
 import don.demo.algo.cpuconcurrent.support.DataGenerator;
 import don.demo.algo.cpuconcurrent.support.DataGenerator.MockDataDTO;
 
@@ -38,17 +38,6 @@ public class ParallelForEach {
 	private static Set<String> expectedKeySet;
 	private static int sumData;
 	private static int uniqueCount;
-
-	/**
-	 * The CPU-intensive calculation to split among threads
-	 */
-	private static Function<Integer, Integer> worker = (Integer x) -> {
-		long a = (long) Math.log1p(20.0 * (double) x) + (long) (Math.expm1(x + 1.0) * 200.0);
-		long b = (long) (200.0 * (double) x * Math.abs(Math.sin((double) x)));
-		long c = (long) (Math.tanh(x) * Math.atan(x));
-		long d = ("a:" + a + "b:" + b + "c:" + c).length();
-		return (int) (a + b * c + d);
-	};
 
 	/**
 	 * Compare different data structures performance under different concurrency
@@ -90,6 +79,7 @@ public class ParallelForEach {
 	private static double timeSimulation(int threadCount, Map<String, Integer> map, final String label) {
 		accumulator.set(0);
 		map.clear();
+
 		IntStream strm = Arrays.stream(data);
 		if (threadCount > 1) {
 			strm = strm.parallel();
@@ -97,7 +87,7 @@ public class ParallelForEach {
 
 		long startTime = System.nanoTime();
 		strm.forEach((s) -> {
-			map.put("FE" + s, worker.apply(s));
+			map.put("FE" + s, ConcurrentCollector.slowWorker.apply(s));
 			accumulator.getAndAdd(s);
 		});
 		long elapsedTime = System.nanoTime() - startTime;
@@ -182,11 +172,11 @@ public class ParallelForEach {
 		int cores = Runtime.getRuntime().availableProcessors();
 		System.out.println("\nParallelization Example for " + cores + " JVM processors, some worker outputs are:");
 		int x = 0;
-		System.out.println("  -- work(" + x + ") = " + worker.apply(x));
+		System.out.println("  -- work(" + x + ") = " + ConcurrentCollector.slowWorker.apply(x));
 		x = 1;
-		System.out.println("  -- work(" + x + ") = " + worker.apply(x));
+		System.out.println("  -- work(" + x + ") = " + ConcurrentCollector.slowWorker.apply(x));
 		x = 10;
-		System.out.println("  -- work(" + x + ") = " + worker.apply(x));
+		System.out.println("  -- work(" + x + ") = " + ConcurrentCollector.slowWorker.apply(x));
 		return ForkJoinPool.getCommonPoolParallelism();
 	}
 
@@ -197,24 +187,24 @@ public class ParallelForEach {
 	 */
 	private static void estimateAverageWorkerTime(int nWorkerTrials, String label) {
 		setupTestData(nWorkerTrials);
-		double avgWorkerTime = timeWorker(nWorkerTrials) / NANO_TO_MICRO;
+		double avgWorkerTime = averageTime4Worker(nWorkerTrials) / NANO_TO_MICRO;
 		System.out.println(String.format(
 				"  -- Average %s worker time: %.4f us, total %sl worker time is %.3f us for %d executions", label,
 				avgWorkerTime, label, avgWorkerTime * nWorkerTrials, nWorkerTrials));
 	}
 
 	/**
-	 * Apply the worker function over the number of trials; assume global data for
-	 * timing test is defined.
+	 * Apply the worker function over the number of trials and return an average;
+	 * assume global data for timing test is defined.
 	 * 
 	 * @param nTrials the number of executions
 	 * @return average time for execution, in nano-sec
 	 */
-	private static double timeWorker(int nTrials) {
+	private static double averageTime4Worker(int nTrials) {
 		int lth = data.length;
 		long startTime = System.nanoTime();
 		for (int i = 0; i < nTrials; i++) {
-			worker.apply(data[i % lth]);
+			ConcurrentCollector.slowWorker.apply(data[i % lth]);
 		}
 		return (double) (System.nanoTime() - startTime) / (double) nTrials;
 	}

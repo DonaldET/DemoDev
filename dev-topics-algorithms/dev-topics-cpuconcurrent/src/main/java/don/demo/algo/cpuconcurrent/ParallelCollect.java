@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
 import java.util.stream.IntStream;
 
+import don.demo.algo.cpuconcurrent.api.ConcurrentCollector;
 import don.demo.algo.cpuconcurrent.support.DataGenerator;
 import don.demo.algo.cpuconcurrent.support.DataGenerator.MockDataDTO;
 
@@ -109,17 +109,6 @@ public class ParallelCollect {
 	private static int uniqueCount;
 
 	/**
-	 * The CPU-intensive calculation to split among threads
-	 */
-	private static Function<Integer, Integer> worker = (Integer x) -> {
-		long a = (long) Math.log1p(20.0 * (double) x) + (long) (Math.expm1(x + 1.0) * 200.0);
-		long b = (long) (200.0 * (double) x * Math.abs(Math.sin((double) x)));
-		long c = (long) (Math.tanh(x) * Math.atan(x));
-		long d = ("a:" + a + "b:" + b + "c:" + c).length();
-		return (int) (a + b * c + d);
-	};
-
-	/**
 	 * Compare different data structures performance under different concurrency
 	 * scenarios.
 	 * 
@@ -165,7 +154,7 @@ public class ParallelCollect {
 
 		long startTime = System.nanoTime();
 		List<Computation> listCollection = strm.collect(() -> new ArrayList<Computation>(), (lc, s) -> {
-			lc.add(new Computation("FE" + s, worker.apply(s)));
+			lc.add(new Computation("FE" + s, ConcurrentCollector.slowWorker.apply(s)));
 			accumulator.getAndAdd(s);
 		}, (lc1, lc2) -> lc1.addAll(lc2));
 		long elapsedTime = System.nanoTime() - startTime;
@@ -252,11 +241,11 @@ public class ParallelCollect {
 		System.out.println("\nParallelization with non-shared data, this is an example for " + cores
 				+ " JVM processors, some worker outputs are:");
 		int x = 0;
-		System.out.println("  -- work(" + x + ") = " + worker.apply(x));
+		System.out.println("  -- work(" + x + ") = " + ConcurrentCollector.slowWorker.apply(x));
 		x = 1;
-		System.out.println("  -- work(" + x + ") = " + worker.apply(x));
+		System.out.println("  -- work(" + x + ") = " + ConcurrentCollector.slowWorker.apply(x));
 		x = 10;
-		System.out.println("  -- work(" + x + ") = " + worker.apply(x));
+		System.out.println("  -- work(" + x + ") = " + ConcurrentCollector.slowWorker.apply(x));
 		return ForkJoinPool.getCommonPoolParallelism();
 	}
 
@@ -267,24 +256,24 @@ public class ParallelCollect {
 	 */
 	private static void estimateAverageWorkerTime(int nWorkerTrials, String label) {
 		setupTestData(nWorkerTrials);
-		double avgWorkerTime = timeWorker(nWorkerTrials) / NANO_TO_MICRO;
+		double avgWorkerTime = averageTime4Worker(nWorkerTrials) / NANO_TO_MICRO;
 		System.out.println(
 				String.format("  -- Average %s worker time: %.4f us, total %s worker time is %.3f us for %d executions",
 						label, avgWorkerTime, label, avgWorkerTime * nWorkerTrials, nWorkerTrials));
 	}
 
 	/**
-	 * Apply the worker function over the number of trials; assume global data for
-	 * timing test is defined.
+	 * Apply the worker function over the number of trials and return an average;
+	 * assume global data for timing test is defined.
 	 * 
 	 * @param nTrials the number of executions
 	 * @return average time for execution, in nano-sec
 	 */
-	private static double timeWorker(int nTrials) {
+	private static double averageTime4Worker(int nTrials) {
 		int lth = data.length;
 		long startTime = System.nanoTime();
 		for (int i = 0; i < nTrials; i++) {
-			worker.apply(data[i % lth]);
+			ConcurrentCollector.slowWorker.apply(data[i % lth]);
 		}
 		return (double) (System.nanoTime() - startTime) / (double) nTrials;
 	}

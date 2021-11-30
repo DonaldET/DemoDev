@@ -2,6 +2,7 @@ package don.demo.algo.cpuconcurrent.api;
 
 import java.io.Serializable;
 import java.util.function.Function;
+import java.util.stream.LongStream;
 
 /**
  * Parallel Computation Facility; defines the result to be collected and a
@@ -101,11 +102,28 @@ public interface ConcurrentCollector extends Serializable {
 	 * The default CPU intensive worker function that is applied to a batch of
 	 * inputs
 	 */
-	public static Function<Integer, Integer> worker = (Integer x) -> {
+	public static Function<Integer, Integer> fastWorker = (Integer x) -> {
 		long a = (long) Math.log1p(20.0 * (double) x) + (long) (Math.expm1(x + 1.0) * 200.0);
 		long b = (long) (200.0 * (double) x * Math.abs(Math.sin((double) x)));
 		long c = (long) (Math.tanh(x) * Math.atan(x));
 		long d = ("a:" + a + "b:" + b + "c:" + c).length();
+
 		return (int) (a + b * c + d);
+	};
+
+	/**
+	 * The default highly CPU intensive worker function that is applied to a batch
+	 * of inputs
+	 */
+	public static Function<Integer, Integer> slowWorker = (Integer x) -> {
+		long a = (long) Math.log1p(20.0 * (double) x) + (long) (Math.expm1(x + 1.0) * 200.0);
+		long b = (long) (200.0 * (double) x * Math.abs(Math.sin((double) x)));
+		long c = (long) (Math.tanh(x) * Math.atan(x));
+		long d = ("a:" + a + "b:" + b + "c:" + c).length();
+		long limit = 10000L;
+		long f = LongStream.rangeClosed(1L, limit).boxed().reduce(0L, Long::sum);
+		long g = LongStream.iterate(1L, i -> i + 1).limit(limit).boxed().reduce(0L, Long::sum);
+
+		return (int) (a + b * c + d + (f - g));
 	};
 }
