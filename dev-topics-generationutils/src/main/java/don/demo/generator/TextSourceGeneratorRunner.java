@@ -5,7 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -50,7 +51,9 @@ public class TextSourceGeneratorRunner implements Serializable {
 	private static final String[] CONTEXT_PATHS = { "classpath:%s/META-INF/main/spring/app-context.xml",
 			"classpath:%s/META-INF/main/spring/app-main-context.xml" };
 
-	private static final Logger LOGGER = Logger.getLogger(TextSourceGeneratorRunner.class);
+	private static final Logger LOGGER = LogManager.getLogger(TextSourceGeneratorRunner.class);
+	// private static final Logger LOGGER =
+	// Logger.getLogger(TextSourceGeneratorRunner.class);
 
 	/**
 	 * Read and parse template(s) and produce generated output based on model; all

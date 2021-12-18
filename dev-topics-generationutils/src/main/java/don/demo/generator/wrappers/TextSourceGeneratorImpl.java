@@ -7,7 +7,8 @@ import java.util.Properties;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import don.demo.generator.Generator;
 import don.demo.generator.InputOutputBuilder;
@@ -37,13 +38,14 @@ import don.demo.generator.TextSourceGenerator;
  *
  *         <pre>
  * <code>
- * <strong>Note</strong>: See <a href="http://www.benf.org/other/cfr/faq.html">for decompiling</a>
+ * <strong>Note</strong>: See <a href=
+"http://www.benf.org/other/cfr/faq.html">for decompiling</a>
  * </code>
  *         </pre>
  */
 public class TextSourceGeneratorImpl implements Serializable, TextSourceGenerator {
 	private static final long serialVersionUID = 1503924918398309281L;
-	private static final Logger LOGGER = Logger.getLogger(TextSourceGeneratorImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger(TextSourceGeneratorImpl.class);
 	private ParameterSetup parameterSetup;
 	private ModelComposer modelComposer;
 	private InputOutputBuilder inputOutputBuilder;

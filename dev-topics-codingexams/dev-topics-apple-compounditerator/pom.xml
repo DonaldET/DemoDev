@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2018. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2021. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -28,24 +28,14 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
+			<artifactId>spring-core</artifactId>
 			<version>${spring.framework.version}</version>
-			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.framework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
 

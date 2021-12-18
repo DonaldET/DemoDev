@@ -22,7 +22,7 @@
 	<modules>
 		<module>dev-topics-testingutils</module>
 		<module>dev-topics-algorithms</module>
-		<module>dev-topics-category-optimization</module>
+		<!-- <module>dev-topics-category-optimization</module> -->
 		<module>dev-topics-codingexams</module>
 		<module>dev-topics-dataengineering</module>
 		<module>dev-topics-devops</module>
@@ -57,7 +57,7 @@
 		<repository>
 			<id>repo.springsource.org.milestone</id>
 			<name>Spring Framework Maven Milestone Repository</name>
-			<url>https://repo.springsource.org/milestone</url>
+			<url>http://repo.springsource.org/milestone</url>
 		</repository>
 		<repository>
 			<id>MVN Repo</id>
@@ -75,16 +75,19 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Generic properties -->
-		<!-- <java.version>17</java.version> -->
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
+		<!-- <java.version>1.8</java.version> -->
+		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
 
 		<!-- Open Source Versions -->
 		<args4j.version>2.33</args4j.version>
-		<commons-lang3.version>3.9</commons-lang3.version>
-		<commons-io.version>2.6</commons-io.version>
-		<freemarker.version>2.3.28</freemarker.version>
-		<log4j.version>1.2.17</log4j.version>
-		<slf4j.log4j.version>1.7.28</slf4j.log4j.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.12.0</commons-lang3.version>
+		<commons-io.version>2.11.0</commons-io.version>
+		<freemarker.version>2.3.31</freemarker.version>
+		<log4j2.version>2.16.0</log4j2.version>
+		<slf4j.log4j.api.version>2.0.0-alpha5</slf4j.log4j.api.version>
+		<slf4j.log4j.version>2.0.0-alpha5</slf4j.log4j.version>
 
 		<!-- Spring Framework Versions -->
 		<spring.framework.version>4.1.4.RELEASE</spring.framework.version>
@@ -99,7 +102,7 @@
 
 		<!-- Test -->
 		<junit.version>4.13.1</junit.version>
-		<hamcrest.version>1.3</hamcrest.version>
+		<hamcrest.version>2.2</hamcrest.version>
 		<hamcrest.all.version>1.3</hamcrest.all.version>
 	</properties>
 
