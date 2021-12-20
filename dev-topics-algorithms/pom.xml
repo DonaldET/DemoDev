@@ -28,6 +28,7 @@
 
 	<modules>
 		<module>dev-topics-badaddr</module>
+		<module>dev-topics-binarysearchtree</module>
 		<module>dev-topics-cpuconcurrent</module>
 		<module>dev-topics-kmer</module>
 		<module>dev-topics-largenumeric</module>
