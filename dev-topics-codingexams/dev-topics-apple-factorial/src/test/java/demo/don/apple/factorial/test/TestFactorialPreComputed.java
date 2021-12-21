@@ -6,14 +6,14 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.don.factorial.test;
+package demo.don.apple.factorial.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.don.factorial.impl.PreComputedMathHelper;
+import demo.don.apple.factorial.impl.PreComputedMathHelper;
 
 /**
  * Test the Precomputed implementation

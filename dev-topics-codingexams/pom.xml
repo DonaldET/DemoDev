@@ -15,8 +15,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<!-- Run example: mvn exec:java -Dexec.mainClass="demo.wework.spiral.Solution" 
-		-Dexec.classpathScope=runtime -->
+	<!-- Run example: mvn exec:java -Dexec.mainClass="demo.wework.spiral.Solution" -Dexec.classpathScope=runtime -->
 	<!-- <groupId>demodev.topics</groupId> -->
 	<artifactId>demodev-topics-codingexam-parent</artifactId>
 	<name>Demonstration of Development _CODINGEXAMS_</name>
@@ -29,6 +28,7 @@
 	<modules>
 		<module>dev-topics-apple-factorial</module>
 		<module>dev-topics-apple-compounditerator</module>
+		<module>dev-topics-apple-lonelyone</module>
 		<module>dev-topics-amazon-codingchallange</module>
 		<module>dev-topics-amazon-findmedian</module>
 		<module>dev-topics-amazon-invoiceparser</module>

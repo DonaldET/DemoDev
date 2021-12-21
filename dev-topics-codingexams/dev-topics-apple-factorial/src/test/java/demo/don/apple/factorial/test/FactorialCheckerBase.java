@@ -6,7 +6,7 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.don.factorial.test;
+package demo.don.apple.factorial.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Test;
 
-import demo.don.factorial.MathHelper;
+import demo.don.apple.factorial.MathHelper;
 
 /**
  * Test a <code>MathHelper</code> implementation for standard and boundary

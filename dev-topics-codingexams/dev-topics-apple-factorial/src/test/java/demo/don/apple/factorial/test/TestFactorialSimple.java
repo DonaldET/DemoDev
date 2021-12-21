@@ -6,11 +6,11 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.don.factorial.test;
+package demo.don.apple.factorial.test;
 
 import org.junit.Before;
 
-import demo.don.factorial.impl.SimpleMathHelper;
+import demo.don.apple.factorial.impl.SimpleMathHelper;
 
 /**
  * Test the simple implementation

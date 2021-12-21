@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.don.factorial.test;
+package demo.don.apple.factorial.test;
 
 import java.util.Random;
 
@@ -16,9 +16,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.don.factorial.MathHelper;
-import demo.don.factorial.impl.PreComputedMathHelper;
-import demo.don.factorial.impl.SimpleMathHelper;
+import demo.don.apple.factorial.MathHelper;
+import demo.don.apple.factorial.impl.PreComputedMathHelper;
+import demo.don.apple.factorial.impl.SimpleMathHelper;
 
 /**
  * Test timing of the two implementations

@@ -6,9 +6,9 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.don.factorial.impl;
+package demo.don.apple.factorial.impl;
 
-import demo.don.factorial.MathHelper;
+import demo.don.apple.factorial.MathHelper;
 
 /**
  * Use a table of pre-computed factorial values to by-pass execution all
