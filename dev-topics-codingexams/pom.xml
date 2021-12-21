@@ -29,6 +29,7 @@
 		<module>dev-topics-apple-factorial</module>
 		<module>dev-topics-apple-compounditerator</module>
 		<module>dev-topics-apple-lonelyone</module>
+		<module>dev-topics-apple-minimumdistance</module>
 		<module>dev-topics-amazon-codingchallange</module>
 		<module>dev-topics-amazon-findmedian</module>
 		<module>dev-topics-amazon-invoiceparser</module>
