@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2019. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2021. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -26,50 +26,21 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>${maven-shade-plugin.version}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>demo.gesail.twowriters.impl.ArrayConductor</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>${exec-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executable>java</executable>
-					<arguments>
-						<argument>-jar</argument>
-						<argument>target\dev-topics-creditkarma-list-dependencies-1.0.0-SNAPSHOT.jar</argument>
-					</arguments>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 </project>
