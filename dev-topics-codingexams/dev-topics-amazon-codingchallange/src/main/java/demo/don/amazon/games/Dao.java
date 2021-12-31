@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.amazon.games;
+package demo.don.amazon.games;
 
 import java.util.List;
 
@@ -24,9 +24,8 @@ import java.util.List;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public interface Dao
-{
-  public abstract List<CustomerID> getFriendsListForUser(final CustomerID id);
+public interface Dao {
+	public abstract List<CustomerID> getFriendsListForUser(final CustomerID id);
 
-  public abstract List<ProductID> getLibraryForUser(final CustomerID id);
+	public abstract List<ProductID> getLibraryForUser(final CustomerID id);
 }

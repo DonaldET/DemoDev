@@ -7,17 +7,15 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.amazon.games;
+package demo.don.amazon.games;
 
 /**
- * Customers are unique so ids should be unique as well.
+ * Products (Games) are unique and so are their ids.
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class CustomerID extends AbstractID implements Comparable<AbstractID>
-{
-  public CustomerID(final String id)
-  {
-    super(id);
-  }
+public class ProductID extends AbstractID implements Comparable<AbstractID> {
+	public ProductID(final String id) {
+		super(id);
+	}
 }

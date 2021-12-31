@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.amazon.games;
+package demo.don.amazon.games;
 
 import java.util.List;
 
@@ -18,17 +18,14 @@ import java.util.List;
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public interface Recommend
-{
-  /**
-   * Return the low-to-high ranked products recommended for customer based on
-   * friends owning a game customer does not own, rank by popularity with
-   * friends.
-   *
-   * @param id
-   *          the customer for which a recommendation is generated
-   * @return zero or more currently unowned product ids ranked by popularity
-   *         with friends
-   */
-  public abstract List<ProductID> getRankedRecommendations(final CustomerID id);
+public interface Recommend {
+	/**
+	 * Return the low-to-high ranked products recommended for customer based on
+	 * friends owning a game customer does not own, rank by popularity with friends.
+	 *
+	 * @param id the customer for which a recommendation is generated
+	 * @return zero or more currently unowned product ids ranked by popularity with
+	 *         friends
+	 */
+	public abstract List<ProductID> getRankedRecommendations(final CustomerID id);
 }
