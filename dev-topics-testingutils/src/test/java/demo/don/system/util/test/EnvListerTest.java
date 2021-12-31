@@ -1,11 +1,11 @@
-package demo.system.util.test;
+package demo.don.system.util.test;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.system.util.EnvLister;
+import demo.don.system.util.EnvLister;
 
 /*
  * Copyright (c) 2018. Donald Trummell. All Rights Reserved. Permission to use,
@@ -36,7 +36,7 @@ public class EnvListerTest
   @Test
   public void testGetEnvVars()
   {
-    final String vars = EnvLister.getEnvVars();
+		final String vars = EnvLister.getEnvVars();
     Assert.assertNotNull("env vars null", vars);
     Assert.assertFalse("env vars empty", vars.isEmpty());
     final String needed = "JAVA_HOME";

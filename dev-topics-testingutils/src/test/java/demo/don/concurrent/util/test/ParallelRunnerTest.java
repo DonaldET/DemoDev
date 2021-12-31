@@ -6,7 +6,7 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.concurrent.util.test;
+package demo.don.concurrent.util.test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.concurrent.util.ParallelRunner;
+import demo.don.concurrent.util.ParallelRunner;
 
 public class ParallelRunnerTest
 {
@@ -51,7 +51,7 @@ public class ParallelRunnerTest
   {
     Assert.assertTrue("invalid default trace", runner.isTrace() == TRACE_STATE);
     Assert.assertEquals("invalid execution timeout",
-        ParallelRunner.DEF_MAX_INIT_TIMEOUT_MS, runner.getMaxInitTimeoutMS());
+			ParallelRunner.DEF_MAX_INIT_TIMEOUT_MS, runner.getMaxInitTimeoutMS());
   }
 
   @Test

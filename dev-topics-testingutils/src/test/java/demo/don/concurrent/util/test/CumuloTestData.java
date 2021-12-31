@@ -6,7 +6,7 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.concurrent.util.test;
+package demo.don.concurrent.util.test;
 
 /**
  * Increments an element of a shared array for testing. Random wait times are

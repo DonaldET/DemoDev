@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.concurrent.util;
+package demo.don.concurrent.util;
 
 import java.util.ArrayList;
 import java.util.Collections;

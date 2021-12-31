@@ -6,7 +6,7 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.concurrent.util;
+package demo.don.concurrent.util;
 
 import java.util.List;
 import java.util.concurrent.TimeoutException;

@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import demo.file.util.FileUtils;
+import demo.don.file.util.FileUtils;
 import don.demo.generator.TextSourceGenerator;
 import don.demo.generator.TextSourceGenerator.Result;
 import don.demo.generator.TextSourceGeneratorRunner;
