@@ -1,10 +1,8 @@
-package demo.apple.compounditerator.test;
+package demo.don.apple.compounditerator.test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,8 +10,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import demo.apple.compounditerator.CompoundIterator;
-import demo.apple.compounditerator.UserData;
+import demo.don.apple.compounditerator.CompoundIterator;
+import demo.don.apple.compounditerator.UserData;
+import junit.framework.TestCase;
 
 public class UserDataTest extends TestCase
 {
@@ -123,7 +122,7 @@ public class UserDataTest extends TestCase
     final String DON_ITR_DATA2 = "raw_fib";
     final int expectedCount = 22;
 
-    final CompoundIterator<Integer> cpIter = userData.getIterator();
+	final CompoundIterator<Integer> cpIter = userData.getIterator();
     assertNotNull(TEST_UDATA_NAME + " has null iterator", cpIter);
 
     assertEquals("current iterator for " + TEST_UDATA_NAME

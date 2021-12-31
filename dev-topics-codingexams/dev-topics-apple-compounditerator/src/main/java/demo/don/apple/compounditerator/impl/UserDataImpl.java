@@ -7,13 +7,13 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.apple.compounditerator.impl;
+package demo.don.apple.compounditerator.impl;
 
 import java.util.Iterator;
 import java.util.List;
 
-import demo.apple.compounditerator.CompoundIterator;
-import demo.apple.compounditerator.UserData;
+import demo.don.apple.compounditerator.CompoundIterator;
+import demo.don.apple.compounditerator.UserData;
 
 /**
  *

@@ -6,7 +6,7 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.apple.compounditerator;
+package demo.don.apple.compounditerator;
 
 import java.util.Iterator;
 

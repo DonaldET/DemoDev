@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-	<bean name="iterator" class="demo.apple.compounditerator.impl.CompoundIteratorImpl"
+	<bean name="iterator" class="demo.don.apple.compounditerator.impl.CompoundIteratorImpl"
 		lazy-init="true" scope="prototype">
 		<property name="traceEnabled" value="false" />
 	</bean>
@@ -15,21 +15,21 @@
 
 	<import resource="listerUserDataContext.xml" />
 
-	<bean name="user_don" class="demo.apple.compounditerator.impl.UserDataImpl"
+	<bean name="user_don" class="demo.don.apple.compounditerator.impl.UserDataImpl"
 		init-method="initialize" lazy-init="true" scope="prototype">
 		<property name="name" value="Don" />
 		<property name="data" ref="Don_Data" />
 		<property name="iterator" ref="iterator" />
 	</bean>
 
-	<bean name="user_jim" class="demo.apple.compounditerator.impl.UserDataImpl"
+	<bean name="user_jim" class="demo.don.apple.compounditerator.impl.UserDataImpl"
 		init-method="initialize" lazy-init="true" scope="prototype">
 		<property name="name" value="Jim" />
 		<property name="data" ref="Jim_Data" />
 		<property name="iterator" ref="iterator" />
 	</bean>
 
-	<bean name="user_sam" class="demo.apple.compounditerator.impl.UserDataImpl"
+	<bean name="user_sam" class="demo.don.apple.compounditerator.impl.UserDataImpl"
 		init-method="initialize" lazy-init="true" scope="prototype">
 		<property name="name" value="Sam" />
 		<property name="data" ref="Sam_Data" />
@@ -37,7 +37,7 @@
 	</bean>
 
 
-	<bean name="user_tom" class="demo.apple.compounditerator.impl.UserDataImpl"
+	<bean name="user_tom" class="demo.don.apple.compounditerator.impl.UserDataImpl"
 		init-method="initialize" lazy-init="true" scope="prototype">
 		<property name="name" value="Tom" />
 		<property name="data" ref="Tom_Data" />

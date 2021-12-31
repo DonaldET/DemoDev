@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-	<bean name="iterator1" class="demo.apple.compounditerator.impl.CompoundIteratorImpl"
+	<bean name="iterator1" class="demo.don.apple.compounditerator.impl.CompoundIteratorImpl"
 		lazy-init="true" scope="prototype">
 		<property name="traceEnabled" value="false" />
 	</bean>

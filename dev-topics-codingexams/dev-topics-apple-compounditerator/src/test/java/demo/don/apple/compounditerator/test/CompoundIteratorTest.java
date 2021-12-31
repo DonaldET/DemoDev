@@ -6,7 +6,7 @@
  copyright notice, and this paragraph, appear in all copies, modifications, and
  distributions. Contact dtrummell@gmail.com for commercial licensing opportunities.
  */
-package demo.apple.compounditerator.test;
+package demo.don.apple.compounditerator.test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,12 +14,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
-import junit.framework.TestCase;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import demo.apple.compounditerator.CompoundIterator;
+import demo.don.apple.compounditerator.CompoundIterator;
+import junit.framework.TestCase;
 
 /**
  * Test the compound iterator against different types of user data
