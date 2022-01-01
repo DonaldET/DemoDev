@@ -1,4 +1,4 @@
-package demo.amazon.statemachines;
+package demo.don.amazon.statemachines;
 
 import java.util.Arrays;
 
