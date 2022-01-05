@@ -7,39 +7,18 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.dupcheck.impl;
+package demo.don.dupcheck.domain;
 
 import java.util.List;
 
-import demo.dupcheck.domain.DataRow;
-
 /**
- * A bean implementing <code>DataRow</code> to hold the data from a row as
- * strings
+ * A <code>DataRow</code> implementation holds the processed data extracted from
+ * the text file, including the associated index (zero based)
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  */
-public class DataRowBean implements DataRow
-{
-  private final long rowIndex;
-  private final List<String> data;
+public interface DataRow {
+	public abstract long getRowIndex();
 
-  public DataRowBean(final long rowIndex, final List<String> data)
-  {
-    super();
-    this.rowIndex = rowIndex;
-    this.data = data;
-  }
-
-  @Override
-  public long getRowIndex()
-  {
-    return rowIndex;
-  }
-
-  @Override
-  public List<String> getData()
-  {
-    return data;
-  }
+	public abstract List<String> getData();
 }

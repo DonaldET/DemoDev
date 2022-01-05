@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.dupcheck.domain;
+package demo.don.dupcheck.domain;
 
 import java.util.List;
 
