@@ -1,4 +1,4 @@
-package demo.javascript.intersect;
+package demo.don.javascript.intersect;
 
 import java.util.ArrayList;
 import java.util.List;
