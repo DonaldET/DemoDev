@@ -1,11 +1,11 @@
-package demo.liveramp.bitsearch.test;
+package demo.don.liveramp.bitsearch.test;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import demo.liveramp.bitsearch.BitSearcher;
+import demo.don.liveramp.bitsearch.BitSearcher;
 
 /**
  * Generates test IP and count populations for subnet extraction. As background,

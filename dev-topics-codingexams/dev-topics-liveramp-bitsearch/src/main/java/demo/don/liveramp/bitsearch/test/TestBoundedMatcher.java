@@ -1,14 +1,15 @@
-package demo.liveramp.bitsearch.test;
+package demo.don.liveramp.bitsearch.test;
 
 import java.util.Map;
 
-import demo.liveramp.bitsearch.BitSearcher;
+import demo.don.liveramp.bitsearch.BitSearcher;
 
-class TestSimpleMatcher {
+class TestBoundedMatcher {
 	//
 	// Note: changed matching criteria from matching servers to access counts of
 	// matching servers:
-	// **** Testing Simple Search Prefix Matcher [no sort required] (20 IP observations.)
+	// **** Testing Bounded Search Prefix Matcher [sort required] (20 IP
+	// observations.)
 	// Case 0. mask: 80000000; pattern: 80000000; Wanted Prefix: 80000000; exp=6;
 	// act=4102 . . . failed
 	// Case 1. mask: C0000000; pattern: C0000000; Wanted Prefix: C0000000; exp=4;
@@ -32,16 +33,16 @@ class TestSimpleMatcher {
 			{ 0xc0000000, 0xa0000000, 1036 }, { 0xe0000000, 0xe0000000, 2040 }, { 0xe0000000, 0x20000000, 1036 },
 			{ 0xf0000000, 0xf0000000, 1026 }, { 0xf0000000, 0x20000000, 0 } };
 
-	public TestSimpleMatcher(final Map<Integer, Integer> observedIPCounts) {
+	public TestBoundedMatcher(final Map<Integer, Integer> observedIPCounts) {
 		this.observedIPCounts = observedIPCounts;
 	}
 
 	public int runAll() {
 		final int nKeys = observedIPCounts.size();
 		System.out.println(
-				"\n**** Testing Simple Search Prefix Matcher [no sort required] (" + nKeys + " IP observations.)");
+				"\n**** Testing Bounded Search Prefix Matcher [sort required] (" + nKeys + " IP observations.)");
 		int[] keys = BitSearcher.getKeys(observedIPCounts, true);
-		BitSearcher.PrefixCounter spc = new BitSearcher.SimpleCounter();
+		BitSearcher.PrefixCounter spc = new BitSearcher.BoundedSearchCounter();
 
 		failures = 0;
 		for (int i = 0; i < testCases.length; i++) {

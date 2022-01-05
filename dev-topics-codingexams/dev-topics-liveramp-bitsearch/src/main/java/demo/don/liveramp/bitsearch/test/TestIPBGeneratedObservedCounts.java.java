@@ -1,10 +1,10 @@
-package demo.liveramp.bitsearch.test;
+package demo.don.liveramp.bitsearch.test;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import demo.liveramp.bitsearch.BitSearcher.SubnetPopulationParameters;
+import demo.don.liveramp.bitsearch.BitSearcher.SubnetPopulationParameters;
 
 class TestIPBGenerateObservedCounts {
 	private int failures = 0;

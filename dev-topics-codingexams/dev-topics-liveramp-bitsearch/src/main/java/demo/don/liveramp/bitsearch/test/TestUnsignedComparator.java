@@ -1,8 +1,8 @@
-package demo.liveramp.bitsearch.test;
+package demo.don.liveramp.bitsearch.test;
 
 import java.util.Comparator;
 
-import demo.liveramp.bitsearch.BitSearcher;
+import demo.don.liveramp.bitsearch.BitSearcher;
 
 class TestUnsignedComparator {
 	private int failures = 0;

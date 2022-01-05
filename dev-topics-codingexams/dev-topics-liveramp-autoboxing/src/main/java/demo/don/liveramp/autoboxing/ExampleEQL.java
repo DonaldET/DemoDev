@@ -1,5 +1,10 @@
-package demo.liveramp.autoboxing;
+package demo.don.liveramp.autoboxing;
 
+/**
+ * Demonstrate how identity and value are identical for integers -127 to +128.
+ * 
+ * @author Donald Trummell
+ */
 public class ExampleEQL {
 	public static void main(String[] args) {
 		final int[] testVals = { Integer.MIN_VALUE, (Integer.MIN_VALUE + 1), -128, -127, -2, -1, 0, 1, 2, 127, 128,

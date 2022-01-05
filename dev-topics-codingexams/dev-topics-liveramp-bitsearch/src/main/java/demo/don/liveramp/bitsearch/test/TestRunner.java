@@ -1,11 +1,11 @@
-package demo.liveramp.bitsearch.test;
+package demo.don.liveramp.bitsearch.test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import demo.liveramp.bitsearch.BitSearcher;
+import demo.don.liveramp.bitsearch.BitSearcher;
 
 /**
  * Runs the entire test suite offering optional test enablement. Also supplies
