@@ -1,4 +1,4 @@
-package demo.trulia.treesearch;
+package demo.don.trulia.treesearch;
 
 public class TSNode {
 	public String name;

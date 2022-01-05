@@ -1,11 +1,20 @@
-package demo.trulia.treesearch;
+package demo.don.trulia.treesearch;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * This is the search algorithm for the <strong>DAG</strong>.
+ * This is the search algorithm for the <strong>DAG</strong> that represent a
+ * solution to the find-the-next-largest value in a special binary tree. The
+ * tree has parent nodes with zero or two children. Each node has an assigned
+ * value. The value in child nodes must be greater-then or equal to the parent
+ * node. A parent node with no references is the "root" of the tree.
+ *
+ * The problem was to find the next largest value after the initial parent node.
+ * I generalized the problem to collect some small number (N) of ordered unique
+ * node values.
+ *
  */
 public class TreeSearcher {
 

@@ -1,11 +1,11 @@
-package demo.trulia.treesearch;
+package demo.don.trulia.treesearch;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import demo.trulia.treesearch.TreeConstructor.TreeSetup;
+import demo.don.trulia.treesearch.TreeConstructor.TreeSetup;
 
 /**
  * Runs tests of the search algorithm.
