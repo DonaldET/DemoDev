@@ -1,7 +1,7 @@
-package demo.wework.spiral;
+package demo.don.wework.spiral;
 
 /**
- * Problem: Given a 2D array, print it in spiral form. See the following
+ * Problem: Given a 2D array (n x M), print it in spiral form. See the following
  * examples.
  *
  * <pre>

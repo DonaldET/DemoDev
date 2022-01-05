@@ -1,12 +1,8 @@
-package demo.wework.patterns;
+package demo.don.wework.patterns;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.DoubleBinaryOperator;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * Illustrate Strategy, Factory, and Decorator design patterns and
@@ -222,46 +218,6 @@ public class Solution {
 		}
 	}
 
-	/////////////////
-	// JUnit tests //
-	/////////////////
-
-	@Test
-	public void testArith() {
-		Assert.assertEquals("Arith differs", 25.0, Adder.Factory.getArith().summationOf(3.0, -1.0, 5), 1.E-16);
-	}
-
-	@Test
-	public void testGeo() {
-		Assert.assertEquals("Geo differs", 63.0, Adder.Factory.getGeo().summationOf(2.0, 1.0, 6), 1.E-16);
-	}
-
-	@Test
-	public void testIBMArith() {
-		Summation a = new Summation.IBMOperator();
-		Assert.assertEquals("IBM Arith differs", 25.0, a.seriesSum(-1.0, 5, 3.0, SeriesType.ARITHMETIC), 1.E-16);
-	}
-
-	@Test
-	public void testIBMGeo() {
-		Summation a = new Summation.IBMOperator();
-		Assert.assertEquals("IBM Geo differs", 63.0, a.seriesSum(1.0, 6, 2.0, SeriesType.GEOMETRIC), 1.E-16);
-	}
-
-	@Test
-	public void testArith1Decorator() {
-		SequenceDecorator sd = new RangeSequence(new SumSequence(new GenerateSequence()));
-		Assert.assertEquals("Arith1 Decorator Differs", " [-1.0, 2.0, 5.0, 8.0, 11.0] SUM: 25.0 MIN: -1.0; MAX: 14.0",
-				sd.describeSequence(-1.0, 5, 3.0, SeriesType.ARITHMETIC));
-	}
-
-	@Test
-	public void testGeo1Decorator() {
-		SequenceDecorator sd = new GenerateSequence(new RangeSequence(new SumSequence()));
-		Assert.assertEquals("Geo1 Decorator Differs", " SUM: 63.0 MIN: 1.0; MAX: 32.0 [1.0, 2.0, 4.0, 8.0, 16.0, 32.0]",
-				sd.describeSequence(1.0, 6, 2.0, SeriesType.GEOMETRIC));
-	}
-
 	//
 	// Test driver
 	public static void main(String[] args) {
@@ -280,7 +236,6 @@ public class Solution {
 		sd = new GenerateSequence(new RangeSequence(new SumSequence()));
 		System.out.println("Geo_1  : " + sd.describeSequence(1.0, 6, 2.0, SeriesType.GEOMETRIC));
 
-		System.out.println("\n*****\nJunit Examples:");
-		JUnitCore.main("demo.wework.patterns.Solution");
+		System.out.println("\n--- Run Junit tests next!");
 	}
 }
