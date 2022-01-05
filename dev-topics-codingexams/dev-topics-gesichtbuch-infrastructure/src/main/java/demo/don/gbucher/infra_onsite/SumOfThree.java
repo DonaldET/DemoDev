@@ -1,4 +1,4 @@
-package demo.gbucher.infra_onsite;
+package demo.don.gbucher.infra_onsite;
 
 /**
  * Compute sum of three values in an array of unique integers such that it is
