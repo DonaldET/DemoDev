@@ -1,9 +1,9 @@
-package demo.granular.sudoku.impl;
+package demo.don.granular.sudoku.impl;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import demo.granular.sudoku.GameChecker;
+import demo.don.granular.sudoku.GameChecker;
 
 public class MultiPassChecker implements GameChecker {
 

@@ -1,8 +1,8 @@
-package demo.granular.sudoku;
+package demo.don.granular.sudoku;
 
-import demo.granular.sudoku.impl.MultiPassChecker;
-import demo.granular.sudoku.impl.SampleData;
-import demo.granular.sudoku.impl.SinglePassChecker;
+import demo.don.granular.sudoku.impl.MultiPassChecker;
+import demo.don.granular.sudoku.impl.SampleData;
+import demo.don.granular.sudoku.impl.SinglePassChecker;
 
 public class Runner {
 

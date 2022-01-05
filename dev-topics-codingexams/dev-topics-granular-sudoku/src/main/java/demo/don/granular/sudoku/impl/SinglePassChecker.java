@@ -1,11 +1,11 @@
-package demo.granular.sudoku.impl;
+package demo.don.granular.sudoku.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import demo.granular.sudoku.GameChecker;
+import demo.don.granular.sudoku.GameChecker;
 
 public class SinglePassChecker implements GameChecker {
 

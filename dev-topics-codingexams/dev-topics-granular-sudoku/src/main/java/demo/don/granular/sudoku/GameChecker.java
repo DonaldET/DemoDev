@@ -7,7 +7,7 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.granular.sudoku;
+package demo.don.granular.sudoku;
 
 /**
  * Sudoku puzzle checker (see

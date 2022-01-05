@@ -1,13 +1,13 @@
-package demo.granular.sudoku.test;
+package demo.don.granular.sudoku.test;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.granular.sudoku.GameChecker;
-import demo.granular.sudoku.impl.SampleData;
-import demo.granular.sudoku.impl.SinglePassChecker;
+import demo.don.granular.sudoku.GameChecker;
+import demo.don.granular.sudoku.impl.SampleData;
+import demo.don.granular.sudoku.impl.SinglePassChecker;
 
 public class SinglePassCheckerTest {
 

@@ -1,4 +1,4 @@
-package demo.granular.sudoku.impl;
+package demo.don.granular.sudoku.impl;
 
 public abstract class SampleData {
 	public static final int[][] validPuzzle = { { 1, 2, 3, 6, 7, 8, 9, 4, 5 }, { 5, 8, 4, 2, 3, 9, 7, 6, 1 },
