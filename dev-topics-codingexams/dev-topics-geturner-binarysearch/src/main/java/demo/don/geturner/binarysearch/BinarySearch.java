@@ -7,28 +7,24 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.geturner.binarysearch;
+package demo.don.geturner.binarysearch;
 
 /**
  * Generalized binary search of a sorted array of <code>Comparable</code> items
  *
  * @author Donald Trummell (dtrummell@gmail.com)
  *
- * @param <T>
- *          type of sorted and searchable items
+ * @param <T> type of sorted and searchable items
  */
-public interface BinarySearch<T extends Comparable<T>>
-{
-  public static final int KEY_NOT_FOUND = -1;
+public interface BinarySearch<T extends Comparable<T>> {
+	public static final int KEY_NOT_FOUND = -1;
 
-  /**
-   * Precondition is that the array is sorted
-   *
-   * @param array
-   *          the sorted array to search
-   * @param key
-   *          the key value to locate
-   * @return the array index of located key or <code>KEY_NOT_FOUND</code>
-   */
-  public abstract int find(final T[] array, final T key);
+	/**
+	 * Precondition is that the array is sorted
+	 *
+	 * @param array the sorted array to search
+	 * @param key   the key value to locate
+	 * @return the array index of located key or <code>KEY_NOT_FOUND</code>
+	 */
+	public abstract int find(final T[] array, final T key);
 }

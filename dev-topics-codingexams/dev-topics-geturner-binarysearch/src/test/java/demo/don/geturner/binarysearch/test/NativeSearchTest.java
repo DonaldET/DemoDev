@@ -7,18 +7,16 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.geturner.binarysearch.test;
+package demo.don.geturner.binarysearch.test;
 
 import org.junit.Before;
 
-import demo.geturner.binarysearch.impl.RecursiveSearchImpl;
+import demo.don.geturner.binarysearch.impl.NativeSearchImpl;
 
-public class RecursiveSearchTest extends BinarySearchChecker
-{
-  @Override
-  @Before
-  public void setUp() throws Exception
-  {
-    search = new RecursiveSearchImpl<Integer>();
-  }
+public class NativeSearchTest extends BinarySearchChecker {
+	@Override
+	@Before
+	public void setUp() throws Exception {
+		search = new NativeSearchImpl<Integer>();
+	}
 }

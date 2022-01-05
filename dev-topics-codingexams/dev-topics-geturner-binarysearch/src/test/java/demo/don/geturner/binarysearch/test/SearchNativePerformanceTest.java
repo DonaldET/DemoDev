@@ -7,16 +7,16 @@
  * and distributions. Contact dtrummell@gmail.com for commercial licensing
  * opportunities.
  */
-package demo.geturner.binarysearch.test;
+package demo.don.geturner.binarysearch.test;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import demo.geturner.binarysearch.BinarySearch;
-import demo.geturner.binarysearch.impl.IterativeSearchImpl;
-import demo.geturner.binarysearch.impl.NativeSearchImpl;
+import demo.don.geturner.binarysearch.BinarySearch;
+import demo.don.geturner.binarysearch.impl.IterativeSearchImpl;
+import demo.don.geturner.binarysearch.impl.NativeSearchImpl;
 
 /**
  * Test performance of Iterative and Native search methods with optional display
