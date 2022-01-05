@@ -1,4 +1,4 @@
-package demo.pintr.expand;
+package demo.don.pintr.expand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Write a function that expands a HashMap to an array. The HashMap contains a
- * key and a value, from which  your function will produce an array with the key
+ * key and a value, from which your function will produce an array with the key
  * repeated the respective number of times. Output order of the array does not matter.
  *
  * @author Donald Trummell
