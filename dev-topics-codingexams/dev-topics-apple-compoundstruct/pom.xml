@@ -15,12 +15,12 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>demodev-topics-apple-lonelyone</artifactId>
+	<artifactId>demodev-topics-apple-compoundstruct</artifactId>
 	<!-- <version>1.0.0-SNAPSHOT</version> -->
 	<packaging>jar</packaging>
-	<name>Apple - Find Lonely Ones</name>
+	<name>Apple - Compound-Struct</name>
 
-	<description>Given a two dimensional image composed of pixels (0/1), find the lonely one pixels in the image</description>
+	<description>Data structure with O(1) operations insert, remove, and getRandom</description>
 
 	<properties>
 	</properties>

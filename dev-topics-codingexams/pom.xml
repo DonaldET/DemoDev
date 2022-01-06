@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2021. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2022. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -29,6 +29,8 @@
 	<modules>
 		<module>dev-topics-apple-factorial</module>
 		<module>dev-topics-apple-compounditerator</module>
+		<module>dev-topics-apple-compoundstruct</module>
+		<module>dev-topics-apple-encoder</module>
 		<module>dev-topics-apple-lonelyone</module>
 		<module>dev-topics-apple-minimumdistance</module>
 		<module>dev-topics-amazon-codingchallange</module>
