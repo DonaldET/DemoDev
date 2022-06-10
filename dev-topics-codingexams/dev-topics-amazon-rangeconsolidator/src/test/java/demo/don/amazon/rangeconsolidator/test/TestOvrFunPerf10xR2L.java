@@ -31,7 +31,7 @@ public class TestOvrFunPerf10xR2L
     }
 
     @Test
-    @Ignore		// Performance testing
+    @Ignore		// Performance testing; 4.8 sec
     public void testPerfR2Lx10()
     {
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR / 2;

@@ -34,10 +34,6 @@
 		<module>dev-topics-bigdata</module>
 	</modules>
 
-	<prerequisites>
-		<maven>3.6.2</maven>
-	</prerequisites>
-
 	<repositories>
 		<repository>
 			<id>com.springsource.repository.release</id>

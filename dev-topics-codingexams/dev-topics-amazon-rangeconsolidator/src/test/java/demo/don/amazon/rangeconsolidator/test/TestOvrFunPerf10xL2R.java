@@ -28,7 +28,7 @@ public class TestOvrFunPerf10xL2R {
 	}
 
 	@Test
-	@Ignore		// Takes 48.5 seconds
+	@Ignore		// Takes 47.8 seconds
 	public void testPerfL2Rx10() {
 		final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR / 3;
 		final int n_tests = TEST_COUNT;

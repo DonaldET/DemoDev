@@ -36,7 +36,7 @@ public class TestOvrFunPerf
     }
 
     @Test
-    @Ignore		// Performance testing only
+    @Ignore		// Performance testing only; 4.2 secs
     public void testPerfAll()
     {
         final int repetition = TestPerfUtil.TEST_GROUP_REPETITION_FACTOR;
