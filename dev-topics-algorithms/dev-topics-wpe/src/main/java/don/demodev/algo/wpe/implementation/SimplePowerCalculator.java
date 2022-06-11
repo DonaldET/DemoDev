@@ -49,7 +49,7 @@ public class SimplePowerCalculator implements PowerCalculator {
 		}
 
 		double cp = evaluator.polyEval(tpf.coef, v);
-		return (double) 0.5 * wf.rho * tpf.a * v * v * v * Math.max(0, Math.min(cp, 0.59)) / 1000000.0;
+		return 0.5 * wf.rho * tpf.a * v * v * v * Math.max(0, Math.min(cp, 0.59)) / 1000000.0;
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class SimplePowerCalculator implements PowerCalculator {
 	 */
 	@Override
 	public double wind_speed_drop(double pextracted, WindFactors wf) {
-		return Math.pow((double) 2.0 * pextracted / wf.rho, ONE_THIRD);
+		return Math.pow(2.0 * pextracted / wf.rho, ONE_THIRD);
 	}
 
 	/**
