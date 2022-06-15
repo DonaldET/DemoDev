@@ -24,7 +24,7 @@ public class DummyGetTask implements GetTask {
 	@Override
 	public void accept(String t) {
 		if (!t.equals(remote.id())) {
-			throw new IllegalArgumentException("expected " + remote.id() + ", but had t");
+			throw new IllegalArgumentException("expected " + remote.id() + ", but had " + t);
 		}
 		processState.taskCount.incrementAndGet();
 		try {
@@ -46,13 +46,8 @@ public class DummyGetTask implements GetTask {
 			throw new IllegalArgumentException("Planned failure for task " + t);
 		}
 
-		byte[] data = new byte[remote.length()];
-		processState.rand.nextBytes(data);
-		processState.byteCount.addAndGet(remote.length());
-		long sum = 0;
-		for (int i = 0; i < remote.length(); i++) {
-			sum += (0x00000000000000FF & data[i]);
-		}
-		processState.checkSum.addAndGet(sum);
+		final int words = (remote.length() + 3) / 4;
+		processState.byteCount.addAndGet(4 * words);
+		processState.checkSum.addAndGet(processState.rand.ints(words).sum());
 	}
 }

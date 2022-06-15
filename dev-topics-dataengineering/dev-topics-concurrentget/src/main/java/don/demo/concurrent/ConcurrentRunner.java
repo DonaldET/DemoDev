@@ -7,15 +7,15 @@ import don.demo.concurrent.data.DataDefinition;
 import don.demo.concurrent.impl.DummyGetTask;
 
 /**
- * Use a parallel stream to process the 30 test cases. Output looks like this
+ * Use a parallel stream to process the 30 test cases. Output looks like this:
  * 
  * <pre>
  * <code>
- *  -- Elapsed: 5.252 seconds
+ *  -- Elapsed: 5.258 seconds
  * ProcessState [taskCount      : 30,
  *               failedTaskCount: 1,
- *               byteCount      : 33294202,
- *               checkSum       : 4244685264]
+ *               byteCount      : 33294240,
+ *               checkSum       : -2024389960]
  * </code>
  * </pre>
  * 
@@ -23,11 +23,11 @@ import don.demo.concurrent.impl.DummyGetTask;
  * 
  * <pre>
  * <code>
- *  -- Elapsed: 37.757 seconds
+ *  -- Elapsed: 37.705 seconds
  * ProcessState [taskCount      : 30,
  *               failedTaskCount: 1,
- *               byteCount      : 33294202,
- *               checkSum       : 4244683377]
+ *               byteCount      : 33294240,
+ *               checkSum       : -14909291848]
  * </code>
  * </pre>
  */
@@ -36,7 +36,7 @@ public class ConcurrentRunner {
 	public static void main(String[] args) {
 		System.out.println("\nConcurrentRunner - Run tasks concurrently");
 
-		System.out.println("  -- CPU Core                     : " + Runtime.getRuntime().availableProcessors());
+		System.out.println("  -- CPU Cores                    : " + Runtime.getRuntime().availableProcessors());
 		System.out.println("  -- CommonPool Parallelism       : " + ForkJoinPool.commonPool().getParallelism());
 		System.out.println("  -- CommonPool shared Parallelism: " + ForkJoinPool.getCommonPoolParallelism());
 
