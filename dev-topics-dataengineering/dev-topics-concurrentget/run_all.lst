@@ -1,0 +1,49 @@
+
+ Run the 3 test classes for different levels of concurrency
+
+
+ === SequentialRunner from target\classes\ using -Xmx512M -Xms512M
+
+SequentialRunner - Run tasks one-at-a-time
+  -- Java Version: 18.0.1.1
+  -- Java VM     : Java HotSpot(TM) 64-Bit Server VM
+  -- Processing 30 tasks
+
+**** Caught and ignoring error Planned failure for task remote1
+ -- Elapsed: 37.687 seconds
+ProcessState [taskCount      : 30,
+              failedTaskCount: 1,
+              byteCount      : 33294240,
+              checkSum       : -14909291848]
+
+ === ConcurrentRunner from target\classes\ using -Xmx512M -Xms512M
+
+ConcurrentRunner - Run tasks concurrently
+  -- CPU Cores                    : 8
+  -- CommonPool Parallelism       : 7
+  -- CommonPool shared Parallelism: 7
+  -- Processing 30 tasks
+
+**** Caught and ignoring error Planned failure for task remote1
+ -- Elapsed: 5.233 seconds
+ProcessState [taskCount      : 30,
+              failedTaskCount: 1,
+              byteCount      : 33294240,
+              checkSum       : -2024389960]
+
+ === HighlyConcurrentRunner from target\classes\ using -Xmx512M -Xms512M
+
+ConcurrentRunner - Run tasks concurrently with more threads
+  -- CPU Cores                    : 8
+  -- CommonPool Parallelism update: 20
+  -- CommonPool shared Parallelism: 20
+  -- Processing 30 tasks
+
+**** Caught and ignoring error Planned failure for task remote1
+ -- Elapsed: 3.057 seconds
+ProcessState [taskCount      : 30,
+              failedTaskCount: 1,
+              byteCount      : 33294240,
+              checkSum       : 2270577336]
+
+ Successwfully Completed.
