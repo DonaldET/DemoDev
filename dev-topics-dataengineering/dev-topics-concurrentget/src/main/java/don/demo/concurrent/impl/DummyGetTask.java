@@ -12,8 +12,8 @@ import don.demo.concurrent.data.DataDefinition;
  */
 public class DummyGetTask implements GetTask {
 
-	private ProcessState processState;
-	private DataDefinition.Remote remote;
+	protected ProcessState processState;
+	protected DataDefinition.Remote remote;
 
 	public DummyGetTask(ProcessState processState, DataDefinition.Remote remote) {
 		super();
@@ -29,13 +29,16 @@ public class DummyGetTask implements GetTask {
 		processState.taskCount.incrementAndGet();
 		try {
 			acceptImpl(t);
+			final int words = (remote.length() + 3) / 4;
+			processState.byteCount.addAndGet(4 * words);
+			processState.checkSum.addAndGet(processState.rand.ints(words).sum());
 		} catch (Exception ex) {
 			processState.failedTaskCount.incrementAndGet();
 			System.err.println("\n**** Caught and ignoring error " + ex.getMessage());
 		}
 	}
 
-	private void acceptImpl(String t) {
+	protected void acceptImpl(String t) {
 		try {
 			TimeUnit.MILLISECONDS.sleep(remote.delay());
 		} catch (InterruptedException ex) {
@@ -45,9 +48,5 @@ public class DummyGetTask implements GetTask {
 		if ("remote1".equals(t)) {
 			throw new IllegalArgumentException("Planned failure for task " + t);
 		}
-
-		final int words = (remote.length() + 3) / 4;
-		processState.byteCount.addAndGet(4 * words);
-		processState.checkSum.addAndGet(processState.rand.ints(words).sum());
 	}
 }

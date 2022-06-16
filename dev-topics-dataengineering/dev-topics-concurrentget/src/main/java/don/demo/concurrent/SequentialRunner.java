@@ -1,37 +1,39 @@
 package don.demo.concurrent;
 
+import don.demo.concurrent.abstractions.GetTask;
 import don.demo.concurrent.abstractions.ProcessState;
 import don.demo.concurrent.data.DataDefinition;
 import don.demo.concurrent.impl.DummyGetTask;
+import don.demo.concurrent.impl.HeavyComputeGetTask;
 
 /**
  * Sequentially process the 30 test cases. Output looks like this:
- * 
- * <pre>
- * <code>
- *  -- Elapsed: 37.705 seconds
- * ProcessState [taskCount      : 30,
- *               failedTaskCount: 1,
- *               byteCount      : 33294240,
- *               checkSum       : -14909291848]
- * </code>
- * </pre>
  */
 public class SequentialRunner {
 
 	public static void main(String[] args) {
 		System.out.println("\nSequentialRunner - Run tasks one-at-a-time");
+		final boolean isHeavy = Boolean.getBoolean("IS_HEAVY");
+
 		System.out.println("  -- Java Version: " + System.getProperty("java.version", "unknown"));
 		System.out.println("  -- Java VM     : " + System.getProperty("java.vm.name", "unknown"));
+		System.out.println("  -- IS HEAVY                     : " + isHeavy);
+
 		int nTasks = DataDefinition.remotes.size();
 		System.out.println("  -- Processing " + nTasks + " tasks");
 		ProcessState processState = new ProcessState();
-
-		long start = System.nanoTime();
-		DataDefinition.remotes.stream().forEach(remote -> new DummyGetTask(processState, remote).accept(remote.id()));
-		double elapsed = System.nanoTime() - start;
-
+		double elapsed = doWork(isHeavy, processState);
 		System.out.println(" -- Elapsed: " + Math.round(elapsed / 1000000.0) / 1000.0 + " seconds");
 		System.out.println(processState.toString());
+	}
+
+	public static double doWork(boolean isHeavy, ProcessState processState) {
+		long start = System.nanoTime();
+		DataDefinition.remotes.stream().parallel().forEach(remote -> {
+			final GetTask task = (isHeavy) ? new HeavyComputeGetTask(processState, remote)
+					: new DummyGetTask(processState, remote);
+			task.accept(remote.id());
+		});
+		return System.nanoTime() - start;
 	}
 }
