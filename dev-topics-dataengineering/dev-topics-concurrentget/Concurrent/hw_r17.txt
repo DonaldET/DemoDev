@@ -1,0 +1,7 @@
+Device name  : THOR
+Processor    : Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz   2.60 GHz
+Installed RAM: 16.0 GB (15.9 GB usable)
+Device ID    : 26BF8B1F-D9AF-4E30-84A2-3370C7B58FD9
+Product ID   : 00330-50020-61898-AAOEM
+System type  : 64-bit operating system, x64-based processor
+Pen and touch: No pen or touch input is available for this display

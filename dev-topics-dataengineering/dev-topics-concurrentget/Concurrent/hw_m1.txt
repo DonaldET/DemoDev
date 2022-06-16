@@ -1,0 +1,13 @@
+Hardware Overview:
+
+  Model Name:	MacBook Pro
+  Model Identifier:	MacBookPro17,1 === MacBook Pro (13-inch, M1, 2020)
+  Chip:	Apple M1
+  Total Number of Cores:	8 (4 performance and 4 efficiency)
+  Memory:	8 GB
+  System Firmware Version:	7459.121.3
+  OS Loader Version:	7459.121.3
+  Serial Number (system):	C02DT1C9Q05H
+  Hardware UUID:	A9102FFA-A8E3-561D-AB39-41AA27F80B30
+  Provisioning UDID:	00008103-0016681421A2001E
+  Activation Lock Status:	Disabled
