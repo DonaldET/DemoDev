@@ -341,7 +341,7 @@ public class AdditionChecker {
 			if (i > 0) {
 				System.out.print(", ");
 			}
-			System.out.print(String.format("%.2f", Math.log((double) testRanges.get(i))));
+			System.out.print(String.format("%.2f", Math.log(testRanges.get(i))));
 		}
 		System.out.println("]");
 	}
@@ -379,14 +379,14 @@ public class AdditionChecker {
 			final double trueSum = sb.trueSum(testSize);
 			final Result theResult = singleTest.runATest(label, testSequence, badr, trueSum, isParallel);
 			final double rel = theResult.relErr;
-			final double timeInMS = (double) theResult.elapsed / 1000000.0;
+			final double timeInMS = theResult.elapsed / 1000000.0;
 			report.print(String.format("%d, %.5f, %.5f", testSize, trueSum, theResult.estimated));
 			report.print(String.format(", %.4e, %.3e, %.1f", theResult.delErr, rel * RELATIVE_ERROR_PPB,
 					estimateSignificantDigits(rel)));
 			report.println(String.format(", %.3f, %s", timeInMS, label));
 		}
 		final long elapsed = System.currentTimeMillis() - start;
-		report.println(String.format("Total Test Time: %.3f seconds.", (double) elapsed / 1000.0));
+		report.println(String.format("Total Test Time: %.3f seconds.", elapsed / 1000.0));
 	}
 
 	/**

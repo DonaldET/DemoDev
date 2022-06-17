@@ -30,7 +30,7 @@ public class SimplePriorityQueueFinder implements MedianFinder {
 		queue.offer(supplier.getNext());
 		int n = queue.size();
 		if (n < 2) {
-			return (double) queue.peek();
+			return queue.peek();
 		}
 
 		PriorityQueue<Integer> copy = new PriorityQueue<Integer>(queue);
@@ -48,9 +48,9 @@ public class SimplePriorityQueueFinder implements MedianFinder {
 		}
 
 		if (even) {
-			return (double) (xmid + copy.poll()) / 2.0;
+			return (xmid + copy.poll()) / 2.0;
 		} else {
-			return (double) xmid;
+			return xmid;
 		}
 	}
 

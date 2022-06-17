@@ -21,11 +21,11 @@ public class QuickAddChecker {
 	}
 
 	private static double sumNEven(int n) {
-		return ((double) n / 2.0) * ((double) n + 1.0);
+		return (n / 2.0) * (n + 1.0);
 	}
 
 	private static double sumNOdd(int n) {
-		return (double) n * (((double) n + 1.0) / 2.0);
+		return n * (n + 1.0) / 2.0;
 	}
 
 	public static void main(final String[] args) {
@@ -33,7 +33,7 @@ public class QuickAddChecker {
 		System.out.println(String.format("\nCheck Addition Accuracy Test for sequence %d long", n));
 		final List<Double> test_seq = new ArrayList<Double>();
 		for (int i = 0; i < n; i++) {
-			test_seq.add((double) i + 1.0);
+			test_seq.add(i + 1.0);
 		}
 		System.out.println("  forward: " + String.valueOf(test_seq.subList(0, 6)).trim() + " . . . for "
 				+ test_seq.size() + " entries.");

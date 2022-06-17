@@ -23,7 +23,7 @@ public class HighlyConcurrentRunner {
 		int nTasks = DataDefinition.remotes.size();
 		System.out.println("  -- Processing " + nTasks + " tasks");
 		ProcessState processState = new ProcessState();
-		double elapsed = SequentialRunner.doWork(isHeavy, processState);
+		double elapsed = SequentialRunner.doWork(true, isHeavy, processState);
 		System.out.println(" -- Elapsed: " + Math.round(elapsed / 1000000.0) / 1000.0 + " seconds");
 		System.out.println(processState.toString());
 	}

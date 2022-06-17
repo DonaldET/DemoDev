@@ -1,5 +1,7 @@
 package don.demo.concurrent;
 
+import java.util.stream.Stream;
+
 import don.demo.concurrent.abstractions.GetTask;
 import don.demo.concurrent.abstractions.ProcessState;
 import don.demo.concurrent.data.DataDefinition;
@@ -22,14 +24,18 @@ public class SequentialRunner {
 		int nTasks = DataDefinition.remotes.size();
 		System.out.println("  -- Processing " + nTasks + " tasks");
 		ProcessState processState = new ProcessState();
-		double elapsed = doWork(isHeavy, processState);
+		double elapsed = doWork(true, isHeavy, processState);
 		System.out.println(" -- Elapsed: " + Math.round(elapsed / 1000000.0) / 1000.0 + " seconds");
 		System.out.println(processState.toString());
 	}
 
-	public static double doWork(boolean isHeavy, ProcessState processState) {
+	public static double doWork(boolean isParallel, boolean isHeavy, ProcessState processState) {
 		long start = System.nanoTime();
-		DataDefinition.remotes.stream().parallel().forEach(remote -> {
+		Stream<DataDefinition.Remote> workStream = DataDefinition.remotes.stream();
+		if (isParallel) {
+			workStream = workStream.parallel();
+		}
+		workStream.forEach(remote -> {
 			final GetTask task = (isHeavy) ? new HeavyComputeGetTask(processState, remote)
 					: new DummyGetTask(processState, remote);
 			task.accept(remote.id());
