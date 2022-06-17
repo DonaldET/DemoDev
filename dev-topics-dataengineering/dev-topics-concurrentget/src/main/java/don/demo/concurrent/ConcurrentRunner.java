@@ -12,7 +12,7 @@ public class ConcurrentRunner {
 
 	public static void main(String[] args) {
 		System.out.println("\nConcurrentRunner - Run tasks concurrently");
-		final boolean isHeavy = Boolean.getBoolean("IS_HEAVY");
+		final boolean isHeavy = Boolean.valueOf(System.getenv("IS_HEAVY"));
 
 		System.out.println("  -- CPU Cores                    : " + Runtime.getRuntime().availableProcessors());
 		System.out.println("  -- CommonPool Parallelism       : " + ForkJoinPool.commonPool().getParallelism());

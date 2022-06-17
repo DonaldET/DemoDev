@@ -15,7 +15,7 @@ public class SequentialRunner {
 
 	public static void main(String[] args) {
 		System.out.println("\nSequentialRunner - Run tasks one-at-a-time");
-		final boolean isHeavy = Boolean.getBoolean("IS_HEAVY");
+		final boolean isHeavy = Boolean.valueOf(System.getenv("IS_HEAVY"));
 
 		System.out.println("  -- Java Version: " + System.getProperty("java.version", "unknown"));
 		System.out.println("  -- Java VM     : " + System.getProperty("java.vm.name", "unknown"));
@@ -24,7 +24,7 @@ public class SequentialRunner {
 		int nTasks = DataDefinition.remotes.size();
 		System.out.println("  -- Processing " + nTasks + " tasks");
 		ProcessState processState = new ProcessState();
-		double elapsed = doWork(true, isHeavy, processState);
+		double elapsed = doWork(false, isHeavy, processState);
 		System.out.println(" -- Elapsed: " + Math.round(elapsed / 1000000.0) / 1000.0 + " seconds");
 		System.out.println(processState.toString());
 	}

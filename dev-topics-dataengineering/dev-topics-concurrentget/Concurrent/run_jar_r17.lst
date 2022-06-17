@@ -7,10 +7,11 @@
 SequentialRunner - Run tasks one-at-a-time
   -- Java Version: 18.0.1.1
   -- Java VM     : Java HotSpot(TM) 64-Bit Server VM
+  -- IS HEAVY                     : false
   -- Processing 30 tasks
 
 **** Caught and ignoring error Planned failure for task remote1
- -- Elapsed: 37.69 seconds
+ -- Elapsed: 37.685 seconds
 ProcessState [taskCount      : 30,
               failedTaskCount: 1,
               byteCount      : 33294240,
@@ -22,10 +23,11 @@ ConcurrentRunner - Run tasks concurrently
   -- CPU Cores                    : 8
   -- CommonPool Parallelism       : 7
   -- CommonPool shared Parallelism: 7
+  -- IS HEAVY                     : false
   -- Processing 30 tasks
 
 **** Caught and ignoring error Planned failure for task remote1
- -- Elapsed: 5.232 seconds
+ -- Elapsed: 5.235 seconds
 ProcessState [taskCount      : 30,
               failedTaskCount: 1,
               byteCount      : 33294240,
@@ -37,10 +39,11 @@ ConcurrentRunner - Run tasks concurrently with more threads
   -- CPU Cores                    : 8
   -- CommonPool Parallelism update: 20
   -- CommonPool shared Parallelism: 20
+  -- IS HEAVY                     : false
   -- Processing 30 tasks
 
 **** Caught and ignoring error Planned failure for task remote1
- -- Elapsed: 3.054 seconds
+ -- Elapsed: 2.643 seconds
 ProcessState [taskCount      : 30,
               failedTaskCount: 1,
               byteCount      : 33294240,
