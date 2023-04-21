@@ -1,25 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-        <modelVersion>4.0.0</modelVersion>
-<!-- Copyright (c) 2020. Donald Trummell. All Rights Reserved. Permission
+<!-- Copyright (c) 2023. Donald Trummell. All Rights Reserved. Permission
         to use, copy, modify, and distribute this software and its documentation
         for educational, research, and not-for-profit purposes, without fee and without
         a signed licensing agreement, is hereby granted, provided that the above
         copyright notice, and this paragraph, appear in all copies, modifications,
         and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
 
         <parent>
                 <groupId>demodev.topics</groupId>
-                <artifactId>demodev-topics-algorithms-parent</artifactId>
+                <artifactId>demodev-topics-dataengineering-parent</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
         </parent>
 
-        <artifactId>demodev-topics-cpuconcurrent</artifactId>
+        <artifactId>demodev-topics-parallel</artifactId>
         <!-- <version>1.0.0-SNAPSHOT</version> -->
         <packaging>jar</packaging>
-        <name>CPU intensive concurrent computation</name>
+        <name>Stream Based Parallel Computation</name>
 
-        <description>Concurrently compute CPU intensive values - one per core</description>
+        <description>Multi-threaded Compute and Wait </description>
 
         <properties>
         </properties>
