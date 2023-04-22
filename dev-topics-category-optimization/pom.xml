@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2021. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2023. Donald Trummell. All Rights Reserved. Permission 
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -56,7 +56,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
+			<artifactId>slf4j-reload4j</artifactId>
 			<version>${slf4j.log4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>

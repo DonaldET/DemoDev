@@ -73,13 +73,12 @@
 		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
 		<!-- Open Source Versions -->
 		<args4j.version>2.33</args4j.version>
-		<commons-lang.version>2.6</commons-lang.version>
 		<commons-lang3.version>3.12.0</commons-lang3.version>
 		<commons-io.version>2.11.0</commons-io.version>
 		<freemarker.version>2.3.32</freemarker.version>
 		<log4j2.version>2.20.0</log4j2.version>
-		<slf4j.log4j.api.version>2.0.6</slf4j.log4j.api.version>
-		<slf4j.log4j.version>2.0.6</slf4j.log4j.version>
+		<slf4j.log4j.api.version>2.0.7</slf4j.log4j.api.version>
+		<slf4j.log4j.version>2.0.7</slf4j.log4j.version>
 		<!-- Spring Framework Versions -->
 		<spring.framework.version>4.3.30.RELEASE</spring.framework.version>
 		<spring.integration.version>4.3.24.RELEASE</spring.integration.version>
