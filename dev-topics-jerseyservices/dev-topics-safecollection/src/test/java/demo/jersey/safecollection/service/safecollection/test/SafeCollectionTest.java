@@ -17,7 +17,6 @@ import javax.ws.rs.client.WebTarget;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import demo.jersey.safecollection.service.SafeCollection;
@@ -50,7 +49,6 @@ public class SafeCollectionTest {
 		server.stop();
 	}
 
-	@Ignore // Only good to Java 11
 	@Test
 	public void testVersion() {
 		final String responseMsg = target.path("safecollection").request().get(String.class);
