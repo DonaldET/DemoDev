@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2021. Donald Trummell. All Rights Reserved. Permission 
+<!-- Copyright (c) 2023. Donald Trummell. All Rights Reserved. Permission
 	to use, copy, modify, and distribute this software and its documentation 
 	for educational, research, and not-for-profit purposes, without fee and without 
 	a signed licensing agreement, is hereby granted, provided that the above 
@@ -31,7 +31,7 @@
 
 	<properties>
 		<war.builder.version>3.3.2</war.builder.version>
-		<jersey.version>2.35</jersey.version>
+		<jersey.version>2.40</jersey.version>
 		<xml.bind.version>2.3.1</xml.bind.version>
 		<safecollection.version>1.0.0-SNAPSHOT</safecollection.version>
 		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>
