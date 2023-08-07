@@ -17,7 +17,7 @@
         <artifactId>demodev-topics-sparkinstall</artifactId>
         <!-- <version>1.0.0-SNAPSHOT</version> -->
         <packaging>jar</packaging>
-        <name>Spark Tests</name>
+        <name>Spark Install Tests</name>
 
         <description>Apacha Spark Local Install and Tests</description>
 
