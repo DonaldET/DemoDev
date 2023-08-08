@@ -26,9 +26,11 @@ def smoke2(name):
     #
     print("\n***************************************")
     print("**** Write DataFrame as a CSV file ****")
+    fileName = '/tmp/spark_output/smoketest'
     print("***************************************")
+    print(f"  -- File: {fileName}")
     df.coalesce(1).write.format("csv").options(header='True', delimiter=',').mode('overwrite').save(
-        "/tmp/spark_output/smoketest")
+        fileName)
     print("*** DataFrame created as a CSV file ***")
     print("***************************************")
 
