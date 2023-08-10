@@ -1,4 +1,4 @@
-# This is a Local Spark Smoke Test taken from
+# This is a Local Spark Smoke Test collection, in p[art taken from
 # https://github.com/spark-examples/pyspark-examples/blob/master/convert-column-python-list.py
 
 from pyspark.sql import SparkSession
@@ -27,6 +27,7 @@ def smoke2(name):
     print("\n***************************************")
     print("**** Write DataFrame as a CSV file ****")
     fileName = '/tmp/spark_output/smoketest'
+    # fileName = 'file::///tmp/spark_output/smoketest'
     print("***************************************")
     print(f"  -- File: {fileName}")
     df.coalesce(1).write.format("csv").options(header='True', delimiter=',').mode('overwrite').save(

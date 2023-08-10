@@ -15,6 +15,8 @@ set x_path=%x_base:\scripts\=\%
 echo.   -- Driver Path: %x_path%
 echo.   -- Spark Home : %SPARK_HOME%
 
+set JAVA_HOME=%JAVA17_HOME%
+
 set x_sub=%SPARK_HOME%\bin\spark-submit --deploy-mode client
 set x_cmd=%x_sub% %x_path%%x_driver%
 echo. %x_cmd%
