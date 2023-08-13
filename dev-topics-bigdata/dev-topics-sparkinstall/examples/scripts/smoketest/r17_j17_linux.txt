@@ -1,0 +1,291 @@
+
+ Summit Spark Smoke Tests script using driver smoketest.py on D:\util\spark-3.4.1-bin-hadoop3-scala2.13 executing $0.cmd
+   -- Base Path  : D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\scripts\smoketest\
+   -- Driver Path: D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\
+   -- Spark Home : D:\util\spark-3.4.1-bin-hadoop3-scala2.13
+   -- Requested Executor Count: 4
+java version "17.0.6" 2023-01-17 LTS
+Java(TM) SE Runtime Environment (build 17.0.6+9-LTS-190)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.6+9-LTS-190, mixed mode, sharing)
+ D:\util\spark-3.4.1-bin-hadoop3-scala2.13\bin\spark-submit --deploy-mode client --num-executors 4 D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py
+23/08/10 15:54:50 INFO SparkContext: Running Spark version 3.4.1
+23/08/10 15:54:50 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+23/08/10 15:54:50 INFO ResourceUtils: ==============================================================
+23/08/10 15:54:50 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/08/10 15:54:50 INFO ResourceUtils: ==============================================================
+23/08/10 15:54:50 INFO SparkContext: Submitted application: CollectedSmokeTests
+23/08/10 15:54:50 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/08/10 15:54:50 INFO ResourceProfile: Limiting resource is cpu
+23/08/10 15:54:50 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/08/10 15:54:50 INFO SecurityManager: Changing view acls to: Don
+23/08/10 15:54:50 INFO SecurityManager: Changing modify acls to: Don
+23/08/10 15:54:50 INFO SecurityManager: Changing view acls groups to: 
+23/08/10 15:54:50 INFO SecurityManager: Changing modify acls groups to: 
+23/08/10 15:54:50 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Don; groups with view permissions: EMPTY; users with modify permissions: Don; groups with modify permissions: EMPTY
+23/08/10 15:54:51 INFO Utils: Successfully started service 'sparkDriver' on port 58100.
+23/08/10 15:54:51 INFO SparkEnv: Registering MapOutputTracker
+23/08/10 15:54:51 INFO SparkEnv: Registering BlockManagerMaster
+23/08/10 15:54:51 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/08/10 15:54:51 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/08/10 15:54:51 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/08/10 15:54:51 INFO DiskBlockManager: Created local directory at D:\Temp\blockmgr-51adae16-15c4-402a-9fc1-b278fe9011ae
+23/08/10 15:54:51 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+23/08/10 15:54:51 INFO SparkEnv: Registering OutputCommitCoordinator
+23/08/10 15:54:51 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+23/08/10 15:54:51 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/08/10 15:54:52 INFO Executor: Starting executor ID driver on host THOR.mshome.net
+23/08/10 15:54:52 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+23/08/10 15:54:52 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 58101.
+23/08/10 15:54:52 INFO NettyBlockTransferService: Server created on THOR.mshome.net:58101
+23/08/10 15:54:52 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/08/10 15:54:52 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, THOR.mshome.net, 58101, None)
+23/08/10 15:54:52 INFO BlockManagerMasterEndpoint: Registering block manager THOR.mshome.net:58101 with 434.4 MiB RAM, BlockManagerId(driver, THOR.mshome.net, 58101, None)
+23/08/10 15:54:52 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, THOR.mshome.net, 58101, None)
+23/08/10 15:54:52 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, THOR.mshome.net, 58101, None)
+
+***************************
+*** PySpark Smoke Tests ***
+***************************
+Requested Executor Count: 4
+Actual Executor Count   : 1
+Smoke Test 2: Create a DataFrame
+23/08/10 15:54:52 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+23/08/10 15:54:52 INFO SharedState: Warehouse path is 'file:/D:/GitHub/DemoDev/dev-topics-bigdata/dev-topics-sparkinstall/examples/scripts/smoketest/spark-warehouse'.
+23/08/10 15:54:56 INFO CodeGenerator: Code generated in 251.7826 ms
+23/08/10 15:54:56 INFO SparkContext: Starting job: showString at NativeMethodAccessorImpl.java:0
+23/08/10 15:54:56 INFO DAGScheduler: Got job 0 (showString at NativeMethodAccessorImpl.java:0) with 1 output partitions
+23/08/10 15:54:56 INFO DAGScheduler: Final stage: ResultStage 0 (showString at NativeMethodAccessorImpl.java:0)
+23/08/10 15:54:56 INFO DAGScheduler: Parents of final stage: List()
+23/08/10 15:54:56 INFO DAGScheduler: Missing parents: List()
+23/08/10 15:54:56 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[6] at showString at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/08/10 15:54:57 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 13.0 KiB, free 434.4 MiB)
+23/08/10 15:54:57 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 6.7 KiB, free 434.4 MiB)
+23/08/10 15:54:57 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on THOR.mshome.net:58101 (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:54:57 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1535
+23/08/10 15:54:57 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[6] at showString at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+23/08/10 15:54:57 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+23/08/10 15:54:57 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (THOR.mshome.net, executor driver, partition 0, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:54:57 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+23/08/10 15:54:58 INFO PythonRunner: Times: total = 856, boot = 800, init = 56, finish = 0
+23/08/10 15:54:58 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 1975 bytes result sent to driver
+23/08/10 15:54:58 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1052 ms on THOR.mshome.net (executor driver) (1/1)
+23/08/10 15:54:58 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+23/08/10 15:54:58 INFO PythonAccumulatorV2: Connected to AccumulatorServer at host: 127.0.0.1 port: 58102
+23/08/10 15:54:58 INFO DAGScheduler: ResultStage 0 (showString at NativeMethodAccessorImpl.java:0) finished in 1.317 s
+23/08/10 15:54:58 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+23/08/10 15:54:58 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+23/08/10 15:54:58 INFO DAGScheduler: Job 0 finished: showString at NativeMethodAccessorImpl.java:0, took 1.372075 s
+23/08/10 15:54:58 INFO SparkContext: Starting job: showString at NativeMethodAccessorImpl.java:0
+23/08/10 15:54:58 INFO DAGScheduler: Got job 1 (showString at NativeMethodAccessorImpl.java:0) with 4 output partitions
+23/08/10 15:54:58 INFO DAGScheduler: Final stage: ResultStage 1 (showString at NativeMethodAccessorImpl.java:0)
+23/08/10 15:54:58 INFO DAGScheduler: Parents of final stage: List()
+23/08/10 15:54:58 INFO DAGScheduler: Missing parents: List()
+23/08/10 15:54:58 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[6] at showString at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/08/10 15:54:58 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 13.0 KiB, free 434.4 MiB)
+23/08/10 15:54:58 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 6.7 KiB, free 434.4 MiB)
+23/08/10 15:54:58 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on THOR.mshome.net:58101 (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:54:58 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1535
+23/08/10 15:54:58 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 1 (MapPartitionsRDD[6] at showString at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(1, 2, 3, 4))
+23/08/10 15:54:58 INFO TaskSchedulerImpl: Adding task set 1.0 with 4 tasks resource profile 0
+23/08/10 15:54:58 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (THOR.mshome.net, executor driver, partition 1, PROCESS_LOCAL, 7536 bytes) 
+23/08/10 15:54:58 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 2) (THOR.mshome.net, executor driver, partition 2, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:54:58 INFO TaskSetManager: Starting task 2.0 in stage 1.0 (TID 3) (THOR.mshome.net, executor driver, partition 3, PROCESS_LOCAL, 7537 bytes) 
+23/08/10 15:54:58 INFO TaskSetManager: Starting task 3.0 in stage 1.0 (TID 4) (THOR.mshome.net, executor driver, partition 4, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:54:58 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+23/08/10 15:54:58 INFO Executor: Running task 2.0 in stage 1.0 (TID 3)
+23/08/10 15:54:58 INFO Executor: Running task 1.0 in stage 1.0 (TID 2)
+23/08/10 15:54:58 INFO Executor: Running task 3.0 in stage 1.0 (TID 4)
+23/08/10 15:54:58 INFO BlockManagerInfo: Removed broadcast_0_piece0 on THOR.mshome.net:58101 in memory (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:54:59 INFO PythonRunner: Times: total = 876, boot = 827, init = 49, finish = 0
+23/08/10 15:55:00 INFO PythonRunner: Times: total = 1665, boot = 1599, init = 66, finish = 0
+23/08/10 15:55:00 INFO PythonRunner: Times: total = 2465, boot = 2377, init = 88, finish = 0
+23/08/10 15:55:01 INFO Executor: Finished task 2.0 in stage 1.0 (TID 3). 2004 bytes result sent to driver
+23/08/10 15:55:01 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 2043 bytes result sent to driver
+23/08/10 15:55:01 INFO Executor: Finished task 1.0 in stage 1.0 (TID 2). 1932 bytes result sent to driver
+23/08/10 15:55:01 INFO TaskSetManager: Finished task 2.0 in stage 1.0 (TID 3) in 3176 ms on THOR.mshome.net (executor driver) (1/4)
+23/08/10 15:55:01 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 3181 ms on THOR.mshome.net (executor driver) (2/4)
+23/08/10 15:55:01 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 2) in 3180 ms on THOR.mshome.net (executor driver) (3/4)
+23/08/10 15:55:01 INFO PythonRunner: Times: total = 3210, boot = 3144, init = 66, finish = 0
+23/08/10 15:55:01 INFO Executor: Finished task 3.0 in stage 1.0 (TID 4). 1975 bytes result sent to driver
+23/08/10 15:55:01 INFO TaskSetManager: Finished task 3.0 in stage 1.0 (TID 4) in 3245 ms on THOR.mshome.net (executor driver) (4/4)
+23/08/10 15:55:01 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+23/08/10 15:55:01 INFO DAGScheduler: ResultStage 1 (showString at NativeMethodAccessorImpl.java:0) finished in 3.267 s
+23/08/10 15:55:01 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+23/08/10 15:55:01 INFO TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+23/08/10 15:55:01 INFO DAGScheduler: Job 1 finished: showString at NativeMethodAccessorImpl.java:0, took 3.271003 s
+23/08/10 15:55:01 INFO SparkContext: Starting job: showString at NativeMethodAccessorImpl.java:0
+23/08/10 15:55:01 INFO DAGScheduler: Got job 2 (showString at NativeMethodAccessorImpl.java:0) with 3 output partitions
+23/08/10 15:55:01 INFO DAGScheduler: Final stage: ResultStage 2 (showString at NativeMethodAccessorImpl.java:0)
+23/08/10 15:55:01 INFO DAGScheduler: Parents of final stage: List()
+23/08/10 15:55:01 INFO DAGScheduler: Missing parents: List()
+23/08/10 15:55:01 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[6] at showString at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/08/10 15:55:01 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 13.0 KiB, free 434.4 MiB)
+23/08/10 15:55:01 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 6.7 KiB, free 434.4 MiB)
+23/08/10 15:55:01 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on THOR.mshome.net:58101 (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:55:01 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1535
+23/08/10 15:55:01 INFO DAGScheduler: Submitting 3 missing tasks from ResultStage 2 (MapPartitionsRDD[6] at showString at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(5, 6, 7))
+23/08/10 15:55:01 INFO TaskSchedulerImpl: Adding task set 2.0 with 3 tasks resource profile 0
+23/08/10 15:55:01 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 5) (THOR.mshome.net, executor driver, partition 5, PROCESS_LOCAL, 7540 bytes) 
+23/08/10 15:55:01 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 6) (THOR.mshome.net, executor driver, partition 6, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:55:01 INFO TaskSetManager: Starting task 2.0 in stage 2.0 (TID 7) (THOR.mshome.net, executor driver, partition 7, PROCESS_LOCAL, 7536 bytes) 
+23/08/10 15:55:01 INFO Executor: Running task 0.0 in stage 2.0 (TID 5)
+23/08/10 15:55:01 INFO Executor: Running task 2.0 in stage 2.0 (TID 7)
+23/08/10 15:55:01 INFO Executor: Running task 1.0 in stage 2.0 (TID 6)
+23/08/10 15:55:02 INFO PythonRunner: Times: total = 813, boot = 766, init = 47, finish = 0
+23/08/10 15:55:03 INFO PythonRunner: Times: total = 1608, boot = 1551, init = 57, finish = 0
+23/08/10 15:55:03 INFO Executor: Finished task 0.0 in stage 2.0 (TID 5). 1961 bytes result sent to driver
+23/08/10 15:55:03 INFO Executor: Finished task 1.0 in stage 2.0 (TID 6). 1889 bytes result sent to driver
+23/08/10 15:55:03 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 5) in 2318 ms on THOR.mshome.net (executor driver) (1/3)
+23/08/10 15:55:03 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 6) in 2317 ms on THOR.mshome.net (executor driver) (2/3)
+23/08/10 15:55:04 INFO PythonRunner: Times: total = 2350, boot = 2302, init = 48, finish = 0
+23/08/10 15:55:04 INFO Executor: Finished task 2.0 in stage 2.0 (TID 7). 1957 bytes result sent to driver
+23/08/10 15:55:04 INFO TaskSetManager: Finished task 2.0 in stage 2.0 (TID 7) in 2372 ms on THOR.mshome.net (executor driver) (3/3)
+23/08/10 15:55:04 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+23/08/10 15:55:04 INFO DAGScheduler: ResultStage 2 (showString at NativeMethodAccessorImpl.java:0) finished in 2.387 s
+23/08/10 15:55:04 INFO DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+23/08/10 15:55:04 INFO TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+23/08/10 15:55:04 INFO DAGScheduler: Job 2 finished: showString at NativeMethodAccessorImpl.java:0, took 2.391636 s
+23/08/10 15:55:04 INFO CodeGenerator: Code generated in 38.0943 ms
++---------+--------+-------+-----+
+|firstname|lastname|country|state|
++---------+--------+-------+-----+
+|    James|   Smith|    USA|   CA|
+|  Michael|    Rose|    USA|   NY|
+|   Robert|Williams|    USA|   CA|
+|    Maria|   Jones|    USA|   FL|
++---------+--------+-------+-----+
+
+
+root
+ |-- firstname: string (nullable = true)
+ |-- lastname: string (nullable = true)
+ |-- country: string (nullable = true)
+ |-- state: string (nullable = true)
+
+
+23/08/10 15:55:04 INFO SparkContext: Starting job: collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27
+23/08/10 15:55:04 INFO DAGScheduler: Got job 3 (collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27) with 8 output partitions
+23/08/10 15:55:04 INFO DAGScheduler: Final stage: ResultStage 3 (collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27)
+23/08/10 15:55:04 INFO DAGScheduler: Parents of final stage: List()
+23/08/10 15:55:04 INFO DAGScheduler: Missing parents: List()
+23/08/10 15:55:04 INFO DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[8] at collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27), which has no missing parents
+23/08/10 15:55:04 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 13.0 KiB, free 434.3 MiB)
+23/08/10 15:55:04 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 6.7 KiB, free 434.3 MiB)
+23/08/10 15:55:04 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on THOR.mshome.net:58101 (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:55:04 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1535
+23/08/10 15:55:04 INFO DAGScheduler: Submitting 8 missing tasks from ResultStage 3 (MapPartitionsRDD[8] at collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7))
+23/08/10 15:55:04 INFO TaskSchedulerImpl: Adding task set 3.0 with 8 tasks resource profile 0
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 8) (THOR.mshome.net, executor driver, partition 0, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 1.0 in stage 3.0 (TID 9) (THOR.mshome.net, executor driver, partition 1, PROCESS_LOCAL, 7536 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 2.0 in stage 3.0 (TID 10) (THOR.mshome.net, executor driver, partition 2, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 3.0 in stage 3.0 (TID 11) (THOR.mshome.net, executor driver, partition 3, PROCESS_LOCAL, 7537 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 4.0 in stage 3.0 (TID 12) (THOR.mshome.net, executor driver, partition 4, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 5.0 in stage 3.0 (TID 13) (THOR.mshome.net, executor driver, partition 5, PROCESS_LOCAL, 7540 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 6.0 in stage 3.0 (TID 14) (THOR.mshome.net, executor driver, partition 6, PROCESS_LOCAL, 7481 bytes) 
+23/08/10 15:55:04 INFO TaskSetManager: Starting task 7.0 in stage 3.0 (TID 15) (THOR.mshome.net, executor driver, partition 7, PROCESS_LOCAL, 7536 bytes) 
+23/08/10 15:55:04 INFO Executor: Running task 0.0 in stage 3.0 (TID 8)
+23/08/10 15:55:04 INFO Executor: Running task 2.0 in stage 3.0 (TID 10)
+23/08/10 15:55:04 INFO Executor: Running task 1.0 in stage 3.0 (TID 9)
+23/08/10 15:55:04 INFO Executor: Running task 3.0 in stage 3.0 (TID 11)
+23/08/10 15:55:04 INFO Executor: Running task 5.0 in stage 3.0 (TID 13)
+23/08/10 15:55:04 INFO Executor: Running task 4.0 in stage 3.0 (TID 12)
+23/08/10 15:55:04 INFO Executor: Running task 7.0 in stage 3.0 (TID 15)
+23/08/10 15:55:04 INFO Executor: Running task 6.0 in stage 3.0 (TID 14)
+23/08/10 15:55:04 INFO BlockManagerInfo: Removed broadcast_2_piece0 on THOR.mshome.net:58101 in memory (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:55:05 INFO PythonRunner: Times: total = 849, boot = 791, init = 58, finish = 0
+23/08/10 15:55:05 INFO PythonRunner: Times: total = 1637, boot = 1579, init = 58, finish = 0
+23/08/10 15:55:06 INFO PythonRunner: Times: total = 2442, boot = 2383, init = 59, finish = 0
+23/08/10 15:55:07 INFO PythonRunner: Times: total = 3210, boot = 3152, init = 58, finish = 0
+23/08/10 15:55:08 INFO PythonRunner: Times: total = 4011, boot = 3943, init = 68, finish = 0
+23/08/10 15:55:08 INFO PythonRunner: Times: total = 4788, boot = 4731, init = 57, finish = 0
+23/08/10 15:55:09 INFO PythonRunner: Times: total = 5574, boot = 5516, init = 58, finish = 0
+23/08/10 15:55:10 INFO Executor: Finished task 4.0 in stage 3.0 (TID 12). 2054 bytes result sent to driver
+23/08/10 15:55:10 INFO Executor: Finished task 1.0 in stage 3.0 (TID 9). 2079 bytes result sent to driver
+23/08/10 15:55:10 INFO Executor: Finished task 7.0 in stage 3.0 (TID 15). 2036 bytes result sent to driver
+23/08/10 15:55:10 INFO Executor: Finished task 2.0 in stage 3.0 (TID 10). 2011 bytes result sent to driver
+23/08/10 15:55:10 INFO Executor: Finished task 6.0 in stage 3.0 (TID 14). 2011 bytes result sent to driver
+23/08/10 15:55:10 INFO Executor: Finished task 3.0 in stage 3.0 (TID 11). 2083 bytes result sent to driver
+23/08/10 15:55:10 INFO Executor: Finished task 5.0 in stage 3.0 (TID 13). 2126 bytes result sent to driver
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 7.0 in stage 3.0 (TID 15) in 6314 ms on THOR.mshome.net (executor driver) (1/8)
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 4.0 in stage 3.0 (TID 12) in 6316 ms on THOR.mshome.net (executor driver) (2/8)
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 3.0 in stage 3.0 (TID 11) in 6318 ms on THOR.mshome.net (executor driver) (3/8)
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 5.0 in stage 3.0 (TID 13) in 6319 ms on THOR.mshome.net (executor driver) (4/8)
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 1.0 in stage 3.0 (TID 9) in 6322 ms on THOR.mshome.net (executor driver) (5/8)
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 6.0 in stage 3.0 (TID 14) in 6320 ms on THOR.mshome.net (executor driver) (6/8)
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 2.0 in stage 3.0 (TID 10) in 6325 ms on THOR.mshome.net (executor driver) (7/8)
+23/08/10 15:55:10 INFO BlockManagerInfo: Removed broadcast_1_piece0 on THOR.mshome.net:58101 in memory (size: 6.7 KiB, free: 434.4 MiB)
+23/08/10 15:55:10 INFO PythonRunner: Times: total = 6359, boot = 6289, init = 70, finish = 0
+23/08/10 15:55:10 INFO Executor: Finished task 0.0 in stage 3.0 (TID 8). 2011 bytes result sent to driver
+23/08/10 15:55:10 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 8) in 6390 ms on THOR.mshome.net (executor driver) (8/8)
+23/08/10 15:55:10 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+23/08/10 15:55:10 INFO DAGScheduler: ResultStage 3 (collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27) finished in 6.399 s
+23/08/10 15:55:10 INFO DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+23/08/10 15:55:10 INFO TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+23/08/10 15:55:10 INFO DAGScheduler: Job 3 finished: collect at D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py:27, took 6.403529 s
+dataframe : [Row(firstname='James', lastname='Smith', country='USA', state='CA'), Row(firstname='Michael', lastname='Rose', country='USA', state='NY'), Row(firstname='Robert', lastname='Williams', country='USA', state='CA'), Row(firstname='Maria', lastname='Jones', country='USA', state='FL')]
+partitions: 8
+
+***************************************
+**** Write DataFrame as a CSV file ****
+***************************************
+  -- File: /tmp/spark_output/smoketest
+23/08/10 15:55:10 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/08/10 15:55:10 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/08/10 15:55:10 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+23/08/10 15:55:10 INFO SparkContext: Starting job: save at NativeMethodAccessorImpl.java:0
+23/08/10 15:55:10 INFO DAGScheduler: Got job 4 (save at NativeMethodAccessorImpl.java:0) with 1 output partitions
+23/08/10 15:55:10 INFO DAGScheduler: Final stage: ResultStage 4 (save at NativeMethodAccessorImpl.java:0)
+23/08/10 15:55:10 INFO DAGScheduler: Parents of final stage: List()
+23/08/10 15:55:10 INFO DAGScheduler: Missing parents: List()
+23/08/10 15:55:10 INFO DAGScheduler: Submitting ResultStage 4 (MapPartitionsRDD[15] at save at NativeMethodAccessorImpl.java:0), which has no missing parents
+23/08/10 15:55:10 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 215.8 KiB, free 434.2 MiB)
+23/08/10 15:55:10 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 78.5 KiB, free 434.1 MiB)
+23/08/10 15:55:10 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on THOR.mshome.net:58101 (size: 78.5 KiB, free: 434.3 MiB)
+23/08/10 15:55:10 INFO SparkContext: Created broadcast 4 from broadcast at DAGScheduler.scala:1535
+23/08/10 15:55:10 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 4 (MapPartitionsRDD[15] at save at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+23/08/10 15:55:10 INFO TaskSchedulerImpl: Adding task set 4.0 with 1 tasks resource profile 0
+23/08/10 15:55:10 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 16) (THOR.mshome.net, executor driver, partition 0, PROCESS_LOCAL, 8158 bytes) 
+23/08/10 15:55:10 INFO Executor: Running task 0.0 in stage 4.0 (TID 16)
+23/08/10 15:55:11 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+23/08/10 15:55:11 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+23/08/10 15:55:11 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+23/08/10 15:55:11 INFO PythonRunner: Times: total = 819, boot = 780, init = 39, finish = 0
+23/08/10 15:55:12 INFO PythonRunner: Times: total = 825, boot = 781, init = 44, finish = 0
+23/08/10 15:55:13 INFO PythonRunner: Times: total = 808, boot = 751, init = 57, finish = 0
+23/08/10 15:55:14 INFO PythonRunner: Times: total = 815, boot = 774, init = 41, finish = 0
+23/08/10 15:55:15 INFO PythonRunner: Times: total = 806, boot = 766, init = 40, finish = 0
+23/08/10 15:55:16 INFO PythonRunner: Times: total = 802, boot = 763, init = 39, finish = 0
+23/08/10 15:55:16 INFO PythonRunner: Times: total = 910, boot = 866, init = 44, finish = 0
+23/08/10 15:55:17 INFO PythonRunner: Times: total = 832, boot = 776, init = 56, finish = 0
+23/08/10 15:55:17 INFO FileOutputCommitter: Saved output of task 'attempt_202308101555105525370810589789126_0004_m_000000_16' to file:/tmp/spark_output/smoketest/_temporary/0/task_202308101555105525370810589789126_0004_m_000000
+23/08/10 15:55:17 INFO SparkHadoopMapRedUtil: attempt_202308101555105525370810589789126_0004_m_000000_16: Committed. Elapsed time: 5 ms.
+23/08/10 15:55:17 INFO Executor: Finished task 0.0 in stage 4.0 (TID 16). 3219 bytes result sent to driver
+23/08/10 15:55:17 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 16) in 6872 ms on THOR.mshome.net (executor driver) (1/1)
+23/08/10 15:55:17 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool 
+23/08/10 15:55:17 INFO DAGScheduler: ResultStage 4 (save at NativeMethodAccessorImpl.java:0) finished in 6.948 s
+23/08/10 15:55:17 INFO DAGScheduler: Job 4 is finished. Cancelling potential speculative or zombie tasks for this job
+23/08/10 15:55:17 INFO TaskSchedulerImpl: Killing all running tasks in stage 4: Stage finished
+23/08/10 15:55:17 INFO DAGScheduler: Job 4 finished: save at NativeMethodAccessorImpl.java:0, took 6.953461 s
+23/08/10 15:55:17 INFO FileFormatWriter: Start to commit write Job 45dd50b1-e54b-4cd4-b252-86608e92453c.
+23/08/10 15:55:17 INFO FileFormatWriter: Write Job 45dd50b1-e54b-4cd4-b252-86608e92453c committed. Elapsed time: 31 ms.
+23/08/10 15:55:17 INFO FileFormatWriter: Finished processing stats for write job 45dd50b1-e54b-4cd4-b252-86608e92453c.
+*** DataFrame created as a CSV file ***
+***************************************
+
+Smoke Test2 Done
+PySpark Smoke Tests Done.
+23/08/10 15:55:17 INFO SparkContext: SparkContext is stopping with exitCode 0.
+23/08/10 15:55:17 INFO SparkUI: Stopped Spark web UI at http://THOR.mshome.net:4040
+23/08/10 15:55:17 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+23/08/10 15:55:17 INFO MemoryStore: MemoryStore cleared
+23/08/10 15:55:17 INFO BlockManager: BlockManager stopped
+23/08/10 15:55:17 INFO BlockManagerMaster: BlockManagerMaster stopped
+23/08/10 15:55:17 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+23/08/10 15:55:17 INFO SparkContext: Successfully stopped SparkContext
+23/08/10 15:55:18 INFO ShutdownHookManager: Shutdown hook called
+23/08/10 15:55:18 INFO ShutdownHookManager: Deleting directory D:\Temp\spark-3cbff12e-fc61-4d1b-ba39-e49fbf446d9d\pyspark-d3cebb95-3fdd-4b94-82e2-29e18a1718c5
+23/08/10 15:55:18 INFO ShutdownHookManager: Deleting directory C:\Users\Don\AppData\Local\Temp\spark-3f4f41f5-ec01-43a1-948b-fcb052bc659e
+23/08/10 15:55:18 INFO ShutdownHookManager: Deleting directory D:\Temp\spark-3cbff12e-fc61-4d1b-ba39-e49fbf446d9d
+
+ Smoke Tests Script Done
+

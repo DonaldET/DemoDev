@@ -1,0 +1,8 @@
+﻿id,fname,lname,reward_card_num,joined,address1,state,country,zipcode
+200001,Matlalihuitl,Rackett ,111111,2019-11-18,123 Main,WA,US,98101
+200002,Nicolas,"Belarde Ross",222222,2001-01-01,125 Main,WA,US,98101
+200003,Carmello,Wygal,333333,2021-03-05,923 Main,WA,us,98101
+200004,Yazmin,Pozzuoli,444444,2015-08-19,100 Main,WA,US,98101-1234
+200005,Cate,Hinde,555555,2020-12-31,444 Main,WA,US,98101
+200006,Astera,Loeschner,666666,2021-07-12,,AZ,US,85001
+200007,Maeja,Kempf,777777,2017-11-1,888 Mani,MB,CA,"R0G 0J0"

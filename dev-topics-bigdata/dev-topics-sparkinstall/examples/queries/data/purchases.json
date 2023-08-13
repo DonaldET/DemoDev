@@ -1,0 +1,277 @@
+[
+    {
+      "id": "164651478631223455788978942317",
+      "InsuranceProvider": "Embroker",
+      "Type": {
+        "Client": {
+          "PaidIn": {
+            "Insuranceid": "97331549875122744335422",
+            "Insurancedesc": "Magic happens here",
+            "purchaseditems": [
+              {
+                "InsuranceNumber": "1",
+                "InsuranceLabel": "DNO",
+                "Insurancequantity": 1,
+                "Insuranceprice": 345,
+                "discountsreceived": [
+                  {
+                    "amount": 495,
+                    "description": "Item 1, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 2495,
+                        "description": "Insurance item 1, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "2",
+                "InsuranceLabel": "LPL",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": -295,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 495,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "3",
+                "InsuranceLabel": "LPL",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 295,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 400,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "4",
+                "InsuranceLabel": "LPL",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 295,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 335,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "5",
+                "InsuranceLabel": "Employment Practices Liability",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 1295,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 195,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "6",
+                "InsuranceLabel": "Employment Practices Liability",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 805,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 501,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "7",
+                "InsuranceLabel": "Employment Practices Liability",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 521,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 533,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "8",
+                "InsuranceLabel": "Employment Practices Liability",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 422,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 333,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "9",
+                "InsuranceLabel": "Employment Practices Liability",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 444,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 666,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "InsuranceNumber": "10",
+                "InsuranceLabel": "DNO",
+                "Insurancequantity": 2,
+                "Insuranceprice": 945,
+                "discountsreceived": [
+                  {
+                    "amount": 10,
+                    "description": "Item 2, Discount 1"
+                  }
+                ],
+                "childItems": [
+                  {
+                    "InsuranceNumber": "1",
+                    "InsuranceLabel": "Cyber",
+                    "Insurancequantity": 1,
+                    "Insuranceprice": 0,
+                    "discountsreceived": [
+                      {
+                        "amount": 63,
+                        "description": "Insurance item 2, Discount 1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "eventTime": "2020-05-19T01:59:10.379Z"
+    }
+  ]
