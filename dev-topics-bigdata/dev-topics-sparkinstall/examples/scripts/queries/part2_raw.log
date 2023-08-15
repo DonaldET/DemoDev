@@ -1,0 +1,225 @@
+
+ Summit Spark Queries II script using driver part2.py on D:\util\spark-3.4.1-bin-hadoop3-scala2.13 executing $0.cmd
+   -- Base Path  : D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\scripts\queries\
+   -- Driver Path: D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\queries\
+   -- Spark Home : D:\util\spark-3.4.1-bin-hadoop3-scala2.13
+java version "17.0.6" 2023-01-17 LTS
+Java(TM) SE Runtime Environment (build 17.0.6+9-LTS-190)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.6+9-LTS-190, mixed mode, sharing)
+ D:\util\spark-3.4.1-bin-hadoop3-scala2.13\bin\spark-submit D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\queries\part2.py --files ..\..\queries\data\customers.csv, ..\..\queries\data\orders.csv, ..\..\queries\data\purchases.json
+23/08/14 19:08:58 INFO SparkContext: Running Spark version 3.4.1
+23/08/14 19:08:58 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+23/08/14 19:08:58 INFO ResourceUtils: ==============================================================
+23/08/14 19:08:58 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/08/14 19:08:58 INFO ResourceUtils: ==============================================================
+23/08/14 19:08:58 INFO SparkContext: Submitted application: part2_SQL
+23/08/14 19:08:58 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/08/14 19:08:58 INFO ResourceProfile: Limiting resource is cpu
+23/08/14 19:08:58 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/08/14 19:08:59 INFO SecurityManager: Changing view acls to: Don
+23/08/14 19:08:59 INFO SecurityManager: Changing modify acls to: Don
+23/08/14 19:08:59 INFO SecurityManager: Changing view acls groups to: 
+23/08/14 19:08:59 INFO SecurityManager: Changing modify acls groups to: 
+23/08/14 19:08:59 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Don; groups with view permissions: EMPTY; users with modify permissions: Don; groups with modify permissions: EMPTY
+23/08/14 19:09:00 INFO Utils: Successfully started service 'sparkDriver' on port 61190.
+23/08/14 19:09:00 INFO SparkEnv: Registering MapOutputTracker
+23/08/14 19:09:00 INFO SparkEnv: Registering BlockManagerMaster
+23/08/14 19:09:00 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/08/14 19:09:00 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/08/14 19:09:00 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/08/14 19:09:00 INFO DiskBlockManager: Created local directory at D:\Temp\blockmgr-bf68b40b-8aab-4a2f-9674-55fdd101bb62
+23/08/14 19:09:00 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+23/08/14 19:09:00 INFO SparkEnv: Registering OutputCommitCoordinator
+23/08/14 19:09:00 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+23/08/14 19:09:00 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/08/14 19:09:00 INFO Executor: Starting executor ID driver on host THOR
+23/08/14 19:09:00 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+23/08/14 19:09:01 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 61191.
+23/08/14 19:09:01 INFO NettyBlockTransferService: Server created on THOR:61191
+23/08/14 19:09:01 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/08/14 19:09:01 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, THOR, 61191, None)
+23/08/14 19:09:01 INFO BlockManagerMasterEndpoint: Registering block manager THOR:61191 with 434.4 MiB RAM, BlockManagerId(driver, THOR, 61191, None)
+23/08/14 19:09:01 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, THOR, 61191, None)
+23/08/14 19:09:01 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, THOR, 61191, None)
+**********Part -II Started **********
+ 'Checking Local File System'
+ Volume in drive D is DATA
+ Volume Serial Number is 20C0-7078
+
+ Directory of D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\scripts\queries
+
+08/14/2023  06:38 PM    <DIR>          .
+08/14/2023  06:38 PM    <DIR>          ..
+08/14/2023  02:18 PM               819 derby.log
+08/14/2023  02:18 PM    <DIR>          metastore_db
+08/14/2023  07:08 PM                 0 part2_raw.log
+08/13/2023  11:57 PM    <DIR>          spark-warehouse
+08/14/2023  05:25 PM               883 submit_queries_part1.cmd
+08/14/2023  05:25 PM               889 submit_queries_part2.cmd
+08/14/2023  05:24 PM               941 submit_queries_test1.cmd
+               5 File(s)          3,532 bytes
+               4 Dir(s)  950,716,264,448 bytes free
+ '--------------------'
+
+Load ../../queries/data/orders.csv and ../../queries/data/customers.csv
+
+../../queries/data/orders.csv Info
+root
+ |-- id: integer (nullable = true)
+ |-- store_id: integer (nullable = true)
+ |-- date: date (nullable = true)
+ |-- customer_id: integer (nullable = true)
+ |-- total_price: double (nullable = true)
+
+ -- Display
++------+--------+----------+-----------+-----------+
+|    id|store_id|      date|customer_id|total_price|
++------+--------+----------+-----------+-----------+
+|100001|    3001|2021-06-16|     200001|      15.95|
+|100002|    3001|2021-06-16|     200002|      31.24|
+|100003|    3001|2021-06-16|     200003|       2.13|
+|100004|    3001|2021-06-17|     200005|      12.09|
+|100005|    3001|2021-06-17|     200002|      38.52|
+|100006|    3001|2021-06-17|     200002|      38.52|
+|100007|    3001|2021-06-17|     200007|        1.4|
+|100008|    3001|2021-06-18|     200004|       91.2|
+|100009|    3001|2021-06-18|     200004|       3.45|
+|100010|    3001|2021-06-18|     200002|      18.71|
+|100011|    3001|2021-06-18|     200007|      12.11|
++------+--------+----------+-----------+-----------+
+
+
+../../queries/data/customers.csv Info
+root
+ |-- id: integer (nullable = true)
+ |-- fname: string (nullable = true)
+ |-- lname: string (nullable = true)
+ |-- reward_card_num: integer (nullable = true)
+ |-- joined: timestamp (nullable = true)
+ |-- address1: string (nullable = true)
+ |-- state: string (nullable = true)
+ |-- country: string (nullable = true)
+ |-- zipcode: string (nullable = true)
+
+ -- Display
++------+------------+------------+---------------+-------------------+--------+-----+-------+----------+
+|    id|       fname|       lname|reward_card_num|             joined|address1|state|country|   zipcode|
++------+------------+------------+---------------+-------------------+--------+-----+-------+----------+
+|200001|Matlalihuitl|    Rackett |         111111|2019-11-18 00:00:00|123 Main|   WA|     US|     98101|
+|200002|     Nicolas|Belarde Ross|         222222|2001-01-01 00:00:00|125 Main|   WA|     US|     98101|
+|200003|    Carmello|       Wygal|         333333|2021-03-05 00:00:00|923 Main|   WA|     us|     98101|
+|200004|      Yazmin|    Pozzuoli|         444444|2015-08-19 00:00:00|100 Main|   WA|     US|98101-1234|
+|200005|        Cate|       Hinde|         555555|2020-12-31 00:00:00|444 Main|   WA|     US|     98101|
+|200006|      Astera|   Loeschner|         666666|2021-07-12 00:00:00|    null|   AZ|     US|     85001|
+|200007|       Maeja|       Kempf|         777777|2017-11-01 00:00:00|888 Mani|   MB|     CA|   R0G 0J0|
++------+------------+------------+---------------+-------------------+--------+-----+-------+----------+
+
+
+Compute total sales ($) per customer
++--------+------------+------------+-------+------------------+
+|customer|   last_name|  first_name|records|  sum(total_price)|
++--------+------------+------------+-------+------------------+
+|  200001|    Rackett |Matlalihuitl|      1|             15.95|
+|  200002|Belarde Ross|     Nicolas|      4|126.99000000000001|
+|  200003|       Wygal|    Carmello|      1|              2.13|
+|  200004|    Pozzuoli|      Yazmin|      2|             94.65|
+|  200005|       Hinde|        Cate|      1|             12.09|
+|  200007|       Kempf|       Maeja|      2|             13.51|
++--------+------------+------------+-------+------------------+
+
+
+Compute average sales ($) per day
++----------+-------+------------------+
+|      date|records|  avg(total_price)|
++----------+-------+------------------+
+|2021-06-17|      4|           22.6325|
+|2021-06-18|      4|31.367500000000003|
+|2021-06-16|      3|             16.44|
++----------+-------+------------------+
+
+
+Compute total number of orders and cumulative sales ($)
++------+----------------+
+|orders|sum(total_price)|
++------+----------------+
+|    11|          265.32|
++------+----------------+
+
+
+For every day, identify the orders with the highest sales amount ($)
++----------+------+---------+
+|       day|    id|max_price|
++----------+------+---------+
+|2021-06-16|100002|    31.24|
+|2021-06-17|100005|    38.52|
+|2021-06-17|100006|    38.52|
+|2021-06-18|100008|     91.2|
++----------+------+---------+
+
+
+For every day, identify the order with the highest sales amount ($)
++----------+------+---------+
+|       day|    id|max_price|
++----------+------+---------+
+|2021-06-16|100002|    31.24|
+|2021-06-17|100005|    38.52|
+|2021-06-18|100008|     91.2|
++----------+------+---------+
+
+
+Find cumulative sale ($) per zip code
++-----+-------+------------------+
+|  zip|records|  sum(total_price)|
++-----+-------+------------------+
+|98101|      9|251.81000000000003|
+|R0G 0|      2|             13.51|
++-----+-------+------------------+
+
+
+Identify customers with the least number of total orders
++-----------+------------+------------+------+
+|customer_id|   last_name|  first_name|orders|
++-----------+------------+------------+------+
+|     200005|       Hinde|        Cate|     1|
+|     200001|    Rackett |Matlalihuitl|     1|
+|     200003|       Wygal|    Carmello|     1|
+|     200007|       Kempf|       Maeja|     2|
+|     200004|    Pozzuoli|      Yazmin|     2|
+|     200002|Belarde Ross|     Nicolas|     4|
++-----------+------------+------------+------+
+
+**********Part -II Completed **********
+23/08/14 19:09:17 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: D:\Temp\spark-487e286b-ec2a-47cb-b422-682f97780af5\pyspark-7331b8cf-0546-466c-a96d-db27a7984670
+java.nio.file.NoSuchFileException: D:\Temp\spark-487e286b-ec2a-47cb-b422-682f97780af5\pyspark-7331b8cf-0546-466c-a96d-db27a7984670
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:199)
+	at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:128)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:121)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1231)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:65)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:62)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1328)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:62)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:214)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:210)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:178)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+ Queries II Script Done
+

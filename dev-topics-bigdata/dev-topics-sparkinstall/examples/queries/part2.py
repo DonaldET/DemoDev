@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.functions import trim, sum, avg, max, min, mean, count, expr
 from collections import namedtuple
 import os
 
@@ -30,7 +29,7 @@ def _runtime_info() -> None:
 
 def _runtime_dataframe_info(loaded_file: str, loaded_df: DataFrame) -> None:
     """
-    Display loaded dataframe info
+    Display loaded dataframe info for debugging
     :return: 
     """
     print(f"\n{loaded_file} Info")
@@ -40,6 +39,10 @@ def _runtime_dataframe_info(loaded_file: str, loaded_df: DataFrame) -> None:
 
 
 def load_data() -> Report_data:
+    """
+    Load CSV datafiles with assumed characteristics, use Spark to infer the schema
+    :return:
+    """
     # generate orders_df by orders.csv
     loaded_orders_df = spark.read.options(header='True', inferSchema='True', delimiter=',').csv(ORDERS_FILE)
 
@@ -54,11 +57,15 @@ def compute_total_sales_per_customer() -> None:
     print('\nCompute total sales ($) per customer')
     qry = \
         """
-        select  customer_id,
-                count(customer_id) records,
-                sum(total_price)
-        from ORDERS
-        group by customer_id
+        select  ord.customer_id as customer,
+                max(cus.lname) as last_name,
+                max(cus.fname) as first_name,
+                count(ord.customer_id) records,
+                sum(ord.total_price)
+        from ORDERS ord, CUSTOMERS cus
+        where ord.customer_id == cus.id
+        group by customer
+        order by customer
         """
     spark.sql(qry.strip()).show()
     return
@@ -69,11 +76,11 @@ def compute_average_sales_per_day() -> None:
     print('\nCompute average sales ($) per day')
     qry = \
         """
-        select  customer_id,
-                avg(customer_id) records,
-                sum(total_price)
+        select  date,
+                count(id) as records,
+                avg(total_price)
         from ORDERS
-        group by customer_id
+        group by date
         """
     spark.sql(qry.strip()).show()
     return
@@ -119,7 +126,7 @@ def for_every_day_identify_order_with_highest_sales_amount() -> None:
 
 # ADDED: For every day, identify the orders with the highest sales amount ($)
 def for_every_day_identify_orders_with_highest_sales_amount() -> None:
-    print('\nFor every day, identify the order with the highest sales amount ($)')
+    print('\nFor every day, identify the orders with the highest sales amount ($)')
 
     qry = \
         """
@@ -148,8 +155,8 @@ def cumulative_sale_per_zip_code() -> None:
     qry = \
         """
         select  substring(trim(zipcode), 1, 5) as zip,
-                count(id) as records,
-                sum(total_price)
+                count(ord.id) as records,
+                sum(ord.total_price)
         from ORDERS ord, CUSTOMERS cus
         where   ord.customer_id == cus.id
         group by zip
@@ -161,27 +168,46 @@ def cumulative_sale_per_zip_code() -> None:
 
 # First, compute the number of orders per customer. Then, identify customers with the least number of total orders
 def identify_customers_with_least_number_of_orders() -> None:
+    """
+    List low activity customers. Easy to add a low bound thresh-hold
+    :return:
+    """
+    print('\nIdentify customers with the least number of total orders')
+
+    qry = \
+        """
+        select  ord.customer_id as customer_id,
+                max(cus.lname) as last_name,
+                max(cus.fname) as first_name,
+                count(ord.id) as orders
+        from ORDERS ord, CUSTOMERS cus
+        where   ord.customer_id == cus.id
+        group by customer_id
+        order by orders, last_name, first_name
+        """
+    spark.sql(qry.strip()).show()
     return
 
 
 if __name__ == '__main__':
     print("**********Part -II Started **********")
-    # _runtime_info()
+    _runtime_info()
 
     print(f"\nLoad {ORDERS_FILE} and {CUSTOMERS_FILE}")
     report_data: Report_data = load_data()
-    # _runtime_dataframe_info(ORDERS_FILE, report_data.orders_df)
-    # _runtime_dataframe_info(CUSTOMERS_FILE, report_data.customers_df)
+    _runtime_dataframe_info(ORDERS_FILE, report_data.orders_df)
+    _runtime_dataframe_info(CUSTOMERS_FILE, report_data.customers_df)
 
     report_data.orders_df.createOrReplaceTempView("ORDERS")
     report_data.customers_df.createOrReplaceTempView("CUSTOMERS")
 
-    # compute_total_sales_per_customer()
-    # compute_average_sales_per_day()
-    # compute_total_number_of_orders_and_cumulative_sales()
-    # for_every_day_identify_orders_with_highest_sales_amount()
-    # for_every_day_identify_order_with_highest_sales_amount()
+    compute_total_sales_per_customer()
+    compute_average_sales_per_day()
+    compute_total_number_of_orders_and_cumulative_sales()
+    for_every_day_identify_orders_with_highest_sales_amount()
+    for_every_day_identify_order_with_highest_sales_amount()
     cumulative_sale_per_zip_code()
+    identify_customers_with_least_number_of_orders()
 
     print("**********Part -II Completed **********")
     spark.stop()
