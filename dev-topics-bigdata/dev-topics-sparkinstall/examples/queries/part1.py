@@ -9,12 +9,15 @@ from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
 
 INPUT_FILE = "I_Don't_KNOW"
-OUTPUT_DELTA_PATH = "I_Don't_KNOW"
+OUTPUT_DELTA_PATH = "tmp/spark_output/"
 
-spark = (SparkSession.builder
-         .appName("part1_programming")
-         .master("local[*]")
-         .getOrCreate())
+spark = (SparkSession.
+         builder.
+         appName("part1_programming").
+         enableHiveSupport().
+         master("local[*]").
+         getOrCreate())
+spark.sparkContext.setLogLevel('WARN')
 
 
 def read_json(file_path: str, schema: StructType) -> DataFrame:
@@ -89,6 +92,8 @@ def write_df_as_csv(df: DataFrame) -> None:
 
 
 def create_delta_table(session: SparkSession) -> None:
+    print('-- Create Table')
+
     session.sql('CREATE DATABASE IF NOT EXISTS EXERCISE')
 
     session.sql('''
@@ -107,7 +112,7 @@ def create_delta_table(session: SparkSession) -> None:
         ChildInsuranceprice Integer,
         ChildItemDiscountAmount Integer,
         ChildItemDiscountDescription String
-    ) USING DELTA
+    ) STORED AS PARQUET
     LOCATION "{0}"
     '''.format(OUTPUT_DELTA_PATH))
 
@@ -139,6 +144,7 @@ def read_data_delta(session: SparkSession) -> DataFrame:
 
 
 if __name__ == '__main__':
+    print("**********Part -I Started **********")
     input_schema = get_struct_type()
     input_df = read_json(INPUT_FILE, input_schema)
     arrays_to_rows_df = get_rows_from_array(input_df)
@@ -148,3 +154,4 @@ if __name__ == '__main__':
     result_df = read_data_delta(spark)
     result_df.show(truncate=False)
     print("**********Part -I Completed **********")
+    spark.stop()
