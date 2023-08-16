@@ -3,6 +3,7 @@
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
+from pyspark.sql.functions import flatten, explode
 
 INPUT_FILE = "../../queries/data/purchases.json"
 OUTPUT_DELTA_PATH = "tmp/spark_output/delta_purchases"
