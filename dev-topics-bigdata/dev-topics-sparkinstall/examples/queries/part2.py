@@ -1,3 +1,6 @@
+# part2.py
+# submit_queries_part2.cmd > part2.log 2>&1
+
 from pyspark.sql import SparkSession, DataFrame
 from collections import namedtuple
 import os
@@ -55,6 +58,7 @@ def load_data() -> Report_data:
 # Compute total sales ($) per customer (Hint: Include Customer ID as separate columns )
 def compute_total_sales_per_customer() -> None:
     print('\nCompute total sales ($) per customer')
+
     qry = \
         """
         select  ord.customer_id as customer,
@@ -74,6 +78,7 @@ def compute_total_sales_per_customer() -> None:
 # Compute average sales ($) per day
 def compute_average_sales_per_day() -> None:
     print('\nCompute average sales ($) per day')
+
     qry = \
         """
         select  date,
@@ -89,6 +94,7 @@ def compute_average_sales_per_day() -> None:
 # Compute total number of orders and cumulative sales ($)
 def compute_total_number_of_orders_and_cumulative_sales() -> None:
     print('\nCompute total number of orders and cumulative sales ($)')
+
     qry = \
         """
         select  count(id) orders,
@@ -215,6 +221,10 @@ if __name__ == '__main__':
 # Please provide 3-5 Spark SQL Performance techniques and configurations you would use to improve a query?
 #
 # 1) Reorder queries so only one active dataframe is using cache at a time if possible
-# 2) Use Parquet or ORC files for tables that are columnar storage
-# 2a) Use Parquet or ORC files for tables with partitions
-# 3) Avoid CSV to save converting numbers and dates to binary representation
+# 2) Use Parquet or ORC files for tables because they are columnar storage structures
+# 2a) Use Parquet or ORC files for tables with user partitions (internal strips and index files)
+# 3) Use efficient serializers (e.g., see https://selectfrom.dev/apache-spark-all-about-serialization-f84f38c99f5b)
+# 4) Use cache and persist tools effectively (e.g. https://data-flair.training/blogs/apache-spark-rdd-persistence-caching/)
+# 5) Avoid CSV to save converting textual numbers and dates to binary representation
+#
+# A good resource: https://spark.apache.org/docs/2.2.1/sql-programming-guide.html#performance-tuning

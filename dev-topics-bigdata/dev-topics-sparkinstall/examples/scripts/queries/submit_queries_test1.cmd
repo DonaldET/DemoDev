@@ -18,6 +18,8 @@ echo.   -- Spark Home : %SPARK_HOME%
 set JAVA_HOME=%JAVA17_HOME%
 %JAVA_HOME%\bin\java -version
 
+rmdir /s/q tmp
+
 set x_cmd=%SPARK_HOME%\bin\spark-submit
 set x_cmd=%x_cmd% %x_path%%x_driver%
 set x_cmd=%x_cmd% --py-files part1.py

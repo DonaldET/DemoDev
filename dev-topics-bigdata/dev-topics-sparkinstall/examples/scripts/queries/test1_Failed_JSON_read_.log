@@ -1,0 +1,113 @@
+# Test1.log
+# submit_queries_test1.cmd > test1.log 2>&1
+ Summit Spark Queries Test 1 script using driver TestPart1.py on D:\util\spark-3.4.1-bin-hadoop3-scala2.13 executing $0.cmd
+   -- Base Path  : D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\scripts\queries\
+   -- Driver Path: D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\queries\
+   -- Spark Home : D:\util\spark-3.4.1-bin-hadoop3-scala2.13
+java version "17.0.6" 2023-01-17 LTS
+Java(TM) SE Runtime Environment (build 17.0.6+9-LTS-190)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.6+9-LTS-190, mixed mode, sharing)
+ D:\util\spark-3.4.1-bin-hadoop3-scala2.13\bin\spark-submit D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\queries\TestPart1.py --py-files part1.py --files ..\..\queries\data\customers.csv, ..\..\queries\data\orders.csv, ..\..\queries\data\purchases.json
+23/08/15 11:24:38 INFO SparkContext: Running Spark version 3.4.1
+23/08/15 11:24:38 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+23/08/15 11:24:38 INFO ResourceUtils: ==============================================================
+23/08/15 11:24:38 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/08/15 11:24:38 INFO ResourceUtils: ==============================================================
+23/08/15 11:24:38 INFO SparkContext: Submitted application: part1_programming
+23/08/15 11:24:38 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/08/15 11:24:38 INFO ResourceProfile: Limiting resource is cpu
+23/08/15 11:24:38 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/08/15 11:24:38 INFO SecurityManager: Changing view acls to: Don
+23/08/15 11:24:38 INFO SecurityManager: Changing modify acls to: Don
+23/08/15 11:24:38 INFO SecurityManager: Changing view acls groups to: 
+23/08/15 11:24:38 INFO SecurityManager: Changing modify acls groups to: 
+23/08/15 11:24:38 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Don; groups with view permissions: EMPTY; users with modify permissions: Don; groups with modify permissions: EMPTY
+23/08/15 11:24:39 INFO Utils: Successfully started service 'sparkDriver' on port 51543.
+23/08/15 11:24:39 INFO SparkEnv: Registering MapOutputTracker
+23/08/15 11:24:39 INFO SparkEnv: Registering BlockManagerMaster
+23/08/15 11:24:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/08/15 11:24:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/08/15 11:24:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/08/15 11:24:39 INFO DiskBlockManager: Created local directory at D:\Temp\blockmgr-9ca9608e-261b-4c46-8e37-ef1351f4e8b9
+23/08/15 11:24:39 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+23/08/15 11:24:39 INFO SparkEnv: Registering OutputCommitCoordinator
+23/08/15 11:24:39 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+23/08/15 11:24:39 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/08/15 11:24:40 INFO Executor: Starting executor ID driver on host THOR.mshome.net
+23/08/15 11:24:40 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+23/08/15 11:24:40 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 51544.
+23/08/15 11:24:40 INFO NettyBlockTransferService: Server created on THOR.mshome.net:51544
+23/08/15 11:24:40 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/08/15 11:24:40 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, THOR.mshome.net, 51544, None)
+23/08/15 11:24:40 INFO BlockManagerMasterEndpoint: Registering block manager THOR.mshome.net:51544 with 434.4 MiB RAM, BlockManagerId(driver, THOR.mshome.net, 51544, None)
+23/08/15 11:24:40 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, THOR.mshome.net, 51544, None)
+23/08/15 11:24:40 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, THOR.mshome.net, 51544, None)
+Testing Spark Queries Part 1
+<pyspark.sql.session.SparkSession object at 0x000001C9CBE5E310>
+
+<><><><> Check StructType Creation
+StructType([StructField('id', StringType(), True), StructField('InsuranceProvider', StringType(), True), StructField('Type', StructType([StructField('Client', StructType([StructField('PaidIn', StructType([StructField('Insuranceid', StringType(), True), StructField('Insurancedesc', StringType(), True), StructField('purchaseditems', StructType([StructField('InsuranceLabel', StringType(), True), StructField('InsuranceNumber', StringType(), True), StructField('Insuranceprice', DoubleType(), True), StructField('Insurancequantity', IntegerType(), True), StructField('childItems', StructType([StructField('InsuranceLabel', StringType(), True), StructField('InsuranceNumber', StringType(), True), StructField('Insuranceprice', DoubleType(), True), StructField('Insurancequantity', IntegerType(), True), StructField('discountsreceived', StructType([StructField('amount', IntegerType(), True), StructField('description', StringType(), True)]), True)]), True), StructField('discountsreceived', StructType([StructField('amount', IntegerType(), True), StructField('description', StringType(), True)]), True)]), True)]), True)]), True)]), True), StructField('eventTime', StringType(), True)])
+------------------
+
+<><><><> Check Table Creation
+-- Create Table
+23/08/15 11:24:44 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+23/08/15 11:24:44 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+23/08/15 11:24:47 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 2.3.0
+23/08/15 11:24:47 WARN ObjectStore: setMetaStoreSchemaVersion called but recording version is disabled: version = 2.3.0, comment = Set by MetaStore UNKNOWN@172.21.160.1
+Table created
+------------------
+
+<><><><> Read purchases JSON file
+root
+ |-- id: string (nullable = true)
+ |-- InsuranceProvider: string (nullable = true)
+ |-- Type: struct (nullable = true)
+ |    |-- Client: struct (nullable = true)
+ |    |    |-- PaidIn: struct (nullable = true)
+ |    |    |    |-- Insuranceid: string (nullable = true)
+ |    |    |    |-- Insurancedesc: string (nullable = true)
+ |    |    |    |-- purchaseditems: struct (nullable = true)
+ |    |    |    |    |-- InsuranceLabel: string (nullable = true)
+ |    |    |    |    |-- InsuranceNumber: string (nullable = true)
+ |    |    |    |    |-- Insuranceprice: double (nullable = true)
+ |    |    |    |    |-- Insurancequantity: integer (nullable = true)
+ |    |    |    |    |-- childItems: struct (nullable = true)
+ |    |    |    |    |    |-- InsuranceLabel: string (nullable = true)
+ |    |    |    |    |    |-- InsuranceNumber: string (nullable = true)
+ |    |    |    |    |    |-- Insuranceprice: double (nullable = true)
+ |    |    |    |    |    |-- Insurancequantity: integer (nullable = true)
+ |    |    |    |    |    |-- discountsreceived: struct (nullable = true)
+ |    |    |    |    |    |    |-- amount: integer (nullable = true)
+ |    |    |    |    |    |    |-- description: string (nullable = true)
+ |    |    |    |    |-- discountsreceived: struct (nullable = true)
+ |    |    |    |    |    |-- amount: integer (nullable = true)
+ |    |    |    |    |    |-- description: string (nullable = true)
+ |-- eventTime: string (nullable = true)
+
+23/08/15 11:24:50 ERROR Executor: Exception in task 0.0 in stage 0.0 (TID 0)
+java.lang.ClassCastException: class org.apache.spark.sql.catalyst.util.GenericArrayData cannot be cast to class org.apache.spark.unsafe.types.UTF8String (org.apache.spark.sql.catalyst.util.GenericArrayData and org.apache.spark.unsafe.types.UTF8String are in unnamed module of loader 'app')
+. . .
+23/08/15 11:24:50 WARN TaskSetManager: Lost task 0.0 in stage 0.0 (TID 0) (THOR.mshome.net executor driver): java.lang.ClassCastException: class org.apache.spark.sql.catalyst.util.GenericArrayData cannot be cast to class org.apache.spark.unsafe.types.UTF8String (org.apache.spark.sql.catalyst.util.GenericArrayData and org.apache.spark.unsafe.types.UTF8String are in unnamed module of loader 'app')
+. . .
+23/08/15 11:24:50 ERROR TaskSetManager: Task 0 in stage 0.0 failed 1 times; aborting job
+Traceback (most recent call last):
+  File "D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\queries\TestPart1.py", line 24, in <module>
+    purchases.show()
+  File "D:\util\spark-3.4.1-bin-hadoop3-scala2.13\python\lib\pyspark.zip\pyspark\sql\dataframe.py", line 899, in show
+  File "D:\util\spark-3.4.1-bin-hadoop3-scala2.13\python\lib\py4j-0.10.9.7-src.zip\py4j\java_gateway.py", line 1322, in __call__
+  File "D:\util\spark-3.4.1-bin-hadoop3-scala2.13\python\lib\pyspark.zip\pyspark\errors\exceptions\captured.py", line 169, in deco
+  File "D:\util\spark-3.4.1-bin-hadoop3-scala2.13\python\lib\py4j-0.10.9.7-src.zip\py4j\protocol.py", line 326, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o43.showString.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0) (THOR.mshome.net executor driver): java.lang.ClassCastException: class org.apache.spark.sql.catalyst.util.GenericArrayData cannot be cast to class org.apache.spark.unsafe.types.UTF8String (org.apache.spark.sql.catalyst.util.GenericArrayData and org.apache.spark.unsafe.types.UTF8String are in unnamed module of loader 'app')
+. . .
+Driver stacktrace:
+. . .
+Caused by: java.lang.ClassCastException: class org.apache.spark.sql.catalyst.util.GenericArrayData cannot be cast to class org.apache.spark.unsafe.types.UTF8String (org.apache.spark.sql.catalyst.util.GenericArrayData and org.apache.spark.unsafe.types.UTF8String are in unnamed module of loader 'app')
+. . .
+... 1 more
+
+ Submit failed, RC=1
+
+ Queries Tests 1 Script Done
+

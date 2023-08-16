@@ -8,7 +8,7 @@ set x_script=$0
 set x_driver=part1.py
 
 echo.
-echo. Summit Spark Queries script using driver %x_driver% on %SPARK_HOME% executing %x_script%.cmd
+echo. Summit Spark Queries I script using driver %x_driver% on %SPARK_HOME% executing %x_script%.cmd
 set x_base=%~dp0
 echo.   -- Base Path  : %x_base%
 set x_path=%x_base:\scripts\=\%

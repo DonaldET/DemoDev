@@ -1,15 +1,12 @@
-# spark json explode array
-# https://sparkbyexamples.com/spark/spark-explode-nested-array-to-rows/
-# https://grkamarnath.medium.com/how-to-read-complex-json-data-in-pyspark-16a0e9149f0
-#
-#
-#
+# part1.py
+# submit_queries_part1.cmd > part1.log 2>&1
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
 
-INPUT_FILE = "I_Don't_KNOW"
-OUTPUT_DELTA_PATH = "tmp/spark_output/"
+INPUT_FILE = "../../queries/data/purchases.json"
+OUTPUT_DELTA_PATH = "tmp/spark_output/delta_purchases"
+OUTPUT_FLATTEN_PATH = "tmp/spark_output/flattened_purchases"
 
 spark = (SparkSession.
          builder.
@@ -28,8 +25,8 @@ def read_json(file_path: str, schema: StructType) -> DataFrame:
     :param schema: schema that needs to be passed to this method
     :return: Dataframe containing records from purchase.json
     """
-
-    return None
+    #return spark.read.option('encoding', 'UTF-8').json(path=INPUT_FILE, schema=schema, multiLine=True)
+    return spark.read.options(inferSchema='True').json(path=INPUT_FILE, multiLine=True)
 
 
 def get_struct_type() -> StructType:
@@ -41,18 +38,18 @@ def get_struct_type() -> StructType:
     discount_type = StructType([StructField("amount", IntegerType(), True),
                                 StructField("description", StringType(), True)])
 
-    child_item_type = StructType([StructField("InsuranceNumber", StringType(), True),
-                                  StructField("InsuranceLabel", StringType(), True),
-                                  StructField("Insurancequantity", DoubleType(), True),
-                                  StructField("Insuranceprice", IntegerType(), True),
+    child_item_type = StructType([StructField("InsuranceLabel", StringType(), True),
+                                  StructField("InsuranceNumber", StringType(), True),
+                                  StructField("Insuranceprice", DoubleType(), True),
+                                  StructField("Insurancequantity", IntegerType(), True),
                                   StructField("discountsreceived", discount_type, True)])  # TODO
 
-    item_type = StructType([StructField("InsuranceNumber", StringType(), True),
-                            StructField("InsuranceLabel", StringType(), True),
-                            StructField("Insurancequantity", DoubleType(), True),
-                            StructField("Insuranceprice", IntegerType(), True),
-                            StructField("discountsreceived", discount_type, True),  # TODO
-                            StructField("childItems", child_item_type, True)])  # TODO
+    item_type = StructType([StructField("InsuranceLabel", StringType(), True),
+                            StructField("InsuranceNumber", StringType(), True),
+                            StructField("Insuranceprice", DoubleType(), True),
+                            StructField("Insurancequantity", IntegerType(), True),
+                            StructField("childItems", child_item_type, True),
+                            StructField("discountsreceived", discount_type, True)])  # TODO
 
     order_paid_type = StructType([StructField("Insuranceid", StringType(), True),
                                   StructField("Insurancedesc", StringType(), True),
@@ -77,8 +74,8 @@ def get_rows_from_array(df: DataFrame) -> DataFrame:
     :param df: Contains column with data type of type array.
     :return: The dataframe should not contain any columns of type array
     """
-
-    return None
+    # return df.select("id", flatten(explode("Type")))
+    return df.select("id", flatten(explode("purchaseditems")))
 
 
 def write_df_as_csv(df: DataFrame) -> None:
@@ -87,8 +84,12 @@ def write_df_as_csv(df: DataFrame) -> None:
 
     :param df: Contains flattened order data
     """
-
-    return None
+    # optional: coalesce provides on large CSV file
+    (df.coalesce(1).write.
+     format("csv").
+     options(header='True', delimiter=',').
+     mode('overwrite').save(OUTPUT_FLATTEN_PATH))
+    return
 
 
 def create_delta_table(session: SparkSession) -> None:

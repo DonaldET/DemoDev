@@ -1,0 +1,7 @@
+# spark json explode array
+# https://sparkbyexamples.com/spark/spark-explode-nested-array-to-rows/
+# https://grkamarnath.medium.com/how-to-read-complex-json-data-in-pyspark-16a0e9149f0
+# https://spark.apache.org/docs/latest/sql-data-sources-parquet.html
+# https://selectfrom.dev/apache-spark-all-about-serialization-f84f38c99f5b
+# https://data-flair.training/blogs/apache-spark-rdd-persistence-caching/
+# https://spark.apache.org/docs/2.2.1/sql-programming-guide.html#performance-tuning
