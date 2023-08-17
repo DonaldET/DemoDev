@@ -1,0 +1,217 @@
+
+ Summit Spark Smoke Tests script using driver smoketest.py on D:\util\spark-3.4.1-bin-hadoop3-scala2.13 executing $0.cmd
+   -- Base Path  : D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\scripts\smoketest\
+   -- Driver Path: D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\
+   -- Spark Home : D:\util\spark-3.4.1-bin-hadoop3-scala2.13
+java version "17.0.6" 2023-01-17 LTS
+Java(TM) SE Runtime Environment (build 17.0.6+9-LTS-190)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.6+9-LTS-190, mixed mode, sharing)
+ D:\util\spark-3.4.1-bin-hadoop3-scala2.13\bin\spark-submit D:\GitHub\DemoDev\dev-topics-bigdata\dev-topics-sparkinstall\examples\smoketest\smoketest.py
+
+***************************
+*** PySpark Smoke Tests ***
+***************************
+
+-----------------------------------------------
+
+Smoke Test 1: Print Spark Attributes
+23/08/16 23:06:56 INFO SparkContext: Running Spark version 3.4.1
+23/08/16 23:06:56 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+23/08/16 23:06:56 INFO ResourceUtils: ==============================================================
+23/08/16 23:06:56 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/08/16 23:06:56 INFO ResourceUtils: ==============================================================
+23/08/16 23:06:56 INFO SparkContext: Submitted application: CollectedSmokeTests1
+23/08/16 23:06:56 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/08/16 23:06:56 INFO ResourceProfile: Limiting resource is cpu
+23/08/16 23:06:56 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/08/16 23:06:56 INFO SecurityManager: Changing view acls to: Don
+23/08/16 23:06:56 INFO SecurityManager: Changing modify acls to: Don
+23/08/16 23:06:56 INFO SecurityManager: Changing view acls groups to: 
+23/08/16 23:06:56 INFO SecurityManager: Changing modify acls groups to: 
+23/08/16 23:06:56 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Don; groups with view permissions: EMPTY; users with modify permissions: Don; groups with modify permissions: EMPTY
+23/08/16 23:06:56 INFO Utils: Successfully started service 'sparkDriver' on port 51531.
+23/08/16 23:06:56 INFO SparkEnv: Registering MapOutputTracker
+23/08/16 23:06:56 INFO SparkEnv: Registering BlockManagerMaster
+23/08/16 23:06:56 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/08/16 23:06:56 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/08/16 23:06:56 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/08/16 23:06:56 INFO DiskBlockManager: Created local directory at D:\Temp\blockmgr-340ed10a-a4d8-4204-81bc-19fc091e057d
+23/08/16 23:06:56 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+23/08/16 23:06:56 INFO SparkEnv: Registering OutputCommitCoordinator
+23/08/16 23:06:56 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+23/08/16 23:06:56 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/08/16 23:06:56 INFO Executor: Starting executor ID driver on host 10.0.0.130
+23/08/16 23:06:56 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+23/08/16 23:06:57 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 51533.
+23/08/16 23:06:57 INFO NettyBlockTransferService: Server created on 10.0.0.130:51533
+23/08/16 23:06:57 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/08/16 23:06:57 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.0.0.130, 51533, None)
+23/08/16 23:06:57 INFO BlockManagerMasterEndpoint: Registering block manager 10.0.0.130:51533 with 434.4 MiB RAM, BlockManagerId(driver, 10.0.0.130, 51533, None)
+23/08/16 23:06:57 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.0.0.130, 51533, None)
+23/08/16 23:06:57 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.0.0.130, 51533, None)
+Python Version:3.11
+Spark Version :3.4.1
+APP Name      :CollectedSmokeTests1
+APP ID        :local-1692252416903
+Master        :local[*]
+Configuration :<pyspark.sql.conf.RuntimeConfig object at 0x00000264BF91D5D0>
+Context       :<SparkContext master=local[*] appName=CollectedSmokeTests1>
+Environment   :{'PYTHONHASHSEED': '0'}
+
+Smoke Test 2: Create a DataFrame
+23/08/16 23:06:58 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+Default Parallelism: 16
++---------+--------+-------+-----+
+|firstname|lastname|country|state|
++---------+--------+-------+-----+
+|    James|   Smith|    USA|   CA|
+|  Michael|    Rose|    USA|   NY|
+|   Robert|Williams|    USA|   CA|
+|    Maria|   Jones|    USA|   FL|
++---------+--------+-------+-----+
+
+
+root
+ |-- firstname: string (nullable = true)
+ |-- lastname: string (nullable = true)
+ |-- country: string (nullable = true)
+ |-- state: string (nullable = true)
+
+
+dataframe : [Row(firstname='James', lastname='Smith', country='USA', state='CA'), Row(firstname='Michael', lastname='Rose', country='USA', state='NY'), Row(firstname='Robert', lastname='Williams', country='USA', state='CA'), Row(firstname='Maria', lastname='Jones', country='USA', state='FL')]
+partitions: 16
+
+***************************************
+**** Write DataFrame as a CSV file ****
+***************************************
+  -- File: /tmp/spark_output/smoketest
+*** DataFrame created as a CSV file ***
+***************************************
+
+Smoke Test2 Done
+
+Smoke Test 3: Read a DataFrame
+23/08/16 23:07:44 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+
+**************************************
+**** Read DataFrame as a CSV file ****
+**************************************
+  -- File: /tmp/spark_output/smoketest
+*** DataFrame Read as a CSV file ***
+***************************************
+root
+ |-- firstname: string (nullable = true)
+ |-- lastname: string (nullable = true)
+ |-- country: string (nullable = true)
+ |-- state: string (nullable = true)
+
+  -- Display
++---------+--------+-------+-----+
+|firstname|lastname|country|state|
++---------+--------+-------+-----+
+|    James|   Smith|    USA|   CA|
+|  Michael|    Rose|    USA|   NY|
+|   Robert|Williams|    USA|   CA|
+|    Maria|   Jones|    USA|   FL|
++---------+--------+-------+-----+
+
+
+Smoke Test3 Done
+-----------------------------------------------
+PySpark Smoke Tests Done.
+23/08/16 23:07:46 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: D:\Temp\spark-ffdf7d9a-e8d7-4313-9f31-96727d0f6afb\pyspark-41ed8982-c9e5-4f6d-a3fd-8a9d4d1859ac
+java.nio.file.NoSuchFileException: D:\Temp\spark-ffdf7d9a-e8d7-4313-9f31-96727d0f6afb\pyspark-41ed8982-c9e5-4f6d-a3fd-8a9d4d1859ac
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:199)
+	at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:128)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:121)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1231)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:65)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:62)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1328)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:62)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:214)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:210)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:178)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+23/08/16 23:07:46 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: D:\Temp\spark-ffdf7d9a-e8d7-4313-9f31-96727d0f6afb\pyspark-0170f0d3-62b4-489c-9725-d22e32f51bc0
+java.nio.file.NoSuchFileException: D:\Temp\spark-ffdf7d9a-e8d7-4313-9f31-96727d0f6afb\pyspark-0170f0d3-62b4-489c-9725-d22e32f51bc0
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:199)
+	at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:128)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:121)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1231)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:65)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:62)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1328)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:62)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:214)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:210)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:178)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+23/08/16 23:07:46 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: D:\Temp\spark-ffdf7d9a-e8d7-4313-9f31-96727d0f6afb\pyspark-b94033e9-c033-4cf0-8734-0702938ca6a3
+java.nio.file.NoSuchFileException: D:\Temp\spark-ffdf7d9a-e8d7-4313-9f31-96727d0f6afb\pyspark-b94033e9-c033-4cf0-8734-0702938ca6a3
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:199)
+	at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:128)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:121)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1231)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:65)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:62)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1328)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:62)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:214)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:2088)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:188)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:210)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:178)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+ Smoke Tests Script Done
+
