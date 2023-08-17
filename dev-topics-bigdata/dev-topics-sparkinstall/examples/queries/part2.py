@@ -220,11 +220,11 @@ if __name__ == '__main__':
 
 # Please provide 3-5 Spark SQL Performance techniques and configurations you would use to improve a query?
 #
-# 1) Reorder queries so only one active dataframe is using cache at a time if possible
+# 1) Reorder queries so only one active dataframe is using cache at a time if possible, use cache
 # 2) Use Parquet or ORC files for tables because they are columnar storage structures
 # 2a) Use Parquet or ORC files for tables with user partitions (internal strips and index files)
 # 3) Use efficient serializers (e.g., see https://selectfrom.dev/apache-spark-all-about-serialization-f84f38c99f5b)
 # 4) Use cache and persist tools effectively (e.g. https://data-flair.training/blogs/apache-spark-rdd-persistence-caching/)
 # 5) Avoid CSV to save converting textual numbers and dates to binary representation
-#
+# 6) When possible, increase parallelization (Spark partitions)
 # A good resource: https://spark.apache.org/docs/2.2.1/sql-programming-guide.html#performance-tuning
