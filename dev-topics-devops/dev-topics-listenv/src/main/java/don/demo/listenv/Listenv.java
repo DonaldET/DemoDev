@@ -46,9 +46,9 @@ public class Listenv {
 		outputDest.println("\n\n  -- Environment [" + ne + "]");
 		int i = 0;
 		for (String key : envKeys) {
-			if (i < 5 || i > ne - 6) {
+			if (i < 19 || i > ne - 11) {
 				outputDest.println(String.format("%26s: %s", key, System.getenv(key)));
-			} else if (i == 5) {
+			} else if (i == 10) {
 				outputDest.println(String.format("%26s", ". . ."));
 			}
 			i++;
@@ -67,9 +67,9 @@ public class Listenv {
 		outputDest.println("\n\n  -- System Properties [" + ne + "]");
 		int i = 0;
 		for (String key : propKey) {
-			if (i < 5 || i > ne - 6) {
+			if (i < 10 || i > ne - 11) {
 				outputDest.println(String.format("%26s: %s", key, System.getProperty(key)));
-			} else if (i == 5) {
+			} else if (i == 10) {
 				outputDest.println(String.format("%26s", ". . ."));
 			}
 			i++;
