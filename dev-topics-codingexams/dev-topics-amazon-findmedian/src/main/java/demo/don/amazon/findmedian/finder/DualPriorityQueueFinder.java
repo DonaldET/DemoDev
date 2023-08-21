@@ -176,7 +176,6 @@ public class DualPriorityQueueFinder implements MedianFinder {
 	 * Queues are equal at top, so select favoring lower queue
 	 * 
 	 * @param element the element to add to a queue
-	 * @return the median
 	 */
 	private void addToEqualTopElementQueues(Integer element) {
 		Integer lowerTop = lower.peek();
@@ -199,7 +198,6 @@ public class DualPriorityQueueFinder implements MedianFinder {
 	 * is between top values, then throw into the smaller queue.
 	 * 
 	 * @param element the element to add to a queue
-	 * @return the median
 	 */
 	private void addToDifferentTopElementQueues(Integer element) {
 		Integer lowerTop = lower.peek();

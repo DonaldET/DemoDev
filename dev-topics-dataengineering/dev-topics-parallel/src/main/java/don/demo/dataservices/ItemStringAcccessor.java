@@ -12,7 +12,7 @@ public interface ItemStringAcccessor {
 	 * Using ITEMS.PK_ITEMID and ITEMS_STR.PK2_RECORDID_FK for join.
 	 * 
 	 * @param itemStrId
-	 * @return
+	 * @return list of item strings for join
 	 */
 	public abstract List<ItemStrings> getItemStrings(long itemStrId);
 
@@ -22,7 +22,7 @@ public interface ItemStringAcccessor {
 	 * 
 	 * @param itemStrId
 	 * @param predicate
-	 * @return
+	 * @return list of item strings for join and filter predicate
 	 */
 	public abstract List<ItemStrings> getItemStrings(long itemStrId, Predicate<ItemStrings> predicate);
 }

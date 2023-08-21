@@ -67,9 +67,9 @@ class TestIPBGenerateObservedCounts {
 		return popCounts;
 	}
 
-	private Integer findParamGroup(int popKey, List<SubnetPopulationParameters> params) {
+	private Integer findParamGroup(int popKey, List<SubnetPopulationParameters> subnetParams) {
 		Integer group = null;
-		for (SubnetPopulationParameters param : params) {
+		for (SubnetPopulationParameters param : subnetParams) {
 			int candidate = param.mask & param.pattern;
 			if ((popKey & param.mask) == candidate) {
 				group = candidate;

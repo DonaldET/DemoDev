@@ -73,11 +73,11 @@ public class ParallelRunner implements ConcurrentCollector {
 		private static final long serialVersionUID = -4439508226744565477L;
 
 		@Override
-		public Collection<ComputationResult<Integer>> runStream(IntStream stream, Function<Integer, Integer> worker) {
+		public Collection<ComputationResult<Integer>> runStream(IntStream stream, Function<Integer, Integer> workerFunction) {
 			Collection<ComputationResult<Integer>> result = stream
 					.collect(() -> new ArrayList<ComputationResult<Integer>>(), (lc, s) -> {
 						accumulator.getAndAdd(s);
-						lc.add(new ComputationResult<Integer>("FE" + s, worker.apply(s)));
+						lc.add(new ComputationResult<Integer>("FE" + s, workerFunction.apply(s)));
 					}, (lc1, lc2) -> lc1.addAll(lc2));
 			return result;
 		}
@@ -95,12 +95,12 @@ public class ParallelRunner implements ConcurrentCollector {
 		private static final long serialVersionUID = -2199755972826098232L;
 
 		@Override
-		public Collection<ComputationResult<Integer>> runStream(IntStream stream, Function<Integer, Integer> worker) {
+		public Collection<ComputationResult<Integer>> runStream(IntStream stream, Function<Integer, Integer> workerFunction) {
 			final Map<String, ComputationResult<Integer>> map = Collections
 					.synchronizedMap(new HashMap<String, ComputationResult<Integer>>());
 			stream.forEach((s) -> {
 				accumulator.getAndAdd(s);
-				map.put("FE" + s, new ComputationResult<Integer>("FE" + s, worker.apply(s)));
+				map.put("FE" + s, new ComputationResult<Integer>("FE" + s, workerFunction.apply(s)));
 			});
 
 			return map.values().stream().collect(Collectors.toList());
@@ -119,11 +119,11 @@ public class ParallelRunner implements ConcurrentCollector {
 		private static final long serialVersionUID = 8744234588294187908L;
 
 		@Override
-		public Collection<ComputationResult<Integer>> runStream(IntStream stream, Function<Integer, Integer> worker) {
+		public Collection<ComputationResult<Integer>> runStream(IntStream stream, Function<Integer, Integer> workerFunction) {
 			final Map<String, ComputationResult<Integer>> map = new ConcurrentHashMap<String, ComputationResult<Integer>>();
 			stream.forEach((s) -> {
 				accumulator.getAndAdd(s);
-				map.put("FE" + s, new ComputationResult<Integer>("FE" + s, worker.apply(s)));
+				map.put("FE" + s, new ComputationResult<Integer>("FE" + s, workerFunction.apply(s)));
 			});
 
 			return map.values().stream().collect(Collectors.toList());

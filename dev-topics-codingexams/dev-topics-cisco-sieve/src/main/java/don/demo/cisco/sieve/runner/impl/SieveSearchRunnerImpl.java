@@ -32,19 +32,19 @@ public class SieveSearchRunnerImpl implements SieveSearchRunner {
 	}
 
 	@Override
-	public void init(final int repeats, final int[] data, final int topCount, final SieveSearcher searcher) {
-		Validate.isTrue(repeats > 0, "repeats < 1, ", repeats);
-		Validate.notNull(data, "data null");
-		inputSize = data.length;
+	public void init(final int repeatCounts, final int[] inputData, final int maxCount, final SieveSearcher sieveSearcher) {
+		Validate.isTrue(repeatCounts > 0, "repeats < 1, ", repeatCounts);
+		Validate.notNull(inputData, "data null");
+		inputSize = inputData.length;
 		Validate.isTrue(inputSize > 0, "inputSize < 1, ", inputSize);
-		Validate.isTrue(topCount > 0, "topCount < 1, ", topCount);
-		Validate.isTrue(inputSize >= topCount, "inputSize < topCount");
-		Validate.notNull(searcher, "searcher null");
+		Validate.isTrue(maxCount > 0, "topCount < 1, ", maxCount);
+		Validate.isTrue(inputSize >= maxCount, "inputSize < topCount");
+		Validate.notNull(sieveSearcher, "searcher null");
 
-		this.repeats = repeats;
-		this.data = data;
-		this.topCount = topCount;
-		this.searcher = searcher;
+		this.repeats = repeatCounts;
+		this.data = inputData;
+		this.topCount = maxCount;
+		this.searcher = sieveSearcher;
 
 		initialized = true;
 

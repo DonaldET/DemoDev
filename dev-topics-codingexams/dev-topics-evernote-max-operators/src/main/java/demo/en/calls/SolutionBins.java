@@ -125,7 +125,7 @@ public class SolutionBins implements MaxCallFinder {
 	 * Returns maximum call count for a minute in an hour.
 	 * 
 	 * @param calls
-	 * @return
+	 * @return array of call counts
 	 */
 	public int[] getHourlyMaxCallCounts(List<Call> calls) {
 		Map<Integer, Integer> callCounts = new HashMap<Integer, Integer>(1024);

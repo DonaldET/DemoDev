@@ -49,9 +49,9 @@ public abstract class AbstractPerformanceChecker {
 		doSearch(searchItr, shortProbs);
 	}
 
-	protected long doSearch(final BinarySearch<Integer> searcher, final List<Integer> probs) {
+	protected long doSearch(final BinarySearch<Integer> searcher, final List<Integer> probCounts) {
 		final long start = System.currentTimeMillis();
-		for (Integer p : probs) {
+		for (Integer p : probCounts) {
 			final int index = searcher.find(array, p);
 			Assert.assertNotEquals("unable to locate " + p.intValue(), BinarySearch.KEY_NOT_FOUND, index);
 		}
@@ -60,11 +60,11 @@ public abstract class AbstractPerformanceChecker {
 	}
 
 	protected Integer[] defineArray(final int lth) {
-		final Integer[] array = new Integer[lth];
+		final Integer[] returnedArray = new Integer[lth];
 		for (int i = 0; i < lth; i++)
-			array[i] = (i + 1);
+			returnedArray[i] = (i + 1);
 
-		return array;
+		return returnedArray;
 	}
 
 	protected List<Integer> generateProbPoints(final int lth) {
@@ -73,11 +73,11 @@ public abstract class AbstractPerformanceChecker {
 			shuffled.add(array[0]);
 		Collections.shuffle(shuffled);
 
-		final List<Integer> probs = new ArrayList<Integer>(lth);
+		final List<Integer> probCounts = new ArrayList<Integer>(lth);
 		for (int i = 0; i < lth; i++)
-			probs.add(shuffled.get(i));
+			probCounts.add(shuffled.get(i));
 
-		return probs;
+		return probCounts;
 	}
 
 	protected double round2Places(final double x) {

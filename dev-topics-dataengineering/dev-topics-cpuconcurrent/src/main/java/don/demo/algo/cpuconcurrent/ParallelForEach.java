@@ -140,10 +140,10 @@ public class ParallelForEach {
 		expectedKeySet = mockData.expectedKeySet;
 	}
 
-	private static String listFirstN(Map<String, Integer> data, final int n) {
+	private static String listFirstN(Map<String, Integer> map2List, final int n) {
 		StringBuilder msg = new StringBuilder(1000);
 		int nListed = 0;
-		for (Map.Entry<String, Integer> e : data.entrySet()) {
+		for (Map.Entry<String, Integer> e : map2List.entrySet()) {
 			if (nListed >= n) {
 				break;
 			}
@@ -154,7 +154,7 @@ public class ParallelForEach {
 			nListed++;
 		}
 
-		if (nListed < data.size()) {
+		if (nListed < map2List.size()) {
 			msg.append(", ...");
 		}
 

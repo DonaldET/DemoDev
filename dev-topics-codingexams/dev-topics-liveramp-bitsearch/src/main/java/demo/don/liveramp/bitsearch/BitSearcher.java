@@ -63,18 +63,20 @@ public class BitSearcher {
 	 * negative values are to the left of less negative values.
 	 */
 	public static class UnsignedComparator implements Comparator<Integer> {
+		
 		/**
 		 * Logical (<em>unsigned</em>) comparison of two 32 bit integers.
 		 * 
-		 * @param o1: left-hand side of comparison
-		 * @param o2: right-hand side of comparison
+		 * @param ref1: left-hand side of comparison
+		 * @param ref2: right-hand side of comparison
 		 * 
 		 * @return -1 if o1 @lt; 02, +1 if o1 @gt; o2, and 0 if o1 == o2.
-		 */
+		 */		
+		@SuppressWarnings("javadoc")
 		@Override
-		public int compare(final Integer o1, final Integer o2) {
-			final int lhs = o1; // Avoid Java autoboxing
-			final int rhs = o2;
+		public int compare(final Integer ref1, final Integer ref2) {
+			final int lhs = ref1; // Avoid Java autoboxing
+			final int rhs = ref2;
 			if (lhs == rhs) {
 				return 0;
 			}

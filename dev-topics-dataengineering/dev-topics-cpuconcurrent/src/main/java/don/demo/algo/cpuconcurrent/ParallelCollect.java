@@ -208,10 +208,10 @@ public class ParallelCollect {
 		expectedKeySet = mockData.expectedKeySet;
 	}
 
-	private static String listFirstN(List<Computation> data, final int n) {
+	private static String listFirstN(List<Computation> computations, final int n) {
 		StringBuilder msg = new StringBuilder(1000);
 		int nListed = 0;
-		for (Computation c : data) {
+		for (Computation c : computations) {
 			if (nListed >= n) {
 				break;
 			}
@@ -222,7 +222,7 @@ public class ParallelCollect {
 			nListed++;
 		}
 
-		if (nListed < data.size()) {
+		if (nListed < computations.size()) {
 			msg.append(", ...");
 		}
 

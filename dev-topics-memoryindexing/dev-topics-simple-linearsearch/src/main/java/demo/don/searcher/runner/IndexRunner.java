@@ -114,8 +114,8 @@ public class IndexRunner {
 	}
 
 	private void setupIndex() {
-		final IndexBuilder<String> builder = new StringIndexBuilderImpl();
-		searchIndex = builder.buildIndex(fakeUids);
+		final IndexBuilder<String> idxBuilder = new StringIndexBuilderImpl();
+		searchIndex = idxBuilder.buildIndex(fakeUids);
 		searcher = new StringIndexSearcherImpl();
 		searcher.setSearchIndex(searchIndex);
 	}

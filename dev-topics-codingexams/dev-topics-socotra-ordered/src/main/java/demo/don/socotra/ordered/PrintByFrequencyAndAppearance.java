@@ -58,13 +58,13 @@ public class PrintByFrequencyAndAppearance {
 		System.out.println("  keys     : " + keys);
 
 		class FreqOrderInfo {
-			public final int freq;
+			public final int frequency;
 			public final int order;
 			public final int key;
 
-			public FreqOrderInfo(final int freq, final int order, final int key) {
+			public FreqOrderInfo(final int inputFreq, final int order, final int key) {
 				super();
-				this.freq = freq;
+				this.frequency = inputFreq;
 				this.order = order;
 				this.key = key;
 			}
@@ -87,8 +87,8 @@ public class PrintByFrequencyAndAppearance {
 		class FixOrder implements Comparator<FreqOrderInfo> {
 			@Override
 			public int compare(final FreqOrderInfo o1, final FreqOrderInfo o2) {
-				return (o1.freq < o2.freq) ? 1
-						: ((o1.freq > o2.freq) ? -1 : ((o1.order < o2.order) ? -1 : (o1.order > o2.order) ? 1 : 0));
+				return (o1.frequency < o2.frequency) ? 1
+						: ((o1.frequency > o2.frequency) ? -1 : ((o1.order < o2.order) ? -1 : (o1.order > o2.order) ? 1 : 0));
 			}
 
 		}

@@ -25,8 +25,8 @@ public class TestStringIndexSearcherImpl extends TestCase
 
   static
   {
-    final IndexBuilder<String> builder = new StringIndexBuilderImpl();
-    searchIndex = builder.buildIndex(DataBuilderTestConstants.uidOrdered);
+    final IndexBuilder<String> idxBuilder = new StringIndexBuilderImpl();
+    searchIndex = idxBuilder.buildIndex(DataBuilderTestConstants.uidOrdered);
     searcher = new StringIndexSearcherImpl();
     searcher.setSearchIndex(searchIndex);
   }

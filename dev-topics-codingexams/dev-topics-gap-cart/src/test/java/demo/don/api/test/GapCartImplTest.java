@@ -98,13 +98,13 @@ public class GapCartImplTest {
 	 */
 	@Test
 	public void test060() {
-		GapCart gapCart = new GapCartImpl();
+		GapCart gapCart060 = new GapCartImpl();
 
-		gapCart.setPricerRule(new RegularPricingRuleImpl());
-		Assert.assertEquals("regular price differs for empty", 0, gapCart.total());
+		gapCart060.setPricerRule(new RegularPricingRuleImpl());
+		Assert.assertEquals("regular price differs for empty", 0, gapCart060.total());
 
-		gapCart.setPricerRule(new SpecialPricingRuleImpl());
-		Assert.assertEquals("special price differs for empty", 0, gapCart.total());
+		gapCart060.setPricerRule(new SpecialPricingRuleImpl());
+		Assert.assertEquals("special price differs for empty", 0, gapCart060.total());
 	}
 
 	/**
@@ -112,14 +112,14 @@ public class GapCartImplTest {
 	 */
 	@Test
 	public void test061() {
-		final GapCart gapCart = new GapCartImpl();
-		gapCart.setPricerRule(new RegularPricingRuleImpl());
+		final GapCart gapCart061 = new GapCartImpl();
+		gapCart061.setPricerRule(new RegularPricingRuleImpl());
 
 		final String scanBlock = "ABC";
-		gapCart.scan(scanBlock.toCharArray());
+		gapCart061.scan(scanBlock.toCharArray());
 
 		final int expected = (133) + (1300) + (67);
-		Assert.assertEquals("price differs for A,B,C", expected, gapCart.total());
+		Assert.assertEquals("price differs for A,B,C", expected, gapCart061.total());
 	}
 
 	/**
@@ -127,14 +127,14 @@ public class GapCartImplTest {
 	 */
 	@Test
 	public void test062() {
-		final GapCart gapCart = new GapCartImpl();
-		gapCart.setPricerRule(new SpecialPricingRuleImpl());
+		final GapCart gapCart062 = new GapCartImpl();
+		gapCart062.setPricerRule(new SpecialPricingRuleImpl());
 
 		final String scanBlock = "AAAAAAABBGGGGGGGGHHHHHHHHHHHHH";
-		gapCart.scan(scanBlock.toCharArray());
+		gapCart062.scan(scanBlock.toCharArray());
 
 		final int expected = (1 * 133 + 2 * 255) + (2 * 1300 + 0 * 0) + (1 * 222 + 1 * 711) + (1 * 893 + 3 * 1200);
-		Assert.assertEquals("price differs for A,B,G,H", expected, gapCart.total());
+		Assert.assertEquals("price differs for A,B,G,H", expected, gapCart062.total());
 	}
 
 	/**
@@ -142,14 +142,14 @@ public class GapCartImplTest {
 	 */
 	@Test
 	public void test063() {
-		final GapCart gapCart = new GapCartImpl();
-		gapCart.setPricerRule(new SpecialPricingRuleImpl());
+		final GapCart gapCart063 = new GapCartImpl();
+		gapCart063.setPricerRule(new SpecialPricingRuleImpl());
 
 		final String scanBlock = "HABAAHAAHBGGGGHHHGGGGHHAHHHHHA";
-		gapCart.scan(scanBlock.toCharArray());
+		gapCart063.scan(scanBlock.toCharArray());
 
 		final int expected = (1 * 133 + 2 * 255) + (2 * 1300 + 0 * 0) + (1 * 222 + 1 * 711) + (1 * 893 + 3 * 1200);
-		Assert.assertEquals("price differs for A,B,G,H", expected, gapCart.total());
+		Assert.assertEquals("price differs for A,B,G,H", expected, gapCart063.total());
 	}
 
 	// ---------------------------------------------------------------------------

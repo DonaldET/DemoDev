@@ -73,14 +73,14 @@ public class SimplePriorityQueueFinder implements MedianFinder {
 		return msg.toString();
 	}
 
-	private String listQueue(PriorityQueue<Integer> queue) {
-		int n = queue.size();
+	private String listQueue(PriorityQueue<Integer> queue2Check) {
+		int n = queue2Check.size();
 		if (n < 1) {
 			return "";
 		}
 
 		StringBuilder msg = new StringBuilder();
-		PriorityQueue<Integer> copy = new PriorityQueue<Integer>(queue);
+		PriorityQueue<Integer> copy = new PriorityQueue<Integer>(queue2Check);
 		for (int i = 0; i < n; i++) {
 			msg.append("\n  ");
 			msg.append(i);

@@ -90,15 +90,15 @@ public abstract class TestPerfUtil {
 	public static List<Interval> generateTestCases(final long seed, final int n, final int min, final int max) {
 		assert min <= max;
 		final int width = (max - min) + 1;
-		final List<Interval> testCases = new ArrayList<Interval>(n);
+		final List<Interval> testCaseIntervals = new ArrayList<Interval>(n);
 		final Random random = new Random(seed);
 		for (int i = 0; i < n; i++) {
 			final int v1 = getRandomNum(random, i, width, min);
 			final int v2 = getRandomNum(random, i, width, min);
 			final Interval v = new Interval(Math.min(v1, v2), Math.max(v1, v2));
-			testCases.add(v);
+			testCaseIntervals.add(v);
 		}
-		return testCases;
+		return testCaseIntervals;
 	}
 
 	private static int getRandomNum(final Random random, final int ignore, final int width, final int min) {
@@ -108,11 +108,11 @@ public abstract class TestPerfUtil {
 	/**
 	 * Repeat execution to average out variation
 	 */
-	private static long timeRepeatedMerger(final int repetition, final List<Interval> testCases, final Overlap ovr,
+	private static long timeRepeatedMerger(final int repetition, final List<Interval> testCaseIntervals, final Overlap ovr,
 			final Comparator<Interval> comparator) {
 		final long startNano = System.nanoTime();
 		for (int i = 0; i < repetition; i++) {
-			ovr.merge(testCases, comparator);
+			ovr.merge(testCaseIntervals, comparator);
 		}
 
 		return System.nanoTime() - startNano;
@@ -121,11 +121,11 @@ public abstract class TestPerfUtil {
 	/**
 	 * Return median execution time
 	 */
-	private static long smoothRepeatedMergerTime(final int repetition, final List<Interval> testCases,
+	private static long smoothRepeatedMergerTime(final int repetition, final List<Interval> testCaseIntervals,
 			final Overlap ovr, final Comparator<Interval> comparator, final int sampleSize) {
 		final List<Long> times = new ArrayList<Long>(sampleSize);
 		for (int i = 0; i < sampleSize; i++) {
-			times.add(timeRepeatedMerger(repetition, testCases, ovr, comparator));
+			times.add(timeRepeatedMerger(repetition, testCaseIntervals, ovr, comparator));
 		}
 		Collections.sort(times);
 		return times.get(sampleSize / 2);
@@ -155,13 +155,13 @@ public abstract class TestPerfUtil {
 		}
 		final List<long[]> results = new ArrayList<long[]>(testCnt);
 		for (int test = 1; test <= testCnt; test++) {
-			final List<Interval> testCases = TestPerfUtil.generateTestData(TestPerfUtil.INITIAL_SEED,
+			final List<Interval> testCaseIntervals = TestPerfUtil.generateTestData(TestPerfUtil.INITIAL_SEED,
 					initial + (test - 1) * step);
-			final int intervalCount = testCases.size();
+			final int intervalCount = testCaseIntervals.size();
 			if (display) {
 				System.out.print(String.format("%d,%d,", test, intervalCount));
 			}
-			final long elapsed = TestPerfUtil.smoothRepeatedMergerTime(repetition, testCases, ovr, comparator,
+			final long elapsed = TestPerfUtil.smoothRepeatedMergerTime(repetition, testCaseIntervals, ovr, comparator,
 					TestPerfUtil.SMOOTHING_SAMPLE_SIZE);
 			if (display) {
 				final int totalExecCnt = repetition * intervalCount;

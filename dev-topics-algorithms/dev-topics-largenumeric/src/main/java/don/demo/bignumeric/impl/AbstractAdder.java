@@ -57,7 +57,7 @@ public abstract class AbstractAdder implements Adder {
 		return new Result(finalIteration, newMatchedPrevious, iteration);
 	}
 
-	protected abstract float updateSum(final float sum, final float element);
+	protected abstract float updateSum(final float updatedSum, final float elements2Sum);
 
 	@Override
 	public long getMaxIterations() {

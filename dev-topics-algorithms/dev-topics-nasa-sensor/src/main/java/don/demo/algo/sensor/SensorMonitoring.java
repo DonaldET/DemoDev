@@ -174,11 +174,11 @@ public interface SensorMonitoring {
 			StringBuilder sb = new StringBuilder(
 					"[" + getClass().getSimpleName() + " - 0x" + Integer.toHexString(hashCode()) + "[n: " + n + ", k: "
 							+ k + ", expected area: " + expectedArea + ", sessions:");
-			int n = sessions.size();
-			if (n < 1) {
+			int numSessions = sessions.size();
+			if (numSessions < 1) {
 				sb.append(" empty]");
 			} else {
-				for (int i = 0; i < n; i++) {
+				for (int i = 0; i < numSessions; i++) {
 					if (i > 0) {
 						sb.append(",");
 					}

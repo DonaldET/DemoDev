@@ -68,7 +68,7 @@ public class QuadSolver {
 	 *
 	 * Roots returned are first sorted low to high.
 	 *
-	 * @return
+	 * @return ascending list of roots
 	 */
 	public List<Float> solve() {
 		final List<Float> result = new ArrayList<Float>();
@@ -100,7 +100,7 @@ public class QuadSolver {
 	 * @param r2Inp     root 2
 	 * @param tolerance minimum accuracy
 	 *
-	 * @return
+	 * @return list of improved roots
 	 */
 	public List<Float> improve(final float r1Inp, float r2Inp, final float tolerance) {
 		final List<Float> betterRoots = new ArrayList<Float>();

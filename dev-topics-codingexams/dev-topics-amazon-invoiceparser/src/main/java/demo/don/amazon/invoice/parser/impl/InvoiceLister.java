@@ -61,21 +61,21 @@ public class InvoiceLister
    * Read the input file and extract the desired information using the named run
    * strategy.
    *
-   * @param inputFileName
+   * @param inputDataFileName
    *          input file path
-   * @param outputFileName
+   * @param outputDataFileName
    *          output file path
-   * @param runStrategy
+   * @param runtimeStrategy
    *          the named strategy
    *
    * @return {@code true} if successfully processed.
    */
-  public int execute(final String inputFileName, final String outputFileName,
-      final String runStrategy)
+  public int execute(final String inputDataFileName, final String outputDataFileName,
+      final String runtimeStrategy)
   {
-    this.inputFileName = inputFileName;
-    this.outputFileName = outputFileName;
-    this.runStrategy = runStrategy;
+    this.inputFileName = inputDataFileName;
+    this.outputFileName = outputDataFileName;
+    this.runStrategy = runtimeStrategy;
 
     boolean status = false;
     try
