@@ -61,11 +61,11 @@
 		<!-- MAVEN settings -->
 		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<maven.test.skip>false</maven.test.skip>
-		<maven.resources.version>3.1.0</maven.resources.version>
+		<maven.resources.version>3.3.1</maven.resources.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- Generic properties -->
-		<antrun.version>3.0.0</antrun.version>
+		<antrun.version>3.1.0</antrun.version>
 		<maven.compiler.target>20</maven.compiler.target>
 		<maven.compiler.source>20</maven.compiler.source>
 		<java.version>20</java.version>
@@ -73,8 +73,8 @@
 		<javax.annotation-api.version>1.3.2</javax.annotation-api.version>
 		<!-- Open Source Versions -->
 		<args4j.version>2.33</args4j.version>
-		<commons-lang3.version>3.12.0</commons-lang3.version>
-		<commons-io.version>2.11.0</commons-io.version>
+		<commons-lang3.version>3.13.0</commons-lang3.version>
+		<commons-io.version>2.13.0</commons-io.version>
 		<freemarker.version>2.3.32</freemarker.version>
 		<log4j2.version>2.20.0</log4j2.version>
 		<slf4j.log4j.api.version>2.0.7</slf4j.log4j.api.version>
@@ -85,16 +85,31 @@
 		<!-- Plugins -->
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
-		<maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+		<maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
+		<maven-shade-plugin.version>3.5.0</maven-shade-plugin.version>
 		<exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
 		<!-- Test -->
+		<jupiter.junit.version>5.10.0</jupiter.junit.version>
 		<junit.version>4.13.2</junit.version>
 		<hamcrest.version>2.2</hamcrest.version>
 		<hamcrest.all.version>1.3</hamcrest.all.version>
 	</properties>
 	<dependencies>
 		<!-- Test Artifacts -->
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${jupiter.junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${jupiter.junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -114,7 +129,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${antrun.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
