@@ -26,8 +26,19 @@ def read_json(file_path: str, schema: StructType) -> DataFrame:
     :param schema: schema that needs to be passed to this method
     :return: Dataframe containing records from purchase.json
     """
-    #return spark.read.option('encoding', 'UTF-8').json(path=INPUT_FILE, schema=schema, multiLine=True)
-    return spark.read.options(inferSchema='True').json(path=INPUT_FILE, multiLine=True)
+    # return spark.read.option('encoding', 'UTF-8').json(path=INPUT_FILE, schema=schema, multiLine=True)
+    raw_df = (spark.read.
+              option('multiLine', 'True').
+              option('mode', 'PERMISSIVE').
+              option('inferSchema', 'True').
+              json(INPUT_FILE))
+    print("=== read in===")
+    raw_df.printSchema()
+    final_df = spark.createDataFrame(raw_df.rdd, schema)
+    print("***converted***")
+    final_df.printSchema()
+    print("<<<<returned>>>>")
+    return final_df
 
 
 def get_struct_type() -> StructType:
@@ -134,7 +145,7 @@ def write_df_as_delta(df: DataFrame) -> None:
     return
 
 
-def read_data_delta(session: SparkSession) -> DataFrame:
+def read_data_delta(session: SparkSession) -> None:
     """
     Read data from the table created
     

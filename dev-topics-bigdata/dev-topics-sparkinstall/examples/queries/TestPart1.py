@@ -33,7 +33,9 @@ if __name__ == '__main__':
     # FAILS using the supplied schema, proceed with testing using inferred schema
     print('\n<><><><> Read purchases JSON file')
     purchases = p1.read_json(p1.INPUT_FILE, purchase_struct)
+    print('  -- Read and parsed JSON file')
     purchases.printSchema()
+    print('  -- Display JSON file')
     purchases.show()
     print('------------------')
 

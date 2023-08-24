@@ -267,6 +267,14 @@ pip-log.txt
 dependency-reduced-pom.xml
 
 #############
+# Local Spark
+#############
+
+derby.log
+metastore_db/
+spark-warehouse/
+
+#############
 ## Jersey
 #############
 MANIFEST.MF
