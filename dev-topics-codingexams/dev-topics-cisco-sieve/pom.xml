@@ -56,25 +56,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>${exec-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executable>java</executable>
-					<arguments>
-						<argument>-jar</argument>
-						<argument>target\demodev-topics-cisco-sieve-1.0.0-SNAPSHOT.jar</argument>
-					</arguments>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 </project>

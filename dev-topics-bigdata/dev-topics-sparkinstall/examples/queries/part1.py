@@ -2,7 +2,7 @@
 # submit_queries_part1.cmd > part1.log 2>&1
 
 from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType
+from pyspark.sql.types import StructType, StructField, ArrayType, StringType, IntegerType, DoubleType
 from pyspark.sql.functions import flatten, explode
 
 INPUT_FILE = "../../queries/data/purchases.json"
@@ -31,7 +31,7 @@ def read_json(file_path: str, schema: StructType) -> DataFrame:
               option('multiLine', 'True').
               option('mode', 'PERMISSIVE').
               option('inferSchema', 'True').
-              json(INPUT_FILE))
+              json(file_path))
     print("=== read in===")
     raw_df.printSchema()
     final_df = spark.createDataFrame(raw_df.rdd, schema)
@@ -42,6 +42,31 @@ def read_json(file_path: str, schema: StructType) -> DataFrame:
 
 
 def get_struct_type() -> StructType:
+    """
+    Create a schema instance based on a JSON types found in purchase.json.
+
+    purchased_items_array: StructType = StructType([])
+    """
+
+    purchased_items_array_struct: StructType = None
+
+
+    paid_in_elements_struct: StructType = StructType([StructField("Insuranceid", StringType(), True),
+                                               StructField("Insurancedesc", StringType(), True),
+                                               StructField("purchaseditems", purchased_items_array)])
+
+    paid_in_schema: StructType = StructType([StructField("PaidIn", paid_in_elements_struct)])
+
+    type_schema: StructType = StructType([StructField("Client", paid_in_schema, True)])
+
+    purchase_schema: StructType = StructType([StructField("InsuranceProvider", StringType(), True),
+                                              StructField("Type", type_schema, True),
+                                              StructField("eventTime", StringType(), True),
+                                              StructField("id", StringType(), True)])
+    return purchase_schema
+
+
+def get_struct_type_old() -> StructType:
     """
     Create a schema instance based on a JSON types found in purchase.json.
 
@@ -141,7 +166,7 @@ def write_df_as_delta(df: DataFrame) -> None:
     :param df: flattened input with orders
     :return: Data from the orders table
     """
-
+    df.count()
     return
 
 
@@ -152,7 +177,7 @@ def read_data_delta(session: SparkSession) -> None:
     :param session:
     :return:
     """
-
+    print(str(spark.getActiveSession()))
     return
 
 
