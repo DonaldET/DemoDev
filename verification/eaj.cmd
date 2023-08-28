@@ -2,7 +2,6 @@
 :
 : Created from non-null p1 run
 :
-:
 ::
 @echo off
 echo. List or Execute All Jars
@@ -15,7 +14,8 @@ dir/s/b ..\*SNAPSHOT.jar ^
  | find /v "\lib\" ^
  | find /v "\example\" ^
  | find /v "original-" ^
- | find /v "vtestingutils"
+ | find /v "vtestingutils" ^
+ | find /v "cachedwrappeddb"
 if ERRORLEVEL 1 goto list_jars_error
 goto finis
 
@@ -29,6 +29,7 @@ goto finis
 :run_jar_test
 echo.
 echo. Running potentially executable jars
+
 java -jar D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-badaddr\target\demodev-topics-badaddr-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-binarysearchtree\target\demodev-topics-binarysearchtree-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-kmer\target\demodev-topics-kmer-1.0.0-SNAPSHOT.jar
@@ -86,13 +87,11 @@ java -jar D:\GitHub\DemoDev\dev-topics-hacks\dev-topics-serialhack\target\demode
 java -jar D:\GitHub\DemoDev\dev-topics-jerseyservices\dev-topics-safecollection\target\demodev-topics-safecollection-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-simple-linearsearch\target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-topx-query\target\demodev-topics-topx-query-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-nosql\dev-topics-cachewrappeddb\target\demodev-topics-cachedwrappeddb-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-testingutils\target\demodev-topics-vtestingutils-1.0.0-SNAPSHOT.jar
 
 :
 :finis
 echo.
-echo. EAJ done.
+echo. eaj.cmd done.
 ::
 : End eaj.cmd
 ::
