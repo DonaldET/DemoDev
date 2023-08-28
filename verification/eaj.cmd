@@ -1,13 +1,34 @@
 :: eaj.cmd
 :
-: Execute all JARs (EAJ) must be run from D:\
+: Created from non-null p1 run
 :
-: Created from: dir/s/b *.jar | find /I "snapshot" | find /v "\lib\" > t.t
 :
 ::
-echo. Execute All Jars
-echo.
+@echo off
+echo. List or Execute All Jars
 
+if "%1" == "" goto run_jar_test
+echo.
+echo. List Executable Jars
+dir/s/b ..\*SNAPSHOT.jar ^
+ | find "\target\" ^
+ | find /v "\lib\" ^
+ | find /v "\example\" ^
+ | find /v "original-" ^
+ | find /v "vtestingutils"
+if ERRORLEVEL 1 goto list_jars_error
+goto finis
+
+:
+:list_jars_error
+echo.
+echo. Error listing executable jars
+goto finis
+
+:
+:run_jar_test
+echo.
+echo. Running potentially executable jars
 java -jar D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-badaddr\target\demodev-topics-badaddr-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-binarysearchtree\target\demodev-topics-binarysearchtree-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-algorithms\dev-topics-kmer\target\demodev-topics-kmer-1.0.0-SNAPSHOT.jar
@@ -30,15 +51,12 @@ java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-apple-factorial\ta
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-apple-lonelyone\target\demodev-topics-apple-lonelyone-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-apple-minimumdistance\target\demodev-topics-apple-minimumdistance-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-cisco-sieve\target\demodev-topics-cisco-sieve-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-cisco-sieve\target\original-demodev-topics-cisco-sieve-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-creditkarma-list-dependencies\target\demodev-topics-creditkarma-list-dependencies-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-cruise-control\target\demodev-topics-cruise-control-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-easypost-pick\target\demodev-topics-easypost-pick-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-elance-diagonal\target\demodev-topics-elance-diagonal-lister-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-elance-diagonal\target\original-demodev-topics-elance-diagonal-lister-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-evernote-max-operators\target\demodev-topics-evernote-max-operators-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-gap-cart\target\demodev-topics-gap-cart-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-gesail-twowriters\target\demodev-topics-gesail-twowriters-1.0.0-SNAPSHOT-shaded.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-gesail-twowriters\target\demodev-topics-gesail-twowriters-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-gesichtbuch-infrastructure\target\demodev-topics-gesichtbuch-infrastructure-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-codingexams\dev-topics-geturner-binarysearch\target\demodev-topics-ge-turner-binarysearch-1.0.0-SNAPSHOT.jar
@@ -62,20 +80,17 @@ java -jar D:\GitHub\DemoDev\dev-topics-dataengineering\dev-topics-parallel\targe
 java -jar D:\GitHub\DemoDev\dev-topics-dataengineering\dev-topics-sieve2\target\demodev-topics-sieve2-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-devops\dev-topics-bashingbash\target\demodev-topics-bashingbash-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-devops\dev-topics-dependencies\target\demodev-topics-dependencies-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-devops\dev-topics-listenv\target\demodev-topics-listenv-1.0.0-SNAPSHOT-shaded.jar
 java -jar D:\GitHub\DemoDev\dev-topics-devops\dev-topics-listenv\target\demodev-topics-listenv-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-generationutils\target\demodev-topics-demogenerator-1.0.0-SNAPSHOT-shaded.jar
 java -jar D:\GitHub\DemoDev\dev-topics-generationutils\target\demodev-topics-demogenerator-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-hacks\dev-topics-serialhack\target\demodev-topics-serialhack-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-jerseyservices\dev-topics-safecollection\target\demodev-topics-safecollection-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-simple-linearsearch\target\demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-simple-linearsearch\target\original-demodev-topics-simple-linearsearch-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-topx-query\target\demodev-topics-topx-query-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-memoryindexing\dev-topics-topx-query\target\original-demodev-topics-topx-query-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-nosql\dev-topics-cachewrappeddb\target\demodev-topics-cachedwrappeddb-1.0.0-SNAPSHOT.jar
-java -jar D:\GitHub\DemoDev\dev-topics-nosql\dev-topics-cachewrappeddb\target\original-demodev-topics-cachedwrappeddb-1.0.0-SNAPSHOT.jar
 java -jar D:\GitHub\DemoDev\dev-topics-testingutils\target\demodev-topics-vtestingutils-1.0.0-SNAPSHOT.jar
 
+:
+:finis
 echo.
 echo. EAJ done.
 ::
