@@ -72,7 +72,7 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>${log4j2.version}</version>
+			<version>${log4j.version}</version>
 			<type>pom</type>
 			<scope>runtime</scope>
 		</dependency>
