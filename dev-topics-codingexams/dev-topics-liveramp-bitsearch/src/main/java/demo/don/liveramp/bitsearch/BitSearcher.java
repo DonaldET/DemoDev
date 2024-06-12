@@ -72,16 +72,11 @@ public class BitSearcher {
 		 * 
 		 * @return -1 if o1 @lt; 02, +1 if o1 @gt; o2, and 0 if o1 == o2.
 		 */		
-		@SuppressWarnings("javadoc")
 		@Override
 		public int compare(final Integer ref1, final Integer ref2) {
 			final int lhs = ref1; // Avoid Java autoboxing
 			final int rhs = ref2;
-			if (lhs == rhs) {
-				return 0;
-			}
-
-			return Integer.compareUnsigned(lhs, rhs);
+			return lhs == rhs ? 0 : Integer.compareUnsigned(lhs, rhs);
 		}
 	}
 
