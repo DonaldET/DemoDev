@@ -1,0 +1,57 @@
+<!-- Copyright (c) 2025. Donald Trummell. All Rights Reserved. Permission 
+	to use, copy, modify, and distribute this software and its documentation 
+	for educational, research, and not-for-profit purposes, without fee and without 
+	a signed licensing agreement, is hereby granted, provided that the above 
+	copyright notice, and this paragraph, appear in all copies, modifications, 
+	and distributions. Contact dtrummell@gmail.com for commercial licensing opportunities. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>demodev.topics</groupId>
+		<artifactId>demodev-topics-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- Run example: mvn exec:java -Dexec.mainClass="demo.wework.spiral.Solution" 
+		-Dexec.classpathScope=runtime -->
+	<!-- <groupId>demodev.topics</groupId> -->
+	<artifactId>demodev-topics-llmexamples-parent</artifactId>
+	<name>Demonstration of LLM Development _LLM Examples_</name>
+	<description>Parent Project for LLM Examples</description>
+
+	<packaging>pom</packaging>
+	<!-- <version>1.0.0-SNAPSHOT</version> -->
+	<url>http://www.linkedin.com/in/donaldtrummell/</url>
+
+	<modules>
+	    <module>dev-topics-filechecker</module>
+	</modules>
+
+	<properties>
+		<vtestingutils.version>1.0.0-SNAPSHOT</vtestingutils.version>
+	</properties>
+
+	<dependencies>
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>demodev.topics</groupId>
+			<artifactId>demodev-topics-vtestingutils</artifactId>
+			<version>${vtestingutils.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+</project>
