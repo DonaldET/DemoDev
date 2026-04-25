@@ -10,7 +10,6 @@
 #################
 ## Eclipse
 #################
-
 classes/
 target/
 *.class
@@ -53,10 +52,10 @@ local.properties
 #################
 ## PyCharm
 #################
-
 .idea/
 virtualenv/
 venv/
+.venv/
 
 
 #################
