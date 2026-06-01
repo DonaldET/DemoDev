@@ -32,6 +32,7 @@ tmp/
 *~.nib
 local.properties
 .classpath
+.factorypath
 .settings/
 .loadpath
 *.class
