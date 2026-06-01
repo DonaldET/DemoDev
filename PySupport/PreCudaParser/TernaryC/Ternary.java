@@ -1,8 +1,8 @@
 //Test ternary IF
-//
+// TRUE
 //initial:: chooser:  true  x: 0  y: 0
 //post::    chooser:  true  x: 1  y: 1
-//
+// FALSE
 //initial:: chooser:  false  x: 1  y: 1
 //post::    chooser:  false  x: 1  y: 2
 //
