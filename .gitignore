@@ -2,6 +2,7 @@
 ## Code Blocks CPP
 #################
 *.cbp
+*.layout
 
 #################
 ## Eclipse C++
