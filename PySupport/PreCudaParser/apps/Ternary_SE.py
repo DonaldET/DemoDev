@@ -1,16 +1,9 @@
 #
 # Test ternary IF
-<<<<<<< Updated upstream
-# True
-# initial:: chooser:  True  x: 0  y: 0
-# post::    chooser:  True  x: 1  y: 1
-# False
-=======
 # TRUE
 # initial:: chooser:  True  x: 0  y: 0
 # post::    chooser:  True  x: 1  y: 1
 # FALSE
->>>>>>> Stashed changes
 # initial:: chooser:  False  x: 1  y: 1
 # post::    chooser:  False  x: 2  y: 2
 #
@@ -18,7 +11,7 @@
 #
 
 def main():
-    print("\nTest ternary IF")
+    print("\nPython Test ternary IF operator with side-effects")
     x: int = 0
     y: int = 0
     chooser: bool = True
