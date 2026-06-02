@@ -1,12 +1,8 @@
-//Test ternary IF
-// TRUE
-//initial:: chooser:  true  x: 0  y: 0
-//post::    chooser:  true  x: 1  y: 1
-// FALSE
-//initial:: chooser:  false  x: 1  y: 1
-//post::    chooser:  false  x: 1  y: 2
-//
-//Incremented x: 4
+// C++ Test ternary IF operator with side-effects
+// initial:: chooser: true x: 0 y: 0
+// post::    chooser: true x: 1 y: 1
+// initial:: chooser: true x: 1 y: 1
+// post::    chooser: true x: 2 y: 2
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
