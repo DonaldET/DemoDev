@@ -22,5 +22,6 @@ int main()
     chooser = 1;
     z = alternatives[chooser];
     printf("\npost::   chooser: %d  z: %d", chooser, z);
+    free(alternatives);
     return 0;
 }
