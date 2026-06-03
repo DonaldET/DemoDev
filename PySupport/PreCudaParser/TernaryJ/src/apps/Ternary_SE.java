@@ -1,8 +1,8 @@
-//Test ternary IF
-// TRUE
+//Java Test ternary IF operator with side-effects
+//
 //initial:: chooser:  true  x: 0  y: 0
 //post::    chooser:  true  x: 1  y: 1
-// FALSE
+//
 //initial:: chooser:  false  x: 1  y: 1
 //post::    chooser:  false  x: 1  y: 2
 //
@@ -12,22 +12,22 @@ package apps;
 
 class Ternary_SE {
 
-    private static int x = 0, y = 0;
-    private static boolean chooser = true;
+	private static int x = 0, y = 0;
+	private static boolean chooser = true;
 
-    public static void main(String[] args) {
-        System.out.println("\nJava Test ternary IF operator with side-effects");
-        chooser = true;
-        System.out.println("\ninitial:: chooser:  " + chooser + "  x: " + x + "  y: " + y);
-        y = chooser ? ++x : ++y;
-        System.out.println("post::    chooser:  " + chooser + "  x: " + x + "  y: " + y);
-        chooser = false;
-        System.out.println("\ninitial:: chooser:  " + chooser + "  x: " + x + "  y: " + y);
-        y = chooser ? ++x : ++y;
-        System.out.println("post::    chooser:  " + chooser + "  x: " + x + "  y: " + y);
-        ++x;
-        ++x;
-        ++x;
-        System.out.println("\nIncremented x: " + x);
-    }
+	public static void main(String[] args) {
+		System.out.println("\nJava Test ternary IF operator with side-effects");
+		chooser = true;
+		System.out.println("\ninitial:: chooser:  " + chooser + "  x: " + x + "  y: " + y);
+		y = chooser ? ++x : ++y;
+		System.out.println("post::    chooser:  " + chooser + "  x: " + x + "  y: " + y);
+		chooser = false;
+		System.out.println("\ninitial:: chooser:  " + chooser + "  x: " + x + "  y: " + y);
+		y = chooser ? ++x : ++y;
+		System.out.println("post::    chooser:  " + chooser + "  x: " + x + "  y: " + y);
+		++x;
+		++x;
+		++x;
+		System.out.println("\nIncremented x: " + x);
+	}
 }
