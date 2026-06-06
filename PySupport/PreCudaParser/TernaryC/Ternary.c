@@ -1,8 +1,8 @@
-//C++ Test ternary IF operator NO side-effects
-//initial:: chooser: true  x: 0  y: 0  z: 0
-//post::    chooser: true  x: 0  y: 0  z: 1
-//initial:: chooser: false  x: 0  y: 0  z: 1
-//post::    chooser: false  x: 0  y: 0  z: 1
+//Simplest C++ Transformation Test File
+//initial:: chooser: true  x: 2  y: 6  z: -777
+//post::    chooser: true  x: 2  y: 6  z: 2
+//initial:: chooser: false  x: 2  y: 6  z: 2
+//post::    chooser: false  x: 2  y: 6  z: 6:    chooser: false  x: 2  y: 6  z: 7
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,16 +10,16 @@
 
 int main()
 {
-    int x = 0, y = 0, z = 0;
+    printf("\nSimplest C++ Transformation Test File");
+    int x = 2, y = 6, z = -777;
 
-    printf("\nC++ Test ternary IF operator NO side-effects");
     bool chooser = true;
     printf("\ninitial:: chooser: %s  x: %d  y: %d  z: %d", chooser ? "true" : "false", x, y, z);
-    z = chooser ? x + 1 : y + 1;
+    z = chooser ? x : y;
     printf("\npost::    chooser: %s  x: %d  y: %d  z: %d", chooser ? "true" : "false", x, y, z);
     chooser = false;
     printf("\ninitial:: chooser: %s  x: %d  y: %d  z: %d", chooser ? "true" : "false", x, y, z);
-    z = chooser ? x + 1 : y + 1;
+    z = chooser ? x : y;
     printf("\npost::    chooser: %s  x: %d  y: %d  z: %d", chooser ? "true" : "false", x, y, z);
     return 0;
 }
