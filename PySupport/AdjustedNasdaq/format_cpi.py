@@ -100,6 +100,7 @@ def _process_file(input_file: str, output_file: str) -> None:
         next(infile)
 
         print(f"  -- Skipped first line, processing remaining lines ...")
+        prior_series = "____________"
         prior_date: int = 0
         for line_num, line in enumerate(infile, start=2):
             input_record_count += 1
@@ -122,7 +123,7 @@ def _process_file(input_file: str, output_file: str) -> None:
             year_str = tokens[1]
             month_code = tokens[2]
             value_str = tokens[3]
-            footnote = tokens[4] if len(tokens) >= 5 else " "
+            footnote = tokens[4] if len(tokens) > 4 else " "
 
             any_bad = False
             # Validate series
@@ -130,6 +131,11 @@ def _process_file(input_file: str, output_file: str) -> None:
                 print(f"Line {line_num}: Invalid series: {series}.")
                 bad_series_count += 1
                 any_bad |= True
+
+            if series != prior_series:
+                print(f"  - starting series {series}")
+                prior_series = series
+                prior_date = 0
 
             if series in series_values:
                 series_values[series] = series_values[series] + 1
@@ -143,7 +149,7 @@ def _process_file(input_file: str, output_file: str) -> None:
                 if year < 1900:
                     raise ValueError
             except ValueError:
-                print(f"Line {line_num}: Invalid year: {year_str}.")
+                print(f"Line {line_num}: Invalid year: {year_str} in series {series}.")
                 bad_year_count += 1
                 any_bad |= True
 
@@ -151,7 +157,7 @@ def _process_file(input_file: str, output_file: str) -> None:
             if len(month_code) != 3 or month_code[0] != "M":
                 bad_month_code_count += 1
                 if bad_month_code_count <= bad_month_code_count_limit:
-                    print(f"Line {line_num}: Invalid month code: {month_code}.")
+                    print(f"Line {line_num}: Invalid month code: {month_code} in series {series}.")
                 any_bad |= True
 
             month: int = 0
@@ -162,7 +168,7 @@ def _process_file(input_file: str, output_file: str) -> None:
             except ValueError:
                 bad_month_count += 1
                 if bad_month_count <= bad_month_count_limit:
-                    print(f"Line {line_num}: Invalid month: {month}.")
+                    print(f"Line {line_num}: Invalid month: {month} in series {series}.")
                 any_bad |= True
 
             date_time_code = 1000 * year + month
@@ -170,7 +176,8 @@ def _process_file(input_file: str, output_file: str) -> None:
                 out_of_sequence_count += 1
                 if out_of_sequence_count <= out_of_sequence_count_limit:
                     print(
-                        f"Line {line_num}: OutOfSequence: {out_of_sequence_count} Prior Date: {prior_date} Current Date: {date_time_code}.")
+                        f"Line {line_num}: OutOfSequence: {out_of_sequence_count} Prior Date: {prior_date}"
+                        " Current Date: {date_time_code} in series {series}.")
                 any_bad |= True
             else:
                 prior_date = date_time_code
@@ -185,7 +192,7 @@ def _process_file(input_file: str, output_file: str) -> None:
                 sum_value += value
                 nvalues += 1
             except ValueError:
-                print(f"Line {line_num}: Invalid value: {value_str}.")
+                print(f"Line {line_num}: Invalid value: {value_str} in series {series}.")
                 bad_value_count += 1
                 any_bad |= True
 

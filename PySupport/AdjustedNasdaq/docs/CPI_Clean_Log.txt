@@ -1,0 +1,56 @@
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\format_cpi.py 
+Processing CPI data in data\su.data.1.AllItems.raw ...
+Output to CSV file data\su.data.1.AllItems.csv
+Opening data\su.data.1.AllItems.raw and writing to data\su.data.1.AllItems.csv ...
+  -- Creating CSV writer with excel dialect ...
+  -- Writing CSV header ...
+  -- Skipped first line, processing remaining lines ...
+  - starting series SUUR0000SA0
+Line 15: Invalid month: 13 in series SUUR0000SA0.
+Line 28: Invalid month: 13 in series SUUR0000SA0.
+Line 41: Invalid month: 13 in series SUUR0000SA0.
+Line 54: Invalid month: 13 in series SUUR0000SA0.
+Line 67: Invalid month: 13 in series SUUR0000SA0.
+Line 80: Invalid month: 13 in series SUUR0000SA0.
+Line 93: Invalid month: 13 in series SUUR0000SA0.
+Line 106: Invalid month: 13 in series SUUR0000SA0.
+Line 119: Invalid month: 13 in series SUUR0000SA0.
+Line 132: Invalid month: 13 in series SUUR0000SA0.
+  - starting series SUUR0000SA0E
+  - starting series SUUR0000SA0L1E
+  - starting series SUUR0000SAA
+  - starting series SUUR0000SAC
+  - starting series SUUR0000SAD
+  - starting series SUUR0000SAE
+  - starting series SUUR0000SAE1
+  - starting series SUUR0000SAE2
+  - starting series SUUR0000SAF
+  - starting series SUUR0000SAF1
+  - starting series SUUR0000SAF11
+  - starting series SUUR0000SAF116
+  - starting series SUUR0000SAG
+  - starting series SUUR0000SAH
+  - starting series SUUR0000SAH1
+  - starting series SUUR0000SAH2
+  - starting series SUUR0000SAH3
+  - starting series SUUR0000SAM
+  - starting series SUUR0000SAM1
+  - starting series SUUR0000SAM2
+  - starting series SUUR0000SAN
+  - starting series SUUR0000SAR
+  - starting series SUUR0000SAS
+  - starting series SUUR0000SAT
+  - starting series SUUR0000SAT1
+  - starting series SUUR0000SEFV
+  - starting series SUUR0000SETA01
+  - starting series SUUR0000SETG
+Records successfully processed : 9194
+Records read                   : 9558
+Tokens processed               : 38523
+  -- Bad month records : 364
+Minimum value: 51.92
+Maximum value: 294.73
+Average value: 137.62
+Series labels: {'SUUR0000SA0': 330, 'SUUR0000SA0E': 330, 'SUUR0000SA0L1E': 330, 'SUUR0000SAA': 330, 'SUUR0000SAC': 330, 'SUUR0000SAD': 330, 'SUUR0000SAE': 330, 'SUUR0000SAE1': 330, 'SUUR0000SAE2': 330, 'SUUR0000SAF': 330, 'SUUR0000SAF1': 330, 'SUUR0000SAF11': 330, 'SUUR0000SAF116': 330, 'SUUR0000SAG': 330, 'SUUR0000SAH': 330, 'SUUR0000SAH1': 330, 'SUUR0000SAH2': 330, 'SUUR0000SAH3': 330, 'SUUR0000SAM': 330, 'SUUR0000SAM1': 330, 'SUUR0000SAM2': 330, 'SUUR0000SAN': 330, 'SUUR0000SAR': 330, 'SUUR0000SAS': 330, 'SUUR0000SAT': 330, 'SUUR0000SAT1': 330, 'SUUR0000SEFV': 330, 'SUUR0000SETA01': 318, 'SUUR0000SETG': 330}
+
+Process finished with exit code 0

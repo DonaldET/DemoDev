@@ -1,0 +1,18 @@
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\format_NASDAQ.py 
+Formatting NASDAQ Composite Index data; reading data\NASDAQCOM_RAW.csv and producing data\NASDAQCOM.csv.
+Reading input from data\NASDAQCOM_RAW.csv
+  - NASDAQCOM had 877 valid numeric values.
+  - Performed 36 interpolations.
+Writing output to data\NASDAQCOM.csv
+  - minimum date : 2023-01-03
+  - maximum date : 2026-07-02
+
+  - minimum value: 10305.24
+  - maximum value: 27093.9
+  - average value: 17943.028296823657
+  - SD           : 4126.722667346668
+
+  - Records read   : 913
+  - Records written: 913
+
+Process finished with exit code 0
