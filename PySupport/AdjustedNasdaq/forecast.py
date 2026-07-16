@@ -27,11 +27,12 @@ _AUTO_ARIMA_MINIMUM_OBSERVATIONS = 8
 
 def _validate_inputs(df: pd.DataFrame, future_dates_input: list[str]) -> (pd.DataFrame, pd.DatetimeIndex):
     """Validate and normalize the historical dataframe and requested dates."""
-    print(f"<><> Validating inputs. . .")
+    print(f"<><> Validating forcast inputs.")
     if not isinstance(df, pd.DataFrame):
         raise TypeError("df must be a pandas DataFrame.")
-
+    df.info()
     missing = [column for column in _REQUIRED_COLUMNS if column not in df.columns]
+
     if missing:
         raise ValueError(f"df is missing required column(s): {', '.join(missing)}")
 
@@ -79,7 +80,6 @@ def _validate_inputs(df: pd.DataFrame, future_dates_input: list[str]) -> (pd.Dat
     history.info()
 
     expected_history = pd.date_range(history["date"].iloc[0], history["date"].iloc[-1], freq="MS")
-    print(f"-- Expected History:\n{expected_history}")
     if not history["date"].reset_index(drop=True).equals(pd.Series(expected_history)):
         print(f"WARNING: Historical dates don't form a continuous monthly sequence.")
 
@@ -160,7 +160,7 @@ def forecast_cpi(df: pd.DataFrame, future_dates: list[str]) -> pd.DataFrame:
         A new DataFrame containing the original rows followed by one forecast row
         for each requested future date.
     """
-    print(f"<><> forecast_cpi")
+    print("<><> Forcasting CPI for future dates started.")
     history, requested_dates = _validate_inputs(df, future_dates)
 
     if history is None:
@@ -181,6 +181,8 @@ def forecast_cpi(df: pd.DataFrame, future_dates: list[str]) -> pd.DataFrame:
     maximum_horizon = (requested_dates[-1].year - last_date.year) * 12 + (
             requested_dates[-1].month - last_date.month
     )
+
+    print("<><> Predict future values for requested dates.")
 
     values = pd.Series(
         history["cpi"].to_numpy(dtype=float),

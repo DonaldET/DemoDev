@@ -111,7 +111,7 @@ def _read_and_clean_cpi(
     df.sort_index(inplace=True)
 
     print(".................................................")
-    print(f"-- Corrected filtered input for series {series!r}, shape: {df.shape}")
+    print(f"-- Read CSV and corrected filtered input for series {series!r}, returning shape: {df.shape}")
     df.info()
     print(".................................................")
     return df
@@ -136,11 +136,11 @@ def _forecast_future_cpi(
             dates, or not later than the last historical date.
     """
     print("Entering _forecast_future_cpi . . .")
-    print(f"-- Source CPI Data: shape={df.shape};")
+    print(f"-- Forecast and cleaned source CPI Data: shape={df.shape};")
     df.info()
 
     future_date_strings: list[str] = future_dates.copy()
-    print(f"-- Forecasting CPI for future dates: {future_date_strings}.")
+    print(f"-- Future dates: {future_date_strings}.")
     if not future_date_strings:
         raise ValueError("future dates must be provided as a non-empty list of strings.")
     if any(not isinstance(date_value, str) for date_value in future_date_strings):
@@ -165,18 +165,16 @@ def _forecast_future_cpi(
         raise ValueError("Future dates must be in ascending order.")
 
     last_historical_date = pd.Timestamp(df["date"].max())
-    print(f"-- Future dates follow {last_historical_date}.")
+    print(f"-- Future dates must follow this timestamp: {last_historical_date}.")
     if (parsed_dates <= last_historical_date).any():
         raise ValueError(
             "Every future date must be later than the last historical CPI date."
         )
-    print(f"-- Applying future dates:\n{parsed_dates}")
 
-
-    safe_input = df.copy()
-    safe_input.index = df["date"]
-    print(f"-- Copied input to augment; shape: {safe_input.shape};" 
-          f" Index:\n{safe_input.index}\n   (type is {type(safe_input.index)})")
+    safe_input = df.copy(deep=True)
+    safe_input.set_index(df["date"], inplace=True)
+    print(f"-- Input to augmentation:")
+    safe_input.info()
     augmented_df = forecast_cpi(safe_input, list(future_date_strings))
 
     required_columns = {"date", "cpi"}
@@ -235,10 +233,10 @@ def _run_augmentation(
     print("Entering _run_augmentation. . .")
     print(f"==== Running CPI cleaning, forecasting, and output workflow.")
     df = _read_and_clean_cpi(input_file, series, start_year, end_year)
-    print(f"==== Cleaned Chained CPI DataFrame: shape={df.shape}; index:\n{df.index}")
     print(f"==== Augmenting with future dates {future_dates}.")
     augmented_df = _forecast_future_cpi(df, future_dates)
-    print(f"-- Augmented DataFrame: shape={augmented_df.shape}; index:\n{augmented_df.index}\n{df}")
+    print(f"-- Augmented DataFrame:")
+    augmented_df.info()
     print(f"Write out augmented CPI dataframe to {output_file}.")
     _write_augmented_cpi(augmented_df, output_file)
 

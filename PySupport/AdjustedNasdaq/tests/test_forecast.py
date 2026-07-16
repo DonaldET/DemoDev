@@ -23,7 +23,9 @@ def _test_forecast_cpi_appends_future_values(label: str, fed_cpi_index: pd.DataF
 def _run_tests() -> int:
     """Run the unit tests."""
     err_count = 0
-    print(f"-------------------------\nSetting up test data for {SMALL_SAMPLE}")
+    print(f"--------- Start Running Unit Tests ----------------\n")
+
+    print(f"Setting up test data for {SMALL_SAMPLE}")
     dates: pd.Series[pd.Timestamp] = pd.to_datetime(pd.Series(
         ["2026-02-01", "2026-03-01", "2026-04-01", "2026-05-01"],
         name="date"))
@@ -34,7 +36,6 @@ def _run_tests() -> int:
     print(f"-- Created Test Input DataFrame: {fed_cpi_index.shape}")
     fed_cpi_index.info()
     print(f"index:\n{fed_cpi_index.index}")
-    print("++++++++++++++++++++++++++++++++++++++")
 
     future_dates = ["2026-06-01", "2026-07-01"]
 
@@ -62,17 +63,19 @@ def _run_tests() -> int:
         }
     )
     expected.set_index(expected["date"], inplace=True)
-    print(f"---------------------------\n-- Created Expected Output DataFrame: {expected.shape}\n")
+    print("-- Created Expected Output DataFrame: {expected.shape}")
     expected.info()
-    print(f"-------------------------")
     print(f"index:\n{expected.index}")
-    print("++++++++++++++++++++++++++++++++++++++")
 
     try:
         _test_forecast_cpi_appends_future_values(SMALL_SAMPLE, fed_cpi_index, future_dates, expected)
+        print("--> Success!")
     except AssertionError as error_details:
         print(error_details);
         err_count += 1
+
+    print(f"--------- Stop Running Unit Tests  ----------------\n")
+
     return err_count
 
 
