@@ -1,9 +1,28 @@
-"""Clean and augment Chained Urban CPI data with forecasted monthly values.
+"""Clean and augment Chained Urban CPI data with interpolated and forecasted monthly values.
+NOMINAL PRICE HISTORY:
+NASDAQ Composite obtained from https://fred.stlouisfed.org/series/NASDAQCOM
+Index Feb 5, 1971=100, Not Seasonally Adjusted
+
+U.S. CONSUMER PRICE INDEX (CPI)
+U.S. Bureau of Labor Statistics - https://www.bls.gov/cpi/
+Methodology: https://www.bls.gov/cpi/additional-resources/chained-cpi.htm
+Available Files:
+download.bls.gov - /pub/time.series/su/
+ 6/10/2026  8:30 AM           90 su.area
+ 6/10/2026  8:30 AM           32 su.base
+ 6/10/2026  8:30 AM       401786 su.data.0.Current    <-- these two are identical as of 7/4/2026
+ 6/10/2026  8:30 AM       401786 su.data.1.AllItems
+ 6/10/2026  8:30 AM           51 su.footnote
+ 6/10/2026  8:30 AM          891 su.item
+ 6/10/2026  8:30 AM           46 su.periodicity
+10/12/2018  1:41 PM           79 su.seasonal
+ 6/10/2026  8:30 AM         4914 su.series
+ 2/14/2018 10:30 AM        10689 su.txt
 
 This module reads the Bureau of Labor Statistics Chained Urban CPI source file,
 selects the requested series and year range, restructures the data into
-``date`` and ``cpi`` columns, calls ``forecast_cpi`` to append future values,
-and writes the augmented data to a CSV file.
+``date`` and ``cpi`` columns, calls  ``fill_in_missing`` to interpolate missing months,
+calls ``forecast_cpi`` to append future values, and writes the augmented data to a CSV file.
 """
 
 from __future__ import annotations
@@ -234,6 +253,7 @@ def _run_augmentation(
     print("Entering _run_augmentation. . .")
     print(f"==== Running CPI cleaning, forecasting, and output workflow.")
     df = _read_and_clean_cpi(input_file, series, start_year, end_year)
+    print(f"==== Fill in missing months by interpolation.")
     df = fill_in_missing(df)
     print(f"==== Augmenting with future dates {future_dates}.")
     augmented_df = _forecast_future_cpi(df, future_dates)

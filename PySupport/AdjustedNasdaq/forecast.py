@@ -27,7 +27,7 @@ _AUTO_ARIMA_MINIMUM_OBSERVATIONS = 8
 
 def _validate_inputs(df: pd.DataFrame, future_dates_input: list[str]) -> (pd.DataFrame, pd.DatetimeIndex):
     """Validate and normalize the historical dataframe and requested dates."""
-    print(f"<><> Validating forcast inputs.")
+    print("<><> Validating forcast inputs.")
     if not isinstance(df, pd.DataFrame):
         raise TypeError("df must be a pandas DataFrame.")
     df.info()

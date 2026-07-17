@@ -1,0 +1,108 @@
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\augment.py 
+Entering _run_augmentation. . .
+==== Running CPI cleaning, forecasting, and output workflow.
+Entering _read_and_clean_cpi. . .
+-- Reading CPI input data from CSV file: 'data\\su.data.1.AllItems.csv'
+-- Raw data from 'data\\su.data.1.AllItems.csv'; shape is (9194, 5); index.df=RangeIndex(start=0, stop=9194, step=1)
+-- Filtered (40, 5) from (9194, 5)
+-- Extracted and formatted dates [40].
+.................................................
+-- Read CSV and corrected filtered input for series 'SUUR0000SA0', returning shape: (40, 2)
+<class 'pandas.DataFrame'>
+DatetimeIndex: 40 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    40 non-null     datetime64[us]
+ 1   cpi     40 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 960.0 bytes
+.................................................
+==== Fill in missing months by interpolation.
+<><> Entering fill_in missing monthly CPI values. . . .
+-- Forecast and cleaned source CPI Data: shape=(40, 2);
+<class 'pandas.DataFrame'>
+DatetimeIndex: 40 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    40 non-null     datetime64[us]
+ 1   cpi     40 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 960.0 bytes
+==== Augmenting with future dates ['2026-06-01', '2026-07-01'].
+Entering _forecast_future_cpi . . .
+-- Forecast and cleaned source CPI Data: shape=(41, 2);
+<class 'pandas.DataFrame'>
+DatetimeIndex: 41 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    41 non-null     datetime64[us]
+ 1   cpi     41 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 984.0 bytes
+-- Future dates: ['2026-06-01', '2026-07-01'].
+-- Future dates must follow this timestamp: 2026-05-01 00:00:00.
+-- Input to augmentation:
+<class 'pandas.DataFrame'>
+DatetimeIndex: 41 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    41 non-null     datetime64[us]
+ 1   cpi     41 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 984.0 bytes
+<><> Forcasting CPI for future dates started.
+<><> Validating forcast inputs.
+<class 'pandas.DataFrame'>
+DatetimeIndex: 41 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    41 non-null     datetime64[us]
+ 1   cpi     41 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 984.0 bytes
+-- Raw Future Dates [2;<class 'list'>;<class 'str'>]:-> ['2026-06-01', '2026-07-01']
+-- Future Dates     [2;<class 'pandas.DatetimeIndex'>;<class 'pandas.Timestamp'>]:-> DatetimeIndex(['2026-06-01', '2026-07-01'], dtype='datetime64[us]', freq=None)
+-- History Step 1:
+<class 'pandas.DataFrame'>
+DatetimeIndex: 41 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    41 non-null     datetime64[us]
+ 1   cpi     41 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 984.0 bytes
+-- History:
+<class 'pandas.DataFrame'>
+DatetimeIndex: 41 entries, 2023-01-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    41 non-null     datetime64[us]
+ 1   cpi     41 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 984.0 bytes
+-- Return cleaned historical data (<class 'pandas.DataFrame'>) and future dates (<class 'pandas.DatetimeIndex'>)!
+<><> Predict future values for requested dates.
+<><> Forcasting CPI for future dates complete.
+-- Augmented DataFrame:
+<class 'pandas.DataFrame'>
+DatetimeIndex: 43 entries, 2023-01-01 to 2026-07-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype         
+---  ------  --------------  -----         
+ 0   date    43 non-null     datetime64[us]
+ 1   cpi     43 non-null     float64       
+dtypes: datetime64[us](1), float64(1)
+memory usage: 1.0 KB
+Write out augmented CPI dataframe to data\nasdaq_chained_projected.csv.
+Entering _write_augmented_cpi . . .
+-- Writing augmented CPI dataframe to data\nasdaq_chained_projected.csv, shape=(43, 2)
+Done.
+
+Process finished with exit code 0

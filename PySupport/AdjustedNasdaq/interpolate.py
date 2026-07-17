@@ -39,8 +39,12 @@ def fill_in_missing(df: pd.DataFrame) -> pd.DataFrame:
             dates or CPI values are invalid, dates are duplicated or unsorted,
             or dates are not first-of-month values.
     """
+    print("<><> Entering fill_in missing monthly CPI values. . . .")
     if not isinstance(df, pd.DataFrame):
         raise TypeError("df must be a pandas DataFrame")
+
+    print(f"-- Forecast and cleaned source CPI Data: shape={df.shape};")
+    df.info()
 
     missing_columns = _REQUIRED_COLUMNS.difference(df.columns)
     if missing_columns:
