@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import pandas as pd
 
-
 _REQUIRED_COLUMNS = {"date", "cpi"}
 
 
@@ -51,8 +50,8 @@ def fill_in_missing(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         raise ValueError("df must contain at least one row")
 
-    working = df.loc[:, ["date", "cpi"]].copy()
-
+    working: pd.Dataframe = df.loc[:, ["date", "cpi"]].copy()
+    working.set_index(working["date"], inplace=True)
     try:
         working["date"] = pd.to_datetime(working["date"], errors="raise")
     except (TypeError, ValueError) as exc:

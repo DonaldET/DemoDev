@@ -13,6 +13,7 @@ from pathlib import Path
 import pandas as pd
 
 from forecast import forecast_cpi
+from interpolate import fill_in_missing
 
 DEFAULT_INPUT_FILE = r"data\su.data.1.AllItems.csv"
 DEFAULT_OUTPUT_FILE = r"data\nasdaq_chained_projected.csv"
@@ -233,6 +234,7 @@ def _run_augmentation(
     print("Entering _run_augmentation. . .")
     print(f"==== Running CPI cleaning, forecasting, and output workflow.")
     df = _read_and_clean_cpi(input_file, series, start_year, end_year)
+    df = fill_in_missing(df)
     print(f"==== Augmenting with future dates {future_dates}.")
     augmented_df = _forecast_future_cpi(df, future_dates)
     print(f"-- Augmented DataFrame:")
