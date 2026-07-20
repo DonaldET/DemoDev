@@ -1,4 +1,8 @@
 """
+Adjust_failed.py
+
+Initial Gemini attempt to create the entire process for creating a CPI adjusted
+
 NOMINAL PRICE HISTORY:
 NASDAQ Composite obtained from https://fred.stlouisfed.org/series/NASDAQCOM
 Index Feb 5, 1971=100, Not Seasonally Adjusted
@@ -23,8 +27,8 @@ import pandas as pd
 
 START_DATE = '2023-07-01'
 END_DATE = '2026-07-01'
-RAW_NASDAQ = r'data\NASDAQCOM_IXIC.csv'
-CPI_INFO = 'CPIAUCNS.csv'
+RAW_NASDAQ = r'data\NASDAQCOM_RAW.csv'
+CPI_INFO = r'data\su.data.1.AllItems.csv'
 
 OUTPUT_FILE = r'output\nasdaq_daily_inflation_model.csv'
 
@@ -37,24 +41,24 @@ def _input_data_and_filter(nasdaq_file: str, cpi_file: str, start_date: str, end
     print(nasdaq_df)
 
     print(f"\n\t#2a read CPI file: {cpi_file}")
-    cpi_df = pd.read_csv(cpi_file, parse_dates=['DATE'])
+    cpi_df = pd.read_csv(cpi_file, parse_dates=['date'])
 
     # 2. Filter dates to matching project bounds (e.g. July 2023 through July 2026)
-    nasdaq_df = nasdaq_df[(nasdaq_df['Date'] >= start_date) & (nasdaq_df['Date'] <= end_date)]
-    cpi_df = cpi_df[(cpi_df['DATE'] >= start_date) & (cpi_df['DATE'] <= end_date)]
+    nasdaq_df = nasdaq_df[(nasdaq_df['observation_date'] >= start_date) & (nasdaq_df['observation_date'] <= end_date)]
+    cpi_df = cpi_df[(cpi_df['observation_date'] >= start_date) & (cpi_df['observation_date'] <= end_date)]
     return nasdaq_df, cpi_df
 
 
 def _interpolate_monthly_inflation(start_date: str, end_date: str):
     # 3. Create a continuous daily calendar matrix to hold the interpolation
     daily_dates = pd.date_range(start=start_date, end=end_date, freq='D')
-    daily_dates_df = pd.DataFrame({'Date': daily_dates})
+    daily_dates_df = pd.DataFrame({'date': daily_dates})
     return daily_dates_df
 
 
 def _merge_model(nasdaq_df, model_df, cpi_df):
     # 4. Merge monthly CPI onto the continuous calendar and linearly interpolate it
-    model_df = pd.merge(model_df, cpi_df, left_on='Date', right_on='DATE', how='left').drop(columns=['DATE'])
+    model_df = pd.merge(model_df, cpi_df, left_on='date', right_on='date', how='left').drop(columns=['date'])
     model_df['CPIAUCNS'] = model_df['CPIAUCNS'].interpolate(method='linear')
 
     # 5. Establish your target base period currency (e.g., July 2026 dollars)
@@ -62,7 +66,7 @@ def _merge_model(nasdaq_df, model_df, cpi_df):
     latest_cpi = model_df['CPIAUCNS'].iloc[-1]
 
     # 6. Merge the interpolated framework with the active stock trading days
-    merged_model = pd.merge(nasdaq_df[['Date', 'Close']], model_df, on='Date', how='inner')
+    merged_model = pd.merge(nasdaq_df[['date', 'Close']], model_df, on='date', how='inner')
     return merged_model, latest_cpi
 
 
@@ -82,8 +86,9 @@ def main() -> int:
     daily_dates_df = _interpolate_monthly_inflation(START_DATE, END_DATE)
     merge_model, latest_cpi = _merge_model(nasdaq_df, daily_dates_df, cpi_df)
     final_model = _create_final_model(merge_model, latest_cpi, OUTPUT_FILE)
-    print(f"Processing complete for {final_model['Date'].strftime('%Y-%m-%d')}.")
+    print(f"Processing complete for {final_model['date'].strftime('%Y-%m-%d')}.")
     return 0
+
 
 if __name__ == '__main__':
     main()
