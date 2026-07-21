@@ -1,4 +1,10 @@
 """Tests for the Chained CPI forecasting module."""
+import os
+import sys
+
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(project_root)
+
 import pandas as pd
 from pandas.testing import assert_frame_equal
 
