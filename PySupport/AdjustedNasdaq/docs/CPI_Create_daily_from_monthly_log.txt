@@ -1,7 +1,11 @@
-Output of test_convert_rates.py
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\monthly_to_daily.py
+Converting monthly CPI file data\nasdaq_chained_projected.csv to daily CPI file data\nasdaq_daily_cpi.csv.
+Input file: data\nasdaq_chained_projected.csv
+Output file: data\nasdaq_daily_cpi.csv
+Input records: 43
+Written records: 1308
+Input minimum date: 2023-01-01
+Output maximum date: 2026-07-31
+Done.
 
-All 21 tests passed.
-2023-11-01 has 30 days.
- -- A monthy rate 0.015105 example corresponds to daily rate 0.000499860069.
- -- which results in an applied rate of 0.01510500000000000, that has relative error -1.1484432148141722e-16.
- -- but inaccurately computed appled rate of 0.01510499999999726, relative error -1.814540279406392e-13.
+Process finished with exit code 0

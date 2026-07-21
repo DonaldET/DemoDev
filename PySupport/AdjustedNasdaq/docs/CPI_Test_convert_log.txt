@@ -1,0 +1,6 @@
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\tests\test_convert_rates.py
+All 21 tests passed.
+2023-11-01 has 30 days.
+ -- A monthy rate 0.015105 example corresponds to daily rate 0.000499860069.
+ -- which results in an applied rate of 0.01510500000000000, that has relative error -1.1484432148141722e-16.
+ -- but inaccurately computed appled rate of 0.01510499999999726, relative error -1.814540279406392e-13.
