@@ -23,6 +23,17 @@ Therefore, the daily CPI estimate returned by
 For a positive monthly rate and a valid month length of 28 through 31 days,
 the resulting daily rate is positive and less than the monthly rate.
 
+Accuracy changes
+----------------
+The production function evaluates the formula with ``math.log1p(R)`` and
+``math.expm1(value)`` instead of ``math.log(1 + R)`` and ``math.exp(value) - 1``.
+These pairs are mathematically equivalent, but ``log1p`` and ``expm1`` reduce
+floating-point cancellation and preserve more accuracy for small CPI rates.
+Tests compare full-precision results with tight tolerances and separately
+confirm that those results round to the daily percentages displayed in the
+Excel table. The displayed Excel rates are rounded and therefore should not be
+used as the full-precision expected values.
+
 Test coverage
 -------------
 The suite tests all six spreadsheet examples from the requirements, additional
@@ -35,6 +46,7 @@ Run this module directly from the command line::
     python test_convert_rates.py
 """
 
+import calendar
 import math
 from typing import Any
 
@@ -42,10 +54,10 @@ from convert_rates import monthly_to_daily
 
 
 def _test_conversion(
-    monthly_rate: Any,
-    days_in_month: Any,
-    expected: float | None = None,
-    expect_error: bool = False,
+        monthly_rate: Any,
+        days_in_month: Any,
+        expected: float | None = None,
+        expect_error: bool = False,
 ) -> None:
     """Execute one conversion test case.
 
@@ -70,7 +82,10 @@ def _test_conversion(
             f"ValueError not raised for ({monthly_rate!r}, {days_in_month!r})"
         )
 
-    result = monthly_to_daily(monthly_rate, days_in_month)
+    result = monthly_to_daily(
+        monthly_rate=monthly_rate,
+        days_in_month=days_in_month,
+    )
     if expected is None:
         raise AssertionError("a valid test case requires an expected value")
 
@@ -122,6 +137,24 @@ def _test_excel_examples() -> None:
         )
 
 
+def _illustrate_a_single_day_conversion():
+    R = 0.015105
+    date_string = "2023-11-01"
+    year, month, day = map(int, date_string.split("-"))
+
+    # Returns a tuple (weekday_of_first_day, number_of_days)
+    num_days = calendar.monthrange(year, month)[1]
+
+    print(f"{date_string} has {num_days} days.")  # Output: 30
+    r = monthly_to_daily(R, num_days)
+    print(f" -- A monthy rate {R:.6f} example corresponds to daily rate {r:.12f}.")
+    r_applied = math.expm1(math.log1p(r) * num_days)
+    r_appled_poorly = math.exp(math.log(1 + r) * num_days) - 1
+    print(f" -- which results in an applied rate of {r_applied:.17f}, that has relative error {(r_applied - R) / R}.")
+    print(
+        f" -- but inaccurately computed appled rate of {r_appled_poorly:.17f}, relative error {(r_appled_poorly - R) / R}.")
+
+
 def run_tests() -> None:
     """Run the complete command-line test suite.
 
@@ -147,6 +180,8 @@ def run_tests() -> None:
         _test_conversion(monthly_rate, days_in_month, expected=expected)
 
     invalid_cases = (
+        (None, 30),
+        (0.012, None),
         (0.0, 30),
         (-0.01, 30),
         (math.inf, 30),
@@ -164,6 +199,8 @@ def run_tests() -> None:
 
     total_cases = 6 + len(additional_valid_cases) + len(invalid_cases)
     print(f"All {total_cases} tests passed.")
+
+    _illustrate_a_single_day_conversion()
 
 
 if __name__ == "__main__":
