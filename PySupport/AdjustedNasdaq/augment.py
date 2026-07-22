@@ -35,7 +35,7 @@ from forecast import forecast_cpi
 from interpolate import fill_in_missing
 
 DEFAULT_INPUT_FILE = r"data\su.data.1.AllItems.csv"
-DEFAULT_OUTPUT_FILE = r"data\nasdaq_chained_projected.csv"
+DEFAULT_OUTPUT_FILE = r"data/chained_cpi_projected.csv"
 DEFAULT_SERIES = "SUUR0000SA0"
 DEFAULT_START_YEAR = 2023
 DEFAULT_END_YEAR = 2026
@@ -268,7 +268,7 @@ def main():
 
     This public function is the program's command-line entry point. Its default
     arguments read ``data/su.data.1.AllItems.csv``, forecast June and July 2026,
-    and write ``data/nasdaq_chained_projected.csv``.
+    and write ``data/chained_cpi_projected.csv``.
     Returns: None
     """
     input_file: str = DEFAULT_INPUT_FILE

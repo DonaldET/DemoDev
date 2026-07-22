@@ -1,7 +1,7 @@
 D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\monthly_to_daily.py
-Converting monthly CPI file data\nasdaq_chained_projected.csv to daily CPI file data\nasdaq_daily_cpi.csv.
-Input file: data\nasdaq_chained_projected.csv
-Output file: data\nasdaq_daily_cpi.csv
+Converting monthly CPI file data\chained_cpi_projected.csv to daily CPI file data\daily_cpi.csv.
+Input file: data\chained_cpi_projected.csv
+Output file: data\daily_cpi.csv
 Input records: 43
 Written records: 1308
 Input minimum date: 2023-01-01

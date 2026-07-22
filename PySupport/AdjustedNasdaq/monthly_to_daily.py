@@ -24,8 +24,8 @@ import pandas as pd
 from convert_rates import monthly_to_daily
 
 _FIELD_NAMES = ("date", "cpi")
-MONTHLY_CPI_FILE = os.path.join("data", "nasdaq_chained_projected.csv")
-DAILY_CPI_FILE = os.path.join("data", "nasdaq_daily_cpi.csv")
+MONTHLY_CPI_FILE = os.path.join("data", "chained_cpi_projected.csv")
+DAILY_CPI_FILE = os.path.join("data", "daily_cpi.csv")
 
 
 def convert_cpi_to_daily(

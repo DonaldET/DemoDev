@@ -86,9 +86,9 @@ def _run_tests() -> int:
 
 
 if __name__ == "__main__":
-    print("==============================")
-    print("==== Test Forcast Results ====")
-    print("==============================")
+    print("===============================")
+    print("==== Test Forecast Results ====")
+    print("===============================")
     errors: int = _run_tests()
     if errors > 0:
         raise AssertionError(f"FAILED: {errors} errors were encountered.")

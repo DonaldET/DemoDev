@@ -100,9 +100,9 @@ Data columns (total 2 columns):
  1   cpi     43 non-null     float64       
 dtypes: datetime64[us](1), float64(1)
 memory usage: 1.0 KB
-Write out augmented CPI dataframe to data\nasdaq_chained_projected.csv.
+Write out augmented CPI dataframe to data\chained_cpi_projected.csv.
 Entering _write_augmented_cpi . . .
--- Writing augmented CPI dataframe to data\nasdaq_chained_projected.csv, shape=(43, 2)
+-- Writing augmented CPI dataframe to data\chained_cpi_projected.csv, shape=(43, 2)
 Done.
 
 Process finished with exit code 0

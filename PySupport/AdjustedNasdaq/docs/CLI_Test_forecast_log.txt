@@ -1,0 +1,89 @@
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\tests\test_forecast.py
+===============================
+==== Test Forecast Results ====
+===============================
+--------- Start Running Unit Tests ----------------
+
+Setting up test data for Small Sample
+-- Created Test Input DataFrame: (4, 2)
+<class 'pandas.DataFrame'>
+DatetimeIndex: 4 entries, 2026-02-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   date    4 non-null      datetime64[us]
+ 1   cpi     4 non-null      float64
+dtypes: datetime64[us](1), float64(1)
+memory usage: 96.0 bytes
+index:
+DatetimeIndex(['2026-02-01', '2026-03-01', '2026-04-01', '2026-05-01'], dtype='datetime64[us]', name='date', freq=None)
+-- Created Expected Output DataFrame: {expected.shape}
+<class 'pandas.DataFrame'>
+DatetimeIndex: 6 entries, 2026-02-01 to 2026-07-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   date    6 non-null      datetime64[us]
+ 1   cpi     6 non-null      float64
+dtypes: datetime64[us](1), float64(1)
+memory usage: 144.0 bytes
+index:
+DatetimeIndex(['2026-02-01', '2026-03-01', '2026-04-01', '2026-05-01',
+               '2026-06-01', '2026-07-01'],
+              dtype='datetime64[us]', name='date', freq=None)
+____________________________________________________________
+ --Testing Small Sample Start.
+ --Input   :shape=(4, 2); index:
+DatetimeIndex(['2026-02-01', '2026-03-01', '2026-04-01', '2026-05-01'], dtype='datetime64[us]', name='date', freq=None)
+<><> Forcasting CPI for future dates started.
+<><> Validating forcast inputs.
+<class 'pandas.DataFrame'>
+DatetimeIndex: 4 entries, 2026-02-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   date    4 non-null      datetime64[us]
+ 1   cpi     4 non-null      float64
+dtypes: datetime64[us](1), float64(1)
+memory usage: 96.0 bytes
+-- Raw Future Dates [2;<class 'list'>;<class 'str'>]:-> ['2026-06-01', '2026-07-01']
+-- Future Dates     [2;<class 'pandas.DatetimeIndex'>;<class 'pandas.Timestamp'>]:-> DatetimeIndex(['2026-06-01', '2026-07-01'], dtype='datetime64[us]', freq=None)
+-- History Step 1:
+<class 'pandas.DataFrame'>
+DatetimeIndex: 4 entries, 2026-02-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   date    4 non-null      datetime64[us]
+ 1   cpi     4 non-null      float64
+dtypes: datetime64[us](1), float64(1)
+memory usage: 96.0 bytes
+-- History:
+<class 'pandas.DataFrame'>
+DatetimeIndex: 4 entries, 2026-02-01 to 2026-05-01
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   date    4 non-null      datetime64[us]
+ 1   cpi     4 non-null      float64
+dtypes: datetime64[us](1), float64(1)
+memory usage: 96.0 bytes
+-- Return cleaned historical data (<class 'pandas.DataFrame'>) and future dates (<class 'pandas.DatetimeIndex'>)!
+<><> Predict future values for requested dates.
+<><> Forcasting CPI for future dates complete.
+ --Expected: shape=(6, 2); index:
+DatetimeIndex(['2026-02-01', '2026-03-01', '2026-04-01', '2026-05-01',
+               '2026-06-01', '2026-07-01'],
+              dtype='datetime64[us]', name='date', freq=None)
+ --Actual  : shape=(6, 2); index:
+DatetimeIndex(['2026-02-01', '2026-03-01', '2026-04-01', '2026-05-01',
+               '2026-06-01', '2026-07-01'],
+              dtype='datetime64[us]', name='date', freq=None)
+ --Testing Small Sample Done.
+____________________________________________________________
+--> Success!
+--------- Stop Running Unit Tests  ----------------
+
+--- Done.
+
+Process finished with exit code 0
