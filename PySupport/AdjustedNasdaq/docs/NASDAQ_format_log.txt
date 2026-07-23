@@ -1,0 +1,16 @@
+D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\.venv\Scripts\python.exe D:\GitHub\DemoDev\PySupport\AdjustedNasdaq\format_NASDAQ.py
+Clean and Format NASDAQ Composite Index Data
+Input file:  data\NASDAQCOM_RAW.csv
+Output file: data\NASDAQCOM.csv
+Input beginning date: 2023-01-03
+Input ending date: 2026-07-02
+Output beginning date: 2023-01-03
+Output ending date: 2026-07-02
+Records processed: 913
+Interpolations performed: 400
+Missing rows added: 364
+Records written: 1277
+Dates not monotonically increasing: 0
+Done.
+
+Process finished with exit code 0

@@ -1,157 +1,209 @@
-"""
-NASDAQ Formatter
+"""Clean, validate, interpolate, and format NASDAQ Composite index data.
 
-Reads raw NASDAQ Composite index data from a CSV file, validates and reformats
-the data, fills missing index values using linear interpolation, and writes the
-corrected data to a new Excel-dialect CSV file.
+The module reads the raw two-column NASDAQ CSV file, validates its dates and
+index values, inserts rows for missing calendar dates, interpolates missing
+NASDAQCOM values linearly by date, and writes an Excel-dialect CSV file.
 """
+
+from __future__ import annotations
 
 import csv
+from pathlib import Path
 
 import pandas as pd
-from pandas import Timestamp, Timedelta
 
-DEFAULT_INPUT_FILE_NAME = r'data\NASDAQCOM_RAW.csv'
-DEFAULT_OUTPUT_FILE_NAME = r'data\NASDAQCOM.csv'
+
+INPUT_FILE = Path("data") / "NASDAQCOM_RAW.csv"
+OUTPUT_FILE = Path("data") / "NASDAQCOM.csv"
 
 DATE_COLUMN = "observation_date"
-NASDAQ_COLUMN = "NASDAQCOM"
+VALUE_COLUMN = "NASDAQCOM"
+EXPECTED_COLUMNS = [DATE_COLUMN, VALUE_COLUMN]
 
-MIN_DATE: Timestamp = Timestamp(pd.Timestamp("2023-01-01"))
-MAX_DATE: Timestamp = Timestamp(pd.Timestamp("2026-07-02"))
-NA_T_TYPE_TIMEDELTA: Timedelta = Timedelta(pd.Timedelta(0))
-
-MIN_NASDAQ_VALUE = 10000.0
-MAX_NASDAQ_VALUE = 29000.0
+MIN_DATE = pd.Timestamp("2023-01-01")
+MAX_DATE = pd.Timestamp("2026-07-02")
+MIN_INDEX_VALUE = 10_000.0
+MAX_INDEX_VALUE = 30_000.0
 
 
-def _check_missing_values(df: pd.DataFrame) -> pd.DataFrame:
-    if list(df.columns) != [DATE_COLUMN, NASDAQ_COLUMN]:
+def _describe_csv_errors(values: pd.Series, mask: pd.Series) -> str:
+    """Return offending values paired with their one-based CSV row numbers."""
+    problems = []
+    for index in values.index[mask]:
+        value = values.loc[index]
+        display_value = "<missing>" if str(value).strip() == "" else repr(value)
+        problems.append(f"row {index + 2}: {display_value}")
+    return "; ".join(problems)
+
+
+def _count_non_increasing_dates(dates: pd.Series) -> int:
+    """Return the number of dates not strictly greater than their predecessor."""
+    return int(dates.diff().iloc[1:].le(pd.Timedelta(0)).sum())
+
+
+def _read_and_validate_input(input_file: Path) -> tuple[pd.DataFrame, int]:
+    """Read the raw CSV and validate its columns, dates, and supplied values.
+
+    Missing NASDAQCOM values are retained for later interpolation. All supplied
+    values must be numeric and within the permitted range.
+    """
+    try:
+        frame = pd.read_csv(
+            input_file,
+            dtype=str,
+            keep_default_na=False,
+            skipinitialspace=True,
+        )
+    except (OSError, pd.errors.ParserError) as exc:
+        raise ValueError(f"Unable to read input CSV '{input_file}': {exc}") from exc
+
+    if list(frame.columns) != EXPECTED_COLUMNS:
         raise ValueError(
-            f"ERROR: Input CSV must contain these columns: "
-            f"{DATE_COLUMN}, {NASDAQ_COLUMN}"
+            f"Input columns must be exactly {EXPECTED_COLUMNS}; "
+            f"received {list(frame.columns)}."
         )
 
-    df[DATE_COLUMN] = df[DATE_COLUMN].fillna("").str.strip()
-    df[NASDAQ_COLUMN] = df[NASDAQ_COLUMN].fillna("").str.strip()
+    if frame.empty:
+        raise ValueError("The input CSV contains no data records.")
 
-    if df[DATE_COLUMN].eq("").any():
-        raise ValueError("ERROR: observation_date must not be missing.")
-    df[DATE_COLUMN] = pd.to_datetime(df[DATE_COLUMN])
+    raw_dates = frame[DATE_COLUMN].astype(str).str.strip()
+    if raw_dates.eq("").any():
+        details = _describe_csv_errors(raw_dates, raw_dates.eq(""))
+        raise ValueError(f"Missing observation_date ({details}).")
 
-    return df
+    parsed_dates = pd.to_datetime(raw_dates, errors="coerce", format="mixed")
+    if parsed_dates.isna().any():
+        details = _describe_csv_errors(raw_dates, parsed_dates.isna())
+        raise ValueError(f"Invalid observation_date ({details}).")
+    parsed_dates = parsed_dates.dt.normalize()
 
-
-def _validate_df(df: pd.DataFrame) -> pd.DataFrame:
-    if df[DATE_COLUMN].isna().any():
-        raise ValueError("ERROR: One or more observation_date values are invalid.")
-
-    if ((df[DATE_COLUMN] < MIN_DATE) | (df[DATE_COLUMN] > MAX_DATE)).any():
-        raise ValueError("ERROR: One or more observation_date values are outside the valid range.")
-
-    duplicate_count = int(df[DATE_COLUMN].duplicated().sum())
-    if duplicate_count > 0:
-        raise ValueError("ERROR: observation_date values must be unique.")
-
-    dates_not_increasing = int((df[DATE_COLUMN].diff() <= NA_T_TYPE_TIMEDELTA).sum())
-    if dates_not_increasing > 0:
+    outside_date_range = ~parsed_dates.between(MIN_DATE, MAX_DATE, inclusive="both")
+    if outside_date_range.any():
+        details = _describe_csv_errors(raw_dates, outside_date_range)
         raise ValueError(
-            "ERROR: observation_date values must be monotonically increasing,"
-            " found {dates_not_increasing} out of order.")
-
-    df[NASDAQ_COLUMN] = df[NASDAQ_COLUMN].replace("", pd.NA)
-    na_before_coerce = df[NASDAQ_COLUMN].isna().sum()
-    df[NASDAQ_COLUMN] = pd.to_numeric(df[NASDAQ_COLUMN], errors="coerce")
-    na_after_coerce = df[NASDAQ_COLUMN].isna().sum()
-    invalid_numeric_count = na_after_coerce - na_before_coerce
-    if invalid_numeric_count > 0:
-        raise ValueError(
-            "ERROR: f{NASDAQ_COLUMN} wasn't all valid numeric values or blank, na in {invalid_numeric_count} rows")
-
-    valid_numeric_values = df[NASDAQ_COLUMN].dropna()
-    if ((valid_numeric_values < MIN_NASDAQ_VALUE) | (valid_numeric_values > MAX_NASDAQ_VALUE)).any():
-        raise ValueError(f"One or more NASDAQCOM values are outside the valid range.")
-    print(f"  - NASDAQCOM had {len(valid_numeric_values)} valid numeric values.")
-
-    return df
-
-
-def _interpolate(df: pd.DataFrame) -> pd.DataFrame:
-    missing_before = int(df[NASDAQ_COLUMN].isna().sum())
-    df[NASDAQ_COLUMN] = df[NASDAQ_COLUMN].interpolate(method="linear")
-    missing_after = int(df[NASDAQ_COLUMN].isna().sum())
-
-    interpolations_performed = missing_before - missing_after
-    print(f"  - Performed {interpolations_performed} interpolations.")
-
-    if missing_after > 0:
-        raise ValueError(
-            f"ERROR: Unable to interpolate {missing_after} missing NASDAQCOM values. "
-            "Missing values may occur at the beginning or end of the file."
+            f"observation_date must be between {MIN_DATE.date()} and "
+            f"{MAX_DATE.date()} ({details})."
         )
 
-    if ((df[NASDAQ_COLUMN] < MIN_NASDAQ_VALUE) | (df[NASDAQ_COLUMN] > MAX_NASDAQ_VALUE)).any():
+    if parsed_dates.duplicated().any():
+        duplicate_mask = parsed_dates.duplicated(keep=False)
+        details = _describe_csv_errors(raw_dates, duplicate_mask)
+        raise ValueError(f"observation_date values must be unique ({details}).")
+
+    non_increasing_count = _count_non_increasing_dates(parsed_dates)
+
+    raw_values = frame[VALUE_COLUMN].astype(str).str.strip()
+    missing_values = raw_values.eq("")
+    numeric_values = pd.to_numeric(raw_values.mask(missing_values), errors="coerce")
+
+    invalid_numeric = ~missing_values & numeric_values.isna()
+    if invalid_numeric.any():
+        details = _describe_csv_errors(raw_values, invalid_numeric)
+        raise ValueError(f"NASDAQCOM must be numeric ({details}).")
+
+    outside_value_range = numeric_values.notna() & ~numeric_values.between(
+        MIN_INDEX_VALUE, MAX_INDEX_VALUE, inclusive="both"
+    )
+    if outside_value_range.any():
+        details = _describe_csv_errors(raw_values, outside_value_range)
         raise ValueError(
-            f"ERROR: One or more NASDAQCOM values are outside the valid range {MIN_NASDAQ_VALUE} to {MAX_NASDAQ_VALUE}.")
+            f"NASDAQCOM must be between {MIN_INDEX_VALUE:g} and "
+            f"{MAX_INDEX_VALUE:g} ({details})."
+        )
 
-    return df
+    validated = pd.DataFrame(
+        {DATE_COLUMN: parsed_dates, VALUE_COLUMN: numeric_values.astype(float)}
+    )
+    return validated, non_increasing_count
 
 
-def _process_nasdaq_file(input_file_name: str, output_file_name: str) -> None:
+def _interpolate_data(frame: pd.DataFrame) -> tuple[pd.DataFrame, int, int]:
+    """Insert missing daily rows and interpolate all absent index values.
+
+    Returns the formatted frame, the number of values interpolated, and the
+    number of missing date rows inserted.
     """
-    Clean, validate, interpolate, force date format, and write NASDAQ Composite index data.
-    """
-    print(f"Reading input from {input_file_name}")
-    df = pd.read_csv(input_file_name, dtype=str)
-    records_read = len(df)
-    if records_read < 1:
-        raise ValueError("ERROR: No NASDAQCOM records found.")
+    ordered = frame.sort_values(DATE_COLUMN).set_index(DATE_COLUMN)
+    complete_dates = pd.date_range(ordered.index.min(), ordered.index.max(), freq="D")
+    missing_rows = int(len(complete_dates) - len(ordered))
+    completed = ordered.reindex(complete_dates)
+    interpolations = int(completed[VALUE_COLUMN].isna().sum())
 
-    df = _check_missing_values(df)
-    df = _validate_df(df)
-    df - _interpolate(df)
-    df[DATE_COLUMN] = df[DATE_COLUMN].dt.strftime("%Y-%m-%d")
+    completed[VALUE_COLUMN] = completed[VALUE_COLUMN].interpolate(
+        method="time", limit_area="inside"
+    )
+    if completed[VALUE_COLUMN].isna().any():
+        missing_dates = completed.index[completed[VALUE_COLUMN].isna()]
+        rendered = "; ".join(
+            f"output row {position + 2}: date {date.strftime('%Y-%m-%d')}, "
+            "NASDAQCOM <missing>"
+            for position, date in enumerate(completed.index)
+            if date in missing_dates
+        )
+        raise ValueError(
+            "NASDAQCOM values at the beginning or end of the date range cannot "
+            f"be interpolated ({rendered})."
+        )
 
-    df.to_csv(output_file_name, index=False, mode="w", header=[DATE_COLUMN, NASDAQ_COLUMN])
+    invalid_result = ~completed[VALUE_COLUMN].between(
+        MIN_INDEX_VALUE, MAX_INDEX_VALUE, inclusive="both"
+    )
+    if invalid_result.any():
+        rendered = "; ".join(
+            f"output row {position + 2}: {value!r} on {date.strftime('%Y-%m-%d')}"
+            for position, (date, value) in enumerate(completed[VALUE_COLUMN].items())
+            if invalid_result.loc[date]
+        )
+        raise ValueError(f"Interpolated NASDAQCOM value is out of range ({rendered}).")
 
-    with open(output_file_name, "w", newline="", encoding="utf-8") as output_file:
-        writer = csv.writer(output_file, dialect="excel")
-        print(f"Writing output to {output_file_name}")
-        writer.writerow([DATE_COLUMN, NASDAQ_COLUMN])
+    completed.index.name = DATE_COLUMN
+    completed = completed.reset_index()
+    completed[DATE_COLUMN] = completed[DATE_COLUMN].dt.strftime("%Y-%m-%d")
+    return completed, interpolations, missing_rows
 
-        min_date = df[DATE_COLUMN].min()
-        max_date = df[DATE_COLUMN].max()
 
-        min_value = df[NASDAQ_COLUMN].min()
-        max_value = df[NASDAQ_COLUMN].max()
-        avg_value = df[NASDAQ_COLUMN].mean()
-        std_value = df[NASDAQ_COLUMN].std()
+def _write_output(frame: pd.DataFrame, output_file: Path) -> None:
+    """Write the corrected frame using the standard Excel CSV dialect."""
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with output_file.open("w", newline="", encoding="utf-8") as csv_file:
+            writer = csv.writer(csv_file, dialect="excel")
+            writer.writerow(EXPECTED_COLUMNS)
+            writer.writerows(frame.itertuples(index=False, name=None))
+    except OSError as exc:
+        raise ValueError(f"Unable to write output CSV '{output_file}': {exc}") from exc
 
-        print(f"  - minimum date : {min_date}")
-        print(f"  - maximum date : {max_date}")
-        print(f"\n  - minimum value: {min_value}")
-        print(f"  - maximum value: {max_value}")
-        print(f"  - average value: {avg_value}")
-        print(f"  - SD           : {std_value}")
 
-        for _, row in df.iterrows():
-            writer.writerow([
-                row[DATE_COLUMN],
-                f"{row[NASDAQ_COLUMN]:.2f}",
-            ])
+def _format_nasdaq(input_file: Path, output_file: Path) -> None:
+    """Orchestrate NASDAQ validation, interpolation, output, and reporting."""
+    print("Clean and Format NASDAQ Composite Index Data")
+    print(f"Input file:  {input_file}")
+    print(f"Output file: {output_file}")
 
-    print(f"\n  - Records read   : {records_read}")
-    print(f"  - Records written: {len(df)}")
+    source, non_increasing = _read_and_validate_input(input_file)
+    formatted, interpolations, missing_rows = _interpolate_data(source)
+    _write_output(formatted, output_file)
+
+    input_beginning = source[DATE_COLUMN].min().strftime("%Y-%m-%d")
+    input_ending = source[DATE_COLUMN].max().strftime("%Y-%m-%d")
+    output_beginning = formatted[DATE_COLUMN].iloc[0]
+    output_ending = formatted[DATE_COLUMN].iloc[-1]
+
+    print(f"Input beginning date: {input_beginning}")
+    print(f"Input ending date: {input_ending}")
+    print(f"Output beginning date: {output_beginning}")
+    print(f"Output ending date: {output_ending}")
+    print(f"Records processed: {len(source)}")
+    print(f"Interpolations performed: {interpolations}")
+    print(f"Missing rows added: {missing_rows}")
+    print(f"Records written: {len(formatted)}")
+    print(f"Dates not monotonically increasing: {non_increasing}")
+    print("Done.")
 
 
 def main() -> None:
-    """
-    Define input and output file names and delegate file processing.
-    """
-    input_file_name = DEFAULT_INPUT_FILE_NAME
-    output_file_name = DEFAULT_OUTPUT_FILE_NAME
-    print(f"Formatting NASDAQ Composite Index data; reading {input_file_name} and producing {output_file_name}.")
-    _process_nasdaq_file(input_file_name, output_file_name)
+    """Run the formatter with the module's input and output file constants."""
+    _format_nasdaq(INPUT_FILE, OUTPUT_FILE)
 
 
 if __name__ == "__main__":
