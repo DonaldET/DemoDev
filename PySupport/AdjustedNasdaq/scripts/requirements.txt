@@ -12,7 +12,7 @@ packaging==26.2
 pandas==3.0.3
 pandas-stubs==3.0.3.260530
 patsy==1.0.2
-pipx==1.16.3
+pipx==1.16.7
 platformdirs==4.11.0
 pluggy==1.6.0
 Pygments==2.20.0
