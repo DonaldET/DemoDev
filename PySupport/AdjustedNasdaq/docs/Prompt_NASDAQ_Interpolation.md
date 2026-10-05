@@ -2,13 +2,12 @@
 
 You will create a Python function named `fill_in_missing_days` in a module named `interpolate_nasdaq.py`. The function accepts a non-empty pandas DataFrame parameter with two columns: `observation_date` and `NASDAQCOM`. The returned augmented DataFrame must contain exactly the same two columns, in the same order and with the same column datatypes. Its original index is not preserved; the returned index must be replaced with `observation_date`.
 
-The output contains inserted rows and interpolated values when the input requires them, along with counts of insertions and interpolations made. The input DataFrame must have at least nine rows; this is a requirement for later processing steps.
+The output DataFrame contains inserted rows and interpolated values when the input requires them. The function returns the output DataFrame and two separate integer counts; the counts of insertions and interpolations made. The input DataFrame must have at least two fully populated rows; the first .and last rows.
 
 The function signature is:
 
 ```python
 import pandas as pd
-
 
 def fill_in_missing_days(
     nasdaq_composite_df: pd.DataFrame,
@@ -19,7 +18,7 @@ where:
 
 - `nasdaq_composite_df`: a DataFrame with values to be augmented by interpolation.
 - `augmented_df`: a returned DataFrame with the same columns as `nasdaq_composite_df` containing interpolated `NASDAQCOM` values and added rows of generated dates and interpolated `NASDAQCOM` values if required.
-- `count_of_added_rows` equals the number of added rows filling in missing date values.
+- `count_of_added_rows` equals the number of added rows filling in missing date values; the added values are days, and represent equal increments of calendar days. This is a generic name focusing on the structural change in the dataframe from reindexing.
 - `count_interpolations` equals the number of missing `NASDAQCOM` values immediately after daily reindexing and before interpolation. It therefore includes both pre-existing `NaN` values and `NaN` values introduced for generated rows.
 
 > **Note:** Raise a `TypeError` when:
@@ -28,7 +27,7 @@ where:
 
 Raise a `ValueError` for every other validation failure.
 
-Only two columns are allowed in the input and output DataFrame, with the output DataFrame having the same two columns. The two columns are `observation_date` and `NASDAQCOM`. The `observation_date` column represents a NASDAQ closing date (datatype exactly `datetime64[ns]`); and it represents generated weekend and holiday values that are  strictly increasing`observation_date` are synthetic analytical estimates and are not official NASDAQ closing values. The `observation_date` column is in ascending order with unique dates, and typically ranges between 2023-01-01 through 2026-07-31. Its datatype is `datetime64[ns]` exactly and may not contain missing values (marked by `NaT`). The `NASDAQCOM` column represents the NASDAQ Composite index closing value for that date; it is a positive non-zero floating-point number. `NASDAQCOM` must have datatype `float64` exactly. Missing values, if present, must be represented by IEEE floating-point `NaN`. No other datatype is permitted. The input DataFrame column `NASDAQCOM` must be kept to full precision; for column `NASDAQCOM`, apply `pandas.Series.round(4)` only to positions that were missing immediately before interpolation; do not round valid input values.
+Only two columns are allowed in the input and output DataFrame, with the output DataFrame having the same two columns. The two columns are `observation_date` and `NASDAQCOM`. The `observation_date` column represents a `NASDAQCOM` closing date (datatype exactly `datetime64[ns]`); and it represents generated weekend and holiday values that are  strictly increasing`observation_date` are synthetic analytical estimates and are not official `NASDAQCOM` closing values. The `observation_date` column is in ascending order with unique dates, and typically ranges between 2023-01-01 through 2026-07-31. Its datatype is `datetime64[ns]` exactly and may not contain missing values (marked by `NaT`). The `NASDAQCOM` column represents the NASDAQ Composite index closing value for that date; it is a positive non-zero floating-point number. `NASDAQCOM` must have datatype `float64` exactly. Missing values, if present, must be represented by IEEE floating-point `NaN`. No other datatype is permitted. The input DataFrame column `NASDAQCOM` must be kept to full precision; for column `NASDAQCOM`, apply `pandas.Series.round(4)` only to positions that were missing immediately before interpolation; do not round valid input values.
 
 ## Input Data Constraint Validations
 
@@ -43,7 +42,7 @@ Using a Python function `fill_in_missing_days`, you will clean up and reformat t
 
 Do not modify input rows, copied to the output DataFrame, that have valid `observation_date` and valid `NASDAQCOM` values. For every input row whose `NASDAQCOM` value is not missing, the corresponding output value must compare exactly equal to the input value. Note that interpolation can only be performed on interior rows bounded by non-missing values. Do not extrapolate `NASDAQCOM` values. Raise a `ValueError` if the first or last `NASDAQCOM` value is missing, or if any `NASDAQCOM` value remains missing after interior interpolation.
 
-Fill missing `NASDAQCOM` values using date-distance-weighted linear interpolation. Here is an example:
+Fill missing `NASDAQCOM` values using date-distance-weighted linear interpolation. Here is an example of synthetic data:
 
 ### With missing
 
@@ -134,7 +133,7 @@ augmented_df, count_added_rows, count_interpolations = fill_in_missing_days(
 )
 ```
 
-### Sample NASDAQ Input (`nasdaq_com_df`)
+### Synthetic NASDAQ Composite Input (`nasdaq_com_df`)
 
 | observation_date | NASDAQCOM |
 | ---------------- | --------- |
@@ -170,26 +169,78 @@ Note that (10458.76 + 10569.29) /2 = **10,514.0250**. Dates 1/15/2023 and 1/16/2
 
 ## Algorithm
 
-1. Validate that the input is a nonempty DataFrame with exactly these columns, in this order:
-   1. `observation_date`, `NASDAQCOM`
-1. Verify the DataFrame has more than 8 rows.
-1. Require exact datatypes:
-   1. `observation_date`: `datetime64[ns]`
-   1. `NASDAQCOM`: `float64`
-1. Validate normalized, unique, strictly increasing `observation_date` values.
-1. Validate that every `NASDAQCOM` value is either `NaN` or a finite positive floating-point value.
-1. Reject missing first or last `NASDAQCOM` values.
-1. Work from a deep copy of the input.
-1. Generate an inclusive daily date range from the minimum through maximum input date.
-1. Reindex onto that range and count the newly created rows.
-1. Immediately after daily reindexing and before interpolation, save a Boolean mask such as interpolation_mask = augmented_df["NASDAQCOM"].isna(). Use this same mask both to calculate count_interpolations and to round only the values filled by interpolation.
-1. Count all missing `NASDAQCOM` values at that point.
-1. Perform date-distance-weighted linear interpolation only between valid bounding `NASDAQCOM` values (e.g., `Series.interpolate(method="linear")`)
-1. Verify that no missing `NASDAQCOM` values remain.
-1. Round interpolated `NASDAQCOM` values to four decimals, and
-1. Set `observation_date` as the index with `drop=False` and `inplace=True`.
+1. Validate the input object, columns, row count, datatypes, dates, and values.
+1. Make a deep copy of the input.
+1. Set observation_date as the working DatetimeIndex and temporarily retain
+   only NASDAQCOM as a column.
+1. Generate an inclusive daily DatetimeIndex from the minimum through the
+   maximum input date using freq="D", name="observation_date", and
+   datetime64[ns] resolution.
+1. Calculate count_added_rows as:
+       `len(daily_index) - len(input_df)`
+1. Reindex the working DataFrame onto the daily index.
+1. Immediately save:
+       `interpolation_mask = working_df["NASDAQCOM"].isna()`
+1. Set `count_interpolations` to `int(interpolation_mask.sum())`.
+1. Interpolate NASDAQCOM using `method="time"` and `limit_area="inside"`.
+1. Verify that interpolation produced finite positive values and that no
+    missing values remain.
+1. Round only positions identified by interpolation_mask:
+       `values.loc[interpolation_mask] = values.loc[interpolation_mask].round(4)`
+1. Restore `observation_date` as the first column from the `DatetimeIndex`.
+1. Set `observation_date` as the index with `drop=False`.
+1. Verify the exact output columns, data types, index name, index data type,
+    uniqueness, ordering, and absence of missing values.
+1. Return `augmented_df`, `count_added_rows`, and `count_interpolations`.
 
-Interpolation _must_ occur after reindexing because any `NASDAQCOM` interpolated values computed prior to adding a new `observation_date` between the bounding dates of the prior interpolation would invalidate the calculation.
+Interpolation _must_ occur *after* reindexing because any `NASDAQCOM` interpolated values computed prior to adding a new `observation_date` between the bounding dates of the prior interpolation would invalidate the calculation.
+
+## Implementation Details
+
+1. Explicitly establish the DatetimeIndex before reindexing:
+
+`working_df = (`
+    `nasdaq_composite_df`
+    `.set_index("observation_date")[["NASDAQCOM"]]`
+    `.copy(deep=True)`
+`)`
+
+1. Then construct and apply the daily index:
+
+
+`daily_index = pd.date_range(`
+    `start=working_df.index.min(),`
+    `end=working_df.index.max(),`
+    `freq="D",`
+    `name="observation_date",`
+`).as_unit("ns")`
+
+`working_df = working_df.reindex(daily_index)`
+
+1. Interpolate using method="time" on the complete daily `DatetimeIndex`, with `limit_area="inside"`. 
+
+
+`interpolated = working_df["NASDAQCOM"].interpolate(`
+    `method="time",`
+    `limit_area="inside",`
+`)`
+
+1. Then the date column is restored. Setting observation_date as the index normally removes it from the columns. After interpolation, explicitly recreate the column from the index:
+
+
+`working_df.insert(0, "observation_date", working_df.index)`
+
+`augmented_df = working_df.set_index(`
+    `"observation_date",`
+    `drop=False,`
+`)`
+
+This guarantees:
+
+- Exactly two output columns
+- Correct column order
+- A `DatetimeIndex` named `observation_date`
+- Identical values in the `date` column and DataFrame `index`
 
 ## Additional Generated Modules
 
@@ -201,7 +252,6 @@ Implement these test cases using pytest and express all dates as datatype `datet
 
 Sample error messages require descriptive text containing the failed field or rule, for example:
 - The `nasdaq_composite_df` must be a pandas DataFrame
-- Input must contain at least 9 rows
 - Column names must be exactly ['observation_date', 'NASDAQCOM'].
 - `NASDAQCOM` must contain finite positive values or `NaN`.
 - `observation_date` must contain valid normalized timestamps and must not contain `NaT`.
@@ -238,14 +288,14 @@ Sample error messages require descriptive text containing the failed field or ru
 
 - Input DataFrame remains unchanged.
 - Correct output column order, datatypes, and index.
-- Invalid dates, duplicate dates, out of order dates, out of range NASDAQ values.
+- Invalid dates, duplicate dates, out of order dates, out of range NASDAQCOM values.
 - Incorrect column names.
 - Reordered column names.
 - Extra columns.
 - Wrong column datatypes.
 - `NaT` and timestamps that are not midnight.
 - Unsorted and duplicate dates.
-- Zero, negative, positive infinity, and negative infinity NASDAQCOM values (invalid).
+- Zero, negative, positive infinity, and negative infinity `NASDAQCOM` values (invalid). Note: a reasonable `NASDQACOM` maximum value is 40,000.
 
 ### Output DataFrame Constraints
 - Correct counts when no interpolation is needed.
@@ -253,10 +303,11 @@ Sample error messages require descriptive text containing the failed field or ru
 - Preservation of the original non-interpolated DataFrame rows.
 - Exact output `DatetimeIndex`, index name, column order, datatypes, and ascending row order.
 
-Note that later processing steps of this data use a forecasting algorithm that requires more than eight rows of data.
+Note that later processing steps of this data use a forecasting algorithm t 6789hat requires more than eight rows of data.
 
 ## Implementation Notes
 
 Generate code compatible with Python 3.13 or later. Pandas 3+ is also required. All generated modules must provide module-level docstrings and generated functions must have docstrings. The module-level docstrings will describe the interpolation process.
 
-Every date or date range created by either the implementation or unit tests must explicitly use datetime64[ns] resolution. Do not rely on pandas datatype inference from string literals. Apply .as_unit("ns") to results from pd.date_range() and pd.to_datetime(), or construct a Series with dtype="datetime64[ns]". This requirement applies to input data, intermediate values, expected test values, DataFrame columns, and expected DatetimeIndex objects. Unit tests must assert that these objects have exact datatype datetime64[ns].
+Every date or date range created by either the implementation or unit tests must explicitly use `datetime64[ns]` resolution. Do not rely on P
+dex` objects. Unit tests must assert that these objects have exact datatype `datetime64[ns]`.

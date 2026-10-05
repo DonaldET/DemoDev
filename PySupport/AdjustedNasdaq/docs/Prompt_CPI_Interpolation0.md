@@ -1,6 +1,6 @@
 # CPI Missing Date and Missing Value Interpolation
 
-You will create a Python function named `fill_in_missing_months` in a module named `../interpolate_cpi.py`. The function accepts a non-empty pandas DataFrame parameter with two columns: `date` and `cpi`. It returns an augmented DataFrame with the same two columns and datatypes, and its index is intentionally replaced with `date`. The output optionally contains inserted generated `date` and interpolated `cpi` values where required, along with counts of insertions and interpolations made. The count of interpolations is the number of `cpi` missing values after monthly reindexing and before interpolation, including both original missing values and inserted rows. The input DataFrame must contain at least nine rows; otherwise, raise `ValueError`.
+You will create a Python function named `fill_in_missing_months` in a module named `interpolate_cpi.py`. The function accepts a non-empty pandas DataFrame parameter with two columns: `date` and `cpi`. It returns an augmented DataFrame with the same two columns and datatypes, and its index is intentionally replaced with `date`. The output optionally contains inserted generated `date` and interpolated `cpi` values where required, along with counts of insertions and interpolations made. The count of interpolations is the number of `cpi` missing values after monthly reindexing and before interpolation, including both original missing values and inserted rows. The input DataFrame must contain at least nine rows; otherwise, raise `ValueError`.
 
 The function signature is:
 
@@ -219,7 +219,7 @@ Implement these test cases using pytest and express all dates as datatype `datet
 
 ## Implementation Notes
 
-Generate code compatible with Python 3.13 or later. All generated modules must provide module-level docstrings, and generated functions must have docstrings. The module-level docstrings must describe the monthly CPI interpolation process.
+Generate code compatible with Python 3.13 or later and Pandas 3 or later. All generated modules must provide module-level docstrings, and generated functions must have docstrings. The module-level docstrings must describe the monthly CPI interpolation process.
 
 Every date or date range created by either the implementation or unit tests must explicitly use `datetime64[ns]` resolution. Do not rely on pandas datatype inference from string literals. Apply `.as_unit("ns")` to results from `pd.date_range()` and `pd.to_datetime()`, or construct a Series with `dtype="datetime64[ns]"`. This requirement applies to input data, intermediate values, expected test values, DataFrame columns, and expected `DatetimeIndex` objects. Unit tests must assert that these objects have exact datatype `datetime64[ns]`.
 
