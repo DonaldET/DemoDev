@@ -1,7 +1,7 @@
 argcomplete==3.7.0
 click==8.4.2
 colorama==0.4.6
-filelock==3.32.0
+filelock==4.2.1
 iniconfig==2.3.0
 joblib==1.5.3
 narwhals==2.23.0
