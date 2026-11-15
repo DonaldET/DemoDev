@@ -1,0 +1,17 @@
+Folder PATH listing for volume DATA
+|   .gitignore
+|   README.md
+|   TreeCompare.toml
++---.venv
++---Docs
++---Prompts
+|   TreeComparisonUtility.md
++---scripts
++---src
+|   \---tree_compare
+|       |   compare_trees.py
+|       |   __init__.py
++---tests
+|   |   test_compare_trees.py
+|   |   __init__.py
+        

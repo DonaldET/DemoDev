@@ -72,6 +72,7 @@ var relDir = baseDir.relativize(subDir); // relDir ==> OneDrive\Documents
 #### Example: Windows File System
 
 Given:
+
 ```
 TOP2/
   Blatz.py
@@ -85,28 +86,34 @@ TOP2/
 ```
 
 Call:
+
 ```java
 ArrayList<Branch> tree = new FileTreeBuilder().traverse(Path.of("C:\\Users\\Don\\TOP2"));
 ```
+
 Resulting `tree` contains:
 
-| relativeDirectory | fileInfoList         |
-| ----------------- | -------------------- |
-| C:\Users\Don\TOP2 | Blatz.py             |
-| MID1              | A.prn, B.java, C.cpp |
-| MID2              | D.dat                |
+| relativeDirectory    | fileInfoList         |
+| -------------------- | -------------------- |
+| C:\\Users\\Don\\TOP2 | Blatz.py             |
+| MID1                 | A.prn, B.java, C.cpp |
+| MID2                 | D.dat                |
 
 ## Output Format
 
 The return value is:
+
 ```java
 ArrayList<Branch> traverse(Path initDir)
 ```
+
 Where:
+
 - `public record Branch(String relativeDirectory, List<FileInfo> fileInfoList) {}`
 - `public record FileInfo(String fileName, BasicFileAttributes attributes) {}`
 
 Result constraints:
+
 - `ArrayList<Branch>` always includes at least the root branch.
 - `Branch.relativeDirectory` uses normalized absolute path for the root, normalized path relative to root for others; use system default separators.
 - `fileInfoList` contains `FileInfo` for all regular files, in `DirectoryStream` order.

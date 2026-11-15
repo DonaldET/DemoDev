@@ -1,7 +1,8 @@
 ## Learning-Resources
+
 These web-sites are great places to learn the art of programming by actually doing programming exercises. We also recommend some helpful books.
 
-#### Java and Python Coding Practice, Data Management Free Resources 
+#### Java and Python Coding Practice, Data Management Free Resources
 
 Here are some educational web sites for testing your Java and Python coding skills:
 
@@ -27,4 +28,4 @@ Additional SQL learning resources include:
 - An Oracle teaching link: [https://livesql.oracle.com/apex/f?p=590:1000](https://livesql.oracle.com/apex/f?p=590:1000) (see [https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/](https://www.thatjeffsmith.com/archive/2016/03/a-place-to-learn-oracle-no-setup-required/ "for an overview").
 - A link discussing free courses: [https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html](https://javarevisited.blogspot.com/2015/06/5-websites-to-learn-sql-online-for-free.html).
 
-Finally, much of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at  [https://databricks.com/try-databricks](https://databricks.com/try-databricks "try Databricks").
+Finally, much of the Python content of this repository is concerned with *Apache Spark*, and a good free Spark implementation is hosted by Databricks (the community edition) found at [https://databricks.com/try-databricks](https://databricks.com/try-databricks "try Databricks").

@@ -37,7 +37,7 @@ row positions: 0, 1, 2
 But the actual coordinate is `distance=1`, between `0` and `10`. Coordinate-based interpolation should produce:
 
 $$
-0 + (10 - 0)\frac{1 - 0}{10 - 0} = 1
+0 + (10 - 0)\\frac{1 - 0}{10 - 0} = 1
 $$
 
 Use the data column as the index:

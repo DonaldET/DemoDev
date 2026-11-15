@@ -5,7 +5,7 @@ The Consumer Price Index (CPI) measures how the prices paid by consumers for a r
 For example, if CPI rises from 300 to 309 over one year, the measured inflation rate is:
 
 $$
-\text{Inflation rate} = \frac{309 - 300}{300} = 3\%
+\\text{Inflation rate} = \\frac{309 - 300}{300} = 3%
 $$
 
 CPI is not normally applied directly to the calculation of a stock-market index such as the S&P 500. Stock indexes are generally calculated from the market prices of their constituent stocks. CPI is instead used to interpret the index in inflation-adjusted, or “real,” terms.
@@ -15,7 +15,7 @@ CPI is not normally applied directly to the calculation of a stock-market index 
 To express an index’s historical values in the purchasing power of a selected base date:
 
 $$
-\text{Real index}_t = \text{Nominal index}_t \times \frac{\text{CPI}_{\text{base}}}{\text{CPI}_t}
+\\text{Real index}\_t = \\text{Nominal index}_t \\times \\frac{\\text{CPI}_{\\text{base}}}{\\text{CPI}\_t}
 $$
 
 Suppose:
@@ -26,7 +26,7 @@ Suppose:
 Expressing the current index in the earlier period’s purchasing power:
 
 $$
-5{,}200 \times \frac{250}{325} = 4{,}000
+5{,}200 \\times \\frac{250}{325} = 4{,}000
 $$
 
 Although the nominal index increased by 30%, its inflation-adjusted value did not increase. The entire nominal gain was offset by the rise in consumer prices.
@@ -36,19 +36,19 @@ Although the nominal index increased by 30%, its inflation-adjusted value did no
 A more precise inflation adjustment for investment returns is:
 
 $$
-1 + r_{\text{real}} = \frac{1 + r_{\text{nominal}}}{1 + \pi}
+1 + r\_{\\text{real}} = \\frac{1 + r\_{\\text{nominal}}}{1 + \\pi}
 $$
 
 where:
 
-- $r_{\text{nominal}}$ is the stock-index return.
-- $\pi$ is the CPI inflation rate.
-- $r_{\text{real}}$ is the return after inflation.
+- $r\_{\\text{nominal}}$ is the stock-index return.
+- $\\pi$ is the CPI inflation rate.
+- $r\_{\\text{real}}$ is the return after inflation.
 
 If an index returns 10% while CPI inflation is 4%:
 
 $$
-r_{\text{real}} = \frac{1.10}{1.04} - 1 \approx 5.77\%
+r\_{\\text{real}} = \\frac{1.10}{1.04} - 1 \\approx 5.77%
 $$
 
 Simply subtracting inflation gives 6%, which is a useful approximation, but 5.77% is the compounded result.

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "TreeCompare"
+version = "1.0.0"
+description = "A local Windows command-line utility to intelligently compare two directory trees"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+# This registers the command with Windows.
+# Typing 'compare_trees' in PowerShell will execute the main() function in compare_trees.py
+[project.scripts]
+compare_trees = "tree_compare.compare_trees:main"
+
+# --- MAVEN-LIKE LIFECYCLE MANAGEMENT ---
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+]
+
+[tool.hatch.envs.default.scripts]
+# Lifecycle phases: validation, testing, and compilation
+validate = "ruff check src/ tests/"
+test     = "pytest tests/"
+package  = "hatch build"
