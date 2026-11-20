@@ -14,65 +14,90 @@ The relative link `../../AGENTS.md` resolves to `PySupport/AGENTS.md` from that 
 
 ## Task: Develop a command-line Python Directory Tree Comparison Utility
 
-Name the complete program module `compare_trees.py` to compare two Windows directory trees recursively. Compare both file names and the binary content of the files in the two directory trees. For example:
+Name the complete program module `compare_trees.py` to compare two Windows directory trees recursively. At the highest level, compare both file names and the binary content of the files in the two directory trees. For example:
 
 **TreeA**
 `\src`
 `alpha.py (hash X)`
 `beta.py (hash Y)`
-`gamma.py (hash W)`   --- this file is unmatched, so tree comparison fails.
+`delta.py (hash A)`
+`gamma.py (hash Z)`   --- this file is unmatched, so tree comparison fails.
 
 **TreeB**
 `\archive`
 `alpha.py (hash X)`
+`beta.py (hash Y')`
 
 `\backup`
 `beta.py (hash Y)`
-`extra.py (hash Z)`
+`delta.py (hash A)`
+`extra.py (hash W)`
+
+`\saved`
+`alpha.py (hash X)`
+
+The above example reveals that files `alpha.py`, `beta.py` and `delta.py` in **TreeA** have been copied to **TreeB**, but file `gamma.py` in **TreeA** was not copied to **TreeB**.
+
+File `beta.py (hash Y')`,  in folder `\archive`  of  **TreeB**, has a duplicate name but different content from the file `beta.py` in  **TreeA**. 
+
+File `alpha.py` is duplicated by both name and content in **TreeB** (`\archive` and `\saved` folders.)
+
+File `extra.py` in `TreeB` is not found in **TreeA**.
+
+The over-arching idea is to classify files as successfully copied from **TreeA** into **TreeB**, or not copied. We are also interested in all files in **TreeB** that are not in **TreeA**. In addition, we not **TreeB** files with duplicate file names, with or without identical content.
+
+The tree copy analysis is:
+
+| Filename   | Tree      | Path       | Hash        | Category      |
+| ---------- | --------- | ---------- | ----------- | ------------- |
+| `alpha.py` | **TreeA** | `\src`     | `(hash X)`  | **MATCHED**   |
+| `beta.py`  | **TreeA** | `\src`     | `(hash Y)`  | **MATCHED**   |
+| `delta.py` | **TreeA** | `\src`     | `(hash A)`  | **MATCHED**   |
+| `gamma.py` | **TreeA** | `\src`     | `(hash Z)`  | **ORPHAN**    |
+| `beta.py`  | **TreeB** | `\archive` | `(hash Y')` | **DUPNAME**   |
+| `extra.py` | **TreeB** | `\backup`  | `(hash W)`  | **UNTRACKED** |
+| `alpha.py` | **TreeB** | `\saved`   | `(hash X)`  | **IDENTICAL** |
+
+We observe from the example that file names in **TreeA** must be unique, but file content need not be identical. There is no need to report on information about successfully copied files in **TreeB**.
 
 ## 1. Comparison semantics
 
 The comparison is one-directional: every file in TreeA must have at least one matching file in TreeB. Note the file names in TreeA must be unique.
 
 A file matches in the two trees when:
-
 - Its filename is identical, using Windows case-insensitive filename comparison, and
 - Its binary contents is identical.
 
-Note that its directory location is irrelevant.
+Note that its directory location in either Tree is irrelevant.
 
 Use only file size and SHA-256 hashes to establish content equality.
 
-Additional copies of a file in TreeA found in TreeB are permitted and must not cause the comparison to fail. Similarly, files in TreeB not found in TreeA are also permitted and must not cause the comparison to fail.
+Additional copies of a file in **TreeA** found in **TreeB** are permitted and must not cause the comparison to fail. Similarly, files in **TreeB** not found in TreeA are also permitted and must not cause the comparison to fail.
 
-## 2. Matching algorithm
+## 2. Important duplicate semantics
 
-1. Recursively enumerate regular files in both trees.
-1. Record each file's absolute path, relative path, filename, size, and SHA-256 hash.
-1. Index TreeA files by normalized filename AND verify they are unique.
+A duplicate match is defined by the combination of normalized filename and identical content, not by content alone. Ignore all other file attributes in the comparison.
+
+Use a deterministic matching algorithm that maximizes the number of one-to-one matches. Do not allow iteration order to determine whether the comparison passes.
+
+## 3. Matching algorithm
+
+1. Verify both TreeA and TreeB are non-empty.
+1. Recursively enumerate regular files in **TreeA**, recording absolute path, relative path, filename, size, and SHA-256 hash for each file.
+1. Index **TreeA** files by normalized filename AND verify they are unique.
+1. 
 1. Index TreeB files by normalized filename.
 1. For every file in TreeA, identify TreeB candidates with the same normalized filename.
 1. Compare file sizes and SHA-256 hashes to determine identical contents.
 1. Classify the file comparison results as follows:
-   - MATCHED: At least one file in TreeB has the same filename and contents as TreeA.
-   - DUPLICATE: More than one file in TreeB has the same filename and identical contents.
-   - DUPLICATE_NAME: More than one file in TreeB has the same filename but different contents.
-   - MISSING: No file with the same filename exists in TreeB.
-   - MISMATCH: One or more files with the same filename exist in TreeB, but none has identical contents.
-   - UNASSIGNED: A file in TreeB has no matching file in TreeA.
-   - ERROR: The file could not be examined or compared.
+   - **MATCHED**: At least one file in **TreeB** has the same filename and contents as **TreeA**.
+   - **ORPHAN**: No file in **TreeB** has the same file name and contents as **TreeA**.
+   - **IDENTICAL**: More than one file in TreeB has the same filename and identical contents as another file in **TreeB**.
+   - **DUPNAME**: More than one file in **TreeB** has the same filename but different contents.
+   - **UNTRACKED**: A file in **TreeB** has no matching file in **TreeA**.
+   - **ERROR**: The file could not be examined or compared.
 1. Report unmatched additional TreeB files (UNASSIGNED) separately. They are informational and do not cause failure.
 1. Report multiple matching TreeB files separately. They are informational and do not cause failure.
-
-## 3. Important duplicate semantics
-
-A duplicate match is defined by the combination of normalized filename and identical content, not by content alone. Ignore all other file attributes in the comparison.
-
-Files with different filenames but identical contents are not duplicate matches.
-
-File names in TreeA must be unique.
-
-Use a deterministic matching algorithm that maximizes the number of one-to-one matches. Do not allow iteration order to determine whether the comparison passes.
 
 ## 4. Reporting
 
